@@ -1,10 +1,10 @@
 <?php
-namespace Html\Model;
+namespace Html\Delegator;
 
 use Dom\HTMLCollection;
 use DOM\NodeList;
 
-class ExtendedDOMNodeList
+class DOMNodeListDelegator
 {
     private NodeList|HTMLCollection $nodeList;
 
@@ -12,13 +12,13 @@ class ExtendedDOMNodeList
         $this->nodeList = $nodeList;
     }
 
-    public function item(int $index): ?ExtendedDOMNode
+    public function item(int $index): ?DOMNodeDelegator
     {
         $node = $this->nodeList->item($index);
-        return $node ? new ExtendedDOMNode($node) : null;
+        return $node ? new DOMNodeDelegator($node) : null;
     }
 
-    public function __call($name, $arguments) 
+    public function __call($name, $arguments)
     {
         $reflection = new \ReflectionClass($this->nodeList);
         if ($reflection->hasMethod($name)) {

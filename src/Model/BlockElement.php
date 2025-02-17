@@ -2,8 +2,9 @@
 namespace Html\Model;
 
 use DOM\HtmlElement;
+use Html\Delegator\HTMLElementDelegator;
 
-class BlockElement extends ExtendedHTMLElement
+class BlockElement extends HTMLElementDelegator
 {
     public CONST STYLABLE = true;
     public CONST INLINE = false;

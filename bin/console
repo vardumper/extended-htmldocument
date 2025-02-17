@@ -8,8 +8,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 $app = new Silly\Application();
-$app->command('class:all', new CreateClassCommand())->descriptions('Creates the HTML5 specification based on some YAML files.');
-$app->command('class:element [element]', function ($element, InputInterface $input, OutputInterface $output) {
-    return (new CreateClassCommand())->__invoke($element, $input, $output);
-})->descriptions('Creates a new PHP class for a given HTML Element');
+$app->command('make:class [element]', function ($element, InputInterface $input, OutputInterface $output) {
+    return (new CreateClassCommand())($element, $input, $output);
+})->descriptions('Creates a new PHP class for all or for a given HTML Element');
 $app->run();

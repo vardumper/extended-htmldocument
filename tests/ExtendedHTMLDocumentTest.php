@@ -51,6 +51,7 @@ class ExtendedHTMLDocumentTest extends TestCase
             'rel' => 'noopener',
             'target' => TargetEnum::BLANK
         ]);
+        $anchor->hasAttributes();
         // $anchor->target = TargetEnum::BLANK;
         // $anchor->target = '_blank';
         $anchor->textContent = 'This is a test element.';

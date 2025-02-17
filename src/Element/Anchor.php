@@ -1,7 +1,7 @@
 <?php
 /**
  * Anchor
- * 
+ *
  * @package Html\Element
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
  * @description The a element represents a hyperlink, linking to another resource.
@@ -17,7 +17,7 @@ class Anchor extends InlineElement
 {
     public static string $qualifiedName = 'a';
 
-    /* 
+    /*
      * Indicates that the linked content should be downloaded rather than displayed.
      * @example filename.pdf
      * @deprecated */
@@ -26,7 +26,7 @@ class Anchor extends InlineElement
     /* Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used. */
     public string $href;
 
-    /* 
+    /*
      * Specifies the language of the linked resource.
      * @example en */
     public ?string $hreflang;
@@ -34,7 +34,7 @@ class Anchor extends InlineElement
     /* Specifies the relationship between the current document and the linked document. */
     public ?RelEnum $rel;
 
-    /* 
+    /*
      * Specifies where to open the linked document.
      * @example _self */
     public null|string|TargetEnum $target;
@@ -68,8 +68,8 @@ class Anchor extends InlineElement
     // // Static factory method that creates the DOM element, then passes it to the parent constructor
     // public static function create(ExtendedHTMLDocument $dom): self
     // {
-    //     $coreElement = $dom->htmlDocument->createElement(self::$qualifiedName); // Make sure this call returns a DOM\HtmlElement, not an ExtendedHTMLElement:
+    //     $coreElement = $dom->htmlDocument->createElement(self::$qualifiedName); // Make sure this call returns a DOM\HtmlElement, not an HTMLElementDelegator:
 
-    //     return new self($coreElement); // Now wrap it in your ExtendedHTMLElement logic:
+    //     return new self($coreElement); // Now wrap it in your HTMLElementDelegator logic:
     // }
 }

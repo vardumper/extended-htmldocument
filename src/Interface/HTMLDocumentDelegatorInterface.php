@@ -1,10 +1,10 @@
-<?php 
+<?php
 declare(strict_types=1);
-namespace Html\Model;
+namespace Html\Interface;
 
 use Dom\HTMLDocument;
 
-interface ExtendedHTMLDocumentInterface {
+interface HTMLDocumentDelegatorInterface {
     public function __construct(HTMLDocument $htmlDocument);
     // public static function createEmpty(): self;
 }

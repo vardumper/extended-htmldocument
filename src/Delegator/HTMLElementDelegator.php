@@ -1,10 +1,12 @@
 <?php
-namespace Html\Model;
+namespace Html\Delegator;
 
 use BackedEnum;
 use DOM\HtmlElement;
+use DOM\Document;
+use Traversable;
 
-class ExtendedHTMLElement
+class HTMLElementDelegator
 {
     private static ?string $qualifiedName = null; // Default value, change as needed
     public HtmlElement $htmlElement;
@@ -13,7 +15,7 @@ class ExtendedHTMLElement
         $this->htmlElement = $htmlElement;
     }
 
-    public function __call($name, $arguments) 
+    public function __call($name, $arguments)
     {
         $reflection = new \ReflectionClass($this->htmlElement);
         if ($reflection->hasMethod($name)) {
@@ -24,7 +26,7 @@ class ExtendedHTMLElement
         throw new \BadMethodCallException("Method $name does not exist on " . $reflection->getName() . ". However you cna implement it on " . __CLASS__);
     }
 
-    public function __get($name) 
+    public function __get($name)
     {
         $reflection = new \ReflectionClass($this->htmlElement);
         if ($reflection->hasProperty($name)) {
@@ -34,7 +36,7 @@ class ExtendedHTMLElement
         }
         throw new \InvalidArgumentException("Property $name does not exist on " . $reflection->getName() . ". However you cna implement it on " . __CLASS__);
     }
-    
+
     public function __set($name, $value) : void
     {
         // Transform Enum values to their underlying value
@@ -61,7 +63,9 @@ class ExtendedHTMLElement
 
     /** this is what I wrote all this for, in order to being able to add functionality, like cutsom methods */
     public function __toString(): string {
-        return (string) $this->htmlElement->ownerDocument->saveHtml($this->htmlElement);
+        /**@var Document $ownerDocument  */
+        $ownerDocument = $this->htmlElement->ownerDocument;
+        return (string) $ownerDocument->saveHtml($this->htmlElement);
     }
 
     public function setAttributes(array $attributes): self
@@ -76,6 +80,16 @@ class ExtendedHTMLElement
             $this->htmlElement->setAttribute($name, $value);
         }
         return $this;
+    }
+
+    public function hasAttributes(): bool
+    {
+        return !empty($this->htmlElement->attributes);
+    }
+
+    public function attributes(): Traversable
+    {
+        return $this->htmlElement->attributes->getIterator();
     }
 
     // Generic static factory method

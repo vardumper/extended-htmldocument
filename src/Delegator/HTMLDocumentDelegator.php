@@ -1,34 +1,35 @@
-<?php 
+<?php
 declare(strict_types=1);
 
-namespace Html\Model;
+namespace Html\Delegator;
 
 use DOM\HTMLDocument;
+use Html\Interface\HTMLDocumentDelegatorInterface;
 
-class ExtendedHTMLDocument implements ExtendedHTMLDocumentInterface {
+class ExtendedHTMLDocument implements HTMLDocumentDelegatorInterface {
     public function __construct(public readonly HTMLDocument $htmlDocument) {
     }
 
-    public static function createEmpty(): self 
+    public static function createEmpty(): self
     {
         return new self(HTMLDocument::createEmpty());
     }
 
-    public static function createFromString(string $html): self 
+    public static function createFromString(string $html): self
     {
         return new self(HTMLDocument::createFromString($html));
     }
 
-    public static function createFromFile(string $path): self 
+    public static function createFromFile(string $path): self
     {
         return new self(HTMLDocument::createFromFile($path));
     }
 
-    public function __call($name, $arguments) 
+    public function __call($name, $arguments)
     {
-        // Convert any ExtendedHTMLElement arguments to their underlying DOM\HtmlElement (eg. appendChild)
+        // Convert any HTMLElementDelegator arguments to their underlying DOM\HtmlElement (eg. appendChild)
         foreach ($arguments as &$argument) {
-            if ($argument instanceof ExtendedHTMLElement) {
+            if ($argument instanceof HTMLElementDelegator) {
                 $argument = $argument->htmlElement;
             }
         }
@@ -41,12 +42,12 @@ class ExtendedHTMLDocument implements ExtendedHTMLDocumentInterface {
         }
         throw new \BadMethodCallException("Method $name does not exist on " . $reflection->getName() . ". However you can implement it on " . __CLASS__);
     }
-    
-    // public function appendChild(ExtendedHTMLElement $child): void {
+
+    // public function appendChild(HTMLElementDelegator $child): void {
     //     $this->htmlDocument->appendChild($child->htmlElement);
     // }
 
-    public function __get($name) 
+    public function __get($name)
     {
         $reflection = new \ReflectionClass($this->htmlDocument);
         if ($reflection->hasProperty($name)) {
@@ -56,7 +57,7 @@ class ExtendedHTMLDocument implements ExtendedHTMLDocumentInterface {
         }
         throw new \InvalidArgumentException("Property $name does not exist on " . $reflection->getName() . ". However you cna implement it on " . __CLASS__);
     }
-    
+
     public function __set($name, $value) : void
     {
         $reflection = new \ReflectionClass($this->htmlDocument);
@@ -69,14 +70,14 @@ class ExtendedHTMLDocument implements ExtendedHTMLDocumentInterface {
         throw new \InvalidArgumentException("Property $name does not exist on " . $reflection->getName() . ". However you can implement it on " . __CLASS__);
     }
 
-    public function createElement(string $qualifiedName): ExtendedHTMLElement {
+    public function createElement(string $qualifiedName): HTMLElementDelegator {
         $htmlElement = $this->htmlDocument->createElement($qualifiedName);
-        return new ExtendedHTMLElement($htmlElement);
+        return new HTMLElementDelegator($htmlElement);
     }
 
-    public function getElementsByTagName(string $name): ExtendedDOMNodeList {
+    public function getElementsByTagName(string $name): DOMNodeListDelegator {
         $nodeList = $this->htmlDocument->getElementsByTagName($name);
-        return new ExtendedDOMNodeList($nodeList);
+        return new DOMNodeListDelegator($nodeList);
     }
 
     public function __toString(): string {

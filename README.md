@@ -17,6 +17,41 @@ To re-generate the all classes run `php bin/console class:element`.
 ## Usage
 
 ```
+namespace DesignSystem\Model;
+
+class DesignSystemElementHTMLDocument extends \Html\Model\ExtendedHTMLDocument
+{
+    public function toTwig($node, int $indent = 4)
+    {
+        $twig .= "{% block $node::$qualifiedName %}".PHP_EOL;
+        if ($node->hasAttributes()) {
+            foreach ($node->attributes() as $key => $value) {
+                $attributes .= "{$key}=\"{$value}\" ";
+            }
+            $attributes = trim($attributes);
+            $twig .= str_repeat(' ', $indent) . "<{$nodeName} {$attributes}>".PHP_EOL;
+        } else {
+            $twig .= str_repeat(' ', $indent) . "<{$nodeName}>".PHP_EOL;
+        }
+        $twig .= "{% endblock %}".PHP_EOL;
+    }
+
+    public function toReact()
+    {
+        
+    }
+
+    public function toNext()
+    {
+        
+    }
+}
+```
+
+Now you can use the `DesignSystemElementHTMLDocument` to generate HTML, Twig, React or Next code.
+```
+
+```
 
 
 ## Why?
@@ -34,11 +69,12 @@ HTML is one of the oldest, yet most important markup languages we have. Web Deve
 In order to homogenize the code and improve the code quality I want to be able to generate code for a design systems atoms, molecules, organisms, pages 
 The goal of this repository is to have a base library, that can create native PHP DOM Elements that are valid for each HTML element.
 
-## Features
-Every HTML class instance knows:
-* its level (inline, block or void)
-* if it is stylable
-* if it is s self-enclosing
+## Differences to DOM\HTMLElement
+Every HTML class instance:
+* has a intuitive class name
+* knows its level (inline, block or void)
+* knows if it is stylable
+* knows if it is s self-enclosing
 * what its element-specific attributes are
 * what its required attributes are
 * ~is~ should be compatible to its parent DOM\HTMLElement
@@ -52,3 +88,9 @@ The purpose of this package is to add a stronger focus to HTML5 elements functio
 ## Running tests
 To run tests, use the following command:
 vendor/bin/phpunit --bootstrap vendor/autoload.php tests/ExtendedHTMLDocumentTest.php
+
+## Roadmap
+* Add interfaces, where possible to make extending this base library easy
+* Add more tests
+* Add usage examples
+* Add more code generation methods for common frontend technologies (Twig, React, Vue, Next)

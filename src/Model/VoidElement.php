@@ -2,8 +2,9 @@
 namespace Html\Model;
 
 use DOM\HtmlElement;
+use Html\Delegator\HTMLElementDelegator;
 
-class VoidElement extends ExtendedHTMLElement
+class VoidElement extends HTMLElementDelegator
 {
     public CONST STYLABLE = false;
     public CONST INLINE = false;

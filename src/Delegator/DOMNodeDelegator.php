@@ -1,18 +1,18 @@
 <?php
-namespace Html\Model;
+namespace Html\Delegator;
 
 use DOM\Node;
 
-class ExtendedDOMNode
+class DOMNodeDelegator
 {
     public function __construct(private readonly Node $domNode) {
     }
 
-    public function __call($name, $arguments) 
+    public function __call($name, $arguments)
     {
-        // Convert any ExtendedHTMLElement arguments to their underlying DOM\HtmlElement
+        // Convert any HTMLElementDelegator arguments to their underlying DOM\HtmlElement
         foreach ($arguments as &$argument) {
-            if (is_object($argument) && $argument instanceof ExtendedHTMLElement) {
+            if (is_object($argument) && $argument instanceof HTMLElementDelegator) {
                 $argument = $argument->htmlElement;
             }
         }
@@ -26,7 +26,7 @@ class ExtendedDOMNode
         throw new \BadMethodCallException("Method $name does not exist on " . $reflection->getName() . ". However you can implement it on " . __CLASS__);
     }
 
-    public function __get($name) 
+    public function __get($name)
     {
         $reflection = new \ReflectionClass($this->domNode);
         if ($reflection->hasProperty($name)) {
@@ -36,7 +36,7 @@ class ExtendedDOMNode
         }
         throw new \InvalidArgumentException("Property $name does not exist on " . $reflection->getName() . ". However you can implement it on " . __CLASS__);
     }
-    
+
     public function __set($name, $value) : void
     {
         $reflection = new \ReflectionClass($this->domNode);
