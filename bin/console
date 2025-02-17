@@ -1,0 +1,30 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+require __DIR__ . '/../vendor/autoload.php';
+
+use Html\Command\CreateClassCommand;
+use PicoCSS\Storybook\Command\CreateComponentCommand;
+use PicoCSS\Storybook\Command\PicoCssSpecificationCommand;
+use PicoCSS\Storybook\Command\StorybookCompileCommand;
+use PicoCSS\Storybook\Command\HtmlSpecificationCommand;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+
+// $twig = new \Twig\Environment(new \Twig\Loader\FilesystemLoader(__DIR__ . '/../templates'));
+// $loader = new \Twig\Loader\FilesystemLoader(dirname(__FILE__) . '/../templates');
+// $twig = new \Twig\Environment($loader, [
+//     'debug' => true, // 'cache' => dirname(__FILE__) . '/../.cache',
+// ]);
+// $twig->addExtension(new Twig\Extension\DebugExtension());
+// $twig->addExtension(new Twig\Extra\Intl\IntlExtension());
+// $twig->addExtension(new PicoCSS\Storybook\Twig\Extension\HelperExtension());
+
+// $faker = Faker\Factory::create();
+
+$app = new Silly\Application();
+$app->command('class:all', new CreateClassCommand())->descriptions('Creates the HTML5 specification based on some YAML files.');
+$app->command('class:element [element]', function ($element, InputInterface $input, OutputInterface $output) {
+    return (new CreateClassCommand())->__invoke($element, $input, $output);
+})->descriptions('Creates a new PHP class for a given HTML Element');
+$app->run();
