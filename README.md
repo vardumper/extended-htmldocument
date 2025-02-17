@@ -14,6 +14,11 @@ You can also modify the class generation templates in the folder `src/Resources/
 To re-generate the Element\Inline\Anchor class run `php bin/console class:element a`.
 To re-generate the all classes run `php bin/console class:element`.
 
+## Usage
+
+```
+
+
 ## Why?
 
 ### Q: What problem does this library claim to fix or resolve?
@@ -36,6 +41,7 @@ Every HTML class instance knows:
 * if it is s self-enclosing
 * what its element-specific attributes are
 * what its required attributes are
+* ~is~ should be compatible to its parent DOM\HTMLElement
 * has a __toString() method to turn the instance into HTML.
 
 ## What else can you do with this?
