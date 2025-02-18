@@ -1,7 +1,6 @@
 <?php
 namespace Html\Command;
 
-use Html\Element\Anchor;
 use Silly\Input\InputArgument;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -15,9 +14,9 @@ use Symfony\Component\Yaml\Yaml;
  * @description Create a new component
  * @tutorial an example element value can be div
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element
- * 
+ *
  */
-final class CreateClassCommand extends Command 
+final class CreateClassCommand extends Command
 {
     private array $uses = [];
 
@@ -54,7 +53,7 @@ final class CreateClassCommand extends Command
             $io->info('Creating a new class for ' . $element);
 
             // Process the data as needed
-            
+
             $className = str_replace(' ', '', ucfirst($data[$element]['name']));
             $level = $data[$element]['level'];
             $unique = $data[$element]['unique'] ?? false;
@@ -76,10 +75,10 @@ final class CreateClassCommand extends Command
             // var_dump($unique_per_parent);
             $this->uses = [];
             $this->uses[] = sprintf("Html\Model\%sElement", ucfirst($level));
-            
+
             $attributes = $this->getAttributes($attributes); // before use statements
             $use_statements = $this->getUseStatements();
-            
+
             $parameters = [
                 'class_name' => $this->getClassName($className),
                 'element_name' => $element,
@@ -99,7 +98,7 @@ final class CreateClassCommand extends Command
 
             $io->success(sprintf('Class %s created successfully', $path));
         }
-        
+
         return Command::SUCCESS;
     }
 
@@ -146,13 +145,13 @@ final class CreateClassCommand extends Command
             $lines[] = "@required" . PHP_EOL . "    ";
         }
         $comment = '/* ';
-        
+
         if (count($lines) > 1) {
             $comment .= PHP_EOL . "     * " . implode(PHP_EOL . "     * ", $lines);
         } else {
             $comment .= $lines[0];
         }
-        
+
         return $comment . " */".PHP_EOL;
     }
 

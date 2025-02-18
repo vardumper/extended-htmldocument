@@ -6,7 +6,7 @@ namespace Html\Delegator;
 use DOM\HTMLDocument;
 use Html\Interface\HTMLDocumentDelegatorInterface;
 
-class ExtendedHTMLDocument implements HTMLDocumentDelegatorInterface {
+class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface {
     public function __construct(public readonly HTMLDocument $htmlDocument) {
     }
 

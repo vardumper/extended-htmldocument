@@ -4,6 +4,7 @@ use PHPUnit\Framework\TestCase;
 use Html\Model\ExtendedHTMLDocument;
 use Html\Element\Anchor;
 use Html\Enum\TargetEnum;
+use Html\Interface\HTMLDocumentDelegatorInterface;
 
 class ExtendedHTMLDocumentTest extends TestCase
 {
@@ -11,14 +12,14 @@ class ExtendedHTMLDocumentTest extends TestCase
     {
         $qualifiedName = 'img';
         $value = 'This is a test element.';
-        $dom = ExtendedHTMLDocument::createFromString('<!doctype html><html><head></head><body></body></html>');
+        $dom = HTMLDocumentDelegator::createFromString('<!doctype html><html><head></head><body></body></html>');
         $body = $dom->getElementsByTagName('body')->item(0);
 
         $element = $dom->createElement($qualifiedName);
         $element->setAttributes([
-            'alt' => 'Description of image', 
-            'loading' => 'lazy', 
-            'width' => '100', 
+            'alt' => 'Description of image',
+            'loading' => 'lazy',
+            'width' => '100',
             'height' => '100',
             'data-example' => 'some-example-string',
             'src'   => 'path/to/image.jpg'

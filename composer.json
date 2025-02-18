@@ -1,5 +1,5 @@
 {
-    "name": "erik.poehler/html-dom",
+    "name": "vardumper/extended-htmldocument",
     "autoload": {
         "psr-4": {
             "Html\\": "src/"
