@@ -1,3 +1,5 @@
 /vendor
 /.history
 .phpunit.result.cache
+cghooks.lock
+

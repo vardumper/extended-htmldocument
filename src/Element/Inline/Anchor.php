@@ -41,7 +41,7 @@ final class Anchor extends InlineElement
      * Specifies where to open the linked document.
      * @example _self
      */
-    public ?TargetEnum $target;
+    public ?TargetEnum $target = TargetEnum::_SELF;
 
     /* Specifies additional information about the element, typically displayed as a tooltip. */
     public ?string $title;

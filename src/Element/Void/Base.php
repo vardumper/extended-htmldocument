@@ -24,7 +24,7 @@ final class Base extends VoidElement
      * Specifies where to open the linked document.
      * @example _self
      */
-    public ?TargetEnum $target;
+    public ?TargetEnum $target = TargetEnum::_SELF;
 
 
     public function __construct()

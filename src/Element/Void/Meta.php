@@ -1,7 +1,7 @@
 <?php
 /**
  * Meta - The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable.
- *
+ * 
  * @package Html\Element\Void
  * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
  */

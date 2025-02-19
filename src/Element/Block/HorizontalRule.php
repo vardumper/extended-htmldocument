@@ -18,7 +18,7 @@ final class HorizontalRule extends BlockElement
     public ?AlignEnum $align;
 
     /*  */
-    public ?color $color;
+    public ?string $color;
 
     /*  */
     public ?bool $noshade;

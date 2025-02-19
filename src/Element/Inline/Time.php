@@ -14,7 +14,7 @@ final class Time extends InlineElement
     public static string $qualifiedName = 'time';
 
     /* Specifies the date and time of the change in the format 'YYYY-MM-DDThh:mm:ss' or a subset of it. */
-    public ?datetime $datetime;
+    public ?string $datetime;
 
 
     public function __construct()

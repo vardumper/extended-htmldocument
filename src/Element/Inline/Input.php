@@ -18,11 +18,8 @@ final class Input extends InlineElement
     /* Specifies a comma-separated list of file types that the server accepts. */
     public ?string $accept;
 
-    /* 
-     * Specifies alternative text to be displayed when the image cannot be rendered.
-     * @required
-     */
-    public string $alt;
+    /* Specifies alternative text to be displayed when the image cannot be rendered. */
+    public ?string $alt;
 
     /*  */
     public ?AutocompleteEnum $autocomplete;
@@ -75,17 +72,17 @@ final class Input extends InlineElement
     /* Specifies the height of a hr element in pixels. */
     public ?int $size;
 
-    /* 
-     * Specifies the URL of the external resource to be embedded or referenced.
-     * @required
-     */
-    public string $src;
+    /* Specifies the URL of the external resource to be embedded or referenced. Required if input type is image */
+    public ?string $src;
 
     /* Specifies the legal number intervals for an input element. */
     public ?string $step;
 
-    /* Specifies the media type of the linked resource. */
-    public ?TypeEnum $type;
+    /* 
+     * Specifies the type of the input. Defaults to text if the attribute is omitted
+     * @example text
+     */
+    public ?TypeEnum $type = TypeEnum::TEXT;
 
     /* Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value;

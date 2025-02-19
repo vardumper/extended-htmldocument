@@ -54,7 +54,7 @@ final class CreateClassCommand extends Command
 
             $this->uses = []; // reset use statements
 
-            $className = $this->getClassName(str_replace(' ', '', ucfirst($data[$element]['name'])));
+            $className = $this->getClassName(\str_replace(' ', '', \ucfirst($data[$element]['name'])));
             $level = $data[$element]['level'];
             $unique = $data[$element]['unique'] ?? false;
             $unique_per_parent = $data[$element]['unique_per_parent'] ?? false;
@@ -63,9 +63,9 @@ final class CreateClassCommand extends Command
             $defaultValue = $data[$element]['default'] ?? '';
             $attributes = $data[$element]['attributes'] ?? [];
             $fileName = $className . '.php';
-            $path = sprintf('src/Element/%s/%s', ucfirst($level), $fileName);
+            $path = \sprintf('src/Element/%s/%s', \ucfirst($level), $fileName);
 
-            $this->uses[] = sprintf("Html\Model\%sElement", ucfirst($level));
+            $this->uses[] = \sprintf("Html\Model\%sElement", \ucfirst($level));
 
             $attributes = $this->getAttributes($attributes); // before use statements
             $use_statements = $this->getUseStatements();
@@ -84,7 +84,7 @@ final class CreateClassCommand extends Command
                 'path' => $path
             ];
 
-            $templatePath = getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . ucfirst($level) . 'Element.tpl.php';
+            $templatePath = \getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . \ucfirst($level) . 'Element.tpl.php';
             $this->createClassFile($templatePath, $parameters, $path);
 
             $io->success(sprintf('Class %s created successfully', $path));
@@ -96,12 +96,12 @@ final class CreateClassCommand extends Command
     private function createClassFile(string $templatePath, array $parameters, string $path): void
     {
         // replace placeholders with actual values using eval
-        ob_start();
-        extract($parameters, \EXTR_SKIP);
+        \ob_start();
+        \extract($parameters, \EXTR_SKIP);
         include $templatePath;
 
-        $file = ob_get_clean();
-        file_put_contents($path, $file);
+        $file = \ob_get_clean();
+        \file_put_contents($path, $file);
     }
 
     private function getAttributes(array $attributes) : string
@@ -111,32 +111,34 @@ final class CreateClassCommand extends Command
             $type = $details['type'] ?? '';
             $required = $details['required'] ?? false;
             $description = $details['description'] ?? '';
+            $default = '';
             $comment = $this->getAttributeComment($details);
             $type = $this->mapToPhpType($type);
             if ($type === 'enum') {
                 $kebapCase = $this->toKebapCase($attribute);
                 $this->uses[] = sprintf("Html\Enum\%sEnum", $kebapCase);
-                $type = sprintf("%sEnum", $kebapCase);
+                $type = \sprintf("%sEnum", $kebapCase);
+                $default = isset($details['defaultValue']) ? sprintf(' = %sEnum::%s', $kebapCase, strtoupper($details['defaultValue'])) : '';
             }
             $variableName = $this->toVariableName($attribute);
-            $transformedAttributes .= sprintf("    %s    public %s%s \$%s;\n\n", $comment, $required ? '' : '?', $type, $variableName);
+            $transformedAttributes .= \sprintf("    %s    public %s%s \$%s%s;\n\n", $comment, $required ? '' : '?', $type, $variableName, $default);
 
         }
         return $transformedAttributes;
     }
     private function toVariableName(string $string) : string
     {
-        $string = str_replace(['-','_'], ' ', $string);
-        $words = explode(' ', $string);
-        $string = implode('', array_map('ucfirst', $words));
-        return lcfirst($string);
+        $string = \str_replace(['-','_'], ' ', $string);
+        $words = \explode(' ', $string);
+        $string = \implode('', \array_map('ucfirst', $words));
+        return \lcfirst($string);
     }
 
     private function toKebapCase(string $string) : string
     {
-        $string = str_replace(['-','_'], ' ', $string);
-        $string = ucwords($string);
-        return str_replace(' ', '', $string);
+        $string = \str_replace(['-','_'], ' ', $string);
+        $string = \ucwords($string);
+        return \str_replace(' ', '', $string);
     }
 
     private function getAttributeComment(array $details) {
@@ -153,8 +155,8 @@ final class CreateClassCommand extends Command
         }
         $comment = '/* ';
 
-        if (count($lines) > 1) {
-            $comment .= PHP_EOL . "     * " . implode(PHP_EOL . "     * ", $lines);
+        if (\count($lines) > 1) {
+            $comment .= PHP_EOL . "     * " . \implode(PHP_EOL . "     * ", $lines);
         } else {
             $comment .= $lines[0];
         }
@@ -168,7 +170,7 @@ final class CreateClassCommand extends Command
         \asort($uses);
         $use_statements = '';
         foreach ($uses as $use) {
-            $use_statements .= sprintf("use %s;\n", $use);
+            $use_statements .= \sprintf("use %s;\n", $use);
         }
         return $use_statements;
     }
@@ -181,6 +183,22 @@ final class CreateClassCommand extends Command
             'boolean' => 'bool',
             'uri' => 'string',
             'language_iso' => 'string',
+            'color' => 'string',
+            'datetime' => 'string',
+            'datetime-local' => 'string',
+            'date' => 'string',
+            'time' => 'string',
+            'month' => 'string',
+            'week' => 'string',
+            'number' => 'int',
+            'float' => 'float',
+            'url' => 'string',
+            'email' => 'string',
+            'tel' => 'string',
+            'password' => 'string',
+            'hidden' => 'bool|string',
+            'image' => 'string', // added type for image
+            'file' => 'string',  // added type for file
             default => $string,
         };
     }
@@ -277,7 +295,7 @@ final class CreateClassCommand extends Command
             'numeric',
             'object',
         ];
-        if (in_array(strtolower($classname), $reserved)) {
+        if (\in_array(\strtolower($classname), $reserved)) {
             return $classname . 'Element';
         }
         return $classname;

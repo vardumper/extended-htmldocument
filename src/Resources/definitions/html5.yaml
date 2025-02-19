@@ -1718,7 +1718,7 @@ input:
     alt:
       description: 'Specifies alternative text to be displayed when the image cannot be rendered.'
       type: string
-      required: true
+      required: false
       elements:
         - area
         - img
@@ -1843,9 +1843,9 @@ input:
       elements:
         - hr
     src:
-      description: 'Specifies the URL of the external resource to be embedded or referenced.'
+      description: 'Specifies the URL of the external resource to be embedded or referenced. Required if input type is image'
       type: uri
-      required: true
+      required: false
       elements:
         - audio
         - embed
@@ -1862,8 +1862,9 @@ input:
       elements:
         - input
     type:
-      description: 'Specifies the media type of the linked resource.'
+      description: 'Specifies the type of the input. Defaults to text if the attribute is omitted'
       type: enum
+      defaultValue: text
       elements:
         - a
         - area

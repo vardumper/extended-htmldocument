@@ -54,7 +54,7 @@ final class Area extends VoidElement
      * Specifies where to open the linked document.
      * @example _self
      */
-    public ?TargetEnum $target;
+    public ?TargetEnum $target = TargetEnum::_SELF;
 
     /* Specifies the media type of the linked resource. */
     public ?TypeEnum $type;
