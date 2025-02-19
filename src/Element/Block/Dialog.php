@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class Dialog extends BlockElement
+final class Dialog extends BlockElement
 {
     public static string $qualifiedName = 'dialog';
 

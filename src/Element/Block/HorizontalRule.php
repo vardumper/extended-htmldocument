@@ -10,7 +10,7 @@ namespace Html\Element\Block;
 use Html\Enum\AlignEnum;
 use Html\Model\BlockElement;
 
-class HorizontalRule extends BlockElement
+final class HorizontalRule extends BlockElement
 {
     public static string $qualifiedName = 'hr';
 

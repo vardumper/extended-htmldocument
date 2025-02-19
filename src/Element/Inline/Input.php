@@ -11,7 +11,7 @@ use Html\Enum\AutocompleteEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\InlineElement;
 
-class Input extends InlineElement
+final class Input extends InlineElement
 {
     public static string $qualifiedName = 'input';
 

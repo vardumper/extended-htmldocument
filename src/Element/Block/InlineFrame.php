@@ -10,7 +10,7 @@ namespace Html\Element\Block;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Model\BlockElement;
 
-class InlineFrame extends BlockElement
+final class InlineFrame extends BlockElement
 {
     public static string $qualifiedName = 'iframe';
 

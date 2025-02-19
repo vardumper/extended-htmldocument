@@ -12,7 +12,7 @@ use Html\Enum\DecodingEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Model\InlineElement;
 
-class Image extends InlineElement
+final class Image extends InlineElement
 {
     public static string $qualifiedName = 'img';
 

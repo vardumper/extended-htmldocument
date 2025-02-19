@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class Caption extends BlockElement
+final class Caption extends BlockElement
 {
     public static string $qualifiedName = 'caption';
 

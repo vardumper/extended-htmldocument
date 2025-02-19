@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class MarkedText extends InlineElement
+final class MarkedText extends InlineElement
 {
     public static string $qualifiedName = 'mark';
 

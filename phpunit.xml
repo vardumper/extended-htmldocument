@@ -1,0 +1,11 @@
+<phpunit>
+    <testsuites>
+        <testsuite name="Unit Tests">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <ini name="error_reporting" value="-1"/>
+    </php>
+    <bootstrap>vendor/autoload.php</bootstrap>
+</phpunit>

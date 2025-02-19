@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class TableFoot extends BlockElement
+final class TableFoot extends BlockElement
 {
     public static string $qualifiedName = 'tfoot';
 

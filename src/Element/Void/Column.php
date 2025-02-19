@@ -9,7 +9,7 @@ namespace Html\Element\Void;
 
 use Html\Model\VoidElement;
 
-class Column extends VoidElement
+final class Column extends VoidElement
 {
     public static string $qualifiedName = 'col';
 

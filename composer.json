@@ -17,9 +17,9 @@
         }
     ],
     "require": {
-        "mnapoli/silly": "^1.9",
+        "mnapoli/silly": "^1.9.1",
         "spatie/invade": "^2.1",
-        "symfony/yaml": "^7.2"
+        "symfony/yaml": "^7.2.3"
     },
     "config": {
         "sort-packages": true,
@@ -32,6 +32,44 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^12.0"
+        "brainmaestro/composer-git-hooks": "dev-master",
+        "friendsofphp/php-cs-fixer": "^3.69.1",
+        "phpstan/phpstan": "^2.1.5",
+        "phpunit/phpunit": "^12.0.3",
+        "rector/swiss-knife": "^2.1.12",
+        "symplify/easy-coding-standard": "^12.5.8"
+    },
+    "extra": {
+        "hooks": {
+            "pre-commit": [
+                ".githooks/pre-commit"
+            ],
+            "commit-msg": [
+                ".githooks/commit-msg"
+            ],
+            "post-commit": [
+                ".githooks/post-commit"
+            ]
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "@composer git-hooks-init",
+            "@composer dump-autoload -o"
+        ],
+        "post-install-cmd": [
+            "@composer dump-autoload -o -a",
+            "@composer git-hooks-init"
+        ],
+        "post-update-cmd": [
+            "@composer dump-autoload -o",
+            "@composer git-hooks-update"
+        ],
+        "check-cs": "ecs check --ansi",
+        "fix-cs": "ecs check --ansi --fix",
+        "git-hooks-init": "vendor/bin/cghooks add --ignore-lock",
+        "git-hooks-update": "vendor/bin/cghooks update",
+        "phpstan": "phpstan --memory-limit=1G",
+        "phpunit": "phpunit --bootstrap vendor/autoload.php"
     }
 }

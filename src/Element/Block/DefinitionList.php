@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class DefinitionList extends BlockElement
+final class DefinitionList extends BlockElement
 {
     public static string $qualifiedName = 'dl';
 

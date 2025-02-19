@@ -4,7 +4,7 @@ namespace Html\Delegator;
 use Dom\HTMLCollection;
 use DOM\NodeList;
 
-class DOMNodeListDelegator
+final class DOMNodeListDelegator
 {
     private NodeList|HTMLCollection $nodeList;
 

@@ -1,18 +1,18 @@
 <?php
 namespace Tests;
 use PHPUnit\Framework\TestCase;
-use Html\Model\ExtendedHTMLDocument;
+use Html\Delegator\HTMLDocumentDelegator;
 use Html\Element\Anchor;
 use Html\Enum\TargetEnum;
 use Html\Interface\HTMLDocumentDelegatorInterface;
 
-class ExtendedHTMLDocumentTest extends TestCase
+final class HTMLDocumentDelegatorTest extends TestCase
 {
     public function testCreateElement()
     {
         $qualifiedName = 'img';
         $value = 'This is a test element.';
-        $dom = HTMLDocumentDelegator::createFromString('<!doctype html><html><head></head><body></body></html>');
+        $dom = HTMLDocumentDelegatorInterface::createFromString('<!doctype html><html><head></head><body></body></html>');
         $body = $dom->getElementsByTagName('body')->item(0);
 
         $element = $dom->createElement($qualifiedName);

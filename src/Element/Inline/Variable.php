@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Variable extends InlineElement
+final class Variable extends InlineElement
 {
     public static string $qualifiedName = 'var';
 

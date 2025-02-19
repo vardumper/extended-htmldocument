@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class NoScript extends BlockElement
+final class NoScript extends BlockElement
 {
     public static string $qualifiedName = 'noscript';
 

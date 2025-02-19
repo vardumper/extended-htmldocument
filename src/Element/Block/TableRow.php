@@ -11,7 +11,7 @@ use Html\Enum\AlignEnum;
 use Html\Enum\ValignEnum;
 use Html\Model\BlockElement;
 
-class TableRow extends BlockElement
+final class TableRow extends BlockElement
 {
     public static string $qualifiedName = 'tr';
 

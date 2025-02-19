@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Label extends InlineElement
+final class Label extends InlineElement
 {
     public static string $qualifiedName = 'label';
 

@@ -10,7 +10,7 @@ namespace Html\Element\Void;
 use Html\Enum\TargetEnum;
 use Html\Model\VoidElement;
 
-class Base extends VoidElement
+final class Base extends VoidElement
 {
     public static string $qualifiedName = 'base';
 

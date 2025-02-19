@@ -9,6 +9,7 @@ use Traversable;
 class HTMLElementDelegator
 {
     private static ?string $qualifiedName = null; // Default value, change as needed
+
     public HtmlElement $htmlElement;
 
     public function __construct(HTMLElement $htmlElement) {
@@ -55,12 +56,6 @@ class HTMLElementDelegator
         $this->htmlElement->setAttribute($name, $value);
     }
 
-    // // Method to get the underlying DOM\HtmlElement
-    // public function getHtmlElement(): HTMLElement
-    // {
-    //     return $this->htmlElement;
-    // }
-
     /** this is what I wrote all this for, in order to being able to add functionality, like cutsom methods */
     public function __toString(): string {
         /**@var Document $ownerDocument  */
@@ -71,7 +66,7 @@ class HTMLElementDelegator
     public function setAttributes(array $attributes): self
     {
         // sort attributes by key name - id and class will still be first
-        ksort($attributes);
+        \ksort($attributes);
         foreach ($attributes as $name => $value) {
             // allows us to use Enum attributes
             if ($value instanceof BackedEnum) {
@@ -93,7 +88,7 @@ class HTMLElementDelegator
     }
 
     // Generic static factory method
-    public static function create(ExtendedHTMLDocument $dom): self
+    public static function create(HTMLDocumentDelegator $dom): self
     {
         $className = static::class;
         $qualifiedName = $className::$qualifiedName;

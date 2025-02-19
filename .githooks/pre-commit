@@ -1,0 +1,126 @@
+#!/bin/bash
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
+printf "Committing as ${YELLOW}$(git config user.name) ${NC}/ ${YELLOW}$(git config user.email)${NC}\n"
+
+PASS=true
+
+CHANGED_FILES=$(git diff --cached --name-only --diff-filter=ACM -- '*.php')
+
+# easy-ci
+PHP_SWISSKNIFE="./vendor/bin/swiss-knife"
+HAS_PHP_SWISSKNIFE=false
+if [ -x $PHP_SWISSKNIFE ]; then
+    HAS_PHP_SWISSKNIFE=true
+fi
+
+printf "${YELLOW}Rector Swiss Knife${NC}\n"
+if $HAS_PHP_SWISSKNIFE; then
+    # prevent comitting unresolved conflicts or erroneous merges
+    $PHP_SWISSKNIFE check-conflicts ./bin ./src ./tests --ansi
+    ret_code=$?
+
+    if [[ $ret_code == 1 ]]; then
+        PASS=false
+    fi
+
+    $PHP_SWISSKNIFE check-commented-code ./bin ./src ./tests --line-limit 4 --no-ansi -n
+    ret_code=$?
+    if [[ $ret_code == 1 ]]; then
+        PASS=false
+    fi
+
+    $PHP_SWISSKNIFE finalize-classes ./bin ./src ./tests --ansi
+
+    $PHP_SWISSKNIFE privatize-constants ./bin ./src ./tests --ansi
+
+  else
+    printf "\nrector/swiss-knife is required. Install it:\n\n  composer require --dev rector/swiss-knife\n\n"
+fi
+
+# if swiss knife doesn't pass, do not continue. early return
+if ! $PASS; then
+  printf "pre commit hook ${RED}FAILED${NC}\n"
+  exit 1
+fi
+
+# Easy Coding Standard
+PHP_ECS="./vendor/bin/ecs"
+HAS_PHP_ECS=false
+
+if [ -x $PHP_ECS ]; then
+    HAS_PHP_ECS=true
+fi
+
+printf "${YELLOW}Easy Coding Standard${NC}\n"
+if $HAS_PHP_ECS; then
+# if ([ -x $PHP_ECS ] && [ -n "$CHANGED_FILES" ]); then
+    printf "ECS start"
+    # Get a list of files in the staging area
+    FILES=` git status --porcelain | grep -e '^[AM]\(.*\).php$' | cut -c 3- | tr '\n' ' '`
+    if [ -z "$FILES" ]; then
+          printf "No PHP file in this commit. Skipping ECS.\n"
+    else
+        $PHP_ECS check ${FILES} --fix
+        ret_code=$?
+        if [[ $ret_code == 0 ]]; then
+            echo $FILES > .commit
+        else
+            # Different code than 0 means that there were unresolved fixes
+            PASS=false
+        fi
+    fi
+else
+    printf "\neasy-coding-standard & php-cs-fixer are required. Install them:\n\n  composer require --dev symplify/easy-coding-standard friendsofphp/php-cs-fixer\n\n"
+fi
+
+# phpstan
+HAS_PHPSTAN=false
+PHPSTAN="./vendor/bin/phpstan"
+if [ -x $PHPSTAN ]; then
+    HAS_PHPSTAN=true
+fi
+
+printf "${YELLOW}PHPStan${NC}\n"
+# @todo consider having phpstan scan all the complete repo, instead of comitted php files
+if $HAS_PHPSTAN; then
+  if $PHPSTAN analyse -c ./phpstan.neon --memory-limit=1G $CHANGED_FILES; then
+    # All good
+    printf "${GREEN}PHPStan passed${NC}\n"
+  else
+    PASS=false
+  fi
+else
+  printf "\nphpstan is required. Install it with:\n\n  ddev composer req --dev phpstan/phpstan\n\n"
+fi
+
+# @todo add sonar scanner
+# check if sonar-scanner is installed
+# printf "${YELLOW}Sonar Scanner${NC}\n"
+# sonar-scanner -Dsonar.projectKey=suhe-craft5 -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.qualitygate.wait=true
+# whats returned?
+#ret_code=$?
+#if [[ $ret_code == 1 ]]; then
+#    PASS=false
+#fi
+
+# Run composer audit locally
+printf "${YELLOW}Composer Audit${NC}\n"
+composer audit
+ret_code=$?
+if [[ $ret_code == 1 ]]; then
+    PASS=false
+fi
+
+if ! $PASS; then
+  printf "pre commit hook ${RED}FAILED${NC}\n"
+  exit 1
+else
+  printf "pre commit hook ${GREEN}SUCCEEDED${NC}\n"
+  exit 0
+fi

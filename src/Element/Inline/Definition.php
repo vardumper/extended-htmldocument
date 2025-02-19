@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Definition extends InlineElement
+final class Definition extends InlineElement
 {
     public static string $qualifiedName = 'dfn';
 

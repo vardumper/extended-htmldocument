@@ -10,7 +10,7 @@ namespace Html\Element\Void;
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-class Style extends VoidElement
+final class Style extends VoidElement
 {
     public static string $qualifiedName = 'style';
 

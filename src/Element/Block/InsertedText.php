@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class InsertedText extends BlockElement
+final class InsertedText extends BlockElement
 {
     public static string $qualifiedName = 'ins';
 

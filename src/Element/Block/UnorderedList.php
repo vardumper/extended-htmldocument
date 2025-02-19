@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class UnorderedList extends BlockElement
+final class UnorderedList extends BlockElement
 {
     public static string $qualifiedName = 'ul';
 

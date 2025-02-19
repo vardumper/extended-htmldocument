@@ -9,7 +9,7 @@ namespace Html\Element\Void;
 
 use Html\Model\VoidElement;
 
-class WordBreakOpportunity extends VoidElement
+final class WordBreakOpportunity extends VoidElement
 {
     public static string $qualifiedName = 'wbr';
 

@@ -52,9 +52,9 @@ final class CreateClassCommand extends Command
 
             $io->info('Creating a new class for ' . $element);
 
-            // Process the data as needed
+            $this->uses = []; // reset use statements
 
-            $className = str_replace(' ', '', ucfirst($data[$element]['name']));
+            $className = $this->getClassName(str_replace(' ', '', ucfirst($data[$element]['name'])));
             $level = $data[$element]['level'];
             $unique = $data[$element]['unique'] ?? false;
             $unique_per_parent = $data[$element]['unique_per_parent'] ?? false;
@@ -62,25 +62,16 @@ final class CreateClassCommand extends Command
             $description = $data[$element]['description'] ?? '';
             $defaultValue = $data[$element]['default'] ?? '';
             $attributes = $data[$element]['attributes'] ?? [];
-            $fileName = $this->getClassName($className) . '.php';
+            $fileName = $className . '.php';
             $path = sprintf('src/Element/%s/%s', ucfirst($level), $fileName);
-            // echo $className . PHP_EOL;
-            // echo $level . PHP_EOL;
-            // echo $fileName . PHP_EOL;
-            // echo $namespace . PHP_EOL;
-            // echo $path . PHP_EOL;
-            // echo $description . PHP_EOL;
-            // echo $defaultValue . PHP_EOL;
-            // var_dump($unique);
-            // var_dump($unique_per_parent);
-            $this->uses = [];
+
             $this->uses[] = sprintf("Html\Model\%sElement", ucfirst($level));
 
             $attributes = $this->getAttributes($attributes); // before use statements
             $use_statements = $this->getUseStatements();
 
             $parameters = [
-                'class_name' => $this->getClassName($className),
+                'class_name' => $className,
                 'element_name' => $element,
                 'namespace' => $namespace,
                 'use_statements' => $use_statements,
@@ -123,13 +114,29 @@ final class CreateClassCommand extends Command
             $comment = $this->getAttributeComment($details);
             $type = $this->mapToPhpType($type);
             if ($type === 'enum') {
-                $this->uses[] = sprintf("Html\Enum\%sEnum", ucfirst($attribute));
-                $type = sprintf("%sEnum", ucfirst($attribute));
+                $kebapCase = $this->toKebapCase($attribute);
+                $this->uses[] = sprintf("Html\Enum\%sEnum", $kebapCase);
+                $type = sprintf("%sEnum", $kebapCase);
             }
-            $transformedAttributes .= sprintf("    %s    public %s%s \$%s;\n\n", $comment, $required ? '' : '?', $type, $attribute);
+            $variableName = $this->toVariableName($attribute);
+            $transformedAttributes .= sprintf("    %s    public %s%s \$%s;\n\n", $comment, $required ? '' : '?', $type, $variableName);
 
         }
         return $transformedAttributes;
+    }
+    private function toVariableName(string $string) : string
+    {
+        $string = str_replace(['-','_'], ' ', $string);
+        $words = explode(' ', $string);
+        $string = implode('', array_map('ucfirst', $words));
+        return lcfirst($string);
+    }
+
+    private function toKebapCase(string $string) : string
+    {
+        $string = str_replace(['-','_'], ' ', $string);
+        $string = ucwords($string);
+        return str_replace(' ', '', $string);
     }
 
     private function getAttributeComment(array $details) {

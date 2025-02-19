@@ -6,7 +6,7 @@ namespace Html\Delegator;
 use DOM\HTMLDocument;
 use Html\Interface\HTMLDocumentDelegatorInterface;
 
-class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface {
+final class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface {
     public function __construct(public readonly HTMLDocument $htmlDocument) {
     }
 
@@ -33,19 +33,16 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface {
                 $argument = $argument->htmlElement;
             }
         }
-// var_dump($arguments);
+
         $reflection = new \ReflectionClass($this->htmlDocument);
         if ($reflection->hasMethod($name)) {
             $method = $reflection->getMethod($name);
             $method->setAccessible(true);
             return $method->invokeArgs($this->htmlDocument, $arguments);
         }
+
         throw new \BadMethodCallException("Method $name does not exist on " . $reflection->getName() . ". However you can implement it on " . __CLASS__);
     }
-
-    // public function appendChild(HTMLElementDelegator $child): void {
-    //     $this->htmlDocument->appendChild($child->htmlElement);
-    // }
 
     public function __get($name)
     {
@@ -55,6 +52,7 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface {
             $property->setAccessible(true);
             return $property->getValue($this->htmlDocument);
         }
+
         throw new \InvalidArgumentException("Property $name does not exist on " . $reflection->getName() . ". However you cna implement it on " . __CLASS__);
     }
 
@@ -67,6 +65,7 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface {
             $property->setValue($this->htmlDocument, $value);
             return;
         }
+
         throw new \InvalidArgumentException("Property $name does not exist on " . $reflection->getName() . ". However you can implement it on " . __CLASS__);
     }
 

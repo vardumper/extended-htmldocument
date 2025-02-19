@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Bold extends InlineElement
+final class Bold extends InlineElement
 {
     public static string $qualifiedName = 'b';
 

@@ -12,7 +12,7 @@ use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-class Script extends VoidElement
+final class Script extends VoidElement
 {
     public static string $qualifiedName = 'script';
 

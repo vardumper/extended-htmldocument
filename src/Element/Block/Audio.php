@@ -11,7 +11,7 @@ use Html\Enum\CrossoriginEnum;
 use Html\Enum\PreloadEnum;
 use Html\Model\BlockElement;
 
-class Audio extends BlockElement
+final class Audio extends BlockElement
 {
     public static string $qualifiedName = 'audio';
 

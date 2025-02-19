@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Subscript extends InlineElement
+final class Subscript extends InlineElement
 {
     public static string $qualifiedName = 'sub';
 

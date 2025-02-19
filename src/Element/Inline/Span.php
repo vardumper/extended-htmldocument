@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Span extends InlineElement
+final class Span extends InlineElement
 {
     public static string $qualifiedName = 'span';
 

@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class Division extends BlockElement
+final class Division extends BlockElement
 {
     public static string $qualifiedName = 'div';
 

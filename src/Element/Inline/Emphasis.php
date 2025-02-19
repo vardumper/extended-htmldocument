@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Emphasis extends InlineElement
+final class Emphasis extends InlineElement
 {
     public static string $qualifiedName = 'em';
 

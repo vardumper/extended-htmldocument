@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class KeyboardInput extends InlineElement
+final class KeyboardInput extends InlineElement
 {
     public static string $qualifiedName = 'kbd';
 

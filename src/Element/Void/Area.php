@@ -13,7 +13,7 @@ use Html\Enum\TargetEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-class Area extends VoidElement
+final class Area extends VoidElement
 {
     public static string $qualifiedName = 'area';
 

@@ -1,0 +1,11 @@
+parameters:
+    level: 5
+    paths:
+        - %currentWorkingDirectory%
+    excludePaths:
+        - vendor
+    scanFiles:
+    earlyTerminatingMethodCalls:
+    ignoreErrors:
+    reportUnmatchedIgnoredErrors: false
+    universalObjectCratesClasses:

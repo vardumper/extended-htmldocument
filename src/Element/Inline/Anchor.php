@@ -12,7 +12,7 @@ use Html\Enum\TargetEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\InlineElement;
 
-class Anchor extends InlineElement
+final class Anchor extends InlineElement
 {
     public static string $qualifiedName = 'a';
 

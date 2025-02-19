@@ -10,7 +10,7 @@ namespace Html\Element\Void;
 use Html\Enum\KindEnum;
 use Html\Model\VoidElement;
 
-class Track extends VoidElement
+final class Track extends VoidElement
 {
     public static string $qualifiedName = 'track';
 

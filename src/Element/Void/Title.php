@@ -9,7 +9,7 @@ namespace Html\Element\Void;
 
 use Html\Model\VoidElement;
 
-class Title extends VoidElement
+final class Title extends VoidElement
 {
     public static string $qualifiedName = 'title';
 

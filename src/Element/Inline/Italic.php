@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Italic extends InlineElement
+final class Italic extends InlineElement
 {
     public static string $qualifiedName = 'i';
 

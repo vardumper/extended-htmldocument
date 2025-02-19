@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class Paragraph extends BlockElement
+final class Paragraph extends BlockElement
 {
     public static string $qualifiedName = 'p';
 

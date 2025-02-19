@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class Blockquote extends BlockElement
+final class Blockquote extends BlockElement
 {
     public static string $qualifiedName = 'blockquote';
 

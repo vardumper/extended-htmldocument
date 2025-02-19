@@ -11,7 +11,7 @@ use Html\Enum\AutocompleteEnum;
 use Html\Enum\WrapEnum;
 use Html\Model\InlineElement;
 
-class Textarea extends InlineElement
+final class Textarea extends InlineElement
 {
     public static string $qualifiedName = 'textarea';
 

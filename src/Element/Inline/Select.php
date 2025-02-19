@@ -10,7 +10,7 @@ namespace Html\Element\Inline;
 use Html\Enum\AutocompleteEnum;
 use Html\Model\InlineElement;
 
-class Select extends InlineElement
+final class Select extends InlineElement
 {
     public static string $qualifiedName = 'select';
 

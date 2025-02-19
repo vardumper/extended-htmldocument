@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class Footer extends BlockElement
+final class Footer extends BlockElement
 {
     public static string $qualifiedName = 'footer';
 

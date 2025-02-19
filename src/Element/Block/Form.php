@@ -13,12 +13,12 @@ use Html\Enum\MethodEnum;
 use Html\Enum\TargetEnum;
 use Html\Model\BlockElement;
 
-class Form extends BlockElement
+final class Form extends BlockElement
 {
     public static string $qualifiedName = 'form';
 
     /* Specifies the character encodings that are to be used for form submission. */
-    public ?string $accept-charset;
+    public ?string $acceptCharset;
 
     /* Specifies the URL where the form data should be submitted when the form is submitted. */
     public ?string $action;

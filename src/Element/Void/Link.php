@@ -13,7 +13,7 @@ use Html\Enum\RelEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-class Link extends VoidElement
+final class Link extends VoidElement
 {
     public static string $qualifiedName = 'link';
 

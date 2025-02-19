@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Quotation extends InlineElement
+final class Quotation extends InlineElement
 {
     public static string $qualifiedName = 'q';
 

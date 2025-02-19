@@ -10,7 +10,7 @@ namespace Html\Element\Inline;
 use Html\Enum\TypeEnum;
 use Html\Model\InlineElement;
 
-class Button extends InlineElement
+final class Button extends InlineElement
 {
     public static string $qualifiedName = 'button';
 

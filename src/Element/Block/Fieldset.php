@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class Fieldset extends BlockElement
+final class Fieldset extends BlockElement
 {
     public static string $qualifiedName = 'fieldset';
 

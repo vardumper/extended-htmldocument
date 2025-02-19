@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class Canvas extends BlockElement
+final class Canvas extends BlockElement
 {
     public static string $qualifiedName = 'canvas';
 

@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class Navigation extends BlockElement
+final class Navigation extends BlockElement
 {
     public static string $qualifiedName = 'nav';
 

@@ -11,7 +11,7 @@ use Html\Enum\CrossoriginEnum;
 use Html\Enum\PreloadEnum;
 use Html\Model\BlockElement;
 
-class Video extends BlockElement
+final class Video extends BlockElement
 {
     public static string $qualifiedName = 'video';
 

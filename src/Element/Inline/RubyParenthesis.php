@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class RubyParenthesis extends InlineElement
+final class RubyParenthesis extends InlineElement
 {
     public static string $qualifiedName = 'rp';
 

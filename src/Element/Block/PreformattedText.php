@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class PreformattedText extends BlockElement
+final class PreformattedText extends BlockElement
 {
     public static string $qualifiedName = 'pre';
 

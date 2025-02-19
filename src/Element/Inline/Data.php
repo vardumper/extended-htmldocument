@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Data extends InlineElement
+final class Data extends InlineElement
 {
     public static string $qualifiedName = 'data';
 

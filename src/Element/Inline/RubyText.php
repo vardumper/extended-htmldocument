@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class RubyText extends InlineElement
+final class RubyText extends InlineElement
 {
     public static string $qualifiedName = 'rt';
 

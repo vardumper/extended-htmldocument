@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Time extends InlineElement
+final class Time extends InlineElement
 {
     public static string $qualifiedName = 'time';
 

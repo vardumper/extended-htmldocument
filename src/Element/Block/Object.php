@@ -10,7 +10,7 @@ namespace Html\Element\Block;
 use Html\Enum\TypeEnum;
 use Html\Model\BlockElement;
 
-class Object extends BlockElement
+final class Object extends BlockElement
 {
     public static string $qualifiedName = 'object';
 

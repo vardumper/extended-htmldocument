@@ -10,7 +10,7 @@ namespace Html\Element\Void;
 use Html\Enum\ClearEnum;
 use Html\Model\VoidElement;
 
-class BreakElement extends VoidElement
+final class BreakElement extends VoidElement
 {
     public static string $qualifiedName = 'br';
 

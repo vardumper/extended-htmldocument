@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Strikethrough extends InlineElement
+final class Strikethrough extends InlineElement
 {
     public static string $qualifiedName = 's';
 

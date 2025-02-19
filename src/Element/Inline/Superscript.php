@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Superscript extends InlineElement
+final class Superscript extends InlineElement
 {
     public static string $qualifiedName = 'sup';
 

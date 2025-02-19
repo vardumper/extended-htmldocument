@@ -10,7 +10,7 @@ namespace Html\Element\Block;
 use Html\Enum\TypeEnum;
 use Html\Model\BlockElement;
 
-class Embed extends BlockElement
+final class Embed extends BlockElement
 {
     public static string $qualifiedName = 'embed';
 

@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Slot extends InlineElement
+final class Slot extends InlineElement
 {
     public static string $qualifiedName = 'slot';
 

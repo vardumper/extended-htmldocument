@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class BidirectionalOverride extends InlineElement
+final class BidirectionalOverride extends InlineElement
 {
     public static string $qualifiedName = 'bdo';
 

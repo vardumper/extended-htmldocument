@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Underline extends InlineElement
+final class Underline extends InlineElement
 {
     public static string $qualifiedName = 'u';
 

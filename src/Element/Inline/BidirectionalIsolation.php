@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class BidirectionalIsolation extends InlineElement
+final class BidirectionalIsolation extends InlineElement
 {
     public static string $qualifiedName = 'bdi';
 

@@ -3,7 +3,7 @@ namespace Html\Delegator;
 
 use DOM\Node;
 
-class DOMNodeDelegator
+final class DOMNodeDelegator
 {
     public function __construct(private readonly Node $domNode) {
     }

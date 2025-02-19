@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class Main extends BlockElement
+final class Main extends BlockElement
 {
     public static string $qualifiedName = 'main';
 

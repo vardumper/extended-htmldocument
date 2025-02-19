@@ -9,7 +9,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-class Meter extends InlineElement
+final class Meter extends InlineElement
 {
     public static string $qualifiedName = 'meter';
 

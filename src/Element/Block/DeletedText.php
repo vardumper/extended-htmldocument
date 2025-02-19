@@ -9,7 +9,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class DeletedText extends BlockElement
+final class DeletedText extends BlockElement
 {
     public static string $qualifiedName = 'del';
 
