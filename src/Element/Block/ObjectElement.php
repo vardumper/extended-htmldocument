@@ -1,21 +1,21 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * ObjectElement - The object element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
  */
+
 namespace Html\Element\Block;
 
 use Html\Enum\TypeEnum;
 use Html\Model\BlockElement;
 
-class ObjectElement extends BlockElement
+final class ObjectElement extends BlockElement
 {
     public static string $qualifiedName = 'object';
 
@@ -36,6 +36,4 @@ class ObjectElement extends BlockElement
 
     /* Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width;
-
-
 }

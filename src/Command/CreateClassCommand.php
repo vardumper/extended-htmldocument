@@ -1,4 +1,5 @@
 <?php
+
 namespace Html\Command;
 
 use Silly\Input\InputArgument;
@@ -9,24 +10,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * CreateClassCommand
  * @usage create:component [element]
  * @description Create a new component
  * @tutorial an example element value can be div
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element
- *
  */
 final class CreateClassCommand extends Command
 {
     private array $uses = [];
-
-    public function configure(): void
-    {
-        $this
-            ->setName('create:component')
-            ->setDescription('Create a new component')
-            ->addArgument('element', InputArgument::OPTIONAL, 'The HTML element name to create a class for');
-    }
 
     public function __invoke($element, InputInterface $input, OutputInterface $output): int
     {
@@ -35,7 +26,7 @@ final class CreateClassCommand extends Command
         $elements = [];
 
         $htmlDefinitionPath = getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'definitions' . \DIRECTORY_SEPARATOR . 'html5.yaml';
-        if (!is_file($htmlDefinitionPath)) {
+        if (! is_file($htmlDefinitionPath)) {
             $io->error('HTML definition file not found.');
             return Command::FAILURE;
         }
@@ -44,8 +35,8 @@ final class CreateClassCommand extends Command
 
         $batchElements = $element ? [$element] : $availableElements;
 
-        foreach($batchElements as $element) {
-            if (!in_array($element, $availableElements)) {
+        foreach ($batchElements as $element) {
+            if (! in_array($element, $availableElements)) {
                 $io->error('Element not found in definitions.');
                 return Command::FAILURE;
             }
@@ -81,16 +72,26 @@ final class CreateClassCommand extends Command
                 'unique_per_parent' => $unique_per_parent,
                 'defaultValue' => $defaultValue,
                 'attributes' => $attributes,
-                'path' => $path
+                'path' => $path,
             ];
 
-            $templatePath = \getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . \ucfirst($level) . 'Element.tpl.php';
+            $templatePath = \getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . \ucfirst(
+                $level
+            ) . 'Element.tpl.php';
             $this->createClassFile($templatePath, $parameters, $path);
 
             $io->success(sprintf('Class %s created successfully', $path));
         }
 
         return Command::SUCCESS;
+    }
+
+    public function configure(): void
+    {
+        $this
+            ->setName('create:component')
+            ->setDescription('Create a new component')
+            ->addArgument('element', InputArgument::OPTIONAL, 'The HTML element name to create a class for');
     }
 
     private function createClassFile(string $templatePath, array $parameters, string $path): void
@@ -104,7 +105,7 @@ final class CreateClassCommand extends Command
         \file_put_contents($path, $file);
     }
 
-    private function getAttributes(array $attributes) : string
+    private function getAttributes(array $attributes): string
     {
         $transformedAttributes = '';
         foreach ($attributes as $attribute => $details) {
@@ -117,54 +118,62 @@ final class CreateClassCommand extends Command
             if ($type === 'enum') {
                 $kebapCase = $this->toKebapCase($attribute);
                 $this->uses[] = sprintf("Html\Enum\%sEnum", $kebapCase);
-                $type = \sprintf("%sEnum", $kebapCase);
-                $default = isset($details['defaultValue']) ? sprintf(' = %sEnum::%s', $kebapCase, strtoupper($details['defaultValue'])) : '';
+                $type = \sprintf('%sEnum', $kebapCase);
+                // $default = isset($details['defaultValue']) ? sprintf(" = %sEnum::from('%s')", $kebapCase, $details['defaultValue']) : '';
             }
             $variableName = $this->toVariableName($attribute);
-            $transformedAttributes .= \sprintf("    %s    public %s%s \$%s%s;\n\n", $comment, $required ? '' : '?', $type, $variableName, $default);
-
+            $transformedAttributes .= \sprintf(
+                "    %s    public %s%s \$%s%s;\n\n",
+                $comment,
+                $required ? '' : '?',
+                $type,
+                $variableName,
+                $default
+            );
         }
         return $transformedAttributes;
     }
-    private function toVariableName(string $string) : string
+
+    private function toVariableName(string $string): string
     {
-        $string = \str_replace(['-','_'], ' ', $string);
+        $string = \str_replace(['-', '_'], ' ', $string);
         $words = \explode(' ', $string);
         $string = \implode('', \array_map('ucfirst', $words));
         return \lcfirst($string);
     }
 
-    private function toKebapCase(string $string) : string
+    private function toKebapCase(string $string): string
     {
-        $string = \str_replace(['-','_'], ' ', $string);
+        $string = \str_replace(['-', '_'], ' ', $string);
         $string = \ucwords($string);
         return \str_replace(' ', '', $string);
     }
 
-    private function getAttributeComment(array $details) {
+    private function getAttributeComment(array $details)
+    {
         $lines = [];
         $lines[] = $details['description'] ?? '';
         if (isset($details['deprecated']) && $details['deprecated']) {
-            $lines[] = "@deprecated" . PHP_EOL . "    ";
+            $lines[] = '@deprecated' . PHP_EOL . '    ';
         }
         if (isset($details['defaultValue'])) {
-            $lines[] = "@example " . $details['defaultValue']. PHP_EOL . "    ";
+            $lines[] = '@example ' . $details['defaultValue'] . PHP_EOL . '    ';
         }
         if (isset($details['required']) && $details['required']) {
-            $lines[] = "@required" . PHP_EOL . "    ";
+            $lines[] = '@required' . PHP_EOL . '    ';
         }
         $comment = '/* ';
 
         if (\count($lines) > 1) {
-            $comment .= PHP_EOL . "     * " . \implode(PHP_EOL . "     * ", $lines);
+            $comment .= PHP_EOL . '     * ' . \implode(PHP_EOL . '     * ', $lines);
         } else {
             $comment .= $lines[0];
         }
 
-        return $comment . " */".PHP_EOL;
+        return $comment . ' */' . PHP_EOL;
     }
 
-    private function getUseStatements() : string
+    private function getUseStatements(): string
     {
         $uses = \array_unique($this->uses);
         \asort($uses);
@@ -175,7 +184,7 @@ final class CreateClassCommand extends Command
         return $use_statements;
     }
 
-    private function mapToPhpType($string) : string
+    private function mapToPhpType($string): string
     {
         return match ($string) {
             'string' => 'string',
@@ -192,6 +201,7 @@ final class CreateClassCommand extends Command
             'week' => 'string',
             'number' => 'int',
             'float' => 'float',
+            'script' => 'string',
             'url' => 'string',
             'email' => 'string',
             'tel' => 'string',
@@ -203,7 +213,7 @@ final class CreateClassCommand extends Command
         };
     }
 
-    private function getClassName(string $classname) : string
+    private function getClassName(string $classname): string
     {
         $reserved = [
             '__halt_compiler',

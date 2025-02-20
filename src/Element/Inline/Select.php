@@ -1,21 +1,21 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Select - The select element represents a control for selecting amongst a set of options.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Inline
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
  */
+
 namespace Html\Element\Inline;
 
 use Html\Enum\AutocompleteEnum;
 use Html\Model\InlineElement;
 
-class Select extends InlineElement
+final class Select extends InlineElement
 {
     public static string $qualifiedName = 'select';
 
@@ -36,6 +36,4 @@ class Select extends InlineElement
 
     /* Specifies the height of a hr element in pixels. */
     public ?int $size;
-
-
 }

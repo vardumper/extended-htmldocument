@@ -1,22 +1,22 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Audio - The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
  */
+
 namespace Html\Element\Block;
 
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\PreloadEnum;
 use Html\Model\BlockElement;
 
-class Audio extends BlockElement
+final class Audio extends BlockElement
 {
     public static string $qualifiedName = 'audio';
 
@@ -38,11 +38,9 @@ class Audio extends BlockElement
     /*  */
     public ?PreloadEnum $preload;
 
-    /* 
+    /*
      * Specifies the URL of the external resource to be embedded or referenced.
      * @required
      */
     public string $src;
-
-
 }

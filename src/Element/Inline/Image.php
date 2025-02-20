@@ -1,15 +1,15 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Image - The img element represents an image.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Inline
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
  */
+
 namespace Html\Element\Inline;
 
 use Html\Enum\CrossoriginEnum;
@@ -17,11 +17,11 @@ use Html\Enum\DecodingEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Model\InlineElement;
 
-class Image extends InlineElement
+final class Image extends InlineElement
 {
     public static string $qualifiedName = 'img';
 
-    /* 
+    /*
      * Specifies alternative text to be displayed when the image cannot be rendered.
      * @required
      */
@@ -45,7 +45,7 @@ class Image extends InlineElement
     /* Specifies the sizes of the images or icons for different display/window sizes. */
     public ?string $sizes;
 
-    /* 
+    /*
      * Specifies the URL of the external resource to be embedded or referenced.
      * @required
      */
@@ -59,6 +59,4 @@ class Image extends InlineElement
 
     /* Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width;
-
-
 }

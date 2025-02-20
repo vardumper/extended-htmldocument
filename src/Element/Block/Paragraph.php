@@ -1,22 +1,20 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Paragraph - The p element represents a paragraph.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
  */
+
 namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class Paragraph extends BlockElement
+final class Paragraph extends BlockElement
 {
     public static string $qualifiedName = 'p';
-
-
 }

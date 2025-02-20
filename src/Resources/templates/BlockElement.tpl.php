@@ -2,23 +2,26 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * <?= $class_name ?> - <?= $description.PHP_EOL ?>
+ * <?= /** @phpstan-ignore variable.undefined */ $class_name ?> - <?= /** @phpstan-ignore variable.undefined */ $description . PHP_EOL ?>
  * <?= PHP_EOL ?>
  * @category HTML
  * @package vardumper/extended-htmldocument
- * @subpackage <?= $namespace.PHP_EOL ?>
+ * @subpackage <?= /** @phpstan-ignore variable.undefined */ $namespace . PHP_EOL ?>
  * @link https://github.com/vardumper/ExtendedHTMLDocument
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/<?= $element_name.PHP_EOL ?>
-<?php if ($defaultValue): ?> * @tutorial an example value can be <?= $defaultValue.PHP_EOL ?><?php endif; ?>
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/<?= /** @phpstan-ignore variable.undefined */ $element_name . PHP_EOL ?>
+<?php /** @phpstan-ignore variable.undefined */ if ($defaultValue): ?> * @tutorial an example value can be <?= $defaultValue . PHP_EOL ?><?php endif; ?>
  */
-namespace <?= $namespace; ?>;
+namespace <?= /** @phpstan-ignore variable.undefined */ $namespace; ?>;
 
-<?= $use_statements ?>
+<?= /** @phpstan-ignore variable.undefined */ $use_statements ?>
 
-class <?= $class_name ?> extends <?= ucfirst($level) ?>Element
+class <?= /** @phpstan-ignore variable.undefined */ $class_name ?> extends <?= ucfirst(
+    /** @phpstan-ignore variable.undefined */
+    $level
+) ?>Element
 {
-    public static string $qualifiedName = '<?= $element_name ?>';
+    public static string $qualifiedName = '<?= /** @phpstan-ignore variable.undefined */$element_name ?>';
 
-<?= $attributes ?>
+<?= /** @phpstan-ignore variable.undefined */ $attributes ?>
 
 }

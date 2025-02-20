@@ -1,22 +1,22 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Video - The video element is used to embed video content in a document, such as a movie clip or other video streams.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
  */
+
 namespace Html\Element\Block;
 
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\PreloadEnum;
 use Html\Model\BlockElement;
 
-class Video extends BlockElement
+final class Video extends BlockElement
 {
     public static string $qualifiedName = 'video';
 
@@ -44,7 +44,7 @@ class Video extends BlockElement
     /*  */
     public ?PreloadEnum $preload;
 
-    /* 
+    /*
      * Specifies the URL of the external resource to be embedded or referenced.
      * @required
      */
@@ -52,6 +52,4 @@ class Video extends BlockElement
 
     /* Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width;
-
-
 }

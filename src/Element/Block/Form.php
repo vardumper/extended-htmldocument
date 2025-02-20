@@ -1,15 +1,15 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
  */
+
 namespace Html\Element\Block;
 
 use Html\Enum\AutocompleteEnum;
@@ -18,7 +18,7 @@ use Html\Enum\MethodEnum;
 use Html\Enum\TargetEnum;
 use Html\Model\BlockElement;
 
-class Form extends BlockElement
+final class Form extends BlockElement
 {
     public static string $qualifiedName = 'form';
 
@@ -43,11 +43,9 @@ class Form extends BlockElement
     /* When present, it specifies that a form should not be validated when submitted. */
     public ?bool $novalidate;
 
-    /* 
+    /*
      * Specifies where to open the linked document.
      * @example _self
      */
-    public ?TargetEnum $target = TargetEnum::_SELF;
-
-
+    public ?TargetEnum $target;
 }

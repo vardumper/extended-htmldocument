@@ -1,20 +1,20 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Option - The option element represents an item in a select dropdown list.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
  */
+
 namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class Option extends BlockElement
+final class Option extends BlockElement
 {
     public static string $qualifiedName = 'option';
 
@@ -32,6 +32,4 @@ class Option extends BlockElement
 
     /* Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value;
-
-
 }

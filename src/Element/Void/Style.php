@@ -1,21 +1,21 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Style - The style element is used to embed CSS styles directly into an HTML document.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Void
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
  */
+
 namespace Html\Element\Void;
 
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-class Style extends VoidElement
+final class Style extends VoidElement
 {
     public static string $qualifiedName = 'style';
 
@@ -33,7 +33,4 @@ class Style extends VoidElement
 
     /* Specifies the media type of the linked resource. */
     public ?TypeEnum $type;
-
-
-
 }
