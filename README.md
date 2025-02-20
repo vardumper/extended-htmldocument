@@ -14,39 +14,31 @@ You can also modify the class generation templates in the folder `src/Resources/
 To re-generate the Element\Inline\Anchor class run `php bin/console class:element a`.
 To re-generate the all classes run `php bin/console class:element`.
 
-## Usage
 
+## Examples
+
+### Creating a link
+You can use three new methods HTMLElementDelegator create, setAttributes and __toString.
+
+```php
+use Html\Delegator\HTMLDocumentDelegator as HTMLDocument;
+use Html\Element\Inline\Anchor;
+
+$dom = HTMLDocument::createEmpty();
+
+$anchor = Anchor::create($dom);
+$anchor->textContent = 'This is a test link.';
+$anchor->setAttributes([
+    'href' => 'https://www.example.com',
+    'rel' => RelEnum::NOOPENER,
+    'target' => TargetEnum::_BLANK
+]);
+echo $anchor; // same as $anchor->__toString();
 ```
-namespace DesignSystem\Model;
 
-class DesignSystemElementHTMLDocument extends \Html\Model\ExtendedHTMLDocument
-{
-    public function toTwig($node, int $indent = 4)
-    {
-        $twig .= "{% block $node::$qualifiedName %}".PHP_EOL;
-        if ($node->hasAttributes()) {
-            foreach ($node->attributes() as $key => $value) {
-                $attributes .= "{$key}=\"{$value}\" ";
-            }
-            $attributes = trim($attributes);
-            $twig .= str_repeat(' ', $indent) . "<{$nodeName} {$attributes}>".PHP_EOL;
-        } else {
-            $twig .= str_repeat(' ', $indent) . "<{$nodeName}>".PHP_EOL;
-        }
-        $twig .= "{% endblock %}".PHP_EOL;
-    }
+This outputs `<a href="https://www.example.com" rel="noopener" target="_blank">This is a test link.</a>`
 
-    public function toReact()
-    {
-        
-    }
 
-    public function toNext()
-    {
-        
-    }
-}
-```
 
 Now you can use the `DesignSystemElementHTMLDocument` to generate HTML, Twig, React or Next code.
 ```
@@ -58,15 +50,15 @@ Now you can use the `DesignSystemElementHTMLDocument` to generate HTML, Twig, Re
 
 ### Q: What problem does this library claim to fix or resolve?
 Working with a design system brings consistency, but takes flexibility.
-Early on, when you start creating a design system, you have to decide which frontend technology you want to use (Twig, Next, React, etc). 
+Early on, when you start creating a design system, you have to decide which frontend technology you want to use (Twig, Next, React, etc).
 If this requirement changes in the future, for example if you want to switch from Twig to Next, then you need to rework your atoms, molecules, organisms, and so on. It gets worse, if there are differences in the HTML or CSS classes, chances are you also have to rework your CSS.
 
-### A: Standardized Code Generation for different Platforms and use-cases. 
+### A: Standardized Code Generation for different Platforms and use-cases.
 If I am able to describe an element of a design system with an easy-to-read, standardized YAML file. This library helps you generate code for different use cases.
 
 ### How
 HTML is one of the oldest, yet most important markup languages we have. Web Developers (and Designers) use it and work with it every day.
-In order to homogenize the code and improve the code quality I want to be able to generate code for a design systems atoms, molecules, organisms, pages 
+In order to homogenize the code and improve the code quality I want to be able to generate code for a design systems atoms, molecules, organisms, pages
 The goal of this repository is to have a base library, that can create native PHP DOM Elements that are valid for each HTML element.
 
 ## Differences to DOM\HTMLElement
