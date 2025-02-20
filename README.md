@@ -11,42 +11,47 @@ This repository uses the HTML5 specifications to auto-generate PHP Classes for H
 You can modify the file HTML specifications to your needs `src/Resources/definitions/html5.yaml` and then re-build the HTML Element classes.
 You can also modify the class generation templates in the folder `src/Resources/templates` to change the class signature.
 
-To re-generate the Element\Inline\Anchor class run `php bin/console class:element a`.
-To re-generate the all classes run `php bin/console class:element`.
+To re-generate the Element\Inline\Anchor class run `php bin/console make:class a`.
+To re-generate all classes run `php bin/console make:class`.
 
 
 ## Examples
 
-### Creating a link
-You can use three new methods HTMLElementDelegator create, setAttributes and __toString.
+### Creating an Element with static create method
+In this example we make use of three new methods HTMLElementDelegator `create()`, `setAttributes()` and `__toString()` as well as BackedEnums for static values.
 
 ```php
-use Html\Delegator\HTMLDocumentDelegator as HTMLDocument;
-use Html\Element\Inline\Anchor;
+$dom = Html\Delegator\HTMLDocumentDelegator::createEmpty();
 
-$dom = HTMLDocument::createEmpty();
-
-$anchor = Anchor::create($dom);
+$anchor = Html\Element\Inline\Anchor::create($dom);
 $anchor->textContent = 'This is a test link.';
 $anchor->setAttributes([
     'href' => 'https://www.example.com',
-    'rel' => RelEnum::NOOPENER,
-    'target' => TargetEnum::_BLANK
+    'rel' => Html\Enum\RelEnum::NOOPENER,
+    'target' => Html\Enum\TargetEnum::_BLANK
 ]);
 echo $anchor; // same as $anchor->__toString();
 ```
 
-This outputs `<a href="https://www.example.com" rel="noopener" target="_blank">This is a test link.</a>`
-
-
-
-Now you can use the `DesignSystemElementHTMLDocument` to generate HTML, Twig, React or Next code.
+The output is
+```
+<a href="https://www.example.com" rel="noopener" target="_blank">This is a test link.</a>
 ```
 
+### Creating an Element via it's HTMLDocument
+In this example we make use of the `HTMLDocument` to create an element.
+
+```php
+$dom = Html\Delegator\HTMLDocumentDelegator::createEmpty();
+
+$div = $dom->createElement('div');
+$div->textContent = 'This is a dynamic div element.';
+$div->setAttributes([
+    'class' => 'dynamic-div',
+    'id' => 'dynamicDiv'
+]);
+echo $div; // same as $div->__toString();
 ```
-
-
-## Why?
 
 ### Q: What problem does this library claim to fix or resolve?
 Working with a design system brings consistency, but takes flexibility.
