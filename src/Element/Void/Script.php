@@ -1,9 +1,14 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Script - The script element is used to embed or reference an executable script within an HTML or XHTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.
  * 
- * @package Html\Element\Void
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Void
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
  */
 namespace Html\Element\Void;
 
@@ -12,7 +17,7 @@ use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-final class Script extends VoidElement
+class Script extends VoidElement
 {
     public static string $qualifiedName = 'script';
 
@@ -46,11 +51,6 @@ final class Script extends VoidElement
     /* Specifies the media type of the linked resource. */
     public ?TypeEnum $type;
 
-
-    public function __construct()
-    {
-
-    }
 
 
 }

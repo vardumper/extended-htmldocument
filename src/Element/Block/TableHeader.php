@@ -1,15 +1,20 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * TableHeader - The th element represents a header cell in a table.
  * 
- * @package Html\Element\Block
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Block
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
  */
 namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-final class TableHeader extends BlockElement
+class TableHeader extends BlockElement
 {
     public static string $qualifiedName = 'th';
 
@@ -24,12 +29,6 @@ final class TableHeader extends BlockElement
 
     /* Specifies the set of header cells a data cell belongs to. */
     public ?string $scope;
-
-
-    public function __construct()
-    {
-
-    }
 
 
 }

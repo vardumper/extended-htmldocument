@@ -1,16 +1,21 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Embed - The embed element provides an integration point for an external (typically non-HTML) application or interactive content.
  * 
- * @package Html\Element\Block
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Block
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed
  */
 namespace Html\Element\Block;
 
 use Html\Enum\TypeEnum;
 use Html\Model\BlockElement;
 
-final class Embed extends BlockElement
+class Embed extends BlockElement
 {
     public static string $qualifiedName = 'embed';
 
@@ -28,12 +33,6 @@ final class Embed extends BlockElement
 
     /* Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width;
-
-
-    public function __construct()
-    {
-
-    }
 
 
 }

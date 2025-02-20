@@ -1,15 +1,20 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Progress - The progress element represents the completion progress of a task.
  * 
- * @package Html\Element\Inline
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Inline
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
  */
 namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class Progress extends InlineElement
+class Progress extends InlineElement
 {
     public static string $qualifiedName = 'progress';
 
@@ -18,12 +23,6 @@ final class Progress extends InlineElement
 
     /* Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value;
-
-
-    public function __construct()
-    {
-
-    }
 
 
 }

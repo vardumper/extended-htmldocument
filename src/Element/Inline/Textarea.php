@@ -1,9 +1,14 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Textarea - The textarea element represents a multiline plain text edit control for the element's raw value.
  * 
- * @package Html\Element\Inline
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Inline
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
  */
 namespace Html\Element\Inline;
 
@@ -11,7 +16,7 @@ use Html\Enum\AutocompleteEnum;
 use Html\Enum\WrapEnum;
 use Html\Model\InlineElement;
 
-final class Textarea extends InlineElement
+class Textarea extends InlineElement
 {
     public static string $qualifiedName = 'textarea';
 
@@ -50,12 +55,6 @@ final class Textarea extends InlineElement
 
     /*  */
     public ?WrapEnum $wrap;
-
-
-    public function __construct()
-    {
-
-    }
 
 
 }

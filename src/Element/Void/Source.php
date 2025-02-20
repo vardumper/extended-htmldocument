@@ -1,16 +1,21 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Source - The source element allows authors to specify multiple media resources for media elements. It is an empty element. It is commonly used within the picture element.
  * 
- * @package Html\Element\Void
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Void
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source
  */
 namespace Html\Element\Void;
 
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-final class Source extends VoidElement
+class Source extends VoidElement
 {
     public static string $qualifiedName = 'source';
 
@@ -29,11 +34,6 @@ final class Source extends VoidElement
     /* Specifies the media type of the linked resource. */
     public ?TypeEnum $type;
 
-
-    public function __construct()
-    {
-
-    }
 
 
 }

@@ -1,15 +1,20 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Meter - The meter element represents a scalar measurement within a known range, or a fractional value.
  * 
- * @package Html\Element\Inline
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Inline
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
  */
 namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class Meter extends InlineElement
+class Meter extends InlineElement
 {
     public static string $qualifiedName = 'meter';
 
@@ -30,12 +35,6 @@ final class Meter extends InlineElement
 
     /* Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value;
-
-
-    public function __construct()
-    {
-
-    }
 
 
 }

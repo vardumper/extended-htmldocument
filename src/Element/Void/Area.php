@@ -1,9 +1,14 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Area - The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.
  * 
- * @package Html\Element\Void
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Void
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area
  */
 namespace Html\Element\Void;
 
@@ -13,7 +18,7 @@ use Html\Enum\TargetEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-final class Area extends VoidElement
+class Area extends VoidElement
 {
     public static string $qualifiedName = 'area';
 
@@ -59,11 +64,6 @@ final class Area extends VoidElement
     /* Specifies the media type of the linked resource. */
     public ?TypeEnum $type;
 
-
-    public function __construct()
-    {
-
-    }
 
 
 }

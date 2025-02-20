@@ -1,16 +1,21 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Base - The base element specifies the base URL to use for all relative URLs in a document. There can be at maximum one <base> element in a document, and it must be inside the <head> element.
  * 
- * @package Html\Element\Void
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Void
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
  */
 namespace Html\Element\Void;
 
 use Html\Enum\TargetEnum;
 use Html\Model\VoidElement;
 
-final class Base extends VoidElement
+class Base extends VoidElement
 {
     public static string $qualifiedName = 'base';
 
@@ -26,11 +31,6 @@ final class Base extends VoidElement
      */
     public ?TargetEnum $target = TargetEnum::_SELF;
 
-
-    public function __construct()
-    {
-
-    }
 
 
 }

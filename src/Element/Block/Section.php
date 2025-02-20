@@ -1,23 +1,22 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Section - The section element helps in structuring the content of a webpage by grouping related information together.
  * 
- * @package Html\Element\Block
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Block
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section
  */
 namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-final class Section extends BlockElement
+class Section extends BlockElement
 {
     public static string $qualifiedName = 'section';
-
-
-    public function __construct()
-    {
-
-    }
 
 
 }

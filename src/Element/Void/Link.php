@@ -1,9 +1,14 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Link - The link element defines a link between a document and an external resource. It is used to link to external stylesheets.
  * 
- * @package Html\Element\Void
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Void
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
  */
 namespace Html\Element\Void;
 
@@ -13,7 +18,7 @@ use Html\Enum\RelEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-final class Link extends VoidElement
+class Link extends VoidElement
 {
     public static string $qualifiedName = 'link';
 
@@ -50,11 +55,6 @@ final class Link extends VoidElement
     /* Specifies the media type of the linked resource. */
     public ?TypeEnum $type;
 
-
-    public function __construct()
-    {
-
-    }
 
 
 }

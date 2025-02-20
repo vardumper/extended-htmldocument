@@ -1,9 +1,14 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * TableRow - The tr element represents a row of cells in a table.
  * 
- * @package Html\Element\Block
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Block
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
  */
 namespace Html\Element\Block;
 
@@ -11,7 +16,7 @@ use Html\Enum\AlignEnum;
 use Html\Enum\ValignEnum;
 use Html\Model\BlockElement;
 
-final class TableRow extends BlockElement
+class TableRow extends BlockElement
 {
     public static string $qualifiedName = 'tr';
 
@@ -44,12 +49,6 @@ final class TableRow extends BlockElement
      * @deprecated
      */
     public ?ValignEnum $valign;
-
-
-    public function __construct()
-    {
-
-    }
 
 
 }

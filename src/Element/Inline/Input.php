@@ -1,9 +1,14 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Input - The input element represents a typed data field, usually with a form control to allow user input.
  * 
- * @package Html\Element\Inline
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Inline
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
  */
 namespace Html\Element\Inline;
 
@@ -11,7 +16,7 @@ use Html\Enum\AutocompleteEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\InlineElement;
 
-final class Input extends InlineElement
+class Input extends InlineElement
 {
     public static string $qualifiedName = 'input';
 
@@ -89,12 +94,6 @@ final class Input extends InlineElement
 
     /* Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width;
-
-
-    public function __construct()
-    {
-
-    }
 
 
 }

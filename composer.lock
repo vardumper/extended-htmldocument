@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9f2fc4387de192590dc90d56da42a69d",
+    "content-hash": "e65ee5e459ce1e9d5a1c915ec61c65ec",
     "packages": [
         {
             "name": "mnapoli/silly",
@@ -1768,16 +1768,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.1.5",
+            "version": "2.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "451b17f9665481ee502adc39be987cb71067ece2"
+                "reference": "6eaec7c6c9e90dcfe46ad1e1ffa5171e2dab641c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/451b17f9665481ee502adc39be987cb71067ece2",
-                "reference": "451b17f9665481ee502adc39be987cb71067ece2",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/6eaec7c6c9e90dcfe46ad1e1ffa5171e2dab641c",
+                "reference": "6eaec7c6c9e90dcfe46ad1e1ffa5171e2dab641c",
                 "shasum": ""
             },
             "require": {
@@ -1822,7 +1822,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-13T12:49:56+00:00"
+            "time": "2025-02-19T15:46:42+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -2871,16 +2871,16 @@
         },
         {
             "name": "rector/swiss-knife",
-            "version": "2.1.12",
+            "version": "2.1.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/swiss-knife.git",
-                "reference": "a11c6cc6253d755dc6069b79c2e99dd5aa4a3589"
+                "reference": "871f3cfa431821144ee6f6fb6883a3a4523892cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/swiss-knife/zipball/a11c6cc6253d755dc6069b79c2e99dd5aa4a3589",
-                "reference": "a11c6cc6253d755dc6069b79c2e99dd5aa4a3589",
+                "url": "https://api.github.com/repos/rectorphp/swiss-knife/zipball/871f3cfa431821144ee6f6fb6883a3a4523892cc",
+                "reference": "871f3cfa431821144ee6f6fb6883a3a4523892cc",
                 "shasum": ""
             },
             "require": {
@@ -2902,7 +2902,7 @@
             "description": "Swiss knife in pocket of every upgrade architect",
             "support": {
                 "issues": "https://github.com/rectorphp/swiss-knife/issues",
-                "source": "https://github.com/rectorphp/swiss-knife/tree/2.1.12"
+                "source": "https://github.com/rectorphp/swiss-knife/tree/2.1.15"
             },
             "funding": [
                 {
@@ -2914,7 +2914,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-17T09:24:10+00:00"
+            "time": "2025-02-19T09:51:24+00:00"
         },
         {
             "name": "sebastian/cli-parser",

@@ -1,15 +1,20 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Parameter - The param element defines parameters for an object element.
  * 
- * @package Html\Element\Void
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Void
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param
  */
 namespace Html\Element\Void;
 
 use Html\Model\VoidElement;
 
-final class Parameter extends VoidElement
+class Parameter extends VoidElement
 {
     public static string $qualifiedName = 'param';
 
@@ -19,11 +24,6 @@ final class Parameter extends VoidElement
     /* Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value;
 
-
-    public function __construct()
-    {
-
-    }
 
 
 }

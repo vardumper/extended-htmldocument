@@ -1,9 +1,14 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
  * 
- * @package Html\Element\Block
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Block
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
  */
 namespace Html\Element\Block;
 
@@ -13,7 +18,7 @@ use Html\Enum\MethodEnum;
 use Html\Enum\TargetEnum;
 use Html\Model\BlockElement;
 
-final class Form extends BlockElement
+class Form extends BlockElement
 {
     public static string $qualifiedName = 'form';
 
@@ -43,12 +48,6 @@ final class Form extends BlockElement
      * @example _self
      */
     public ?TargetEnum $target = TargetEnum::_SELF;
-
-
-    public function __construct()
-    {
-
-    }
 
 
 }

@@ -1,16 +1,21 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Meta - The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable.
  * 
- * @package Html\Element\Void
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Void
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
  */
 namespace Html\Element\Void;
 
 use Html\Enum\HttpEquivEnum;
 use Html\Model\VoidElement;
 
-final class Meta extends VoidElement
+class Meta extends VoidElement
 {
     public static string $qualifiedName = 'meta';
 
@@ -29,11 +34,6 @@ final class Meta extends VoidElement
     /* Specifies the content type of the value attribute when the http-equiv attribute is used. */
     public ?string $scheme;
 
-
-    public function __construct()
-    {
-
-    }
 
 
 }

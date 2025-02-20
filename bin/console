@@ -4,6 +4,7 @@ declare(strict_types=1);
 require __DIR__ . '/../vendor/autoload.php';
 
 use Html\Command\CreateClassCommand;
+use Html\Command\CreateEnumCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -11,4 +12,5 @@ $app = new Silly\Application();
 $app->command('make:class [element]', function ($element, InputInterface $input, OutputInterface $output) {
     return (new CreateClassCommand())($element, $input, $output);
 })->descriptions('Creates a new PHP class for all or for a given HTML Element');
+$app->command('make:enum', new CreateEnumCommand())->descriptions('Creates a backed enum for all HTML Attributes with a fixed set of choices');
 $app->run();

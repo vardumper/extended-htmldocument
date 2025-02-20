@@ -1,9 +1,14 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Image - The img element represents an image.
  * 
- * @package Html\Element\Inline
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Inline
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
  */
 namespace Html\Element\Inline;
 
@@ -12,7 +17,7 @@ use Html\Enum\DecodingEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Model\InlineElement;
 
-final class Image extends InlineElement
+class Image extends InlineElement
 {
     public static string $qualifiedName = 'img';
 
@@ -54,12 +59,6 @@ final class Image extends InlineElement
 
     /* Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width;
-
-
-    public function __construct()
-    {
-
-    }
 
 
 }

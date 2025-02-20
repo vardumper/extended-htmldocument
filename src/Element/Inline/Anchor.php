@@ -1,9 +1,14 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Anchor - The a element represents a hyperlink, linking to another resource.
  * 
- * @package Html\Element\Inline
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Inline
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
  */
 namespace Html\Element\Inline;
 
@@ -12,7 +17,7 @@ use Html\Enum\TargetEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\InlineElement;
 
-final class Anchor extends InlineElement
+class Anchor extends InlineElement
 {
     public static string $qualifiedName = 'a';
 
@@ -48,12 +53,6 @@ final class Anchor extends InlineElement
 
     /* Specifies the media type of the linked resource. */
     public ?TypeEnum $type;
-
-
-    public function __construct()
-    {
-
-    }
 
 
 }

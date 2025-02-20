@@ -1,15 +1,20 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Body - The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
  * 
- * @package Html\Element\Block
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Block
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
  */
 namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-final class Body extends BlockElement
+class Body extends BlockElement
 {
     public static string $qualifiedName = 'body';
 
@@ -60,12 +65,6 @@ final class Body extends BlockElement
 
     /* Fires when the user is navigating away from the page (similar to onbeforeunload). */
     public ?script $onunload;
-
-
-    public function __construct()
-    {
-
-    }
 
 
 }

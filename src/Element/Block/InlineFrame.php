@@ -1,16 +1,21 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * InlineFrame - The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.
  * 
- * @package Html\Element\Block
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Block
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
  */
 namespace Html\Element\Block;
 
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Model\BlockElement;
 
-final class InlineFrame extends BlockElement
+class InlineFrame extends BlockElement
 {
     public static string $qualifiedName = 'iframe';
 
@@ -43,12 +48,6 @@ final class InlineFrame extends BlockElement
 
     /* Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width;
-
-
-    public function __construct()
-    {
-
-    }
 
 
 }

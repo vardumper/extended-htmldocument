@@ -1,16 +1,21 @@
 <?php
 /**
+ * This file is auto-generated. Do not edit manually.
+ *
  * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
  * 
- * @package Html\Element\Inline
- * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
+ * @category HTML
+ * @package vardumper/extended-htmldocument
+ * @subpackage Html\Element\Inline
+ * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
  */
 namespace Html\Element\Inline;
 
 use Html\Enum\TypeEnum;
 use Html\Model\InlineElement;
 
-final class Button extends InlineElement
+class Button extends InlineElement
 {
     public static string $qualifiedName = 'button';
 
@@ -28,12 +33,6 @@ final class Button extends InlineElement
 
     /* Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value;
-
-
-    public function __construct()
-    {
-
-    }
 
 
 }
