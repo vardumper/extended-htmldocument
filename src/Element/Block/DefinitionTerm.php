@@ -12,14 +12,14 @@
 
 namespace Html\Element\Block;
 
-use Html\Model\BlockElement;
+use Html\Element\BlockElement;
 
 class DefinitionTerm extends BlockElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'dt';
+    public const string QUALIFIED_NAME = 'dt';
 
     /**
      * If an element is unique per HTML document
@@ -38,7 +38,7 @@ class DefinitionTerm extends BlockElement
     public static array $childOf = [DefinitionList::class];
 
     /**
-     * The list of allowed direct children. Any if empty.
+     * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
     public static array $parentOf = [];

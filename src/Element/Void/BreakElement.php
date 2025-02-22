@@ -12,15 +12,20 @@
 
 namespace Html\Element\Void;
 
+use Html\Element\VoidElement;
 use Html\Enum\ClearEnum;
-use Html\Model\VoidElement;
 
 class BreakElement extends VoidElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'br';
+    public const string QUALIFIED_NAME = 'br';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = true;
 
     /**
      * If an element is unique per HTML document

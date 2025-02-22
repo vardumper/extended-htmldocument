@@ -12,14 +12,14 @@
 
 namespace Html\Element\Inline;
 
-use Html\Model\InlineElement;
+use Html\Element\InlineElement;
 
 class Label extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'label';
+    public const string QUALIFIED_NAME = 'label';
 
     /**
      * If an element is unique per HTML document

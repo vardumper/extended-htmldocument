@@ -12,14 +12,14 @@
 
 namespace Html\Element\Block;
 
-use Html\Model\BlockElement;
+use Html\Element\BlockElement;
 
 class TableData extends BlockElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'td';
+    public const string QUALIFIED_NAME = 'td';
 
     /**
      * If an element is unique per HTML document
@@ -38,7 +38,7 @@ class TableData extends BlockElement
     public static array $childOf = [TableRow::class];
 
     /**
-     * The list of allowed direct children. Any if empty.
+     * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
     public static array $parentOf = [];

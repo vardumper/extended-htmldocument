@@ -12,14 +12,14 @@
 
 namespace Html\Element\Inline;
 
-use Html\Model\InlineElement;
+use Html\Element\InlineElement;
 
 class Strong extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'strong';
+    public const string QUALIFIED_NAME = 'strong';
 
     /**
      * If an element is unique per HTML document

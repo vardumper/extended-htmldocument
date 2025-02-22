@@ -12,15 +12,15 @@
 
 namespace Html\Element\Void;
 
+use Html\Element\VoidElement;
 use Html\Enum\TypeEnum;
-use Html\Model\VoidElement;
 
 class Style extends VoidElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'style';
+    public const string QUALIFIED_NAME = 'style';
 
     /**
      * If an element is unique per HTML document

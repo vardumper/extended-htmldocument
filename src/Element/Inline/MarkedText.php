@@ -25,20 +25,20 @@ use Html\Element\Block\Picture;
 use Html\Element\Block\Summary;
 use Html\Element\Block\Table;
 use Html\Element\Block\Video;
+use Html\Element\InlineElement;
 use Html\Element\Void\Area;
 use Html\Element\Void\BreakElement;
 use Html\Element\Void\Parameter;
 use Html\Element\Void\Source;
 use Html\Element\Void\Track;
 use Html\Element\Void\WordBreakOpportunity;
-use Html\Model\InlineElement;
 
 class MarkedText extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'mark';
+    public const string QUALIFIED_NAME = 'mark';
 
     /**
      * If an element is unique per HTML document

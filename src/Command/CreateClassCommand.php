@@ -51,6 +51,7 @@ final class CreateClassCommand extends Command
             $level = $this->data[$element]['level'];
             $unique = $this->data[$element]['unique'] ?? false;
             $unique_per_parent = $this->data[$element]['unique_per_parent'] ?? false;
+            $self_closing = $this->data[$element]['self_closing'] ?? false;
             $namespace = 'Html\\Element\\' . ucfirst($level);
             $description = $this->data[$element]['description'] ?? '';
             $defaultValue = $this->data[$element]['default'] ?? '';
@@ -58,7 +59,7 @@ final class CreateClassCommand extends Command
             $fileName = $className . '.php';
             $path = \sprintf('src/Element/%s/%s', \ucfirst($level), $fileName);
 
-            $this->uses[] = \sprintf("Html\Model\%sElement", \ucfirst($level)); // extends
+            $this->uses[] = \sprintf("Html\Element\%sElement", \ucfirst($level)); // extends
 
             $attributes = $this->getAttributes($attributes); // before use statements
             $parents = $this->resolveParents(explode(' | ', $this->data[$element]['parent'] ?? ''));
@@ -79,6 +80,7 @@ final class CreateClassCommand extends Command
                 'defaultValue' => $defaultValue,
                 'attributes' => $attributes,
                 'path' => $path,
+                'self_closing' => $self_closing,
             ];
 
             $templatePath = \getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . \ucfirst(

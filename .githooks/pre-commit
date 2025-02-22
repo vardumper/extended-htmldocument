@@ -35,9 +35,9 @@ if $HAS_PHP_SWISSKNIFE; then
         PASS=false
     fi
 
-    $PHP_SWISSKNIFE finalize-classes ./bin ./src ./tests --ansi
+    #$PHP_SWISSKNIFE finalize-classes ./bin ./src ./tests --ansi
 
-    $PHP_SWISSKNIFE privatize-constants ./bin ./src ./tests --ansi
+    #$PHP_SWISSKNIFE privatize-constants ./bin ./src ./tests --ansi
 
   else
     printf "\nrector/swiss-knife is required. Install it:\n\n  composer require --dev rector/swiss-knife\n\n"

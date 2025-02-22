@@ -5,20 +5,21 @@ namespace Html\Delegator;
 use BackedEnum;
 use DOM\Document;
 use DOM\HtmlElement;
+use Html\Interface\HTMLElementDelegatorInterface;
 
-class HTMLElementDelegator implements HTMLElementDelegatorInterface
+abstract class HTMLElementDelegator implements HTMLElementDelegatorInterface
 {
+    public const string QUALIFIED_NAME = self::QUALIFIED_NAME; // Self-referential 'abstract' declaration
+
     public HtmlElement $htmlElement;
 
-    private static ?string $qualifiedName = null; // Default value, change as needed
+    public static bool $unique = false; // Default value, change as needed
 
-    private static bool $unique = false; // Default value, change as needed
+    public static bool $uniquePerParent = false; // Default value, change as needed
 
-    private static bool $uniquePerParent = false; // Default value, change as needed
+    public static array $childOf = []; // Default value, change as needed
 
-    private static array $childOf = []; // Default value, change as needed
-
-    private static array $parentOf = []; // Default value, change as needed
+    public static array $parentOf = []; // Default value, change as needed
 
     public function __construct(HTMLElement $htmlElement)
     {
@@ -101,7 +102,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     public static function create(HTMLDocumentDelegator $dom): self
     {
         $className = static::class;
-        $qualifiedName = $className::$qualifiedName;
+        $qualifiedName = $className::QUALIFIED_NAME;
         $coreElement = $dom->htmlDocument->createElement($qualifiedName);
         return new $className($coreElement);
     }
@@ -123,11 +124,19 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     }
 
     /**
+     * If the element is self closing (does not require a closing tag)
+     */
+    public static function isSelfClosing(): bool
+    {
+        return static::SELF_CLOSING;
+    }
+
+    /**
      * Get the qualified name of the element
      */
     public static function getQualifiedName(): string
     {
-        return static::$qualifiedName;
+        return static::QUALIFIED_NAME;
     }
 
     /**

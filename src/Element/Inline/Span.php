@@ -12,14 +12,14 @@
 
 namespace Html\Element\Inline;
 
-use Html\Model\InlineElement;
+use Html\Element\InlineElement;
 
 class Span extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'span';
+    public const string QUALIFIED_NAME = 'span';
 
     /**
      * If an element is unique per HTML document

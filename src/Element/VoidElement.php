@@ -1,7 +1,6 @@
 <?php
-namespace Html\Model;
+namespace Html\Element;
 
-use DOM\HtmlElement;
 use Html\Delegator\HTMLElementDelegator;
 
 class VoidElement extends HTMLElementDelegator
@@ -10,5 +9,5 @@ class VoidElement extends HTMLElementDelegator
     public CONST INLINE = false;
     public CONST BLOCK = false;
     public CONST VOID = true;
-    public CONST SELF_CLOSING = true;
+    public CONST SELF_CLOSING = false;
 }

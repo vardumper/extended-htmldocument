@@ -13,14 +13,14 @@
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
-use Html\Model\InlineElement;
+use Html\Element\InlineElement;
 
 class Address extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'address';
+    public const string QUALIFIED_NAME = 'address';
 
     /**
      * If an element is unique per HTML document

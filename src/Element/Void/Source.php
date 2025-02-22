@@ -12,15 +12,20 @@
 
 namespace Html\Element\Void;
 
+use Html\Element\VoidElement;
 use Html\Enum\TypeEnum;
-use Html\Model\VoidElement;
 
 class Source extends VoidElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'source';
+    public const string QUALIFIED_NAME = 'source';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = true;
 
     /**
      * If an element is unique per HTML document

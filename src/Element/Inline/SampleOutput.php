@@ -12,14 +12,14 @@
 
 namespace Html\Element\Inline;
 
-use Html\Model\InlineElement;
+use Html\Element\InlineElement;
 
 class SampleOutput extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'samp';
+    public const string QUALIFIED_NAME = 'samp';
 
     /**
      * If an element is unique per HTML document

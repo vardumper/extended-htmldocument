@@ -12,18 +12,23 @@
 
 namespace Html\Element\Void;
 
+use Html\Element\VoidElement;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\RelEnum;
 use Html\Enum\TypeEnum;
-use Html\Model\VoidElement;
 
 class Link extends VoidElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'link';
+    public const string QUALIFIED_NAME = 'link';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = true;
 
     /**
      * If an element is unique per HTML document

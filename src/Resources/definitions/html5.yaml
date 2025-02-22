@@ -147,6 +147,7 @@ area:
   description: 'The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.'
   level: void
   unique: false
+  self_closing: true
   attributes:
     alt:
       description: 'Specifies alternative text to be displayed when the image cannot be rendered.'
@@ -444,6 +445,7 @@ base:
   level: void
   unique_per_parent: true
   parent: head
+  self_closing: true
   attributes:
     href:
       description: 'Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.'
@@ -668,6 +670,7 @@ br:
   description: 'The br element represents a line break.'
   level: void
   unique: false
+  self_closing: true
   attributes:
     clear:
       type: enum
@@ -804,6 +807,7 @@ col:
   level: void
   unique: false
   parent: colgroup
+  self_closing: true
   attributes:
     span:
       description: 'Specifies the number of columns the <col> element should span in a table.'
@@ -1112,6 +1116,7 @@ embed:
   description: 'The embed element provides an integration point for an external (typically non-HTML) application or interactive content.'
   level: block
   unique: false
+  self_closing: true
   attributes:
     height:
       description: 'Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).'
@@ -1499,6 +1504,7 @@ hr:
   name: 'Horizontal Rule'
   description: 'The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.'
   level: block
+  self_closing: true
   attributes:
     align:
       description: 'Specifies the horizontal alignment of the element.'
@@ -1657,6 +1663,7 @@ img:
   description: 'The img element represents an image.'
   level: inline
   unique: false
+  self_closing: true
   attributes:
     alt:
       description: 'Specifies alternative text to be displayed when the image cannot be rendered.'
@@ -1762,6 +1769,7 @@ input:
   description: 'The input element represents a typed data field, usually with a form control to allow user input.'
   level: inline
   unique: false
+  self_closing: true
   attributes:
     accept:
       description: 'Specifies a comma-separated list of file types that the server accepts.'
@@ -2057,6 +2065,7 @@ link:
   description: 'The link element defines a link between a document and an external resource. It is used to link to external stylesheets.'
   level: void
   unique: false
+  self_closing: true
   attributes:
     crossorigin:
       type: enum
@@ -2296,6 +2305,7 @@ meta:
   description: 'The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.'
   level: void
   unique: false
+  self_closing: true
   attributes:
     charset:
       description: 'Specifies the character encoding for the resource.'
@@ -2599,6 +2609,7 @@ param:
   description: 'The param element defines parameters for an object element.'
   level: void
   unique: false
+  self_closing: true
   attributes:
     name:
       description: 'Specifies the name associated with the element. The meaning may vary depending on the context.'
@@ -2995,6 +3006,7 @@ source:
   description: 'The source element allows authors to specify multiple media resources for media elements. It is an empty element. It is commonly used within the picture element.'
   level: void
   unique: false
+  self_closing: true
   attributes:
     media:
       description: 'Specifies the media type for which the linked resource or style sheet is intended.'
@@ -3127,8 +3139,6 @@ summary:
   level: block
   unique_per_parent: true
   parent: details
-  children:
-    - text
 sup:
   name: Superscript
   description: 'The sup element represents a superscript.'
@@ -3415,6 +3425,7 @@ track:
   description: 'The track element is used as a child of the media elements—audio and video. It lets you specify timed text tracks (or time-based data), for example to automatically handle subtitles. The tracks are formatted in WebVTT format (.vtt files) — Web Video Text Tracks.'
   level: void
   unique: false
+  self_closing: true
   attributes:
     default:
       description: 'Specifies that the track should be enabled by default when the page loads.'
@@ -3561,3 +3572,4 @@ wbr:
   description: 'The wbr element represents a word break opportunity.'
   level: void
   unique: false
+  self_closing: true

@@ -12,14 +12,19 @@
 
 namespace Html\Element\Void;
 
-use Html\Model\VoidElement;
+use Html\Element\VoidElement;
 
 class Parameter extends VoidElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'param';
+    public const string QUALIFIED_NAME = 'param';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = true;
 
     /**
      * If an element is unique per HTML document

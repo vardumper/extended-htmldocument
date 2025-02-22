@@ -12,6 +12,7 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\BlockElement;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Address;
 use Html\Element\Inline\Anchor;
@@ -51,14 +52,13 @@ use Html\Element\Void\Area;
 use Html\Element\Void\BreakElement;
 use Html\Element\Void\Script;
 use Html\Element\Void\WordBreakOpportunity;
-use Html\Model\BlockElement;
 
 class Body extends BlockElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'body';
+    public const string QUALIFIED_NAME = 'body';
 
     /**
      * If an element is unique per HTML document
@@ -77,7 +77,7 @@ class Body extends BlockElement
     public static array $childOf = [];
 
     /**
-     * The list of allowed direct children. Any if empty.
+     * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
     public static array $parentOf = [

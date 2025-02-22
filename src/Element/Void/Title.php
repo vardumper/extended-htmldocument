@@ -12,14 +12,14 @@
 
 namespace Html\Element\Void;
 
-use Html\Model\VoidElement;
+use Html\Element\VoidElement;
 
 class Title extends VoidElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'title';
+    public const string QUALIFIED_NAME = 'title';
 
     /**
      * If an element is unique per HTML document

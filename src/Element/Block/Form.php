@@ -12,6 +12,7 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\BlockElement;
 use Html\Element\Inline\Button;
 use Html\Element\Inline\Input;
 use Html\Element\Inline\Label;
@@ -26,14 +27,13 @@ use Html\Enum\AutocompleteEnum;
 use Html\Enum\EnctypeEnum;
 use Html\Enum\MethodEnum;
 use Html\Enum\TargetEnum;
-use Html\Model\BlockElement;
 
 class Form extends BlockElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'form';
+    public const string QUALIFIED_NAME = 'form';
 
     /**
      * If an element is unique per HTML document
@@ -52,7 +52,7 @@ class Form extends BlockElement
     public static array $childOf = [];
 
     /**
-     * The list of allowed direct children. Any if empty.
+     * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
     public static array $parentOf = [

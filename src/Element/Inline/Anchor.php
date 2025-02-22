@@ -12,17 +12,17 @@
 
 namespace Html\Element\Inline;
 
+use Html\Element\InlineElement;
 use Html\Enum\RelEnum;
 use Html\Enum\TargetEnum;
 use Html\Enum\TypeEnum;
-use Html\Model\InlineElement;
 
 class Anchor extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'a';
+    public const string QUALIFIED_NAME = 'a';
 
     /**
      * If an element is unique per HTML document

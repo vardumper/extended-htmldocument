@@ -13,14 +13,19 @@
 namespace Html\Element\Void;
 
 use Html\Element\Block\ColumnGroup;
-use Html\Model\VoidElement;
+use Html\Element\VoidElement;
 
 class Column extends VoidElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'col';
+    public const string QUALIFIED_NAME = 'col';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = true;
 
     /**
      * If an element is unique per HTML document

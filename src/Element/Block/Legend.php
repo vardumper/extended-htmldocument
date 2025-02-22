@@ -12,14 +12,14 @@
 
 namespace Html\Element\Block;
 
-use Html\Model\BlockElement;
+use Html\Element\BlockElement;
 
 class Legend extends BlockElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'legend';
+    public const string QUALIFIED_NAME = 'legend';
 
     /**
      * If an element is unique per HTML document
@@ -38,7 +38,7 @@ class Legend extends BlockElement
     public static array $childOf = [Fieldset::class];
 
     /**
-     * The list of allowed direct children. Any if empty.
+     * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
     public static array $parentOf = [];

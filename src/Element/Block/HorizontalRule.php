@@ -12,15 +12,20 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\BlockElement;
 use Html\Enum\AlignEnum;
-use Html\Model\BlockElement;
 
 class HorizontalRule extends BlockElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'hr';
+    public const string QUALIFIED_NAME = 'hr';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = true;
 
     /**
      * If an element is unique per HTML document
@@ -39,7 +44,7 @@ class HorizontalRule extends BlockElement
     public static array $childOf = [];
 
     /**
-     * The list of allowed direct children. Any if empty.
+     * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
     public static array $parentOf = [];

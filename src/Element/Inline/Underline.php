@@ -12,14 +12,14 @@
 
 namespace Html\Element\Inline;
 
-use Html\Model\InlineElement;
+use Html\Element\InlineElement;
 
 class Underline extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'u';
+    public const string QUALIFIED_NAME = 'u';
 
     /**
      * If an element is unique per HTML document

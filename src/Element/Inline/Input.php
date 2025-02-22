@@ -12,16 +12,21 @@
 
 namespace Html\Element\Inline;
 
+use Html\Element\InlineElement;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\TypeEnum;
-use Html\Model\InlineElement;
 
 class Input extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'input';
+    public const string QUALIFIED_NAME = 'input';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = true;
 
     /**
      * If an element is unique per HTML document

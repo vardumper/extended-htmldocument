@@ -12,15 +12,15 @@
 
 namespace Html\Element\Inline;
 
+use Html\Element\InlineElement;
 use Html\Enum\TypeEnum;
-use Html\Model\InlineElement;
 
 class Button extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'button';
+    public const string QUALIFIED_NAME = 'button';
 
     /**
      * If an element is unique per HTML document

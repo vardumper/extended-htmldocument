@@ -30,14 +30,14 @@ use Html\Element\Block\PreformattedText;
 use Html\Element\Block\Summary;
 use Html\Element\Block\Table;
 use Html\Element\Block\UnorderedList;
-use Html\Model\InlineElement;
+use Html\Element\InlineElement;
 
 class Slot extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'slot';
+    public const string QUALIFIED_NAME = 'slot';
 
     /**
      * If an element is unique per HTML document

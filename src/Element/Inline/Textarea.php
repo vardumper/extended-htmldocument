@@ -12,16 +12,16 @@
 
 namespace Html\Element\Inline;
 
+use Html\Element\InlineElement;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\WrapEnum;
-use Html\Model\InlineElement;
 
 class Textarea extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'textarea';
+    public const string QUALIFIED_NAME = 'textarea';
 
     /**
      * If an element is unique per HTML document

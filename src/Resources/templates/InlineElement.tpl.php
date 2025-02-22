@@ -19,25 +19,28 @@ class <?= $class_name ?> extends <?= ucfirst($level) ?>Element
 {
     /**
      * The HTML element name
-     * @category HTML element property
      */
-    public static string $qualifiedName = '<?= /** @phpstan-ignore variable.undefined */$element_name ?>';
+    public const string QUALIFIED_NAME = '<?= /** @phpstan-ignore variable.undefined */$element_name ?>';
 
+<?php if ($self_closing): ?>
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = true;
+
+<?php endif; ?>
     /**
      * If an element is unique per HTML document
-     * @category HTML element property
      */
     public static bool $unique = <?= /** @phpstan-ignore variable.undefined */ $unique ? 'true' : 'false' ?>;
 
     /**
      * If an element is allowed once its allowed parents
-     * @category HTML element property
      */
     public static bool $uniquePerParent = <?= /** @phpstan-ignore variable.undefined */ $unique_per_parent ? 'true' : 'false' ?>;
 
     /**
      * The list of allowed direct parents. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
     public static array $childOf = [
@@ -48,7 +51,6 @@ class <?= $class_name ?> extends <?= ucfirst($level) ?>Element
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
     public static array $parentOf = [

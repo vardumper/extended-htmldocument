@@ -14,15 +14,15 @@ namespace Html\Element\Inline;
 
 use Html\Element\Block\Option;
 use Html\Element\Block\OptionGroup;
+use Html\Element\InlineElement;
 use Html\Enum\AutocompleteEnum;
-use Html\Model\InlineElement;
 
 class Select extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'select';
+    public const string QUALIFIED_NAME = 'select';
 
     /**
      * If an element is unique per HTML document

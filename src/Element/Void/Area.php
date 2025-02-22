@@ -12,18 +12,23 @@
 
 namespace Html\Element\Void;
 
+use Html\Element\VoidElement;
 use Html\Enum\RelEnum;
 use Html\Enum\ShapeEnum;
 use Html\Enum\TargetEnum;
 use Html\Enum\TypeEnum;
-use Html\Model\VoidElement;
 
 class Area extends VoidElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'area';
+    public const string QUALIFIED_NAME = 'area';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = true;
 
     /**
      * If an element is unique per HTML document

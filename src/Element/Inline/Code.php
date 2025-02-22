@@ -12,14 +12,14 @@
 
 namespace Html\Element\Inline;
 
-use Html\Model\InlineElement;
+use Html\Element\InlineElement;
 
 class Code extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'code';
+    public const string QUALIFIED_NAME = 'code';
 
     /**
      * If an element is unique per HTML document

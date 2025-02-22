@@ -14,14 +14,14 @@ namespace Html\Element\Void;
 
 use Html\Element\Block\HTML;
 use Html\Element\Block\NoScript;
-use Html\Model\VoidElement;
+use Html\Element\VoidElement;
 
 class Head extends VoidElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'head';
+    public const string QUALIFIED_NAME = 'head';
 
     /**
      * If an element is unique per HTML document

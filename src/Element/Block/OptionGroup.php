@@ -12,15 +12,15 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\BlockElement;
 use Html\Element\Inline\Select;
-use Html\Model\BlockElement;
 
 class OptionGroup extends BlockElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'optgroup';
+    public const string QUALIFIED_NAME = 'optgroup';
 
     /**
      * If an element is unique per HTML document
@@ -39,7 +39,7 @@ class OptionGroup extends BlockElement
     public static array $childOf = [Select::class];
 
     /**
-     * The list of allowed direct children. Any if empty.
+     * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
     public static array $parentOf = [Option::class];

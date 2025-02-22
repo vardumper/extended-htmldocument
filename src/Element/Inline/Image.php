@@ -12,17 +12,22 @@
 
 namespace Html\Element\Inline;
 
+use Html\Element\InlineElement;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\DecodingEnum;
 use Html\Enum\ReferrerpolicyEnum;
-use Html\Model\InlineElement;
 
 class Image extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'img';
+    public const string QUALIFIED_NAME = 'img';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = true;
 
     /**
      * If an element is unique per HTML document

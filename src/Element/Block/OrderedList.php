@@ -12,15 +12,15 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\BlockElement;
 use Html\Enum\TypeEnum;
-use Html\Model\BlockElement;
 
 class OrderedList extends BlockElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'ol';
+    public const string QUALIFIED_NAME = 'ol';
 
     /**
      * If an element is unique per HTML document
@@ -39,7 +39,7 @@ class OrderedList extends BlockElement
     public static array $childOf = [];
 
     /**
-     * The list of allowed direct children. Any if empty.
+     * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
     public static array $parentOf = [ListItem::class];

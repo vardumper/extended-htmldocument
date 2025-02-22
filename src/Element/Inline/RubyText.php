@@ -12,14 +12,14 @@
 
 namespace Html\Element\Inline;
 
-use Html\Model\InlineElement;
+use Html\Element\InlineElement;
 
 class RubyText extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'rt';
+    public const string QUALIFIED_NAME = 'rt';
 
     /**
      * If an element is unique per HTML document

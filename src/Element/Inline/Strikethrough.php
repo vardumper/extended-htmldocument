@@ -12,14 +12,14 @@
 
 namespace Html\Element\Inline;
 
-use Html\Model\InlineElement;
+use Html\Element\InlineElement;
 
 class Strikethrough extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 's';
+    public const string QUALIFIED_NAME = 's';
 
     /**
      * If an element is unique per HTML document

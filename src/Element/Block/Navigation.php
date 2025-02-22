@@ -12,6 +12,7 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\BlockElement;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\Citation;
 use Html\Element\Inline\Emphasis;
@@ -19,14 +20,13 @@ use Html\Element\Inline\Quotation;
 use Html\Element\Inline\Small;
 use Html\Element\Inline\Strikethrough;
 use Html\Element\Inline\Strong;
-use Html\Model\BlockElement;
 
 class Navigation extends BlockElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'nav';
+    public const string QUALIFIED_NAME = 'nav';
 
     /**
      * If an element is unique per HTML document
@@ -45,7 +45,7 @@ class Navigation extends BlockElement
     public static array $childOf = [];
 
     /**
-     * The list of allowed direct children. Any if empty.
+     * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
     public static array $parentOf = [

@@ -12,16 +12,16 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\BlockElement;
 use Html\Element\Inline\Image;
 use Html\Element\Void\Source;
-use Html\Model\BlockElement;
 
 class Picture extends BlockElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'picture';
+    public const string QUALIFIED_NAME = 'picture';
 
     /**
      * If an element is unique per HTML document
@@ -40,7 +40,7 @@ class Picture extends BlockElement
     public static array $childOf = [];
 
     /**
-     * The list of allowed direct children. Any if empty.
+     * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
     public static array $parentOf = [Image::class, Source::class];

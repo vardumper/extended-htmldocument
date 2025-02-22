@@ -12,6 +12,7 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\BlockElement;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\Citation;
@@ -31,14 +32,13 @@ use Html\Element\Inline\Superscript;
 use Html\Element\Inline\Time;
 use Html\Element\Inline\Underline;
 use Html\Element\Inline\Variable;
-use Html\Model\BlockElement;
 
 class ListItem extends BlockElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'li';
+    public const string QUALIFIED_NAME = 'li';
 
     /**
      * If an element is unique per HTML document
@@ -57,7 +57,7 @@ class ListItem extends BlockElement
     public static array $childOf = [OrderedList::class, UnorderedList::class];
 
     /**
-     * The list of allowed direct children. Any if empty.
+     * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
     public static array $parentOf = [

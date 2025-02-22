@@ -12,14 +12,14 @@
 
 namespace Html\Element\Inline;
 
-use Html\Model\InlineElement;
+use Html\Element\InlineElement;
 
 class Time extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'time';
+    public const string QUALIFIED_NAME = 'time';
 
     /**
      * If an element is unique per HTML document

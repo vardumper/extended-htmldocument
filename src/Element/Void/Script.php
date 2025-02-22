@@ -12,17 +12,17 @@
 
 namespace Html\Element\Void;
 
+use Html\Element\VoidElement;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\TypeEnum;
-use Html\Model\VoidElement;
 
 class Script extends VoidElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'script';
+    public const string QUALIFIED_NAME = 'script';
 
     /**
      * If an element is unique per HTML document

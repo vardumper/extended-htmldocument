@@ -12,14 +12,19 @@
 
 namespace Html\Element\Void;
 
-use Html\Model\VoidElement;
+use Html\Element\VoidElement;
 
 class WordBreakOpportunity extends VoidElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'wbr';
+    public const string QUALIFIED_NAME = 'wbr';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = true;
 
     /**
      * If an element is unique per HTML document

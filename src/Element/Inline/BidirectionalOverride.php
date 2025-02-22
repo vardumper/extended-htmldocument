@@ -12,14 +12,14 @@
 
 namespace Html\Element\Inline;
 
-use Html\Model\InlineElement;
+use Html\Element\InlineElement;
 
 class BidirectionalOverride extends InlineElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'bdo';
+    public const string QUALIFIED_NAME = 'bdo';
 
     /**
      * If an element is unique per HTML document

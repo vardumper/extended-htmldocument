@@ -12,6 +12,7 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\BlockElement;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\BidirectionalIsolation;
@@ -50,14 +51,13 @@ use Html\Element\Void\Parameter;
 use Html\Element\Void\Source;
 use Html\Element\Void\Track;
 use Html\Element\Void\WordBreakOpportunity;
-use Html\Model\BlockElement;
 
 class Aside extends BlockElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'aside';
+    public const string QUALIFIED_NAME = 'aside';
 
     /**
      * If an element is unique per HTML document
@@ -76,7 +76,7 @@ class Aside extends BlockElement
     public static array $childOf = [];
 
     /**
-     * The list of allowed direct children. Any if empty.
+     * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
     public static array $parentOf = [

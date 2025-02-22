@@ -12,16 +12,16 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\BlockElement;
 use Html\Enum\AlignEnum;
 use Html\Enum\ValignEnum;
-use Html\Model\BlockElement;
 
 class TableRow extends BlockElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'tr';
+    public const string QUALIFIED_NAME = 'tr';
 
     /**
      * If an element is unique per HTML document
@@ -40,7 +40,7 @@ class TableRow extends BlockElement
     public static array $childOf = [Table::class, TableHead::class, TableBody::class, TableFoot::class];
 
     /**
-     * The list of allowed direct children. Any if empty.
+     * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
     public static array $parentOf = [TableData::class, TableHeader::class];
