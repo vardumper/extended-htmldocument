@@ -16,7 +16,7 @@ use Html\Enum\AutocompleteEnum;
 use Html\Enum\WrapEnum;
 use Html\Model\InlineElement;
 
-final class Textarea extends InlineElement
+class Textarea extends InlineElement
 {
     /**
      * The HTML element name
@@ -38,6 +38,12 @@ final class Textarea extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     public ?AutocompleteEnum $autocomplete;
 

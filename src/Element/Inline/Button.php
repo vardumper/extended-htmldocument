@@ -15,7 +15,7 @@ namespace Html\Element\Inline;
 use Html\Enum\TypeEnum;
 use Html\Model\InlineElement;
 
-final class Button extends InlineElement
+class Button extends InlineElement
 {
     /**
      * The HTML element name
@@ -37,6 +37,12 @@ final class Button extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * When present, it specifies that an element should automatically get focus when the page loads.

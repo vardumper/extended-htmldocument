@@ -17,7 +17,7 @@ use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-final class Script extends VoidElement
+class Script extends VoidElement
 {
     /**
      * The HTML element name
@@ -39,6 +39,12 @@ final class Script extends VoidElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * When present, it specifies that the script will be executed asynchronously as soon as it is available.

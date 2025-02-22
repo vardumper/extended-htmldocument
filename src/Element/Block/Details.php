@@ -14,7 +14,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-final class Details extends BlockElement
+class Details extends BlockElement
 {
     /**
      * The HTML element name
@@ -36,6 +36,23 @@ final class Details extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [
+        Division::class,
+        DefinitionList::class,
+        Form::class,
+        ListItem::class,
+        OrderedList::class,
+        Paragraph::class,
+        PreformattedText::class,
+        Summary::class,
+        Table::class,
+        UnorderedList::class,
+    ];
 
     /**
      * When present, it specifies that the details should be visible (open) to the user.

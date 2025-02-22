@@ -14,7 +14,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class Abbreviation extends InlineElement
+class Abbreviation extends InlineElement
 {
     /**
      * The HTML element name
@@ -36,6 +36,12 @@ final class Abbreviation extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies additional information about the element, typically displayed as a tooltip.

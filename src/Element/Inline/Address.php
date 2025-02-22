@@ -15,7 +15,7 @@ namespace Html\Element\Inline;
 use Html\Element\Block\Article;
 use Html\Model\InlineElement;
 
-final class Address extends InlineElement
+class Address extends InlineElement
 {
     /**
      * The HTML element name
@@ -36,8 +36,11 @@ final class Address extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    /**
-     * Allowed parent elements of Address
-     */
     public static array $childOf = [Article::class];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 }

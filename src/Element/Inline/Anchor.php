@@ -17,7 +17,7 @@ use Html\Enum\TargetEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\InlineElement;
 
-final class Anchor extends InlineElement
+class Anchor extends InlineElement
 {
     /**
      * The HTML element name
@@ -39,6 +39,12 @@ final class Anchor extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Indicates that the linked content should be downloaded rather than displayed.

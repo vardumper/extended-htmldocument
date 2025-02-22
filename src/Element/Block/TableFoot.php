@@ -14,7 +14,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-final class TableFoot extends BlockElement
+class TableFoot extends BlockElement
 {
     /**
      * The HTML element name
@@ -36,4 +36,10 @@ final class TableFoot extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [Table::class];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [TableRow::class];
 }

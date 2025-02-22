@@ -18,7 +18,7 @@ use Html\Enum\RelEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-final class Link extends VoidElement
+class Link extends VoidElement
 {
     /**
      * The HTML element name
@@ -40,6 +40,12 @@ final class Link extends VoidElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     public ?CrossoriginEnum $crossorigin;
 

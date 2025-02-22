@@ -15,7 +15,7 @@ namespace Html\Element\Block;
 use Html\Enum\TypeEnum;
 use Html\Model\BlockElement;
 
-final class Embed extends BlockElement
+class Embed extends BlockElement
 {
     /**
      * The HTML element name
@@ -37,6 +37,12 @@ final class Embed extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).

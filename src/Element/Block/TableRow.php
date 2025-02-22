@@ -16,7 +16,7 @@ use Html\Enum\AlignEnum;
 use Html\Enum\ValignEnum;
 use Html\Model\BlockElement;
 
-final class TableRow extends BlockElement
+class TableRow extends BlockElement
 {
     /**
      * The HTML element name
@@ -38,6 +38,12 @@ final class TableRow extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [Table::class, TableHead::class, TableBody::class, TableFoot::class];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [TableData::class, TableHeader::class];
 
     /**
      * Specifies the horizontal alignment of each row cell. The possible enumerated values are left, center, right, justify, and char. When supported, the char value aligns the textual content on the character defined in the char attribute and on offset defined by the charoff attribute. Use the text-align CSS property instead, as this attribute is deprecated.

@@ -15,7 +15,7 @@ namespace Html\Element\Void;
 use Html\Element\Block\ColumnGroup;
 use Html\Model\VoidElement;
 
-final class Column extends VoidElement
+class Column extends VoidElement
 {
     /**
      * The HTML element name
@@ -37,6 +37,12 @@ final class Column extends VoidElement
      * @var array<string>
      */
     public static array $childOf = [ColumnGroup::class];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies the number of columns the <col> element should span in a table.

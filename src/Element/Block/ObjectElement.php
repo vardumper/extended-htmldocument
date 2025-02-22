@@ -15,7 +15,7 @@ namespace Html\Element\Block;
 use Html\Enum\TypeEnum;
 use Html\Model\BlockElement;
 
-final class ObjectElement extends BlockElement
+class ObjectElement extends BlockElement
 {
     /**
      * The HTML element name
@@ -37,6 +37,12 @@ final class ObjectElement extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies the address of the external data that the object requires.

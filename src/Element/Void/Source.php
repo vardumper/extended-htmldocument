@@ -15,7 +15,7 @@ namespace Html\Element\Void;
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-final class Source extends VoidElement
+class Source extends VoidElement
 {
     /**
      * The HTML element name
@@ -37,6 +37,12 @@ final class Source extends VoidElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies the media type for which the linked resource or style sheet is intended.

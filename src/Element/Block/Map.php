@@ -12,9 +12,10 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\Void\Area;
 use Html\Model\BlockElement;
 
-final class Map extends BlockElement
+class Map extends BlockElement
 {
     /**
      * The HTML element name
@@ -36,6 +37,12 @@ final class Map extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [Area::class];
 
     /**
      * Specifies the name associated with the element. The meaning may vary depending on the context.

@@ -12,9 +12,16 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\Inline\Anchor;
+use Html\Element\Inline\Citation;
+use Html\Element\Inline\Emphasis;
+use Html\Element\Inline\Quotation;
+use Html\Element\Inline\Small;
+use Html\Element\Inline\Strikethrough;
+use Html\Element\Inline\Strong;
 use Html\Model\BlockElement;
 
-final class Navigation extends BlockElement
+class Navigation extends BlockElement
 {
     /**
      * The HTML element name
@@ -36,4 +43,18 @@ final class Navigation extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [
+        Anchor::class,
+        Citation::class,
+        Emphasis::class,
+        Quotation::class,
+        Strikethrough::class,
+        Small::class,
+        Strong::class,
+    ];
 }

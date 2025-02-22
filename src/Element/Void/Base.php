@@ -15,7 +15,7 @@ namespace Html\Element\Void;
 use Html\Enum\TargetEnum;
 use Html\Model\VoidElement;
 
-final class Base extends VoidElement
+class Base extends VoidElement
 {
     /**
      * The HTML element name
@@ -37,6 +37,12 @@ final class Base extends VoidElement
      * @var array<string>
      */
     public static array $childOf = [Head::class];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.

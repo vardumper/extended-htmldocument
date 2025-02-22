@@ -14,7 +14,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-final class FigureCaption extends BlockElement
+class FigureCaption extends BlockElement
 {
     /**
      * The HTML element name
@@ -36,4 +36,10 @@ final class FigureCaption extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [Figure::class];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 }

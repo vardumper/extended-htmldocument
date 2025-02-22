@@ -12,9 +12,14 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\Inline\Anchor;
+use Html\Element\Inline\Button;
+use Html\Element\Inline\Input;
+use Html\Element\Inline\Select;
+use Html\Element\Inline\Textarea;
 use Html\Model\BlockElement;
 
-final class Dialog extends BlockElement
+class Dialog extends BlockElement
 {
     /**
      * The HTML element name
@@ -36,6 +41,36 @@ final class Dialog extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [
+        Button::class,
+        Division::class,
+        DefinitionList::class,
+        Form::class,
+        Heading1::class,
+        Heading2::class,
+        Heading3::class,
+        Heading4::class,
+        Heading5::class,
+        Heading6::class,
+        Anchor::class,
+        Input::class,
+        Select::class,
+        Textarea::class,
+        Details::class,
+        Summary::class,
+        InlineFrame::class,
+        ListItem::class,
+        OrderedList::class,
+        Paragraph::class,
+        PreformattedText::class,
+        Table::class,
+        UnorderedList::class,
+    ];
 
     /**
      * When present, it specifies that the details should be visible (open) to the user.

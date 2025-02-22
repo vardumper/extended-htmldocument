@@ -14,7 +14,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-final class Legend extends BlockElement
+class Legend extends BlockElement
 {
     /**
      * The HTML element name
@@ -36,6 +36,12 @@ final class Legend extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [Fieldset::class];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies the default value of the <textarea> element.

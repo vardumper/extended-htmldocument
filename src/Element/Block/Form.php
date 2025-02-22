@@ -12,13 +12,23 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\Inline\Button;
+use Html\Element\Inline\Input;
+use Html\Element\Inline\Label;
+use Html\Element\Inline\Meter;
+use Html\Element\Inline\Output;
+use Html\Element\Inline\Progress;
+use Html\Element\Inline\Select;
+use Html\Element\Inline\Slot;
+use Html\Element\Inline\Textarea;
+use Html\Element\Void\Script;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\EnctypeEnum;
 use Html\Enum\MethodEnum;
 use Html\Enum\TargetEnum;
 use Html\Model\BlockElement;
 
-final class Form extends BlockElement
+class Form extends BlockElement
 {
     /**
      * The HTML element name
@@ -40,6 +50,32 @@ final class Form extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [
+        Button::class,
+        Canvas::class,
+        DataList::class,
+        Details::class,
+        Dialog::class,
+        Fieldset::class,
+        Input::class,
+        Label::class,
+        Legend::class,
+        Meter::class,
+        NoScript::class,
+        Output::class,
+        Progress::class,
+        Script::class,
+        Select::class,
+        Slot::class,
+        Summary::class,
+        Template::class,
+        Textarea::class,
+    ];
 
     /**
      * Specifies the character encodings that are to be used for form submission.

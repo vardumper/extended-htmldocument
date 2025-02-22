@@ -16,7 +16,7 @@ use Html\Enum\AutocompleteEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\InlineElement;
 
-final class Input extends InlineElement
+class Input extends InlineElement
 {
     /**
      * The HTML element name
@@ -38,6 +38,12 @@ final class Input extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies a comma-separated list of file types that the server accepts.

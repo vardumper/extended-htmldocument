@@ -15,7 +15,7 @@ namespace Html\Element\Void;
 use Html\Enum\HttpEquivEnum;
 use Html\Model\VoidElement;
 
-final class Meta extends VoidElement
+class Meta extends VoidElement
 {
     /**
      * The HTML element name
@@ -37,6 +37,12 @@ final class Meta extends VoidElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies the character encoding for the resource.

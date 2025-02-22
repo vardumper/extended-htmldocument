@@ -14,7 +14,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class Time extends InlineElement
+class Time extends InlineElement
 {
     /**
      * The HTML element name
@@ -36,6 +36,12 @@ final class Time extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies the date and time of the change in the format 'YYYY-MM-DDThh:mm:ss' or a subset of it.

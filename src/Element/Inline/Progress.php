@@ -14,7 +14,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class Progress extends InlineElement
+class Progress extends InlineElement
 {
     /**
      * The HTML element name
@@ -36,6 +36,12 @@ final class Progress extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies the maximum value for an input element, meter, or progress element.

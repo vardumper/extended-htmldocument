@@ -15,7 +15,7 @@ namespace Html\Element\Void;
 use Html\Enum\KindEnum;
 use Html\Model\VoidElement;
 
-final class Track extends VoidElement
+class Track extends VoidElement
 {
     /**
      * The HTML element name
@@ -37,6 +37,12 @@ final class Track extends VoidElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies that the track should be enabled by default when the page loads.

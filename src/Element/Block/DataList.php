@@ -3,24 +3,23 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * BreakElement - The br element represents a line break.
+ * DataList - The datalist element contains a set of option elements that represent the permissible or recommended options available to users.
  *
- * @subpackage Html\Element\Void
+ * @subpackage Html\Element\Block
  * @link https://github.com/vardumper/ExtendedHTMLDocument
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/br
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
  */
 
-namespace Html\Element\Void;
+namespace Html\Element\Block;
 
-use Html\Enum\ClearEnum;
-use Html\Model\VoidElement;
+use Html\Model\BlockElement;
 
-class BreakElement extends VoidElement
+class DataList extends BlockElement
 {
     /**
      * The HTML element name
      */
-    public static string $qualifiedName = 'br';
+    public static string $qualifiedName = 'datalist';
 
     /**
      * If an element is unique per HTML document
@@ -42,7 +41,5 @@ class BreakElement extends VoidElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
-
-    public ?ClearEnum $clear;
+    public static array $parentOf = [Option::class];
 }

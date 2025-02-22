@@ -58,13 +58,12 @@ final class CreateClassCommand extends Command
             $fileName = $className . '.php';
             $path = \sprintf('src/Element/%s/%s', \ucfirst($level), $fileName);
 
-            $this->uses[] = \sprintf("Html\Model\%sElement", \ucfirst($level));
+            $this->uses[] = \sprintf("Html\Model\%sElement", \ucfirst($level)); // extends
 
             $attributes = $this->getAttributes($attributes); // before use statements
-            $use_statements = $this->getUseStatements();
-            $parents = $this->resolveParents(
-                explode(' | ', $this->data[$element]['parent'])
-            ); // updated to use $this->data
+            $parents = $this->resolveParents(explode(' | ', $this->data[$element]['parent'] ?? ''));
+            $children = $this->resolveChildren($this->data[$element]['children'] ?? []);
+            $use_statements = $this->getUseStatements($children, $parents, $namespace . '\\' . $className);
 
             $parameters = [
                 'class_name' => $className,
@@ -75,6 +74,7 @@ final class CreateClassCommand extends Command
                 'description' => $description,
                 'unique' => $unique,
                 'parents' => $parents,
+                'children' => $children,
                 'unique_per_parent' => $unique_per_parent,
                 'defaultValue' => $defaultValue,
                 'attributes' => $attributes,
@@ -92,7 +92,7 @@ final class CreateClassCommand extends Command
         return Command::SUCCESS;
     }
 
-    public function resolveParents($qualifiedNames): array
+    public function resolveParents(array $qualifiedNames): array
     {
         $qualifiedNames = array_filter($qualifiedNames, 'strlen');
         $parents = [];
@@ -100,9 +100,22 @@ final class CreateClassCommand extends Command
             $className = $this->getClassName(\str_replace(' ', '', \ucfirst($this->data[$qualifiedName]['name'])));
             $level = $this->data[$qualifiedName]['level']; // updated to use $this->data
             $namespace = 'Html\\Element\\' . ucfirst($level);
-            $parents[] = $namespace . '\\' . $className;
+            $parents[$className] = $namespace . '\\' . $className;
         }
         return $parents;
+    }
+
+    public function resolveChildren(array $qualifiedNames): array
+    {
+        $qualifiedNames = array_filter($qualifiedNames, 'strlen');
+        $children = [];
+        foreach ($qualifiedNames as $qualifiedName) {
+            $className = $this->getClassName(\str_replace(' ', '', \ucfirst($this->data[$qualifiedName]['name'])));
+            $level = $this->data[$qualifiedName]['level']; // updated to use $this->data
+            $namespace = 'Html\\Element\\' . ucfirst($level);
+            $children[$className] = $namespace . '\\' . $className;
+        }
+        return $children;
     }
 
     public function configure(): void
@@ -193,9 +206,19 @@ final class CreateClassCommand extends Command
         return $comment . ' */' . PHP_EOL;
     }
 
-    private function getUseStatements(): string
+    private function getUseStatements($children, $parents, $ignoreClass): string
     {
-        $uses = \array_unique($this->uses);
+        $all = \array_merge($this->uses, \array_values($children), \array_values($parents));
+        // Normalize the class names
+        $all = \array_map(function ($use) {
+            return \str_replace('\\\\', '\\', $use);
+        }, $all);
+        $foundSelf = \array_search($ignoreClass, $all);
+        if ($foundSelf !== false) {
+            unset($all[$foundSelf]);
+        }
+        $all = \array_filter($all);
+        $uses = \array_unique($all, SORT_STRING);
         \asort($uses);
         $use_statements = '';
         foreach ($uses as $use) {

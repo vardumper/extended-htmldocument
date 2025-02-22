@@ -14,7 +14,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-final class TableData extends BlockElement
+class TableData extends BlockElement
 {
     /**
      * The HTML element name
@@ -36,6 +36,12 @@ final class TableData extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [TableRow::class];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies the number of columns a table cell should span.

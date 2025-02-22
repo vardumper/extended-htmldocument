@@ -17,7 +17,7 @@ use Html\Enum\DecodingEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Model\InlineElement;
 
-final class Image extends InlineElement
+class Image extends InlineElement
 {
     /**
      * The HTML element name
@@ -39,6 +39,12 @@ final class Image extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies alternative text to be displayed when the image cannot be rendered.

@@ -14,7 +14,7 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-final class HeadingsGroup extends BlockElement
+class HeadingsGroup extends BlockElement
 {
     /**
      * The HTML element name
@@ -36,4 +36,17 @@ final class HeadingsGroup extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [
+        Heading1::class,
+        Heading2::class,
+        Heading3::class,
+        Heading4::class,
+        Heading5::class,
+        Heading6::class,
+    ];
 }

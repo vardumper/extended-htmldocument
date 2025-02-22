@@ -15,7 +15,7 @@ namespace Html\Element\Block;
 use Html\Element\Inline\Select;
 use Html\Model\BlockElement;
 
-final class OptionGroup extends BlockElement
+class OptionGroup extends BlockElement
 {
     /**
      * The HTML element name
@@ -37,6 +37,12 @@ final class OptionGroup extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [Select::class];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [Option::class];
 
     /**
      * When present, it specifies that an input element should be disabled.

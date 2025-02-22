@@ -14,7 +14,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class Meter extends InlineElement
+class Meter extends InlineElement
 {
     /**
      * The HTML element name
@@ -36,6 +36,12 @@ final class Meter extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies the high value for a range input or a meter element.

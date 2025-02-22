@@ -15,7 +15,7 @@ namespace Html\Element\Block;
 use Html\Enum\AlignEnum;
 use Html\Model\BlockElement;
 
-final class HorizontalRule extends BlockElement
+class HorizontalRule extends BlockElement
 {
     /**
      * The HTML element name
@@ -37,6 +37,12 @@ final class HorizontalRule extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies the horizontal alignment of the element.

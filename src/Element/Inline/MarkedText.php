@@ -12,9 +12,28 @@
 
 namespace Html\Element\Inline;
 
+use Html\Element\Block\Audio;
+use Html\Element\Block\DeletedText;
+use Html\Element\Block\Details;
+use Html\Element\Block\Embed;
+use Html\Element\Block\Form;
+use Html\Element\Block\InlineFrame;
+use Html\Element\Block\InsertedText;
+use Html\Element\Block\Map;
+use Html\Element\Block\ObjectElement;
+use Html\Element\Block\Picture;
+use Html\Element\Block\Summary;
+use Html\Element\Block\Table;
+use Html\Element\Block\Video;
+use Html\Element\Void\Area;
+use Html\Element\Void\BreakElement;
+use Html\Element\Void\Parameter;
+use Html\Element\Void\Source;
+use Html\Element\Void\Track;
+use Html\Element\Void\WordBreakOpportunity;
 use Html\Model\InlineElement;
 
-final class MarkedText extends InlineElement
+class MarkedText extends InlineElement
 {
     /**
      * The HTML element name
@@ -36,4 +55,42 @@ final class MarkedText extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [
+        Area::class,
+        Audio::class,
+        BidirectionalIsolation::class,
+        BidirectionalOverride::class,
+        BreakElement::class,
+        DeletedText::class,
+        Embed::class,
+        Form::class,
+        InlineFrame::class,
+        Image::class,
+        InsertedText::class,
+        Anchor::class,
+        Button::class,
+        Input::class,
+        Select::class,
+        Textarea::class,
+        Details::class,
+        Summary::class,
+        Map::class,
+        ObjectElement::class,
+        Parameter::class,
+        Picture::class,
+        RubyParenthesis::class,
+        RubyText::class,
+        Ruby::class,
+        Source::class,
+        Span::class,
+        Table::class,
+        Track::class,
+        Video::class,
+        WordBreakOpportunity::class,
+    ];
 }

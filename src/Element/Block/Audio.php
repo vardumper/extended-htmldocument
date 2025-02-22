@@ -16,7 +16,7 @@ use Html\Enum\CrossoriginEnum;
 use Html\Enum\PreloadEnum;
 use Html\Model\BlockElement;
 
-final class Audio extends BlockElement
+class Audio extends BlockElement
 {
     /**
      * The HTML element name
@@ -38,6 +38,12 @@ final class Audio extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * When present, it specifies that the audio or video will automatically start playing as soon as it can do so without stopping.

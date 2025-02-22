@@ -12,9 +12,17 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\Inline\Button;
+use Html\Element\Inline\Input;
+use Html\Element\Inline\Label;
+use Html\Element\Inline\Meter;
+use Html\Element\Inline\Output;
+use Html\Element\Inline\Progress;
+use Html\Element\Inline\Select;
+use Html\Element\Inline\Textarea;
 use Html\Model\BlockElement;
 
-final class Fieldset extends BlockElement
+class Fieldset extends BlockElement
 {
     /**
      * The HTML element name
@@ -36,4 +44,21 @@ final class Fieldset extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [
+        Button::class,
+        DataList::class,
+        Input::class,
+        Label::class,
+        Legend::class,
+        Meter::class,
+        Output::class,
+        Progress::class,
+        Select::class,
+        Textarea::class,
+    ];
 }

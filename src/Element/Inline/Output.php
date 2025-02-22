@@ -14,7 +14,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class Output extends InlineElement
+class Output extends InlineElement
 {
     /**
      * The HTML element name
@@ -36,6 +36,12 @@ final class Output extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Refers to the <datalist> element that contains the options for an input element.

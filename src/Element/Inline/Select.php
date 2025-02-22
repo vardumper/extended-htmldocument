@@ -12,10 +12,12 @@
 
 namespace Html\Element\Inline;
 
+use Html\Element\Block\Option;
+use Html\Element\Block\OptionGroup;
 use Html\Enum\AutocompleteEnum;
 use Html\Model\InlineElement;
 
-final class Select extends InlineElement
+class Select extends InlineElement
 {
     /**
      * The HTML element name
@@ -37,6 +39,12 @@ final class Select extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [OptionGroup::class, Option::class];
 
     public ?AutocompleteEnum $autocomplete;
 

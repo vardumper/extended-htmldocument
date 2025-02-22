@@ -14,7 +14,7 @@ namespace Html\Element\Void;
 
 use Html\Model\VoidElement;
 
-final class Title extends VoidElement
+class Title extends VoidElement
 {
     /**
      * The HTML element name
@@ -36,4 +36,10 @@ final class Title extends VoidElement
      * @var array<string>
      */
     public static array $childOf = [Head::class];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 }

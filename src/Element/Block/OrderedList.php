@@ -15,7 +15,7 @@ namespace Html\Element\Block;
 use Html\Enum\TypeEnum;
 use Html\Model\BlockElement;
 
-final class OrderedList extends BlockElement
+class OrderedList extends BlockElement
 {
     /**
      * The HTML element name
@@ -37,6 +37,12 @@ final class OrderedList extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [ListItem::class];
 
     /**
      * When present, it specifies that the list order should be descending (9,8,7...).

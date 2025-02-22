@@ -12,9 +12,10 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\Void\Head;
 use Html\Model\BlockElement;
 
-final class HTML extends BlockElement
+class HTML extends BlockElement
 {
     /**
      * The HTML element name
@@ -36,6 +37,12 @@ final class HTML extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [Body::class, Head::class];
 
     /**
      * Specifies the address of the document's cache manifest.

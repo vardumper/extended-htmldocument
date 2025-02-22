@@ -13,9 +13,6 @@
  */
 namespace <?= $namespace; ?>;
 
-<?php foreach ($parents as $parent): ?>
-use <?= ltrim($parent, '\\') ?>;
-<?php endforeach; ?>
 <?= $use_statements ?>
 
 class <?= $class_name ?> extends <?= ucfirst($level) ?>Element
@@ -43,18 +40,23 @@ class <?= $class_name ?> extends <?= ucfirst($level) ?>Element
      * @category HTML element property
      * @var array<string>
      */
-<?php if (empty($parents)): ?>
-    public static array $childOf = [];
-<?php else: ?>
-    /** Allowed parent elements of <?= $class_name ?> */
     public static array $childOf = [
-<?php foreach ($parents as $parent): ?>
-    <?php $parts = explode('\\', $parent);
-    $parentClassName = end($parts); ?>
-    <?= $parentClassName ?>::class,
-    <?php endforeach; ?>
-];
-<?php endif; ?>
+<?php foreach ($parents as $parentClassName => $fqcn): ?>
+        <?= $parentClassName ?>::class,
+<?php endforeach; ?>
+    ];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @category HTML element property
+     * @var array<string>
+     */
+    public static array $parentOf = [
+<?php foreach ($children as $childClassName => $fqcn): ?>
+        <?= $childClassName ?>::class,
+<?php endforeach; ?>
+    ];
+
 
 <?= $attributes ?>
 }

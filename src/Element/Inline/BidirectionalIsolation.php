@@ -14,7 +14,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class BidirectionalIsolation extends InlineElement
+class BidirectionalIsolation extends InlineElement
 {
     /**
      * The HTML element name
@@ -36,4 +36,10 @@ final class BidirectionalIsolation extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 }

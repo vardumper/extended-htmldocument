@@ -18,7 +18,7 @@ use Html\Enum\TargetEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-final class Area extends VoidElement
+class Area extends VoidElement
 {
     /**
      * The HTML element name
@@ -40,6 +40,12 @@ final class Area extends VoidElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies alternative text to be displayed when the image cannot be rendered.

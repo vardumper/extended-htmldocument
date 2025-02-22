@@ -14,7 +14,7 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class Data extends InlineElement
+class Data extends InlineElement
 {
     /**
      * The HTML element name
@@ -36,6 +36,12 @@ final class Data extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.

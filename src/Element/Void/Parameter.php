@@ -14,7 +14,7 @@ namespace Html\Element\Void;
 
 use Html\Model\VoidElement;
 
-final class Parameter extends VoidElement
+class Parameter extends VoidElement
 {
     /**
      * The HTML element name
@@ -36,6 +36,12 @@ final class Parameter extends VoidElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * Specifies the name associated with the element. The meaning may vary depending on the context.

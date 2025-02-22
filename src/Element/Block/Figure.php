@@ -12,9 +12,10 @@
 
 namespace Html\Element\Block;
 
+use Html\Element\Inline\Image;
 use Html\Model\BlockElement;
 
-final class Figure extends BlockElement
+class Figure extends BlockElement
 {
     /**
      * The HTML element name
@@ -36,4 +37,10 @@ final class Figure extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [FigureCaption::class, Image::class];
 }

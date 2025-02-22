@@ -338,7 +338,14 @@ aside:
     - iframe
     - img
     - ins
-    - interactive
+    - a
+    - button
+    - input
+    - select
+    - textarea
+    - details
+    - summary
+    - iframe
     - kbd
     - li
     - map
@@ -841,6 +848,13 @@ data:
         - select
         - textarea
   text: string
+datalist:
+  name: 'Data List'
+  description: 'The datalist element contains a set of option elements that represent the permissible or recommended options available to users.'
+  level: block
+  unique: false
+  children:
+    - option
 dd:
   name: 'Definition Description'
   description: 'The dd element represents the description, definition, or value, part of a term-description group in a description list (dl element).'
@@ -873,7 +887,14 @@ dd:
     - iframe
     - img
     - ins
-    - interactive
+    - a
+    - button
+    - input
+    - select
+    - textarea
+    - details
+    - summary
+    - iframe
     - kbd
     - li
     - map
@@ -970,8 +991,20 @@ dialog:
     - div
     - dl
     - form
-    - heading
-    - interactive
+    - h1
+    - h2
+    - h3
+    - h4
+    - h5
+    - h6
+    - a
+    - button
+    - input
+    - select
+    - textarea
+    - details
+    - summary
+    - iframe
     - li
     - ol
     - p
@@ -1015,7 +1048,14 @@ div:
     - iframe
     - img
     - ins
-    - interactive
+    - a
+    - button
+    - input
+    - select
+    - textarea
+    - details
+    - summary
+    - iframe
     - kbd
     - li
     - map
@@ -1191,7 +1231,14 @@ footer:
     - iframe
     - img
     - ins
-    - interactive
+    - a
+    - button
+    - input
+    - select
+    - textarea
+    - details
+    - summary
+    - iframe
     - kbd
     - li
     - map
@@ -1398,7 +1445,14 @@ header:
     - iframe
     - img
     - ins
-    - interactive
+    - a
+    - button
+    - input
+    - select
+    - textarea
+    - details
+    - summary
+    - iframe
     - kbd
     - li
     - map
@@ -1939,8 +1993,6 @@ label:
       elements:
         - label
         - output
-  children:
-    - text
 legend:
   name: Legend
   description: 'The legend element represents a caption for the content of its parent fieldset.'
@@ -2139,7 +2191,14 @@ main:
     - iframe
     - img
     - ins
-    - interactive
+    - a
+    - button
+    - input
+    - select
+    - textarea
+    - details
+    - summary
+    - iframe
     - kbd
     - li
     - map
@@ -2211,7 +2270,14 @@ mark:
     - iframe
     - img
     - ins
-    - interactive
+    - a
+    - button
+    - input
+    - select
+    - textarea
+    - details
+    - summary
+    - iframe
     - map
     - object
     - param
@@ -2341,11 +2407,6 @@ noscript:
   description: "The noscript element defines an alternate content for users that have disabled scripts in their browser or have a browser that doesn't support script."
   level: block
   unique: false
-  children:
-    - link
-    - meta
-    - style
-    - text
 object:
   name: Object
   description: 'The object element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.'
@@ -2779,7 +2840,14 @@ section:
     - iframe
     - img
     - ins
-    - interactive
+    - a
+    - button
+    - input
+    - select
+    - textarea
+    - details
+    - summary
+    - iframe
     - kbd
     - li
     - map
@@ -2896,8 +2964,20 @@ slot:
     - div
     - dl
     - form
-    - heading
-    - interactive
+    - h1
+    - h2
+    - h3
+    - h4
+    - h5
+    - h6
+    - a
+    - button
+    - input
+    - select
+    - textarea
+    - details
+    - summary
+    - iframe
     - li
     - ol
     - p
@@ -3109,8 +3189,20 @@ template:
     - div
     - dl
     - form
-    - heading
-    - interactive
+    - h1
+    - h2
+    - h3
+    - h4
+    - h5
+    - h6
+    - a
+    - button
+    - input
+    - select
+    - textarea
+    - details
+    - summary
+    - iframe
     - li
     - ol
     - p

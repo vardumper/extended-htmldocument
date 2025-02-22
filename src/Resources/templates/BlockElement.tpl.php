@@ -13,9 +13,6 @@
  */
 namespace <?= /** @phpstan-ignore variable.undefined */ $namespace; ?>;
 
-<?php foreach ($parents as $parent): ?>
-use <?= ltrim($parent, '\\') ?>;
-<?php endforeach; ?>
 <?= /** @phpstan-ignore variable.undefined */ $use_statements ?>
 
 class <?= /** @phpstan-ignore variable.undefined */ $class_name ?> extends <?= ucfirst(
@@ -46,17 +43,23 @@ class <?= /** @phpstan-ignore variable.undefined */ $class_name ?> extends <?= u
      * @category HTML element property
      * @var array<string>
      */
-<?php if (empty($parents)): ?>
-    public static array $childOf = [];
-<?php else: ?>
     public static array $childOf = [
-<?php foreach ($parents as $parent): ?>
-<?php $parts = explode('\\', $parent);
-    $parentClassName = end($parts); ?>
+<?php foreach ($parents as $parentClassName => $fqcn): ?>
         <?= $parentClassName ?>::class,
 <?php endforeach; ?>
     ];
-<?php endif; ?>
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @category HTML element property
+     * @var array<string>
+     */
+    public static array $parentOf = [
+<?php foreach ($children as $childClassName => $fqcn): ?>
+        <?= $childClassName ?>::class,
+<?php endforeach; ?>
+    ];
+
 
 <?= /** @phpstan-ignore variable.undefined */ $attributes ?>
 }

@@ -15,7 +15,7 @@ namespace Html\Element\Void;
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-final class Style extends VoidElement
+class Style extends VoidElement
 {
     /**
      * The HTML element name
@@ -37,6 +37,12 @@ final class Style extends VoidElement
      * @var array<string>
      */
     public static array $childOf = [];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [];
 
     /**
      * When present, it specifies that an input element should be disabled.

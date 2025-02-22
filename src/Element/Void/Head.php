@@ -13,9 +13,10 @@
 namespace Html\Element\Void;
 
 use Html\Element\Block\HTML;
+use Html\Element\Block\NoScript;
 use Html\Model\VoidElement;
 
-final class Head extends VoidElement
+class Head extends VoidElement
 {
     /**
      * The HTML element name
@@ -37,4 +38,18 @@ final class Head extends VoidElement
      * @var array<string>
      */
     public static array $childOf = [HTML::class];
+
+    /**
+     * The list of allowed direct children. Any if empty.
+     * @var array<string>
+     */
+    public static array $parentOf = [
+        Base::class,
+        Link::class,
+        Meta::class,
+        NoScript::class,
+        Script::class,
+        Style::class,
+        Title::class,
+    ];
 }
