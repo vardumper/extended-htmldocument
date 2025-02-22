@@ -5,13 +5,20 @@ namespace Html\Delegator;
 use BackedEnum;
 use DOM\Document;
 use DOM\HtmlElement;
-use Traversable;
 
-class HTMLElementDelegator
+class HTMLElementDelegator implements HTMLElementDelegatorInterface
 {
     public HtmlElement $htmlElement;
 
     private static ?string $qualifiedName = null; // Default value, change as needed
+
+    private static bool $unique = false; // Default value, change as needed
+
+    private static bool $uniquePerParent = false; // Default value, change as needed
+
+    private static array $childOf = []; // Default value, change as needed
+
+    private static array $parentOf = []; // Default value, change as needed
 
     public function __construct(HTMLElement $htmlElement)
     {
@@ -72,7 +79,7 @@ class HTMLElementDelegator
         return (string) $ownerDocument->saveHtml($this->htmlElement);
     }
 
-    public function setAttributes(array $attributes): self
+    public function setAttributes(array $attributes): void
     {
         // sort attributes by key name - id and class will still be first
         \ksort($attributes);
@@ -83,17 +90,11 @@ class HTMLElementDelegator
             }
             $this->htmlElement->setAttribute($name, $value);
         }
-        return $this;
     }
 
     public function hasAttributes(): bool
     {
         return ! empty($this->htmlElement->attributes);
-    }
-
-    public function attributes(): Traversable
-    {
-        return $this->htmlElement->attributes->getIterator();
     }
 
     // Generic static factory method
@@ -106,23 +107,23 @@ class HTMLElementDelegator
     }
 
     /**
-     * If the parent element of RubyParenthesis can have multiple RubyParenthesis children
+     * If the parent element can have multiple children of this type
      */
-    public function isUniquePerParent(): bool
+    public static function isUniquePerParent(): bool
     {
-        return false;
+        return static::$uniquePerParent;
     }
 
     /**
-     * If an HTML document can only have one RubyParenthesis element
+     * If an HTML document can only have one element of this type
      */
-    public function isUnique(): bool
+    public static function isUnique(): bool
     {
-        return false;
+        return static::$unique;
     }
 
     /**
-     * Get the qualified name of the RubyParenthesis element
+     * Get the qualified name of the element
      */
     public static function getQualifiedName(): string
     {
@@ -130,10 +131,18 @@ class HTMLElementDelegator
     }
 
     /**
-     * Get the list if allowed parent elements of RubyParenthesis. Empty array means: no restriction
+     * Get the list if allowed parent elements of this element type. Empty array means: no restriction
      */
-    public static function isChildOf(): array
+    public static function childOf(): array
     {
         return static::$childOf;
+    }
+
+    /**
+     * Get the list if allowed parent elements of this element type. Empty array means: no restriction
+     */
+    public static function parentOf(): array
+    {
+        return static::$parentOf;
     }
 }
