@@ -1,5 +1,5 @@
 # ExtendedHTMLDocument
-An opinionated approach to add additional functionality to PHP 8.4's fromidable DOM\HTMLDocument
+An opinionated approach to bringing the HTML speicifations into object-oriented programming and to adding additional functionality to PHP 8.4's fromidable DOM\HTMLDocument. 
 
 ## Installation
 ```
