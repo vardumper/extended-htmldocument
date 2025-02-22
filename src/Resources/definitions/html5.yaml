@@ -2490,8 +2490,6 @@ option:
         - option
         - select
         - textarea
-    dummy:
-      type: string
     label:
       description: 'Specifies a label for the associated form control, option group, or option.'
       type: string
