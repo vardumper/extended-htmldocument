@@ -1,44 +1,39 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Footer - The footer element represents a container for the bottom section of a document or a section, typically containing information about the author, copyright information, and links to related documents.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer
  */
+
 namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-class Footer extends BlockElement
+final class Footer extends BlockElement
 {
     /**
      * The HTML element name
-     * @category HTML element property
      */
     public static string $qualifiedName = 'footer';
 
     /**
      * If an element is unique per HTML document
-     * @category HTML element property
      */
     public static bool $unique = false;
 
     /**
      * If an element is allowed once its allowed parents
-     * @category HTML element property
      */
     public static bool $uniquePerParent = false;
 
     /**
-     * The allowed parent element classes. Any if empty.
-     * @category HTML element property
+     * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
     public static array $childOf = [];
-
 }

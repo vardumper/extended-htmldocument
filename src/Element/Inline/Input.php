@@ -1,168 +1,159 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Input - The input element represents a typed data field, usually with a form control to allow user input.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Inline
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
  */
+
 namespace Html\Element\Inline;
 
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\InlineElement;
 
-class Input extends InlineElement
+final class Input extends InlineElement
 {
     /**
      * The HTML element name
-     * @category HTML element property
      */
     public static string $qualifiedName = 'input';
 
     /**
      * If an element is unique per HTML document
-     * @category HTML element property
      */
     public static bool $unique = false;
 
     /**
      * If an element is allowed once its allowed parents
-     * @category HTML element property
      */
     public static bool $uniquePerParent = false;
 
     /**
-     * The allowed parent classes. Any if empty.
-     * @category HTML element property
+     * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
     public static array $childOf = [];
 
-    /** 
+    /**
      * Specifies a comma-separated list of file types that the server accepts.
-     * @category HTML attribute */
+     */
     public ?string $accept;
 
-    /** 
+    /**
      * Specifies alternative text to be displayed when the image cannot be rendered.
-     * @category HTML attribute */
+     */
     public ?string $alt;
 
-    /** 
-     * 
-     * @category HTML attribute */
     public ?AutocompleteEnum $autocomplete;
 
-    /** 
+    /**
      * When present, it indicates that an input element should be pre-selected (checked) when the page loads.
-     * @category HTML attribute */
+     */
     public ?bool $checked;
 
-    /** 
+    /**
      * Specifies the direction of the text.
-     * @category HTML attribute */
+     */
     public ?string $dirname;
 
-    /** 
+    /**
      * When present, it specifies that an input element should be disabled.
-     * @category HTML attribute */
+     */
     public ?bool $disabled;
 
-    /** 
+    /**
      * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
-     * @category HTML attribute */
+     */
     public ?string $height;
 
-    /** 
+    /**
      * Refers to a <datalist> element that contains pre-defined options for an input element.
-     * @category HTML attribute */
+     */
     public ?string $list;
 
-    /** 
+    /**
      * Specifies the maximum value for an input element, meter, or progress element.
-     * @category HTML attribute */
+     */
     public ?int $max;
 
-    /** 
+    /**
      * Specifies the maximum number of characters allowed in an input field.
-     * @category HTML attribute */
+     */
     public ?int $maxlength;
 
-    /** 
+    /**
      * Specifies the minimum value for an input element or a meter element.
-     * @category HTML attribute */
+     */
     public ?string $min;
 
-    /** 
+    /**
      * Specifies the minimum number of characters required in an input field.
-     * @category HTML attribute */
+     */
     public ?int $minlength;
 
-    /** 
+    /**
      * When present, it specifies that the user is allowed to enter more than one value in an input element.
-     * @category HTML attribute */
+     */
     public ?bool $multiple;
 
-    /** 
+    /**
      * Specifies the name associated with the element. The meaning may vary depending on the context.
-     * @category HTML attribute */
+     */
     public ?string $name;
 
-    /** 
+    /**
      * Specifies a regular expression that the <input> element's value is checked against.
-     * @category HTML attribute */
+     */
     public ?string $pattern;
 
-    /** 
+    /**
      * Specifies a short hint that describes the expected value of an input field.
-     * @category HTML attribute */
+     */
     public ?string $placeholder;
 
-    /** 
+    /**
      * When present, it specifies that an input element is read-only.
-     * @category HTML attribute */
+     */
     public ?bool $readonly;
 
-    /** 
+    /**
      * When present, it specifies that an input field must be filled out before submitting the form.
-     * @category HTML attribute */
+     */
     public ?bool $required;
 
-    /** 
+    /**
      * Specifies the height of a hr element in pixels.
-     * @category HTML attribute */
+     */
     public ?int $size;
 
-    /** 
+    /**
      * Specifies the URL of the external resource to be embedded or referenced. Required if input type is image
-     * @category HTML attribute */
+     */
     public ?string $src;
 
-    /** 
+    /**
      * Specifies the legal number intervals for an input element.
-     * @category HTML attribute */
+     */
     public ?string $step;
 
-    /** 
+    /**
      * Specifies the type of the input. Defaults to text if the attribute is omitted
-     * @category HTML attribute
      * @example text
      */
     public ?TypeEnum $type;
 
-    /** 
+    /**
      * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
-     * @category HTML attribute */
+     */
     public ?string $value;
 
-    /** 
+    /**
      * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
-     * @category HTML attribute */
+     */
     public ?string $width;
-
 }

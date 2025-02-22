@@ -39,7 +39,7 @@ class <?= $class_name ?> extends <?= ucfirst($level) ?>Element
     public static bool $uniquePerParent = <?= /** @phpstan-ignore variable.undefined */ $unique_per_parent ? 'true' : 'false' ?>;
 
     /**
-     * The allowed parent classes. Any if empty.
+     * The list of allowed direct parents. Any if empty.
      * @category HTML element property
      * @var array<string>
      */

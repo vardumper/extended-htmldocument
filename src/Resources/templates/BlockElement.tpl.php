@@ -42,7 +42,7 @@ class <?= /** @phpstan-ignore variable.undefined */ $class_name ?> extends <?= u
     public static bool $uniquePerParent = <?= /** @phpstan-ignore variable.undefined */ $unique_per_parent ? 'true' : 'false' ?>;
 
     /**
-     * The allowed parent element classes. Any if empty.
+     * The list of allowed direct parents. Any if empty.
      * @category HTML element property
      * @var array<string>
      */
