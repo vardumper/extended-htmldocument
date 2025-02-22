@@ -5,5 +5,7 @@
 /.commit
 
 # VitePress build output
-/.vitepress/dist
+/docs/.vitepress/dist
+/docs/.vitepress/cache
+/docs/.vitepress/temp
 /node_modules
