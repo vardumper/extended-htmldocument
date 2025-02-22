@@ -14,10 +14,31 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class Slot extends InlineElement
+class Slot extends InlineElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'slot';
 
-    /* Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     */
     public ?string $name;
 }

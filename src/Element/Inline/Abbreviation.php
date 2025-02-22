@@ -14,10 +14,31 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class Abbreviation extends InlineElement
+class Abbreviation extends InlineElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'abbr';
 
-    /* Specifies additional information about the element, typically displayed as a tooltip. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * Specifies additional information about the element, typically displayed as a tooltip.
+     */
     public ?string $title;
 }

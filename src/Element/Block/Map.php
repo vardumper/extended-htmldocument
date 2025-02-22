@@ -14,10 +14,31 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-final class Map extends BlockElement
+class Map extends BlockElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'map';
 
-    /* Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent element classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     */
     public ?string $name;
 }

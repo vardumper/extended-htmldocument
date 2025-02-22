@@ -14,10 +14,31 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class Label extends InlineElement
+class Label extends InlineElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'label';
 
-    /* Refers to the <datalist> element that contains the options for an input element. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * Refers to the <datalist> element that contains the options for an input element.
+     */
     public ?string $for;
 }

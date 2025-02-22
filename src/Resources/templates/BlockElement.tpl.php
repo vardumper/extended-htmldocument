@@ -13,6 +13,9 @@
  */
 namespace <?= /** @phpstan-ignore variable.undefined */ $namespace; ?>;
 
+<?php foreach ($parents as $parent): ?>
+use <?= ltrim($parent, '\\') ?>;
+<?php endforeach; ?>
 <?= /** @phpstan-ignore variable.undefined */ $use_statements ?>
 
 class <?= /** @phpstan-ignore variable.undefined */ $class_name ?> extends <?= ucfirst(
@@ -20,8 +23,40 @@ class <?= /** @phpstan-ignore variable.undefined */ $class_name ?> extends <?= u
     $level
 ) ?>Element
 {
+    /**
+     * The HTML element name
+     * @category HTML element property
+     */
     public static string $qualifiedName = '<?= /** @phpstan-ignore variable.undefined */$element_name ?>';
 
-<?= /** @phpstan-ignore variable.undefined */ $attributes ?>
+    /**
+     * If an element is unique per HTML document
+     * @category HTML element property
+     */
+    public static bool $unique = <?= /** @phpstan-ignore variable.undefined */ $unique ? 'true' : 'false' ?>;
 
+    /**
+     * If an element is allowed once its allowed parents
+     * @category HTML element property
+     */
+    public static bool $uniquePerParent = <?= /** @phpstan-ignore variable.undefined */ $unique_per_parent ? 'true' : 'false' ?>;
+
+    /**
+     * The allowed parent element classes. Any if empty.
+     * @category HTML element property
+     * @var array<string>
+     */
+<?php if (empty($parents)): ?>
+    public static array $childOf = [];
+<?php else: ?>
+    public static array $childOf = [
+<?php foreach ($parents as $parent): ?>
+<?php $parts = explode('\\', $parent);
+    $parentClassName = end($parts); ?>
+        <?= $parentClassName ?>::class,
+<?php endforeach; ?>
+    ];
+<?php endif; ?>
+
+<?= /** @phpstan-ignore variable.undefined */ $attributes ?>
 }

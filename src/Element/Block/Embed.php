@@ -15,22 +15,47 @@ namespace Html\Element\Block;
 use Html\Enum\TypeEnum;
 use Html\Model\BlockElement;
 
-final class Embed extends BlockElement
+class Embed extends BlockElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'embed';
 
-    /* Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent element classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     public ?string $height;
 
-    /*
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
      * @required
      */
     public string $src;
 
-    /* Specifies the media type of the linked resource. */
+    /**
+     * Specifies the media type of the linked resource.
+     */
     public ?TypeEnum $type;
 
-    /* Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     public ?string $width;
 }

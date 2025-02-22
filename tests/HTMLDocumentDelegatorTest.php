@@ -3,6 +3,7 @@ namespace Tests;
 use PHPUnit\Framework\TestCase;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Element\Anchor;
+use Html\Element\Inline\Anchor as InlineAnchor;
 use Html\Enum\TargetEnum;
 use Html\Interface\HTMLDocumentDelegatorInterface;
 
@@ -12,8 +13,7 @@ final class HTMLDocumentDelegatorTest extends TestCase
     {
         $qualifiedName = 'img';
         $value = 'This is a test element.';
-        $dom = HTMLDocumentDelegatorInterface::createFromString('<!doctype html><html><head></head><body></body></html>');
-        $body = $dom->getElementsByTagName('body')->item(0);
+        $dom = HTMLDocumentDelegator::createEmpty()
 
         $element = $dom->createElement($qualifiedName);
         $element->setAttributes([
@@ -28,7 +28,7 @@ final class HTMLDocumentDelegatorTest extends TestCase
         $element->id = 'test-id';
         $element->textContent = $value;
 
-        $body->appendChild($element->htmlElement);
+        $dom->body->appendChild($element->htmlElement);
 
         $this->assertStringContainsString('test-class secondary', $dom->saveHtml()); // class present
         $this->assertStringContainsString('test-id', $dom->saveHtml()); // id present
@@ -41,18 +41,19 @@ final class HTMLDocumentDelegatorTest extends TestCase
 
     public function testCreateAnchor()
     {
-        $dom = ExtendedHTMLDocument::createFromString('<!doctype html><html><head></head><body></body></html>');
+        $dom = HTMLDocumentDelegator::createFromString('<!doctype html><html><head></head><body></body></html>');
         $body = $dom->getElementsByTagName('body')->item(0);
 
-        $anchor = Anchor::create($dom);
+        $anchor = InlineAnchor::create($dom);
         $anchor->id = 'main-anchor';
         $anchor->setAttributes([
             'href' => 'https://www.example.com',
             'title' => 'This is a test title.',
             'rel' => 'noopener',
-            'target' => TargetEnum::BLANK
+            'target' => TargetEnum::_BLANK
         ]);
         $anchor->hasAttributes();
+        $anchor->
         // $anchor->target = TargetEnum::BLANK;
         // $anchor->target = '_blank';
         $anchor->textContent = 'This is a test element.';

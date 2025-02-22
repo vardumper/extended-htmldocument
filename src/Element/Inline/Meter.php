@@ -14,25 +14,56 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class Meter extends InlineElement
+class Meter extends InlineElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'meter';
 
-    /* Specifies the high value for a range input or a meter element. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * Specifies the high value for a range input or a meter element.
+     */
     public ?string $high;
 
-    /* Specifies the low value for a range input. */
+    /**
+     * Specifies the low value for a range input.
+     */
     public ?string $low;
 
-    /* Specifies the maximum value for an input element, meter, or progress element. */
+    /**
+     * Specifies the maximum value for an input element, meter, or progress element.
+     */
     public ?int $max;
 
-    /* Specifies the minimum value for an input element or a meter element. */
+    /**
+     * Specifies the minimum value for an input element or a meter element.
+     */
     public ?string $min;
 
-    /* Specifies the optimal value for a gauge or progress element. */
+    /**
+     * Specifies the optimal value for a gauge or progress element.
+     */
     public ?string $optimum;
 
-    /* Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
+    /**
+     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
+     */
     public ?string $value;
 }

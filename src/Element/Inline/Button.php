@@ -15,22 +15,51 @@ namespace Html\Element\Inline;
 use Html\Enum\TypeEnum;
 use Html\Model\InlineElement;
 
-final class Button extends InlineElement
+class Button extends InlineElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'button';
 
-    /* When present, it specifies that an element should automatically get focus when the page loads. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * When present, it specifies that an element should automatically get focus when the page loads.
+     */
     public ?bool $autofocus;
 
-    /* When present, it specifies that an input element should be disabled. */
+    /**
+     * When present, it specifies that an input element should be disabled.
+     */
     public ?bool $disabled;
 
-    /* Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /**
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     */
     public ?string $name;
 
-    /* Specifies the media type of the linked resource. */
+    /**
+     * Specifies the media type of the linked resource.
+     */
     public ?TypeEnum $type;
 
-    /* Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
+    /**
+     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
+     */
     public ?string $value;
 }

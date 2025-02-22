@@ -14,10 +14,31 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-final class ListItem extends BlockElement
+class ListItem extends BlockElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'li';
 
-    /* Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent element classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [OrderedList::class, UnorderedList::class];
+
+    /**
+     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
+     */
     public ?string $value;
 }

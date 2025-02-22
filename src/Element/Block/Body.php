@@ -14,55 +14,106 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-final class Body extends BlockElement
+class Body extends BlockElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'body';
 
-    /* Fires after the associated document has started printing or the print preview has been closed. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = true;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent element classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * Fires after the associated document has started printing or the print preview has been closed.
+     */
     public ?string $onafterprint;
 
-    /* Fires before the associated document is printed or previewed for printing. */
+    /**
+     * Fires before the associated document is printed or previewed for printing.
+     */
     public ?string $onbeforeprint;
 
-    /* Fires before the user navigates away from the page. */
+    /**
+     * Fires before the user navigates away from the page.
+     */
     public ?string $onbeforeunload;
 
-    /* Fires when the fragment identifier part of the URL changes. */
+    /**
+     * Fires when the fragment identifier part of the URL changes.
+     */
     public ?string $onhashchange;
 
-    /* Fires when the user changes the preferred language of the user interface. */
+    /**
+     * Fires when the user changes the preferred language of the user interface.
+     */
     public ?string $onlanguagechange;
 
-    /* Fires when a message is received from a different browsing context (e.g., an iframe). */
+    /**
+     * Fires when a message is received from a different browsing context (e.g., an iframe).
+     */
     public ?string $onmessage;
 
-    /* Fires when an error occurs while receiving a message from a different browsing context. */
+    /**
+     * Fires when an error occurs while receiving a message from a different browsing context.
+     */
     public ?string $onmessageerror;
 
-    /* Fires when the browser goes offline. */
+    /**
+     * Fires when the browser goes offline.
+     */
     public ?string $onoffline;
 
-    /* Fires when the browser goes online. */
+    /**
+     * Fires when the browser goes online.
+     */
     public ?string $ononline;
 
-    /* Fires when the user navigates away from a page. */
+    /**
+     * Fires when the user navigates away from a page.
+     */
     public ?string $onpagehide;
 
-    /* Fires when the user navigates to a page. */
+    /**
+     * Fires when the user navigates to a page.
+     */
     public ?string $onpageshow;
 
-    /* Fires when the user navigates through the history by clicking the browser's Back or Forward buttons. */
+    /**
+     * Fires when the user navigates through the history by clicking the browser's Back or Forward buttons.
+     */
     public ?string $onpopstate;
 
-    /* Fires when a Promise is rejected and the rejection is handled by a Promise handler (e.g., catch). */
+    /**
+     * Fires when a Promise is rejected and the rejection is handled by a Promise handler (e.g., catch).
+     */
     public ?string $onrejectionhandled;
 
-    /* Fires when a storage area (e.g., localStorage or sessionStorage) changes. */
+    /**
+     * Fires when a storage area (e.g., localStorage or sessionStorage) changes.
+     */
     public ?string $onstorage;
 
-    /* Fires when a Promise is rejected but there is no rejection handler (e.g., catch). */
+    /**
+     * Fires when a Promise is rejected but there is no rejection handler (e.g., catch).
+     */
     public ?string $onunhandledrejection;
 
-    /* Fires when the user is navigating away from the page (similar to onbeforeunload). */
+    /**
+     * Fires when the user is navigating away from the page (similar to onbeforeunload).
+     */
     public ?string $onunload;
 }

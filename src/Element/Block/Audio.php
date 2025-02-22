@@ -16,29 +16,54 @@ use Html\Enum\CrossoriginEnum;
 use Html\Enum\PreloadEnum;
 use Html\Model\BlockElement;
 
-final class Audio extends BlockElement
+class Audio extends BlockElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'audio';
 
-    /* When present, it specifies that the audio or video will automatically start playing as soon as it can do so without stopping. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent element classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * When present, it specifies that the audio or video will automatically start playing as soon as it can do so without stopping.
+     */
     public ?bool $autoplay;
 
-    /* When present, it specifies that audio or video controls should be displayed (such as play, pause, and volume). */
+    /**
+     * When present, it specifies that audio or video controls should be displayed (such as play, pause, and volume).
+     */
     public ?bool $controls;
 
-    /*  */
     public ?CrossoriginEnum $crossorigin;
 
-    /* When present, it specifies that the audio or video will start over again every time it is finished. */
+    /**
+     * When present, it specifies that the audio or video will start over again every time it is finished.
+     */
     public ?bool $loop;
 
-    /* When present, it specifies that the audio output of the video should be muted. */
+    /**
+     * When present, it specifies that the audio output of the video should be muted.
+     */
     public ?bool $muted;
 
-    /*  */
     public ?PreloadEnum $preload;
 
-    /*
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
      * @required
      */

@@ -14,16 +14,41 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-final class TableData extends BlockElement
+class TableData extends BlockElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'td';
 
-    /* Specifies the number of columns a table cell should span. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent element classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [TableRow::class];
+
+    /**
+     * Specifies the number of columns a table cell should span.
+     */
     public ?int $colspan;
 
-    /* Specifies a list of header cells that represent the header for the cell. */
+    /**
+     * Specifies a list of header cells that represent the header for the cell.
+     */
     public ?string $headers;
 
-    /* Specifies the number of rows a table cell should span. */
+    /**
+     * Specifies the number of rows a table cell should span.
+     */
     public ?int $rowspan;
 }

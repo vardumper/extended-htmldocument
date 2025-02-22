@@ -14,10 +14,31 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class Quotation extends InlineElement
+class Quotation extends InlineElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'q';
 
-    /* Specifies the URL of the cited work or the name of the cited creative work. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * Specifies the URL of the cited work or the name of the cited creative work.
+     */
     public ?string $cite;
 }

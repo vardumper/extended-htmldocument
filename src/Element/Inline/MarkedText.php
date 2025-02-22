@@ -14,7 +14,26 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class MarkedText extends InlineElement
+class MarkedText extends InlineElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'mark';
+
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
 }

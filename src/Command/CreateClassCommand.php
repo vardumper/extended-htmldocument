@@ -19,6 +19,8 @@ final class CreateClassCommand extends Command
 {
     private array $uses = [];
 
+    private array $data;
+
     public function __invoke($element, InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
@@ -30,8 +32,8 @@ final class CreateClassCommand extends Command
             $io->error('HTML definition file not found.');
             return Command::FAILURE;
         }
-        $data = Yaml::parseFile($htmlDefinitionPath);
-        $availableElements = array_keys($data);
+        $this->data = Yaml::parseFile($htmlDefinitionPath);
+        $availableElements = array_keys($this->data);
 
         $batchElements = $element ? [$element] : $availableElements;
 
@@ -45,14 +47,14 @@ final class CreateClassCommand extends Command
 
             $this->uses = []; // reset use statements
 
-            $className = $this->getClassName(\str_replace(' ', '', \ucfirst($data[$element]['name'])));
-            $level = $data[$element]['level'];
-            $unique = $data[$element]['unique'] ?? false;
-            $unique_per_parent = $data[$element]['unique_per_parent'] ?? false;
+            $className = $this->getClassName(\str_replace(' ', '', \ucfirst($this->data[$element]['name'])));
+            $level = $this->data[$element]['level'];
+            $unique = $this->data[$element]['unique'] ?? false;
+            $unique_per_parent = $this->data[$element]['unique_per_parent'] ?? false;
             $namespace = 'Html\\Element\\' . ucfirst($level);
-            $description = $data[$element]['description'] ?? '';
-            $defaultValue = $data[$element]['default'] ?? '';
-            $attributes = $data[$element]['attributes'] ?? [];
+            $description = $this->data[$element]['description'] ?? '';
+            $defaultValue = $this->data[$element]['default'] ?? '';
+            $attributes = $this->data[$element]['attributes'] ?? [];
             $fileName = $className . '.php';
             $path = \sprintf('src/Element/%s/%s', \ucfirst($level), $fileName);
 
@@ -60,6 +62,9 @@ final class CreateClassCommand extends Command
 
             $attributes = $this->getAttributes($attributes); // before use statements
             $use_statements = $this->getUseStatements();
+            $parents = $this->resolveParents(
+                explode(' | ', $this->data[$element]['parent'])
+            ); // updated to use $this->data
 
             $parameters = [
                 'class_name' => $className,
@@ -69,6 +74,7 @@ final class CreateClassCommand extends Command
                 'level' => $level,
                 'description' => $description,
                 'unique' => $unique,
+                'parents' => $parents,
                 'unique_per_parent' => $unique_per_parent,
                 'defaultValue' => $defaultValue,
                 'attributes' => $attributes,
@@ -84,6 +90,19 @@ final class CreateClassCommand extends Command
         }
 
         return Command::SUCCESS;
+    }
+
+    public function resolveParents($qualifiedNames): array
+    {
+        $qualifiedNames = array_filter($qualifiedNames, 'strlen');
+        $parents = [];
+        foreach ($qualifiedNames as $qualifiedName) {
+            $className = $this->getClassName(\str_replace(' ', '', \ucfirst($this->data[$qualifiedName]['name'])));
+            $level = $this->data[$qualifiedName]['level']; // updated to use $this->data
+            $namespace = 'Html\\Element\\' . ucfirst($level);
+            $parents[] = $namespace . '\\' . $className;
+        }
+        return $parents;
     }
 
     public function configure(): void
@@ -153,6 +172,7 @@ final class CreateClassCommand extends Command
     {
         $lines = [];
         $lines[] = $details['description'] ?? '';
+        $lines[] = '@category HTML attribute';
         if (isset($details['deprecated']) && $details['deprecated']) {
             $lines[] = '@deprecated' . PHP_EOL . '    ';
         }
@@ -162,7 +182,7 @@ final class CreateClassCommand extends Command
         if (isset($details['required']) && $details['required']) {
             $lines[] = '@required' . PHP_EOL . '    ';
         }
-        $comment = '/* ';
+        $comment = '/** ';
 
         if (\count($lines) > 1) {
             $comment .= PHP_EOL . '     * ' . \implode(PHP_EOL . '     * ', $lines);

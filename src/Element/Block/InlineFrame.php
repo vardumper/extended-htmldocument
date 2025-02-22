@@ -15,37 +15,66 @@ namespace Html\Element\Block;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Model\BlockElement;
 
-final class InlineFrame extends BlockElement
+class InlineFrame extends BlockElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'iframe';
 
-    /* Enables the iframe to be displayed in fullscreen mode. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent element classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * Enables the iframe to be displayed in fullscreen mode.
+     */
     public ?bool $allowfullscreen;
 
-    /* Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     public ?string $height;
 
-    /* Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /**
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     */
     public ?string $name;
 
-    /* Specifies the referrer policy for fetches initiated by the element. */
+    /**
+     * Specifies the referrer policy for fetches initiated by the element.
+     */
     public ?ReferrerpolicyEnum $referrerpolicy;
 
-    /*  */
     public ?string $sandbox;
 
-    /* When present, it specifies that the iframe should look like it is a part of the containing document (no borders or scrollbars). */
+    /**
+     * When present, it specifies that the iframe should look like it is a part of the containing document (no borders or scrollbars).
+     */
     public ?bool $seamless;
 
-    /*
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
      * @required
      */
     public string $src;
 
-    /*  */
     public ?string $srcdoc;
 
-    /* Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     public ?string $width;
 }

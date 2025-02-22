@@ -1,18 +1,20 @@
 <?php
+
 namespace Html\Delegator;
 
 use BackedEnum;
-use DOM\HtmlElement;
 use DOM\Document;
+use DOM\HtmlElement;
 use Traversable;
 
 class HTMLElementDelegator
 {
-    private static ?string $qualifiedName = null; // Default value, change as needed
-
     public HtmlElement $htmlElement;
 
-    public function __construct(HTMLElement $htmlElement) {
+    private static ?string $qualifiedName = null; // Default value, change as needed
+
+    public function __construct(HTMLElement $htmlElement)
+    {
         $this->htmlElement = $htmlElement;
     }
 
@@ -24,7 +26,9 @@ class HTMLElementDelegator
             $method->setAccessible(true);
             return $method->invokeArgs($this->htmlElement, $arguments);
         }
-        throw new \BadMethodCallException("Method $name does not exist on " . $reflection->getName() . ". However you cna implement it on " . __CLASS__);
+        throw new \BadMethodCallException(
+            "Method {$name} does not exist on " . $reflection->getName() . '. However you cna implement it on ' . __CLASS__
+        );
     }
 
     public function __get($name)
@@ -35,10 +39,12 @@ class HTMLElementDelegator
             $property->setAccessible(true);
             return $property->getValue($this->htmlElement);
         }
-        throw new \InvalidArgumentException("Property $name does not exist on " . $reflection->getName() . ". However you cna implement it on " . __CLASS__);
+        throw new \InvalidArgumentException(
+            "Property {$name} does not exist on " . $reflection->getName() . '. However you cna implement it on ' . __CLASS__
+        );
     }
 
-    public function __set($name, $value) : void
+    public function __set($name, $value): void
     {
         // Transform Enum values to their underlying value
         if ($value instanceof BackedEnum) {
@@ -56,9 +62,12 @@ class HTMLElementDelegator
         $this->htmlElement->setAttribute($name, $value);
     }
 
-    /** this is what I wrote all this for, in order to being able to add functionality, like cutsom methods */
-    public function __toString(): string {
-        /**@var Document $ownerDocument  */
+    /**
+     * this is what I wrote all this for, in order to being able to add functionality, like cutsom methods
+     */
+    public function __toString(): string
+    {
+        /** @var Document $ownerDocument */
         $ownerDocument = $this->htmlElement->ownerDocument;
         return (string) $ownerDocument->saveHtml($this->htmlElement);
     }
@@ -79,7 +88,7 @@ class HTMLElementDelegator
 
     public function hasAttributes(): bool
     {
-        return !empty($this->htmlElement->attributes);
+        return ! empty($this->htmlElement->attributes);
     }
 
     public function attributes(): Traversable
@@ -94,5 +103,37 @@ class HTMLElementDelegator
         $qualifiedName = $className::$qualifiedName;
         $coreElement = $dom->htmlDocument->createElement($qualifiedName);
         return new $className($coreElement);
+    }
+
+    /**
+     * If the parent element of RubyParenthesis can have multiple RubyParenthesis children
+     */
+    public function isUniquePerParent(): bool
+    {
+        return false;
+    }
+
+    /**
+     * If an HTML document can only have one RubyParenthesis element
+     */
+    public function isUnique(): bool
+    {
+        return false;
+    }
+
+    /**
+     * Get the qualified name of the RubyParenthesis element
+     */
+    public static function getQualifiedName(): string
+    {
+        return static::$qualifiedName;
+    }
+
+    /**
+     * Get the list if allowed parent elements of RubyParenthesis. Empty array means: no restriction
+     */
+    public static function isChildOf(): array
+    {
+        return static::$childOf;
     }
 }

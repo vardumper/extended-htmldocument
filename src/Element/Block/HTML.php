@@ -14,10 +14,31 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-final class HTML extends BlockElement
+class HTML extends BlockElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'html';
 
-    /* Specifies the address of the document's cache manifest. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = true;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent element classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * Specifies the address of the document's cache manifest.
+     */
     public ?string $manifest;
 }

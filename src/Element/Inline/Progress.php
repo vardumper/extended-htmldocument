@@ -14,13 +14,36 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class Progress extends InlineElement
+class Progress extends InlineElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'progress';
 
-    /* Specifies the maximum value for an input element, meter, or progress element. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * Specifies the maximum value for an input element, meter, or progress element.
+     */
     public ?int $max;
 
-    /* Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
+    /**
+     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
+     */
     public ?string $value;
 }

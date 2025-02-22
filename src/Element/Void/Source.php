@@ -15,22 +15,47 @@ namespace Html\Element\Void;
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-final class Source extends VoidElement
+class Source extends VoidElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'source';
 
-    /* Specifies the media type for which the linked resource or style sheet is intended. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * Specifies the media type for which the linked resource or style sheet is intended.
+     */
     public ?string $media;
 
-    /* Specifies the sizes of the images or icons for different display/window sizes. */
+    /**
+     * Specifies the sizes of the images or icons for different display/window sizes.
+     */
     public ?string $sizes;
 
-    /*
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
      * @required
      */
     public string $src;
 
-    /* Specifies the media type of the linked resource. */
+    /**
+     * Specifies the media type of the linked resource.
+     */
     public ?TypeEnum $type;
 }

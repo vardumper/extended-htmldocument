@@ -15,17 +15,39 @@ namespace Html\Element\Void;
 use Html\Enum\TargetEnum;
 use Html\Model\VoidElement;
 
-final class Base extends VoidElement
+class Base extends VoidElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'base';
 
-    /*
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = true;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    /**
+     * Allowed parent elements of Base
+     */
+    public static array $childOf = [Head::class];
+
+    /**
      * Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.
      * @required
      */
     public string $href;
 
-    /*
+    /**
      * Specifies where to open the linked document.
      * @example _self
      */

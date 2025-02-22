@@ -17,37 +17,69 @@ use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\TypeEnum;
 use Html\Model\VoidElement;
 
-final class Script extends VoidElement
+class Script extends VoidElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'script';
 
-    /* When present, it specifies that the script will be executed asynchronously as soon as it is available. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * When present, it specifies that the script will be executed asynchronously as soon as it is available.
+     */
     public ?bool $async;
 
-    /* Specifies the character encoding for the resource. */
+    /**
+     * Specifies the character encoding for the resource.
+     */
     public ?string $charset;
 
-    /*  */
     public ?CrossoriginEnum $crossorigin;
 
-    /* When present, it specifies that the script should be executed after the page has been parsed. */
+    /**
+     * When present, it specifies that the script should be executed after the page has been parsed.
+     */
     public ?bool $defer;
 
-    /* Specifies the integrity value of a resource. */
+    /**
+     * Specifies the integrity value of a resource.
+     */
     public ?string $integrity;
 
-    /* Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks. */
+    /**
+     * Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks.
+     */
     public ?string $nonce;
 
-    /* Specifies the referrer policy for fetches initiated by the element. */
+    /**
+     * Specifies the referrer policy for fetches initiated by the element.
+     */
     public ?ReferrerpolicyEnum $referrerpolicy;
 
-    /*
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
      * @required
      */
     public string $src;
 
-    /* Specifies the media type of the linked resource. */
+    /**
+     * Specifies the media type of the linked resource.
+     */
     public ?TypeEnum $type;
 }

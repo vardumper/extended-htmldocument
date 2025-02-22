@@ -14,7 +14,26 @@ namespace Html\Element\Block;
 
 use Html\Model\BlockElement;
 
-final class Figure extends BlockElement
+class Figure extends BlockElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'figure';
+
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent element classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
 }

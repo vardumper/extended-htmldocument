@@ -14,7 +14,29 @@ namespace Html\Element\Void;
 
 use Html\Model\VoidElement;
 
-final class Title extends VoidElement
+class Title extends VoidElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'title';
+
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = true;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    /**
+     * Allowed parent elements of Title
+     */
+    public static array $childOf = [Head::class];
 }

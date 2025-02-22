@@ -14,10 +14,31 @@ namespace Html\Element\Inline;
 
 use Html\Model\InlineElement;
 
-final class Time extends InlineElement
+class Time extends InlineElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'time';
 
-    /* Specifies the date and time of the change in the format 'YYYY-MM-DDThh:mm:ss' or a subset of it. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * Specifies the date and time of the change in the format 'YYYY-MM-DDThh:mm:ss' or a subset of it.
+     */
     public ?string $datetime;
 }

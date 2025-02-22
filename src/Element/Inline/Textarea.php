@@ -16,43 +16,80 @@ use Html\Enum\AutocompleteEnum;
 use Html\Enum\WrapEnum;
 use Html\Model\InlineElement;
 
-final class Textarea extends InlineElement
+class Textarea extends InlineElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'textarea';
 
-    /*  */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
     public ?AutocompleteEnum $autocomplete;
 
-    /* Specifies the visible width of a text area, in average character widths. */
+    /**
+     * Specifies the visible width of a text area, in average character widths.
+     */
     public ?int $cols;
 
-    /* Specifies the direction of the text. */
+    /**
+     * Specifies the direction of the text.
+     */
     public ?string $dirname;
 
-    /* When present, it specifies that an input element should be disabled. */
+    /**
+     * When present, it specifies that an input element should be disabled.
+     */
     public ?bool $disabled;
 
-    /* Specifies the maximum number of characters allowed in an input field. */
+    /**
+     * Specifies the maximum number of characters allowed in an input field.
+     */
     public ?int $maxlength;
 
-    /* Specifies the minimum number of characters required in an input field. */
+    /**
+     * Specifies the minimum number of characters required in an input field.
+     */
     public ?int $minlength;
 
-    /* Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /**
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     */
     public ?string $name;
 
-    /* Specifies a short hint that describes the expected value of an input field. */
+    /**
+     * Specifies a short hint that describes the expected value of an input field.
+     */
     public ?string $placeholder;
 
-    /* When present, it specifies that an input element is read-only. */
+    /**
+     * When present, it specifies that an input element is read-only.
+     */
     public ?bool $readonly;
 
-    /* When present, it specifies that an input field must be filled out before submitting the form. */
+    /**
+     * When present, it specifies that an input field must be filled out before submitting the form.
+     */
     public ?bool $required;
 
-    /* Specifies the visible number of lines in a text area. */
+    /**
+     * Specifies the visible number of lines in a text area.
+     */
     public ?int $rows;
 
-    /*  */
     public ?WrapEnum $wrap;
 }

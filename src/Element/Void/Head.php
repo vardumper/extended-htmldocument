@@ -12,9 +12,32 @@
 
 namespace Html\Element\Void;
 
+use Html\Element\Block\HTML;
 use Html\Model\VoidElement;
 
-final class Head extends VoidElement
+class Head extends VoidElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'head';
+
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = true;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    /**
+     * Allowed parent elements of Head
+     */
+    public static array $childOf = [HTML::class];
 }

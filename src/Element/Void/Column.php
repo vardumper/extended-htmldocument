@@ -12,15 +12,42 @@
 
 namespace Html\Element\Void;
 
+use Html\Element\Block\ColumnGroup;
 use Html\Model\VoidElement;
 
-final class Column extends VoidElement
+class Column extends VoidElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'col';
 
-    /* Specifies the number of columns the <col> element should span in a table. */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent classes. Any if empty.
+     * @var array<string>
+     */
+    /**
+     * Allowed parent elements of Column
+     */
+    public static array $childOf = [ColumnGroup::class];
+
+    /**
+     * Specifies the number of columns the <col> element should span in a table.
+     */
     public ?int $span;
 
-    /* Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     public ?string $width;
 }

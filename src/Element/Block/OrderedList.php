@@ -15,16 +15,41 @@ namespace Html\Element\Block;
 use Html\Enum\TypeEnum;
 use Html\Model\BlockElement;
 
-final class OrderedList extends BlockElement
+class OrderedList extends BlockElement
 {
+    /**
+     * The HTML element name
+     */
     public static string $qualifiedName = 'ol';
 
-    /* When present, it specifies that the list order should be descending (9,8,7...). */
+    /**
+     * If an element is unique per HTML document
+     */
+    public static bool $unique = false;
+
+    /**
+     * If an element is allowed once its allowed parents
+     */
+    public static bool $uniquePerParent = false;
+
+    /**
+     * The allowed parent element classes. Any if empty.
+     * @var array<string>
+     */
+    public static array $childOf = [];
+
+    /**
+     * When present, it specifies that the list order should be descending (9,8,7...).
+     */
     public ?bool $reversed;
 
-    /* Specifies the starting value of an ordered list. */
+    /**
+     * Specifies the starting value of an ordered list.
+     */
     public ?int $start;
 
-    /* Specifies the media type of the linked resource. */
+    /**
+     * Specifies the media type of the linked resource.
+     */
     public ?TypeEnum $type;
 }
