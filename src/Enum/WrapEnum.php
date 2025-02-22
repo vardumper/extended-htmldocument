@@ -1,20 +1,27 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * WrapEnum - 
- * 
- * @category HTML Attribute
- * @package vardumper/extended-htmldocument
+ * WrapEnum -
+ *
  * @subpackage Html\Enum
  * @link https://github.com/vardumper/ExtendedHTMLDocument
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes//
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/wrap/
  */
 
 namespace Html\Enum;
 
-enum WrapEnum: string {
-    const HARD = 'hard';
-    const OFF = 'off';
-    const SOFT = 'soft';
+enum WrapEnum: string
+{
+    public const HARD = 'hard';
+
+    public const OFF = 'off';
+
+    public const SOFT = 'soft';
+
+    public function getQualifiedName(): string
+    {
+        return 'wrap';
+    }
 }

@@ -1,13 +1,18 @@
 <?php
+
 namespace Html\Element;
 
 use Html\Delegator\HTMLElementDelegator;
 
-class InlineElement extends HTMLElementDelegator
+abstract class InlineElement extends HTMLElementDelegator
 {
-    public CONST STYLABLE = true;
-    public CONST INLINE = true;
-    public CONST BLOCK = false;
-    public CONST VOID = false;
-    public CONST SELF_CLOSING = false; // updated based on determination
+    public const bool STYLABLE = true;
+
+    public const bool INLINE = true;
+
+    public const bool BLOCK = false;
+
+    public const bool VOID = false;
+
+    public const string SELF_CLOSING = self::SELF_CLOSING; // updated based on determination
 }

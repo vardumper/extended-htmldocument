@@ -1,4 +1,5 @@
 <?php
+
 namespace Html\Command;
 
 use Silly\Input\InputArgument;
@@ -10,27 +11,17 @@ use Symfony\Component\Yaml\Yaml;
 use Symplify\EasyCodingStandard\Console\ExitCode;
 
 /**
- * CreateEnumCommand
  * @usage create:enum
  * @description Creates all enumeration classes
- *
  */
 final class CreateEnumCommand extends Command
 {
-    public function configure(): void
-    {
-        $this
-            ->setName('create:component')
-            ->setDescription('Create a new component')
-            ->addArgument('element', InputArgument::OPTIONAL, 'The HTML element name to create a class for');
-    }
-
     public function __invoke(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
 
         $htmlDefinitionPath = getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'definitions' . DIRECTORY_SEPARATOR . 'html5.yaml';
-        if (!is_file($htmlDefinitionPath)) {
+        if (! is_file($htmlDefinitionPath)) {
             $io->error('HTML definition file not found.');
             return ExitCode::FAILURE;
         }
@@ -44,15 +35,21 @@ final class CreateEnumCommand extends Command
 
             $cases = '';
             foreach ($attributes['choices'] as $option) {
-                $cases .= sprintf("    const %s = '%s';", str_replace(['-','/'], '_', strtoupper($option)), $option) . PHP_EOL;
+                $cases .= sprintf(
+                    "    const %s = '%s';",
+                    str_replace(['-', '/'], '_', strtoupper($option)),
+                    $option
+                ) . PHP_EOL;
             }
 
-            $className =  $this->getClassName(ucfirst($element) . 'Enum');
+            $className = $this->getClassName(ucfirst($element) . 'Enum');
             $parameters = [
                 'namespace' => 'Html\Enum',
                 'class_name' => $className, // fixed missing parenthesis
                 'cases' => rtrim($cases),
-                'description' => $attributes['description'], // fixed double dollar sign
+                'description' => $attributes['description'] ?? '', // fixed double dollar sign
+                'element_name' => $element,
+                'defaultValue' => $attributes['defaultValue'] ?? '',
             ];
 
             $path = \getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Enum' . DIRECTORY_SEPARATOR . "{$className}.php"; // corrected variable syntax
@@ -63,12 +60,20 @@ final class CreateEnumCommand extends Command
         }
 
         return ExitCode::SUCCESS;
+    }
 
+    public function configure(): void
+    {
+        $this
+            ->setName('create:component')
+            ->setDescription('Create a new component')
+            ->addArgument('element', InputArgument::OPTIONAL, 'The HTML element name to create a class for');
     }
 
     // Function to find attributes of type 'enum'
     // @todo: consider union types. eg target="framename" | "_self" | "_parent" | "_top" | "_blank"
-    private function findEnumAttributes(array $data): array {
+    private function findEnumAttributes(array $data): array
+    {
         $enumAttributes = [];
 
         foreach ($data as $details) {
@@ -80,8 +85,8 @@ final class CreateEnumCommand extends Command
                 }
             }
         }
-// var_dump($enumAttributes);
-// exit;
+        // var_dump($enumAttributes);
+        // exit;
         return $enumAttributes;
     }
 
@@ -96,9 +101,9 @@ final class CreateEnumCommand extends Command
         \file_put_contents($path, $file);
     }
 
-    private function getClassName(string $classname) : string
+    private function getClassName(string $classname): string
     {
-        $classname = \str_replace(['-','/'], ' ', $classname);
+        $classname = \str_replace(['-', '/'], ' ', $classname);
         $classname = \str_replace(' ', '', ucwords($classname));
         $reserved = [
             '__halt_compiler',

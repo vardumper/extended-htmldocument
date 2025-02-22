@@ -8,9 +8,14 @@ use Html\Command\CreateEnumCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-$app = new Silly\Application();
-$app->command('make:class [element]', function ($element, InputInterface $input, OutputInterface $output) {
+$app = new Silly\Application('Extended HTML Document Generator', '1.0.0 (stable)');
+$app->command('make:extended-htmldocument-classes [element]', function ($element, InputInterface $input, OutputInterface $output) {
     return (new CreateClassCommand())($element, $input, $output);
 })->descriptions('Creates a new PHP class for all or for a given HTML Element');
-$app->command('make:enum', new CreateEnumCommand())->descriptions('Creates a backed enum for all HTML Attributes with a fixed set of choices');
+$app->command('make:extended-htmldocument-enums', new CreateEnumCommand())->descriptions('Creates backed enums for all HTML attributes with a static set of options');
+$app->command('make:extended-htmldocument', function (InputInterface $input, OutputInterface $output) {
+    (new CreateEnumCommand())($input, $output);
+    (new CreateClassCommand())(null, $input, $output);
+})->descriptions('Creates or re-creates all PHP classes for all HTML Elements and backed enums for static HTML attributes');
+$app->setDefaultCommand('make:extended-htmldocument');
 $app->run();

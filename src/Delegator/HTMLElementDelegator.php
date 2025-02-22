@@ -11,6 +11,8 @@ abstract class HTMLElementDelegator implements HTMLElementDelegatorInterface
 {
     public const string QUALIFIED_NAME = self::QUALIFIED_NAME; // Self-referential 'abstract' declaration
 
+    public const string SELF_CLOSING = self::SELF_CLOSING; // Self-referential 'abstract' declaration
+
     public HtmlElement $htmlElement;
 
     public static bool $unique = false; // Default value, change as needed

@@ -1,22 +1,31 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * KindEnum - 
- * 
- * @category HTML Attribute
- * @package vardumper/extended-htmldocument
+ * KindEnum -
+ *
  * @subpackage Html\Enum
  * @link https://github.com/vardumper/ExtendedHTMLDocument
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes//
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/kind/
  */
 
 namespace Html\Enum;
 
-enum KindEnum: string {
-    const CAPTIONS = 'captions';
-    const CHAPTERS = 'chapters';
-    const DESCRIPTIONS = 'descriptions';
-    const METADATA = 'metadata';
-    const SUBTITLES = 'subtitles';
+enum KindEnum: string
+{
+    public const CAPTIONS = 'captions';
+
+    public const CHAPTERS = 'chapters';
+
+    public const DESCRIPTIONS = 'descriptions';
+
+    public const METADATA = 'metadata';
+
+    public const SUBTITLES = 'subtitles';
+
+    public function getQualifiedName(): string
+    {
+        return 'kind';
+    }
 }
