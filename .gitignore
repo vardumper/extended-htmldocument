@@ -1,5 +1,9 @@
 /vendor
 /.history
-.phpunit.result.cache
-cghooks.lock
-.commit
+/.phpunit.result.cache
+/cghooks.lock
+/.commit
+
+# VitePress build output
+/.vitepress/dist
+/node_modules

@@ -5,6 +5,7 @@ export default defineConfig({
   title: "Extended HTMLDocument",
   description: "Documentation",
   base: '/extended-htmldocument/',
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -22,8 +23,13 @@ export default defineConfig({
       }
     ],
 
+    footer: {
+      message: 'Thanks for visiting!',
+      copyright: '© 2025-present Erik Poehler'
+    },
+
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/vardumper/extended-htmldocument' }
     ]
   }
 })

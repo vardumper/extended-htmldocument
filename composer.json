@@ -1,5 +1,12 @@
 {
     "name": "vardumper/extended-htmldocument",
+    "homepage": "https://github.com/vardumper/extended-htmldocument",
+    "description": "ExtendedHTMLDocument is a simple PHP library to add HTML Elements as PHP classes and extends PHP 8.4's DOM\\HTMLDocument class.",
+    "support": {
+        "issues": "https://github.com/vardumper/extended-htmldocument/issues",
+        "docs": "https://vardumper.github.io/extended-htmldocument/",
+        "source": "https://github.com/vardumper/extended-htmldocument"
+    },
     "autoload": {
         "psr-4": {
             "Html\\": "src/"
@@ -71,5 +78,19 @@
         "git-hooks-update": "vendor/bin/cghooks update",
         "phpstan": "phpstan --memory-limit=1G",
         "phpunit": "phpunit --bootstrap vendor/autoload.php"
-    }
+    },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/vardumper"
+        },
+        {
+            "type": "buymeacoffee",
+            "url": "https://www.buymeacoffee.com/vardumper"
+        },
+        {
+            "type": "custom",
+            "url": "https://www.patreon.com/vardumper"
+        }
+    ]
 }

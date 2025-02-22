@@ -4,6 +4,9 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Extended HTMLDocument",
   description: "Documentation",
+  base: '/docs/',
+  lang: 'en-US',
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -20,6 +23,11 @@ export default defineConfig({
         ]
       }
     ],
+
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2025-present Erik Poehler'
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vardumper/extended-htmldocument' }
