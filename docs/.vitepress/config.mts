@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Extended HTMLDocument",
   description: "Documentation",
+  base: '/extended-htmldocument/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
