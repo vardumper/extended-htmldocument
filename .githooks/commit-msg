@@ -22,7 +22,7 @@ if [[ $commit_number_of_parents < 2 ]]; then
   commit_msg=$(cat "$commit_msg_file")
 
   # Regular expression pattern for conventional commit format
-  pattern="^(build|ci|docs|feat|fix|perf|refactor|style|test|chore|revert|release|BREAKING CHANGE)(\(.+\))?: .{1,}"
+  pattern="^(build|ci|docs|feat|fix|perf|refactor|style|test|chore|revert|wip|release|BREAKING CHANGE)(\(.+\))?: .{1,}"
 
   # Check if the commit message matches the pattern
   if [[ ! $commit_msg =~ $pattern ]]; then

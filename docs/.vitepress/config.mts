@@ -10,15 +10,25 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Examples', link: '/usage-examples' }
     ],
 
     sidebar: [
       {
-        text: 'Examples',
+        text: 'Getting Started',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'Introduction', link: '/intro' },
+          { text: 'Installation', link: '/install' },
+          { text: 'Element Classes', link: '/elements' },
+          { text: 'HTML5 Specification', link: '/html5' },
+          { text: 'Code Generation', link: '/code-generation' } // adding 'Code Generation'
+        ]
+      },
+      {
+        text: 'Usage',
+        items: [
+          { text: 'Examples', link: '/examples' },
+          { text: 'Advanced Examples', link: '/advanced-examples' },
         ]
       }
     ],

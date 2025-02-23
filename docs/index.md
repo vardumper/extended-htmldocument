@@ -5,20 +5,20 @@ footer: true
 hero:
   name: "Extended HTMLDocument"
   text: "Documentation"
-  tagline: My great project tagline
+  tagline: "This library provides a way to work with HTML elements in PHP, offering an object-oriented approach that aligns with the HTML5 specifications."
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Getting Started
+      link: /intro
     - theme: alt
       text: Usage Examples
       link: /usage-examples
 
-features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+# features:
+#   - title: Easy to Use PHP Classes
+#     details: The goal of this library is to support automatic code generation for design systems and component libraries such as Storybook or Pattern Lab.<br>In the future it should be possible to transform a elements or documents into Twig, React and other templates.
+#   - title: Added Functionality
+#     details: 'Access element attributes directly. For example <samp>$anchor->title</samp> or <samp>$image->srcset</samp> without the need for getAttribute.'
+#   - title: Element Methods
+#     details: 'New methods make working with HTML elements easier. For example: <samp>__toString()</samp>, <samp>setAttributes()</samp>, <samp>isUniquePerParent()</samp>, <samp>childOf()</samp>, <samp>parentOf()</samp>, <samp>isSelfClosing()</samp> and more.'
 ---
