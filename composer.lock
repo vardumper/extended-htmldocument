@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e65ee5e459ce1e9d5a1c915ec61c65ec",
+    "content-hash": "349ed97c83bd9fae73ca00e525e3ac25",
     "packages": [
         {
             "name": "mnapoli/silly",
@@ -1429,16 +1429,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v3.69.1",
+            "version": "v3.70.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer.git",
-                "reference": "13b0c0eede38c11cd674b080f2b485d0f14ffa9f"
+                "reference": "2ecd5aae0edc937f0d5aa4a22d1d705c6b2e084e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/13b0c0eede38c11cd674b080f2b485d0f14ffa9f",
-                "reference": "13b0c0eede38c11cd674b080f2b485d0f14ffa9f",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/PHP-CS-Fixer/zipball/2ecd5aae0edc937f0d5aa4a22d1d705c6b2e084e",
+                "reference": "2ecd5aae0edc937f0d5aa4a22d1d705c6b2e084e",
                 "shasum": ""
             },
             "require": {
@@ -1520,7 +1520,7 @@
             ],
             "support": {
                 "issues": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues",
-                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.69.1"
+                "source": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/tree/v3.70.0"
             },
             "funding": [
                 {
@@ -1528,7 +1528,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-18T23:57:43+00:00"
+            "time": "2025-02-22T23:30:51+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -2148,16 +2148,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "12.0.3",
+            "version": "12.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "df170d66e1dbb8ff0f21c9be2e7d7726bebc57ed"
+                "reference": "e469daf4e173c4b7f2d6154d364f468f3713f632"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/df170d66e1dbb8ff0f21c9be2e7d7726bebc57ed",
-                "reference": "df170d66e1dbb8ff0f21c9be2e7d7726bebc57ed",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e469daf4e173c4b7f2d6154d364f468f3713f632",
+                "reference": "e469daf4e173c4b7f2d6154d364f468f3713f632",
                 "shasum": ""
             },
             "require": {
@@ -2167,11 +2167,11 @@
                 "ext-mbstring": "*",
                 "ext-xml": "*",
                 "ext-xmlwriter": "*",
-                "myclabs/deep-copy": "^1.12.1",
+                "myclabs/deep-copy": "^1.13.0",
                 "phar-io/manifest": "^2.0.4",
                 "phar-io/version": "^3.2.1",
                 "php": ">=8.3",
-                "phpunit/php-code-coverage": "^12.0.2",
+                "phpunit/php-code-coverage": "^12.0.3",
                 "phpunit/php-file-iterator": "^6.0.0",
                 "phpunit/php-invoker": "^6.0.0",
                 "phpunit/php-text-template": "^5.0.0",
@@ -2225,7 +2225,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.0.3"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.0.4"
             },
             "funding": [
                 {
@@ -2241,7 +2241,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-02-18T06:28:55+00:00"
+            "time": "2025-02-21T06:10:40+00:00"
         },
         {
             "name": "psr/event-dispatcher",
