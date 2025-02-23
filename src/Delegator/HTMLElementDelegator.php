@@ -9,9 +9,7 @@ use Html\Interface\HTMLElementDelegatorInterface;
 
 class HTMLElementDelegator implements HTMLElementDelegatorInterface
 {
-    public const string QUALIFIED_NAME = self::QUALIFIED_NAME; // Self-referential 'abstract' declaration
-
-    public const string SELF_CLOSING = self::SELF_CLOSING; // Self-referential 'abstract' declaration
+    // public const string SELF_CLOSING = self::SELF_CLOSING; // Self-referential 'abstract' declaration
 
     public HtmlElement $htmlElement;
 
@@ -104,7 +102,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     public static function create(HTMLDocumentDelegator $dom): self
     {
         $className = static::class;
-        $qualifiedName = $className::QUALIFIED_NAME;
+        $qualifiedName = $className::getQualifiedName();
         $coreElement = $dom->htmlDocument->createElement($qualifiedName);
         return new $className($coreElement);
     }

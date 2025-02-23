@@ -3,7 +3,7 @@
 namespace Tests;
 
 use Html\Delegator\HTMLDocumentDelegator;
-use Html\Element\Inline\Anchor as InlineAnchor;
+use Html\Element\Inline\Anchor;
 use Html\Enum\TargetEnum;
 use PHPUnit\Framework\TestCase;
 
@@ -28,7 +28,7 @@ final class HTMLDocumentDelegatorTest extends TestCase
         $element->id = 'test-id';
         $element->textContent = $value;
 
-        $dom->body->appendChild($element->htmlElement);
+        $dom->appendChild($element->htmlElement);
 
         $this->assertStringContainsString('test-class secondary', $dom->saveHtml());
         $this->assertStringContainsString('test-id', $dom->saveHtml()); // id present
@@ -44,11 +44,9 @@ final class HTMLDocumentDelegatorTest extends TestCase
 
     public function testCreateAnchor()
     {
-        $dom = HTMLDocumentDelegator::createFromString('<!doctype html><html><head></head><body></body></html>');
-        $body = $dom->getElementsByTagName('body')
-            ->item(0);
+        $dom = HTMLDocumentDelegator::createEmpty();
 
-        $anchor = InlineAnchor::create($dom);
+        $anchor = Anchor::create($dom);
         $anchor->id = 'main-anchor';
         $anchor->setAttributes([
             'href' => 'https://www.example.com',
@@ -56,13 +54,9 @@ final class HTMLDocumentDelegatorTest extends TestCase
             'rel' => 'noopener',
             'target' => TargetEnum::_BLANK,
         ]);
-        $anchor->hasAttributes();
-        $anchor->
-        // $anchor->target = TargetEnum::BLANK;
-        // $anchor->target = '_blank';
-        {$anchor}->textContent = 'This is a test element.';
+        $anchor->textContent = 'This is a test element.';
 
-        $body->appendChild($anchor->htmlElement);
+        $dom->appendChild($anchor->htmlElement);
 
         $this->assertStringContainsString('main-anchor', $dom->saveHtml());
         $this->assertStringContainsString('_blank', $dom->saveHtml());
