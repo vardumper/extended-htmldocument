@@ -8,6 +8,11 @@ use Html\Command\CreateEnumCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+$alreadyLoadedAutoloadFiles = [];
+includeCwdVendorAutoloadIfExists($alreadyLoadedAutoloadFiles);
+autoloadProjectAutoloaderFile('/../../autoload.php', $alreadyLoadedAutoloadFiles);
+includeDependencyOrRepositoryVendorAutoloadIfExists($alreadyLoadedAutoloadFiles);
+
 $app = new Silly\Application('Extended HTML Document Generator', '1.0.0 (stable)');
 $app->command('make:extended-htmldocument-classes [element]', function ($element, InputInterface $input, OutputInterface $output) {
     return (new CreateClassCommand())($element, $input, $output);

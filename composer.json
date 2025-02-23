@@ -10,7 +10,10 @@
     "autoload": {
         "psr-4": {
             "Html\\": "src/"
-        }
+        },
+        "files": [
+            "bootstrap.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
