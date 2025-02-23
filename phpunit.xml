@@ -9,19 +9,19 @@
         <ini name="error_reporting" value="-1"/>
     </php>
     <coverage>
-        <include>
-            <directory suffix=".php">src</directory>
-        </include>
-        <exclude>
-            <directory suffix=".php">tests</directory>
-            <directory suffix=".php">vendor</directory>
-            <file>ecs.php</file>
-            <file>bootstrap.php</file>
-        </exclude>
         <filter>
             <whitelist>
                 <directory suffix=".php">src</directory>
             </whitelist>
+            <include>
+                <directory suffix=".php">src</directory>
+            </include>
+            <exclude>
+                <directory suffix=".php">tests</directory>
+                <directory suffix=".php">vendor</directory>
+                <file>ecs.php</file>
+                <file>bootstrap.php</file>
+            </exclude>
         </filter>
     </coverage>
 </phpunit>
