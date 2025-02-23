@@ -7,7 +7,7 @@ use DOM\Document;
 use DOM\HtmlElement;
 use Html\Interface\HTMLElementDelegatorInterface;
 
-abstract class HTMLElementDelegator implements HTMLElementDelegatorInterface
+class HTMLElementDelegator implements HTMLElementDelegatorInterface
 {
     public const string QUALIFIED_NAME = self::QUALIFIED_NAME; // Self-referential 'abstract' declaration
 
