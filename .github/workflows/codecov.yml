@@ -15,6 +15,9 @@ jobs:
       - name: Run tests and collect coverage
         run: vendor/bin/phpunit --coverage-clover coverage.xml ./src ./tests
         continue-on-error: true
+      - name: Output coverage
+        run: tail -n 100 coverage.xml
+        continue-on-error: true
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
