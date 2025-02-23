@@ -72,28 +72,4 @@ At the same time, we are able to add new methods, which is the main goal of this
 ## Real world use cases
 The goal of this library is to provide a way to transform HTML5 standards-compliant HTML documents and/or document fragments (so called atoms, molecules, organisms and components) into different templating engines or frontend technologies, such as Twig, React, Vue or others.
 
-See the [advanced usage examples]() for some real-world PHP code.
-
-Imagine the following format for teaser molecule and a teaser_container organism:
-
-```yaml
-molecules:
-  teaser:
-    heading3: Teaser Headline
-    image:
-      src: https://via.placeholder.com/150
-      alt: Placeholder Image
-    paragraph: This is a teaser paragraph that gives a brief introduction to the content. It is meant to capture attention and encourage further reading.
-    anchor:
-      href: '#'
-      role: button
-      class: primary
-
-organisms:
-    teaser_container:
-      div:
-        class: grid
-        '@molecules.teaser'
-        '@molecules.teaser'
-        '@molecules.teaser'
-```
+See the [advanced usage examples](./advanced-examples/) for some real-world PHP code.
