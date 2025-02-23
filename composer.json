@@ -60,7 +60,7 @@
         }
     },
     "bin": [
-        "bin/extended-htmldocument"
+        "bin/ext-html"
     ],
     "scripts": {
         "post-create-project-cmd": [

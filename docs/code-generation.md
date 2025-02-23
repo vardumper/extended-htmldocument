@@ -17,17 +17,17 @@ make
 
 To re-generate all Enum classes, run
 ```bash
-php vendor/bin/extended-htmldocument make:enum
+php vendor/bin/ext-html make:enum
 ```
 
 ### Single Element
 To re-generate one Element class, eg. `Element\Inline\Anchor` class run
 ```bash
-php vendor/bin/extended-htmldocument make:class a
+php vendor/bin/ext-html make:class a
 ```
 
 ### All Elements
 To re-generate all classes, use the command without specifying an element name:
 ```bash
-php vendor/bin/extended-htmldocument make:class
+php vendor/bin/ext-html make:class
 ```
