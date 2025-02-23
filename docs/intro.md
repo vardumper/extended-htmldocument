@@ -10,7 +10,7 @@ If you want to use the components in a different technology, you have to rewrite
 By establishing an easy-to-read and easy-to-use YAML format which describes your components, you can have PHP generate the design system components for you.
 This is where this library comes into play. It aims to provide a way to create standards-compliant HTML5 documents or document fragments (like atoms, molecules, organisms and components) and automatically generate different output formats for you.
 That said, the only output format provided by this library will be HTML5. However, this library uses Language Providers to support output into other formats, such as Twig, React, Vue, and others.
-Learn how you can generate components for Twig, React, Vue and others and in the [Advanced Usage Examples](/extended-htmldocument/advanced-examples) section.
+Learn how you can generate components for Twig, React, Vue and others and in the [Advanced Usage Examples](./advanced-examples) section.
 
 
 <!-- ## Use cases
