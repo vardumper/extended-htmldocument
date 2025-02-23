@@ -1,5 +1,5 @@
 # Extended HTML Document Library
-
+[![Vulnerabilities for extended-htmldocument](https://snyk.io/test/github/vardumper/extended-htmldocument/badge.svg)](https://snyk.io/test/github/vardumper/extended-htmldocument)
 ## TL;DR
 This library provides a way to work with HTML elements in PHP, offering an object-oriented approach that aligns with the HTML5 specifications.
 It also provides a way to generate PHP classes for HTML elements based on the HTML5 specifications.
