@@ -20,7 +20,7 @@ final class CreateEnumCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $htmlDefinitionPath = getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'definitions' . DIRECTORY_SEPARATOR . 'html5.yaml';
+        $htmlDefinitionPath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'definitions' . DIRECTORY_SEPARATOR . 'html5.yaml';
         if (! is_file($htmlDefinitionPath)) {
             $io->error('HTML definition file not found.');
             return ExitCode::FAILURE;
@@ -52,8 +52,8 @@ final class CreateEnumCommand extends Command
                 'defaultValue' => $attributes['defaultValue'] ?? '',
             ];
 
-            $path = \getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Enum' . DIRECTORY_SEPARATOR . "{$className}.php"; // corrected variable syntax
-            $templatePath = \getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'Enum.tpl.php';
+            $path = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Enum' . DIRECTORY_SEPARATOR . "{$className}.php"; // corrected variable syntax
+            $templatePath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'Enum.tpl.php';
             $this->createEnumFile($templatePath, $parameters, $path);
             $io->success("Enumeration class for '{$element}' created successfully.");
             // die;
@@ -71,7 +71,7 @@ final class CreateEnumCommand extends Command
     }
 
     // Function to find attributes of type 'enum'
-    // @todo: consider union types. eg target="framename" | "_self" | "_parent" | "_top" | "_blank"
+    // @todo: consider union types. eg target="framename"|"_self"
     private function findEnumAttributes(array $data): array
     {
         $enumAttributes = [];

@@ -2,6 +2,7 @@
 
 namespace Html\Command;
 
+use Html\Helper\Helper;
 use Silly\Input\InputArgument;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -27,7 +28,7 @@ final class CreateClassCommand extends Command
 
         $elements = [];
 
-        $htmlDefinitionPath = getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'definitions' . \DIRECTORY_SEPARATOR . 'html5.yaml';
+        $htmlDefinitionPath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'definitions' . \DIRECTORY_SEPARATOR . 'html5.yaml';
         if (! is_file($htmlDefinitionPath)) {
             $io->error('HTML definition file not found.');
             return Command::FAILURE;
@@ -57,7 +58,7 @@ final class CreateClassCommand extends Command
             $defaultValue = $this->data[$element]['default'] ?? '';
             $attributes = $this->data[$element]['attributes'] ?? [];
             $fileName = $className . '.php';
-            $path = \sprintf('src/Element/%s/%s', \ucfirst($level), $fileName);
+            $path = \sprintf('Element/%s/%s', \ucfirst($level), $fileName);
 
             $this->uses[] = \sprintf("Html\Element\%sElement", \ucfirst($level)); // extends
 
@@ -83,7 +84,7 @@ final class CreateClassCommand extends Command
                 'self_closing' => $self_closing,
             ];
 
-            $templatePath = \getcwd() . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . \ucfirst(
+            $templatePath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . \ucfirst(
                 $level
             ) . 'Element.tpl.php';
             $this->createClassFile($templatePath, $parameters, $path);
@@ -96,7 +97,7 @@ final class CreateClassCommand extends Command
 
     public function resolveParents(array $qualifiedNames): array
     {
-        $qualifiedNames = array_filter($qualifiedNames, 'strlen');
+        $qualifiedNames = array_filter($qualifiedNames, fn ($value) => strlen($value) > 0);
         $parents = [];
         foreach ($qualifiedNames as $qualifiedName) {
             $className = $this->getClassName(\str_replace(' ', '', \ucfirst($this->data[$qualifiedName]['name'])));
@@ -109,7 +110,7 @@ final class CreateClassCommand extends Command
 
     public function resolveChildren(array $qualifiedNames): array
     {
-        $qualifiedNames = array_filter($qualifiedNames, 'strlen');
+        $qualifiedNames = array_filter($qualifiedNames, fn ($value) => strlen($value) > 0);
         $children = [];
         foreach ($qualifiedNames as $qualifiedName) {
             $className = $this->getClassName(\str_replace(' ', '', \ucfirst($this->data[$qualifiedName]['name'])));
@@ -136,7 +137,7 @@ final class CreateClassCommand extends Command
         include $templatePath;
 
         $file = \ob_get_clean();
-        \file_put_contents($path, $file);
+        \file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $path, $file);
     }
 
     private function getAttributes(array $attributes): string
@@ -199,7 +200,7 @@ final class CreateClassCommand extends Command
         }
         $comment = '/** ';
 
-        if (\count($lines) > 1) {
+        if (\count($lines) > 2) {
             $comment .= PHP_EOL . '     * ' . \implode(PHP_EOL . '     * ', $lines);
         } else {
             $comment .= $lines[0];
@@ -260,96 +261,7 @@ final class CreateClassCommand extends Command
 
     private function getClassName(string $classname): string
     {
-        $reserved = [
-            '__halt_compiler',
-            'abstract',
-            'and',
-            'array',
-            'as',
-            'break',
-            'callable',
-            'case',
-            'catch',
-            'class',
-            'clone',
-            'const',
-            'continue',
-            'declare',
-            'default',
-            'die',
-            'do',
-            'echo',
-            'else',
-            'elseif',
-            'empty',
-            'enddeclare',
-            'endfor',
-            'endforeach',
-            'endif',
-            'endswitch',
-            'endwhile',
-            'eval',
-            'exit',
-            'extends',
-            'final',
-            'finally',
-            'for',
-            'foreach',
-            'function',
-            'global',
-            'goto',
-            'if',
-            'implements',
-            'include',
-            'include_once',
-            'instanceof',
-            'insteadof',
-            'interface',
-            'isset',
-            'list',
-            'namespace',
-            'new',
-            'or',
-            'print',
-            'private',
-            'protected',
-            'public',
-            'require',
-            'require_once',
-            'return',
-            'static',
-            'switch',
-            'throw',
-            'trait',
-            'try',
-            'unset',
-            'use',
-            'var',
-            'while',
-            'xor',
-            'yield',
-            '__CLASS__',
-            '__DIR__',
-            '__FILE__',
-            '__FUNCTION__',
-            '__LINE__',
-            '__METHOD__',
-            '__NAMESPACE__',
-            '__TRAIT__',
-            'int',
-            'float',
-            'bool',
-            'string',
-            'mixed',
-            'void',
-            'null',
-            'true',
-            'false',
-            'iterable',
-            'resource',
-            'numeric',
-            'object',
-        ];
+        $reserved = Helper::getReservedWords();
         if (\in_array(\strtolower($classname), $reserved)) {
             return $classname . 'Element';
         }
