@@ -19,27 +19,36 @@ $anchor->setAttributes([
     'target' => Html\Enum\TargetEnum::_BLANK
 ]);
 echo $anchor;
-// same as $anchor->__toString();
+// or: $anchor->__toString();
 ```
 
-In the example above, we make use of three new methods HTMLElementDelegator `create()`, `setAttributes()` and `__toString()` as well as BackedEnums for static values.
+In the example above, we're passing an instance of the HTMLDocumentDelegator to the create method, which  we make use of three new methods HTMLElementDelegator `create()`, `setAttributes()` and `__toString()` as well as BackedEnums for static values.
 
-The output is
+The output will be this:
 ```html{4}
-<a href="https://www.example.com" rel="noopener" target="_blank">This is a test link.</a>
+<a href="https://www.example.com" rel="noopener" target="_blank">
+    This is a test link.
+</a>
 ```
 
 ### Creating in the HTMLDocumentDelegator
-In this example we make use of the `HTMLDocument` to create an element.
+In this example we make use of the `HTMLDocumentDelegator` to create an element.
 
 ```php
 $dom = Html\Delegator\HTMLDocumentDelegator::createEmpty();
 
-$div = $dom->createElement('div');
-$div->textContent = 'This is a dynamic div element.';
+$div = $dom->createElement('div', 'This is a div element.');
 $div->setAttributes([
-    'class' => 'dynamic-div',
-    'id' => 'dynamicDiv'
+    'class' => 'container',
+    'id' => 'my-id',
 ]);
-echo $div; // same as $div->__toString();
+echo $div;
+// or: $div->__toString();
+```
+
+The output will be this:
+```html{4}
+<div id="my-id" class="container">
+    This is a div element.
+</div>
 ```

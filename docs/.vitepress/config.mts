@@ -27,7 +27,7 @@ export default defineConfig({
       {
         text: 'Usage',
         items: [
-          { text: 'Examples', link: '/examples' },
+          { text: 'Examples', link: '/usage-examples' },
           { text: 'Advanced Examples', link: '/advanced-examples' },
         ]
       }
