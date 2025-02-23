@@ -1,15 +1,15 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * HorizontalRule - The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.
- *
+ * 
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
@@ -41,30 +41,30 @@ class HorizontalRule extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [];
+    public static array $childOf = [
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies the horizontal alignment of the element.
-     */
+
+    /** Specifies the horizontal alignment of the element. */
     public ?AlignEnum $align;
 
+    /**  */
     public ?string $color;
 
+    /**  */
     public ?bool $noshade;
 
-    /**
-     * Specifies the height of a hr element in pixels.
-     */
+    /** Specifies the height of a hr element in pixels. */
     public ?int $size;
 
-    /**
-     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
-     */
+    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width;
+
 }

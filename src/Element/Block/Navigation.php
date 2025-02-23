@@ -1,15 +1,15 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Navigation - The nav element represents a section of a page whose purpose is to provide navigation links, either within the current document or to other documents.
- *
+ * 
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
@@ -42,7 +42,8 @@ class Navigation extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [];
+    public static array $childOf = [
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -57,4 +58,6 @@ class Navigation extends BlockElement
         Small::class,
         Strong::class,
     ];
+
+
 }

@@ -25,7 +25,6 @@
     ],
     "require": {
         "mnapoli/silly": "^1.9.1",
-        "spatie/invade": "^2.1",
         "symfony/yaml": "^7.2.3"
     },
     "config": {

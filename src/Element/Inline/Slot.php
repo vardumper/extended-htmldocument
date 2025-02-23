@@ -1,15 +1,15 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Slot - The slot element is a placeholder inside a web component that you can fill with your own markup, which lets you create separate DOM trees and present them together.
- *
+ * 
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\Block\DefinitionList;
@@ -31,6 +31,11 @@ use Html\Element\Block\Summary;
 use Html\Element\Block\Table;
 use Html\Element\Block\UnorderedList;
 use Html\Element\InlineElement;
+use Html\Element\Inline\Anchor;
+use Html\Element\Inline\Button;
+use Html\Element\Inline\Input;
+use Html\Element\Inline\Select;
+use Html\Element\Inline\Textarea;
 
 class Slot extends InlineElement
 {
@@ -53,7 +58,8 @@ class Slot extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [];
+    public static array $childOf = [
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
@@ -85,8 +91,8 @@ class Slot extends InlineElement
         UnorderedList::class,
     ];
 
-    /**
-     * Specifies the name associated with the element. The meaning may vary depending on the context.
-     */
+
+    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
     public ?string $name;
+
 }

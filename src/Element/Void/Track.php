@@ -1,15 +1,15 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Track - The track element is used as a child of the media elements—audio and video. It lets you specify timed text tracks (or time-based data), for example to automatically handle subtitles. The tracks are formatted in WebVTT format (.vtt files) — Web Video Text Tracks.
- *
+ * 
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track
  */
-
 namespace Html\Element\Void;
 
 use Html\Element\VoidElement;
@@ -41,34 +41,34 @@ class Track extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [];
+    public static array $childOf = [
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
+     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies that the track should be enabled by default when the page loads.
-     */
+    /** Specifies that the track should be enabled by default when the page loads. */
     public ?bool $default;
 
+    /**  */
     public ?KindEnum $kind;
 
-    /**
-     * Specifies a label for the associated form control, option group, or option.
-     */
+    /** Specifies a label for the associated form control, option group, or option. */
     public ?string $label;
 
-    /**
+    /** 
      * Specifies the URL of the external resource to be embedded or referenced.
+     * @category HTML attribute
      * @required
      */
     public string $src;
 
-    /**
-     * Specifies the language of the track text data.
-     */
+    /** Specifies the language of the track text data. */
     public ?string $srclang;
+
 }

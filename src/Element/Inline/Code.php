@@ -1,15 +1,15 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Code - The code element represents a fragment of computer code. This could be an XML element name, a filename, a computer program, or any other string that a computer would recognize.
- *
+ * 
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\InlineElement;
@@ -35,11 +35,15 @@ class Code extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [];
+    public static array $childOf = [
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
+
+
 }

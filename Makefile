@@ -16,4 +16,4 @@ check-php:
 	fi
 
 run-extended-htmldocument:
-	@php bin/console make:extended-htmldocument
+	@php bin/ext-html make:extended-htmldocument

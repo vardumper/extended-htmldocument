@@ -1,18 +1,19 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * DataList - The datalist element contains a set of option elements that represent the permissible or recommended options available to users.
- *
+ * 
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Option;
 
 class DataList extends BlockElement
 {
@@ -35,11 +36,16 @@ class DataList extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [];
+    public static array $childOf = [
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [Option::class];
+    public static array $parentOf = [
+        Option::class,
+    ];
+
+
 }

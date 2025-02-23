@@ -1,18 +1,20 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Fieldset - The fieldset element represents a set of form controls optionally grouped under a common name.
- *
+ * 
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\DataList;
+use Html\Element\Block\Legend;
 use Html\Element\Inline\Button;
 use Html\Element\Inline\Input;
 use Html\Element\Inline\Label;
@@ -43,7 +45,8 @@ class Fieldset extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [];
+    public static array $childOf = [
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -61,4 +64,6 @@ class Fieldset extends BlockElement
         Select::class,
         Textarea::class,
     ];
+
+
 }

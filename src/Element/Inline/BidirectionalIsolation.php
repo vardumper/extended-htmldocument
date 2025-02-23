@@ -1,15 +1,15 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * BidirectionalIsolation - The bdi element represents a span of text that is to be isolated from its surroundings for the purposes of bidirectional text formatting. (Bidirectional-isolate)
- *
+ * 
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\InlineElement;
@@ -35,11 +35,15 @@ class BidirectionalIsolation extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [];
+    public static array $childOf = [
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
+
+
 }

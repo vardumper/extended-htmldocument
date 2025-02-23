@@ -1,18 +1,19 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * UnorderedList - The ul element represents an unordered list of items, namely a collection of items that do not have a numerical ordering, and their order in the list is meaningless.
- *
+ * 
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\ListItem;
 
 class UnorderedList extends BlockElement
 {
@@ -35,11 +36,16 @@ class UnorderedList extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [];
+    public static array $childOf = [
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [ListItem::class];
+    public static array $parentOf = [
+        ListItem::class,
+    ];
+
+
 }
