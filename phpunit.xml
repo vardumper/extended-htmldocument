@@ -2,7 +2,7 @@
 <phpunit bootstrap="vendor/autoload.php" colors="true">
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>./tests</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
     <php>
@@ -11,11 +11,15 @@
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">src</directory>
-            <directory suffix=".php">bin</directory>
         </include>
         <exclude>
             <directory suffix=".php">tests</directory>
             <directory suffix=".php">vendor</directory>
         </exclude>
+        <filter>
+            <whitelist>
+                <directory suffix=".php">src</directory>
+            </whitelist>
+        </filter>
     </coverage>
 </phpunit>
