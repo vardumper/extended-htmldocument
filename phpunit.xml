@@ -9,6 +9,11 @@
         <ini name="error_reporting" value="-1"/>
     </php>
     <coverage>
+        <filter>
+            <whitelist>
+                <directory suffix=".php">src</directory>
+            </whitelist>
+        </filter>
         <include>
             <directory suffix=".php">src</directory>
         </include>
