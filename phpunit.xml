@@ -1,4 +1,5 @@
-<phpunit>
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php" colors="true">
     <testsuites>
         <testsuite name="Unit Tests">
             <directory>./tests</directory>
@@ -7,5 +8,14 @@
     <php>
         <ini name="error_reporting" value="-1"/>
     </php>
-    <bootstrap>vendor/autoload.php</bootstrap>
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">src</directory>
+            <directory suffix=".php">bin</directory>
+        </include>
+        <exclude>
+            <directory suffix=".php">tests</directory>
+            <directory suffix=".php">vendor</directory>
+        </exclude>
+    </coverage>
 </phpunit>
