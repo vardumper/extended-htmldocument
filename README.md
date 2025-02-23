@@ -6,7 +6,7 @@ It also provides a way to generate PHP classes for HTML elements based on the HT
 It adds additional functionality and a stronger focus on HTML5 while being fully compatible with PHP's DOM\HTMLDocument and DOM\HTMLElement classes.
 
 ## Documentation
-See the [documentation](https://vardumper.github.io/extended-htmldocument/) for code examples and more information.
+See the [Documentation](https://vardumper.github.io/extended-htmldocument/) for more.
 
 ## Installation
 ```bash
