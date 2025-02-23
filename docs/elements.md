@@ -72,4 +72,4 @@ At the same time, we are able to add new methods, which is the main goal of this
 ## Real world use cases
 The goal of this library is to provide a way to transform HTML5 standards-compliant HTML documents and/or document fragments (so called atoms, molecules, organisms and components) into different templating engines or frontend technologies, such as Twig, React, Vue or others.
 
-See the [advanced usage examples](./advanced-examples/) for some real-world PHP code.
+See the [advanced usage examples](./advanced-examples) for some real-world PHP code.
