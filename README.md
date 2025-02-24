@@ -12,5 +12,5 @@ See the [Documentation](https://vardumper.github.io/extended-htmldocument/) for 
 
 ## Installation
 ```bash
-composer require vardumper/extended-htmldocument
+composer require --dev vardumper/extended-htmldocument
 ```
