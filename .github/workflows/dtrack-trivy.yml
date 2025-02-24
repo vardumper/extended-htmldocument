@@ -1,0 +1,33 @@
+name: Workflow for Codecov
+on: [push, pull_request]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up php 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      - name: Install dependencies
+        run: composer self-update && composer install && composer dump-autoload
+
+      - name: Install trivy
+        run: |
+          sudo apt-get update
+          sudo apt-get install trivy curl -y
+        # curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.58.0
+
+      - name: Create CycloneDX SBOM with Trivy
+        run: trivy fs --format cyclonedx --output result.json --include-dev-deps --scanners vuln ./
+
+      - name: Push SBOM to Dependency-Track
+        run: |
+          curl -L -X "POST" "${{ secrets.DTRACK_API_URL }}" \
+           -H 'Content-Type: multipart/form-data' \
+           -H "X-Api-Key: ${{ secrets.DTRACK_API_KEY }}" \
+           -F "project=${{ secrets.DTRACK_PROJECT_UID }}" \
+           -F "bom=@result.json"
