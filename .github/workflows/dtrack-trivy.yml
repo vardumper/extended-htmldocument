@@ -26,7 +26,7 @@ jobs:
 
       - name: Push SBOM to Dependency-Track
         run: |
-          curl -L -X "POST" "${{ secrets.DTRACK_API_URL }}" \
+          curl --tlsv1.2 -L -X "POST" "${{ secrets.DTRACK_API_URL }}" \
            -H 'Content-Type: multipart/form-data' \
            -H "X-Api-Key: ${{ secrets.DTRACK_API_KEY }}" \
            -F "project=${{ secrets.DTRACK_PROJECT_UID }}" \
