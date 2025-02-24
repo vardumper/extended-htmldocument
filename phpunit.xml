@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php" colors="true" failOnWarning="false" failOnRisky="false">
+<phpunit bootstrap="vendor/autoload.php" colors="true">
     <testsuites>
         <testsuite name="Unit Tests">
             <directory>tests</directory>
@@ -8,20 +8,18 @@
     <php>
         <ini name="error_reporting" value="-1"/>
     </php>
-    <coverage>
-        <filter>
-            <whitelist>
-                <directory suffix=".php">src</directory>
-            </whitelist>
-        </filter>
+    <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">src</directory>
         </include>
         <exclude>
             <directory suffix=".php">tests</directory>
             <directory suffix=".php">vendor</directory>
-            <file>ecs.php</file>
-            <file>bootstrap.php</file>
         </exclude>
+        <filter>
+            <whitelist>
+                <directory suffix=".php">src</directory>
+            </whitelist>
+        </filter>
     </coverage>
 </phpunit>

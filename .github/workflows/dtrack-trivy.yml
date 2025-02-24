@@ -16,18 +16,17 @@ jobs:
         run: composer self-update && composer install && composer dump-autoload
 
       - name: Install trivy
-        # sudo apt-get install trivy curl -y
         run: |
           sudo apt-get update
-          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.58.0
-
+          sudo apt-get install trivy curl -y
+        # curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.58.0
       - name: Create CycloneDX SBOM with Trivy
         run: trivy fs --format cyclonedx --output result.json --include-dev-deps --scanners vuln ./
 
       - name: Push SBOM to Dependency-Track
-        run: |
-          curl --tlsv1.2 -L -X "POST" "${{ secrets.DTRACK_API_URL }}" \
+        ansible.builtin.shell: |
+          curl -L -X "POST" "{{ secrets.DTRACK_API_URL }}" \
            -H 'Content-Type: multipart/form-data' \
-           -H "X-Api-Key: ${{ secrets.DTRACK_API_KEY }}" \
-           -F "project=${{ secrets.DTRACK_PROJECT_UID }}" \
+           -H "X-Api-Key: {{ dtrack_api_key }}" \
+           -F "project={{ dtrack_project_uid }}" \
            -F "bom=@result.json"

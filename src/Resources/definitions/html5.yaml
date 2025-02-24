@@ -6,7 +6,6 @@ a:
   attributes:
     download:
       description: 'Indicates that the linked content should be downloaded rather than displayed.'
-      defaultValue: filename.pdf
       type: string
       elements:
         - a
@@ -23,7 +22,6 @@ a:
     hreflang:
       description: 'Specifies the language of the linked resource.'
       type: language_iso
-      defaultValue: en
       elements:
         - a
         - area
@@ -107,7 +105,6 @@ abbr:
   name: Abbreviation
   description: 'The abbr element represents an abbreviation or acronym, optionally with its expansion. The title attribute can be used to provide an expansion of the abbreviation. The attribute, if specified, must contain an expansion of the abbreviation, and nothing else.'
   level: inline
-  defaultValue: HTML
   unique: false
   text: string
   attributes:
@@ -163,7 +160,6 @@ area:
         - area
     download:
       description: 'Indicates that the linked content should be downloaded rather than displayed.'
-      defaultValue: filename.pdf
       type: string
       elements:
         - a
@@ -180,7 +176,6 @@ area:
     hreflang:
       description: 'Specifies the language of the linked resource.'
       type: language_iso
-      defaultValue: en
       elements:
         - a
         - area
@@ -679,6 +674,7 @@ br:
         - left
         - none
         - right
+      deprecated: true
 button:
   name: Button
   description: 'The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.'
@@ -1528,15 +1524,19 @@ hr:
         - th
         - thead
         - tr
+      deprecated: true
     color:
       type: color
+      deprecated: true
     noshade:
       type: boolean
+      deprecated: true
     size:
       description: 'Specifies the height of a hr element in pixels.'
       type: integer
       elements:
         - hr
+      deprecated: true
     width:
       description: 'Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).'
       type: string
@@ -2084,7 +2084,6 @@ link:
     hreflang:
       description: 'Specifies the language of the linked resource.'
       type: language_iso
-      defaultValue: en
       elements:
         - a
         - area
@@ -2300,6 +2299,17 @@ mark:
     - track
     - video
     - wbr
+menu:
+  name: Menu
+  description: 'The menu element represents a group of commands that a user can perform or activate. It can be used for toolbars, context menus, or listing form controls.'
+  level: block
+  unique: false
+  children:
+    - button
+    - form
+    - li
+    - script
+    - template
 meta:
   name: Meta
   description: 'The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.'
