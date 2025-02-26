@@ -1,8 +1,11 @@
----
-outline: deep
----
+# Usage Examples
 
-# Basic Usage Examples
+## Autocompletion in your IDE
+
+When working with this library, you get your IDEs autocompletion feature for all HTML elements. This will give you a quick insight into the available elements their attributes.
+This is especially useful when you are working in a DOM\HTMLDocument and you don't know all the HTML elements or attributes there are.
+
+tbd add a gif
 
 ## Instantiation
 

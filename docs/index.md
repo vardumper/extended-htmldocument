@@ -18,7 +18,7 @@ features:
    - title: HTML Elements as PHP Classes
      details: 'HTML5 elements as PHP classes with descriptive names. Added semantics and meta information such as allowed direct children, allowed direct parents and helper methods such as <samp>__toString()</samp> or <samp>setAttributes()</samp>'
    - title: Created to transform HTML
-     details: 'This library was created in order to use it for automated code generation. Whether you could have PHP transform HTML into templates for Twig, React, or Vue or generate Atoms and Molecules for a Design System such as Storybook. There are many use cases.'
+     details: 'This library was created in order to use it for automated code generation. Whether you could have PHP transform HTML into templates for Twig, React, or Vue or generate Atoms and Molecules for a Design System such as Storybook. There are cases.'
    - title: Autocompletion in your IDE
      details: 'Thanks to typed constructor arguments, you get autocompletion for all HTML elements in PHP contexts, which is especially useful when working with DOM Documents.'
 ---
