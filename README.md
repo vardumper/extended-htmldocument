@@ -4,7 +4,8 @@
 
 ## TL;DR
 This library provides a way to work with HTML elements in PHP, offering an object-oriented approach that aligns with the HTML5 specifications.
-It also provides a way to generate PHP classes for HTML elements based on the HTML5 specifications.
+It also provides a way to automatically transform HTML into different templating engines or code for frontend frameworks.
+It also adds autocompletion to PHP for all HTML5 elements, which is especially useful when working with DOM Documents.
 It adds additional functionality and a stronger focus on HTML5 while being fully compatible with PHP's DOM\HTMLDocument and DOM\HTMLElement classes.
 
 ## Documentation
