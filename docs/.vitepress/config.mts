@@ -25,10 +25,11 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Usage',
+        text: 'Usage Examples',
         items: [
-          { text: 'Examples', link: '/usage-examples' },
-          { text: 'Advanced Examples', link: '/advanced-examples' },
+          { text: 'Basic Examples', link: '/usage-examples' },
+          { text: 'Components in Design Systems', link: '/advanced-examples' },
+          { text: 'Extend HTML5 Specification with CSS Framework', link: '/extending-html5-specifications' },
         ]
       }
     ],

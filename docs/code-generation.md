@@ -18,19 +18,25 @@ php vendor/bin/ext-html
 
 ### Enums
 
-To re-generate all Enum classes, run
+To only re-generate all Enum classes, run
 ```bash
-php vendor/bin/ext-html make:enum
+php vendor/bin/ext-html make:enums
 ```
 
 ### Single Element
-To re-generate one Element class, eg. `Element\Inline\Anchor` class run
+To re-generate a single Element class, eg. `Element\Inline\Anchor` class run
 ```bash
-php vendor/bin/ext-html make:class a
+php vendor/bin/ext-html make:classes a
 ```
 
 ### All Elements
 To re-generate all classes, use the command without specifying an element name:
 ```bash
-php vendor/bin/ext-html make:class
+php vendor/bin/ext-html make:classes
+```
+
+## Custom HTML Specification File
+If you want to use a custom HTML5 specification file, you can use the `--specification` option.
+```bash
+php vendor/bin/ext-html --specification path/to/my-html5-specification.yaml
 ```
