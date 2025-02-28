@@ -33,7 +33,7 @@ jobs:
         run: |
             git config --global user.name 'github-actions[bot]'
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-            git commit -am "Coverage badge"
+            git commit -am "Coverage badge" --no-verify
             git push
     #   - name: Git push to image-data branch
     #     uses: peaceiris/actions-gh-pages@v3
