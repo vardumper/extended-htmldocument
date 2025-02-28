@@ -1,22 +1,27 @@
 name: PHPUnit Coverage
 on: [push, pull_request]
+permissions:
+  contents: write
 jobs:
-  test:
+  run:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
+      - name: Make code coverage badge
+        uses: timkrase/phpunit-coverage-badge@v1.2.1
         with:
-          php-version: '8.4'
-          extensions: xdebug
-
-      - name: Install dependencies
-        run: composer install
-
-      - name: Run tests with coverage
-        env:
-          XDEBUG_MODE: coverage
-        run: vendor/bin/phpunit --coverage-html coverage-report
+          coverage_badge_path: coverage.svg
+          push_badge: false
+      - name: Commit badge
+        run: |
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            git commit -am "Coverage badge"
+            git push
+    #   - name: Git push to image-data branch
+    #     uses: peaceiris/actions-gh-pages@v3
+    #     with:
+    #       publish_dir: ./output
+    #       publish_branch: image-data
+    #       github_token: ${{ secrets.GITHUB_TOKEN }}
+    #       user_name: 'github-actions[bot]'
+    #       user_email: 'github-actions[bot]@users.noreply.github.com'

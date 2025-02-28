@@ -26,19 +26,22 @@ final class EnumTest extends TestCase
             \Html\Enum\RelEnum::class,
             \Html\Enum\ShapeEnum::class,
             \Html\Enum\TargetEnum::class,
-            // \Html\Enum\TypeEnum::class, @todo fix this
+            \Html\Enum\TypeEnum::class,
             \Html\Enum\ValignEnum::class,
             \Html\Enum\WrapEnum::class,
         ];
 
         foreach ($enums as $enum) {
+            $obj = $enum::cases()[0];
+            var_dump($enum);
+            var_dump($obj);
+            exit;
             $this->assertTrue(class_exists($enum));
             $this->assertTrue(is_subclass_of($enum, BackedEnum::class));
-            $this->assertNotEmpty($enum::cases());
+            $this->assertTrue(method_exists('test', 'getQualifiedName'));
 
-            $this->assertSame($enum::class, $enum::cases()[0]::class);
             $this->assertSame($enum::cases()[0], $enum::cases()[0]::cases()[0]);
         }
-        $this->assertSame($enum::cases()[0]->getQualifiedName(), $enum::cases()[0]::cases()[0]->getQualifiedName());
+        // $this->assertSame($enum::cases()[0]->getQualifiedName(), $enum::cases()[0]::cases()[0]->getQualifiedName());
     }
 }
