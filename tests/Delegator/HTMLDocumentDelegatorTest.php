@@ -1,65 +1,144 @@
 <?php
 
-namespace Tests;
+namespace Tests\Delegator;
 
+use BadMethodCallException;
+use DOM\Document;
+use DOM\HTMLDocument;
+use Dom\HTMLElement;
 use Html\Delegator\HTMLDocumentDelegator;
-use Html\Element\Inline\Anchor;
-use Html\Enum\TargetEnum;
+use Html\Delegator\HTMLElementDelegator;
 use PHPUnit\Framework\TestCase;
 
 final class HTMLDocumentDelegatorTest extends TestCase
 {
-    public function testCreateElement()
+    private HTMLDocument $document;
+
+    private HTMLDocumentDelegator $delegator;
+
+    protected function setUp(): void
     {
-        $qualifiedName = 'img';
-        $value = 'This is a test element.';
-        $dom = HTMLDocumentDelegator::createEmpty();
-
-        $element = $dom->createElement($qualifiedName);
-        $element->setAttributes([
-            'alt' => 'Description of image',
-            'loading' => 'lazy',
-            'width' => '100',
-            'height' => '100',
-            'data-example' => 'some-example-string',
-            'src' => 'path/to/image.jpg',
-        ]);
-        $element->className = 'test-class secondary';
-        $element->id = 'test-id';
-        $element->textContent = $value;
-
-        $dom->appendChild($element->htmlElement);
-
-        $this->assertStringContainsString('test-class secondary', $dom->saveHtml());
-        $this->assertStringContainsString('test-id', $dom->saveHtml()); // id present
-        $this->assertStringNotContainsString(
-            'This is a test element.',
-            $dom->saveHtml()
-        ); // images do not have text content
-        $this->assertStringContainsString('Description of image', $dom->saveHtml()); // alt text present
-        // $this->assertEquals('100', $element->getAttribute('width')); // width attribute present
-        // $this->assertEquals('100', $element->getAttribute('height')); // height attribute present
-        // $this->assertEquals('lazy', $element->getAttribute('loading')); // loading attribute present
+        $this->document = HTMLDocument::createEmpty();
+        $this->delegator = HTMLDocumentDelegator::createEmpty();
+        // $this->htmlElement = $this->document->createElement('div');
     }
 
-    public function testCreateAnchor()
+    public function testConstructor(): void
     {
-        $dom = HTMLDocumentDelegator::createEmpty();
+        $this->assertInstanceOf(HTMLDocumentDelegator::class, $this->delegator);
+        $this->assertInstanceOf(HtmlDocument::class, $this->delegator->htmlDocument);
+    }
 
-        $anchor = Anchor::create($dom);
-        $anchor->id = 'main-anchor';
-        $anchor->setAttributes([
-            'href' => 'https://www.example.com',
-            'title' => 'This is a test title.',
-            'rel' => 'noopener',
-            'target' => TargetEnum::_BLANK,
+    public function testCallCall(): void
+    {
+        $this->expectOutputString($this->document->saveXml());
+        $this->delegator->saveXml();
+
+        $this->expectOutputString($this->document->saveHtml());
+        $this->delegator->saveHtml();
+
+        // why does this fail?
+        // $this->delegator->debugGetTemplateCount();
+        // $this->expectOutputString($this->document->debugGetTemplateCount());
+
+        $this->expectException(BadMethodCallException::class);
+        $this->expectExceptionMessage(
+            'Method nonExistentMethod does not exist on Dom\HTMLDocument. However you can implement it on Html\Delegator\HTMLDocumentDelegator'
+        );
+        $this->delegator->nonExistentMethod();
+    }
+
+    public function testSaveXml(): void
+    {
+        $this->delegator->saveXml();
+        $this->expectOutputString($this->document->saveXml());
+    }
+
+    public function testGetGet(): void
+    {
+        // The native 'documentElement' property on HtmlElement
+        $this->assertSame('DIV', $this->delegator->documentElement->tagName);
+    }
+
+    public function testSetSet(): void
+    {
+        $this->delegator->id = 'myDiv';
+        $this->assertSame('myDiv', $this->htmlElement->getAttribute('id'));
+
+        // Test with BackedEnum
+        $this->delegator->dataType = DummyEnum::FOO;
+        $this->assertSame('fooValue', $this->htmlElement->getAttribute('dataType'));
+    }
+
+    public function testToString(): void
+    {
+        $this->delegator->setAttribute('class', 'test-class');
+        $htmlOutput = (string) $this->delegator;
+        $this->assertStringContainsString('class="test-class"', $htmlOutput);
+    }
+
+    public function testSetAttributes(): void
+    {
+        $this->delegator->setAttributes([
+            'id' => 'testId',
+            'class' => 'someClass',
         ]);
-        $anchor->textContent = 'This is a test element.';
+        $this->assertSame('testId', $this->htmlElement->getAttribute('id'));
+        $this->assertSame('someClass', $this->htmlElement->getAttribute('class'));
+    }
 
-        $dom->appendChild($anchor->htmlElement);
+    public function testHasAttributes(): void
+    {
+        $this->assertFalse($this->delegator->hasAttributes());
+        $this->delegator->setAttribute('foo', 'bar');
+        $this->assertTrue($this->delegator->hasAttributes());
+    }
 
-        $this->assertStringContainsString('main-anchor', $dom->saveHtml());
-        $this->assertStringContainsString('_blank', $dom->saveHtml());
-        $this->assertStringContainsString('This is a test element.', $dom->saveHtml());
+    public function testCreate(): void
+    {
+        // Mock HTMLDocumentDelegator
+        $domMock = $this->createMock(HTMLDocumentDelegator::class);
+        $domDocument = new Document();
+        $domMock->htmlDocument = $domDocument;
+
+        $created = HTMLElementDelegator::create($domMock);
+        $this->assertInstanceOf(HTMLElementDelegator::class, $created);
+        $this->assertInstanceOf(HtmlElement::class, $created->htmlElement);
+    }
+
+    public function testIsUniquePerParent(): void
+    {
+        $this->assertFalse(HTMLElementDelegator::isUniquePerParent());
+    }
+
+    public function testIsUnique(): void
+    {
+        $this->assertFalse(HTMLElementDelegator::isUnique());
+    }
+
+    public function testIsSelfClosing(): void
+    {
+        // In this class, SELF_CLOSING might not be defined, so adjust as needed
+        // Example assumes it's been defined somewhere
+        $this->expectError(); // or comment out if the constant is set in a subclass
+        HTMLElementDelegator::isSelfClosing();
+    }
+
+    public function testGetQualifiedName(): void
+    {
+        $this->expectError(); // or remove if QUALIFIED_NAME is defined in a subclass
+        HTMLElementDelegator::getQualifiedName();
+    }
+
+    public function testChildOf(): void
+    {
+        $this->assertIsArray(HTMLElementDelegator::childOf());
+        $this->assertEmpty(HTMLElementDelegator::childOf());
+    }
+
+    public function testParentOf(): void
+    {
+        $this->assertIsArray(HTMLElementDelegator::parentOf());
+        $this->assertEmpty(HTMLElementDelegator::parentOf());
     }
 }

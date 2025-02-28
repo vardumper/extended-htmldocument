@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e5e6f0fa603bc07553cbd4b23840ee66",
+    "content-hash": "75e22791165c18567468c056a89dd2d8",
     "packages": [
         {
             "name": "mnapoli/silly",
@@ -1767,16 +1767,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "12.0.3",
+            "version": "12.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "2e3038bff41d56114e5396151060f5ac9d2d6751"
+                "reference": "79e5ef5897068689c7c325554d6df905480ce942"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/2e3038bff41d56114e5396151060f5ac9d2d6751",
-                "reference": "2e3038bff41d56114e5396151060f5ac9d2d6751",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/79e5ef5897068689c7c325554d6df905480ce942",
+                "reference": "79e5ef5897068689c7c325554d6df905480ce942",
                 "shasum": ""
             },
             "require": {
@@ -1832,7 +1832,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
                 "security": "https://github.com/sebastianbergmann/php-code-coverage/security/policy",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/12.0.3"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/12.0.4"
             },
             "funding": [
                 {
@@ -1840,7 +1840,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-18T14:04:13+00:00"
+            "time": "2025-02-25T13:27:48+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2089,16 +2089,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "12.0.4",
+            "version": "12.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "e469daf4e173c4b7f2d6154d364f468f3713f632"
+                "reference": "0f177d7316ba155d36337c3811b11993b54dae32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e469daf4e173c4b7f2d6154d364f468f3713f632",
-                "reference": "e469daf4e173c4b7f2d6154d364f468f3713f632",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/0f177d7316ba155d36337c3811b11993b54dae32",
+                "reference": "0f177d7316ba155d36337c3811b11993b54dae32",
                 "shasum": ""
             },
             "require": {
@@ -2166,7 +2166,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.0.4"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/12.0.5"
             },
             "funding": [
                 {
@@ -2182,7 +2182,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-02-21T06:10:40+00:00"
+            "time": "2025-02-25T06:13:04+00:00"
         },
         {
             "name": "psr/event-dispatcher",
@@ -4233,16 +4233,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v7.2.0",
+            "version": "v7.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "d34b22ba9390ec19d2dd966c40aa9e8462f27a7e"
+                "reference": "d8f411ff3c7ddc4ae9166fb388d1190a2df5b5cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/d34b22ba9390ec19d2dd966c40aa9e8462f27a7e",
-                "reference": "d34b22ba9390ec19d2dd966c40aa9e8462f27a7e",
+                "url": "https://api.github.com/repos/symfony/process/zipball/d8f411ff3c7ddc4ae9166fb388d1190a2df5b5cf",
+                "reference": "d8f411ff3c7ddc4ae9166fb388d1190a2df5b5cf",
                 "shasum": ""
             },
             "require": {
@@ -4274,7 +4274,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v7.2.0"
+                "source": "https://github.com/symfony/process/tree/v7.2.4"
             },
             "funding": [
                 {
@@ -4290,20 +4290,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-11-06T14:24:19+00:00"
+            "time": "2025-02-05T08:33:46+00:00"
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v7.2.2",
+            "version": "v7.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
-                "reference": "e46690d5b9d7164a6d061cab1e8d46141b9f49df"
+                "reference": "5a49289e2b308214c8b9c2fda4ea454d8b8ad7cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/e46690d5b9d7164a6d061cab1e8d46141b9f49df",
-                "reference": "e46690d5b9d7164a6d061cab1e8d46141b9f49df",
+                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/5a49289e2b308214c8b9c2fda4ea454d8b8ad7cd",
+                "reference": "5a49289e2b308214c8b9c2fda4ea454d8b8ad7cd",
                 "shasum": ""
             },
             "require": {
@@ -4336,7 +4336,7 @@
             "description": "Provides a way to profile code",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/stopwatch/tree/v7.2.2"
+                "source": "https://github.com/symfony/stopwatch/tree/v7.2.4"
             },
             "funding": [
                 {
@@ -4352,7 +4352,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-12-18T14:28:33+00:00"
+            "time": "2025-02-24T10:49:57+00:00"
         },
         {
             "name": "symplify/easy-coding-standard",
@@ -4473,7 +4473,9 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": {},
+    "platform": {
+        "php": "^8.4"
+    },
     "platform-dev": {},
     "platform-overrides": {
         "php": "8.4"
