@@ -9,5 +9,18 @@
         <ini name="error_reporting" value="-1"/>
     </php>
     <coverage>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+        <report>
+            <html outputDirectory="coverage-report"/>
+            <clover outputFile="coverage-report/clover.xml"/>
+            <text outputFile="coverage-report/coverage.txt"/>
+        </report>
     </coverage>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
 </phpunit>

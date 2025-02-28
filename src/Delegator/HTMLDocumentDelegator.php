@@ -11,7 +11,38 @@ use InvalidArgumentException;
 use ReflectionClass;
 
 /**
- * inheritDoc
+ * inherited properties
+ *
+ * @property-read \DOM\Implementation $implementation
+ * @property string $URL
+ * @property string $documentURI
+ * @property string $characterSet
+ * @property string $charset
+ * @property string $inputEncoding
+ * @property-read ?\DOM\DocumentType $doctype
+ * @property-read ?\DOM\Element $documentElement
+ * @property-read ?\DOM\Element $firstElementChild
+ * @property-read ?\DOM\Element $lastElementChild
+ * @property-read int $childElementCount
+ * @property ?\DOM\HTMLElement $body
+ * @property-read ?\DOM\HTMLElement $head
+ * @property string $title
+ * @property-read int $nodeType
+ * @property-read string $nodeName
+ * @property-read string $baseURI
+ * @property-read bool $isConnected
+ * @property-read ?\DOM\Document $ownerDocument
+ * @property-read ?\DOM\Node $parentNode
+ * @property-read ?\DOM\Element $parentElement
+ * @property-read \DOM\NodeList $childNodes
+ * @property-read ?\DOM\Node $firstChild
+ * @property-read ?\DOM\Node $lastChild
+ * @property-read ?\DOM\Node $previousSibling
+ * @property-read ?\DOM\Node $nextSibling
+ * @property ?string $nodeValue
+ * @property ?string $textContent
+ *
+ * inherited methods
  * @method string saveXml()
  * @method string saveHtml()
  * @method int debugGetTemplateCount()
@@ -56,7 +87,7 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
         }
 
         throw new InvalidArgumentException(
-            "Property {$name} does not exist on " . $reflection->getName() . '. However you cna implement it on ' . __CLASS__
+            "Property {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
         );
     }
 

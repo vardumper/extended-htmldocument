@@ -6,8 +6,10 @@ use BadMethodCallException;
 use DOM\Document;
 use DOM\HTMLDocument;
 use Dom\HTMLElement;
+use Error;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
+use Html\Element\Block\Body;
 use PHPUnit\Framework\TestCase;
 
 final class HTMLDocumentDelegatorTest extends TestCase
@@ -48,62 +50,137 @@ final class HTMLDocumentDelegatorTest extends TestCase
         $this->delegator->nonExistentMethod();
     }
 
-    public function testSaveXml(): void
-    {
-        $this->delegator->saveXml();
-        $this->expectOutputString($this->document->saveXml());
-    }
-
     public function testGetGet(): void
     {
-        // The native 'documentElement' property on HtmlElement
-        $this->assertSame('DIV', $this->delegator->documentElement->tagName);
+        $this->document = HTMLDocument::createEmpty();
+        $this->delegator = HTMLDocumentDelegator::createEmpty();
+        $properties = [
+            'URL',
+            'documentURI',
+            'characterSet',
+            'charset',
+            'inputEncoding',
+            'doctype',
+            'documentElement',
+            'firstElementChild',
+            'lastElementChild',
+            'childElementCount',
+            'body',
+            'head',
+            'title',
+            'nodeType',
+            'nodeName',
+            'baseURI',
+            'isConnected',
+            'ownerDocument',
+            'parentNode',
+            'parentElement',
+            'childNodes',
+            'firstChild',
+            'lastChild',
+            'previousSibling',
+            'nextSibling',
+            'nodeValue',
+            'textContent',
+        ];
+
+        foreach ($properties as $property) {
+            $this->assertEquals($this->document->{$property}, $this->delegator->{$property});
+        }
     }
 
+    /**
+     * test setting public properties, non readonly
+     */
     public function testSetSet(): void
     {
-        $this->delegator->id = 'myDiv';
-        $this->assertSame('myDiv', $this->htmlElement->getAttribute('id'));
+        $URL = 'http://example.com';
+        $this->delegator->URL = $URL;
+        $this->document->URL = $URL;
+        $this->assertEquals($this->document->URL, $URL);
+        $this->assertSame($this->document->URL, $this->delegator->URL);
 
-        // Test with BackedEnum
-        $this->delegator->dataType = DummyEnum::FOO;
-        $this->assertSame('fooValue', $this->htmlElement->getAttribute('dataType'));
+
+        // string $documentURI
+        $this->delegator->documentURI = 'http://example.com/document';
+        $this->document->documentURI = 'http://example.com/document';
+        $this->assertSame($this->document->documentURI, $this->delegator->documentURI);
+
+        // string $characterSet
+        $this->delegator->characterSet = 'UTF-8';
+        $this->document->characterSet = 'UTF-8';
+        $this->assertSame('UTF-8', $this->delegator->characterSet);
+        $this->assertSame($this->document->characterSet, $this->delegator->characterSet);
+
+        // string $charset
+        $this->delegator->charset = 'UTF-8';
+        $this->document->charset = 'UTF-8';
+        $this->assertSame('UTF-8', $this->delegator->charset);
+        $this->assertSame($this->document->charset, $this->delegator->charset);
+
+        // string $inputEncoding
+        $this->delegator->inputEncoding = 'UTF-8';
+        $this->document->inputEncoding = 'UTF-8';
+        $this->assertSame('UTF-8', $this->delegator->inputEncoding);
+        $this->assertSame($this->document->inputEncoding, $this->delegator->inputEncoding);
+
+        // ?\DOM\DocumentType $doctype
+        $this->expectException(Error::class);
+        $this->expectExceptionMessage('annot modify readonly property Dom\HTMLDocument::$doctype');
+        $this->delegator->doctype = null;
+        $this->document->doctype = null;
+        $this->assertSame($this->document->doctype, $this->delegator->doctype);
+
+        $body = $this->delegator->createElement('body');
+        $this->delegator->body = $body;
+
+        $body = $this->document->createElement('body');
+        $this->document->body = $body;
+        $this->assertSame($this->document->body, $this->delegator->body);
+
+        $this->document->title = 'Test title';
+        $this->delegator->title = 'Test title';
+        $this->assertSame($this->document->title, $this->delegator->title);
+        $this->assertSame($this->document->title, 'Test title');
+        $this->assertSame($this->delegator->title, 'Test title');
+
+        $this->document->body->nodeValue = 'Test body';
+        $this->delegator->body->nodeValue = 'Test body';
+        $this->assertSame($this->document->body->nodeValue, $this->delegator->body->nodeValue);
+        $this->assertSame($this->document->body->nodeValue, 'Test body');
+        $this->assertSame($this->delegator->body->nodeValue, 'Test body');
+
+        // ?string $textContent
+        $this->assertSame($this->document->body->textContent, 'Test body');
+        $this->assertSame($this->delegator->body->textContent, 'Test body');
+        $this->document->body->textContent = 'Test body text content';
+        $this->delegator->body->textContent = 'Test body text content';
+        $this->assertSame($this->document->body->textContent, $this->delegator->body->textContent);
+        $this->assertSame($this->document->body->textContent, 'Test body text content');
+        $this->assertSame($this->delegator->body->textContent, 'Test body text content');
     }
 
     public function testToString(): void
     {
-        $this->delegator->setAttribute('class', 'test-class');
-        $htmlOutput = (string) $this->delegator;
-        $this->assertStringContainsString('class="test-class"', $htmlOutput);
-    }
+        $body = $this->delegator->createElement('body');
+        $this->delegator->appendChild($body);
+        $this->assertEquals('<body></body>', (string) $this->delegator);
 
-    public function testSetAttributes(): void
-    {
-        $this->delegator->setAttributes([
-            'id' => 'testId',
-            'class' => 'someClass',
-        ]);
-        $this->assertSame('testId', $this->htmlElement->getAttribute('id'));
-        $this->assertSame('someClass', $this->htmlElement->getAttribute('class'));
-    }
+        $this->expectException(Error::class);
+        $this->expectExceptionMessage('Object of class Dom\HTMLDocument could not be converted to string');
+        $body = $this->document->createElement('body');
+        $this->document->appendChild($body);
+        $this->assertEquals('<body></body>', (string) $this->document);
 
-    public function testHasAttributes(): void
-    {
-        $this->assertFalse($this->delegator->hasAttributes());
-        $this->delegator->setAttribute('foo', 'bar');
-        $this->assertTrue($this->delegator->hasAttributes());
+        $this->delegator = HTMLDocumentDelegator::createFromString($this->document->saveHtml());
+        $this->assertEquals((string) $this->document, (string) $this->delegator);
     }
 
     public function testCreate(): void
     {
-        // Mock HTMLDocumentDelegator
-        $domMock = $this->createMock(HTMLDocumentDelegator::class);
-        $domDocument = new Document();
-        $domMock->htmlDocument = $domDocument;
-
-        $created = HTMLElementDelegator::create($domMock);
-        $this->assertInstanceOf(HTMLElementDelegator::class, $created);
-        $this->assertInstanceOf(HtmlElement::class, $created->htmlElement);
+        $body = Body::create($this->delegator);
+        $this->assertInstanceOf(HTMLElementDelegator::class, $body);
+        $this->assertInstanceOf(HtmlElement::class, $body->htmlElement);
     }
 
     public function testIsUniquePerParent(): void
@@ -120,13 +197,16 @@ final class HTMLDocumentDelegatorTest extends TestCase
     {
         // In this class, SELF_CLOSING might not be defined, so adjust as needed
         // Example assumes it's been defined somewhere
-        $this->expectError(); // or comment out if the constant is set in a subclass
+        $this->expectException(Error::class); // or comment out if the constant is set in a subclass
+        $this->expectExceptionMessage('Undefined constant Html\Delegator\HTMLElementDelegator::SELF_CLOSING');
         HTMLElementDelegator::isSelfClosing();
     }
 
     public function testGetQualifiedName(): void
     {
-        $this->expectError(); // or remove if QUALIFIED_NAME is defined in a subclass
+        // $this->expectError(); // or remove if QUALIFIED_NAME is defined in a subclass
+        $this->expectException(Error::class);
+        $this->expectExceptionMessage('Undefined constant Html\Delegator\HTMLElementDelegator::QUALIFIED_NAME');
         HTMLElementDelegator::getQualifiedName();
     }
 
