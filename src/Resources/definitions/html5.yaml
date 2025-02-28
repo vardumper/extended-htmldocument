@@ -58,7 +58,6 @@ a:
         - _parent
         - _self
         - _top
-        - framename
       elements:
         - a
         - area
@@ -100,6 +99,23 @@ a:
         - script
         - source
         - style
+      choices:
+        - text
+        - password
+        - checkbox
+        - radio
+        - button
+        - file
+        - hidden
+        - image
+        - email
+        - url
+        - number
+        - range
+        - date
+        - time
+        - submit
+        - reset
   text: string
 abbr:
   name: Abbreviation
@@ -219,7 +235,6 @@ area:
         - _parent
         - _self
         - _top
-        - framename
       elements:
         - a
         - area
@@ -238,6 +253,23 @@ area:
         - script
         - source
         - style
+      choices:
+        - text
+        - password
+        - checkbox
+        - radio
+        - button
+        - file
+        - hidden
+        - image
+        - email
+        - url
+        - number
+        - range
+        - date
+        - time
+        - submit
+        - reset
 article:
   name: Article
   description: 'The article element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable.'
@@ -460,7 +492,6 @@ base:
         - _parent
         - _self
         - _top
-        - framename
       elements:
         - a
         - area
@@ -734,6 +765,23 @@ button:
         - script
         - source
         - style
+      choices:
+        - text
+        - password
+        - checkbox
+        - radio
+        - button
+        - file
+        - hidden
+        - image
+        - email
+        - url
+        - number
+        - range
+        - date
+        - time
+        - submit
+        - reset
     value:
       description: 'Specifies the value associated with the element. The meaning and usage may vary depending on the element type.'
       type: string
@@ -1152,6 +1200,23 @@ embed:
         - script
         - source
         - style
+      choices:
+        - text
+        - password
+        - checkbox
+        - radio
+        - button
+        - file
+        - hidden
+        - image
+        - email
+        - url
+        - number
+        - range
+        - date
+        - time
+        - submit
+        - reset
     width:
       description: 'Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).'
       type: string
@@ -1332,7 +1397,6 @@ form:
         - _parent
         - _self
         - _top
-        - framename
       elements:
         - a
         - area
@@ -2162,6 +2226,23 @@ link:
         - script
         - source
         - style
+      choices:
+        - text
+        - password
+        - checkbox
+        - radio
+        - button
+        - file
+        - hidden
+        - image
+        - email
+        - url
+        - number
+        - range
+        - date
+        - time
+        - submit
+        - reset
 main:
   name: Main
   description: 'The main element represents the dominant content of the body of a document. The main content area consists of content that is directly related to or expands upon the central topic of a document, or the central functionality of an application.'
@@ -2478,6 +2559,23 @@ object:
         - script
         - source
         - style
+      choices:
+        - text
+        - password
+        - checkbox
+        - radio
+        - button
+        - file
+        - hidden
+        - image
+        - email
+        - url
+        - number
+        - range
+        - date
+        - time
+        - submit
+        - reset
     usemap:
       description: 'Specifies a client-side image map to be used with the element.'
       type: string
@@ -2524,6 +2622,23 @@ ol:
         - script
         - source
         - style
+      choices:
+        - text
+        - password
+        - checkbox
+        - radio
+        - button
+        - file
+        - hidden
+        - image
+        - email
+        - url
+        - number
+        - range
+        - date
+        - time
+        - submit
+        - reset
   children:
     - li
 optgroup:
@@ -2822,6 +2937,23 @@ script:
         - script
         - source
         - style
+      choices:
+        - text
+        - password
+        - checkbox
+        - radio
+        - button
+        - file
+        - hidden
+        - image
+        - email
+        - url
+        - number
+        - range
+        - date
+        - time
+        - submit
+        - reset
   text: string
 section:
   name: Section
@@ -3059,6 +3191,23 @@ source:
         - script
         - source
         - style
+      choices:
+        - text
+        - password
+        - checkbox
+        - radio
+        - button
+        - file
+        - hidden
+        - image
+        - email
+        - url
+        - number
+        - range
+        - date
+        - time
+        - submit
+        - reset
 span:
   name: Span
   description: "The span element doesn't mean anything on its own, but can be useful when used together with the global attributes, e.g. class, lang, or dir. It represents its children."
@@ -3137,6 +3286,23 @@ style:
         - script
         - source
         - style
+      choices:
+        - text
+        - password
+        - checkbox
+        - radio
+        - button
+        - file
+        - hidden
+        - image
+        - email
+        - url
+        - number
+        - range
+        - date
+        - time
+        - submit
+        - reset
 sub:
   name: Subscript
   description: 'The sub element represents a subscript.'

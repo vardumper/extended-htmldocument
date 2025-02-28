@@ -10,6 +10,7 @@ use Error;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
 use Html\Element\Block\Body;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 final class HTMLDocumentDelegatorTest extends TestCase
@@ -87,6 +88,12 @@ final class HTMLDocumentDelegatorTest extends TestCase
         foreach ($properties as $property) {
             $this->assertEquals($this->document->{$property}, $this->delegator->{$property});
         }
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            'Property nonExistentProperty does not exist on Dom\HTMLDocument. However you can implement it on Html\Delegator\HTMLDocumentDelegator'
+        );
+        $this->delegator->nonExistentProperty;
     }
 
     /**
@@ -158,6 +165,12 @@ final class HTMLDocumentDelegatorTest extends TestCase
         $this->assertSame($this->document->body->textContent, $this->delegator->body->textContent);
         $this->assertSame($this->document->body->textContent, 'Test body text content');
         $this->assertSame($this->delegator->body->textContent, 'Test body text content');
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            'Property nonExistentProperty does not exist on Dom\HTMLDocument. However you can implement it on Html\Delegator\HTMLDocumentDelegator'
+        );
+        $this->delegator->nonExistentProperty = 'some value';
     }
 
     public function testToString(): void

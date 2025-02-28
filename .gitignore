@@ -9,3 +9,5 @@
 /docs/.vitepress/cache
 /docs/.vitepress/temp
 /node_modules
+/coverage-report
+/clover.xml
