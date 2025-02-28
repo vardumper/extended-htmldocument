@@ -32,5 +32,11 @@ PHP 8.4 introduced the `DOM\HTMLDocument` class, which is a great addition to th
 * Each HTML element instance has semantic helper methods, such as `isUnique()`, `isUniquePerParent()`, `childOf()`, `parentOf()`, `isSelfClosing()` and more.
 * Each HTML element instance knows if it is a block or inline element, what its element-specific attributes are, and which ones are required or optional.
 
+## Tests
+This library is fully tested with PHPUnit. You can run the tests by executing the following command in the root directory of the project:
+```bash
+vendor/bin/phpunit
+```
+
 ## Future releases
 Find out more on planned future releases in the [Roadmap]().
