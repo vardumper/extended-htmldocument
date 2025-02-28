@@ -6,11 +6,29 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: xdebug
+
+      - name: Install dependencies
+        run: composer install
+
+      - name: Run tests with coverage
+        env:
+          XDEBUG_MODE: coverage
+        run: vendor/bin/phpunit --coverage-html coverage-report
+
       - name: Make code coverage badge
         uses: timkrase/phpunit-coverage-badge@v1.2.1
         with:
           coverage_badge_path: coverage.svg
           push_badge: false
+
       - name: Commit badge
         run: |
             git config --global user.name 'github-actions[bot]'
