@@ -21,7 +21,7 @@ jobs:
       - name: Run tests with coverage
         env:
           XDEBUG_MODE: coverage
-        run: vendor/bin/phpunit --coverage-html coverage-report
+        run: vendor/bin/phpunit --coverage-clover clover.xml
 
       - name: Make code coverage badge
         uses: timkrase/phpunit-coverage-badge@v1.2.1
