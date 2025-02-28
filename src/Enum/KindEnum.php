@@ -20,7 +20,7 @@ enum KindEnum: string {
     const METADATA = 'metadata';
     const SUBTITLES = 'subtitles';
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'kind';
     }

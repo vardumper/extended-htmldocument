@@ -18,7 +18,7 @@ enum EnctypeEnum: string {
     const MULTIPART_FORM_DATA = 'multipart/form-data';
     const TEXT_PLAIN = 'text/plain';
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'enctype';
     }

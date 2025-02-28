@@ -17,7 +17,7 @@ enum AutocompleteEnum: string {
     const OFF = 'off';
     const ON = 'on';
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'autocomplete';
     }

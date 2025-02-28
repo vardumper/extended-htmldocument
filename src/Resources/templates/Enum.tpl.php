@@ -17,7 +17,7 @@ namespace Html\Enum;
 enum <?= $class_name ?>: string {
 <?= $cases . PHP_EOL ?>
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return '<?= $element_name ?>';
     }

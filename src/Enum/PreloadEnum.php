@@ -18,7 +18,7 @@ enum PreloadEnum: string {
     const METADATA = 'metadata';
     const NONE = 'none';
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'preload';
     }

@@ -20,7 +20,7 @@ enum AlignEnum: string {
     const JUSTIFY = 'justify';
     const CHAR = 'char';
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'align';
     }

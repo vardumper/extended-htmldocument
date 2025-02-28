@@ -18,7 +18,7 @@ enum DecodingEnum: string {
     const AUTO = 'auto';
     const SYNC = 'sync';
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'decoding';
     }

@@ -30,7 +30,7 @@ enum RelEnum: string {
     const STYLESHEET = 'stylesheet';
     const TAG = 'tag';
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'rel';
     }

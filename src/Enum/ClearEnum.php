@@ -19,7 +19,7 @@ enum ClearEnum: string {
     const NONE = 'none';
     const RIGHT = 'right';
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'clear';
     }

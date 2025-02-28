@@ -23,7 +23,7 @@ enum ReferrerpolicyEnum: string {
     const STRICT_ORIGIN_WHEN_CROSS_ORIGIN = 'strict-origin-when-cross-origin';
     const UNSAFE_URL = 'unsafe-url';
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'referrerpolicy';
     }

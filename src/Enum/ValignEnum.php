@@ -19,7 +19,7 @@ enum ValignEnum: string {
     const MIDDLE = 'middle';
     const TOP = 'top';
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'valign';
     }

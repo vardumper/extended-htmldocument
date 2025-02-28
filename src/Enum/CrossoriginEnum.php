@@ -17,7 +17,7 @@ enum CrossoriginEnum: string {
     const ANONYMOUS = 'anonymous';
     const USE_CREDENTIALS = 'use-credentials';
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'crossorigin';
     }

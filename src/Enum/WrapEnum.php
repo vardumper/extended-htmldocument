@@ -18,7 +18,7 @@ enum WrapEnum: string {
     const OFF = 'off';
     const SOFT = 'soft';
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'wrap';
     }

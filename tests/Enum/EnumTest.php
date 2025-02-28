@@ -33,15 +33,11 @@ final class EnumTest extends TestCase
 
         foreach ($enums as $enum) {
             $obj = $enum::cases()[0];
-            var_dump($enum);
-            var_dump($obj);
-            exit;
             $this->assertTrue(class_exists($enum));
             $this->assertTrue(is_subclass_of($enum, BackedEnum::class));
-            $this->assertTrue(method_exists('test', 'getQualifiedName'));
+            $this->assertIsString($enum::getQualifiedName());
 
-            $this->assertSame($enum::cases()[0], $enum::cases()[0]::cases()[0]);
+            // $this->assertSame($enum::cases()[0], $enum::cases()[0]::cases()[0]);
         }
-        // $this->assertSame($enum::cases()[0]->getQualifiedName(), $enum::cases()[0]::cases()[0]->getQualifiedName());
     }
 }

@@ -17,7 +17,7 @@ enum MethodEnum: string {
     const GET = 'get';
     const POST = 'post';
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'method';
     }

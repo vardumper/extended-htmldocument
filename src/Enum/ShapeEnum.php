@@ -19,7 +19,7 @@ enum ShapeEnum: string {
     const POLY = 'poly';
     const RECT = 'rect';
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'shape';
     }

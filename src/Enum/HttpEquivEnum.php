@@ -19,7 +19,7 @@ enum HttpEquivEnum: string {
     const DEFAULT_STYLE = 'default-style';
     const REFRESH = 'refresh';
 
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'http-equiv';
     }

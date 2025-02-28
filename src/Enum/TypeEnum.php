@@ -1,10 +1,11 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * TypeEnum - Specifies the media type of the linked resource.
  *
+ * @category HTML Attribute
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum
  * @link https://github.com/vardumper/ExtendedHTMLDocument
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/type/
@@ -12,41 +13,25 @@
 
 namespace Html\Enum;
 
-enum TypeEnum: string
-{
-    public const TEXT = 'text';
+enum TypeEnum: string {
+    const TEXT = 'text';
+    const PASSWORD = 'password';
+    const CHECKBOX = 'checkbox';
+    const RADIO = 'radio';
+    const BUTTON = 'button';
+    const FILE = 'file';
+    const HIDDEN = 'hidden';
+    const IMAGE = 'image';
+    const EMAIL = 'email';
+    const URL = 'url';
+    const NUMBER = 'number';
+    const RANGE = 'range';
+    const DATE = 'date';
+    const TIME = 'time';
+    const SUBMIT = 'submit';
+    const RESET = 'reset';
 
-    public const PASSWORD = 'password';
-
-    public const CHECKBOX = 'checkbox';
-
-    public const RADIO = 'radio';
-
-    public const BUTTON = 'button';
-
-    public const FILE = 'file';
-
-    public const HIDDEN = 'hidden';
-
-    public const IMAGE = 'image';
-
-    public const EMAIL = 'email';
-
-    public const URL = 'url';
-
-    public const NUMBER = 'number';
-
-    public const RANGE = 'range';
-
-    public const DATE = 'date';
-
-    public const TIME = 'time';
-
-    public const SUBMIT = 'submit';
-
-    public const RESET = 'reset';
-
-    public function getQualifiedName(): string
+    public static function getQualifiedName(): string
     {
         return 'type';
     }
