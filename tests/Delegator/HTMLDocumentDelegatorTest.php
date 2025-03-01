@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 final class HTMLDocumentDelegatorTest extends TestCase
 {
-    use phpmock\TestCaseTypeHintTrait;
+    // use phpmock\TestCaseTypeHintTrait;
 
     private HTMLDocument $document;
 
