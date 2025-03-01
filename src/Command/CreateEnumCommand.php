@@ -20,7 +20,7 @@ final class CreateEnumCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $htmlDefinitionPath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'definitions' . DIRECTORY_SEPARATOR . 'html5.yaml';
+        $htmlDefinitionPath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'definitions' . \DIRECTORY_SEPARATOR . 'html5.yaml';
         if (! is_file($htmlDefinitionPath)) {
             $io->error('HTML definition file not found.');
             return ExitCode::FAILURE;
@@ -36,10 +36,10 @@ final class CreateEnumCommand extends Command
             $cases = '';
             foreach ($attributes['choices'] as $option) {
                 $cases .= sprintf(
-                    "    const %s = '%s';",
+                    "    case %s = '%s';",
                     str_replace(['-', '/'], '_', strtoupper($option)),
                     $option
-                ) . PHP_EOL;
+                ) . \PHP_EOL;
             }
 
             $className = $this->getClassName(ucfirst($element) . 'Enum');
@@ -52,8 +52,8 @@ final class CreateEnumCommand extends Command
                 'defaultValue' => $attributes['defaultValue'] ?? '',
             ];
 
-            $path = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Enum' . DIRECTORY_SEPARATOR . "{$className}.php"; // corrected variable syntax
-            $templatePath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'Enum.tpl.php';
+            $path = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Enum' . \DIRECTORY_SEPARATOR . "{$className}.php"; // corrected variable syntax
+            $templatePath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'templates' . \DIRECTORY_SEPARATOR . 'Enum.tpl.php';
             $this->createEnumFile($templatePath, $parameters, $path);
             $io->success("Enumeration class for '{$element}' created successfully.");
             // die;

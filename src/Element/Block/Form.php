@@ -1,27 +1,18 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Canvas;
-use Html\Element\Block\DataList;
-use Html\Element\Block\Details;
-use Html\Element\Block\Dialog;
-use Html\Element\Block\Fieldset;
-use Html\Element\Block\Legend;
-use Html\Element\Block\NoScript;
-use Html\Element\Block\Summary;
-use Html\Element\Block\Template;
 use Html\Element\Inline\Button;
 use Html\Element\Inline\Input;
 use Html\Element\Inline\Label;
@@ -58,8 +49,7 @@ class Form extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-    ];
+    public static array $childOf = [];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -87,33 +77,35 @@ class Form extends BlockElement
         Textarea::class,
     ];
 
+    /**
+     * Specifies the character encodings that are to be used for form submission.
+     */
+    public ?string $acceptCharset = null;
 
-    /** Specifies the character encodings that are to be used for form submission. */
-    public ?string $acceptCharset;
+    /**
+     * Specifies the URL where the form data should be submitted when the form is submitted.
+     */
+    public ?string $action = null;
 
-    /** Specifies the URL where the form data should be submitted when the form is submitted. */
-    public ?string $action;
+    public ?AutocompleteEnum $autocomplete = null;
 
-    /**  */
-    public ?AutocompleteEnum $autocomplete;
+    public ?EnctypeEnum $enctype = null;
 
-    /**  */
-    public ?EnctypeEnum $enctype;
+    public ?MethodEnum $method = null;
 
-    /**  */
-    public ?MethodEnum $method;
+    /**
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     */
+    public ?string $name = null;
 
-    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
-    public ?string $name;
+    /**
+     * When present, it specifies that a form should not be validated when submitted.
+     */
+    public ?bool $novalidate = null;
 
-    /** When present, it specifies that a form should not be validated when submitted. */
-    public ?bool $novalidate;
-
-    /** 
+    /**
      * Specifies where to open the linked document.
-     * @category HTML attribute
      * @example _self
      */
-    public ?TargetEnum $target;
-
+    public ?TargetEnum $target = null;
 }

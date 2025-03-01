@@ -1,11 +1,10 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * PreloadEnum - 
- * 
- * @category HTML Attribute
- * @package vardumper/extended-htmldocument
+ * PreloadEnum -
+ *
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/preload/
@@ -13,10 +12,11 @@
 
 namespace Html\Enum;
 
-enum PreloadEnum: string {
-    const AUTO = 'auto';
-    const METADATA = 'metadata';
-    const NONE = 'none';
+enum PreloadEnum: string
+{
+    case AUTO = 'auto';
+    case METADATA = 'metadata';
+    case NONE = 'none';
 
     public static function getQualifiedName(): string
     {

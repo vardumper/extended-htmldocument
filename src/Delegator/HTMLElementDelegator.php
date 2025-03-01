@@ -91,8 +91,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     public function __toString(): string
     {
         /** @var Document $ownerDocument */
-        $ownerDocument = $this->htmlElement->ownerDocument;
-        return (string) $ownerDocument->saveHtml($this->htmlElement);
+        return (string) $this->htmlElement->ownerDocument->saveHtml($this->htmlElement);
     }
 
     public function setAttributes(array $attributes): void
@@ -100,9 +99,25 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         // sort attributes by key name - id and class will still be first
         \ksort($attributes);
         foreach ($attributes as $name => $value) {
-            // allows us to use Enum attributes
-            if ($value instanceof BackedEnum) {
-                $value = $value->value;
+            if ($name === 'class') {
+                $name = 'className';
+            }
+            if (! \property_exists($this, $name)) {
+                if (! \property_exists($this->htmlElement, $name)) {
+                    // var_dump($name);
+                    $this->htmlElement->setAttribute($name, $value);
+                    continue;
+                }
+                // var_dump($name);
+                $this->htmlElement->{$name} = $value;
+                continue;
+            }
+
+            $this->{$name} = $value;
+            // skip enums here
+            if ($this->isBackedEnum($value)) {
+                $this->htmlElement->setAttribute($name, $value->value);
+                continue;
             }
             $this->htmlElement->setAttribute($name, $value);
         }
@@ -163,5 +178,10 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     public static function parentOf(): array
     {
         return static::$parentOf;
+    }
+
+    private function isBackedEnum($value): bool
+    {
+        return is_object($value) && is_subclass_of($value, BackedEnum::class);
     }
 }

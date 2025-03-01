@@ -1,11 +1,10 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * ShapeEnum - 
- * 
- * @category HTML Attribute
- * @package vardumper/extended-htmldocument
+ * ShapeEnum -
+ *
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/shape/
@@ -13,11 +12,12 @@
 
 namespace Html\Enum;
 
-enum ShapeEnum: string {
-    const CIRCLE = 'circle';
-    const DEFAULT = 'default';
-    const POLY = 'poly';
-    const RECT = 'rect';
+enum ShapeEnum: string
+{
+    case CIRCLE = 'circle';
+    case DEFAULT = 'default';
+    case POLY = 'poly';
+    case RECT = 'rect';
 
     public static function getQualifiedName(): string
     {

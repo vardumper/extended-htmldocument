@@ -1,15 +1,15 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Meter - The meter element represents a scalar measurement within a known range, or a fractional value.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\InlineElement;
@@ -35,33 +35,41 @@ class Meter extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-    ];
+    public static array $childOf = [];
 
     /**
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
+    /**
+     * Specifies the high value for a range input or a meter element.
+     */
+    public ?string $high = null;
 
-    /** Specifies the high value for a range input or a meter element. */
-    public ?string $high;
+    /**
+     * Specifies the low value for a range input.
+     */
+    public ?string $low = null;
 
-    /** Specifies the low value for a range input. */
-    public ?string $low;
+    /**
+     * Specifies the maximum value for an input element, meter, or progress element.
+     */
+    public ?int $max = null;
 
-    /** Specifies the maximum value for an input element, meter, or progress element. */
-    public ?int $max;
+    /**
+     * Specifies the minimum value for an input element or a meter element.
+     */
+    public ?string $min = null;
 
-    /** Specifies the minimum value for an input element or a meter element. */
-    public ?string $min;
+    /**
+     * Specifies the optimal value for a gauge or progress element.
+     */
+    public ?string $optimum = null;
 
-    /** Specifies the optimal value for a gauge or progress element. */
-    public ?string $optimum;
-
-    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
-    public ?string $value;
-
+    /**
+     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
+     */
+    public ?string $value = null;
 }

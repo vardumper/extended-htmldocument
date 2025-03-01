@@ -28,7 +28,7 @@ final class CreateClassCommand extends Command
 
         $elements = [];
 
-        $htmlDefinitionPath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'definitions' . \DIRECTORY_SEPARATOR . 'html5.yaml';
+        $htmlDefinitionPath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'definitions' . \DIRECTORY_SEPARATOR . 'html5.yaml';
         if (! is_file($htmlDefinitionPath)) {
             $io->error('HTML definition file not found.');
             return Command::FAILURE;
@@ -84,7 +84,7 @@ final class CreateClassCommand extends Command
                 'self_closing' => $self_closing,
             ];
 
-            $templatePath = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Resources' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . \ucfirst(
+            $templatePath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'templates' . \DIRECTORY_SEPARATOR . \ucfirst(
                 $level
             ) . 'Element.tpl.php';
             $this->createClassFile($templatePath, $parameters, $path);
@@ -137,7 +137,7 @@ final class CreateClassCommand extends Command
         include $templatePath;
 
         $file = \ob_get_clean();
-        \file_put_contents(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $path, $file);
+        \file_put_contents(__DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . $path, $file);
     }
 
     private function getAttributes(array $attributes): string
@@ -163,7 +163,7 @@ final class CreateClassCommand extends Command
                 $required ? '' : '?',
                 $type,
                 $variableName,
-                $default
+                $required ? $default : ' = null'
             );
         }
         return $transformedAttributes;
@@ -190,23 +190,23 @@ final class CreateClassCommand extends Command
         $lines[] = $details['description'] ?? '';
         $lines[] = '@category HTML attribute';
         if (isset($details['deprecated']) && $details['deprecated']) {
-            $lines[] = '@deprecated' . PHP_EOL . '    ';
+            $lines[] = '@deprecated' . \PHP_EOL . '    ';
         }
         if (isset($details['defaultValue'])) {
-            $lines[] = '@example ' . $details['defaultValue'] . PHP_EOL . '    ';
+            $lines[] = '@example ' . $details['defaultValue'] . \PHP_EOL . '    ';
         }
         if (isset($details['required']) && $details['required']) {
-            $lines[] = '@required' . PHP_EOL . '    ';
+            $lines[] = '@required' . \PHP_EOL . '    ';
         }
         $comment = '/** ';
 
         if (\count($lines) > 2) {
-            $comment .= PHP_EOL . '     * ' . \implode(PHP_EOL . '     * ', $lines);
+            $comment .= \PHP_EOL . '     * ' . \implode(\PHP_EOL . '     * ', $lines);
         } else {
             $comment .= $lines[0];
         }
 
-        return $comment . ' */' . PHP_EOL;
+        return $comment . ' */' . \PHP_EOL;
     }
 
     private function getUseStatements($children, $parents, $ignoreClass): string
@@ -221,7 +221,7 @@ final class CreateClassCommand extends Command
             unset($all[$foundSelf]);
         }
         $all = \array_filter($all);
-        $uses = \array_unique($all, SORT_STRING);
+        $uses = \array_unique($all, \SORT_STRING);
         \asort($uses);
         $use_statements = '';
         foreach ($uses as $use) {

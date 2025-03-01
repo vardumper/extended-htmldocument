@@ -1,36 +1,18 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Dialog - The dialog element represents a part of an application that a user interacts with to perform a task, for example a dialog box, inspector, or window.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\DefinitionList;
-use Html\Element\Block\Details;
-use Html\Element\Block\Division;
-use Html\Element\Block\Form;
-use Html\Element\Block\Heading1;
-use Html\Element\Block\Heading2;
-use Html\Element\Block\Heading3;
-use Html\Element\Block\Heading4;
-use Html\Element\Block\Heading5;
-use Html\Element\Block\Heading6;
-use Html\Element\Block\InlineFrame;
-use Html\Element\Block\ListItem;
-use Html\Element\Block\OrderedList;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\PreformattedText;
-use Html\Element\Block\Summary;
-use Html\Element\Block\Table;
-use Html\Element\Block\UnorderedList;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\Button;
 use Html\Element\Inline\Input;
@@ -58,8 +40,7 @@ class Dialog extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-    ];
+    public static array $childOf = [];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -91,8 +72,8 @@ class Dialog extends BlockElement
         UnorderedList::class,
     ];
 
-
-    /** When present, it specifies that the details should be visible (open) to the user. */
-    public ?bool $open;
-
+    /**
+     * When present, it specifies that the details should be visible (open) to the user.
+     */
+    public ?bool $open = null;
 }

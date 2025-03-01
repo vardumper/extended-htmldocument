@@ -1,58 +1,18 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Body - The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Audio;
-use Html\Element\Block\Blockquote;
-use Html\Element\Block\Canvas;
-use Html\Element\Block\DataList;
-use Html\Element\Block\DefinitionList;
-use Html\Element\Block\DeletedText;
-use Html\Element\Block\Details;
-use Html\Element\Block\Dialog;
-use Html\Element\Block\Division;
-use Html\Element\Block\Embed;
-use Html\Element\Block\Fieldset;
-use Html\Element\Block\Figure;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Form;
-use Html\Element\Block\Header;
-use Html\Element\Block\Heading1;
-use Html\Element\Block\Heading2;
-use Html\Element\Block\Heading3;
-use Html\Element\Block\Heading4;
-use Html\Element\Block\Heading5;
-use Html\Element\Block\Heading6;
-use Html\Element\Block\HorizontalRule;
-use Html\Element\Block\InlineFrame;
-use Html\Element\Block\InsertedText;
-use Html\Element\Block\Main;
-use Html\Element\Block\Map;
-use Html\Element\Block\Navigation;
-use Html\Element\Block\NoScript;
-use Html\Element\Block\ObjectElement;
-use Html\Element\Block\OrderedList;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Picture;
-use Html\Element\Block\PreformattedText;
-use Html\Element\Block\Section;
-use Html\Element\Block\Table;
-use Html\Element\Block\Template;
-use Html\Element\Block\UnorderedList;
-use Html\Element\Block\Video;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Address;
 use Html\Element\Inline\Anchor;
@@ -114,8 +74,7 @@ class Body extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-    ];
+    public static array $childOf = [];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -203,53 +162,83 @@ class Body extends BlockElement
         WordBreakOpportunity::class,
     ];
 
+    /**
+     * Fires after the associated document has started printing or the print preview has been closed.
+     */
+    public ?string $onafterprint = null;
 
-    /** Fires after the associated document has started printing or the print preview has been closed. */
-    public ?string $onafterprint;
+    /**
+     * Fires before the associated document is printed or previewed for printing.
+     */
+    public ?string $onbeforeprint = null;
 
-    /** Fires before the associated document is printed or previewed for printing. */
-    public ?string $onbeforeprint;
+    /**
+     * Fires before the user navigates away from the page.
+     */
+    public ?string $onbeforeunload = null;
 
-    /** Fires before the user navigates away from the page. */
-    public ?string $onbeforeunload;
+    /**
+     * Fires when the fragment identifier part of the URL changes.
+     */
+    public ?string $onhashchange = null;
 
-    /** Fires when the fragment identifier part of the URL changes. */
-    public ?string $onhashchange;
+    /**
+     * Fires when the user changes the preferred language of the user interface.
+     */
+    public ?string $onlanguagechange = null;
 
-    /** Fires when the user changes the preferred language of the user interface. */
-    public ?string $onlanguagechange;
+    /**
+     * Fires when a message is received from a different browsing context (e.g., an iframe).
+     */
+    public ?string $onmessage = null;
 
-    /** Fires when a message is received from a different browsing context (e.g., an iframe). */
-    public ?string $onmessage;
+    /**
+     * Fires when an error occurs while receiving a message from a different browsing context.
+     */
+    public ?string $onmessageerror = null;
 
-    /** Fires when an error occurs while receiving a message from a different browsing context. */
-    public ?string $onmessageerror;
+    /**
+     * Fires when the browser goes offline.
+     */
+    public ?string $onoffline = null;
 
-    /** Fires when the browser goes offline. */
-    public ?string $onoffline;
+    /**
+     * Fires when the browser goes online.
+     */
+    public ?string $ononline = null;
 
-    /** Fires when the browser goes online. */
-    public ?string $ononline;
+    /**
+     * Fires when the user navigates away from a page.
+     */
+    public ?string $onpagehide = null;
 
-    /** Fires when the user navigates away from a page. */
-    public ?string $onpagehide;
+    /**
+     * Fires when the user navigates to a page.
+     */
+    public ?string $onpageshow = null;
 
-    /** Fires when the user navigates to a page. */
-    public ?string $onpageshow;
+    /**
+     * Fires when the user navigates through the history by clicking the browser's Back or Forward buttons.
+     */
+    public ?string $onpopstate = null;
 
-    /** Fires when the user navigates through the history by clicking the browser's Back or Forward buttons. */
-    public ?string $onpopstate;
+    /**
+     * Fires when a Promise is rejected and the rejection is handled by a Promise handler (e.g., catch).
+     */
+    public ?string $onrejectionhandled = null;
 
-    /** Fires when a Promise is rejected and the rejection is handled by a Promise handler (e.g., catch). */
-    public ?string $onrejectionhandled;
+    /**
+     * Fires when a storage area (e.g., localStorage or sessionStorage) changes.
+     */
+    public ?string $onstorage = null;
 
-    /** Fires when a storage area (e.g., localStorage or sessionStorage) changes. */
-    public ?string $onstorage;
+    /**
+     * Fires when a Promise is rejected but there is no rejection handler (e.g., catch).
+     */
+    public ?string $onunhandledrejection = null;
 
-    /** Fires when a Promise is rejected but there is no rejection handler (e.g., catch). */
-    public ?string $onunhandledrejection;
-
-    /** Fires when the user is navigating away from the page (similar to onbeforeunload). */
-    public ?string $onunload;
-
+    /**
+     * Fires when the user is navigating away from the page (similar to onbeforeunload).
+     */
+    public ?string $onunload = null;
 }

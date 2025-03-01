@@ -25,6 +25,7 @@
     ],
     "require": {
         "php": "^8.4",
+        "archtechx/enums": "^1.1",
         "mnapoli/silly": "^1.9.1",
         "symfony/yaml": "^7.2.3"
     },
