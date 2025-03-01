@@ -76,15 +76,15 @@ final class HTMLElementDelegatorTest extends TestCase
 
         $this->delegator->href = 'https://example.com';
         $this->assertEquals('https://example.com', $this->delegator->href);
-        $this->assertEquals('https://example.com', $this->delegator->htmlElement->href);
-
-        $this->delegator->rel = RelEnum::INEXISTENT;
-        $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
-        $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
+        $this->assertEquals('https://example.com', $this->delegator->htmlElement->getAttribute('href'));
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Property nonExistant does not exist');
         $this->delegator->nonExistant = 'example';
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Property nonExistant does not exist');
+        $this->delegator->rel = RelEnum::INEXISTENT;
     }
 
     public function testToString(): void

@@ -8,9 +8,11 @@
 
 ## Done <Badge type="warning" text="Pre-Release" />
 - :white_check_mark: Fix inconsistencies in the HTML5 specification
-- :white_check_mark: Add basic functionality and compatibility tests for DOM\HTMLDocument and DOM\HTMLElement
+- :white_check_mark: Add basic functionality and compatibility tests for Delegators
+- :white_check_mark: Mark deprecated attributes (e.g., clear in `<br>`, align in `<hr>`) as deprecated in PHP, too.
 
 ## Pending <Badge type="tip" text="1.0.0" />
+- :white_large_square: Make sure to handle inconsistencies in attributes that go by the same name correctly (eg. `type` is used in `<button|input>` vs `<link|a|...>` vs `<ol>`). Create an OlTypeEnum, LinkTypeEnum, etc.
 - :white_large_square: Allow for union types for mixed attributes (eg. target which can be both a TargetEnum (_self, _blank, etc.) and a string value)
-- :white_large_square: Add basic functionality and compatibility tests with DOM\HTMLDocument and DOM\HTMLElement
-- :white_large_square: Remove deprecated or missing attributes (e.g., clear in `<br>`, align in `<hr>`) which are obsolete in HTML5
+- :white_large_square: Properly link between relevant sections in the docs. Add links to external resources where appropriate.
+- :white_check_mark: Finalize tests to get to 100% coverage and improve them where necessary

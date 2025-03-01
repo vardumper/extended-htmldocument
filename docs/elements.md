@@ -33,25 +33,25 @@ class Anchor extends InlineElement
     public static array $parentOf = [];
 
     /* Indicates that the linked content should be downloaded rather than displayed. @example filename.pdf */
-    public ?string $download;
+    public ?string $download = null;
 
     /* Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used @required */
     public string $href;
 
     /* Specifies the language of the linked resource. @example en */
-    public ?string $hreflang;
+    public ?string $hreflang = null;
 
     /* Specifies the relationship between the current document and the linked document. */
-    public ?RelEnum $rel;
+    public ?RelEnum $rel = null;
 
     /* Specifies where to open the linked document. @example _self */
-    public ?TargetEnum $target;
+    public ?TargetEnum $target = null;
 
     /* Specifies additional information about the element, typically displayed as a tooltip. */
-    public ?string $title;
+    public ?string $title = null;
 
     /* Specifies the media type of the linked resource. */
-    public ?TypeEnum $type;
+    public ?TypeEnum $type = null;
 }
 ```
 

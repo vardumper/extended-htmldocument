@@ -88,34 +88,14 @@ a:
         - video
     type:
       description: 'Specifies the media type of the linked resource.'
-      type: enum
+      type: string
       elements:
         - a
         - area
-        - button
-        - input
         - link
-        - object
         - script
         - source
         - style
-      choices:
-        - text
-        - password
-        - checkbox
-        - radio
-        - button
-        - file
-        - hidden
-        - image
-        - email
-        - url
-        - number
-        - range
-        - date
-        - time
-        - submit
-        - reset
   text: string
 abbr:
   name: Abbreviation
@@ -246,30 +226,11 @@ area:
       elements:
         - a
         - area
-        - button
-        - input
         - link
         - object
         - script
         - source
         - style
-      choices:
-        - text
-        - password
-        - checkbox
-        - radio
-        - button
-        - file
-        - hidden
-        - image
-        - email
-        - url
-        - number
-        - range
-        - date
-        - time
-        - submit
-        - reset
 article:
   name: Article
   description: 'The article element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable.'
@@ -2215,34 +2176,14 @@ link:
         - source
     type:
       description: 'Specifies the media type of the linked resource.'
-      type: enum
+      type: string
       elements:
         - a
         - area
-        - button
-        - input
         - link
-        - object
         - script
         - source
         - style
-      choices:
-        - text
-        - password
-        - checkbox
-        - radio
-        - button
-        - file
-        - hidden
-        - image
-        - email
-        - url
-        - number
-        - range
-        - date
-        - time
-        - submit
-        - reset
 main:
   name: Main
   description: 'The main element represents the dominant content of the body of a document. The main content area consists of content that is directly related to or expands upon the central topic of a document, or the central functionality of an application.'
@@ -2548,34 +2489,15 @@ object:
         - textarea
     type:
       description: 'Specifies the media type of the linked resource.'
-      type: enum
+      type: string
       elements:
         - a
         - area
-        - button
-        - input
         - link
         - object
         - script
         - source
         - style
-      choices:
-        - text
-        - password
-        - checkbox
-        - radio
-        - button
-        - file
-        - hidden
-        - image
-        - email
-        - url
-        - number
-        - range
-        - date
-        - time
-        - submit
-        - reset
     usemap:
       description: 'Specifies a client-side image map to be used with the element.'
       type: string
@@ -2610,35 +2532,16 @@ ol:
       elements:
         - ol
     type:
-      description: 'Specifies the media type of the linked resource.'
+      description: 'Specifies the numbering type of the ordered list.'
       type: enum
       elements:
-        - a
-        - area
-        - button
-        - input
-        - link
-        - object
-        - script
-        - source
-        - style
+        - ol
       choices:
-        - text
-        - password
-        - checkbox
-        - radio
-        - button
-        - file
-        - hidden
-        - image
-        - email
-        - url
-        - number
-        - range
-        - date
-        - time
-        - submit
-        - reset
+        - a # for lowercase letters
+        - A # for uppercase letters
+        - i # for lowercase Roman numerals
+        - I # for uppercase Roman numerals
+        - 1 # for numbers (default)
   children:
     - li
 optgroup:

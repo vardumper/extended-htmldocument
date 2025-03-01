@@ -1,18 +1,19 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * OptionGroup - The optgroup element represents a group of option elements with a common label.
- *
+ * 
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Option;
 use Html\Element\Inline\Select;
 
 class OptionGroup extends BlockElement
@@ -36,21 +37,23 @@ class OptionGroup extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Select::class];
+    public static array $childOf = [
+        Select::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [Option::class];
+    public static array $parentOf = [
+        Option::class,
+    ];
 
-    /**
-     * When present, it specifies that an input element should be disabled.
-     */
+
+    /** When present, it specifies that an input element should be disabled. */
     public ?bool $disabled = null;
 
-    /**
-     * Specifies a label for the associated form control, option group, or option.
-     */
+    /** Specifies a label for the associated form control, option group, or option. */
     public ?string $label = null;
+
 }

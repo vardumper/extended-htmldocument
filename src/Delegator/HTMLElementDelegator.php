@@ -66,7 +66,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     public function __set($name, $value): void
     {
         // Transform Enum values to their underlying value
-        if ($value instanceof BackedEnum) {
+        if ($this->isBackedEnum($value)) {
             $value = $value->value;
         }
 
@@ -74,9 +74,15 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         if ($reflection->hasProperty($name)) {
             $property = $reflection->getProperty($name);
             $property->setAccessible(true);
-            $property->setValue($this->htmlElement, $value); // Changed $this to $this->htmlElement
+            $property->setValue($this->htmlElement, $value);
             return;
         }
+
+
+        // if (method_exists($this->htmlElement, 'setAttribute')) {
+            $this->htmlElement->setAttribute($name, $value);
+            // return;
+        // }
 
         throw new InvalidArgumentException(
             "Property {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
@@ -180,6 +186,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         return static::$parentOf;
     }
 
+    /** Helper method */
     private function isBackedEnum($value): bool
     {
         return is_object($value) && is_subclass_of($value, BackedEnum::class);
