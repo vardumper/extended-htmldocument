@@ -7,6 +7,7 @@ use DOM\HTMLDocument;
 use Dom\HTMLElement;
 use Error;
 use Exception;
+use Html\Delegator\DOMNodeListDelegator;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
 use Html\Element\Block\Body;
@@ -169,12 +170,15 @@ final class HTMLDocumentDelegatorTest extends TestCase
         $this->assertSame($this->document->body->textContent, $this->delegator->body->textContent);
         $this->assertSame($this->document->body->textContent, 'Test body text content');
         $this->assertSame($this->delegator->body->textContent, 'Test body text content');
+    }
 
+    public function testSetInexistentProperty(): void
+    {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage(
             'Property nonExistentProperty does not exist on Dom\HTMLDocument. However you can implement it on Html\Delegator\HTMLDocumentDelegator'
         );
-        $this->delegator->nonExistentProperty = 'some value';
+        $this->delegator->nonExistentProperty = 'value';
     }
 
     public function testToString(): void
@@ -270,5 +274,15 @@ final class HTMLDocumentDelegatorTest extends TestCase
         $this->expectException(Exception::class);
         $this->expectExceptionMessage("Cannot open file 'invalid-file.html'");
         HTMLDocumentDelegator::createFromFile('invalid-file.html');
+    }
+
+    public function testGetElementsByTagName(): void
+    {
+        $html = '<!DOCTYPE html><html><head><title>Test</title></head><body><div><p>Test</p></div></body></html>';
+        $delegator = HTMLDocumentDelegator::createFromString($html);
+        $this->assertInstanceOf(DOMNodeListDelegator::class, $delegator->getElementsByTagName('div'));
+        $this->assertEquals(1, $delegator->getElementsByTagName('div')->count());
+        $this->assertEquals(1, $delegator->getElementsByTagName('p')->count());
+        $this->assertEquals(0, $delegator->getElementsByTagName('span')->count());
     }
 }
