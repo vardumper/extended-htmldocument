@@ -1,5 +1,13 @@
 name: PHPUnit Coverage
-on: [push, pull_request]
+on:
+    push:
+    # only trigger if theres a change in src/ directory
+        paths:
+            - 'src/**/*.php'
+    pull_request:
+        paths:
+            - 'src/**/*.php'
+
 permissions:
   contents: write
 jobs:
