@@ -46,7 +46,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             return $method->invokeArgs($this->htmlElement, $arguments);
         }
         throw new BadMethodCallException(
-            "Method {$name} does not exist on " . $reflection->getName() . '. However you cna implement it on ' . __CLASS__
+            "Method {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
         );
     }
 

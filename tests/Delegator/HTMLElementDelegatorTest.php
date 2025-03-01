@@ -2,6 +2,7 @@
 
 namespace Tests\Delegator;
 
+use BadMethodCallException;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
 use Html\Element\Inline\Anchor;
@@ -32,6 +33,12 @@ final class HTMLElementDelegatorTest extends TestCase
     {
         $this->delegator->setAttribute('id', 'test');
         $this->assertEquals('test', $this->delegator->getAttribute('id'));
+
+        $this->expectException(BadMethodCallException::class);
+        $this->expectExceptionMessage(
+            'Method nonExistant does not exist on Dom\HTMLElement. However you can implement it on Html\Delegator\HTMLElementDelegator'
+        );
+        $this->delegator->nonExistant();
     }
 
     public function testGet(): void
@@ -39,6 +46,10 @@ final class HTMLElementDelegatorTest extends TestCase
         $this->delegator->setAttribute('id', 'test');
         $this->assertEquals('test', $this->delegator->id);
         $this->assertEquals('test', $this->delegator->htmlElement->id);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Property nonExistant does not exist');
+        $this->delegator->nonExistant;
     }
 
     public function testSet(): void
@@ -70,6 +81,10 @@ final class HTMLElementDelegatorTest extends TestCase
         $this->delegator->rel = RelEnum::INEXISTENT;
         $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
         $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Property nonExistant does not exist');
+        $this->delegator->nonExistant = 'example';
     }
 
     public function testToString(): void
