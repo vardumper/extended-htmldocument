@@ -7,7 +7,7 @@
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
- * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
  */
 namespace Html\Element\Inline;

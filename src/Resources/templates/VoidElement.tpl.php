@@ -7,7 +7,7 @@
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage <?= $namespace . PHP_EOL ?>
- * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/<?= $element_name . PHP_EOL ?>
 <?php if ($defaultValue): ?> * @tutorial an example value can be <?= $defaultValue . PHP_EOL ?><?php endif; ?>
  */

@@ -1,7 +1,7 @@
 {
     "name": "vardumper/extended-htmldocument",
     "homepage": "https://github.com/vardumper/extended-htmldocument",
-    "description": "ExtendedHTMLDocument is a simple PHP library to add HTML Elements as PHP classes and extends PHP 8.4's DOM\\HTMLDocument class.",
+    "description": "ExtendedHTMLDocument is a simple PHP library which adds all HTML5 Elements as PHP classes and extends PHP 8.4's DOM\\HTMLDocument class.",
     "support": {
         "issues": "https://github.com/vardumper/extended-htmldocument/issues",
         "docs": "https://vardumper.github.io/extended-htmldocument/",

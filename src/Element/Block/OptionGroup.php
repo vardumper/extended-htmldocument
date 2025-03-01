@@ -7,7 +7,7 @@
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
- * @link https://github.com/vardumper/ExtendedHTMLDocument
+ * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
  */
 namespace Html\Element\Block;
