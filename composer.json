@@ -2,6 +2,21 @@
     "name": "vardumper/extended-htmldocument",
     "homepage": "https://github.com/vardumper/extended-htmldocument",
     "description": "ExtendedHTMLDocument is a simple PHP library which adds all HTML5 Elements as PHP classes and extends PHP 8.4's DOM\\HTMLDocument class.",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "html",
+        "html5",
+        "dom",
+        "document",
+        "htmldocument",
+        "extended",
+        "php",
+        "php8",
+        "php84",
+        "code generation",
+        "code generator"
+    ],
     "support": {
         "issues": "https://github.com/vardumper/extended-htmldocument/issues",
         "docs": "https://vardumper.github.io/extended-htmldocument/",
