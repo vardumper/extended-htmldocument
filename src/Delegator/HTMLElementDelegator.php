@@ -3,10 +3,21 @@
 namespace Html\Delegator;
 
 use BackedEnum;
+use BadMethodCallException;
 use DOM\Document;
 use DOM\HtmlElement;
 use Html\Interface\HTMLElementDelegatorInterface;
+use InvalidArgumentException;
+use ReflectionClass;
 
+/**
+ * @property ?string $namespaceURI
+ * @property ?string $prefix
+ * @property string $localName
+ * @property string $tagName
+ * @property string $id
+ * @property string $className
+ */
 class HTMLElementDelegator implements HTMLElementDelegatorInterface
 {
     // public const string SELF_CLOSING = self::SELF_CLOSING; // Self-referential 'abstract' declaration
@@ -28,26 +39,26 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public function __call($name, $arguments)
     {
-        $reflection = new \ReflectionClass($this->htmlElement);
+        $reflection = new ReflectionClass($this->htmlElement);
         if ($reflection->hasMethod($name)) {
             $method = $reflection->getMethod($name);
             $method->setAccessible(true);
             return $method->invokeArgs($this->htmlElement, $arguments);
         }
-        throw new \BadMethodCallException(
+        throw new BadMethodCallException(
             "Method {$name} does not exist on " . $reflection->getName() . '. However you cna implement it on ' . __CLASS__
         );
     }
 
     public function __get($name)
     {
-        $reflection = new \ReflectionClass($this->htmlElement);
+        $reflection = new ReflectionClass($this->htmlElement);
         if ($reflection->hasProperty($name)) {
             $property = $reflection->getProperty($name);
             $property->setAccessible(true);
             return $property->getValue($this->htmlElement);
         }
-        throw new \InvalidArgumentException(
+        throw new InvalidArgumentException(
             "Property {$name} does not exist on " . $reflection->getName() . '. However you cna implement it on ' . __CLASS__
         );
     }
@@ -59,7 +70,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             $value = $value->value;
         }
 
-        $reflection = new \ReflectionClass($this->htmlElement);
+        $reflection = new ReflectionClass($this->htmlElement);
         if ($reflection->hasProperty($name)) {
             $property = $reflection->getProperty($name);
             $property->setAccessible(true);
