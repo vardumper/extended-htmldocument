@@ -11,6 +11,6 @@
 - :white_check_mark: Add basic functionality and compatibility tests for DOM\HTMLDocument and DOM\HTMLElement
 
 ## Pending <Badge type="tip" text="1.0.0" />
-- :yellow_square: Allow for union types for mixed attributes (eg. target which can be both a TargetEnum (_self, _blank, etc.) and a string value)
-- :yellow_square: Add basic functionality and compatibility tests with DOM\HTMLDocument and DOM\HTMLElement
-- :yellow_square: Remove deprecated or missing attributes (e.g., clear in `<br>`, align in `<hr>`) which are obsolete in HTML5
+- :white_large_square: Allow for union types for mixed attributes (eg. target which can be both a TargetEnum (_self, _blank, etc.) and a string value)
+- :white_large_square: Add basic functionality and compatibility tests with DOM\HTMLDocument and DOM\HTMLElement
+- :white_large_square: Remove deprecated or missing attributes (e.g., clear in `<br>`, align in `<hr>`) which are obsolete in HTML5
