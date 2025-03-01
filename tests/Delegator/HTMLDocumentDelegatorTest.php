@@ -252,19 +252,19 @@ final class HTMLDocumentDelegatorTest extends TestCase
         $this->assertEquals($html, $delegator->saveHtml());
     }
 
-    // public function testCreateFromFile(): void
-    // {
-    //     $html = '<!DOCTYPE html><html><head><title>Test</title></head><body></body></html>';
-    //     $builder = (new MockBuilder())
-    //     ->setNamespace('Html\Delegator\HTMLDocumentDelegator')
-    //     ->setName('createFromFile')
-    //     ->setFunctionProvider(new FixedValueFunction($html));
-    //     $mock = $builder->build();
-    //     $mock->enable();
-    //     $dom = HTMLDocumentDelegator::createFromFile('some-filename.html');
-    //     $this->assertEquals($html, $dom->saveHtml());
-    // }
-
+    /**
+    public function testCreateFromFile(): void
+    {
+        $html = '<!DOCTYPE html><html><head><title>Test</title></head><body></body></html>';
+        $builder = (new MockBuilder())
+        ->setNamespace('Html\Delegator\HTMLDocumentDelegator')
+        ->setName('createFromFile')
+        ->setFunctionProvider(new FixedValueFunction($html));
+        $mock = $builder->build();
+        $mock->enable();
+        $dom = HTMLDocumentDelegator::createFromFile('some-filename.html');
+        $this->assertEquals($html, $dom->saveHtml());
+    } **/
     public function testCreateFromInvalidFile(): void
     {
         $this->expectException(Exception::class);
