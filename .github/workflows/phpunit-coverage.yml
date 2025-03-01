@@ -9,6 +9,7 @@ on:
         paths:
             - 'src/**/*.php'
             - 'tests/**/*.php'
+    workflow_dispatch:
 
 permissions:
   contents: write
