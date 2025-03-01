@@ -3,7 +3,6 @@
 namespace Tests\Delegator;
 
 use BadMethodCallException;
-use DOM\Document;
 use DOM\HTMLDocument;
 use Dom\HTMLElement;
 use Error;
@@ -11,10 +10,13 @@ use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
 use Html\Element\Block\Body;
 use InvalidArgumentException;
+use phpmock\MockBuilder;
 use PHPUnit\Framework\TestCase;
 
 final class HTMLDocumentDelegatorTest extends TestCase
 {
+    use phpmock\TestCaseTypeHintTrait;
+
     private HTMLDocument $document;
 
     private HTMLDocumentDelegator $delegator;
@@ -233,5 +235,47 @@ final class HTMLDocumentDelegatorTest extends TestCase
     {
         $this->assertIsArray(HTMLElementDelegator::parentOf());
         $this->assertEmpty(HTMLElementDelegator::parentOf());
+    }
+
+    public function testCreateEmpty(): void
+    {
+        $this->assertInstanceOf(HTMLDocumentDelegator::class, HTMLDocumentDelegator::createEmpty());
+    }
+
+    public function testCreateFromString(): void
+    {
+        $html = '<!DOCTYPE html><html><head><title>Test</title></head><body></body></html>';
+        $delegator = HTMLDocumentDelegator::createFromString($html);
+        $this->assertInstanceOf(HTMLDocumentDelegator::class, $delegator);
+        $this->assertEquals($html, $delegator->saveHtml());
+    }
+
+    public function testCreateFromFile(): void
+    {
+        $html = '<!DOCTYPE html><html><head><title>Test</title></head><body></body></html>';
+        $builder = new MockBuilder();
+        $builder->setFunction('createFromFile');
+        $builder->setNamespace('Html\Delegator');
+        $builder->setName('createFromFile');
+        $mock = $builder->build();
+        $mock->enable();
+        HTMLDocumentDelegator::createFromFile('some-filename.html');
+        $this->assertEquals($html, $response->saveHtml());
+    }
+
+    public function testCreateFromInvalidFile(): void
+    {
+        $sut = $this->getMockBuilder(HTMLDocumentDelegator::class)
+            ->onlyMethods(['createFromFile'])
+            ->getMock();
+
+        $sut->expects($this->once())
+            ->method('createFromFile')
+            ->with($this->equalTo('invalid-file.html'))
+            ->willThrowException(new InvalidArgumentException('File not found.'));
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('File not found.');
+        $sut->createFromFile('invalid-file.html');
     }
 }

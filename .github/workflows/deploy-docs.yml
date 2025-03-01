@@ -3,8 +3,12 @@ name: Deploy VitePress site to Pages
 
 on:
   push:
+    # only trigger if theres a change in docs/ directory
+    paths:
+      - 'docs/**'
     branches: [main]
   workflow_dispatch:
+
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
