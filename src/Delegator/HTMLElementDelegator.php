@@ -104,11 +104,6 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         }
     }
 
-    public function hasAttributes(): bool
-    {
-        return ! empty($this->htmlElement->attributes);
-    }
-
     // Generic static factory method
     public static function create(HTMLDocumentDelegator $dom): self
     {

@@ -45,4 +45,14 @@ final class HTMLElementDelegatorTest extends TestCase
         $this->delegator->setAttribute('id', 'test');
         $this->assertEquals('<div id="test"></div>', (string) $this->delegator);
     }
+
+    public function testSetAttributes(): void
+    {
+        $this->delegator->setAttributes([
+            'id' => 'test',
+            'class' => 'example',
+        ]);
+        $this->assertEquals('test', $this->delegator->getAttribute('id'));
+        $this->assertEquals('example', $this->delegator->getAttribute('class'));
+    }
 }
