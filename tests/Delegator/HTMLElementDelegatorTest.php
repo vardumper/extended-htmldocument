@@ -67,7 +67,8 @@ final class HTMLElementDelegatorTest extends TestCase
         $this->delegator->nonExistant = 'example';
 
         $this->delegator->rel = RelEnum::NOFOLLOW;
-        $this->assertEquals('nofollow', $this->delegator->rel);
+        // var_dump((string) $this->delegator);exit;
+        $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
         $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
 
         $this->delegator->className = 'example-class';
@@ -81,6 +82,10 @@ final class HTMLElementDelegatorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Property nonExistant does not exist');
         $this->delegator->nonExistant = 'example';
+
+        $this->delegator->crossorigin = 'anonymous';
+        $this->assertEquals('anonymous', $this->delegator->crossorigin);
+        $this->assertEquals('anonymous', $this->delegator->htmlElement->getAttribute('crossorigin'));
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Property nonExistant does not exist');
