@@ -59,7 +59,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             return $property->getValue($this->htmlElement);
         }
         throw new InvalidArgumentException(
-            "Property {$name} does not exist on " . $reflection->getName() . '. However you cna implement it on ' . __CLASS__
+            "Property {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
         );
     }
 
@@ -78,7 +78,11 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             return;
         }
 
-        $this->htmlElement->setAttribute($name, $value);
+        throw new InvalidArgumentException(
+            "Property {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
+        );
+
+        // $this->htmlElement->setAttribute($name, $value);
     }
 
     /**
