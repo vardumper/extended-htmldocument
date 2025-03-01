@@ -5,7 +5,7 @@ footer: true
 hero:
   name: "Extended HTMLDocument"
   text: "Documentation"
-  tagline: "This library provides a way to work with HTML elements in PHP, offering an object-oriented approach that aligns with the HTML5 specifications. Built on top of `DOM\HTMLDocument`."
+  tagline: "This library provides a way to work with HTML elements in PHP, offering an object-oriented approach that aligns with the HTML5 specifications. Built on top of <samp>DOM\HTMLDocument</samp>."
   actions:
     - theme: brand
       text: Getting Started
