@@ -22,8 +22,6 @@ interface HTMLElementDelegatorInterface
 
     public function setAttributes(array $attributes): void;
 
-    public function hasAttributes(): bool;
-
     public static function create(HTMLDocumentDelegator $dom): HTMLElementDelegator;
 
     public static function isUniquePerParent(): bool;
