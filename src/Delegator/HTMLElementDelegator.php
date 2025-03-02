@@ -52,6 +52,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public function __get($name)
     {
+
         $reflection = new ReflectionClass($this->htmlElement);
         if ($reflection->hasProperty($name)) {
             $property = $reflection->getProperty($name);
@@ -65,44 +66,30 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public function __set($name, $value): void
     {
-        $this->setAttributes([$name => $value]);
-        // // Transform Enum values to their underlying value
-        // if ($this->isBackedEnum($value)) {
-        //     $this->{$name} = $value;
-        //     $this->htmlElement->setAttribute($name, $value->value);
-        //     var_dump((string) $this);exit;
-        //     return; //we done.
-        // }
+        if ($name === 'class') {
+            $name = 'className';
+        }
+        if (! \property_exists($this, $name)) {
+            if (! \property_exists($this->htmlElement, $name)) {
+                // var_dump($name);
+                if ($this->isBackedEnum($value)) {
+                    $value  = $value->value;
+                }
+                $this->htmlElement->setAttribute($name, $value); // the DOM element needs to be updated
+                return;
+            }
+            // var_dump($name);
+            $this->htmlElement->{$name} = $value; // the DOM element needs to be updated
+            return;
+        }
 
-        // // If property exists on HTML Element, set it
-        // if (!\property_exists($this, $name)) {
-        //     throw new InvalidArgumentException(
-        //         "Property {$name} does not exist on " . get_class($this) . '. However you can implement it on ' . __CLASS__
-        //     );
-        // } else {
-        //     $this->{$name} = $value;
-        // }
-
-        // // If also exists on its HTMLElement class  set it, too
-        // $reflection = new ReflectionClass($this->htmlElement);
-        // if ($reflection->hasProperty($name)) {
-        //     $property = $reflection->getProperty($name);
-        //     $property->setAccessible(true);
-        //     $property->setValue($this->htmlElement, $value);
-        //     return;
-        // }
-
-        // // Lastly use setAttribute
-        // if (method_exists($this->htmlElement, 'setAttribute')) {
-        //     $this->htmlElement->setAttribute($name, $value);
-        //     return;
-        // }
-
-        // throw new InvalidArgumentException(
-        //     "Property {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
-        // );
-
-        // $this->htmlElement->setAttribute($name, $value);
+        $this->{$name} = $value; // the instance of HTML\Element needs to be updated
+        // skip enums here
+        if ($this->isBackedEnum($value)) {
+            $this->htmlElement->setAttribute($name, $value->value); // the DOM element needs to be updated
+            return;
+        }
+        $this->htmlElement->setAttribute($name, $value); // the DOM element needs to be updated
     }
 
     /**
@@ -114,35 +101,27 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         return (string) $this->htmlElement->ownerDocument->saveHtml($this->htmlElement);
     }
 
+    // two ways to set an attribute via HTML\Element::$property or HTML\Element->setAttribute()
+    public function setAttribute(string $qualifiedName, mixed $value): void
+    {
+        if (property_exists($this, $qualifiedName)) {
+            $this->{$qualifiedName} = $value; // here we allow Enums
+        }
+        if (\is_subclass_of($value, BackedEnum::class)) {
+            $value = $value->value;
+        }
+        if (!is_string($value)) {
+            throw new InvalidArgumentException("Value for {$qualifiedName} must be a string or a BackedEnum"); // ensure value is a string
+        }
+        $this->htmlElement->setAttribute($qualifiedName, $value); // here we require string
+    }
+
     public function setAttributes(array $attributes): void
     {
         // sort attributes by key name - id and class will still be first
         \ksort($attributes);
         foreach ($attributes as $name => $value) {
-            if ($name === 'class') {
-                $name = 'className';
-            }
-            if (! \property_exists($this, $name)) {
-                if (! \property_exists($this->htmlElement, $name)) {
-                    // var_dump($name);
-                    if ($this->isBackedEnum($value)) {
-                        $value  = $value->value;
-                    }
-                    $this->htmlElement->setAttribute($name, $value);
-                    continue;
-                }
-                // var_dump($name);
-                $this->htmlElement->{$name} = $value;
-                continue;
-            }
-
-            $this->{$name} = $value;
-            // skip enums here
-            if ($this->isBackedEnum($value)) {
-                $this->htmlElement->setAttribute($name, $value->value);
-                continue;
-            }
-            $this->htmlElement->setAttribute($name, $value);
+            $this->setAttribute($name, $value);
         }
     }
 
@@ -151,8 +130,8 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     {
         $className = static::class;
         $qualifiedName = $className::getQualifiedName();
-        $coreElement = $dom->htmlDocument->createElement($qualifiedName);
-        return new $className($coreElement);
+        $elementNode = $dom->htmlDocument->createElement($qualifiedName);
+        return new $className($elementNode);
     }
 
     /**

@@ -3,7 +3,7 @@
  * This file is auto-generated. Do not edit manually.
  *
  * Anchor - The a element represents a hyperlink, linking to another resource.
- * 
+ *
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -51,12 +51,12 @@ class Anchor extends InlineElement
     /** Indicates that the linked content should be downloaded rather than displayed. */
     public ?string $download = null;
 
-    /** 
+    /**
      * Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.
      * @category HTML attribute
      * @required
      */
-    public string $href;
+    public ?string $href = null;
 
     /** Specifies the language of the linked resource. */
     public ?string $hreflang = null;
@@ -64,7 +64,7 @@ class Anchor extends InlineElement
     /** Specifies the relationship between the current document and the linked document. */
     public ?RelEnum $rel = null;
 
-    /** 
+    /**
      * Specifies where to open the linked document.
      * @category HTML attribute
      * @example _self
