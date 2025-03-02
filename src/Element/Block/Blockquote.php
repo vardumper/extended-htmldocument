@@ -39,8 +39,8 @@ class Blockquote extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
+        Article::class,
         Body::class,
-        Paragraph::class,
     ];
 
     /**

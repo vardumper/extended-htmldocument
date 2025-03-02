@@ -13,7 +13,6 @@
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Article;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
@@ -48,7 +47,6 @@ class Picture extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
-        Article::class,
         Aside::class,
         Body::class,
         DefinitionDescription::class,

@@ -24,7 +24,6 @@ use Html\Element\Block\Footer;
 use Html\Element\Block\Header;
 use Html\Element\Block\ListItem;
 use Html\Element\Block\Main;
-use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\Inline\Slot;
@@ -62,7 +61,6 @@ class UnorderedList extends BlockElement
         Header::class,
         ListItem::class,
         Main::class,
-        Paragraph::class,
         Section::class,
         Slot::class,
         Template::class,

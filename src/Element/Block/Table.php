@@ -25,7 +25,6 @@ use Html\Element\Block\Division;
 use Html\Element\Block\Footer;
 use Html\Element\Block\Header;
 use Html\Element\Block\Main;
-use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\TableBody;
 use Html\Element\Block\TableFoot;
@@ -68,7 +67,6 @@ class Table extends BlockElement
         Header::class,
         Main::class,
         MarkedText::class,
-        Paragraph::class,
         Section::class,
         Slot::class,
         Template::class,

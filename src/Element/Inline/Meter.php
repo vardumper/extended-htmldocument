@@ -15,7 +15,6 @@ namespace Html\Element\Inline;
 use Html\Element\Block\Body;
 use Html\Element\Block\Fieldset;
 use Html\Element\Block\Form;
-use Html\Element\Block\Paragraph;
 use Html\Element\InlineElement;
 
 class Meter extends InlineElement
@@ -43,7 +42,6 @@ class Meter extends InlineElement
         Body::class,
         Fieldset::class,
         Form::class,
-        Paragraph::class,
     ];
 
     /**

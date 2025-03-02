@@ -12,7 +12,6 @@
  */
 namespace Html\Element\Inline;
 
-use Html\Element\Block\Article;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
@@ -25,6 +24,7 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Picture;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
+use Html\Element\Inline\Address;
 use Html\Element\Inline\MarkedText;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\DecodingEnum;
@@ -57,7 +57,7 @@ class Image extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [
-        Article::class,
+        Address::class,
         Aside::class,
         Body::class,
         DefinitionDescription::class,

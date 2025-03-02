@@ -18,8 +18,10 @@ use Html\Element\Block\Division;
 use Html\Element\Block\Footer;
 use Html\Element\Block\Header;
 use Html\Element\Block\Main;
+use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
+use Html\Element\Inline\Address;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Ruby;
 
@@ -45,6 +47,7 @@ class RubyText extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [
+        Address::class,
         Aside::class,
         DefinitionDescription::class,
         Division::class,
@@ -52,6 +55,7 @@ class RubyText extends InlineElement
         Header::class,
         Main::class,
         MarkedText::class,
+        Paragraph::class,
         Ruby::class,
         Section::class,
     ];

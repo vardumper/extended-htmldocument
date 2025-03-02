@@ -12,7 +12,6 @@
  */
 namespace Html\Element\Void;
 
-use Html\Element\Block\Article;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
@@ -22,6 +21,7 @@ use Html\Element\Block\Header;
 use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
+use Html\Element\Inline\Address;
 use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
 use Html\Enum\ClearEnum;
@@ -53,7 +53,7 @@ class BreakElement extends VoidElement
      * @var array<string>
      */
     public static array $childOf = [
-        Article::class,
+        Address::class,
         Aside::class,
         Body::class,
         DefinitionDescription::class,

@@ -24,7 +24,6 @@ use Html\Element\Block\Header;
 use Html\Element\Block\Main;
 use Html\Element\Block\Option;
 use Html\Element\Block\OptionGroup;
-use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
@@ -65,7 +64,6 @@ class Select extends InlineElement
         Header::class,
         Main::class,
         MarkedText::class,
-        Paragraph::class,
         Section::class,
         Slot::class,
         Template::class,

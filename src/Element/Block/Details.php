@@ -67,7 +67,6 @@ class Details extends BlockElement
         Header::class,
         Main::class,
         MarkedText::class,
-        Paragraph::class,
         Section::class,
         Slot::class,
         Template::class,

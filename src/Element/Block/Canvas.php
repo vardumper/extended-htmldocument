@@ -15,7 +15,6 @@ namespace Html\Element\Block;
 use Html\Element\BlockElement;
 use Html\Element\Block\Body;
 use Html\Element\Block\Form;
-use Html\Element\Block\Paragraph;
 
 class Canvas extends BlockElement
 {
@@ -41,7 +40,6 @@ class Canvas extends BlockElement
     public static array $childOf = [
         Body::class,
         Form::class,
-        Paragraph::class,
     ];
 
     /**

@@ -12,7 +12,6 @@
  */
 namespace Html\Element\Inline;
 
-use Html\Element\Block\Article;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Audio;
 use Html\Element\Block\Body;
@@ -36,6 +35,7 @@ use Html\Element\Block\Summary;
 use Html\Element\Block\Table;
 use Html\Element\Block\Video;
 use Html\Element\InlineElement;
+use Html\Element\Inline\Address;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\BidirectionalIsolation;
 use Html\Element\Inline\BidirectionalOverride;
@@ -77,7 +77,7 @@ class MarkedText extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [
-        Article::class,
+        Address::class,
         Aside::class,
         Body::class,
         DefinitionDescription::class,

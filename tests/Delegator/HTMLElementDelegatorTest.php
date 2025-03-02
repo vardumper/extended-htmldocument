@@ -5,7 +5,10 @@ namespace Tests\Delegator;
 use BadMethodCallException;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
+use Html\Element\Block\Body;
+use Html\Element\Block\HTML;
 use Html\Element\Inline\Anchor;
+use Html\Element\Void\Head;
 use Html\Enum\RelEnum;
 use Html\Enum\TargetEnum;
 use InvalidArgumentException;
@@ -252,12 +255,13 @@ final class HTMLElementDelegatorTest extends TestCase
     public function testParentOf(): void
     {
         // $this->delegator->setClassName('example-class');
-        $this->assertEquals([], $this->delegator->parentOf());
+        $element = HTML::create($this->document);
+        $this->assertEquals([Body::class, Head::class], $element->parentOf());
     }
 
     public function testChildOf(): void
     {
-        // $this->delegator->setClassName('child-class');
-        $this->assertEquals([], $this->delegator->childOf());
+        $element = Body::create($this->document);
+        $this->assertEquals([HTML::class], $element->childOf());
     }
 }

@@ -12,7 +12,6 @@
  */
 namespace Html\Element\Inline;
 
-use Html\Element\Block\Article;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
@@ -23,6 +22,7 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
+use Html\Element\Inline\Address;
 use Html\Element\Inline\MarkedText;
 
 class BidirectionalOverride extends InlineElement
@@ -47,7 +47,7 @@ class BidirectionalOverride extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [
-        Article::class,
+        Address::class,
         Aside::class,
         Body::class,
         DefinitionDescription::class,

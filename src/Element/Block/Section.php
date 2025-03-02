@@ -107,10 +107,10 @@ class Section extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
+        Article::class,
         Body::class,
         Division::class,
         Main::class,
-        Paragraph::class,
     ];
 
     /**

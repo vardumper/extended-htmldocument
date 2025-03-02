@@ -13,11 +13,11 @@
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Article;
 use Html\Element\Block\Body;
 use Html\Element\Block\DataList;
 use Html\Element\Block\Form;
 use Html\Element\Block\Legend;
-use Html\Element\Block\Paragraph;
 use Html\Element\Inline\Button;
 use Html\Element\Inline\Input;
 use Html\Element\Inline\Label;
@@ -49,9 +49,9 @@ class Fieldset extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
+        Article::class,
         Body::class,
         Form::class,
-        Paragraph::class,
     ];
 
     /**

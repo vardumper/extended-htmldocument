@@ -22,7 +22,6 @@ use Html\Element\Block\Footer;
 use Html\Element\Block\Form;
 use Html\Element\Block\Header;
 use Html\Element\Block\Main;
-use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
@@ -69,7 +68,6 @@ class Input extends InlineElement
         Header::class,
         Main::class,
         MarkedText::class,
-        Paragraph::class,
         Section::class,
         Slot::class,
         Template::class,

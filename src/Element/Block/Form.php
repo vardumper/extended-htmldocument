@@ -27,7 +27,6 @@ use Html\Element\Block\Legend;
 use Html\Element\Block\Main;
 use Html\Element\Block\Menu;
 use Html\Element\Block\NoScript;
-use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\Summary;
 use Html\Element\Block\Template;
@@ -79,7 +78,6 @@ class Form extends BlockElement
         Main::class,
         MarkedText::class,
         Menu::class,
-        Paragraph::class,
         Section::class,
         Slot::class,
         Template::class,
