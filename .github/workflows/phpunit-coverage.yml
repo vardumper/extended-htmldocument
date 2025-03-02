@@ -3,10 +3,14 @@ on:
     push:
     # only trigger if theres a change in src/ directory
         paths:
+            - '.github/workflows/phpunit-coverage.yml'
+            - 'phpunit.xml'
             - 'src/**/*.php'
             - 'tests/**/*.php'
     pull_request:
         paths:
+            - '.github/workflows/phpunit-coverage.yml'
+            - 'phpunit.xml'
             - 'src/**/*.php'
             - 'tests/**/*.php'
     workflow_dispatch:
