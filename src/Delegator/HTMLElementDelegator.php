@@ -80,11 +80,25 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             $value = $value->value;
         }
 
-        if (property_exists($this, $name)) {
-            $this->{$name} = $value;
+        if (\property_exists($this, $name)) {
+            // use reflection to check if this property is a BackedEnum and instantiate it with ::from()
+            $reflection = new ReflectionClass($this);
+            $property = $reflection->getProperty($name);
+            $propertyType = $property->getType();
+            $enumClass = $propertyType->getName();
+            if (\is_subclass_of($enumClass, BackedEnum::class) && is_string($value)) {
+                $value = $enumClass::from($value);
+                $methodName = 'set' . $name;
+                if (\method_exists($this, $methodName)) {
+                    $this->{$methodName}($value);
+                }
+            } else {
+                // not a enum, not a string
+                $this->{$name} = $value;
+            }
         }
 
-        if (! property_exists($this->htmlElement, $name)) {
+        if (! \property_exists($this->htmlElement, $name)) {
             $this->htmlElement->setAttribute($name, $value);
             return;
         }
