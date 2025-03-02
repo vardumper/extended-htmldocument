@@ -17,8 +17,8 @@ Current version is v0.1.4 (Pre-Release)
 - :white_check_mark: Fix issues with `body`. doesnt have childOf HTML 2. unique per parent isn't true although its unique per document. Add more tests for this.
 
 ## Pending <Badge type="tip" text="1.0.0" />
-- :white_large_square: Make sure to handle inconsistencies in attributes that go by the same name correctly (eg. `type` is used in `<button|input>` vs `<link|a|...>` vs `<ol>`). Create an OlTypeEnum, LinkTypeEnum, if needed.
-- :white_large_square: Allow for union types for mixed attributes (eg. target which can be both a TargetEnum (_self, _blank, etc.) and a string value)
-- :white_large_square: Properly link between relevant sections in the docs. Add links to external resources where appropriate.
-- :white_large_square: Add more examples to the documentation.
-- :white_large_square: Add getters/setters for all global attributes to HTMLDocumentDelegator.
+- :white_large_square: [Handle different kinds of attributes that go by the same name correctly](https://github.com/vardumper/extended-htmldocument/issues/6) (eg. `type` is used in `<button|input>` vs `<link|a|...>` vs `<ol>`). Create an OlTypeEnum, LinkTypeEnum, if needed.
+- :white_large_square: [Allow for union types for mixed attributes](https://github.com/vardumper/extended-htmldocument/issues/5) - (eg. target which can be both a TargetEnum (_self, _blank, etc.) and a string value)
+- :white_large_square: [Properly link between relevant sections in the docs](https://github.com/vardumper/extended-htmldocument/issues/4). Add links to external resources where appropriate.
+- :white_large_square: [Add more examples to the documentation](https://github.com/vardumper/extended-htmldocument/issues/3).
+- :white_large_square: [Add getters/setters for all global attributes to HTMLDocumentDelegator](https://github.com/vardumper/extended-htmldocument/issues/2)
