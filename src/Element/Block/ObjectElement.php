@@ -65,5 +65,65 @@ class ObjectElement extends BlockElement
     public ?string $width = null;
 
 
+    public function setData(string $data): void
+    {
+        $this->data = $data;
+    }
+
+    public function getData(): ?string
+    {
+        return $this->data;
+    }
+
+    public function setHeight(string $height): void
+    {
+        $this->height = $height;
+    }
+
+    public function getHeight(): ?string
+    {
+        return $this->height;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setType(string $type): void
+    {
+        $this->type = $type;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setUsemap(string $usemap): void
+    {
+        $this->usemap = $usemap;
+    }
+
+    public function getUsemap(): ?string
+    {
+        return $this->usemap;
+    }
+
+    public function setWidth(string $width): void
+    {
+        $this->width = $width;
+    }
+
+    public function getWidth(): ?string
+    {
+        return $this->width;
+    }
+
 
 }

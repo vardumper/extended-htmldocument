@@ -59,6 +59,26 @@ class OrderedList extends BlockElement
     protected ?TypeEnum $type = null;
 
 
+    public function setReversed(bool $reversed): void
+    {
+        $this->reversed = $reversed;
+    }
+
+    public function getReversed(): ?bool
+    {
+        return $this->reversed;
+    }
+
+    public function setStart(int $start): void
+    {
+        $this->start = $start;
+    }
+
+    public function getStart(): ?int
+    {
+        return $this->start;
+    }
+
     public function setType(TypeEnum $type): void
     {
         $this->type = $type;

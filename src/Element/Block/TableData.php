@@ -58,5 +58,35 @@ class TableData extends BlockElement
     public ?int $rowspan = null;
 
 
+    public function setColspan(int $colspan): void
+    {
+        $this->colspan = $colspan;
+    }
+
+    public function getColspan(): ?int
+    {
+        return $this->colspan;
+    }
+
+    public function setHeaders(string $headers): void
+    {
+        $this->headers = $headers;
+    }
+
+    public function getHeaders(): ?string
+    {
+        return $this->headers;
+    }
+
+    public function setRowspan(int $rowspan): void
+    {
+        $this->rowspan = $rowspan;
+    }
+
+    public function getRowspan(): ?int
+    {
+        return $this->rowspan;
+    }
+
 
 }

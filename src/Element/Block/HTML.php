@@ -54,5 +54,15 @@ class HTML extends BlockElement
     public ?string $manifest = null;
 
 
+    public function setManifest(string $manifest): void
+    {
+        $this->manifest = $manifest;
+    }
+
+    public function getManifest(): ?string
+    {
+        return $this->manifest;
+    }
+
 
 }

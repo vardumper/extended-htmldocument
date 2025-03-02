@@ -53,5 +53,25 @@ class DeletedText extends BlockElement
     public ?string $datetime = null;
 
 
+    public function setCite(string $cite): void
+    {
+        $this->cite = $cite;
+    }
+
+    public function getCite(): ?string
+    {
+        return $this->cite;
+    }
+
+    public function setDatetime(string $datetime): void
+    {
+        $this->datetime = $datetime;
+    }
+
+    public function getDatetime(): ?string
+    {
+        return $this->datetime;
+    }
+
 
 }

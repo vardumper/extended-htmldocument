@@ -53,4 +53,24 @@ class Progress extends InlineElement
     public ?string $value = null;
 
 
+    public function setMax(int $max): void
+    {
+        $this->max = $max;
+    }
+
+    public function getMax(): ?int
+    {
+        return $this->max;
+    }
+
+    public function setValue(string $value): void
+    {
+        $this->value = $value;
+    }
+
+    public function getValue(): ?string
+    {
+        return $this->value;
+    }
+
 }

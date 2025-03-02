@@ -81,4 +81,54 @@ class Select extends InlineElement
         return $this->autocomplete;
     }
 
+    public function setDisabled(bool $disabled): void
+    {
+        $this->disabled = $disabled;
+    }
+
+    public function getDisabled(): ?bool
+    {
+        return $this->disabled;
+    }
+
+    public function setMultiple(bool $multiple): void
+    {
+        $this->multiple = $multiple;
+    }
+
+    public function getMultiple(): ?bool
+    {
+        return $this->multiple;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setRequired(bool $required): void
+    {
+        $this->required = $required;
+    }
+
+    public function getRequired(): ?bool
+    {
+        return $this->required;
+    }
+
+    public function setSize(int $size): void
+    {
+        $this->size = $size;
+    }
+
+    public function getSize(): ?int
+    {
+        return $this->size;
+    }
+
 }

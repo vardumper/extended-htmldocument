@@ -52,5 +52,15 @@ class Blockquote extends BlockElement
     public ?string $cite = null;
 
 
+    public function setCite(string $cite): void
+    {
+        $this->cite = $cite;
+    }
+
+    public function getCite(): ?string
+    {
+        return $this->cite;
+    }
+
 
 }

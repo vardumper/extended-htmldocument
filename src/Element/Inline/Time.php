@@ -50,4 +50,14 @@ class Time extends InlineElement
     public ?string $datetime = null;
 
 
+    public function setDatetime(string $datetime): void
+    {
+        $this->datetime = $datetime;
+    }
+
+    public function getDatetime(): ?string
+    {
+        return $this->datetime;
+    }
+
 }

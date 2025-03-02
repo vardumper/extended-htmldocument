@@ -69,6 +69,36 @@ class Source extends VoidElement
     protected ?TypeEnum $type = null;
 
 
+    public function setMedia(string $media): void
+    {
+        $this->media = $media;
+    }
+
+    public function getMedia(): ?string
+    {
+        return $this->media;
+    }
+
+    public function setSizes(string $sizes): void
+    {
+        $this->sizes = $sizes;
+    }
+
+    public function getSizes(): ?string
+    {
+        return $this->sizes;
+    }
+
+    public function setSrc(string $src): void
+    {
+        $this->src = $src;
+    }
+
+    public function getSrc(): ?string
+    {
+        return $this->src;
+    }
+
     public function setType(TypeEnum $type): void
     {
         $this->type = $type;

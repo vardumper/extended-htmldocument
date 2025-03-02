@@ -65,4 +65,64 @@ class Meter extends InlineElement
     public ?string $value = null;
 
 
+    public function setHigh(string $high): void
+    {
+        $this->high = $high;
+    }
+
+    public function getHigh(): ?string
+    {
+        return $this->high;
+    }
+
+    public function setLow(string $low): void
+    {
+        $this->low = $low;
+    }
+
+    public function getLow(): ?string
+    {
+        return $this->low;
+    }
+
+    public function setMax(int $max): void
+    {
+        $this->max = $max;
+    }
+
+    public function getMax(): ?int
+    {
+        return $this->max;
+    }
+
+    public function setMin(string $min): void
+    {
+        $this->min = $min;
+    }
+
+    public function getMin(): ?string
+    {
+        return $this->min;
+    }
+
+    public function setOptimum(string $optimum): void
+    {
+        $this->optimum = $optimum;
+    }
+
+    public function getOptimum(): ?string
+    {
+        return $this->optimum;
+    }
+
+    public function setValue(string $value): void
+    {
+        $this->value = $value;
+    }
+
+    public function getValue(): ?string
+    {
+        return $this->value;
+    }
+
 }

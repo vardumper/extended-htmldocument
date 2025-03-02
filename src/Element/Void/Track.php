@@ -72,6 +72,16 @@ class Track extends VoidElement
     public ?string $srclang = null;
 
 
+    public function setDefault(bool $default): void
+    {
+        $this->default = $default;
+    }
+
+    public function getDefault(): ?bool
+    {
+        return $this->default;
+    }
+
     public function setKind(KindEnum $kind): void
     {
         $this->kind = $kind;
@@ -81,6 +91,36 @@ class Track extends VoidElement
     public function getKind(): ?KindEnum
     {
         return $this->kind;
+    }
+
+    public function setLabel(string $label): void
+    {
+        $this->label = $label;
+    }
+
+    public function getLabel(): ?string
+    {
+        return $this->label;
+    }
+
+    public function setSrc(string $src): void
+    {
+        $this->src = $src;
+    }
+
+    public function getSrc(): ?string
+    {
+        return $this->src;
+    }
+
+    public function setSrclang(string $srclang): void
+    {
+        $this->srclang = $srclang;
+    }
+
+    public function getSrclang(): ?string
+    {
+        return $this->srclang;
     }
 
 }

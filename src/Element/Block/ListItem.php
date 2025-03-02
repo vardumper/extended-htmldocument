@@ -104,5 +104,15 @@ class ListItem extends BlockElement
     public ?string $value = null;
 
 
+    public function setValue(string $value): void
+    {
+        $this->value = $value;
+    }
+
+    public function getValue(): ?string
+    {
+        return $this->value;
+    }
+
 
 }

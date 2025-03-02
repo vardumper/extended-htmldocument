@@ -83,6 +83,26 @@ class Video extends BlockElement
     public ?string $width = null;
 
 
+    public function setAutoplay(bool $autoplay): void
+    {
+        $this->autoplay = $autoplay;
+    }
+
+    public function getAutoplay(): ?bool
+    {
+        return $this->autoplay;
+    }
+
+    public function setControls(bool $controls): void
+    {
+        $this->controls = $controls;
+    }
+
+    public function getControls(): ?bool
+    {
+        return $this->controls;
+    }
+
     public function setCrossorigin(CrossoriginEnum $crossorigin): void
     {
         $this->crossorigin = $crossorigin;
@@ -94,6 +114,46 @@ class Video extends BlockElement
         return $this->crossorigin;
     }
 
+    public function setHeight(string $height): void
+    {
+        $this->height = $height;
+    }
+
+    public function getHeight(): ?string
+    {
+        return $this->height;
+    }
+
+    public function setLoop(bool $loop): void
+    {
+        $this->loop = $loop;
+    }
+
+    public function getLoop(): ?bool
+    {
+        return $this->loop;
+    }
+
+    public function setMuted(bool $muted): void
+    {
+        $this->muted = $muted;
+    }
+
+    public function getMuted(): ?bool
+    {
+        return $this->muted;
+    }
+
+    public function setPoster(string $poster): void
+    {
+        $this->poster = $poster;
+    }
+
+    public function getPoster(): ?string
+    {
+        return $this->poster;
+    }
+
     public function setPreload(PreloadEnum $preload): void
     {
         $this->preload = $preload;
@@ -103,6 +163,26 @@ class Video extends BlockElement
     public function getPreload(): ?PreloadEnum
     {
         return $this->preload;
+    }
+
+    public function setSrc(string $src): void
+    {
+        $this->src = $src;
+    }
+
+    public function getSrc(): ?string
+    {
+        return $this->src;
+    }
+
+    public function setWidth(string $width): void
+    {
+        $this->width = $width;
+    }
+
+    public function getWidth(): ?string
+    {
+        return $this->width;
     }
 
 

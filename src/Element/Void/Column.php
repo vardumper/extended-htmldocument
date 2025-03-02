@@ -60,4 +60,24 @@ class Column extends VoidElement
     public ?string $width = null;
 
 
+    public function setSpan(int $span): void
+    {
+        $this->span = $span;
+    }
+
+    public function getSpan(): ?int
+    {
+        return $this->span;
+    }
+
+    public function setWidth(string $width): void
+    {
+        $this->width = $width;
+    }
+
+    public function getWidth(): ?string
+    {
+        return $this->width;
+    }
+
 }

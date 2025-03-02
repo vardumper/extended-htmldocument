@@ -95,5 +95,45 @@ class HorizontalRule extends BlockElement
         return $this->align;
     }
 
+    public function setColor(string $color): void
+    {
+        $this->color = $color;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setNoshade(bool $noshade): void
+    {
+        $this->noshade = $noshade;
+    }
+
+    public function getNoshade(): ?bool
+    {
+        return $this->noshade;
+    }
+
+    public function setSize(int $size): void
+    {
+        $this->size = $size;
+    }
+
+    public function getSize(): ?int
+    {
+        return $this->size;
+    }
+
+    public function setWidth(string $width): void
+    {
+        $this->width = $width;
+    }
+
+    public function getWidth(): ?string
+    {
+        return $this->width;
+    }
+
 
 }

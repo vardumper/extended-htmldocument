@@ -79,6 +79,36 @@ class InlineFrame extends BlockElement
     public ?string $width = null;
 
 
+    public function setAllowfullscreen(bool $allowfullscreen): void
+    {
+        $this->allowfullscreen = $allowfullscreen;
+    }
+
+    public function getAllowfullscreen(): ?bool
+    {
+        return $this->allowfullscreen;
+    }
+
+    public function setHeight(string $height): void
+    {
+        $this->height = $height;
+    }
+
+    public function getHeight(): ?string
+    {
+        return $this->height;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
     public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): void
     {
         $this->referrerpolicy = $referrerpolicy;
@@ -88,6 +118,56 @@ class InlineFrame extends BlockElement
     public function getReferrerpolicy(): ?ReferrerpolicyEnum
     {
         return $this->referrerpolicy;
+    }
+
+    public function setSandbox(string $sandbox): void
+    {
+        $this->sandbox = $sandbox;
+    }
+
+    public function getSandbox(): ?string
+    {
+        return $this->sandbox;
+    }
+
+    public function setSeamless(bool $seamless): void
+    {
+        $this->seamless = $seamless;
+    }
+
+    public function getSeamless(): ?bool
+    {
+        return $this->seamless;
+    }
+
+    public function setSrc(string $src): void
+    {
+        $this->src = $src;
+    }
+
+    public function getSrc(): ?string
+    {
+        return $this->src;
+    }
+
+    public function setSrcdoc(string $srcdoc): void
+    {
+        $this->srcdoc = $srcdoc;
+    }
+
+    public function getSrcdoc(): ?string
+    {
+        return $this->srcdoc;
+    }
+
+    public function setWidth(string $width): void
+    {
+        $this->width = $width;
+    }
+
+    public function getWidth(): ?string
+    {
+        return $this->width;
     }
 
 

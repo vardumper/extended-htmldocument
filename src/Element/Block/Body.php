@@ -253,5 +253,165 @@ class Body extends BlockElement
     public ?string $onunload = null;
 
 
+    public function setOnafterprint(string $onafterprint): void
+    {
+        $this->onafterprint = $onafterprint;
+    }
+
+    public function getOnafterprint(): ?string
+    {
+        return $this->onafterprint;
+    }
+
+    public function setOnbeforeprint(string $onbeforeprint): void
+    {
+        $this->onbeforeprint = $onbeforeprint;
+    }
+
+    public function getOnbeforeprint(): ?string
+    {
+        return $this->onbeforeprint;
+    }
+
+    public function setOnbeforeunload(string $onbeforeunload): void
+    {
+        $this->onbeforeunload = $onbeforeunload;
+    }
+
+    public function getOnbeforeunload(): ?string
+    {
+        return $this->onbeforeunload;
+    }
+
+    public function setOnhashchange(string $onhashchange): void
+    {
+        $this->onhashchange = $onhashchange;
+    }
+
+    public function getOnhashchange(): ?string
+    {
+        return $this->onhashchange;
+    }
+
+    public function setOnlanguagechange(string $onlanguagechange): void
+    {
+        $this->onlanguagechange = $onlanguagechange;
+    }
+
+    public function getOnlanguagechange(): ?string
+    {
+        return $this->onlanguagechange;
+    }
+
+    public function setOnmessage(string $onmessage): void
+    {
+        $this->onmessage = $onmessage;
+    }
+
+    public function getOnmessage(): ?string
+    {
+        return $this->onmessage;
+    }
+
+    public function setOnmessageerror(string $onmessageerror): void
+    {
+        $this->onmessageerror = $onmessageerror;
+    }
+
+    public function getOnmessageerror(): ?string
+    {
+        return $this->onmessageerror;
+    }
+
+    public function setOnoffline(string $onoffline): void
+    {
+        $this->onoffline = $onoffline;
+    }
+
+    public function getOnoffline(): ?string
+    {
+        return $this->onoffline;
+    }
+
+    public function setOnonline(string $ononline): void
+    {
+        $this->ononline = $ononline;
+    }
+
+    public function getOnonline(): ?string
+    {
+        return $this->ononline;
+    }
+
+    public function setOnpagehide(string $onpagehide): void
+    {
+        $this->onpagehide = $onpagehide;
+    }
+
+    public function getOnpagehide(): ?string
+    {
+        return $this->onpagehide;
+    }
+
+    public function setOnpageshow(string $onpageshow): void
+    {
+        $this->onpageshow = $onpageshow;
+    }
+
+    public function getOnpageshow(): ?string
+    {
+        return $this->onpageshow;
+    }
+
+    public function setOnpopstate(string $onpopstate): void
+    {
+        $this->onpopstate = $onpopstate;
+    }
+
+    public function getOnpopstate(): ?string
+    {
+        return $this->onpopstate;
+    }
+
+    public function setOnrejectionhandled(string $onrejectionhandled): void
+    {
+        $this->onrejectionhandled = $onrejectionhandled;
+    }
+
+    public function getOnrejectionhandled(): ?string
+    {
+        return $this->onrejectionhandled;
+    }
+
+    public function setOnstorage(string $onstorage): void
+    {
+        $this->onstorage = $onstorage;
+    }
+
+    public function getOnstorage(): ?string
+    {
+        return $this->onstorage;
+    }
+
+    public function setOnunhandledrejection(string $onunhandledrejection): void
+    {
+        $this->onunhandledrejection = $onunhandledrejection;
+    }
+
+    public function getOnunhandledrejection(): ?string
+    {
+        return $this->onunhandledrejection;
+    }
+
+    public function setOnunload(string $onunload): void
+    {
+        $this->onunload = $onunload;
+    }
+
+    public function getOnunload(): ?string
+    {
+        return $this->onunload;
+    }
+
 
 }

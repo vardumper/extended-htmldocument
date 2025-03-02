@@ -96,6 +96,106 @@ class Textarea extends InlineElement
         return $this->autocomplete;
     }
 
+    public function setCols(int $cols): void
+    {
+        $this->cols = $cols;
+    }
+
+    public function getCols(): ?int
+    {
+        return $this->cols;
+    }
+
+    public function setDirname(string $dirname): void
+    {
+        $this->dirname = $dirname;
+    }
+
+    public function getDirname(): ?string
+    {
+        return $this->dirname;
+    }
+
+    public function setDisabled(bool $disabled): void
+    {
+        $this->disabled = $disabled;
+    }
+
+    public function getDisabled(): ?bool
+    {
+        return $this->disabled;
+    }
+
+    public function setMaxlength(int $maxlength): void
+    {
+        $this->maxlength = $maxlength;
+    }
+
+    public function getMaxlength(): ?int
+    {
+        return $this->maxlength;
+    }
+
+    public function setMinlength(int $minlength): void
+    {
+        $this->minlength = $minlength;
+    }
+
+    public function getMinlength(): ?int
+    {
+        return $this->minlength;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setPlaceholder(string $placeholder): void
+    {
+        $this->placeholder = $placeholder;
+    }
+
+    public function getPlaceholder(): ?string
+    {
+        return $this->placeholder;
+    }
+
+    public function setReadonly(bool $readonly): void
+    {
+        $this->readonly = $readonly;
+    }
+
+    public function getReadonly(): ?bool
+    {
+        return $this->readonly;
+    }
+
+    public function setRequired(bool $required): void
+    {
+        $this->required = $required;
+    }
+
+    public function getRequired(): ?bool
+    {
+        return $this->required;
+    }
+
+    public function setRows(int $rows): void
+    {
+        $this->rows = $rows;
+    }
+
+    public function getRows(): ?int
+    {
+        return $this->rows;
+    }
+
     public function setWrap(WrapEnum $wrap): void
     {
         $this->wrap = $wrap;

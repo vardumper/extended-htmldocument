@@ -96,6 +96,16 @@ class Image extends InlineElement
     public ?string $width = null;
 
 
+    public function setAlt(string $alt): void
+    {
+        $this->alt = $alt;
+    }
+
+    public function getAlt(): ?string
+    {
+        return $this->alt;
+    }
+
     public function setCrossorigin(CrossoriginEnum $crossorigin): void
     {
         $this->crossorigin = $crossorigin;
@@ -118,6 +128,26 @@ class Image extends InlineElement
         return $this->decoding;
     }
 
+    public function setHeight(string $height): void
+    {
+        $this->height = $height;
+    }
+
+    public function getHeight(): ?string
+    {
+        return $this->height;
+    }
+
+    public function setIsmap(bool $ismap): void
+    {
+        $this->ismap = $ismap;
+    }
+
+    public function getIsmap(): ?bool
+    {
+        return $this->ismap;
+    }
+
     public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): void
     {
         $this->referrerpolicy = $referrerpolicy;
@@ -127,6 +157,56 @@ class Image extends InlineElement
     public function getReferrerpolicy(): ?ReferrerpolicyEnum
     {
         return $this->referrerpolicy;
+    }
+
+    public function setSizes(string $sizes): void
+    {
+        $this->sizes = $sizes;
+    }
+
+    public function getSizes(): ?string
+    {
+        return $this->sizes;
+    }
+
+    public function setSrc(string $src): void
+    {
+        $this->src = $src;
+    }
+
+    public function getSrc(): ?string
+    {
+        return $this->src;
+    }
+
+    public function setSrcset(string $srcset): void
+    {
+        $this->srcset = $srcset;
+    }
+
+    public function getSrcset(): ?string
+    {
+        return $this->srcset;
+    }
+
+    public function setUsemap(string $usemap): void
+    {
+        $this->usemap = $usemap;
+    }
+
+    public function getUsemap(): ?string
+    {
+        return $this->usemap;
+    }
+
+    public function setWidth(string $width): void
+    {
+        $this->width = $width;
+    }
+
+    public function getWidth(): ?string
+    {
+        return $this->width;
     }
 
 }

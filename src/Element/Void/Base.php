@@ -69,6 +69,16 @@ class Base extends VoidElement
     protected ?TargetEnum $target = null;
 
 
+    public function setHref(string $href): void
+    {
+        $this->href = $href;
+    }
+
+    public function getHref(): ?string
+    {
+        return $this->href;
+    }
+
     public function setTarget(TargetEnum $target): void
     {
         $this->target = $target;

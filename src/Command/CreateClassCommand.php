@@ -148,16 +148,12 @@ final class CreateClassCommand extends Command
         foreach ($attributes as $attribute => $details) {
             $type = $details['type'] ?? '';
             $type = $this->mapToPhpType($type);
+            $variableName = $this->toVariableName($attribute);
+            $methodName = ucfirst($this->toVariableName($attribute));
             if ($type === 'enum') {
                 $kebapCase = $this->toKebapCase($attribute);
                 $type = \sprintf('%sEnum', $kebapCase);
-            } else {
-                continue; // skip non-enum types
-            }
-            $variableName = $this->toVariableName($attribute);
-            $methodName = ucfirst($this->toVariableName($attribute));
-            $retVal .= \sprintf(
-                "    public function set%s(%s \$%s): void
+                $signature = "    public function set%s(%s \$%s): void
     {
         \$this->%s = \$%s;
         \$this->htmlElement->setAttribute('%s', \$%s->value);
@@ -166,18 +162,42 @@ final class CreateClassCommand extends Command
     public function get%s(): ?%s
     {
         return \$this->%s;
-    }\n\n",
-                $methodName,
-                $type,
-                $variableName,
-                $variableName,
-                $variableName,
-                $attribute,
-                $variableName,
-                $methodName,
-                $type,
-                $variableName
-            );
+    }\n\n";
+                $retVal .= \sprintf(
+                    $signature,
+                    $methodName,
+                    $type,
+                    $variableName,
+                    $variableName,
+                    $variableName,
+                    $attribute,
+                    $variableName,
+                    $methodName,
+                    $type,
+                    $variableName
+                );
+            } else {
+                $signature = "    public function set%s(%s \$%s): void
+    {
+        \$this->%s = \$%s;
+    }
+
+    public function get%s(): ?%s
+    {
+        return \$this->%s;
+    }\n\n";
+                $retVal .= \sprintf(
+                    $signature,
+                    $methodName,
+                    $type,
+                    $variableName,
+                    $variableName,
+                    $variableName,
+                    $methodName,
+                    $type,
+                    $variableName
+                );
+            }
         }
         return $retVal;
     }

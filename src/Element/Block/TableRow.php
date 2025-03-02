@@ -107,6 +107,36 @@ class TableRow extends BlockElement
         return $this->align;
     }
 
+    public function setBgcolor(string $bgcolor): void
+    {
+        $this->bgcolor = $bgcolor;
+    }
+
+    public function getBgcolor(): ?string
+    {
+        return $this->bgcolor;
+    }
+
+    public function setChar(string $char): void
+    {
+        $this->char = $char;
+    }
+
+    public function getChar(): ?string
+    {
+        return $this->char;
+    }
+
+    public function setCharoff(string $charoff): void
+    {
+        $this->charoff = $charoff;
+    }
+
+    public function getCharoff(): ?string
+    {
+        return $this->charoff;
+    }
+
     public function setValign(ValignEnum $valign): void
     {
         $this->valign = $valign;

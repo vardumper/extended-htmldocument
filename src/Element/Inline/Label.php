@@ -50,4 +50,14 @@ class Label extends InlineElement
     public ?string $for = null;
 
 
+    public function setFor(string $for): void
+    {
+        $this->for = $for;
+    }
+
+    public function getFor(): ?string
+    {
+        return $this->for;
+    }
+
 }

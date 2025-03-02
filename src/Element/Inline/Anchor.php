@@ -78,6 +78,36 @@ class Anchor extends InlineElement
     public ?string $type = null;
 
 
+    public function setDownload(string $download): void
+    {
+        $this->download = $download;
+    }
+
+    public function getDownload(): ?string
+    {
+        return $this->download;
+    }
+
+    public function setHref(string $href): void
+    {
+        $this->href = $href;
+    }
+
+    public function getHref(): ?string
+    {
+        return $this->href;
+    }
+
+    public function setHreflang(string $hreflang): void
+    {
+        $this->hreflang = $hreflang;
+    }
+
+    public function getHreflang(): ?string
+    {
+        return $this->hreflang;
+    }
+
     public function setRel(RelEnum $rel): void
     {
         $this->rel = $rel;
@@ -98,6 +128,26 @@ class Anchor extends InlineElement
     public function getTarget(): ?TargetEnum
     {
         return $this->target;
+    }
+
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setType(string $type): void
+    {
+        $this->type = $type;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
     }
 
 }

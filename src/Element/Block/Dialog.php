@@ -96,5 +96,15 @@ class Dialog extends BlockElement
     public ?bool $open = null;
 
 
+    public function setOpen(bool $open): void
+    {
+        $this->open = $open;
+    }
+
+    public function getOpen(): ?bool
+    {
+        return $this->open;
+    }
+
 
 }

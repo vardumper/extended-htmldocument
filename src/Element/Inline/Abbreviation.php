@@ -50,4 +50,14 @@ class Abbreviation extends InlineElement
     public ?string $title = null;
 
 
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
 }

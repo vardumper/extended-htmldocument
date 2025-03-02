@@ -97,6 +97,46 @@ class Link extends VoidElement
         return $this->crossorigin;
     }
 
+    public function setHref(string $href): void
+    {
+        $this->href = $href;
+    }
+
+    public function getHref(): ?string
+    {
+        return $this->href;
+    }
+
+    public function setHreflang(string $hreflang): void
+    {
+        $this->hreflang = $hreflang;
+    }
+
+    public function getHreflang(): ?string
+    {
+        return $this->hreflang;
+    }
+
+    public function setIntegrity(string $integrity): void
+    {
+        $this->integrity = $integrity;
+    }
+
+    public function getIntegrity(): ?string
+    {
+        return $this->integrity;
+    }
+
+    public function setMedia(string $media): void
+    {
+        $this->media = $media;
+    }
+
+    public function getMedia(): ?string
+    {
+        return $this->media;
+    }
+
     public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): void
     {
         $this->referrerpolicy = $referrerpolicy;
@@ -117,6 +157,26 @@ class Link extends VoidElement
     public function getRel(): ?RelEnum
     {
         return $this->rel;
+    }
+
+    public function setSizes(string $sizes): void
+    {
+        $this->sizes = $sizes;
+    }
+
+    public function getSizes(): ?string
+    {
+        return $this->sizes;
+    }
+
+    public function setType(string $type): void
+    {
+        $this->type = $type;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
     }
 
 }

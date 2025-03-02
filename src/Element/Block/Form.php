@@ -117,6 +117,26 @@ class Form extends BlockElement
     protected ?TargetEnum $target = null;
 
 
+    public function setAcceptCharset(string $acceptCharset): void
+    {
+        $this->acceptCharset = $acceptCharset;
+    }
+
+    public function getAcceptCharset(): ?string
+    {
+        return $this->acceptCharset;
+    }
+
+    public function setAction(string $action): void
+    {
+        $this->action = $action;
+    }
+
+    public function getAction(): ?string
+    {
+        return $this->action;
+    }
+
     public function setAutocomplete(AutocompleteEnum $autocomplete): void
     {
         $this->autocomplete = $autocomplete;
@@ -148,6 +168,26 @@ class Form extends BlockElement
     public function getMethod(): ?MethodEnum
     {
         return $this->method;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setNovalidate(bool $novalidate): void
+    {
+        $this->novalidate = $novalidate;
+    }
+
+    public function getNovalidate(): ?bool
+    {
+        return $this->novalidate;
     }
 
     public function setTarget(TargetEnum $target): void

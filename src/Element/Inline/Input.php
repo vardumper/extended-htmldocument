@@ -130,6 +130,26 @@ class Input extends InlineElement
     public ?string $width = null;
 
 
+    public function setAccept(string $accept): void
+    {
+        $this->accept = $accept;
+    }
+
+    public function getAccept(): ?string
+    {
+        return $this->accept;
+    }
+
+    public function setAlt(string $alt): void
+    {
+        $this->alt = $alt;
+    }
+
+    public function getAlt(): ?string
+    {
+        return $this->alt;
+    }
+
     public function setAutocomplete(AutocompleteEnum $autocomplete): void
     {
         $this->autocomplete = $autocomplete;
@@ -141,6 +161,186 @@ class Input extends InlineElement
         return $this->autocomplete;
     }
 
+    public function setChecked(bool $checked): void
+    {
+        $this->checked = $checked;
+    }
+
+    public function getChecked(): ?bool
+    {
+        return $this->checked;
+    }
+
+    public function setDirname(string $dirname): void
+    {
+        $this->dirname = $dirname;
+    }
+
+    public function getDirname(): ?string
+    {
+        return $this->dirname;
+    }
+
+    public function setDisabled(bool $disabled): void
+    {
+        $this->disabled = $disabled;
+    }
+
+    public function getDisabled(): ?bool
+    {
+        return $this->disabled;
+    }
+
+    public function setHeight(string $height): void
+    {
+        $this->height = $height;
+    }
+
+    public function getHeight(): ?string
+    {
+        return $this->height;
+    }
+
+    public function setList(string $list): void
+    {
+        $this->list = $list;
+    }
+
+    public function getList(): ?string
+    {
+        return $this->list;
+    }
+
+    public function setMax(int $max): void
+    {
+        $this->max = $max;
+    }
+
+    public function getMax(): ?int
+    {
+        return $this->max;
+    }
+
+    public function setMaxlength(int $maxlength): void
+    {
+        $this->maxlength = $maxlength;
+    }
+
+    public function getMaxlength(): ?int
+    {
+        return $this->maxlength;
+    }
+
+    public function setMin(string $min): void
+    {
+        $this->min = $min;
+    }
+
+    public function getMin(): ?string
+    {
+        return $this->min;
+    }
+
+    public function setMinlength(int $minlength): void
+    {
+        $this->minlength = $minlength;
+    }
+
+    public function getMinlength(): ?int
+    {
+        return $this->minlength;
+    }
+
+    public function setMultiple(bool $multiple): void
+    {
+        $this->multiple = $multiple;
+    }
+
+    public function getMultiple(): ?bool
+    {
+        return $this->multiple;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setPattern(string $pattern): void
+    {
+        $this->pattern = $pattern;
+    }
+
+    public function getPattern(): ?string
+    {
+        return $this->pattern;
+    }
+
+    public function setPlaceholder(string $placeholder): void
+    {
+        $this->placeholder = $placeholder;
+    }
+
+    public function getPlaceholder(): ?string
+    {
+        return $this->placeholder;
+    }
+
+    public function setReadonly(bool $readonly): void
+    {
+        $this->readonly = $readonly;
+    }
+
+    public function getReadonly(): ?bool
+    {
+        return $this->readonly;
+    }
+
+    public function setRequired(bool $required): void
+    {
+        $this->required = $required;
+    }
+
+    public function getRequired(): ?bool
+    {
+        return $this->required;
+    }
+
+    public function setSize(int $size): void
+    {
+        $this->size = $size;
+    }
+
+    public function getSize(): ?int
+    {
+        return $this->size;
+    }
+
+    public function setSrc(string $src): void
+    {
+        $this->src = $src;
+    }
+
+    public function getSrc(): ?string
+    {
+        return $this->src;
+    }
+
+    public function setStep(string $step): void
+    {
+        $this->step = $step;
+    }
+
+    public function getStep(): ?string
+    {
+        return $this->step;
+    }
+
     public function setType(TypeEnum $type): void
     {
         $this->type = $type;
@@ -150,6 +350,26 @@ class Input extends InlineElement
     public function getType(): ?TypeEnum
     {
         return $this->type;
+    }
+
+    public function setValue(string $value): void
+    {
+        $this->value = $value;
+    }
+
+    public function getValue(): ?string
+    {
+        return $this->value;
+    }
+
+    public function setWidth(string $width): void
+    {
+        $this->width = $width;
+    }
+
+    public function getWidth(): ?string
+    {
+        return $this->width;
     }
 
 }

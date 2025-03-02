@@ -63,6 +63,36 @@ class Button extends InlineElement
     public ?string $value = null;
 
 
+    public function setAutofocus(bool $autofocus): void
+    {
+        $this->autofocus = $autofocus;
+    }
+
+    public function getAutofocus(): ?bool
+    {
+        return $this->autofocus;
+    }
+
+    public function setDisabled(bool $disabled): void
+    {
+        $this->disabled = $disabled;
+    }
+
+    public function getDisabled(): ?bool
+    {
+        return $this->disabled;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
     public function setType(TypeEnum $type): void
     {
         $this->type = $type;
@@ -72,6 +102,16 @@ class Button extends InlineElement
     public function getType(): ?TypeEnum
     {
         return $this->type;
+    }
+
+    public function setValue(string $value): void
+    {
+        $this->value = $value;
+    }
+
+    public function getValue(): ?string
+    {
+        return $this->value;
     }
 
 }

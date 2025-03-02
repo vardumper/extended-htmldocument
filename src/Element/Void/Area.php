@@ -95,6 +95,56 @@ class Area extends VoidElement
     protected ?TypeEnum $type = null;
 
 
+    public function setAlt(string $alt): void
+    {
+        $this->alt = $alt;
+    }
+
+    public function getAlt(): ?string
+    {
+        return $this->alt;
+    }
+
+    public function setCoords(string $coords): void
+    {
+        $this->coords = $coords;
+    }
+
+    public function getCoords(): ?string
+    {
+        return $this->coords;
+    }
+
+    public function setDownload(string $download): void
+    {
+        $this->download = $download;
+    }
+
+    public function getDownload(): ?string
+    {
+        return $this->download;
+    }
+
+    public function setHref(string $href): void
+    {
+        $this->href = $href;
+    }
+
+    public function getHref(): ?string
+    {
+        return $this->href;
+    }
+
+    public function setHreflang(string $hreflang): void
+    {
+        $this->hreflang = $hreflang;
+    }
+
+    public function getHreflang(): ?string
+    {
+        return $this->hreflang;
+    }
+
     public function setRel(RelEnum $rel): void
     {
         $this->rel = $rel;

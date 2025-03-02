@@ -69,6 +69,26 @@ class Embed extends BlockElement
     public ?string $width = null;
 
 
+    public function setHeight(string $height): void
+    {
+        $this->height = $height;
+    }
+
+    public function getHeight(): ?string
+    {
+        return $this->height;
+    }
+
+    public function setSrc(string $src): void
+    {
+        $this->src = $src;
+    }
+
+    public function getSrc(): ?string
+    {
+        return $this->src;
+    }
+
     public function setType(TypeEnum $type): void
     {
         $this->type = $type;
@@ -78,6 +98,16 @@ class Embed extends BlockElement
     public function getType(): ?TypeEnum
     {
         return $this->type;
+    }
+
+    public function setWidth(string $width): void
+    {
+        $this->width = $width;
+    }
+
+    public function getWidth(): ?string
+    {
+        return $this->width;
     }
 
 

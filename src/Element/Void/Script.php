@@ -81,6 +81,26 @@ class Script extends VoidElement
     protected ?TypeEnum $type = null;
 
 
+    public function setAsync(bool $async): void
+    {
+        $this->async = $async;
+    }
+
+    public function getAsync(): ?bool
+    {
+        return $this->async;
+    }
+
+    public function setCharset(string $charset): void
+    {
+        $this->charset = $charset;
+    }
+
+    public function getCharset(): ?string
+    {
+        return $this->charset;
+    }
+
     public function setCrossorigin(CrossoriginEnum $crossorigin): void
     {
         $this->crossorigin = $crossorigin;
@@ -92,6 +112,36 @@ class Script extends VoidElement
         return $this->crossorigin;
     }
 
+    public function setDefer(bool $defer): void
+    {
+        $this->defer = $defer;
+    }
+
+    public function getDefer(): ?bool
+    {
+        return $this->defer;
+    }
+
+    public function setIntegrity(string $integrity): void
+    {
+        $this->integrity = $integrity;
+    }
+
+    public function getIntegrity(): ?string
+    {
+        return $this->integrity;
+    }
+
+    public function setNonce(string $nonce): void
+    {
+        $this->nonce = $nonce;
+    }
+
+    public function getNonce(): ?string
+    {
+        return $this->nonce;
+    }
+
     public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): void
     {
         $this->referrerpolicy = $referrerpolicy;
@@ -101,6 +151,16 @@ class Script extends VoidElement
     public function getReferrerpolicy(): ?ReferrerpolicyEnum
     {
         return $this->referrerpolicy;
+    }
+
+    public function setSrc(string $src): void
+    {
+        $this->src = $src;
+    }
+
+    public function getSrc(): ?string
+    {
+        return $this->src;
     }
 
     public function setType(TypeEnum $type): void

@@ -63,6 +63,46 @@ class Style extends VoidElement
     protected ?TypeEnum $type = null;
 
 
+    public function setDisabled(bool $disabled): void
+    {
+        $this->disabled = $disabled;
+    }
+
+    public function getDisabled(): ?bool
+    {
+        return $this->disabled;
+    }
+
+    public function setMedia(string $media): void
+    {
+        $this->media = $media;
+    }
+
+    public function getMedia(): ?string
+    {
+        return $this->media;
+    }
+
+    public function setNonce(string $nonce): void
+    {
+        $this->nonce = $nonce;
+    }
+
+    public function getNonce(): ?string
+    {
+        return $this->nonce;
+    }
+
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
     public function setType(TypeEnum $type): void
     {
         $this->type = $type;

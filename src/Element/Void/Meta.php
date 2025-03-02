@@ -68,6 +68,26 @@ class Meta extends VoidElement
     public ?string $scheme = null;
 
 
+    public function setCharset(string $charset): void
+    {
+        $this->charset = $charset;
+    }
+
+    public function getCharset(): ?string
+    {
+        return $this->charset;
+    }
+
+    public function setContent(string $content): void
+    {
+        $this->content = $content;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
     public function setHttpEquiv(HttpEquivEnum $httpEquiv): void
     {
         $this->httpEquiv = $httpEquiv;
@@ -77,6 +97,26 @@ class Meta extends VoidElement
     public function getHttpEquiv(): ?HttpEquivEnum
     {
         return $this->httpEquiv;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setScheme(string $scheme): void
+    {
+        $this->scheme = $scheme;
+    }
+
+    public function getScheme(): ?string
+    {
+        return $this->scheme;
     }
 
 }
