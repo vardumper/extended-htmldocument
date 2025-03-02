@@ -8,7 +8,7 @@
     <php>
         <ini name="error_reporting" value="-1"/>
     </php>
-    <coverage includeUncoveredFiles="true">
+    <coverage includeUncoveredFiles="false">
         <report>
             <clover outputFile="clover.xml" />
         </report>
