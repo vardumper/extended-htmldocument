@@ -1,5 +1,7 @@
 # Roadmap
 
+Current version is v0.1.4 (Pre-Release)
+
 ## Backlog & Considerations <Badge type="info" text="Ideas" />
 - :bulb: Add specific use case examples to the repository (two main priorities: generate Twig & React templates, example YAML format to describe components)
 - :bulb: Consider PHP Attributes to improve the code or usage? Thinking mainly of selfClosing, block level or even replace childOf, parentOf methods?
@@ -12,10 +14,10 @@
 - :white_check_mark: Mark deprecated attributes (e.g., clear in `<br>`, align in `<hr>`) as deprecated in PHP, too.
 - :white_check_mark: Add chainable setters for all attributes
 - :white_check_mark: Finalize Delegator tests (above 98% yay)
+- :white_large_square: Fix issues with `body`. doesnt have childOf HTML 2. unique per parent isn't true although its unique per document. Add more tests for this.
 
 ## Pending <Badge type="tip" text="1.0.0" />
-- :white_large_square: Make sure to handle inconsistencies in attributes that go by the same name correctly (eg. `type` is used in `<button|input>` vs `<link|a|...>` vs `<ol>`). Create an OlTypeEnum, LinkTypeEnum, etc.
+- :white_large_square: Make sure to handle inconsistencies in attributes that go by the same name correctly (eg. `type` is used in `<button|input>` vs `<link|a|...>` vs `<ol>`). Create an OlTypeEnum, LinkTypeEnum, if needed.
 - :white_large_square: Allow for union types for mixed attributes (eg. target which can be both a TargetEnum (_self, _blank, etc.) and a string value)
 - :white_large_square: Properly link between relevant sections in the docs. Add links to external resources where appropriate.
 - :white_large_square: Add more examples to the documentation.
-- :white_large_square: Fix issues with `body`. doesnt have childOf HTML 2. unique per parent isn't true although its unique per document. Add more tests for this.

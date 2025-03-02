@@ -13,6 +13,7 @@
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionList;
 use Html\Element\Block\Details;
 use Html\Element\Block\Division;
@@ -25,6 +26,7 @@ use Html\Element\Block\Heading5;
 use Html\Element\Block\Heading6;
 use Html\Element\Block\InlineFrame;
 use Html\Element\Block\ListItem;
+use Html\Element\Block\Menu;
 use Html\Element\Block\OrderedList;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\PreformattedText;
@@ -59,6 +61,9 @@ class Template extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
+        Body::class,
+        Form::class,
+        Menu::class,
     ];
 
     /**

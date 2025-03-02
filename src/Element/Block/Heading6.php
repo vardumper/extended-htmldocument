@@ -13,6 +13,19 @@
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Article;
+use Html\Element\Block\Aside;
+use Html\Element\Block\Body;
+use Html\Element\Block\Dialog;
+use Html\Element\Block\Division;
+use Html\Element\Block\Footer;
+use Html\Element\Block\Header;
+use Html\Element\Block\HeadingsGroup;
+use Html\Element\Block\Main;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\Section;
+use Html\Element\Block\Template;
+use Html\Element\Inline\Slot;
 
 class Heading6 extends BlockElement
 {
@@ -36,6 +49,19 @@ class Heading6 extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
+        Article::class,
+        Aside::class,
+        Body::class,
+        Dialog::class,
+        Division::class,
+        Footer::class,
+        Header::class,
+        HeadingsGroup::class,
+        Main::class,
+        Paragraph::class,
+        Section::class,
+        Slot::class,
+        Template::class,
     ];
 
     /**

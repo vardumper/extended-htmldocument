@@ -64,7 +64,7 @@ final class CreateClassCommand extends Command
 
             $methods = $this->getMethods($attributes);
             $attributes = $this->getAttributes($attributes); // before use statements
-            $parents = $this->resolveParents(explode(' | ', $this->data[$element]['parent'] ?? ''));
+            $parents = $this->resolveParents($element, explode(' | ', $this->data[$element]['parent'] ?? ''));
             $children = $this->resolveChildren($this->data[$element]['children'] ?? []);
             $use_statements = $this->getUseStatements($children, $parents, $namespace . '\\' . $className);
 
@@ -97,9 +97,11 @@ final class CreateClassCommand extends Command
         return Command::SUCCESS;
     }
 
-    public function resolveParents(array $qualifiedNames): array
+    public function resolveParents(string $element, array $qualifiedNames): array
     {
+        $logicalParents = $this->findElementsByChild($element);
         $qualifiedNames = array_filter($qualifiedNames, fn ($value) => strlen($value) > 0);
+        $qualifiedNames = array_merge($qualifiedNames, $logicalParents); // updated variable name
         $parents = [];
         foreach ($qualifiedNames as $qualifiedName) {
             $className = $this->getClassName(\str_replace(' ', '', \ucfirst($this->data[$qualifiedName]['name'])));
@@ -108,6 +110,20 @@ final class CreateClassCommand extends Command
             $parents[$className] = $namespace . '\\' . $className;
         }
         return $parents;
+    }
+
+    private function findElementsByChild($element): array
+    {
+        $elements = [];
+        foreach ($this->data as $key => $value) {
+            if (!isset($value['children'])) {
+                continue;
+            }
+            if (in_array($element, $value['children'])) {
+                $elements[] = $key;
+            }
+        }
+        return $elements;
     }
 
     public function resolveChildren(array $qualifiedNames): array
@@ -279,7 +295,13 @@ final class CreateClassCommand extends Command
             return \str_replace('\\\\', '\\', $use);
         }, $all);
         $foundSelf = \array_search($ignoreClass, $all);
-        if ($foundSelf !== false) {
+        // if ($ignoreClass == 'Html\Element\Block\Article') {
+        //     var_dump($all);
+        //     var_dump($foundSelf);
+        //     var_dump($ignoreClass);
+        //     die($foundSelf);
+        // }
+        if ($foundSelf !== false && isset($all[$foundSelf])) {
             unset($all[$foundSelf]);
         }
         $all = \array_filter($all);

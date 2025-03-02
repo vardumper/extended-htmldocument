@@ -14,6 +14,7 @@ namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
 use Html\Element\Block\Audio;
+use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
 use Html\Element\Block\DefinitionList;
 use Html\Element\Block\DefinitionTerm;
@@ -103,6 +104,8 @@ class Footer extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
+        Body::class,
+        Paragraph::class,
     ];
 
     /**

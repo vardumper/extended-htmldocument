@@ -12,7 +12,18 @@
  */
 namespace Html\Element\Inline;
 
+use Html\Element\Block\Article;
+use Html\Element\Block\Aside;
+use Html\Element\Block\Body;
+use Html\Element\Block\DefinitionDescription;
+use Html\Element\Block\Division;
+use Html\Element\Block\Footer;
+use Html\Element\Block\Header;
+use Html\Element\Block\Main;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\Section;
 use Html\Element\InlineElement;
+use Html\Element\Inline\MarkedText;
 
 class Span extends InlineElement
 {
@@ -36,6 +47,17 @@ class Span extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [
+        Article::class,
+        Aside::class,
+        Body::class,
+        DefinitionDescription::class,
+        Division::class,
+        Footer::class,
+        Header::class,
+        Main::class,
+        MarkedText::class,
+        Paragraph::class,
+        Section::class,
     ];
 
     /**

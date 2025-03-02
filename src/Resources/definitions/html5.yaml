@@ -240,6 +240,7 @@ article:
     - a
     - abbr
     - area
+    - article
     - audio
     - b
     - bdi
@@ -299,6 +300,7 @@ aside:
     - a
     - abbr
     - area
+    - article
     - audio
     - b
     - bdi
@@ -485,6 +487,7 @@ blockquote:
         - ins
         - q
   children:
+    - article
     - p
 body:
   name: Body
@@ -1029,6 +1032,8 @@ div:
     - a
     - abbr
     - area
+    - article
+    - aside
     - audio
     - b
     - bdi
@@ -1063,6 +1068,7 @@ div:
     - select
     - textarea
     - details
+    - section
     - summary
     - iframe
     - kbd
@@ -2193,6 +2199,8 @@ main:
     - a
     - abbr
     - area
+    - article
+    - aside
     - audio
     - b
     - bdi
@@ -2245,6 +2253,7 @@ main:
     - ruby
     - s
     - samp
+    - section
     - small
     - source
     - span
@@ -2438,6 +2447,7 @@ nav:
   level: block
   children:
     - a
+    - article
     - cite
     - em
     - q
@@ -2631,6 +2641,79 @@ p:
   description: 'The p element represents a paragraph.'
   level: block
   unique: false
+  children:
+    - a
+    - abbr
+    - area
+    - article
+    - aside
+    - audio
+    - b
+    - bdi
+    - bdo
+    - blockquote
+    - br
+    - button
+    - canvas
+    - cite
+    - code
+    - data
+    - del
+    - details
+    - dfn
+    - div
+    - dl
+    - em
+    - embed
+    - fieldset
+    - figure
+    - footer
+    - form
+    - h1
+    - h2
+    - h3
+    - h4
+    - h5
+    - h6
+    - header
+    - hr
+    - i
+    - iframe
+    - img
+    - input
+    - ins
+    - kbd
+    - label
+    - map
+    - mark
+    - meter
+    - nav
+    - object
+    - ol
+    - output
+    - p
+    - pre
+    - progress
+    - q
+    - ruby
+    - s
+    - samp
+    - section
+    - select
+    - small
+    - span
+    - strong
+    - sub
+    - summary
+    - sup
+    - table
+    - textarea
+    - time
+    - u
+    - ul
+    - var
+    - video
+    - wbr
   text: string
 param:
   name: Parameter
@@ -2867,6 +2950,7 @@ section:
     - a
     - abbr
     - area
+    - article
     - audio
     - b
     - bdi

@@ -13,7 +13,11 @@
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Article;
+use Html\Element\Block\Aside;
 use Html\Element\Block\Audio;
+use Html\Element\Block\Blockquote;
+use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionList;
 use Html\Element\Block\DeletedText;
 use Html\Element\Block\Division;
@@ -28,12 +32,15 @@ use Html\Element\Block\Heading5;
 use Html\Element\Block\Heading6;
 use Html\Element\Block\InlineFrame;
 use Html\Element\Block\InsertedText;
+use Html\Element\Block\Main;
 use Html\Element\Block\Map;
+use Html\Element\Block\Navigation;
 use Html\Element\Block\ObjectElement;
 use Html\Element\Block\OrderedList;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Picture;
 use Html\Element\Block\PreformattedText;
+use Html\Element\Block\Section;
 use Html\Element\Block\Table;
 use Html\Element\Block\UnorderedList;
 use Html\Element\Block\Video;
@@ -89,6 +96,15 @@ class Article extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
+        Article::class,
+        Aside::class,
+        Blockquote::class,
+        Body::class,
+        Division::class,
+        Main::class,
+        Navigation::class,
+        Paragraph::class,
+        Section::class,
     ];
 
     /**
@@ -99,6 +115,7 @@ class Article extends BlockElement
         Anchor::class,
         Abbreviation::class,
         Area::class,
+        Article::class,
         Audio::class,
         Bold::class,
         BidirectionalIsolation::class,

@@ -13,6 +13,9 @@
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Body;
+use Html\Element\Block\Form;
+use Html\Element\Void\Head;
 
 class NoScript extends BlockElement
 {
@@ -36,6 +39,9 @@ class NoScript extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
+        Body::class,
+        Form::class,
+        Head::class,
     ];
 
     /**

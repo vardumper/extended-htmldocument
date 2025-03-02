@@ -13,6 +13,7 @@
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Table;
 use Html\Element\Void\Column;
 
 class ColumnGroup extends BlockElement
@@ -37,6 +38,7 @@ class ColumnGroup extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
+        Table::class,
     ];
 
     /**

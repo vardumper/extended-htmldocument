@@ -13,6 +13,9 @@
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Body;
+use Html\Element\Block\Fieldset;
+use Html\Element\Block\Form;
 use Html\Element\Block\Option;
 
 class DataList extends BlockElement
@@ -37,6 +40,9 @@ class DataList extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
+        Body::class,
+        Fieldset::class,
+        Form::class,
     ];
 
     /**
