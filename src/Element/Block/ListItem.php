@@ -1,18 +1,25 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * ListItem - The li element represents a list item. If its parent element is an ol, ul, or menu, then the element is an item of the parent element's list, as defined for those elements. Otherwise, the list item has no defined list-related semantics.
- *
+ * 
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\DefinitionList;
+use Html\Element\Block\Division;
+use Html\Element\Block\Figure;
+use Html\Element\Block\OrderedList;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\PreformattedText;
+use Html\Element\Block\UnorderedList;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\Citation;
@@ -54,7 +61,10 @@ class ListItem extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [OrderedList::class, UnorderedList::class];
+    public static array $childOf = [
+        OrderedList::class,
+        UnorderedList::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -89,10 +99,10 @@ class ListItem extends BlockElement
         Variable::class,
     ];
 
-    /**
-     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
-     */
+
+    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value = null;
+
 
     public function setValue(string $value): self
     {
@@ -104,4 +114,6 @@ class ListItem extends BlockElement
     {
         return $this->value;
     }
+
+
 }
