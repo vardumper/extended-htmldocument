@@ -303,6 +303,9 @@ final class CreateClassCommand extends Command
         \asort($uses);
         $use_statements = '';
         foreach ($uses as $use) {
+            if ($use == $ignoreClass) {
+                continue;
+            }
             $use_statements .= \sprintf("use %s;\n", $use);
         }
         return $use_statements;

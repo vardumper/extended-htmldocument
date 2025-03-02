@@ -1,44 +1,18 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Article - The article element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Blockquote;
-use Html\Element\Block\Body;
-use Html\Element\Block\DefinitionList;
-use Html\Element\Block\Division;
-use Html\Element\Block\Fieldset;
-use Html\Element\Block\Figure;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Form;
-use Html\Element\Block\Header;
-use Html\Element\Block\Heading1;
-use Html\Element\Block\Heading2;
-use Html\Element\Block\Heading3;
-use Html\Element\Block\Heading4;
-use Html\Element\Block\Heading5;
-use Html\Element\Block\Heading6;
-use Html\Element\Block\HorizontalRule;
-use Html\Element\Block\Main;
-use Html\Element\Block\Navigation;
-use Html\Element\Block\OrderedList;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\PreformattedText;
-use Html\Element\Block\Section;
-use Html\Element\Block\Table;
-use Html\Element\Block\UnorderedList;
 use Html\Element\Inline\Address;
 
 class Article extends BlockElement
@@ -63,7 +37,7 @@ class Article extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
-        Article::class,
+        self::class,
         Aside::class,
         Blockquote::class,
         Body::class,
@@ -96,7 +70,7 @@ class Article extends BlockElement
         Main::class,
         Section::class,
         Navigation::class,
-        Article::class,
+        self::class,
         Aside::class,
         Heading1::class,
         Heading2::class,
@@ -105,8 +79,4 @@ class Article extends BlockElement
         Heading5::class,
         Heading6::class,
     ];
-
-
-
-
 }
