@@ -128,23 +128,21 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     // two ways to set an attribute via HTML\Element::$property or HTML\Element->setAttribute()
     public function setAttribute(string $qualifiedName, mixed $value): void
     {
-        if (property_exists($this, $qualifiedName)) {
+        if (\property_exists($this, $qualifiedName)) {
             // use reflection to check if this property is a BackedEnum and instantiate it with ::from()
             $reflection = new ReflectionClass($this);
             $property = $reflection->getProperty($qualifiedName);
             $propertyType = $property->getType();
             $enumClass = $propertyType->getName();
-            if (\is_subclass_of($enumClass, BackedEnum::class) && is_string($value)) {
+            if (\is_subclass_of($enumClass, BackedEnum::class) && \is_string($value)) {
                 $value = $enumClass::from($value);
                 $methodName = 'set' . $qualifiedName;
                 if (\method_exists($this, $methodName)) {
                     $this->{$methodName}($value);
-                } else {
-                    // if there is no setter method, we set the property directly
-                    $this->{$qualifiedName} = $value;
                 }
+            } else {
+                $this->{$qualifiedName} = $value; // here we allow Enums
             }
-            $this->{$qualifiedName} = $value; // here we allow Enums
         }
         if (\is_subclass_of($value, BackedEnum::class)) {
             $value = $value->value;
