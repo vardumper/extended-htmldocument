@@ -52,6 +52,9 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public function __get($name)
     {
+        if (property_exists($this, $name)) {
+            return $this->{$name};
+        }
 
         $reflection = new ReflectionClass($this->htmlElement);
         if ($reflection->hasProperty($name)) {
@@ -59,6 +62,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             $property->setAccessible(true);
             return $property->getValue($this->htmlElement);
         }
+
         throw new InvalidArgumentException(
             "Property {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
         );
@@ -69,27 +73,31 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         if ($name === 'class') {
             $name = 'className';
         }
-        if (! \property_exists($this, $name)) {
-            if (! \property_exists($this->htmlElement, $name)) {
-                // var_dump($name);
-                if ($this->isBackedEnum($value)) {
-                    $value  = $value->value;
-                }
-                $this->htmlElement->setAttribute($name, $value); // the DOM element needs to be updated
-                return;
-            }
-            // var_dump($name);
-            $this->htmlElement->{$name} = $value; // the DOM element needs to be updated
+
+        if ($this->isBackedEnum($value)) {
+            $value = $value->value;
+        }
+
+        if (property_exists($this, $name)) {
+            $this->{$name} = $value;
+        }
+
+        if (!property_exists($this->htmlElement, $name)) {
+            $this->htmlElement->setAttribute($name, $value);
             return;
         }
 
-        $this->{$name} = $value; // the instance of HTML\Element needs to be updated
-        // skip enums here
-        if ($this->isBackedEnum($value)) {
-            $this->htmlElement->setAttribute($name, $value->value); // the DOM element needs to be updated
+        $reflection = new ReflectionClass($this->htmlElement);
+        if ($reflection->hasProperty($name)) {
+            $property = $reflection->getProperty($name);
+            $property->setAccessible(true);
+            $property->setValue($this->htmlElement, $value);
             return;
         }
-        $this->htmlElement->setAttribute($name, $value); // the DOM element needs to be updated
+
+        throw new InvalidArgumentException(
+            "Property {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
+        );
     }
 
     /**

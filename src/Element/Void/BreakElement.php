@@ -57,6 +57,18 @@ class BreakElement extends VoidElement
      * @category HTML attribute
      * @deprecated
      */
-    public ?ClearEnum $clear = null;
+    protected ?ClearEnum $clear = null;
+
+
+    public function setClear(ClearEnum $clear): void
+    {
+        $this->clear = $clear;
+        $this->htmlElement->setAttribute('clear', $clear->value);
+    }
+
+    public function getClear(): ?ClearEnum
+    {
+        return $this->clear;
+    }
 
 }

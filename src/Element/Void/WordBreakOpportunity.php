@@ -51,4 +51,5 @@ class WordBreakOpportunity extends VoidElement
     public static array $parentOf = [
     ];
 
+
 }

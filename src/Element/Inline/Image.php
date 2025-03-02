@@ -59,13 +59,13 @@ class Image extends InlineElement
      * @category HTML attribute
      * @required
      */
-    public string $alt;
+    public ?string $alt = null;
 
     /**  */
-    public ?CrossoriginEnum $crossorigin = null;
+    protected ?CrossoriginEnum $crossorigin = null;
 
     /** Specifies the decoding process applied to the image. */
-    public ?DecodingEnum $decoding = null;
+    protected ?DecodingEnum $decoding = null;
 
     /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $height = null;
@@ -74,7 +74,7 @@ class Image extends InlineElement
     public ?bool $ismap = null;
 
     /** Specifies the referrer policy for fetches initiated by the element. */
-    public ?ReferrerpolicyEnum $referrerpolicy = null;
+    protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
     /** Specifies the sizes of the images or icons for different display/window sizes. */
     public ?string $sizes = null;
@@ -84,7 +84,7 @@ class Image extends InlineElement
      * @category HTML attribute
      * @required
      */
-    public string $src;
+    public ?string $src = null;
 
     /** Specifies a set of image candidate URLs and descriptors for responsive images. */
     public ?string $srcset = null;
@@ -94,5 +94,39 @@ class Image extends InlineElement
 
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width = null;
+
+
+    public function setCrossorigin(CrossoriginEnum $crossorigin): void
+    {
+        $this->crossorigin = $crossorigin;
+        $this->htmlElement->setAttribute('crossorigin', $crossorigin->value);
+    }
+
+    public function getCrossorigin(): ?CrossoriginEnum
+    {
+        return $this->crossorigin;
+    }
+
+    public function setDecoding(DecodingEnum $decoding): void
+    {
+        $this->decoding = $decoding;
+        $this->htmlElement->setAttribute('decoding', $decoding->value);
+    }
+
+    public function getDecoding(): ?DecodingEnum
+    {
+        return $this->decoding;
+    }
+
+    public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): void
+    {
+        $this->referrerpolicy = $referrerpolicy;
+        $this->htmlElement->setAttribute('referrerpolicy', $referrerpolicy->value);
+    }
+
+    public function getReferrerpolicy(): ?ReferrerpolicyEnum
+    {
+        return $this->referrerpolicy;
+    }
 
 }

@@ -60,7 +60,7 @@ class Area extends VoidElement
      * @category HTML attribute
      * @required
      */
-    public string $alt;
+    public ?string $alt = null;
 
     /** Specifies the coordinates of the shape in a rectangular area or a polygonal area on an image map. */
     public ?string $coords = null;
@@ -73,25 +73,70 @@ class Area extends VoidElement
      * @category HTML attribute
      * @required
      */
-    public string $href;
+    public ?string $href = null;
 
     /** Specifies the language of the linked resource. */
     public ?string $hreflang = null;
 
     /** Specifies the relationship between the current document and the linked document. */
-    public ?RelEnum $rel = null;
+    protected ?RelEnum $rel = null;
 
     /**  */
-    public ?ShapeEnum $shape = null;
+    protected ?ShapeEnum $shape = null;
 
     /** 
      * Specifies where to open the linked document.
      * @category HTML attribute
      * @example _self
      */
-    public ?TargetEnum $target = null;
+    protected ?TargetEnum $target = null;
 
     /** Specifies the media type of the linked resource. */
-    public ?TypeEnum $type = null;
+    protected ?TypeEnum $type = null;
+
+
+    public function setRel(RelEnum $rel): void
+    {
+        $this->rel = $rel;
+        $this->htmlElement->setAttribute('rel', $rel->value);
+    }
+
+    public function getRel(): ?RelEnum
+    {
+        return $this->rel;
+    }
+
+    public function setShape(ShapeEnum $shape): void
+    {
+        $this->shape = $shape;
+        $this->htmlElement->setAttribute('shape', $shape->value);
+    }
+
+    public function getShape(): ?ShapeEnum
+    {
+        return $this->shape;
+    }
+
+    public function setTarget(TargetEnum $target): void
+    {
+        $this->target = $target;
+        $this->htmlElement->setAttribute('target', $target->value);
+    }
+
+    public function getTarget(): ?TargetEnum
+    {
+        return $this->target;
+    }
+
+    public function setType(TypeEnum $type): void
+    {
+        $this->type = $type;
+        $this->htmlElement->setAttribute('type', $type->value);
+    }
+
+    public function getType(): ?TypeEnum
+    {
+        return $this->type;
+    }
 
 }

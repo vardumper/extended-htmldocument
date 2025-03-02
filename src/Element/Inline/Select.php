@@ -52,7 +52,7 @@ class Select extends InlineElement
 
 
     /**  */
-    public ?AutocompleteEnum $autocomplete = null;
+    protected ?AutocompleteEnum $autocomplete = null;
 
     /** When present, it specifies that an input element should be disabled. */
     public ?bool $disabled = null;
@@ -68,5 +68,17 @@ class Select extends InlineElement
 
     /** Specifies the height of a hr element in pixels. */
     public ?int $size = null;
+
+
+    public function setAutocomplete(AutocompleteEnum $autocomplete): void
+    {
+        $this->autocomplete = $autocomplete;
+        $this->htmlElement->setAttribute('autocomplete', $autocomplete->value);
+    }
+
+    public function getAutocomplete(): ?AutocompleteEnum
+    {
+        return $this->autocomplete;
+    }
 
 }

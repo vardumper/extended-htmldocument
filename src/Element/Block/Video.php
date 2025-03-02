@@ -55,7 +55,7 @@ class Video extends BlockElement
     public ?bool $controls = null;
 
     /**  */
-    public ?CrossoriginEnum $crossorigin = null;
+    protected ?CrossoriginEnum $crossorigin = null;
 
     /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $height = null;
@@ -70,16 +70,40 @@ class Video extends BlockElement
     public ?string $poster = null;
 
     /**  */
-    public ?PreloadEnum $preload = null;
+    protected ?PreloadEnum $preload = null;
 
     /** 
      * Specifies the URL of the external resource to be embedded or referenced.
      * @category HTML attribute
      * @required
      */
-    public string $src;
+    public ?string $src = null;
 
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width = null;
+
+
+    public function setCrossorigin(CrossoriginEnum $crossorigin): void
+    {
+        $this->crossorigin = $crossorigin;
+        $this->htmlElement->setAttribute('crossorigin', $crossorigin->value);
+    }
+
+    public function getCrossorigin(): ?CrossoriginEnum
+    {
+        return $this->crossorigin;
+    }
+
+    public function setPreload(PreloadEnum $preload): void
+    {
+        $this->preload = $preload;
+        $this->htmlElement->setAttribute('preload', $preload->value);
+    }
+
+    public function getPreload(): ?PreloadEnum
+    {
+        return $this->preload;
+    }
+
 
 }

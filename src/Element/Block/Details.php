@@ -69,4 +69,6 @@ class Details extends BlockElement
     /** When present, it specifies that the details should be visible (open) to the user. */
     public ?bool $open = null;
 
+
+
 }

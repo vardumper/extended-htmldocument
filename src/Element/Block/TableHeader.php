@@ -60,4 +60,6 @@ class TableHeader extends BlockElement
     /** Specifies the set of header cells a data cell belongs to. */
     public ?string $scope = null;
 
+
+
 }

@@ -60,7 +60,7 @@ class Input extends InlineElement
     public ?string $alt = null;
 
     /**  */
-    public ?AutocompleteEnum $autocomplete = null;
+    protected ?AutocompleteEnum $autocomplete = null;
 
     /** When present, it indicates that an input element should be pre-selected (checked) when the page loads. */
     public ?bool $checked = null;
@@ -121,12 +121,35 @@ class Input extends InlineElement
      * @category HTML attribute
      * @example text
      */
-    public ?TypeEnum $type = null;
+    protected ?TypeEnum $type = null;
 
     /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value = null;
 
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width = null;
+
+
+    public function setAutocomplete(AutocompleteEnum $autocomplete): void
+    {
+        $this->autocomplete = $autocomplete;
+        $this->htmlElement->setAttribute('autocomplete', $autocomplete->value);
+    }
+
+    public function getAutocomplete(): ?AutocompleteEnum
+    {
+        return $this->autocomplete;
+    }
+
+    public function setType(TypeEnum $type): void
+    {
+        $this->type = $type;
+        $this->htmlElement->setAttribute('type', $type->value);
+    }
+
+    public function getType(): ?TypeEnum
+    {
+        return $this->type;
+    }
 
 }

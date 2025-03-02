@@ -3,7 +3,7 @@
  * This file is auto-generated. Do not edit manually.
  *
  * Anchor - The a element represents a hyperlink, linking to another resource.
- *
+ * 
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -51,7 +51,7 @@ class Anchor extends InlineElement
     /** Indicates that the linked content should be downloaded rather than displayed. */
     public ?string $download = null;
 
-    /**
+    /** 
      * Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.
      * @category HTML attribute
      * @required
@@ -62,19 +62,42 @@ class Anchor extends InlineElement
     public ?string $hreflang = null;
 
     /** Specifies the relationship between the current document and the linked document. */
-    public ?RelEnum $rel = null;
+    protected ?RelEnum $rel = null;
 
-    /**
+    /** 
      * Specifies where to open the linked document.
      * @category HTML attribute
      * @example _self
      */
-    public ?TargetEnum $target = null;
+    protected ?TargetEnum $target = null;
 
     /** Specifies additional information about the element, typically displayed as a tooltip. */
     public ?string $title = null;
 
     /** Specifies the media type of the linked resource. */
     public ?string $type = null;
+
+
+    public function setRel(RelEnum $rel): void
+    {
+        $this->rel = $rel;
+        $this->htmlElement->setAttribute('rel', $rel->value);
+    }
+
+    public function getRel(): ?RelEnum
+    {
+        return $this->rel;
+    }
+
+    public function setTarget(TargetEnum $target): void
+    {
+        $this->target = $target;
+        $this->htmlElement->setAttribute('target', $target->value);
+    }
+
+    public function getTarget(): ?TargetEnum
+    {
+        return $this->target;
+    }
 
 }

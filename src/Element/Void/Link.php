@@ -16,7 +16,6 @@ use Html\Element\VoidElement;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\RelEnum;
-use Html\Enum\TypeEnum;
 
 class Link extends VoidElement
 {
@@ -56,14 +55,14 @@ class Link extends VoidElement
     ];
 
     /**  */
-    public ?CrossoriginEnum $crossorigin = null;
+    protected ?CrossoriginEnum $crossorigin = null;
 
     /** 
      * Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.
      * @category HTML attribute
      * @required
      */
-    public string $href;
+    public ?string $href = null;
 
     /** Specifies the language of the linked resource. */
     public ?string $hreflang = null;
@@ -75,15 +74,49 @@ class Link extends VoidElement
     public ?string $media = null;
 
     /** Specifies the referrer policy for fetches initiated by the element. */
-    public ?ReferrerpolicyEnum $referrerpolicy = null;
+    protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
     /** Specifies the relationship between the current document and the linked document. */
-    public ?RelEnum $rel = null;
+    protected ?RelEnum $rel = null;
 
     /** Specifies the sizes of the images or icons for different display/window sizes. */
     public ?string $sizes = null;
 
     /** Specifies the media type of the linked resource. */
-    public ?TypeEnum $type = null;
+    public ?string $type = null;
+
+
+    public function setCrossorigin(CrossoriginEnum $crossorigin): void
+    {
+        $this->crossorigin = $crossorigin;
+        $this->htmlElement->setAttribute('crossorigin', $crossorigin->value);
+    }
+
+    public function getCrossorigin(): ?CrossoriginEnum
+    {
+        return $this->crossorigin;
+    }
+
+    public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): void
+    {
+        $this->referrerpolicy = $referrerpolicy;
+        $this->htmlElement->setAttribute('referrerpolicy', $referrerpolicy->value);
+    }
+
+    public function getReferrerpolicy(): ?ReferrerpolicyEnum
+    {
+        return $this->referrerpolicy;
+    }
+
+    public function setRel(RelEnum $rel): void
+    {
+        $this->rel = $rel;
+        $this->htmlElement->setAttribute('rel', $rel->value);
+    }
+
+    public function getRel(): ?RelEnum
+    {
+        return $this->rel;
+    }
 
 }

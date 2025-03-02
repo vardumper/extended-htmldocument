@@ -59,12 +59,24 @@ class Meta extends VoidElement
     public ?string $content = null;
 
     /** Provides an HTTP header for the information/value of the content attribute. */
-    public ?HttpEquivEnum $httpEquiv = null;
+    protected ?HttpEquivEnum $httpEquiv = null;
 
     /** Specifies the name associated with the element. The meaning may vary depending on the context. */
     public ?string $name = null;
 
     /** Specifies the content type of the value attribute when the http-equiv attribute is used. */
     public ?string $scheme = null;
+
+
+    public function setHttpEquiv(HttpEquivEnum $httpEquiv): void
+    {
+        $this->httpEquiv = $httpEquiv;
+        $this->htmlElement->setAttribute('http-equiv', $httpEquiv->value);
+    }
+
+    public function getHttpEquiv(): ?HttpEquivEnum
+    {
+        return $this->httpEquiv;
+    }
 
 }

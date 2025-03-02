@@ -49,4 +49,5 @@ class Quotation extends InlineElement
     /** Specifies the URL of the cited work or the name of the cited creative work. */
     public ?string $cite = null;
 
+
 }

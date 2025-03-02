@@ -55,7 +55,20 @@ class OrderedList extends BlockElement
     /** Specifies the starting value of an ordered list. */
     public ?int $start = null;
 
-    /** Specifies the media type of the linked resource. */
-    public ?TypeEnum $type = null;
+    /** Specifies the numbering type of the ordered list. */
+    protected ?TypeEnum $type = null;
+
+
+    public function setType(TypeEnum $type): void
+    {
+        $this->type = $type;
+        $this->htmlElement->setAttribute('type', $type->value);
+    }
+
+    public function getType(): ?TypeEnum
+    {
+        return $this->type;
+    }
+
 
 }

@@ -57,7 +57,7 @@ class InlineFrame extends BlockElement
     public ?string $name = null;
 
     /** Specifies the referrer policy for fetches initiated by the element. */
-    public ?ReferrerpolicyEnum $referrerpolicy = null;
+    protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
     /**  */
     public ?string $sandbox = null;
@@ -70,12 +70,25 @@ class InlineFrame extends BlockElement
      * @category HTML attribute
      * @required
      */
-    public string $src;
+    public ?string $src = null;
 
     /**  */
     public ?string $srcdoc = null;
 
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width = null;
+
+
+    public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): void
+    {
+        $this->referrerpolicy = $referrerpolicy;
+        $this->htmlElement->setAttribute('referrerpolicy', $referrerpolicy->value);
+    }
+
+    public function getReferrerpolicy(): ?ReferrerpolicyEnum
+    {
+        return $this->referrerpolicy;
+    }
+
 
 }

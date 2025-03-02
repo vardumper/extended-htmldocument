@@ -92,11 +92,12 @@ final class HTMLElementDelegatorTest extends TestCase
         $this->assertEquals('new-classname', $this->delegator->htmlElement->getAttribute('class'));
     }
 
-    /** @todo requires fix */
+    /** @description added getter and setter and changed visibility to protected */
     public function testSetEnum(): void
     {
-        $this->delegator->rel = RelEnum::NOFOLLOW;
+        $this->delegator->setRel(RelEnum::NOFOLLOW);
         $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
+        $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->getRel());
         $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
     }
 

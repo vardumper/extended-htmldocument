@@ -57,9 +57,21 @@ class Button extends InlineElement
     public ?string $name = null;
 
     /** Specifies the media type of the linked resource. */
-    public ?TypeEnum $type = null;
+    protected ?TypeEnum $type = null;
 
     /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value = null;
+
+
+    public function setType(TypeEnum $type): void
+    {
+        $this->type = $type;
+        $this->htmlElement->setAttribute('type', $type->value);
+    }
+
+    public function getType(): ?TypeEnum
+    {
+        return $this->type;
+    }
 
 }

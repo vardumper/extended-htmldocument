@@ -60,6 +60,18 @@ class Style extends VoidElement
     public ?string $title = null;
 
     /** Specifies the media type of the linked resource. */
-    public ?TypeEnum $type = null;
+    protected ?TypeEnum $type = null;
+
+
+    public function setType(TypeEnum $type): void
+    {
+        $this->type = $type;
+        $this->htmlElement->setAttribute('type', $type->value);
+    }
+
+    public function getType(): ?TypeEnum
+    {
+        return $this->type;
+    }
 
 }

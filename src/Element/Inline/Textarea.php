@@ -49,7 +49,7 @@ class Textarea extends InlineElement
 
 
     /**  */
-    public ?AutocompleteEnum $autocomplete = null;
+    protected ?AutocompleteEnum $autocomplete = null;
 
     /** Specifies the visible width of a text area, in average character widths. */
     public ?int $cols = null;
@@ -82,6 +82,29 @@ class Textarea extends InlineElement
     public ?int $rows = null;
 
     /**  */
-    public ?WrapEnum $wrap = null;
+    protected ?WrapEnum $wrap = null;
+
+
+    public function setAutocomplete(AutocompleteEnum $autocomplete): void
+    {
+        $this->autocomplete = $autocomplete;
+        $this->htmlElement->setAttribute('autocomplete', $autocomplete->value);
+    }
+
+    public function getAutocomplete(): ?AutocompleteEnum
+    {
+        return $this->autocomplete;
+    }
+
+    public function setWrap(WrapEnum $wrap): void
+    {
+        $this->wrap = $wrap;
+        $this->htmlElement->setAttribute('wrap', $wrap->value);
+    }
+
+    public function getWrap(): ?WrapEnum
+    {
+        return $this->wrap;
+    }
 
 }

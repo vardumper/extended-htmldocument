@@ -49,4 +49,5 @@ class Abbreviation extends InlineElement
     /** Specifies additional information about the element, typically displayed as a tooltip. */
     public ?string $title = null;
 
+
 }

@@ -59,13 +59,25 @@ class Base extends VoidElement
      * @category HTML attribute
      * @required
      */
-    public string $href;
+    public ?string $href = null;
 
     /** 
      * Specifies where to open the linked document.
      * @category HTML attribute
      * @example _self
      */
-    public ?TargetEnum $target = null;
+    protected ?TargetEnum $target = null;
+
+
+    public function setTarget(TargetEnum $target): void
+    {
+        $this->target = $target;
+        $this->htmlElement->setAttribute('target', $target->value);
+    }
+
+    public function getTarget(): ?TargetEnum
+    {
+        return $this->target;
+    }
 
 }

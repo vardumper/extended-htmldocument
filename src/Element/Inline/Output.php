@@ -49,4 +49,5 @@ class Output extends InlineElement
     /** Refers to the <datalist> element that contains the options for an input element. */
     public ?string $for = null;
 
+
 }

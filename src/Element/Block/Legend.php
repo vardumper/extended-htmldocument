@@ -51,4 +51,6 @@ class Legend extends BlockElement
     /** Specifies the default value of the <textarea> element. */
     public ?string $text = null;
 
+
+
 }

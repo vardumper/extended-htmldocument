@@ -60,12 +60,25 @@ class Embed extends BlockElement
      * @category HTML attribute
      * @required
      */
-    public string $src;
+    public ?string $src = null;
 
     /** Specifies the media type of the linked resource. */
-    public ?TypeEnum $type = null;
+    protected ?TypeEnum $type = null;
 
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width = null;
+
+
+    public function setType(TypeEnum $type): void
+    {
+        $this->type = $type;
+        $this->htmlElement->setAttribute('type', $type->value);
+    }
+
+    public function getType(): ?TypeEnum
+    {
+        return $this->type;
+    }
+
 
 }

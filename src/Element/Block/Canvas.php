@@ -52,4 +52,6 @@ class Canvas extends BlockElement
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width = null;
 
+
+
 }

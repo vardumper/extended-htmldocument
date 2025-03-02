@@ -62,4 +62,5 @@ class Head extends VoidElement
         Title::class,
     ];
 
+
 }

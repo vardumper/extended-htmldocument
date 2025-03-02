@@ -13,7 +13,6 @@
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Enum\TypeEnum;
 
 class ObjectElement extends BlockElement
 {
@@ -57,12 +56,14 @@ class ObjectElement extends BlockElement
     public ?string $name = null;
 
     /** Specifies the media type of the linked resource. */
-    public ?TypeEnum $type = null;
+    public ?string $type = null;
 
     /** Specifies a client-side image map to be used with the element. */
     public ?string $usemap = null;
 
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width = null;
+
+
 
 }

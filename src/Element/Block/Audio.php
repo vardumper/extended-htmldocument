@@ -55,7 +55,7 @@ class Audio extends BlockElement
     public ?bool $controls = null;
 
     /**  */
-    public ?CrossoriginEnum $crossorigin = null;
+    protected ?CrossoriginEnum $crossorigin = null;
 
     /** When present, it specifies that the audio or video will start over again every time it is finished. */
     public ?bool $loop = null;
@@ -64,13 +64,37 @@ class Audio extends BlockElement
     public ?bool $muted = null;
 
     /**  */
-    public ?PreloadEnum $preload = null;
+    protected ?PreloadEnum $preload = null;
 
     /** 
      * Specifies the URL of the external resource to be embedded or referenced.
      * @category HTML attribute
      * @required
      */
-    public string $src;
+    public ?string $src = null;
+
+
+    public function setCrossorigin(CrossoriginEnum $crossorigin): void
+    {
+        $this->crossorigin = $crossorigin;
+        $this->htmlElement->setAttribute('crossorigin', $crossorigin->value);
+    }
+
+    public function getCrossorigin(): ?CrossoriginEnum
+    {
+        return $this->crossorigin;
+    }
+
+    public function setPreload(PreloadEnum $preload): void
+    {
+        $this->preload = $preload;
+        $this->htmlElement->setAttribute('preload', $preload->value);
+    }
+
+    public function getPreload(): ?PreloadEnum
+    {
+        return $this->preload;
+    }
+
 
 }

@@ -61,4 +61,6 @@ class <?= $class_name ?> extends <?= ucfirst($level) ?>Element
 
 
 <?= $attributes ?>
+
+<?= /** @phpstan-ignore variable.undefined */ $methods ?>
 }

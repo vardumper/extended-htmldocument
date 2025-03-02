@@ -56,7 +56,7 @@ class Script extends VoidElement
     public ?string $charset = null;
 
     /**  */
-    public ?CrossoriginEnum $crossorigin = null;
+    protected ?CrossoriginEnum $crossorigin = null;
 
     /** When present, it specifies that the script should be executed after the page has been parsed. */
     public ?bool $defer = null;
@@ -68,16 +68,50 @@ class Script extends VoidElement
     public ?string $nonce = null;
 
     /** Specifies the referrer policy for fetches initiated by the element. */
-    public ?ReferrerpolicyEnum $referrerpolicy = null;
+    protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
     /** 
      * Specifies the URL of the external resource to be embedded or referenced.
      * @category HTML attribute
      * @required
      */
-    public string $src;
+    public ?string $src = null;
 
     /** Specifies the media type of the linked resource. */
-    public ?TypeEnum $type = null;
+    protected ?TypeEnum $type = null;
+
+
+    public function setCrossorigin(CrossoriginEnum $crossorigin): void
+    {
+        $this->crossorigin = $crossorigin;
+        $this->htmlElement->setAttribute('crossorigin', $crossorigin->value);
+    }
+
+    public function getCrossorigin(): ?CrossoriginEnum
+    {
+        return $this->crossorigin;
+    }
+
+    public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): void
+    {
+        $this->referrerpolicy = $referrerpolicy;
+        $this->htmlElement->setAttribute('referrerpolicy', $referrerpolicy->value);
+    }
+
+    public function getReferrerpolicy(): ?ReferrerpolicyEnum
+    {
+        return $this->referrerpolicy;
+    }
+
+    public function setType(TypeEnum $type): void
+    {
+        $this->type = $type;
+        $this->htmlElement->setAttribute('type', $type->value);
+    }
+
+    public function getType(): ?TypeEnum
+    {
+        return $this->type;
+    }
 
 }

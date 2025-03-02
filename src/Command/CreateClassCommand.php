@@ -62,6 +62,7 @@ final class CreateClassCommand extends Command
 
             $this->uses[] = \sprintf("Html\Element\%sElement", \ucfirst($level)); // extends
 
+            $methods = $this->getMethods($attributes);
             $attributes = $this->getAttributes($attributes); // before use statements
             $parents = $this->resolveParents(explode(' | ', $this->data[$element]['parent'] ?? ''));
             $children = $this->resolveChildren($this->data[$element]['children'] ?? []);
@@ -82,6 +83,7 @@ final class CreateClassCommand extends Command
                 'attributes' => $attributes,
                 'path' => $path,
                 'self_closing' => $self_closing,
+                'methods' => $methods,
             ];
 
             $templatePath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'templates' . \DIRECTORY_SEPARATOR . \ucfirst(
@@ -140,26 +142,68 @@ final class CreateClassCommand extends Command
         \file_put_contents(__DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . $path, $file);
     }
 
+    private function getMethods(array $attributes): string
+    {
+        $retVal = '';
+        foreach ($attributes as $attribute => $details) {
+            $type = $details['type'] ?? '';
+            $type = $this->mapToPhpType($type);
+            if ($type === 'enum') {
+                $kebapCase = $this->toKebapCase($attribute);
+                $type = \sprintf('%sEnum', $kebapCase);
+            } else {
+                continue; // skip non-enum types
+            }
+            $variableName = $this->toVariableName($attribute);
+            $methodName = ucfirst($this->toVariableName($attribute));
+            $retVal .= \sprintf(
+                "    public function set%s(%s \$%s): void
+    {
+        \$this->%s = \$%s;
+        \$this->htmlElement->setAttribute('%s', \$%s->value);
+    }
+
+    public function get%s(): ?%s
+    {
+        return \$this->%s;
+    }\n\n",
+                $methodName,
+                $type,
+                $variableName,
+                $variableName,
+                $variableName,
+                $attribute,
+                $variableName,
+                $methodName,
+                $type,
+                $variableName
+            );
+        }
+        return $retVal;
+    }
     private function getAttributes(array $attributes): string
     {
         $transformedAttributes = '';
         foreach ($attributes as $attribute => $details) {
             $type = $details['type'] ?? '';
-            $required = $details['required'] ?? false;
+            $required = false;
             $description = $details['description'] ?? '';
             $default = '';
             $comment = $this->getAttributeComment($details);
             $type = $this->mapToPhpType($type);
+            $visibility = 'public';
             if ($type === 'enum') {
                 $kebapCase = $this->toKebapCase($attribute);
                 $this->uses[] = sprintf("Html\Enum\%sEnum", $kebapCase);
                 $type = \sprintf('%sEnum', $kebapCase);
+                $visibility = 'protected';
                 // $default = isset($details['defaultValue']) ? sprintf(" = %sEnum::from('%s')", $kebapCase, $details['defaultValue']) : '';
             }
             $variableName = $this->toVariableName($attribute);
             $transformedAttributes .= \sprintf(
-                "    %s    public %s%s \$%s%s;\n\n",
+                "    %s    %s %s%s \$%s%s;\n\n",
                 $comment,
+                $visibility,
                 $required ? '' : '?',
                 $type,
                 $variableName,

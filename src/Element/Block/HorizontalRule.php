@@ -57,7 +57,7 @@ class HorizontalRule extends BlockElement
      * @category HTML attribute
      * @deprecated
      */
-    public ?AlignEnum $align = null;
+    protected ?AlignEnum $align = null;
 
     /** 
      * 
@@ -82,5 +82,18 @@ class HorizontalRule extends BlockElement
 
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width = null;
+
+
+    public function setAlign(AlignEnum $align): void
+    {
+        $this->align = $align;
+        $this->htmlElement->setAttribute('align', $align->value);
+    }
+
+    public function getAlign(): ?AlignEnum
+    {
+        return $this->align;
+    }
+
 
 }

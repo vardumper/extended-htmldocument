@@ -95,13 +95,13 @@ class Form extends BlockElement
     public ?string $action = null;
 
     /**  */
-    public ?AutocompleteEnum $autocomplete = null;
+    protected ?AutocompleteEnum $autocomplete = null;
 
     /**  */
-    public ?EnctypeEnum $enctype = null;
+    protected ?EnctypeEnum $enctype = null;
 
     /**  */
-    public ?MethodEnum $method = null;
+    protected ?MethodEnum $method = null;
 
     /** Specifies the name associated with the element. The meaning may vary depending on the context. */
     public ?string $name = null;
@@ -114,6 +114,52 @@ class Form extends BlockElement
      * @category HTML attribute
      * @example _self
      */
-    public ?TargetEnum $target = null;
+    protected ?TargetEnum $target = null;
+
+
+    public function setAutocomplete(AutocompleteEnum $autocomplete): void
+    {
+        $this->autocomplete = $autocomplete;
+        $this->htmlElement->setAttribute('autocomplete', $autocomplete->value);
+    }
+
+    public function getAutocomplete(): ?AutocompleteEnum
+    {
+        return $this->autocomplete;
+    }
+
+    public function setEnctype(EnctypeEnum $enctype): void
+    {
+        $this->enctype = $enctype;
+        $this->htmlElement->setAttribute('enctype', $enctype->value);
+    }
+
+    public function getEnctype(): ?EnctypeEnum
+    {
+        return $this->enctype;
+    }
+
+    public function setMethod(MethodEnum $method): void
+    {
+        $this->method = $method;
+        $this->htmlElement->setAttribute('method', $method->value);
+    }
+
+    public function getMethod(): ?MethodEnum
+    {
+        return $this->method;
+    }
+
+    public function setTarget(TargetEnum $target): void
+    {
+        $this->target = $target;
+        $this->htmlElement->setAttribute('target', $target->value);
+    }
+
+    public function getTarget(): ?TargetEnum
+    {
+        return $this->target;
+    }
+
 
 }

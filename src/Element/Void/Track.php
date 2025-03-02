@@ -56,7 +56,7 @@ class Track extends VoidElement
     public ?bool $default = null;
 
     /**  */
-    public ?KindEnum $kind = null;
+    protected ?KindEnum $kind = null;
 
     /** Specifies a label for the associated form control, option group, or option. */
     public ?string $label = null;
@@ -66,9 +66,21 @@ class Track extends VoidElement
      * @category HTML attribute
      * @required
      */
-    public string $src;
+    public ?string $src = null;
 
     /** Specifies the language of the track text data. */
     public ?string $srclang = null;
+
+
+    public function setKind(KindEnum $kind): void
+    {
+        $this->kind = $kind;
+        $this->htmlElement->setAttribute('kind', $kind->value);
+    }
+
+    public function getKind(): ?KindEnum
+    {
+        return $this->kind;
+    }
 
 }

@@ -65,7 +65,7 @@ class TableRow extends BlockElement
      * @category HTML attribute
      * @deprecated
      */
-    public ?AlignEnum $align = null;
+    protected ?AlignEnum $align = null;
 
     /** 
      * Defines the background color of each row cell. The value is an HTML color; either a 6-digit hexadecimal RGB code, prefixed by a #, or a color keyword. Other CSS <color> values are not supported. Use the background-color CSS property instead, as this attribute is deprecated.
@@ -93,6 +93,30 @@ class TableRow extends BlockElement
      * @category HTML attribute
      * @deprecated
      */
-    public ?ValignEnum $valign = null;
+    protected ?ValignEnum $valign = null;
+
+
+    public function setAlign(AlignEnum $align): void
+    {
+        $this->align = $align;
+        $this->htmlElement->setAttribute('align', $align->value);
+    }
+
+    public function getAlign(): ?AlignEnum
+    {
+        return $this->align;
+    }
+
+    public function setValign(ValignEnum $valign): void
+    {
+        $this->valign = $valign;
+        $this->htmlElement->setAttribute('valign', $valign->value);
+    }
+
+    public function getValign(): ?ValignEnum
+    {
+        return $this->valign;
+    }
+
 
 }

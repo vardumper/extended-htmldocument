@@ -64,4 +64,7 @@ class <?= /** @phpstan-ignore variable.undefined */ $class_name ?> extends <?= u
 
 
 <?= /** @phpstan-ignore variable.undefined */ $attributes ?>
+
+<?= /** @phpstan-ignore variable.undefined */ $methods ?>
+
 }
