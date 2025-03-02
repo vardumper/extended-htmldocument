@@ -112,20 +112,6 @@ final class CreateClassCommand extends Command
         return $parents;
     }
 
-    private function findElementsByChild($element): array
-    {
-        $elements = [];
-        foreach ($this->data as $key => $value) {
-            if (!isset($value['children'])) {
-                continue;
-            }
-            if (in_array($element, $value['children'])) {
-                $elements[] = $key;
-            }
-        }
-        return $elements;
-    }
-
     public function resolveChildren(array $qualifiedNames): array
     {
         $qualifiedNames = array_filter($qualifiedNames, fn ($value) => strlen($value) > 0);
@@ -145,6 +131,20 @@ final class CreateClassCommand extends Command
             ->setName('create:component')
             ->setDescription('Create a new component')
             ->addArgument('element', InputArgument::OPTIONAL, 'The HTML element name to create a class for');
+    }
+
+    private function findElementsByChild($element): array
+    {
+        $elements = [];
+        foreach ($this->data as $key => $value) {
+            if (! isset($value['children'])) {
+                continue;
+            }
+            if (in_array($element, $value['children'])) {
+                $elements[] = $key;
+            }
+        }
+        return $elements;
     }
 
     private function createClassFile(string $templatePath, array $parameters, string $path): void
@@ -295,12 +295,6 @@ final class CreateClassCommand extends Command
             return \str_replace('\\\\', '\\', $use);
         }, $all);
         $foundSelf = \array_search($ignoreClass, $all);
-        // if ($ignoreClass == 'Html\Element\Block\Article') {
-        //     var_dump($all);
-        //     var_dump($foundSelf);
-        //     var_dump($ignoreClass);
-        //     die($foundSelf);
-        // }
         if ($foundSelf !== false && isset($all[$foundSelf])) {
             unset($all[$foundSelf]);
         }
