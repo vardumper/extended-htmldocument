@@ -4,6 +4,7 @@
     "description": "ExtendedHTMLDocument is a simple PHP library which adds all HTML5 Elements as PHP classes and extends PHP 8.4's DOM\\HTMLDocument class.",
     "license": "MIT",
     "type": "library",
+    "version": "0.1.4",
     "keywords": [
         "html",
         "html5",

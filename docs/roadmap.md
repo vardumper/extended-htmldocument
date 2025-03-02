@@ -14,10 +14,11 @@ Current version is v0.1.4 (Pre-Release)
 - :white_check_mark: Mark deprecated attributes (e.g., clear in `<br>`, align in `<hr>`) as deprecated in PHP, too.
 - :white_check_mark: Add chainable setters for all attributes
 - :white_check_mark: Finalize Delegator tests (above 98% yay)
-- :white_large_square: Fix issues with `body`. doesnt have childOf HTML 2. unique per parent isn't true although its unique per document. Add more tests for this.
+- :white_check_mark: Fix issues with `body`. doesnt have childOf HTML 2. unique per parent isn't true although its unique per document. Add more tests for this.
 
 ## Pending <Badge type="tip" text="1.0.0" />
 - :white_large_square: Make sure to handle inconsistencies in attributes that go by the same name correctly (eg. `type` is used in `<button|input>` vs `<link|a|...>` vs `<ol>`). Create an OlTypeEnum, LinkTypeEnum, if needed.
 - :white_large_square: Allow for union types for mixed attributes (eg. target which can be both a TargetEnum (_self, _blank, etc.) and a string value)
 - :white_large_square: Properly link between relevant sections in the docs. Add links to external resources where appropriate.
 - :white_large_square: Add more examples to the documentation.
+- :white_large_square: Add getters/setters for all global attributes to HTMLDocumentDelegator.
