@@ -3,11 +3,21 @@
 
 # Extended HTML Document Library
 
-## TL;DR
 This library provides a way to work with HTML elements in PHP, offering an object-oriented approach that aligns with the HTML5 specifications.
 It also provides a way to automatically transform HTML into different templating engines or code for frontend frameworks.
 It also adds autocompletion to PHP for all HTML5 elements, which is especially useful when working with DOM Documents.
 It adds additional functionality and a stronger focus on HTML5 while being fully compatible with PHP's DOM\HTMLDocument and DOM\HTMLElement classes.
+
+## TL;DR
+
+```php
+$dom = HTMLDocumentDelegator::createEmpty()
+$anchor = (Anchor::create($dom))
+    ->setClass('secondary')
+    ->setRel(RelEnum::NOFOLLOW)
+    ->setHref('https://google.com')
+    ->setTitle('Google it');
+```
 
 ## Documentation
 See the [Documentation](https://vardumper.github.io/extended-htmldocument/) for more.
