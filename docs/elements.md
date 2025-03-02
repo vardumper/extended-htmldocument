@@ -12,46 +12,151 @@ The element classes are straight forward:. Let's take a look at the [Anchor](htt
 namespace Html\Element\Inline;
 
 use Html\Element\InlineElement;
+...
 use Html\Enum\RelEnum;
 use Html\Enum\TargetEnum;
-use Html\Enum\TypeEnum;
 
 class Anchor extends InlineElement
 {
+    /** The HTML element name */
     public const string QUALIFIED_NAME = 'a';
 
-    /* If an element is unique per HTML document */
+    /** If an element is unique per HTML document */
     public static bool $unique = false;
 
-    /* If an element is allowed once its allowed parent */
+    /** If an element is allowed once its allowed parents */
     public static bool $uniquePerParent = false;
 
-    /* The list of allowed direct parents. Any if empty. @var array<string> */
-    public static array $childOf = [];
+    /** The list of allowed direct parents. Any if empty.
+     * @var array<string> */
+    public static array $childOf = [
+        Address::class,
+        Aside::class,
+        Body::class,
+        DefinitionDescription::class,
+        Dialog::class,
+        Division::class,
+        Footer::class,
+        Header::class,
+        ListItem::class,
+        Main::class,
+        MarkedText::class,
+        Navigation::class,
+        Paragraph::class,
+        Section::class,
+        Slot::class,
+        Template::class,
+    ];
 
-    /* The list of allowed direct children. Any if empty. @var array<string> */
-    public static array $parentOf = [];
+    /** The list of allowed direct children. Any if empty.
+     * @var array<string> */
+    public static array $parentOf = [
+    ];
 
-    /* Indicates that the linked content should be downloaded rather than displayed. @example filename.pdf */
+
+    /** Indicates that the linked content should be downloaded rather than displayed. */
     public ?string $download = null;
 
-    /* Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used @required */
-    public string $href;
+    /** Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.
+     * @category HTML attribute */
+    public ?string $href = null;
 
-    /* Specifies the language of the linked resource. @example en */
+    /** Specifies the language of the linked resource. */
     public ?string $hreflang = null;
 
-    /* Specifies the relationship between the current document and the linked document. */
-    public ?RelEnum $rel = null;
+    /** Specifies the relationship between the current document and the linked document. */
+    protected ?RelEnum $rel = null;
 
-    /* Specifies where to open the linked document. @example _self */
-    public ?TargetEnum $target = null;
+    /** Specifies where to open the linked document.
+     * @category HTML attribute
+     * @example _self */
+    protected ?TargetEnum $target = null;
 
-    /* Specifies additional information about the element, typically displayed as a tooltip. */
+    /** Specifies additional information about the element, typically displayed as a tooltip. */
     public ?string $title = null;
 
-    /* Specifies the media type of the linked resource. */
-    public ?TypeEnum $type = null;
+    /** Specifies the media type of the linked resource. */
+    public ?string $type = null;
+
+    public function setDownload(string $download): self
+    {
+        $this->download = $download;
+        return $this;
+    }
+
+    public function getDownload(): ?string
+    {
+        return $this->download;
+    }
+
+    public function setHref(string $href): self
+    {
+        $this->href = $href;
+        return $this;
+    }
+
+    public function getHref(): ?string
+    {
+        return $this->href;
+    }
+
+    public function setHreflang(string $hreflang): self
+    {
+        $this->hreflang = $hreflang;
+        return $this;
+    }
+
+    public function getHreflang(): ?string
+    {
+        return $this->hreflang;
+    }
+
+    public function setRel(RelEnum $rel): self
+    {
+        $this->rel = $rel;
+        $this->htmlElement->setAttribute('rel', $rel->value);
+        return $this;
+    }
+
+    public function getRel(): ?RelEnum
+    {
+        return $this->rel;
+    }
+
+    public function setTarget(TargetEnum $target): self
+    {
+        $this->target = $target;
+        $this->htmlElement->setAttribute('target', $target->value);
+        return $this;
+    }
+
+    public function getTarget(): ?TargetEnum
+    {
+        return $this->target;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
 }
 ```
 
