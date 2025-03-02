@@ -84,6 +84,12 @@ final class HTMLElementDelegatorTest extends TestCase
         $this->assertEquals('https://different.com', $this->delegator->href);
     }
 
+    public function testSetUnexpectedType(): void
+    {
+        $this->delegator->href = 1;
+        $this->assertEquals(1, $this->delegator->href);
+    }
+
     public function testSetGlobalClass(): void
     {
         $this->delegator->class = 'new-classname';
@@ -105,15 +111,24 @@ final class HTMLElementDelegatorTest extends TestCase
     }
 
     /**
+     * @description added getter and setter and changed visibility to protected
+     */
+    public function testSetEnumDirectly(): void
+    {
+        $this->delegator->rel = RelEnum::NOFOLLOW;
+        $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
+        $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->getRel());
+        $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
+    }
+
+    /**
      * @todo consider allowing to set array value. eg: data-json="{\"some\": \"data here\"}". currently value must be Enum or string
      */
     public function testSetAttributeWithInvalidValue(): void
     {
         $this->expectException(TypeError::class);
-        $this->expectExceptionMessage(
-            "Cannot assign array to property Html\Element\Inline\Anchor::\$href of type ?string"
-        );
-        $this->delegator->setAttribute('href', [
+        $this->expectExceptionMessage('Value for nonexistant must be a string or a BackedEnum');
+        $this->delegator->setAttribute('nonexistant', [
             'foo' => 'bar',
         ]);
     }
@@ -200,5 +215,37 @@ final class HTMLElementDelegatorTest extends TestCase
         $this->assertEquals('_blank', $this->delegator->getAttribute('target'));
         $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
         $this->assertEquals(TargetEnum::_BLANK, $this->delegator->target);
+    }
+
+    public function testSetId(): void
+    {
+        $this->delegator->setId('test');
+        $this->assertEquals('test', $this->delegator->id);
+        $this->assertEquals('test', $this->delegator->htmlElement->getAttribute('id'));
+    }
+
+    public function testGetId(): void
+    {
+        $this->delegator->setId('test');
+        $this->assertEquals('test', $this->delegator->getId());
+    }
+
+    public function testSetClassName(): void
+    {
+        $this->delegator->setClassName('example-class');
+        $this->assertEquals('example-class', $this->delegator->className);
+        $this->assertEquals('example-class', $this->delegator->htmlElement->getAttribute('class'));
+    }
+
+    public function testGetClassName(): void
+    {
+        $this->delegator->setClassName('example-class');
+        $this->assertEquals('example-class', $this->delegator->getClassName());
+    }
+
+    public function testGetClass(): void
+    {
+        $this->delegator->setClassName('example-class');
+        $this->assertEquals('example-class', $this->delegator->getClass());
     }
 }

@@ -1,15 +1,15 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * InsertedText - The ins element represents an addition to the document.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
@@ -35,27 +35,28 @@ class InsertedText extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-    ];
+    public static array $childOf = [];
 
     /**
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** Specifies the URL of the cited work or the name of the cited creative work. */
+    /**
+     * Specifies the URL of the cited work or the name of the cited creative work.
+     */
     public ?string $cite = null;
 
-    /** Specifies the date and time of the change in the format 'YYYY-MM-DDThh:mm:ss' or a subset of it. */
+    /**
+     * Specifies the date and time of the change in the format 'YYYY-MM-DDThh:mm:ss' or a subset of it.
+     */
     public ?string $datetime = null;
 
-
-    public function setCite(string $cite): void
+    public function setCite(string $cite): self
     {
         $this->cite = $cite;
+        return $this;
     }
 
     public function getCite(): ?string
@@ -63,15 +64,14 @@ class InsertedText extends BlockElement
         return $this->cite;
     }
 
-    public function setDatetime(string $datetime): void
+    public function setDatetime(string $datetime): self
     {
         $this->datetime = $datetime;
+        return $this;
     }
 
     public function getDatetime(): ?string
     {
         return $this->datetime;
     }
-
-
 }

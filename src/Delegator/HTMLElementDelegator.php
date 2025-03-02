@@ -9,6 +9,7 @@ use DOM\HtmlElement;
 use Html\Interface\HTMLElementDelegatorInterface;
 use InvalidArgumentException;
 use ReflectionClass;
+use TypeError;
 
 /**
  * inheritDoc
@@ -93,14 +94,8 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
                     $this->{$methodName}($value);
                 }
             } else {
-                // not a enum, not a string
-                $this->{$name} = $value;
+                $this->{$name} = $value; // not a enum, not a string
             }
-        }
-
-        if (! \property_exists($this->htmlElement, $name)) {
-            $this->htmlElement->setAttribute($name, $value);
-            return;
         }
 
         $reflection = new ReflectionClass($this->htmlElement);
@@ -110,10 +105,8 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             $property->setValue($this->htmlElement, $value);
             return;
         }
-
-        throw new InvalidArgumentException(
-            "Property {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
-        );
+        $this->htmlElement->setAttribute($name, $this->isBackedEnum($value) ? $value->value : $value);
+        return;
     }
 
     /**
@@ -125,8 +118,48 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         return (string) $this->htmlElement->ownerDocument->saveHtml($this->htmlElement);
     }
 
+    public function setId(string $id): static
+    {
+        $this->id = $id;
+        $this->htmlElement->setAttribute('id', $id);
+        return $this;
+    }
+
+    public function getId(): ?string
+    {
+        return $this->id;
+    }
+
+    public function setClass(string $className): static
+    {
+        $this->className = $className;
+        $this->htmlElement->setAttribute('class', $className);
+        return $this;
+    }
+
+    public function getClass(): ?string
+    {
+        return $this->className;
+    }
+
+    /**
+     * alias
+     */
+    public function getClassName(): ?string
+    {
+        return $this->className;
+    }
+
+    /**
+     * alias
+     */
+    public function setClassName(string $className): static
+    {
+        return $this->setClass($className);
+    }
+
     // two ways to set an attribute via HTML\Element::$property or HTML\Element->setAttribute()
-    public function setAttribute(string $qualifiedName, mixed $value): void
+    public function setAttribute(string $qualifiedName, mixed $value): static
     {
         if (\property_exists($this, $qualifiedName)) {
             // use reflection to check if this property is a BackedEnum and instantiate it with ::from()
@@ -148,24 +181,26 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             $value = $value->value;
         }
         if (! is_string($value)) {
-            throw new InvalidArgumentException(
+            throw new TypeError(
                 "Value for {$qualifiedName} must be a string or a BackedEnum"
             ); // ensure value is a string
         }
         $this->htmlElement->setAttribute($qualifiedName, $value); // here we require string
+        return $this;
     }
 
-    public function setAttributes(array $attributes): void
+    public function setAttributes(array $attributes): static
     {
         // sort attributes by key name - id and class will still be first
         \ksort($attributes);
         foreach ($attributes as $name => $value) {
             $this->setAttribute($name, $value);
         }
+        return $this;
     }
 
     // Generic static factory method
-    public static function create(HTMLDocumentDelegator $dom): self
+    public static function create(HTMLDocumentDelegator $dom): static
     {
         $className = static::class;
         $qualifiedName = $className::getQualifiedName();

@@ -1,15 +1,15 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Link - The link element defines a link between a document and an external resource. It is used to link to external stylesheets.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
  */
+
 namespace Html\Element\Void;
 
 use Html\Element\VoidElement;
@@ -43,53 +43,62 @@ class Link extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-    ];
+    public static array $childOf = [];
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-    /**  */
-    protected ?CrossoriginEnum $crossorigin = null;
-
-    /** 
+    /**
      * Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.
-     * @category HTML attribute
      * @required
      */
     public ?string $href = null;
 
-    /** Specifies the language of the linked resource. */
+    /**
+     * Specifies the language of the linked resource.
+     */
     public ?string $hreflang = null;
 
-    /** Specifies the integrity value of a resource. */
+    /**
+     * Specifies the integrity value of a resource.
+     */
     public ?string $integrity = null;
 
-    /** Specifies the media type for which the linked resource or style sheet is intended. */
+    /**
+     * Specifies the media type for which the linked resource or style sheet is intended.
+     */
     public ?string $media = null;
 
-    /** Specifies the referrer policy for fetches initiated by the element. */
-    protected ?ReferrerpolicyEnum $referrerpolicy = null;
-
-    /** Specifies the relationship between the current document and the linked document. */
-    protected ?RelEnum $rel = null;
-
-    /** Specifies the sizes of the images or icons for different display/window sizes. */
+    /**
+     * Specifies the sizes of the images or icons for different display/window sizes.
+     */
     public ?string $sizes = null;
 
-    /** Specifies the media type of the linked resource. */
+    /**
+     * Specifies the media type of the linked resource.
+     */
     public ?string $type = null;
 
+    protected ?CrossoriginEnum $crossorigin = null;
 
-    public function setCrossorigin(CrossoriginEnum $crossorigin): void
+    /**
+     * Specifies the referrer policy for fetches initiated by the element.
+     */
+    protected ?ReferrerpolicyEnum $referrerpolicy = null;
+
+    /**
+     * Specifies the relationship between the current document and the linked document.
+     */
+    protected ?RelEnum $rel = null;
+
+    public function setCrossorigin(CrossoriginEnum $crossorigin): self
     {
         $this->crossorigin = $crossorigin;
         $this->htmlElement->setAttribute('crossorigin', $crossorigin->value);
+        return $this;
     }
 
     public function getCrossorigin(): ?CrossoriginEnum
@@ -97,9 +106,10 @@ class Link extends VoidElement
         return $this->crossorigin;
     }
 
-    public function setHref(string $href): void
+    public function setHref(string $href): self
     {
         $this->href = $href;
+        return $this;
     }
 
     public function getHref(): ?string
@@ -107,9 +117,10 @@ class Link extends VoidElement
         return $this->href;
     }
 
-    public function setHreflang(string $hreflang): void
+    public function setHreflang(string $hreflang): self
     {
         $this->hreflang = $hreflang;
+        return $this;
     }
 
     public function getHreflang(): ?string
@@ -117,9 +128,10 @@ class Link extends VoidElement
         return $this->hreflang;
     }
 
-    public function setIntegrity(string $integrity): void
+    public function setIntegrity(string $integrity): self
     {
         $this->integrity = $integrity;
+        return $this;
     }
 
     public function getIntegrity(): ?string
@@ -127,9 +139,10 @@ class Link extends VoidElement
         return $this->integrity;
     }
 
-    public function setMedia(string $media): void
+    public function setMedia(string $media): self
     {
         $this->media = $media;
+        return $this;
     }
 
     public function getMedia(): ?string
@@ -137,10 +150,11 @@ class Link extends VoidElement
         return $this->media;
     }
 
-    public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): void
+    public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): self
     {
         $this->referrerpolicy = $referrerpolicy;
         $this->htmlElement->setAttribute('referrerpolicy', $referrerpolicy->value);
+        return $this;
     }
 
     public function getReferrerpolicy(): ?ReferrerpolicyEnum
@@ -148,10 +162,11 @@ class Link extends VoidElement
         return $this->referrerpolicy;
     }
 
-    public function setRel(RelEnum $rel): void
+    public function setRel(RelEnum $rel): self
     {
         $this->rel = $rel;
         $this->htmlElement->setAttribute('rel', $rel->value);
+        return $this;
     }
 
     public function getRel(): ?RelEnum
@@ -159,9 +174,10 @@ class Link extends VoidElement
         return $this->rel;
     }
 
-    public function setSizes(string $sizes): void
+    public function setSizes(string $sizes): self
     {
         $this->sizes = $sizes;
+        return $this;
     }
 
     public function getSizes(): ?string
@@ -169,14 +185,14 @@ class Link extends VoidElement
         return $this->sizes;
     }
 
-    public function setType(string $type): void
+    public function setType(string $type): self
     {
         $this->type = $type;
+        return $this;
     }
 
     public function getType(): ?string
     {
         return $this->type;
     }
-
 }

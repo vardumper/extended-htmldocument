@@ -1,15 +1,15 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Track - The track element is used as a child of the media elements—audio and video. It lets you specify timed text tracks (or time-based data), for example to automatically handle subtitles. The tracks are formatted in WebVTT format (.vtt files) — Web Video Text Tracks.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track
  */
+
 namespace Html\Element\Void;
 
 use Html\Element\VoidElement;
@@ -41,40 +41,41 @@ class Track extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-    ];
+    public static array $childOf = [];
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-    /** Specifies that the track should be enabled by default when the page loads. */
+    /**
+     * Specifies that the track should be enabled by default when the page loads.
+     */
     public ?bool $default = null;
 
-    /**  */
-    protected ?KindEnum $kind = null;
-
-    /** Specifies a label for the associated form control, option group, or option. */
+    /**
+     * Specifies a label for the associated form control, option group, or option.
+     */
     public ?string $label = null;
 
-    /** 
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
-     * @category HTML attribute
      * @required
      */
     public ?string $src = null;
 
-    /** Specifies the language of the track text data. */
+    /**
+     * Specifies the language of the track text data.
+     */
     public ?string $srclang = null;
 
+    protected ?KindEnum $kind = null;
 
-    public function setDefault(bool $default): void
+    public function setDefault(bool $default): self
     {
         $this->default = $default;
+        return $this;
     }
 
     public function getDefault(): ?bool
@@ -82,10 +83,11 @@ class Track extends VoidElement
         return $this->default;
     }
 
-    public function setKind(KindEnum $kind): void
+    public function setKind(KindEnum $kind): self
     {
         $this->kind = $kind;
         $this->htmlElement->setAttribute('kind', $kind->value);
+        return $this;
     }
 
     public function getKind(): ?KindEnum
@@ -93,9 +95,10 @@ class Track extends VoidElement
         return $this->kind;
     }
 
-    public function setLabel(string $label): void
+    public function setLabel(string $label): self
     {
         $this->label = $label;
+        return $this;
     }
 
     public function getLabel(): ?string
@@ -103,9 +106,10 @@ class Track extends VoidElement
         return $this->label;
     }
 
-    public function setSrc(string $src): void
+    public function setSrc(string $src): self
     {
         $this->src = $src;
+        return $this;
     }
 
     public function getSrc(): ?string
@@ -113,14 +117,14 @@ class Track extends VoidElement
         return $this->src;
     }
 
-    public function setSrclang(string $srclang): void
+    public function setSrclang(string $srclang): self
     {
         $this->srclang = $srclang;
+        return $this;
     }
 
     public function getSrclang(): ?string
     {
         return $this->srclang;
     }
-
 }

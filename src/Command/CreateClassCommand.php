@@ -153,10 +153,11 @@ final class CreateClassCommand extends Command
             if ($type === 'enum') {
                 $kebapCase = $this->toKebapCase($attribute);
                 $type = \sprintf('%sEnum', $kebapCase);
-                $signature = "    public function set%s(%s \$%s): void
+                $signature = "    public function set%s(%s \$%s): self
     {
         \$this->%s = \$%s;
         \$this->htmlElement->setAttribute('%s', \$%s->value);
+        return \$this;
     }
 
     public function get%s(): ?%s
@@ -177,9 +178,10 @@ final class CreateClassCommand extends Command
                     $variableName
                 );
             } else {
-                $signature = "    public function set%s(%s \$%s): void
+                $signature = "    public function set%s(%s \$%s): self
     {
         \$this->%s = \$%s;
+        return \$this;
     }
 
     public function get%s(): ?%s
@@ -201,6 +203,7 @@ final class CreateClassCommand extends Command
         }
         return $retVal;
     }
+
     private function getAttributes(array $attributes): string
     {
         $transformedAttributes = '';

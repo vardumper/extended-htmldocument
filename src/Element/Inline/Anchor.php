@@ -1,15 +1,15 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Anchor - The a element represents a hyperlink, linking to another resource.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\InlineElement;
@@ -37,50 +37,55 @@ class Anchor extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-    ];
+    public static array $childOf = [];
 
     /**
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** Indicates that the linked content should be downloaded rather than displayed. */
+    /**
+     * Indicates that the linked content should be downloaded rather than displayed.
+     */
     public ?string $download = null;
 
-    /** 
+    /**
      * Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.
-     * @category HTML attribute
      * @required
      */
     public ?string $href = null;
 
-    /** Specifies the language of the linked resource. */
+    /**
+     * Specifies the language of the linked resource.
+     */
     public ?string $hreflang = null;
 
-    /** Specifies the relationship between the current document and the linked document. */
+    /**
+     * Specifies additional information about the element, typically displayed as a tooltip.
+     */
+    public ?string $title = null;
+
+    /**
+     * Specifies the media type of the linked resource.
+     */
+    public ?string $type = null;
+
+    /**
+     * Specifies the relationship between the current document and the linked document.
+     */
     protected ?RelEnum $rel = null;
 
-    /** 
+    /**
      * Specifies where to open the linked document.
-     * @category HTML attribute
      * @example _self
      */
     protected ?TargetEnum $target = null;
 
-    /** Specifies additional information about the element, typically displayed as a tooltip. */
-    public ?string $title = null;
-
-    /** Specifies the media type of the linked resource. */
-    public ?string $type = null;
-
-
-    public function setDownload(string $download): void
+    public function setDownload(string $download): self
     {
         $this->download = $download;
+        return $this;
     }
 
     public function getDownload(): ?string
@@ -88,9 +93,10 @@ class Anchor extends InlineElement
         return $this->download;
     }
 
-    public function setHref(string $href): void
+    public function setHref(string $href): self
     {
         $this->href = $href;
+        return $this;
     }
 
     public function getHref(): ?string
@@ -98,9 +104,10 @@ class Anchor extends InlineElement
         return $this->href;
     }
 
-    public function setHreflang(string $hreflang): void
+    public function setHreflang(string $hreflang): self
     {
         $this->hreflang = $hreflang;
+        return $this;
     }
 
     public function getHreflang(): ?string
@@ -108,10 +115,11 @@ class Anchor extends InlineElement
         return $this->hreflang;
     }
 
-    public function setRel(RelEnum $rel): void
+    public function setRel(RelEnum $rel): self
     {
         $this->rel = $rel;
         $this->htmlElement->setAttribute('rel', $rel->value);
+        return $this;
     }
 
     public function getRel(): ?RelEnum
@@ -119,10 +127,11 @@ class Anchor extends InlineElement
         return $this->rel;
     }
 
-    public function setTarget(TargetEnum $target): void
+    public function setTarget(TargetEnum $target): self
     {
         $this->target = $target;
         $this->htmlElement->setAttribute('target', $target->value);
+        return $this;
     }
 
     public function getTarget(): ?TargetEnum
@@ -130,9 +139,10 @@ class Anchor extends InlineElement
         return $this->target;
     }
 
-    public function setTitle(string $title): void
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+        return $this;
     }
 
     public function getTitle(): ?string
@@ -140,14 +150,14 @@ class Anchor extends InlineElement
         return $this->title;
     }
 
-    public function setType(string $type): void
+    public function setType(string $type): self
     {
         $this->type = $type;
+        return $this;
     }
 
     public function getType(): ?string
     {
         return $this->type;
     }
-
 }

@@ -1,15 +1,15 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Embed - The embed element provides an integration point for an external (typically non-HTML) application or interactive content.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
@@ -41,37 +41,39 @@ class Embed extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-    ];
+    public static array $childOf = [];
 
     /**
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     public ?string $height = null;
 
-    /** 
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
-     * @category HTML attribute
      * @required
      */
     public ?string $src = null;
 
-    /** Specifies the media type of the linked resource. */
-    protected ?TypeEnum $type = null;
-
-    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     public ?string $width = null;
 
+    /**
+     * Specifies the media type of the linked resource.
+     */
+    protected ?TypeEnum $type = null;
 
-    public function setHeight(string $height): void
+    public function setHeight(string $height): self
     {
         $this->height = $height;
+        return $this;
     }
 
     public function getHeight(): ?string
@@ -79,9 +81,10 @@ class Embed extends BlockElement
         return $this->height;
     }
 
-    public function setSrc(string $src): void
+    public function setSrc(string $src): self
     {
         $this->src = $src;
+        return $this;
     }
 
     public function getSrc(): ?string
@@ -89,10 +92,11 @@ class Embed extends BlockElement
         return $this->src;
     }
 
-    public function setType(TypeEnum $type): void
+    public function setType(TypeEnum $type): self
     {
         $this->type = $type;
         $this->htmlElement->setAttribute('type', $type->value);
+        return $this;
     }
 
     public function getType(): ?TypeEnum
@@ -100,15 +104,14 @@ class Embed extends BlockElement
         return $this->type;
     }
 
-    public function setWidth(string $width): void
+    public function setWidth(string $width): self
     {
         $this->width = $width;
+        return $this;
     }
 
     public function getWidth(): ?string
     {
         return $this->width;
     }
-
-
 }

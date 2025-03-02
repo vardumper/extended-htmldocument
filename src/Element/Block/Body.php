@@ -1,58 +1,18 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Body - The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Audio;
-use Html\Element\Block\Blockquote;
-use Html\Element\Block\Canvas;
-use Html\Element\Block\DataList;
-use Html\Element\Block\DefinitionList;
-use Html\Element\Block\DeletedText;
-use Html\Element\Block\Details;
-use Html\Element\Block\Dialog;
-use Html\Element\Block\Division;
-use Html\Element\Block\Embed;
-use Html\Element\Block\Fieldset;
-use Html\Element\Block\Figure;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Form;
-use Html\Element\Block\Header;
-use Html\Element\Block\Heading1;
-use Html\Element\Block\Heading2;
-use Html\Element\Block\Heading3;
-use Html\Element\Block\Heading4;
-use Html\Element\Block\Heading5;
-use Html\Element\Block\Heading6;
-use Html\Element\Block\HorizontalRule;
-use Html\Element\Block\InlineFrame;
-use Html\Element\Block\InsertedText;
-use Html\Element\Block\Main;
-use Html\Element\Block\Map;
-use Html\Element\Block\Navigation;
-use Html\Element\Block\NoScript;
-use Html\Element\Block\ObjectElement;
-use Html\Element\Block\OrderedList;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Picture;
-use Html\Element\Block\PreformattedText;
-use Html\Element\Block\Section;
-use Html\Element\Block\Table;
-use Html\Element\Block\Template;
-use Html\Element\Block\UnorderedList;
-use Html\Element\Block\Video;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Address;
 use Html\Element\Inline\Anchor;
@@ -114,8 +74,7 @@ class Body extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-    ];
+    public static array $childOf = [];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -203,59 +162,90 @@ class Body extends BlockElement
         WordBreakOpportunity::class,
     ];
 
-
-    /** Fires after the associated document has started printing or the print preview has been closed. */
+    /**
+     * Fires after the associated document has started printing or the print preview has been closed.
+     */
     public ?string $onafterprint = null;
 
-    /** Fires before the associated document is printed or previewed for printing. */
+    /**
+     * Fires before the associated document is printed or previewed for printing.
+     */
     public ?string $onbeforeprint = null;
 
-    /** Fires before the user navigates away from the page. */
+    /**
+     * Fires before the user navigates away from the page.
+     */
     public ?string $onbeforeunload = null;
 
-    /** Fires when the fragment identifier part of the URL changes. */
+    /**
+     * Fires when the fragment identifier part of the URL changes.
+     */
     public ?string $onhashchange = null;
 
-    /** Fires when the user changes the preferred language of the user interface. */
+    /**
+     * Fires when the user changes the preferred language of the user interface.
+     */
     public ?string $onlanguagechange = null;
 
-    /** Fires when a message is received from a different browsing context (e.g., an iframe). */
+    /**
+     * Fires when a message is received from a different browsing context (e.g., an iframe).
+     */
     public ?string $onmessage = null;
 
-    /** Fires when an error occurs while receiving a message from a different browsing context. */
+    /**
+     * Fires when an error occurs while receiving a message from a different browsing context.
+     */
     public ?string $onmessageerror = null;
 
-    /** Fires when the browser goes offline. */
+    /**
+     * Fires when the browser goes offline.
+     */
     public ?string $onoffline = null;
 
-    /** Fires when the browser goes online. */
+    /**
+     * Fires when the browser goes online.
+     */
     public ?string $ononline = null;
 
-    /** Fires when the user navigates away from a page. */
+    /**
+     * Fires when the user navigates away from a page.
+     */
     public ?string $onpagehide = null;
 
-    /** Fires when the user navigates to a page. */
+    /**
+     * Fires when the user navigates to a page.
+     */
     public ?string $onpageshow = null;
 
-    /** Fires when the user navigates through the history by clicking the browser's Back or Forward buttons. */
+    /**
+     * Fires when the user navigates through the history by clicking the browser's Back or Forward buttons.
+     */
     public ?string $onpopstate = null;
 
-    /** Fires when a Promise is rejected and the rejection is handled by a Promise handler (e.g., catch). */
+    /**
+     * Fires when a Promise is rejected and the rejection is handled by a Promise handler (e.g., catch).
+     */
     public ?string $onrejectionhandled = null;
 
-    /** Fires when a storage area (e.g., localStorage or sessionStorage) changes. */
+    /**
+     * Fires when a storage area (e.g., localStorage or sessionStorage) changes.
+     */
     public ?string $onstorage = null;
 
-    /** Fires when a Promise is rejected but there is no rejection handler (e.g., catch). */
+    /**
+     * Fires when a Promise is rejected but there is no rejection handler (e.g., catch).
+     */
     public ?string $onunhandledrejection = null;
 
-    /** Fires when the user is navigating away from the page (similar to onbeforeunload). */
+    /**
+     * Fires when the user is navigating away from the page (similar to onbeforeunload).
+     */
     public ?string $onunload = null;
 
-
-    public function setOnafterprint(string $onafterprint): void
+    public function setOnafterprint(string $onafterprint): self
     {
         $this->onafterprint = $onafterprint;
+        return $this;
     }
 
     public function getOnafterprint(): ?string
@@ -263,9 +253,10 @@ class Body extends BlockElement
         return $this->onafterprint;
     }
 
-    public function setOnbeforeprint(string $onbeforeprint): void
+    public function setOnbeforeprint(string $onbeforeprint): self
     {
         $this->onbeforeprint = $onbeforeprint;
+        return $this;
     }
 
     public function getOnbeforeprint(): ?string
@@ -273,9 +264,10 @@ class Body extends BlockElement
         return $this->onbeforeprint;
     }
 
-    public function setOnbeforeunload(string $onbeforeunload): void
+    public function setOnbeforeunload(string $onbeforeunload): self
     {
         $this->onbeforeunload = $onbeforeunload;
+        return $this;
     }
 
     public function getOnbeforeunload(): ?string
@@ -283,9 +275,10 @@ class Body extends BlockElement
         return $this->onbeforeunload;
     }
 
-    public function setOnhashchange(string $onhashchange): void
+    public function setOnhashchange(string $onhashchange): self
     {
         $this->onhashchange = $onhashchange;
+        return $this;
     }
 
     public function getOnhashchange(): ?string
@@ -293,9 +286,10 @@ class Body extends BlockElement
         return $this->onhashchange;
     }
 
-    public function setOnlanguagechange(string $onlanguagechange): void
+    public function setOnlanguagechange(string $onlanguagechange): self
     {
         $this->onlanguagechange = $onlanguagechange;
+        return $this;
     }
 
     public function getOnlanguagechange(): ?string
@@ -303,9 +297,10 @@ class Body extends BlockElement
         return $this->onlanguagechange;
     }
 
-    public function setOnmessage(string $onmessage): void
+    public function setOnmessage(string $onmessage): self
     {
         $this->onmessage = $onmessage;
+        return $this;
     }
 
     public function getOnmessage(): ?string
@@ -313,9 +308,10 @@ class Body extends BlockElement
         return $this->onmessage;
     }
 
-    public function setOnmessageerror(string $onmessageerror): void
+    public function setOnmessageerror(string $onmessageerror): self
     {
         $this->onmessageerror = $onmessageerror;
+        return $this;
     }
 
     public function getOnmessageerror(): ?string
@@ -323,9 +319,10 @@ class Body extends BlockElement
         return $this->onmessageerror;
     }
 
-    public function setOnoffline(string $onoffline): void
+    public function setOnoffline(string $onoffline): self
     {
         $this->onoffline = $onoffline;
+        return $this;
     }
 
     public function getOnoffline(): ?string
@@ -333,9 +330,10 @@ class Body extends BlockElement
         return $this->onoffline;
     }
 
-    public function setOnonline(string $ononline): void
+    public function setOnonline(string $ononline): self
     {
         $this->ononline = $ononline;
+        return $this;
     }
 
     public function getOnonline(): ?string
@@ -343,9 +341,10 @@ class Body extends BlockElement
         return $this->ononline;
     }
 
-    public function setOnpagehide(string $onpagehide): void
+    public function setOnpagehide(string $onpagehide): self
     {
         $this->onpagehide = $onpagehide;
+        return $this;
     }
 
     public function getOnpagehide(): ?string
@@ -353,9 +352,10 @@ class Body extends BlockElement
         return $this->onpagehide;
     }
 
-    public function setOnpageshow(string $onpageshow): void
+    public function setOnpageshow(string $onpageshow): self
     {
         $this->onpageshow = $onpageshow;
+        return $this;
     }
 
     public function getOnpageshow(): ?string
@@ -363,9 +363,10 @@ class Body extends BlockElement
         return $this->onpageshow;
     }
 
-    public function setOnpopstate(string $onpopstate): void
+    public function setOnpopstate(string $onpopstate): self
     {
         $this->onpopstate = $onpopstate;
+        return $this;
     }
 
     public function getOnpopstate(): ?string
@@ -373,9 +374,10 @@ class Body extends BlockElement
         return $this->onpopstate;
     }
 
-    public function setOnrejectionhandled(string $onrejectionhandled): void
+    public function setOnrejectionhandled(string $onrejectionhandled): self
     {
         $this->onrejectionhandled = $onrejectionhandled;
+        return $this;
     }
 
     public function getOnrejectionhandled(): ?string
@@ -383,9 +385,10 @@ class Body extends BlockElement
         return $this->onrejectionhandled;
     }
 
-    public function setOnstorage(string $onstorage): void
+    public function setOnstorage(string $onstorage): self
     {
         $this->onstorage = $onstorage;
+        return $this;
     }
 
     public function getOnstorage(): ?string
@@ -393,9 +396,10 @@ class Body extends BlockElement
         return $this->onstorage;
     }
 
-    public function setOnunhandledrejection(string $onunhandledrejection): void
+    public function setOnunhandledrejection(string $onunhandledrejection): self
     {
         $this->onunhandledrejection = $onunhandledrejection;
+        return $this;
     }
 
     public function getOnunhandledrejection(): ?string
@@ -403,15 +407,14 @@ class Body extends BlockElement
         return $this->onunhandledrejection;
     }
 
-    public function setOnunload(string $onunload): void
+    public function setOnunload(string $onunload): self
     {
         $this->onunload = $onunload;
+        return $this;
     }
 
     public function getOnunload(): ?string
     {
         return $this->onunload;
     }
-
-
 }

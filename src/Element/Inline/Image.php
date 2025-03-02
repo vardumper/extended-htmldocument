@@ -1,15 +1,15 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Image - The img element represents an image.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\InlineElement;
@@ -43,62 +43,72 @@ class Image extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-    ];
+    public static array $childOf = [];
 
     /**
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** 
+    /**
      * Specifies alternative text to be displayed when the image cannot be rendered.
-     * @category HTML attribute
      * @required
      */
     public ?string $alt = null;
 
-    /**  */
-    protected ?CrossoriginEnum $crossorigin = null;
-
-    /** Specifies the decoding process applied to the image. */
-    protected ?DecodingEnum $decoding = null;
-
-    /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     public ?string $height = null;
 
-    /** Specifies that an area should be part of an image map. */
+    /**
+     * Specifies that an area should be part of an image map.
+     */
     public ?bool $ismap = null;
 
-    /** Specifies the referrer policy for fetches initiated by the element. */
-    protected ?ReferrerpolicyEnum $referrerpolicy = null;
-
-    /** Specifies the sizes of the images or icons for different display/window sizes. */
+    /**
+     * Specifies the sizes of the images or icons for different display/window sizes.
+     */
     public ?string $sizes = null;
 
-    /** 
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
-     * @category HTML attribute
      * @required
      */
     public ?string $src = null;
 
-    /** Specifies a set of image candidate URLs and descriptors for responsive images. */
+    /**
+     * Specifies a set of image candidate URLs and descriptors for responsive images.
+     */
     public ?string $srcset = null;
 
-    /** Specifies a client-side image map to be used with the element. */
+    /**
+     * Specifies a client-side image map to be used with the element.
+     */
     public ?string $usemap = null;
 
-    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     public ?string $width = null;
 
+    protected ?CrossoriginEnum $crossorigin = null;
 
-    public function setAlt(string $alt): void
+    /**
+     * Specifies the decoding process applied to the image.
+     */
+    protected ?DecodingEnum $decoding = null;
+
+    /**
+     * Specifies the referrer policy for fetches initiated by the element.
+     */
+    protected ?ReferrerpolicyEnum $referrerpolicy = null;
+
+    public function setAlt(string $alt): self
     {
         $this->alt = $alt;
+        return $this;
     }
 
     public function getAlt(): ?string
@@ -106,10 +116,11 @@ class Image extends InlineElement
         return $this->alt;
     }
 
-    public function setCrossorigin(CrossoriginEnum $crossorigin): void
+    public function setCrossorigin(CrossoriginEnum $crossorigin): self
     {
         $this->crossorigin = $crossorigin;
         $this->htmlElement->setAttribute('crossorigin', $crossorigin->value);
+        return $this;
     }
 
     public function getCrossorigin(): ?CrossoriginEnum
@@ -117,10 +128,11 @@ class Image extends InlineElement
         return $this->crossorigin;
     }
 
-    public function setDecoding(DecodingEnum $decoding): void
+    public function setDecoding(DecodingEnum $decoding): self
     {
         $this->decoding = $decoding;
         $this->htmlElement->setAttribute('decoding', $decoding->value);
+        return $this;
     }
 
     public function getDecoding(): ?DecodingEnum
@@ -128,9 +140,10 @@ class Image extends InlineElement
         return $this->decoding;
     }
 
-    public function setHeight(string $height): void
+    public function setHeight(string $height): self
     {
         $this->height = $height;
+        return $this;
     }
 
     public function getHeight(): ?string
@@ -138,9 +151,10 @@ class Image extends InlineElement
         return $this->height;
     }
 
-    public function setIsmap(bool $ismap): void
+    public function setIsmap(bool $ismap): self
     {
         $this->ismap = $ismap;
+        return $this;
     }
 
     public function getIsmap(): ?bool
@@ -148,10 +162,11 @@ class Image extends InlineElement
         return $this->ismap;
     }
 
-    public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): void
+    public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): self
     {
         $this->referrerpolicy = $referrerpolicy;
         $this->htmlElement->setAttribute('referrerpolicy', $referrerpolicy->value);
+        return $this;
     }
 
     public function getReferrerpolicy(): ?ReferrerpolicyEnum
@@ -159,9 +174,10 @@ class Image extends InlineElement
         return $this->referrerpolicy;
     }
 
-    public function setSizes(string $sizes): void
+    public function setSizes(string $sizes): self
     {
         $this->sizes = $sizes;
+        return $this;
     }
 
     public function getSizes(): ?string
@@ -169,9 +185,10 @@ class Image extends InlineElement
         return $this->sizes;
     }
 
-    public function setSrc(string $src): void
+    public function setSrc(string $src): self
     {
         $this->src = $src;
+        return $this;
     }
 
     public function getSrc(): ?string
@@ -179,9 +196,10 @@ class Image extends InlineElement
         return $this->src;
     }
 
-    public function setSrcset(string $srcset): void
+    public function setSrcset(string $srcset): self
     {
         $this->srcset = $srcset;
+        return $this;
     }
 
     public function getSrcset(): ?string
@@ -189,9 +207,10 @@ class Image extends InlineElement
         return $this->srcset;
     }
 
-    public function setUsemap(string $usemap): void
+    public function setUsemap(string $usemap): self
     {
         $this->usemap = $usemap;
+        return $this;
     }
 
     public function getUsemap(): ?string
@@ -199,14 +218,14 @@ class Image extends InlineElement
         return $this->usemap;
     }
 
-    public function setWidth(string $width): void
+    public function setWidth(string $width): self
     {
         $this->width = $width;
+        return $this;
     }
 
     public function getWidth(): ?string
     {
         return $this->width;
     }
-
 }
