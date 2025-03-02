@@ -51,6 +51,11 @@ jobs:
             git add coverage.svg
             git commit -am "Coverage badge" --no-verify
             git push
+        continue-on-error: true
+        # do not fail if othing to commit
+
+
+
     #   - name: Git push to image-data branch
     #     uses: peaceiris/actions-gh-pages@v3
     #     with:
