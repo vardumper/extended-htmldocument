@@ -36,6 +36,10 @@ class DOMNodeDelegator
 
     public function __get($name)
     {
+        if (\property_exists($this, $name)) {
+            return $this->{$name};
+        }
+
         $reflection = new ReflectionClass($this->domNode);
         if ($reflection->hasProperty($name)) {
             $property = $reflection->getProperty($name);

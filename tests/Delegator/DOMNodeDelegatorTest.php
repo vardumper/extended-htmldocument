@@ -3,64 +3,75 @@
 namespace Tests\Delegator;
 
 use BadMethodCallException;
-use DOM\Document;
-use DOM\Element;
 use DOM\Node;
+use DOMNode;
 use Html\Delegator\DOMNodeDelegator;
-use Html\Delegator\HTMLElementDelegator;
+use Html\Delegator\HTMLDocumentDelegator;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 final class DOMNodeDelegatorTest extends TestCase
 {
-    private Node $domNode;
+    private HTMLDocumentDelegator $document;
+
     private DOMNodeDelegator $delegator;
 
-    // protected function setUp(): void
-    // {
-    //     $document = new Document();
-    //     $this->domNode = $document->createElement('div');
-    //     $this->delegator = new DOMNodeDelegator($this->domNode);
-    // }
+    private Node $domNode;
 
-    // public function testCall(): void
-    // {
-    //     $this->domNode->setAttribute('id', 'test');
-    //     $this->assertEquals('test', $this->delegator->getAttribute('id'));
-    // }
+    protected function setUp(): void
+    {
+        $this->document = HTMLDocumentDelegator::createEmpty();
+        $node = $this->document->createTextNode('test');
+        $this->delegator = new DOMNodeDelegator($node);
+    }
 
-    // public function testGet(): void
-    // {
-    //     $this->domNode->setAttribute('id', 'test');
-    //     $this->assertEquals('test', $this->delegator->id);
-    // }
+    public function testConstructor(): void
+    {
+        $this->assertInstanceOf(DOMNodeDelegator::class, $this->delegator);
+        $this->assertInstanceOf(Node::class, $this->delegator->domNode);
+    }
 
-    // public function testSet(): void
-    // {
-    //     $this->delegator->id = 'test';
-    //     $this->assertEquals('test', $this->domNode->getAttribute('id'));
-    // }
+    public function testCall(): void
+    {
+        $clone = $this->delegator->cloneNode();
+        $this->assertEquals($clone, $this->delegator->domNode);
+        // $this->assertEquals($clone, $this->delegator->domNode);
+    }
 
-    // public function testGetDomNode(): void
-    // {
-    //     $this->assertSame($this->domNode, $this->delegator->getDomNode());
-    // }
+    public function testGet(): void
+    {
+        $this->delegator->nodeValue = 'custom node value';
+        $this->assertEquals('custom node value', $this->delegator->nodeValue);
+        $this->assertEquals('custom node value', $this->delegator->domNode->nodeValue);
+    }
 
-    // public function testCallInvalidMethod(): void
-    // {
-    //     $this->expectException(BadMethodCallException::class);
-    //     $this->delegator->nonExistentMethod();
-    // }
+    public function testSet(): void
+    {
+        $this->delegator->nodeValue = 'test';
+        $this->assertEquals('test', $this->delegator->nodeValue);
+        $this->assertEquals('test', $this->delegator->domNode->nodeValue);
+    }
 
-    // public function testGetInvalidProperty(): void
-    // {
-    //     $this->expectException(InvalidArgumentException::class);
-    //     $this->delegator->nonExistentProperty;
-    // }
+    public function testGetDomNode(): void
+    {
+        $this->assertSame($this->delegator->domNode, $this->delegator->getDomNode());
+    }
 
-    // public function testSetInvalidProperty(): void
-    // {
-    //     $this->expectException(InvalidArgumentException::class);
-    //     $this->delegator->nonExistentProperty = 'value';
-    // }
+    public function testCallInvalidMethod(): void
+    {
+        $this->expectException(BadMethodCallException::class);
+        $this->delegator->nonExistentMethod();
+    }
+
+    public function testGetInvalidProperty(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->delegator->nonExistentProperty;
+    }
+
+    public function testSetInvalidProperty(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->delegator->nonExistentProperty = 'value';
+    }
 }

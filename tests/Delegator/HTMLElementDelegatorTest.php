@@ -7,6 +7,7 @@ use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
 use Html\Element\Inline\Anchor;
 use Html\Enum\RelEnum;
+use Html\Enum\TargetEnum;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use TypeError;
@@ -92,7 +93,9 @@ final class HTMLElementDelegatorTest extends TestCase
         $this->assertEquals('new-classname', $this->delegator->htmlElement->getAttribute('class'));
     }
 
-    /** @description added getter and setter and changed visibility to protected */
+    /**
+     * @description added getter and setter and changed visibility to protected
+     */
     public function testSetEnum(): void
     {
         $this->delegator->setRel(RelEnum::NOFOLLOW);
@@ -101,17 +104,25 @@ final class HTMLElementDelegatorTest extends TestCase
         $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
     }
 
-    /** @todo consider allowing to set array value. eg: data-json="{\"some\": \"data here\"}". currently value must be Enum or string */
+    /**
+     * @todo consider allowing to set array value. eg: data-json="{\"some\": \"data here\"}". currently value must be Enum or string
+     */
     public function testSetAttributeWithInvalidValue(): void
     {
         $this->expectException(TypeError::class);
-        $this->expectExceptionMessage("Cannot assign array to property Html\Element\Inline\Anchor::\$href of type ?string");
-        $this->delegator->setAttribute('href', ['foo' => 'bar']);
+        $this->expectExceptionMessage(
+            "Cannot assign array to property Html\Element\Inline\Anchor::\$href of type ?string"
+        );
+        $this->delegator->setAttribute('href', [
+            'foo' => 'bar',
+        ]);
     }
 
     public function testSetEnumSetAttributes(): void
     {
-        $this->delegator->setAttributes(['rel' => RelEnum::NOFOLLOW]);
+        $this->delegator->setAttributes([
+            'rel' => RelEnum::NOFOLLOW,
+        ]);
         $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
         $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
     }
@@ -145,71 +156,6 @@ final class HTMLElementDelegatorTest extends TestCase
         $this->delegator->nonExistentProperty;
     }
 
-    // public function testCall(): void
-    // {
-    //     $this->delegator->setAttribute('id', 'test');
-    //     $this->assertEquals('test', $this->delegator->getAttribute('id'));
-
-    //     $this->expectException(BadMethodCallException::class);
-    //     $this->expectExceptionMessage(
-    //         'Method nonExistant does not exist on Dom\HTMLElement. However you can implement it on Html\Delegator\HTMLElementDelegator'
-    //     );
-    //     $this->delegator->nonExistant();
-    // }
-
-    // public function testGet(): void
-    // {
-    //     $this->delegator->setAttribute('id', 'test');
-    //     $this->assertEquals('test', $this->delegator->id);
-    //     $this->assertEquals('test', $this->delegator->htmlElement->id);
-
-    //     $this->expectException(InvalidArgumentException::class);
-    //     $this->expectExceptionMessage('Property nonExistant does not exist');
-    //     $this->delegator->nonExistant;
-    // }
-
-    // public function testSet(): void
-    // {
-    //     $this->delegator->id = 'test';
-    //     $this->assertEquals('test', $this->delegator->id);
-    //     $this->assertEquals('test', $this->delegator->htmlElement->getAttribute('id'));
-
-    //     $this->delegator->id = 'test';
-    //     $this->assertEquals('test', $this->delegator->id);
-    //     $this->assertEquals('test', $this->delegator->htmlElement->getAttribute('id'));
-
-    //     /** @todo should this be possible or not? */
-    //     $this->expectException(InvalidArgumentException::class);
-    //     $this->expectExceptionMessage('Property nonExistant does not exist');
-    //     $this->delegator->nonExistant = 'example';
-
-    //     // $this->delegator->rel = RelEnum::NOFOLLOW;
-    //     // // var_dump((string) $this->delegator);exit;
-    //     // $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
-    //     // $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
-
-    //     $this->delegator->className = 'example-class';
-    //     $this->assertEquals('example-class', $this->delegator->className);
-    //     $this->assertEquals('example-class', $this->delegator->htmlElement->className);
-
-    //     $this->delegator->href = 'https://example.com';
-    //     var_dump((string) $this->delegator);
-    //     $this->assertEquals('https://example.com', $this->delegator->href);
-    //     $this->assertEquals('https://example.com', $this->delegator->htmlElement->getAttribute('href'));
-
-    //     $this->expectException(InvalidArgumentException::class);
-    //     $this->expectExceptionMessage('Property nonExistant does not exist');
-    //     $this->delegator->nonExistant = 'example';
-
-    //     $this->delegator->crossorigin = 'anonymous';
-    //     $this->assertEquals('anonymous', $this->delegator->crossorigin);
-    //     $this->assertEquals('anonymous', $this->delegator->htmlElement->getAttribute('crossorigin'));
-
-    //     $this->expectException(InvalidArgumentException::class);
-    //     $this->expectExceptionMessage('Property nonExistant does not exist');
-    //     $this->delegator->rel = RelEnum::INEXISTENT;
-    // }
-
     public function testToString(): void
     {
         $this->delegator->setAttribute('id', 'test');
@@ -231,11 +177,28 @@ final class HTMLElementDelegatorTest extends TestCase
             $this->delegator->htmlElement->getAttribute('href')
         ); // Assert the href attribute
         $this->assertEquals('https://example.com', $this->delegator->href); // Assert the href attribute
+    }
 
+    public function testSetAttributesEnum(): void
+    {
         $this->delegator->setAttributes([
             'rel' => RelEnum::NOFOLLOW,
         ]);
         $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
         $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
+    }
+
+    public function testSetAttributesEnumValue(): void
+    {
+        $this->delegator->setAttributes([
+            'rel' => 'nofollow',
+            'target' => '_blank',
+        ]);
+        $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
+        $this->assertEquals('nofollow', $this->delegator->getAttribute('rel'));
+        $this->assertEquals('_blank', $this->delegator->htmlElement->getAttribute('target'));
+        $this->assertEquals('_blank', $this->delegator->getAttribute('target'));
+        $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
+        $this->assertEquals(TargetEnum::_BLANK, $this->delegator->target);
     }
 }

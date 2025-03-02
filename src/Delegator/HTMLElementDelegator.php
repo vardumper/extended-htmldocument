@@ -11,6 +11,8 @@ use InvalidArgumentException;
 use ReflectionClass;
 
 /**
+ * inheritDoc
+ *
  * @property ?string $namespaceURI
  * @property ?string $prefix
  * @property string $localName
@@ -82,7 +84,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             $this->{$name} = $value;
         }
 
-        if (!property_exists($this->htmlElement, $name)) {
+        if (! property_exists($this->htmlElement, $name)) {
             $this->htmlElement->setAttribute($name, $value);
             return;
         }
@@ -113,13 +115,30 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     public function setAttribute(string $qualifiedName, mixed $value): void
     {
         if (property_exists($this, $qualifiedName)) {
+            // use reflection to check if this property is a BackedEnum and instantiate it with ::from()
+            $reflection = new ReflectionClass($this);
+            $property = $reflection->getProperty($qualifiedName);
+            $propertyType = $property->getType();
+            $enumClass = $propertyType->getName();
+            if (\is_subclass_of($enumClass, BackedEnum::class) && is_string($value)) {
+                $value = $enumClass::from($value);
+                $methodName = 'set' . $qualifiedName;
+                if (\method_exists($this, $methodName)) {
+                    $this->{$methodName}($value);
+                } else {
+                    // if there is no setter method, we set the property directly
+                    $this->{$qualifiedName} = $value;
+                }
+            }
             $this->{$qualifiedName} = $value; // here we allow Enums
         }
         if (\is_subclass_of($value, BackedEnum::class)) {
             $value = $value->value;
         }
-        if (!is_string($value)) {
-            throw new InvalidArgumentException("Value for {$qualifiedName} must be a string or a BackedEnum"); // ensure value is a string
+        if (! is_string($value)) {
+            throw new InvalidArgumentException(
+                "Value for {$qualifiedName} must be a string or a BackedEnum"
+            ); // ensure value is a string
         }
         $this->htmlElement->setAttribute($qualifiedName, $value); // here we require string
     }
@@ -190,7 +209,9 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         return static::$parentOf;
     }
 
-    /** Helper method */
+    /**
+     * Helper method
+     */
     private function isBackedEnum($value): bool
     {
         return is_object($value) && is_subclass_of($value, BackedEnum::class);
