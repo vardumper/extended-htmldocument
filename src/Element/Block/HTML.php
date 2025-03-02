@@ -30,7 +30,7 @@ class HTML extends BlockElement
     /**
      * If an element is allowed once its allowed parents
      */
-    public static bool $uniquePerParent = false;
+    public static bool $uniquePerParent = true;
 
     /**
      * The list of allowed direct parents. Any if empty.

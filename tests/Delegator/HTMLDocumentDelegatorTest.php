@@ -11,15 +11,13 @@ use Html\Delegator\DOMNodeListDelegator;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
 use Html\Element\Block\Body;
+use Html\Element\Block\TableData;
+use Html\Element\Block\TableRow;
 use InvalidArgumentException;
-use phpmock\functions\FixedValueFunction;
-use phpmock\MockBuilder;
 use PHPUnit\Framework\TestCase;
 
 final class HTMLDocumentDelegatorTest extends TestCase
 {
-    // use phpmock\TestCaseTypeHintTrait;
-
     private HTMLDocument $document;
 
     private HTMLDocumentDelegator $delegator;
@@ -206,12 +204,17 @@ final class HTMLDocumentDelegatorTest extends TestCase
 
     public function testIsUniquePerParent(): void
     {
-        $this->assertFalse(HTMLElementDelegator::isUniquePerParent());
+        $element = Body::create($this->delegator);
+        // $element = $this->delegator->createElement('body');
+        $this->assertTrue($element::isUniquePerParent());
     }
 
     public function testIsUnique(): void
     {
-        $this->assertFalse(HTMLElementDelegator::isUnique());
+        $element = Body::create($this->delegator);
+        // $element = $this->delegator->createElement('body');
+        // var_dump(\get_class_vars(get_class($body)));
+        $this->assertTrue($element::isUnique());
     }
 
     public function testIsSelfClosing(): void
@@ -220,27 +223,35 @@ final class HTMLDocumentDelegatorTest extends TestCase
         // Example assumes it's been defined somewhere
         $this->expectException(Error::class); // or comment out if the constant is set in a subclass
         $this->expectExceptionMessage('Undefined constant Html\Delegator\HTMLElementDelegator::SELF_CLOSING');
-        HTMLElementDelegator::isSelfClosing();
+        $element = $this->delegator->createElement('div');
+        $this->assertFalse($element::isSelfClosing());
+
+        $element = $this->delegator->createElement('br');
+        $this->assertTrue($element::isSelfClosing());
     }
 
     public function testGetQualifiedName(): void
     {
+        $element = $this->delegator->createElement('br');
         // $this->expectError(); // or remove if QUALIFIED_NAME is defined in a subclass
         $this->expectException(Error::class);
         $this->expectExceptionMessage('Undefined constant Html\Delegator\HTMLElementDelegator::QUALIFIED_NAME');
-        HTMLElementDelegator::getQualifiedName();
+        $this->assertEquals('br', $element::getQualifiedName());
     }
 
     public function testChildOf(): void
     {
-        $this->assertIsArray(HTMLElementDelegator::childOf());
-        $this->assertEmpty(HTMLElementDelegator::childOf());
+        $element = TableData::create($this->delegator);
+        // $element = $this->delegator->createElement('td');
+        $this->assertIsArray($element::childOf());
+        $this->assertContains(TableRow::class, $element::childOf());
     }
 
     public function testParentOf(): void
     {
-        $this->assertIsArray(HTMLElementDelegator::parentOf());
-        $this->assertEmpty(HTMLElementDelegator::parentOf());
+        $element = $this->delegator->createElement('td');
+        $this->assertIsArray($element::parentOf());
+        $this->assertEmpty($element::parentOf());
     }
 
     public function testCreateEmpty(): void

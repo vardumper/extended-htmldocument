@@ -1,40 +1,18 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * DefinitionDescription - The dd element represents the description, definition, or value, part of a term-description group in a description list (dl element).
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dd
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Audio;
-use Html\Element\Block\DefinitionList;
-use Html\Element\Block\DefinitionTerm;
-use Html\Element\Block\DeletedText;
-use Html\Element\Block\Details;
-use Html\Element\Block\Division;
-use Html\Element\Block\Embed;
-use Html\Element\Block\Figure;
-use Html\Element\Block\Form;
-use Html\Element\Block\InlineFrame;
-use Html\Element\Block\InsertedText;
-use Html\Element\Block\ListItem;
-use Html\Element\Block\Map;
-use Html\Element\Block\ObjectElement;
-use Html\Element\Block\OrderedList;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Picture;
-use Html\Element\Block\PreformattedText;
-use Html\Element\Block\Summary;
-use Html\Element\Block\Table;
-use Html\Element\Block\UnorderedList;
-use Html\Element\Block\Video;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\BidirectionalIsolation;
@@ -89,15 +67,13 @@ class DefinitionDescription extends BlockElement
     /**
      * If an element is allowed once its allowed parents
      */
-    public static bool $uniquePerParent = true;
+    public static bool $uniquePerParent = false;
 
     /**
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        DefinitionList::class,
-    ];
+    public static array $childOf = [DefinitionList::class];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -115,7 +91,7 @@ class DefinitionDescription extends BlockElement
         Citation::class,
         Code::class,
         Data::class,
-        DefinitionDescription::class,
+        self::class,
         DeletedText::class,
         Definition::class,
         Division::class,
@@ -166,8 +142,4 @@ class DefinitionDescription extends BlockElement
         Video::class,
         WordBreakOpportunity::class,
     ];
-
-
-
-
 }

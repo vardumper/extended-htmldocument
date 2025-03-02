@@ -35,7 +35,7 @@ class Base extends VoidElement
     /**
      * If an element is allowed once its allowed parents
      */
-    public static bool $uniquePerParent = true;
+    public static bool $uniquePerParent = false;
 
     /**
      * The list of allowed direct parents. Any if empty.

@@ -248,4 +248,16 @@ final class HTMLElementDelegatorTest extends TestCase
         $this->delegator->setClassName('example-class');
         $this->assertEquals('example-class', $this->delegator->getClass());
     }
+
+    public function testParentOf(): void
+    {
+        $this->delegator->setClassName('example-class');
+        $this->assertEquals([], $this->delegator->parentOf());
+    }
+
+    public function testChildOf(): void
+    {
+        $this->delegator->setClassName('child-class');
+        $this->assertEquals([], $this->delegator->childOf());
+    }
 }
