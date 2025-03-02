@@ -6,13 +6,14 @@
 - :bulb: How to make use of parentOf/childOf? (eg: validation? prevent adding invalid children? allow force? does HTMLDocument check this? Test it.)
 - :bulb: Consider using Symfony Serializer and encoder to transform YAML file that describes components into a HTMLDocument or fragment object, or even directly to an output format such as a Twig template. Similar to DOM-ORM where I turned xml into Entity objects and vice versa.
 
-## Done <Badge type="warning" text="Pre-Release" />
+## Done <Badge type="warning" text="Pre-Release" /> <Badge type="tip" text="0.1.4" />
 - :white_check_mark: Fix inconsistencies in the HTML5 specification
 - :white_check_mark: Add basic functionality and compatibility tests for Delegators
 - :white_check_mark: Mark deprecated attributes (e.g., clear in `<br>`, align in `<hr>`) as deprecated in PHP, too.
+- :white_check_mark: Add chainable setters for all attributes
+- :white_check_mark: Finalize Delegator tests.
 
 ## Pending <Badge type="tip" text="1.0.0" />
 - :white_large_square: Make sure to handle inconsistencies in attributes that go by the same name correctly (eg. `type` is used in `<button|input>` vs `<link|a|...>` vs `<ol>`). Create an OlTypeEnum, LinkTypeEnum, etc.
 - :white_large_square: Allow for union types for mixed attributes (eg. target which can be both a TargetEnum (_self, _blank, etc.) and a string value)
 - :white_large_square: Properly link between relevant sections in the docs. Add links to external resources where appropriate.
-- :white_check_mark: Finalize tests to get to 100% coverage and improve them where necessary

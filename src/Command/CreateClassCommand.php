@@ -209,9 +209,6 @@ final class CreateClassCommand extends Command
         $transformedAttributes = '';
         foreach ($attributes as $attribute => $details) {
             $type = $details['type'] ?? '';
-            $required = false;
-            $description = $details['description'] ?? '';
-            $default = '';
             $comment = $this->getAttributeComment($details);
             $type = $this->mapToPhpType($type);
             $visibility = 'public';
@@ -224,13 +221,11 @@ final class CreateClassCommand extends Command
             }
             $variableName = $this->toVariableName($attribute);
             $transformedAttributes .= \sprintf(
-                "    %s    %s %s%s \$%s%s;\n\n",
+                "    %s    %s ?%s \$%s = null;\n\n",
                 $comment,
                 $visibility,
-                $required ? '' : '?',
                 $type,
                 $variableName,
-                $required ? $default : ' = null'
             );
         }
         return $transformedAttributes;

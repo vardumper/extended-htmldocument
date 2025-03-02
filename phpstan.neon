@@ -4,6 +4,11 @@ parameters:
         - %currentWorkingDirectory%
     excludePaths:
         - vendor
+        - tests
+        - src/Resources/templates/VoidElement.tpl.php
+        - src/Resources/templates/BlockElement.tpl.php
+        - src/Resources/templates/InlineElement.tpl.php
+        - src/Resources/templates/Enum.tpl.php
     scanFiles:
     earlyTerminatingMethodCalls:
     ignoreErrors:
