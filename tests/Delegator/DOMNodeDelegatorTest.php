@@ -22,6 +22,7 @@ final class DOMNodeDelegatorTest extends TestCase
     {
         $this->document = HTMLDocumentDelegator::createEmpty();
         $node = $this->document->createTextNode('test');
+        $this->domNode = $node;
         $this->delegator = new DOMNodeDelegator($node);
     }
 
@@ -73,5 +74,19 @@ final class DOMNodeDelegatorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         $this->delegator->nonExistentProperty = 'value';
+    }
+
+    public function testCallWithHTMLElementDelegatorArgument(): void
+    {
+        // Create an HTMLElementDelegator instance
+        $anchor = $this->document->createElement('a');
+        $anchor->htmlElement->setAttribute('href', 'https://example.com');
+
+        $other = $this->document->createTextNode('I\'m a node, too');
+        $anchor->appendChild($other);
+
+        // $this->assertEquals(1, $anchor->childNodes->length);
+        // $this->assertEquals('I\'m a node, too', $anchor->childNodes->item(0)->nodeValue);
+        $this->assertTrue($anchor->contains($other));
     }
 }
