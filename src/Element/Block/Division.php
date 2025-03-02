@@ -1,46 +1,18 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Division - The div element has no special meaning at all. It represents its children. It can be used with the class, lang, and title attributes to mark up semantics common to a group of consecutive elements.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Audio;
-use Html\Element\Block\DefinitionDescription;
-use Html\Element\Block\DefinitionList;
-use Html\Element\Block\DefinitionTerm;
-use Html\Element\Block\DeletedText;
-use Html\Element\Block\Details;
-use Html\Element\Block\Embed;
-use Html\Element\Block\Figure;
-use Html\Element\Block\Form;
-use Html\Element\Block\Heading1;
-use Html\Element\Block\Heading2;
-use Html\Element\Block\Heading3;
-use Html\Element\Block\Heading4;
-use Html\Element\Block\Heading5;
-use Html\Element\Block\Heading6;
-use Html\Element\Block\InlineFrame;
-use Html\Element\Block\InsertedText;
-use Html\Element\Block\ListItem;
-use Html\Element\Block\Map;
-use Html\Element\Block\ObjectElement;
-use Html\Element\Block\OrderedList;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Picture;
-use Html\Element\Block\PreformattedText;
-use Html\Element\Block\Summary;
-use Html\Element\Block\Table;
-use Html\Element\Block\UnorderedList;
-use Html\Element\Block\Video;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\BidirectionalIsolation;
@@ -63,6 +35,7 @@ use Html\Element\Inline\RubyParenthesis;
 use Html\Element\Inline\RubyText;
 use Html\Element\Inline\SampleOutput;
 use Html\Element\Inline\Select;
+use Html\Element\Inline\Slot;
 use Html\Element\Inline\Small;
 use Html\Element\Inline\Span;
 use Html\Element\Inline\Strikethrough;
@@ -102,6 +75,20 @@ class Division extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
+        Article::class,
+        Aside::class,
+        Body::class,
+        DefinitionDescription::class,
+        Details::class,
+        Dialog::class,
+        self::class,
+        Footer::class,
+        Header::class,
+        ListItem::class,
+        Main::class,
+        Section::class,
+        Slot::class,
+        Template::class,
     ];
 
     /**
@@ -112,6 +99,8 @@ class Division extends BlockElement
         Anchor::class,
         Abbreviation::class,
         Area::class,
+        Article::class,
+        Aside::class,
         Audio::class,
         Bold::class,
         BidirectionalIsolation::class,
@@ -123,7 +112,7 @@ class Division extends BlockElement
         DefinitionDescription::class,
         DeletedText::class,
         Definition::class,
-        Division::class,
+        self::class,
         DefinitionList::class,
         DefinitionTerm::class,
         Emphasis::class,
@@ -145,6 +134,7 @@ class Division extends BlockElement
         Select::class,
         Textarea::class,
         Details::class,
+        Section::class,
         Summary::class,
         KeyboardInput::class,
         ListItem::class,
@@ -177,8 +167,4 @@ class Division extends BlockElement
         Video::class,
         WordBreakOpportunity::class,
     ];
-
-
-
-
 }

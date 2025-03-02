@@ -13,7 +13,9 @@
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Article;
 use Html\Element\Block\Audio;
+use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
 use Html\Element\Block\DefinitionList;
 use Html\Element\Block\DefinitionTerm;
@@ -32,6 +34,7 @@ use Html\Element\Block\Heading6;
 use Html\Element\Block\InlineFrame;
 use Html\Element\Block\InsertedText;
 use Html\Element\Block\ListItem;
+use Html\Element\Block\Main;
 use Html\Element\Block\Map;
 use Html\Element\Block\ObjectElement;
 use Html\Element\Block\OrderedList;
@@ -103,6 +106,10 @@ class Aside extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
+        Article::class,
+        Body::class,
+        Division::class,
+        Main::class,
     ];
 
     /**
@@ -113,6 +120,7 @@ class Aside extends BlockElement
         Anchor::class,
         Abbreviation::class,
         Area::class,
+        Article::class,
         Audio::class,
         Bold::class,
         BidirectionalIsolation::class,

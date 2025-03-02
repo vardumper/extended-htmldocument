@@ -13,8 +13,21 @@
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Article;
+use Html\Element\Block\Aside;
+use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
 use Html\Element\Block\DefinitionTerm;
+use Html\Element\Block\Details;
+use Html\Element\Block\Dialog;
+use Html\Element\Block\Division;
+use Html\Element\Block\Footer;
+use Html\Element\Block\Header;
+use Html\Element\Block\ListItem;
+use Html\Element\Block\Main;
+use Html\Element\Block\Section;
+use Html\Element\Block\Template;
+use Html\Element\Inline\Slot;
 
 class DefinitionList extends BlockElement
 {
@@ -38,6 +51,20 @@ class DefinitionList extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
+        Article::class,
+        Aside::class,
+        Body::class,
+        DefinitionDescription::class,
+        Details::class,
+        Dialog::class,
+        Division::class,
+        Footer::class,
+        Header::class,
+        ListItem::class,
+        Main::class,
+        Section::class,
+        Slot::class,
+        Template::class,
     ];
 
     /**

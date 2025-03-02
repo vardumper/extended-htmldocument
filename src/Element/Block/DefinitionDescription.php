@@ -73,7 +73,16 @@ class DefinitionDescription extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [DefinitionList::class];
+    public static array $childOf = [
+        DefinitionList::class,
+        Aside::class,
+        self::class,
+        Division::class,
+        Footer::class,
+        Header::class,
+        Main::class,
+        Section::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s

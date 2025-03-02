@@ -1,17 +1,25 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Parameter - The param element defines parameters for an object element.
- *
+ * 
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param
  */
-
 namespace Html\Element\Void;
 
+use Html\Element\Block\Aside;
+use Html\Element\Block\DefinitionDescription;
+use Html\Element\Block\Division;
+use Html\Element\Block\Footer;
+use Html\Element\Block\Header;
+use Html\Element\Block\Main;
+use Html\Element\Block\Section;
+use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
 
 class Parameter extends VoidElement
@@ -40,23 +48,31 @@ class Parameter extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [];
+    public static array $childOf = [
+        Aside::class,
+        DefinitionDescription::class,
+        Division::class,
+        Footer::class,
+        Header::class,
+        Main::class,
+        MarkedText::class,
+        Section::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
+     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies the name associated with the element. The meaning may vary depending on the context.
-     */
+    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
     public ?string $name = null;
 
-    /**
-     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
-     */
+    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value = null;
+
 
     public function setName(string $name): self
     {
@@ -79,4 +95,5 @@ class Parameter extends VoidElement
     {
         return $this->value;
     }
+
 }

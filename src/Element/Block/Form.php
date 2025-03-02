@@ -1,21 +1,39 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
- *
+ * 
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Article;
+use Html\Element\Block\Body;
+use Html\Element\Block\Canvas;
+use Html\Element\Block\DataList;
+use Html\Element\Block\DefinitionDescription;
+use Html\Element\Block\Details;
+use Html\Element\Block\Dialog;
+use Html\Element\Block\Division;
+use Html\Element\Block\Fieldset;
+use Html\Element\Block\Header;
+use Html\Element\Block\Legend;
+use Html\Element\Block\Main;
+use Html\Element\Block\Menu;
+use Html\Element\Block\NoScript;
+use Html\Element\Block\Section;
+use Html\Element\Block\Summary;
+use Html\Element\Block\Template;
 use Html\Element\Inline\Button;
 use Html\Element\Inline\Input;
 use Html\Element\Inline\Label;
+use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Meter;
 use Html\Element\Inline\Output;
 use Html\Element\Inline\Progress;
@@ -49,7 +67,21 @@ class Form extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [];
+    public static array $childOf = [
+        Article::class,
+        Body::class,
+        DefinitionDescription::class,
+        Details::class,
+        Dialog::class,
+        Division::class,
+        Header::class,
+        Main::class,
+        MarkedText::class,
+        Menu::class,
+        Section::class,
+        Slot::class,
+        Template::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -77,37 +109,35 @@ class Form extends BlockElement
         Textarea::class,
     ];
 
-    /**
-     * Specifies the character encodings that are to be used for form submission.
-     */
+
+    /** Specifies the character encodings that are to be used for form submission. */
     public ?string $acceptCharset = null;
 
-    /**
-     * Specifies the URL where the form data should be submitted when the form is submitted.
-     */
+    /** Specifies the URL where the form data should be submitted when the form is submitted. */
     public ?string $action = null;
 
-    /**
-     * Specifies the name associated with the element. The meaning may vary depending on the context.
-     */
-    public ?string $name = null;
-
-    /**
-     * When present, it specifies that a form should not be validated when submitted.
-     */
-    public ?bool $novalidate = null;
-
+    /**  */
     protected ?AutocompleteEnum $autocomplete = null;
 
+    /**  */
     protected ?EnctypeEnum $enctype = null;
 
+    /**  */
     protected ?MethodEnum $method = null;
 
-    /**
+    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
+    public ?string $name = null;
+
+    /** When present, it specifies that a form should not be validated when submitted. */
+    public ?bool $novalidate = null;
+
+    /** 
      * Specifies where to open the linked document.
+     * @category HTML attribute
      * @example _self
      */
     protected ?TargetEnum $target = null;
+
 
     public function setAcceptCharset(string $acceptCharset): self
     {
@@ -200,4 +230,6 @@ class Form extends BlockElement
     {
         return $this->target;
     }
+
+
 }

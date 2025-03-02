@@ -135,6 +135,37 @@ address:
   parent: article
   unique_per_parent: true
   text: string
+  children:
+    - a
+    - abbr
+    - b
+    - bdi
+    - bdo
+    - br
+    - cite
+    - code
+    - data
+    - dfn
+    - em
+    - i
+    - img
+    - kbd
+    - mark
+    - q
+    - rp
+    - rt
+    - ruby
+    - s
+    - samp
+    - small
+    - span
+    - strong
+    - sub
+    - sup
+    - time
+    - u
+    - var
+    - wbr
 area:
   name: Area
   description: 'The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.'
@@ -237,59 +268,32 @@ article:
   level: block
   unique: false
   children:
-    - a
-    - abbr
-    - area
-    - audio
-    - b
-    - bdi
-    - bdo
-    - br
-    - cite
-    - code
-    - data
-    - del
-    - dfn
-    - div
+    - header
+    - footer
+    - address
+    - p
+    - hr
+    - pre
+    - blockquote
+    - ol
+    - ul
     - dl
-    - em
-    - embed
     - figure
+    - table
     - form
+    - fieldset
+    - div
+    - main
+    - section
+    - nav
+    - article
+    - aside
     - h1
     - h2
     - h3
     - h4
     - h5
     - h6
-    - i
-    - iframe
-    - img
-    - ins
-    - kbd
-    - map
-    - mark
-    - object
-    - ol
-    - p
-    - picture
-    - pre
-    - q
-    - ruby
-    - s
-    - samp
-    - small
-    - span
-    - strong
-    - sub
-    - sup
-    - table
-    - time
-    - u
-    - ul
-    - var
-    - video
-    - wbr
 aside:
   name: Aside
   description: 'The aside element represents a section of a page that consists of content that is tangentially related to the content around the aside element, and which could be considered separate from that content.'
@@ -299,6 +303,7 @@ aside:
     - a
     - abbr
     - area
+    - article
     - audio
     - b
     - bdi
@@ -485,6 +490,7 @@ blockquote:
         - ins
         - q
   children:
+    - article
     - p
 body:
   name: Body
@@ -1029,6 +1035,8 @@ div:
     - a
     - abbr
     - area
+    - article
+    - aside
     - audio
     - b
     - bdi
@@ -1063,6 +1071,7 @@ div:
     - select
     - textarea
     - details
+    - section
     - summary
     - iframe
     - kbd
@@ -2193,6 +2202,8 @@ main:
     - a
     - abbr
     - area
+    - article
+    - aside
     - audio
     - b
     - bdi
@@ -2245,6 +2256,7 @@ main:
     - ruby
     - s
     - samp
+    - section
     - small
     - source
     - span
@@ -2438,6 +2450,7 @@ nav:
   level: block
   children:
     - a
+    - article
     - cite
     - em
     - q
@@ -2631,6 +2644,37 @@ p:
   description: 'The p element represents a paragraph.'
   level: block
   unique: false
+  children:
+    - a
+    - abbr
+    - b
+    - bdi
+    - bdo
+    - br
+    - cite
+    - code
+    - data
+    - dfn
+    - em
+    - i
+    - img
+    - kbd
+    - mark
+    - q
+    - rp
+    - rt
+    - ruby
+    - s
+    - samp
+    - small
+    - span
+    - strong
+    - sub
+    - sup
+    - time
+    - u
+    - var
+    - wbr
   text: string
 param:
   name: Parameter
@@ -2867,6 +2911,7 @@ section:
     - a
     - abbr
     - area
+    - article
     - audio
     - b
     - bdi

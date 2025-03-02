@@ -1,18 +1,29 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Abbreviation - The abbr element represents an abbreviation or acronym, optionally with its expansion. The title attribute can be used to provide an expansion of the abbreviation. The attribute, if specified, must contain an expansion of the abbreviation, and nothing else.
- *
+ * 
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
  */
-
 namespace Html\Element\Inline;
 
+use Html\Element\Block\Aside;
+use Html\Element\Block\Body;
+use Html\Element\Block\DefinitionDescription;
+use Html\Element\Block\Division;
+use Html\Element\Block\Footer;
+use Html\Element\Block\Header;
+use Html\Element\Block\ListItem;
+use Html\Element\Block\Main;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\Section;
 use Html\Element\InlineElement;
+use Html\Element\Inline\Address;
 
 class Abbreviation extends InlineElement
 {
@@ -35,18 +46,31 @@ class Abbreviation extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [];
+    public static array $childOf = [
+        Address::class,
+        Aside::class,
+        Body::class,
+        DefinitionDescription::class,
+        Division::class,
+        Footer::class,
+        Header::class,
+        ListItem::class,
+        Main::class,
+        Paragraph::class,
+        Section::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies additional information about the element, typically displayed as a tooltip.
-     */
+
+    /** Specifies additional information about the element, typically displayed as a tooltip. */
     public ?string $title = null;
+
 
     public function setTitle(string $title): self
     {
@@ -58,4 +82,5 @@ class Abbreviation extends InlineElement
     {
         return $this->title;
     }
+
 }

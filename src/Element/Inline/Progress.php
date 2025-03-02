@@ -1,17 +1,20 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Progress - The progress element represents the completion progress of a task.
- *
+ * 
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
  */
-
 namespace Html\Element\Inline;
 
+use Html\Element\Block\Body;
+use Html\Element\Block\Fieldset;
+use Html\Element\Block\Form;
 use Html\Element\InlineElement;
 
 class Progress extends InlineElement
@@ -35,23 +38,26 @@ class Progress extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [];
+    public static array $childOf = [
+        Body::class,
+        Fieldset::class,
+        Form::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies the maximum value for an input element, meter, or progress element.
-     */
+
+    /** Specifies the maximum value for an input element, meter, or progress element. */
     public ?int $max = null;
 
-    /**
-     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
-     */
+    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value = null;
+
 
     public function setMax(int $max): self
     {
@@ -74,4 +80,5 @@ class Progress extends InlineElement
     {
         return $this->value;
     }
+
 }
