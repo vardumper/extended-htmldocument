@@ -1,0 +1,85 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^PHPDoc tag @method has invalid value \(DOMNodeDelegator Iterator getIterator\(\)\)\: Unexpected token "getIterator", expected ''\('' at offset 55 on line 3$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Delegator/DOMNodeListDelegator.php
+
+		-
+			message: '#^PHPDoc tag @method has invalid value \(DOMNodeDelegator bool valid\(\)\)\: Unexpected token "valid", expected ''\('' at offset 307 on line 9$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Delegator/DOMNodeListDelegator.php
+
+		-
+			message: '#^PHPDoc tag @method has invalid value \(DOMNodeDelegator int count\(\)\)\: Unexpected token "count", expected ''\('' at offset 146 on line 5$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Delegator/DOMNodeListDelegator.php
+
+		-
+			message: '#^PHPDoc tag @method has invalid value \(DOMNodeDelegator int key\(\)\)\: Unexpected token "key", expected ''\('' at offset 347 on line 10$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Delegator/DOMNodeListDelegator.php
+
+		-
+			message: '#^PHPDoc tag @method has invalid value \(DOMNodeDelegator int length\(\)\)\: Unexpected token "length", expected ''\('' at offset 385 on line 11$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Delegator/DOMNodeListDelegator.php
+
+		-
+			message: '#^PHPDoc tag @method has invalid value \(DOMNodeDelegator void next\(\)\)\: Unexpected token "next", expected ''\('' at offset 225 on line 7$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Delegator/DOMNodeListDelegator.php
+
+		-
+			message: '#^PHPDoc tag @method has invalid value \(DOMNodeDelegator void rewind\(\)\)\: Unexpected token "rewind", expected ''\('' at offset 265 on line 8$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Delegator/DOMNodeListDelegator.php
+
+		-
+			message: '#^Parameter \#1 \$htmlElement of class Html\\Delegator\\HTMLElementDelegator constructor expects Dom\\HTMLElement, Dom\\Element given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Delegator/HTMLDocumentDelegator.php
+
+		-
+			message: '#^Access to undefined constant static\(Html\\Delegator\\HTMLElementDelegator\)\:\:QUALIFIED_NAME\.$#'
+			identifier: classConstant.notFound
+			count: 1
+			path: src/Delegator/HTMLElementDelegator.php
+
+		-
+			message: '#^Access to undefined constant static\(Html\\Delegator\\HTMLElementDelegator\)\:\:SELF_CLOSING\.$#'
+			identifier: classConstant.notFound
+			count: 1
+			path: src/Delegator/HTMLElementDelegator.php
+
+		-
+			message: '#^Call to an undefined method Dom\\Document\:\:saveHtml\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Delegator/HTMLElementDelegator.php
+
+		-
+			message: '#^Call to an undefined method ReflectionType\:\:getName\(\)\.$#'
+			identifier: method.notFound
+			count: 2
+			path: src/Delegator/HTMLElementDelegator.php
+
+		-
+			message: '#^Parameter \#1 \$htmlElement of class Html\\Delegator\\HTMLElementDelegator constructor expects Dom\\HTMLElement, Dom\\Element given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Delegator/HTMLElementDelegator.php
+
+		-
+			message: '#^Variable \$ownerDocument in PHPDoc tag @var does not exist\.$#'
+			identifier: varTag.variableNotFound
+			count: 1
+			path: src/Delegator/HTMLElementDelegator.php
