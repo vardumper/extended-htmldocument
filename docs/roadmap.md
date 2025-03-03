@@ -1,6 +1,8 @@
 # Roadmap
 
+::: warning
 Current version is v0.1.4 (Pre-Release)
+:::
 
 ## Backlog & Considerations <Badge type="info" text="Ideas" />
 - :bulb: Add specific use case examples to the repository (two main priorities: generate Twig & React templates, example YAML format to describe components)
