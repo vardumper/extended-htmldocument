@@ -12,11 +12,12 @@ It adds additional functionality and a stronger focus on HTML5 while being fully
 
 ```php
 $dom = HTMLDocumentDelegator::createEmpty()
-$anchor = (Anchor::create($dom))
+echo (string) (Anchor::create($dom))
     ->setClass('secondary')
     ->setRel(RelEnum::NOFOLLOW)
     ->setHref('https://google.com')
     ->setTitle('Google it');
+// outputs: <a href="https://google.com" rel="nofollow" title="Google it"></a>
 ```
 
 ## Documentation
