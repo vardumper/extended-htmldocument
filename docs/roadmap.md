@@ -9,7 +9,8 @@ Current version is v0.1.4 (Pre-Release)
 - :bulb: Consider PHP Attributes to improve the code or usage? Thinking mainly of selfClosing, block level or even replace childOf, parentOf methods?
 - :bulb: How to make use of parentOf/childOf? (eg: validation? prevent adding invalid children? allow force? does HTMLDocument check this? Test it.)
 - :bulb: Consider using Symfony Serializer and encoder to transform YAML file that describes components into a HTMLDocument or fragment object, or even directly to an output format such as a Twig template. Similar to DOM-ORM where I turned xml into Entity objects and vice versa.
- - :bulb: In order to being able to instantiate an HTML Element class without a DOM, we could create it in its own DOM, and only import it, once appended 
+ - :bulb: In order to being able to instantiate an HTML Element class without a DOM, we could create it in its own DOM, and only import it into a different DOM, when needed.
+ - :bulb: add chainable setters to native properties such as `textContent` and `nodeValue` etc.
 
 ## Done <Badge type="warning" text="Pre-Release" /> <Badge type="tip" text="0.1.4" />
 - :white_check_mark: Fix inconsistencies in the HTML5 specification
