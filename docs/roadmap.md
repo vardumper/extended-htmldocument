@@ -26,5 +26,5 @@ Current version is v0.1.4 (Pre-Release)
 - :white_large_square: [Properly link between relevant sections in the docs](https://github.com/vardumper/extended-htmldocument/issues/4). Add links to external resources where appropriate.
 - :white_large_square: [Add more examples to the documentation](https://github.com/vardumper/extended-htmldocument/issues/3).
 - :white_large_square: [Add getters/setters for all global attributes to HTMLDocumentDelegator](https://github.com/vardumper/extended-htmldocument/issues/2)
-- :white_large_square: Allow adding `data-attributes` as array. eg `->setAttrbutes(['data' => ['attribute' => 'value'])` would become `data-attribute="value"`. Also `->setData(['attribute' => 'value'])` should work or `->data = ['attribute' => 'value']`
+- :white_large_square: Allow adding `data-attributes` as array. eg `->setAttrbutes(['data' => ['attribute' => 'value'])` would become `data-attribute="value"`. Also `->setData(['attribute' => 'value'])` should work or `->data = ['attribute' => 'value']`. The same logic or functionality would apply to `aria` and `itemprop` as well. 
 - :white_large_square: Add chainable setters to native properties such as `textContent` and `nodeValue` and add a `textContent` param to Element constructor or create() method. Or modify to be createElement with standard signature.
