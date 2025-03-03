@@ -10,7 +10,6 @@ Current version is v0.1.4 (Pre-Release)
 - :bulb: How to make use of parentOf/childOf? (eg: validation? prevent adding invalid children? allow force? does HTMLDocument check this? Test it.)
 - :bulb: Consider using Symfony Serializer and encoder to transform YAML file that describes components into a HTMLDocument or fragment object, or even directly to an output format such as a Twig template. Similar to DOM-ORM where I turned xml into Entity objects and vice versa.
  - :bulb: In order to being able to instantiate an HTML Element class without a DOM, we could create it in its own DOM, and only import it into a different DOM, when needed.
- - :bulb: add chainable setters to native properties such as `textContent` and `nodeValue` etc.
  - :bulb: think about Schema.org schemata and if they should be part of any class or specs
 
 ## Done <Badge type="warning" text="Pre-Release" /> <Badge type="tip" text="0.1.4" />
@@ -28,3 +27,4 @@ Current version is v0.1.4 (Pre-Release)
 - :white_large_square: [Add more examples to the documentation](https://github.com/vardumper/extended-htmldocument/issues/3).
 - :white_large_square: [Add getters/setters for all global attributes to HTMLDocumentDelegator](https://github.com/vardumper/extended-htmldocument/issues/2)
 - :white_large_square: Allow adding `data-attributes` as array. eg `->setAttrbutes(['data' => ['attribute' => 'value'])` would become `data-attribute="value"`. Also `->setData(['attribute' => 'value'])` should work or `->data = ['attribute' => 'value']`
+- :white_large_square: Add chainable setters to native properties such as `textContent` and `nodeValue` and add a `textContent` param to Element constructor or create() method. Or modify to be createElement with standard signature.
