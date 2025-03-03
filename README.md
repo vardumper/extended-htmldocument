@@ -17,7 +17,7 @@ echo (string) (Anchor::create($dom))
     ->setRel(RelEnum::NOFOLLOW)
     ->setHref('https://google.com')
     ->setTitle('Google it');
-// outputs: <a href="https://google.com" rel="nofollow" title="Google it"></a>
+// outputs: <a class="secondary" href="https://google.com" rel="nofollow" title="Google it"></a>
 ```
 
 ## Documentation
