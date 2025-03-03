@@ -11,6 +11,7 @@ Current version is v0.1.4 (Pre-Release)
 - :bulb: Consider using Symfony Serializer and encoder to transform YAML file that describes components into a HTMLDocument or fragment object, or even directly to an output format such as a Twig template. Similar to DOM-ORM where I turned xml into Entity objects and vice versa.
  - :bulb: In order to being able to instantiate an HTML Element class without a DOM, we could create it in its own DOM, and only import it into a different DOM, when needed.
  - :bulb: think about Schema.org schemata and if they should be part of any class or specs
+ - 💡consider renaming to HTML.php
 
 ## Done <Badge type="warning" text="Pre-Release" /> <Badge type="tip" text="0.1.4" />
 - :white_check_mark: Fix inconsistencies in the HTML5 specification
