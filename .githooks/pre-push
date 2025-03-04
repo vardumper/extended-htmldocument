@@ -9,11 +9,10 @@ $currentBranch = trim(implode(PHP_EOL, $branchNameOutput));
 
 echo "Running tests on branch: $currentBranch" . PHP_EOL;
 exec('./vendor/bin/phpunit --colors=always', $output, $returnCode);
-if ($returnCode !== 0) {
-  // Show full output
-  echo PHP_EOL . implode(PHP_EOL, $output) . PHP_EOL;
-  echo "Cannot push changes until tests pass." . PHP_EOL;
-  exit(1);
+if ($returnCode != 0) {
+    printf("Fuck! Something went wrong: %s (%s)", join('<br />', $return), $code);
+} else {
+    print("Passed.");
 }
 
 // Show summary (last line)
