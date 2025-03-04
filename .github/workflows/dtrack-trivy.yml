@@ -29,7 +29,16 @@ jobs:
           sudo apt-get update
           curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.58.0
       - name: Create CycloneDX SBOM with Trivy
-        run: trivy fs --format cyclonedx --output result.json --include-dev-deps --scanners vuln ./
+        run: trivy fs --format cyclonedx --output sbom.json --include-dev-deps --scanners vuln ./
+
+      - name: Commit SBOM if changed
+        run: |
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            git add sbom.json
+            git commit -am "sbom.json updated" --no-verify
+            git push
+        continue-on-error: true
 
       - name: Push SBOM to Dependency Track
         run: |
@@ -37,4 +46,4 @@ jobs:
            -H 'Content-Type: multipart/form-data' \
            -H "X-Api-Key: ${{ secrets.DTRACK_API_KEY }}" \
            -F "project=${{ secrets.DTRACK_PROJECT_UID }}" \
-           -F "bom=@result.json"
+           -F "bom=@sbom.json"

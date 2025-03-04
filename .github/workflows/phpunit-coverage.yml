@@ -49,18 +49,7 @@ jobs:
             git config --global user.name 'github-actions[bot]'
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
             git add coverage.svg
-            git commit -am "Coverage badge" --no-verify
+            git commit -am "coverage.svg badge updated" --no-verify
             git push
         continue-on-error: true
-        # do not fail if othing to commit
-
-
-
-    #   - name: Git push to image-data branch
-    #     uses: peaceiris/actions-gh-pages@v3
-    #     with:
-    #       publish_dir: ./output
-    #       publish_branch: image-data
-    #       github_token: ${{ secrets.GITHUB_TOKEN }}
-    #       user_name: 'github-actions[bot]'
-    #       user_email: 'github-actions[bot]@users.noreply.github.com'
+        # do not fail if nothing to commit
