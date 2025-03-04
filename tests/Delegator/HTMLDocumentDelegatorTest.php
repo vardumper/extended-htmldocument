@@ -269,7 +269,7 @@ final class HTMLDocumentDelegatorTest extends TestCase
 
     public function testCreateFromInvalidFile(): void
     {
-        $this->assertFileIsNotReadable('invalid-file.html');
+        $this->assertFalse(file_exists('invalid-file.html'));
         $this->expectException(Exception::class);
         $this->expectExceptionMessage("Cannot open file 'invalid-file.html'");
         HTMLDocumentDelegator::createFromFile('invalid-file.html');
