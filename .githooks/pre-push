@@ -1,0 +1,26 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * 
+ * This hook will only allow git push if your all test pass.
+ **/
+$gitBranch = shell_exec('git branch | grep \*');
+$branchName = trim(str_replace('*', '', $gitBranch));
+if( $branchName !== 'develop' && $branchName !== 'master' ) {
+    echo "You're not in master or develop, so hook tests won't activate.." . PHP_EOL;
+    exit(0);
+}
+
+echo "Running tests.. ";
+exec('./vendor/bin/simple-phpunit', $output, $returnCode);
+if ($returnCode !== 0) {
+  // Show full output
+  echo PHP_EOL . implode($output, PHP_EOL) . PHP_EOL;
+  echo "Cannot push changes untill tests are OK.." . PHP_EOL;
+  exit(1);
+}
+
+// Show summary (last line)
+echo array_pop($output) . PHP_EOL;
+exit(0);
