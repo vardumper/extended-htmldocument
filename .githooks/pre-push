@@ -10,7 +10,7 @@ $currentBranch = trim(implode(PHP_EOL, $branchNameOutput));
 echo "Running tests on branch: $currentBranch" . PHP_EOL;
 exec('./vendor/bin/phpunit --colors=always', $output, $returnCode);
 if ($returnCode != 0) {
-    printf("Fuck! Something went wrong: %s (%s)", join('<br />', $return), $code);
+    printf("Fuck! Something went wrong: %s (%s)", join('<br />', $output), $code);
 } else {
     print("Passed.");
 }
