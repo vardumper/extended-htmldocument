@@ -72,6 +72,9 @@
             ],
             "post-commit": [
                 ".githooks/post-commit"
+            ],
+            "pre-push": [
+                ".githooks/pre-push"
             ]
         }
     },
