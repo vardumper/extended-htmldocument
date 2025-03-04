@@ -378,10 +378,9 @@ trait GlobalAttributesTrait
     /**
      * @description Provides tooltip text when hovered.
      */
-    public function setTitle(string $title): static
+    public function setTitle(string $title): self
     {
         $this->title = $title;
-        // $this->htmlElement->setAttribute('title', $title);
         return $this;
     }
 
