@@ -1,4 +1,4 @@
-# Extended HTMLDocument
+# The HTML5 Specification as PHP Classes
 
 Extended HTMLDocument is a PHP library that provides a way to work with HTML elements in PHP, offering an object-oriented approach that aligns with the HTML5 specifications and is aimed to be fully-compatible with the underlying `DOM\HTMLDocument` classes in PHP 8.4.
 
@@ -6,6 +6,9 @@ Extended HTMLDocument is a PHP library that provides a way to work with HTML ele
 ## Stop writing HTML by hand
 When working with a design system or component library, such as Storybook, you have to make a choice as to what technologies and frameworks you want to use.
 If you want to use the components in a different technology, you have to rewrite them. This is a time-consuming and error-prone process.
+
+If you are able to standardize the HTML5 used accross your website projects, you can effectively stop writing HTML by hand.
+This library is aimed at helping you generate this standardized HTML5 code, and above all do so for different technologies.
 
 ## Start generating HTML with PHP
 By establishing an easy-to-read and easy-to-use YAML format which describes your components, you can have PHP generate the design system components for you.

@@ -2,6 +2,13 @@
 
 namespace Html\Traits;
 
+/**
+ * properties that exist in HTMLElement, don't need to be declared here. __set and __get will handle them
+ *  - for example className, id
+ *
+ * properties that are declared gloabbly here and additionaly in an HTML\Element class, will be set in the HTML\Element class
+ *  - for example Anchor::$title
+ */
 trait GlobalAttributesTrait
 {
     private ?string $accessKey = null;

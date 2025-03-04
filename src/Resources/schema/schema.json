@@ -22,7 +22,8 @@
                             "abbr",
                             "area",
                             "audio",
-                            "button"
+                            "button",
+                            "..."
                         ]
                     },
                     "level": {
