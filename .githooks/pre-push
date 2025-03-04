@@ -19,7 +19,7 @@ print(implode(PHP_EOL, $output) . PHP_EOL); // first show output
 if ($returnCode != 0) {
     // ignore warnings
     foreach($output as $line) {
-        if (strpos($line, 'FAILURES!') !== false || strpos($line, 'PHP Fatal error') !== false) {
+        if (strpos($line, 'FAILURES!') !== false || strpos($line, 'Fatal error:') !== false) {
             echo "{$redColor}Aborting push due to failures.{$resetColor}" . PHP_EOL;
             exit(1); // we do have tests that failed
         }
