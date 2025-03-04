@@ -8,17 +8,15 @@ if ($branchNameReturnCode !== 0) {
 $currentBranch = trim(implode(PHP_EOL, $branchNameOutput));
 
 echo "Running tests on branch: $currentBranch" . PHP_EOL;
-exec('./vendor/bin/phpunit --colors=always', $output, $returnCode);
+exec('./vendor/bin/phpunit --colors=always --display-warnings', $output, $returnCode);
 print(implode(PHP_EOL, $output) . PHP_EOL); // first show output
 if ($returnCode != 0) {
+    // ignore warnings
     foreach($output as $line) {
         if (strpos($line, 'FAILURES!') !== false) {
-            exit(1);
+            exit(1); // we do have tests that failed
         }
     }
-    print("Passed.");
-    exit(0);
+    exit(0); // allow anything else
 }
-
-print("Passed.");
 exit(0);
