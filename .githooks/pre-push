@@ -9,6 +9,7 @@ $currentBranch = trim(implode(PHP_EOL, $branchNameOutput));
 
 echo "Running tests on branch: $currentBranch" . PHP_EOL;
 exec('./vendor/bin/phpunit --colors=always', $output, $returnCode);
+print(implode(PHP_EOL, $output) . PHP_EOL); // first show output
 if ($returnCode != 0) {
     foreach($output as $line) {
         if (strpos($line, 'FAILURES!') !== false) {
