@@ -13,13 +13,11 @@ print(implode(PHP_EOL, $output) . PHP_EOL); // first show output
 if ($returnCode != 0) {
     foreach($output as $line) {
         if (strpos($line, 'FAILURES!') !== false) {
-            print("Failed.");
             exit(1);
         }
     }
     print("Passed.");
     exit(0);
-    // printf("Fuck! Something went wrong: %s (%s)", join(PHP_EOL, $output), $code);
 }
 
 print("Passed.");
