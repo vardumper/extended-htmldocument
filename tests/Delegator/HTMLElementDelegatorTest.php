@@ -37,7 +37,7 @@ final class HTMLElementDelegatorTest extends TestCase
     public function testCallGetGlobalAttribute(): void
     {
         $this->delegator->setAttribute('id', 'test');
-        $this->assertNotEquals('test', $this->delegator->getAttribute('id'));
+        $this->assertEquals('test', $this->delegator->getAttribute('id'));
     }
 
     public function testCallGetElementAttribute(): void
