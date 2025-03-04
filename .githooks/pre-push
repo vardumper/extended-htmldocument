@@ -1,6 +1,5 @@
 #!/usr/bin/env php
 <?php
-// Get the current branch name
 exec('git rev-parse --abbrev-ref HEAD', $branchNameOutput, $branchNameReturnCode);
 if ($branchNameReturnCode !== 0) {
     echo "Failed to get the current branch name." . PHP_EOL;
