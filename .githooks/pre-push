@@ -3,6 +3,7 @@
 // Define the red color code
 $redColor = "\033[31m";
 $yellowColor = "\033[33m";
+$greenColor = "\033[32m";
 $resetColor = "\033[0m";
 
 exec('git rev-parse --abbrev-ref HEAD', $branchNameOutput, $branchNameReturnCode);
@@ -23,6 +24,8 @@ if ($returnCode != 0) {
             exit(1); // we do have tests that failed
         }
     }
+    echo "{$greenColor}Pushing (with warnings).{$resetColor}" . PHP_EOL;
     exit(0); // allow anything else
 }
+echo "{$greenColor}Pushing.{$resetColor}" . PHP_EOL;
 exit(0);
