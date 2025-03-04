@@ -26,7 +26,6 @@ final class HTMLDocumentDelegatorTest extends TestCase
     {
         $this->document = HTMLDocument::createEmpty();
         $this->delegator = HTMLDocumentDelegator::createEmpty();
-        // $this->htmlElement = $this->document->createElement('div');
     }
 
     public function testConstructor(): void
