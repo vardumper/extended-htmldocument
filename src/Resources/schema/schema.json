@@ -1,0 +1,118 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "http://example.com/simplified-html.json",
+    "title": "Simplified HTML Schema",
+    "description": "A general schema for HTML-like structures without required elements.",
+    "type": "object",
+    "properties": {
+        "elements": {
+            "type": "array",
+            "description": "A list of HTML elements.",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "tag": {
+                        "type": "string",
+                        "description": "The HTML tag name (e.g., div, p, span).",
+                        "enum": [
+                            "div",
+                            "p",
+                            "span",
+                            "a",
+                            "abbr",
+                            "area",
+                            "audio",
+                            "button"
+                        ]
+                    },
+                    "level": {
+                        "type": "string",
+                        "description": "The level of the HTML element (e.g., inline, block, void)."
+                    },
+                    "attributes": {
+                        "type": "array",
+                        "description": "A list of attributes for the element.",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "tag": {
+                                    "type": "string",
+                                    "description": "The attribute name."
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "description": "The data type of the attribute value.",
+                                    "enum": [
+                                        "string",
+                                        "number",
+                                        "boolean",
+                                        "array",
+                                        "object",
+                                        "enum",
+                                        "uri",
+                                        "datetime",
+                                        "language_iso",
+                                        "color",
+                                        "script"
+                                    ]
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "description": "A brief description of the attribute."
+                                },
+                                "required": {
+                                    "type": "boolean",
+                                    "description": "Indicates whether the attribute is required."
+                                },
+                                "choices": {
+                                    "type": "array",
+                                    "description": "A list of possible values if applicable.",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "defaultValue": {
+                                    "type": "string",
+                                    "description": "The default value of the attribute if any."
+                                },
+                                "elements": {
+                                    "type": "array",
+                                    "description": "A list of HTML elements that support this attribute.",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "unique": {
+                                    "type": "boolean",
+                                    "description": "Indicates if the attribute is unique."
+                                },
+                                "unique_per_parent": {
+                                    "type": "boolean",
+                                    "description": "Indicates if the attribute is unique per parent."
+                                },
+                                "deprecated": {
+                                    "type": "boolean",
+                                    "description": "Indicates if the attribute is deprecated."
+                                }
+                            },
+                            "additionalProperties": true
+                        }
+                    },
+                    "children": {
+                        "type": "array",
+                        "description": "Nested child elements.",
+                        "items": {
+                            "$ref": "#"
+                        }
+                    },
+                    "text": {
+                        "type": "string",
+                        "description": "Optional text content inside the element."
+                    }
+                },
+                "additionalProperties": true
+            }
+        }
+    },
+    "additionalProperties": true
+}
