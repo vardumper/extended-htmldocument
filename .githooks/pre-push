@@ -1,13 +1,14 @@
 #!/usr/bin/env php
 <?php
-$gitBranch = shell_exec('git branch | grep \*');
-$branchName = trim(str_replace('*', '', $gitBranch));
-if( $branchName !== 'develop' && $branchName !== 'master' ) {
-    echo "You're not in master or develop, so hook tests won't activate.." . PHP_EOL;
-    exit(0);
+// Get the current branch name
+exec('git rev-parse --abbrev-ref HEAD', $branchNameOutput, $branchNameReturnCode);
+if ($branchNameReturnCode !== 0) {
+    echo "Failed to get the current branch name." . PHP_EOL;
+    exit(1);
 }
+$currentBranch = trim(implode(PHP_EOL, $branchNameOutput));
 
-echo "Running tests.. ";
+echo "Running tests on branch: $currentBranch" . PHP_EOL;
 exec('./vendor/bin/simple-phpunit', $output, $returnCode);
 if ($returnCode !== 0) {
   // Show full output
