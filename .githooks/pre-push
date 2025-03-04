@@ -1,19 +1,25 @@
 #!/usr/bin/env php
 <?php
+// Define the red color code
+$redColor = "\033[31m";
+$yellowColor = "\033[33m";
+$resetColor = "\033[0m";
+
 exec('git rev-parse --abbrev-ref HEAD', $branchNameOutput, $branchNameReturnCode);
 if ($branchNameReturnCode !== 0) {
-    echo "Failed to get the current branch name." . PHP_EOL;
+    echo "{$redColor}Failed to get the current branch name.{$resetColor}" . PHP_EOL;
     exit(1);
 }
 $currentBranch = trim(implode(PHP_EOL, $branchNameOutput));
 
-echo "Running tests on branch: $currentBranch" . PHP_EOL;
+echo "Running tests on branch: {$yellowColor}$currentBranch{$resetColor}" . PHP_EOL;
 exec('./vendor/bin/phpunit --colors=always --display-warnings', $output, $returnCode);
 print(implode(PHP_EOL, $output) . PHP_EOL); // first show output
 if ($returnCode != 0) {
     // ignore warnings
     foreach($output as $line) {
         if (strpos($line, 'FAILURES!') !== false) {
+            echo "{$redColor}Aborting push due to failures.{$resetColor}" . PHP_EOL;
             exit(1); // we do have tests that failed
         }
     }
