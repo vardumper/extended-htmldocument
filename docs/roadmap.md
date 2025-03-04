@@ -1,7 +1,7 @@
 # Roadmap
 
-::: warning
-Current version is v0.1.4 (Pre-Release)
+::: info
+Current pre-release version is v0.1.4. The first public release will be v0.2.0
 :::
 
 ## Backlog & Considerations <Badge type="info" text="Ideas" />
@@ -21,11 +21,11 @@ Current version is v0.1.4 (Pre-Release)
 - :white_check_mark: Finalize Delegator tests (above 98% yay)
 - :white_check_mark: Fix issues with `body`. doesnt have childOf HTML 2. unique per parent isn't true although its unique per document. Add more tests for this.
 
-## Pending <Badge type="tip" text="1.0.0" />
+## Milestone <Badge type="info" text="Milestone" /> <Badge type="tip" text="0.2.0" />
 - :white_large_square: [Handle different kinds of attributes that go by the same name correctly](https://github.com/vardumper/extended-htmldocument/issues/6) (eg. `type` is used in `<button|input>` vs `<link|a|...>` vs `<ol>`). Create an OlTypeEnum, LinkTypeEnum, if needed.
 - :white_large_square: [Allow for union types for mixed attributes](https://github.com/vardumper/extended-htmldocument/issues/5) - (eg. target which can be both a TargetEnum (_self, _blank, etc.) and a string value)
 - :white_large_square: [Properly link between relevant sections in the docs](https://github.com/vardumper/extended-htmldocument/issues/4). Add links to external resources where appropriate.
 - :white_large_square: [Add more examples to the documentation](https://github.com/vardumper/extended-htmldocument/issues/3).
 - :white_large_square: [Add getters/setters for all global attributes to HTMLDocumentDelegator](https://github.com/vardumper/extended-htmldocument/issues/2)
-- :white_large_square: Allow adding `data-attributes` as array. eg `->setAttrbutes(['data' => ['attribute' => 'value'])` would become `data-attribute="value"`. Also `->setData(['attribute' => 'value'])` should work or `->data = ['attribute' => 'value']`. The same logic or functionality would apply to `aria` and `itemprop` as well. 
+- :white_large_square: Allow adding `data-attributes` as array. eg `->setAttrbutes(['data' => ['attribute' => 'value'])` would become `data-attribute="value"`. Also `->setData(['attribute' => 'value'])` should work or `->data = ['attribute' => 'value']`. The same logic or functionality would apply to `aria` and `itemprop` as well.
 - :white_large_square: Add chainable setters to native properties such as `textContent` and `nodeValue` and add a `textContent` param to Element constructor or create() method. Or modify to be createElement with standard signature.
