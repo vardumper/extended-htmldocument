@@ -7,6 +7,7 @@ use BadMethodCallException;
 use DOM\Document;
 use DOM\HtmlElement;
 use Html\Interface\HTMLElementDelegatorInterface;
+use Html\Traits\GlobalAttributesTrait;
 use InvalidArgumentException;
 use ReflectionClass;
 use TypeError;
@@ -23,7 +24,7 @@ use TypeError;
  */
 class HTMLElementDelegator implements HTMLElementDelegatorInterface
 {
-    // public const string SELF_CLOSING = self::SELF_CLOSING; // Self-referential 'abstract' declaration
+    use GlobalAttributesTrait;
 
     public HtmlElement $htmlElement;
 
@@ -116,46 +117,6 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     {
         /** @var Document $ownerDocument */
         return (string) $this->htmlElement->ownerDocument->saveHtml($this->htmlElement);
-    }
-
-    public function setId(string $id): static
-    {
-        $this->id = $id;
-        $this->htmlElement->setAttribute('id', $id);
-        return $this;
-    }
-
-    public function getId(): ?string
-    {
-        return $this->id;
-    }
-
-    public function setClass(string $className): static
-    {
-        $this->className = $className;
-        $this->htmlElement->setAttribute('class', $className);
-        return $this;
-    }
-
-    public function getClass(): ?string
-    {
-        return $this->className;
-    }
-
-    /**
-     * alias
-     */
-    public function getClassName(): ?string
-    {
-        return $this->className;
-    }
-
-    /**
-     * alias
-     */
-    public function setClassName(string $className): static
-    {
-        return $this->setClass($className);
     }
 
     // two ways to set an attribute via HTML\Element::$property or HTML\Element->setAttribute()
