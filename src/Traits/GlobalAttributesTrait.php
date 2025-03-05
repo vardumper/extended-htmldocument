@@ -4,6 +4,7 @@ namespace Html\Traits;
 
 use Html\Enum\AutoCapitalizeEnum;
 use Html\Enum\DirectionEnum;
+use InvalidArgumentException;
 
 /**
  * properties that exist in HTMLElement, don't need to be declared here. __set and __get will handle them
@@ -16,13 +17,13 @@ trait GlobalAttributesTrait
 {
     public ?string $accessKey = null;
 
-    private ?AutoCapitalizeEnum $autoCapitalize = null;
-
     public null|bool|string $contentEditable = null;
 
-    private ?DirectionEnum $dir = null;
-
     public ?bool $draggable = null;
+
+    private ?AutoCapitalizeEnum $autoCapitalize = null;
+
+    private ?DirectionEnum $dir = null;
 
     private ?bool $hidden = null;
 
@@ -137,8 +138,8 @@ trait GlobalAttributesTrait
      */
     public function setContentEditable(bool|string $contentEditable = true): static
     {
-        if (is_string($contentEditable) && !in_array($contentEditable, ['true', 'false', 'inherit'])) {
-            throw new \InvalidArgumentException('Invalid value for contenteditable');
+        if (is_string($contentEditable) && ! in_array($contentEditable, ['true', 'false', 'inherit'])) {
+            throw new InvalidArgumentException('Invalid value for contenteditable');
         }
         if (is_string($contentEditable) && in_array($contentEditable, ['true', 'false'])) {
             $contentEditable = $contentEditable === 'true' ? true : false;
@@ -158,8 +159,8 @@ trait GlobalAttributesTrait
      */
     public function setDir(string|DirectionEnum $dir): static
     {
-        if (is_string($dir) && !in_array($dir, ['ltr', 'rtl', 'auto'])) {
-            throw new \InvalidArgumentException('Invalid value for dir');
+        if (is_string($dir) && ! in_array($dir, ['ltr', 'rtl', 'auto'])) {
+            throw new InvalidArgumentException('Invalid value for dir');
         }
 
 
@@ -273,6 +274,21 @@ trait GlobalAttributesTrait
     public function getLang(): ?string
     {
         return $this->lang;
+    }
+
+    /**
+     * @description Defines the language of the content (e.g., en, fr).
+     */
+    public function setNonce(string $nonce): static
+    {
+        $this->nonce = $nonce;
+        // $this->htmlElement->setAttribute('nonce', $nonce);
+        return $this;
+    }
+
+    public function getNonce(): ?string
+    {
+        return $this->nonce;
     }
 
     /**
