@@ -2,6 +2,9 @@
 
 namespace Html\Traits;
 
+use Html\Enum\AutoCapitalizeEnum;
+use Html\Enum\DirectionEnum;
+
 /**
  * properties that exist in HTMLElement, don't need to be declared here. __set and __get will handle them
  *  - for example className, id
@@ -11,15 +14,15 @@ namespace Html\Traits;
  */
 trait GlobalAttributesTrait
 {
-    private ?string $accessKey = null;
+    public ?string $accessKey = null;
 
-    private ?string $autoCapitalize = null;
+    private ?AutoCapitalizeEnum $autoCapitalize = null;
 
-    private null|bool|string $contentEditable = null;
+    public null|bool|string $contentEditable = null;
 
-    private ?string $dir = null;
+    private ?DirectionEnum $dir = null;
 
-    private ?bool $draggable = null;
+    public ?bool $draggable = null;
 
     private ?bool $hidden = null;
 
@@ -58,8 +61,7 @@ trait GlobalAttributesTrait
      */
     public function setId(string $id): static
     {
-        $this->id = $id; // calls __set
-        // $this->htmlElement->setAttribute('id', $id); // not needed for properties that exist on HTMLElement
+        $this->id = $id;
         return $this;
     }
 
@@ -73,8 +75,7 @@ trait GlobalAttributesTrait
      */
     public function setClass(string $className): static
     {
-        $this->className = $className; // calls __set
-        // $this->htmlElement->setAttribute('class', $className);
+        $this->className = $className;
         return $this;
     }
 
@@ -105,7 +106,7 @@ trait GlobalAttributesTrait
     public function setAccessKey(string $accessKey): static
     {
         $this->accessKey = $accessKey;
-        $this->htmlElement->setAttribute('accesskey', $accessKey);
+        // $this->htmlElement->setAttribute('accesskey', $accessKey);
         return $this;
     }
 
@@ -115,38 +116,34 @@ trait GlobalAttributesTrait
     }
 
     /**
-     * @todo sounds like its an enum
-     * none	No automatic capitalization.
-     * sentences	Capitalizes the first letter of each sentence.
-     * words	    Capitalizes the first letter of each word.
-     * characters	Capitalizes every character (all uppercase).
      * @description Controls automatic capitalization for text input (none, sentences, words, characters).
      */
-    public function setAutoCapitalize(string $autoCapitalize): static
+    public function setAutoCapitalize(string|AutoCapitalizeEnum $autoCapitalize): static
     {
+        if (is_string($autoCapitalize)) {
+            $autoCapitalize = AutoCapitalizeEnum::from($autoCapitalize);
+        }
         $this->autoCapitalize = $autoCapitalize;
-        $this->htmlElement->setAttribute('autocapitalize', $autoCapitalize);
         return $this;
     }
 
-    public function getAutoCapitalize(): ?string
+    public function getAutoCapitalize(): ?AutoCapitalizeEnum
     {
         return $this->autoCapitalize;
     }
 
     /**
-     * @todo sounds like an enum true/false/inherit
      * @description Defines whether the content is editable by the user.
-     * ->setContentEditable() // true
-     * ->setContentEditable(true) // true
-     * ->setContentEditable('true') // false
-     * ->setContentEditable(false) // false
-     * ->setContentEditable('inherit') // inherit
      */
     public function setContentEditable(bool|string $contentEditable = true): static
     {
+        if (is_string($contentEditable) && !in_array($contentEditable, ['true', 'false', 'inherit'])) {
+            throw new \InvalidArgumentException('Invalid value for contenteditable');
+        }
+        if (is_string($contentEditable) && in_array($contentEditable, ['true', 'false'])) {
+            $contentEditable = $contentEditable === 'true' ? true : false;
+        }
         $this->contentEditable = $contentEditable;
-        $this->htmlElement->setAttribute('contenteditable', $contentEditable);
         return $this;
     }
 
@@ -159,14 +156,18 @@ trait GlobalAttributesTrait
      * @todo sounds like enum
      * @description Specifies text direction (ltr, rtl, auto).
      */
-    public function setDir(string $dir): static
+    public function setDir(string|DirectionEnum $dir): static
     {
-        $this->dir = $dir;
-        $this->htmlElement->setAttribute('dir', $dir);
+        if (is_string($dir) && !in_array($dir, ['ltr', 'rtl', 'auto'])) {
+            throw new \InvalidArgumentException('Invalid value for dir');
+        }
+
+
+        $this->dir = is_string($dir) ? DirectionEnum::from($dir) : $dir;
         return $this;
     }
 
-    public function getDir(): ?string
+    public function getDir(): ?DirectionEnum
     {
         return $this->dir;
     }

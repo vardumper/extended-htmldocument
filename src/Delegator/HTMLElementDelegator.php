@@ -141,9 +141,13 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         if (\is_subclass_of($value, BackedEnum::class)) {
             $value = $value->value;
         }
-        if (! is_string($value)) {
+        if (\is_bool($value)) {
+            $value = $value ? 'true' : 'false';
+        }
+
+        if (! \is_string($value) && ! \is_bool($value)) {
             throw new TypeError(
-                "Value for {$qualifiedName} must be a string or a BackedEnum"
+                "Value for {$qualifiedName} must be a string, boolean or a BackedEnum"
             ); // ensure value is a string
         }
         $this->htmlElement->setAttribute($qualifiedName, $value); // here we require string
