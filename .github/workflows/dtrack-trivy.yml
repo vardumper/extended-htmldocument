@@ -45,9 +45,9 @@ jobs:
             git config --global user.name 'github-actions[bot]'
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
             git add sbom.json
-            git commit -am "sbom.json updated" --no-verify || echo "No changes to commit"
+            git commit -am "sbom.json updated" --no-verify || exit 1
             git push --no-verify
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Push SBOM to Dependency Track
         run: |
