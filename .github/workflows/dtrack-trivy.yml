@@ -36,9 +36,9 @@ jobs:
       - name: Install trivy
         run: |
           sudo apt-get update
-          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.58.0
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.60.0
       - name: Create CycloneDX SBOM with Trivy
-        run: trivy fs ./ --format cyclonedx --output sbom.json --include-dev-deps --scanners vuln,license,secret
+        run: trivy rootfs --skip-files vendor/rector/swiss-knife/vendor/composer/installed.json --format cyclonedx --output sbom.json --severity HIGH,CRITICAL,MEDIUM --scanners vuln,license,secret ./
 
       - name: Commit SBOM if changed
         run: |
