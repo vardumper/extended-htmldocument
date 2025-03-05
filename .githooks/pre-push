@@ -1,10 +1,22 @@
 #!/usr/bin/env php
 <?php
+
+// Settings
+$protectedBranches = [
+    'master',
+    'main',
+    'develop',
+];
+$allowFailuresInProtectedBranches = false;
+$allowFailuresInOtherBranches = true;
+
+
 // Define the red color code
 $redColor = "\033[31m";
 $yellowColor = "\033[33m";
 $greenColor = "\033[32m";
 $resetColor = "\033[0m";
+$orangeColor = "\033[33m";
 
 $failureNeedles = [
     'FAILURES!',
@@ -25,12 +37,24 @@ print(implode(PHP_EOL, $output) . PHP_EOL); // first show output
 if ($returnCode != 0) {
     // ignore warnings
     foreach($output as $line) {
-        if (strpos($line, 'FAILURES!') !== false || strpos($line, 'Fatal error:') !== false || strpos($line, 'ERROR!') !== false) {
-            echo "{$redColor}Aborting push due to failures or errors.{$resetColor}" . PHP_EOL;
-            exit(1); // we do have tests that failed
+        foreach ($failureNeedles as $needle) {
+            if (strpos($line, $needle) !== false) {
+                if (in_array($currentBranch, $protectedBranches) && $allowFailuresInProtectedBranches === false) {
+                    echo "{$redColor}Pushing to protected branch {$currentBranch} is not allowed with failures.{$resetColor}" . PHP_EOL;
+                    exit(1);
+                }
+                if (!in_array($currentBranch, $protectedBranches) && $allowFailuresInOtherBranches === false) {
+                    echo "{$redColor}Pushing to {$currentBranch} is not allowed.{$resetColor}" . PHP_EOL;
+                    exit(1);
+                }
+                if (!in_array($currentBranch, $protectedBranches) && $allowFailuresInOtherBranches === true) {
+                    echo "{$orangeColor}Pushing to {$currentBranch} with test errors or failures.{$resetColor}" . PHP_EOL;
+                    exit(0);
+                }
+            }
         }
     }
-    echo "{$greenColor}Pushing (with warnings).{$resetColor}" . PHP_EOL;
+    echo "{$orangeColor}Pushing to {$currentBranch} with test warnings.{$resetColor}" . PHP_EOL;
     exit(0); // allow anything else
 }
 echo "{$greenColor}Pushing.{$resetColor}" . PHP_EOL;

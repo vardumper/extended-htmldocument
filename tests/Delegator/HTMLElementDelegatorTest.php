@@ -9,6 +9,7 @@ use Html\Element\Block\Body;
 use Html\Element\Block\HTML;
 use Html\Element\Inline\Anchor;
 use Html\Element\Void\Head;
+use Html\Enum\ContentEditableEnum;
 use Html\Enum\RelEnum;
 use Html\Enum\TargetEnum;
 use InvalidArgumentException;
@@ -79,6 +80,31 @@ final class HTMLElementDelegatorTest extends TestCase
         $this->assertEquals('my-new-class', $this->delegator->getAttribute('class'));
         $this->assertEquals('my-new-class', $this->delegator->htmlElement->getAttribute('class'));
         $this->assertEquals('my-new-class', $this->delegator->htmlElement->className);
+    }
+
+    public function testSetGlobalAttributeSetAttribute()
+    {
+        $this->delegator->setAttribute(ContentEditableEnum::getQualifiedName(), ContentEditableEnum::TRUE);
+        $this->assertEquals(ContentEditableEnum::TRUE, $this->delegator->getContentEditable());
+        $this->assertEquals('true', $this->delegator->getContentEditable()->value);
+        $this->assertEquals('true', $this->delegator->getAttribute('contenteditable'));
+        $this->assertEquals('true', $this->delegator->htmlElement->getAttribute('contenteditable'));
+    }
+
+    public function testGlobalAttributeSetDirectly()
+    {
+        $this->delegator->contenteditable = ContentEditableEnum::TRUE;
+        // $this->{ContentEditableEnum::getQualifiedName()} = ContentEditableEnum::TRUE;
+        $this->assertEquals(ContentEditableEnum::TRUE, $this->delegator->getContentEditable());
+        $this->assertEquals('true', $this->delegator->getContentEditable()->value); // Changed from $this->element
+        $this->assertEquals(
+            ContentEditableEnum::TRUE,
+            $this->delegator->getAttribute('contenteditable')
+        ); // Changed from $this->element
+        $this->assertEquals(
+            'true',
+            $this->delegator->htmlElement->getAttribute(ContentEditableEnum::getQualifiedName())
+        ); // Changed from $this->element
     }
 
     public function testSet(): void

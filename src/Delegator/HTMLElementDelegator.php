@@ -28,6 +28,8 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public HtmlElement $htmlElement;
 
+    // meta information
+
     public static bool $unique = false; // Default value, change as needed
 
     public static bool $uniquePerParent = false; // Default value, change as needed
@@ -152,6 +154,14 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         }
         $this->htmlElement->setAttribute($qualifiedName, $value); // here we require string
         return $this;
+    }
+
+    public function getAttribute(string $qualifiedName): mixed
+    {
+        if (\property_exists($this, $qualifiedName)) {
+            return $this->{$qualifiedName};
+        }
+        return $this->htmlElement->getAttribute($qualifiedName);
     }
 
     public function setAttributes(array $attributes): static

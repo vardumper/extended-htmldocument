@@ -6,6 +6,7 @@ use Html\Enum\AutoCapitalizeEnum;
 use Html\Enum\ContentEditableEnum;
 use Html\Enum\DirectionEnum;
 use Html\Enum\InputModeEnum;
+use Html\Enum\SpellCheckEnum;
 use InvalidArgumentException;
 
 /**
@@ -17,47 +18,49 @@ use InvalidArgumentException;
  */
 trait GlobalAttributesTrait
 {
+    // global attributes
+
     public ?string $accessKey = null;
 
-    public ?ContentEditableEnum $contentEditable = null;
+    public ?ContentEditableEnum $contenteditable = null;
 
     public ?bool $draggable = null;
 
-    private ?AutoCapitalizeEnum $autoCapitalize = null;
+    public ?bool $hidden = null;
+
+    public ?bool $inert = null;
+
+    public ?string $is = null;
+
+    public ?string $lang = null;
+
+    public ?string $nonce = null;
+
+    public ?string $part = null;
+
+    public ?string $popover = null;
+
+    public ?string $role = null;
+
+    public ?string $slot = null;
+
+    public ?string $style = null;
+
+    public ?int $tabindex = null;
+
+    public ?string $title = null;
+
+    public ?string $translate = null;
+
+    protected ?SpellCheckEnum $spellcheck = null;
+
+    private ?AutoCapitalizeEnum $autocapitalize = null;
 
     private ?DirectionEnum $dir = null;
 
-    private ?bool $hidden = null;
+    private ?InputModeEnum $inputmode = null;
 
-    private ?bool $inert = null;
-
-    private ?InputModeEnum $inputMode = null;
-
-    private ?string $is = null;
-
-    private ?string $lang = null;
-
-    private ?string $nonce = null;
-
-    private ?string $part = null;
-
-    private ?string $popover = null;
-
-    private ?string $role = null;
-
-    private ?string $slot = null;
-
-    private ?bool $spellCheck = null;
-
-    private ?string $style = null;
-
-    private ?int $tabIndex = null;
-
-    private ?string $title = null;
-
-    private ?string $translate = null;
-
-    private array $dataAttributes = [];
+    private array $data = [];
 
     /**
      * @description Specifies a unique identifier for the element
@@ -106,16 +109,16 @@ trait GlobalAttributesTrait
     /**
      * @description Specifies a keyboard shortcut to focus or activate an element.
      */
-    public function setAccessKey(string $accessKey): static
+    public function setAccessKey(string $accesskey): static
     {
-        $this->accessKey = $accessKey;
-        $this->element->setAttribute('accesskey', $accessKey);
+        $this->accesskey = $accesskey;
+        $this->element->setAttribute('accesskey', $accesskey);
         return $this;
     }
 
     public function getAccessKey(): ?string
     {
-        return $this->accessKey;
+        return $this->accesskey;
     }
 
     /**
@@ -126,14 +129,14 @@ trait GlobalAttributesTrait
         if (is_string($autoCapitalize)) {
             $autoCapitalize = AutoCapitalizeEnum::from($autoCapitalize);
         }
-        $this->autoCapitalize = $autoCapitalize;
+        $this->autocapitalize = $autoCapitalize;
         $this->htmlElement->setAttribute('autocapitalize', $autoCapitalize->value);
         return $this;
     }
 
     public function getAutoCapitalize(): ?AutoCapitalizeEnum
     {
-        return $this->autoCapitalize;
+        return $this->autocapitalize;
     }
 
     /**
@@ -152,14 +155,14 @@ trait GlobalAttributesTrait
             $contentEditable
         ) ? ($contentEditable === true ? 'true' : 'false') : $contentEditable;
         $contentEditable = is_string($contentEditable) ? ContentEditableEnum::from($contentEditable) : $contentEditable;
-        $this->contentEditable = $contentEditable;
-        $this->htmlElement->setAttribute('contenteditable', $contentEditable->value);
+        $this->contenteditable = $contentEditable;
+        $this->htmlElement->setAttribute(ContentEditableEnum::getQualifiedName(), $contentEditable->value);
         return $this;
     }
 
     public function getContentEditable(): ?ContentEditableEnum
     {
-        return $this->contentEditable;
+        return $this->contenteditable;
     }
 
     /**
@@ -173,7 +176,7 @@ trait GlobalAttributesTrait
         }
 
         $this->dir = is_string($dir) ? DirectionEnum::from($dir) : $dir;
-        $this->htmlElement->setAttribute('dir', $this->dir->value);
+        $this->htmlElement->setAttribute(DirectionEnum::getQualifiedName(), $this->dir->value);
         return $this;
     }
 
@@ -191,7 +194,8 @@ trait GlobalAttributesTrait
             $draggable = $draggable === 'true' ? true : false;
         }
         $this->draggable = $draggable;
-        $this->htmlElement->setAttribute('draggable', $draggable);
+        $this->setAttribute('draggable', $draggable);
+        // $this->htmlElement->setAttribute('draggable', $draggable);
         return $this;
     }
 
@@ -233,19 +237,19 @@ trait GlobalAttributesTrait
     /**
      * @description Suggests an input mode (e.g., numeric, email, tel).
      */
-    public function setInputMode(string|InputModeEnum $inputMode = InputModeEnum::NUMERIC): static
+    public function setInputMode(string|InputModeEnum $inputMode = InputModeEnum::NUMERIC->value): static
     {
         if (is_string($inputMode) && ! in_array($inputMode, array_map(fn ($e) => $e->value, InputModeEnum::cases()))) {
             throw new InvalidArgumentException('Invalid value for inputMode');
         }
-        $this->inputMode = is_string($inputMode) ? InputModeEnum::from($inputMode) : $inputMode;
-        $this->htmlElement->setAttribute('inputmode', $this->inputMode->value);
+        $this->inputmode = is_string($inputMode) ? InputModeEnum::from($inputMode) : $inputMode;
+        $this->htmlElement->setAttribute('inputmode', $inputMode->value);
         return $this;
     }
 
     public function getInputMode(): ?InputModeEnum
     {
-        return $this->inputMode;
+        return $this->inputmode;
     }
 
     /**
@@ -356,16 +360,25 @@ trait GlobalAttributesTrait
     /**
      * @description Specifies if spellchecking is enabled (true, false).
      */
-    public function setSpellCheck(bool $spellCheck): static
+    public function setSpellCheck(bool|string|SpellCheckEnum $spellCheck): static
     {
-        $this->spellCheck = $spellCheck;
-        // $this->htmlElement->setAttribute('spellcheck', $spellCheck ? 'true' : 'false');
+        if (is_bool($spellCheck)) {
+            $spellCheck = $spellCheck ? SpellCheckEnum::TRUE : SpellCheckEnum::FALSE;
+        }
+        if (is_string($spellCheck)) {
+            if (! in_array($spellCheck, array_map(fn ($e) => $e->value, SpellCheckEnum::cases()))) {
+                throw new InvalidArgumentException('Invalid value for spellCheck');
+            }
+            $spellCheck = SpellCheckEnum::from($spellCheck);
+        }
+        $this->spellcheck = $spellCheck;
+        $this->htmlElement->setAttribute(SpellCheckEnum::getQualifiedName(), $spellCheck->value);
         return $this;
     }
 
-    public function getSpellCheck(): bool
+    public function getSpellCheck(): ?SpellCheckEnum
     {
-        return $this->spellCheck;
+        return $this->spellcheck;
     }
 
     /**

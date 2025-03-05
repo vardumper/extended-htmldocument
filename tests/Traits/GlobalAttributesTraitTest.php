@@ -7,6 +7,7 @@ use Html\Delegator\HTMLElementDelegator;
 use Html\Enum\AutoCapitalizeEnum;
 use Html\Enum\ContentEditableEnum;
 use Html\Enum\DirectionEnum;
+use Html\Enum\SpellCheckEnum;
 use Html\Traits\GlobalAttributesTrait;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
@@ -75,16 +76,12 @@ class GlobalAttributesTraitTest extends TestCase
         $this->element->setContentEditable('invalid-value');
     }
 
-    /**
-     * @todo requires fix (preferrably in __set)
-     */
     public function testSetAndGetDir()
     {
         $this->element->setDir('ltr');
         $this->assertEquals('ltr', $this->element->getDir()->value);
         $this->assertEquals(DirectionEnum::LTR, $this->element->getDir());
         $this->assertEquals('ltr', $this->element->getAttribute('dir'));
-        // $this->assertEquals('ltr', $this->element->getAttribute('dir'));
     }
 
     public function testSetAndGetDirInvalid()
@@ -174,8 +171,10 @@ class GlobalAttributesTraitTest extends TestCase
 
     public function testSetAndGetSpellCheck()
     {
-        $this->setSpellCheck(true);
-        $this->assertEquals(true, $this->getSpellCheck());
+        $this->element->setSpellCheck(true);
+        $this->assertInstanceOf(SpellCheckEnum::class, $this->element->getSpellCheck());
+        $this->assertEquals('true', $this->element->getSpellCheck()->value);
+        $this->assertEquals('true', $this->element->htmlElement->getAttribute('spellcheck'));
     }
 
     public function testSetAndGetStyle()
