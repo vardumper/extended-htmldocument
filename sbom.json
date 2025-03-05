@@ -2,22 +2,22 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:13c84540-b219-4bf0-ae6f-fae03fdad4c4",
+  "serialNumber": "urn:uuid:565fc2d3-0a6e-4c93-a102-9993b2dfe20f",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-03-05T18:00:29+00:00",
+    "timestamp": "2025-03-05T19:52:28+00:00",
     "tools": {
       "components": [
         {
           "type": "application",
           "group": "aquasecurity",
           "name": "trivy",
-          "version": "0.59.1"
+          "version": "0.58.0"
         }
       ]
     },
     "component": {
-      "bom-ref": "6b3b27e9-690f-4756-b953-35c1e9b9f700",
+      "bom-ref": "df00c7ee-aa0a-42ac-9210-4d44a356f11b",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,7 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "8ea130fe-a153-4487-9cc7-c4abc92c9887",
+      "bom-ref": "78f03c78-c3ab-4acb-95b4-50792b119819",
       "type": "application",
       "name": "yarn.lock",
       "properties": [
@@ -2182,15 +2182,15 @@
   ],
   "dependencies": [
     {
-      "ref": "6b3b27e9-690f-4756-b953-35c1e9b9f700",
+      "ref": "78f03c78-c3ab-4acb-95b4-50792b119819",
       "dependsOn": [
-        "8ea130fe-a153-4487-9cc7-c4abc92c9887"
+        "pkg:npm/vitepress@1.6.3"
       ]
     },
     {
-      "ref": "8ea130fe-a153-4487-9cc7-c4abc92c9887",
+      "ref": "df00c7ee-aa0a-42ac-9210-4d44a356f11b",
       "dependsOn": [
-        "pkg:npm/vitepress@1.6.3"
+        "78f03c78-c3ab-4acb-95b4-50792b119819"
       ]
     },
     {
