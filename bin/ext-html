@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Html\Command\CreateClassCommand;
 use Html\Command\CreateEnumCommand;
+use Html\Command\CreateJsonCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -20,6 +21,7 @@ $app->command('make:classes [element]', function ($element, InputInterface $inpu
     return (new CreateClassCommand())($element, $input, $output);
 })->descriptions('Creates a new PHP class for all or for a given HTML Element');
 $app->command('make:enums', new CreateEnumCommand())->descriptions('Creates backed enums for all HTML attributes with a static set of options');
+$app->command('make:json-specs', new CreateJsonCommand())->descriptions('Simply transforms the YAML specs into JSON');
 $app->command('make:all', function (InputInterface $input, OutputInterface $output) {
     (new CreateEnumCommand())($input, $output);
     (new CreateClassCommand())(null, $input, $output);

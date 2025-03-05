@@ -8,6 +8,9 @@ This is especially useful when you are working in a DOM\HTMLDocument and you don
 tbd add a gif
 
 ## Instantiation
+::: warning
+This part is currently work in progress. The information below might be outdated, incomplete or incorrect.
+:::
 
 ### Creation via `create()` method
 

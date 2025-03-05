@@ -130,7 +130,7 @@ final class HTMLElementDelegatorTest extends TestCase
     public function testSetAttributeWithInvalidValue(): void
     {
         $this->expectException(TypeError::class);
-        $this->expectExceptionMessage('Value for nonexistant must be a string or a BackedEnum');
+        $this->expectExceptionMessage('Value for nonexistant must be a string, boolean or a BackedEnum');
         $this->delegator->setAttribute('nonexistant', [
             'foo' => 'bar',
         ]);

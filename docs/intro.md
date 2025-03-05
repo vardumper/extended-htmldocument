@@ -1,17 +1,27 @@
-# Extended HTMLDocument
+# The HTML5 Specification as PHP Classes
 
 Extended HTMLDocument is a PHP library that provides a way to work with HTML elements in PHP, offering an object-oriented approach that aligns with the HTML5 specifications and is aimed to be fully-compatible with the underlying `DOM\HTMLDocument` classes in PHP 8.4.
 
-## Problem
+
+## Stop writing HTML by hand
 When working with a design system or component library, such as Storybook, you have to make a choice as to what technologies and frameworks you want to use.
 If you want to use the components in a different technology, you have to rewrite them. This is a time-consuming and error-prone process.
 
-## Goal
+If you are able to standardize the HTML5 used accross your website projects, you can effectively stop writing HTML by hand.
+This library is aimed at helping you generate this standardized HTML5 code, and above all do so for different technologies.
+
+## Start generating HTML with PHP
 By establishing an easy-to-read and easy-to-use YAML format which describes your components, you can have PHP generate the design system components for you.
 This is where this library comes into play. It aims to provide a way to create standards-compliant HTML5 documents or document fragments (like atoms, molecules, organisms and components) and automatically generate different output formats for you.
 That said, the only output format provided by this library will be HTML5. However, this library uses Language Providers to support output into other formats, such as Twig, React, Vue, and others.
 Learn how you can generate components for Twig, React, Vue and others and in the [Advanced Usage Examples](./advanced-examples) section.
 
+## Planned releases, and features in the works
+Find out more on future releases [in the Roadmap](./roadmap).
+
+## Inspiration
+This library is heavily inspired by PicoCSS, a CSS reset or CSS Framework. It enables you to streamline your HTML as it manages so beautifully to keep its fingerprint in the HTML down to a minimum. In essence it's a separation of concerns, going back to the roots. HTML is for content, CSS for styling. No clutter like classes is needed to get it to work.
+Also, my work with design systems (mostly Storybook.js) and component libraries has inspired me to create this library. I have seen the need for a way to generate components in different technologies, and I believe this library can help with that. Also worth mentioning is Wingsuit, which uses a similar YAML approach to describe components, that I have in mind, here. Furthermore there's hygen, which is a code generator that uses templates to generate code.
 
 <!-- ## Use cases
 
@@ -46,7 +56,3 @@ This library is fully tested with PHPUnit. You can run the tests by executing th
 ```bash
 XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html coverage-report
 ```
-
-
-## Future releases
-Find out more on planned future releases in the [Roadmap](./roadmap).
