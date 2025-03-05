@@ -5,6 +5,7 @@ namespace Tests\Traits;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
 use Html\Enum\AutoCapitalizeEnum;
+use Html\Enum\ContentEditableEnum;
 use Html\Enum\DirectionEnum;
 use Html\Traits\GlobalAttributesTrait;
 use InvalidArgumentException;
@@ -46,25 +47,24 @@ class GlobalAttributesTraitTest extends TestCase
     public function testSetAndGetContentEditable()
     {
         $this->element->setContentEditable();
-        $this->assertTrue($this->element->getContentEditable());
-        $this->assertIsBool($this->element->getContentEditable());
+        $this->assertEquals(ContentEditableEnum::TRUE, $this->element->getContentEditable());
+        $this->assertEquals('true', $this->element->getContentEditable()->value);
         $this->assertEquals('true', $this->element->getAttribute('contenteditable'));
 
         $this->element->setContentEditable(false);
-        $this->assertFalse($this->element->getContentEditable());
-        $this->assertIsBool($this->element->getContentEditable());
+        $this->assertEquals(ContentEditableEnum::FALSE, $this->element->getContentEditable());
+        $this->assertEquals('false', $this->element->getContentEditable()->value);
         $this->assertEquals('false', $this->element->getAttribute('contenteditable'));
 
         $this->element->setContentEditable('false');
-        $this->assertFalse($this->element->getContentEditable());
-        $this->assertIsBool($this->element->getContentEditable());
+        $this->assertEquals(ContentEditableEnum::FALSE, $this->element->getContentEditable());
+        $this->assertEquals('false', $this->element->getContentEditable()->value);
         $this->assertEquals('false', $this->element->getAttribute('contenteditable'));
 
 
         $this->element->setContentEditable('inherit');
-        $this->assertEquals('inherit', $this->element->getContentEditable());
-        $this->assertEquals('inherit', $this->element->getAttribute('contenteditable'));
-
+        $this->assertEquals(ContentEditableEnum::INHERIT, $this->element->getContentEditable());
+        $this->assertEquals('inherit', $this->element->getContentEditable()->value);
         $this->assertEquals('inherit', $this->element->getAttribute('contenteditable'));
     }
 

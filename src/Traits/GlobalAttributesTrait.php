@@ -3,6 +3,7 @@
 namespace Html\Traits;
 
 use Html\Enum\AutoCapitalizeEnum;
+use Html\Enum\ContentEditableEnum;
 use Html\Enum\DirectionEnum;
 use Html\Enum\InputModeEnum;
 use InvalidArgumentException;
@@ -18,7 +19,7 @@ trait GlobalAttributesTrait
 {
     public ?string $accessKey = null;
 
-    public null|bool|string $contentEditable = null;
+    public ?ContentEditableEnum $contentEditable = null;
 
     public ?bool $draggable = null;
 
@@ -138,20 +139,25 @@ trait GlobalAttributesTrait
     /**
      * @description Defines whether the content is editable by the user.
      */
-    public function setContentEditable(bool|string $contentEditable = true): static
-    {
-        if (is_string($contentEditable) && ! in_array($contentEditable, ['true', 'false', 'inherit'])) {
+    public function setContentEditable(
+        bool|string|ContentEditableEnum $contentEditable = ContentEditableEnum::TRUE
+    ): static {
+        if (is_string($contentEditable) && ! in_array(
+            $contentEditable,
+            array_map(fn ($e) => $e->value, ContentEditableEnum::cases())
+        )) {
             throw new InvalidArgumentException('Invalid value for contenteditable');
         }
-        if (is_string($contentEditable) && in_array($contentEditable, ['true', 'false'])) {
-            $contentEditable = $contentEditable === 'true' ? true : false;
-        }
+        $contentEditable = is_bool(
+            $contentEditable
+        ) ? ($contentEditable === true ? 'true' : 'false') : $contentEditable;
+        $contentEditable = is_string($contentEditable) ? ContentEditableEnum::from($contentEditable) : $contentEditable;
         $this->contentEditable = $contentEditable;
-        $this->htmlElement->setAttribute('contenteditable', $contentEditable);
+        $this->htmlElement->setAttribute('contenteditable', $contentEditable->value);
         return $this;
     }
 
-    public function getContentEditable(): bool|string|null
+    public function getContentEditable(): ?ContentEditableEnum
     {
         return $this->contentEditable;
     }
