@@ -4,6 +4,7 @@ namespace Html\Traits;
 
 use Html\Enum\AutoCapitalizeEnum;
 use Html\Enum\DirectionEnum;
+use Html\Enum\InputModeEnum;
 use InvalidArgumentException;
 
 /**
@@ -29,7 +30,7 @@ trait GlobalAttributesTrait
 
     private ?bool $inert = null;
 
-    private ?string $inputMode = null;
+    private ?InputModeEnum $inputMode = null;
 
     private ?string $is = null;
 
@@ -107,7 +108,7 @@ trait GlobalAttributesTrait
     public function setAccessKey(string $accessKey): static
     {
         $this->accessKey = $accessKey;
-        // $this->htmlElement->setAttribute('accesskey', $accessKey);
+        $this->element->setAttribute('accesskey', $accessKey);
         return $this;
     }
 
@@ -125,6 +126,7 @@ trait GlobalAttributesTrait
             $autoCapitalize = AutoCapitalizeEnum::from($autoCapitalize);
         }
         $this->autoCapitalize = $autoCapitalize;
+        $this->htmlElement->setAttribute('autocapitalize', $autoCapitalize->value);
         return $this;
     }
 
@@ -145,6 +147,7 @@ trait GlobalAttributesTrait
             $contentEditable = $contentEditable === 'true' ? true : false;
         }
         $this->contentEditable = $contentEditable;
+        $this->htmlElement->setAttribute('contenteditable', $contentEditable);
         return $this;
     }
 
@@ -159,12 +162,12 @@ trait GlobalAttributesTrait
      */
     public function setDir(string|DirectionEnum $dir): static
     {
-        if (is_string($dir) && ! in_array($dir, ['ltr', 'rtl', 'auto'])) {
+        if (is_string($dir) && ! in_array($dir, array_map(fn ($e) => $e->value, DirectionEnum::cases()))) {
             throw new InvalidArgumentException('Invalid value for dir');
         }
 
-
         $this->dir = is_string($dir) ? DirectionEnum::from($dir) : $dir;
+        $this->htmlElement->setAttribute('dir', $this->dir->value);
         return $this;
     }
 
@@ -223,25 +226,18 @@ trait GlobalAttributesTrait
 
     /**
      * @description Suggests an input mode (e.g., numeric, email, tel).
-     * @todo sounds like enum
-     * ->setInputMode() // numeric
-     * ->setInputMode('numeric') // numeric
-     * ->setInputMode('email') // email
-     * ->setInputMode('tel') // tel
-     * ->setInputMode('url') // url
-     * ->setInputMode('search') // search
-     * ->setInputMode('none') // none
-     * ->setInputMode('text') // text
-     * ->setInputMode('decimal') // decimal
      */
-    public function setInputMode(string $inputMode): static
+    public function setInputMode(string|InputModeEnum $inputMode = InputModeEnum::NUMERIC): static
     {
-        $this->inputMode = $inputMode;
-        $this->htmlElement->setAttribute('inputmode', $inputMode);
+        if (is_string($inputMode) && ! in_array($inputMode, array_map(fn ($e) => $e->value, InputModeEnum::cases()))) {
+            throw new InvalidArgumentException('Invalid value for inputMode');
+        }
+        $this->inputMode = is_string($inputMode) ? InputModeEnum::from($inputMode) : $inputMode;
+        $this->htmlElement->setAttribute('inputmode', $this->inputMode->value);
         return $this;
     }
 
-    public function getInputMode(): ?string
+    public function getInputMode(): ?InputModeEnum
     {
         return $this->inputMode;
     }

@@ -16,12 +16,12 @@ class GlobalAttributesTraitTest extends TestCase
 
     private HTMLDocumentDelegator $document;
 
-    private HTMLElementDelegator $htmlElement;
+    private HTMLElementDelegator $element;
 
     protected function setUp(): void
     {
         $this->document = HTMLDocumentDelegator::createEmpty();
-        $this->htmlElement = $this->document->createElement('div');
+        $this->element = $this->document->createElement('div');
     }
 
     public function testSetAndGetAccessKey()
@@ -33,39 +33,46 @@ class GlobalAttributesTraitTest extends TestCase
     public function testSetAndGetAutoCapitalize()
     {
         // set as string
-        $this->setAutoCapitalize('words');
-        $this->assertEquals('words', $this->getAutoCapitalize()->value);
-        $this->assertEquals(AutoCapitalizeEnum::WORDS, $this->getAutoCapitalize());
+        $this->element->setAutoCapitalize('words');
+        $this->assertEquals('words', $this->element->getAutoCapitalize()->value);
+        $this->assertEquals(AutoCapitalizeEnum::WORDS, $this->element->getAutoCapitalize());
 
         // set as Enum
-        $this->setAutoCapitalize(AutoCapitalizeEnum::CHARACTERS);
-        $this->assertEquals('characters', $this->getAutoCapitalize()->value);
-        $this->assertEquals(AutoCapitalizeEnum::CHARACTERS, $this->getAutoCapitalize());
+        $this->element->setAutoCapitalize(AutoCapitalizeEnum::CHARACTERS);
+        $this->assertEquals('characters', $this->element->getAutoCapitalize()->value);
+        $this->assertEquals(AutoCapitalizeEnum::CHARACTERS, $this->element->getAutoCapitalize());
     }
 
     public function testSetAndGetContentEditable()
     {
-        $this->setContentEditable();
-        $this->assertTrue($this->getContentEditable());
-        $this->assertIsBool($this->getContentEditable());
+        $this->element->setContentEditable();
+        $this->assertTrue($this->element->getContentEditable());
+        $this->assertIsBool($this->element->getContentEditable());
+        $this->assertEquals('true', $this->element->getAttribute('contenteditable'));
 
-        $this->setContentEditable(false);
-        $this->assertFalse($this->getContentEditable());
-        $this->assertIsBool($this->getContentEditable());
+        $this->element->setContentEditable(false);
+        $this->assertFalse($this->element->getContentEditable());
+        $this->assertIsBool($this->element->getContentEditable());
+        $this->assertEquals('false', $this->element->getAttribute('contenteditable'));
 
-        $this->setContentEditable('false');
-        $this->assertFalse($this->getContentEditable());
-        $this->assertIsBool($this->getContentEditable());
+        $this->element->setContentEditable('false');
+        $this->assertFalse($this->element->getContentEditable());
+        $this->assertIsBool($this->element->getContentEditable());
+        $this->assertEquals('false', $this->element->getAttribute('contenteditable'));
 
-        $this->setContentEditable('inherit');
-        $this->assertEquals('inherit', $this->getContentEditable());
+
+        $this->element->setContentEditable('inherit');
+        $this->assertEquals('inherit', $this->element->getContentEditable());
+        $this->assertEquals('inherit', $this->element->getAttribute('contenteditable'));
+
+        $this->assertEquals('inherit', $this->element->getAttribute('contenteditable'));
     }
 
     public function testSetAndGetContentEditableInvalidValue()
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid value for contenteditable');
-        $this->setContentEditable('invalid-value');
+        $this->element->setContentEditable('invalid-value');
     }
 
     /**
@@ -73,47 +80,54 @@ class GlobalAttributesTraitTest extends TestCase
      */
     public function testSetAndGetDir()
     {
-        $this->setDir('ltr');
-        $this->assertEquals('ltr', $this->getDir()->value);
-        $this->assertEquals(DirectionEnum::LTR, $this->getDir());
-        // $this->assertEquals('ltr', $this->htmlElement->getAttribute('dir'));
+        $this->element->setDir('ltr');
+        $this->assertEquals('ltr', $this->element->getDir()->value);
+        $this->assertEquals(DirectionEnum::LTR, $this->element->getDir());
+        $this->assertEquals('ltr', $this->element->getAttribute('dir'));
+        // $this->assertEquals('ltr', $this->element->getAttribute('dir'));
     }
 
     public function testSetAndGetDirInvalid()
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid value for dir');
-        $this->setDir('hallo-welt');
+        $this->element->setDir('hallo-welt');
     }
 
     public function testSetAndGetDraggable()
     {
-        $this->setDraggable();
-        $this->assertEquals(true, $this->getDraggable());
+        $this->element->setDraggable();
+        $this->assertEquals(true, $this->element->getDraggable());
 
-        $this->setDraggable(true);
-        $this->assertEquals(true, $this->getDraggable());
+        $this->element->setDraggable(true);
+        $this->assertEquals(true, $this->element->getDraggable());
 
-        $this->setDraggable('true');
-        $this->assertEquals(true, $this->getDraggable());
+        $this->element->setDraggable('true');
+        $this->assertEquals(true, $this->element->getDraggable());
+
+        $this->element->setDraggable(false);
+        $this->assertEquals(false, $this->element->getDraggable());
     }
 
     public function testSetAndGetHidden()
     {
-        $this->setHidden(true);
-        $this->assertEquals(true, $this->getHidden());
+        $this->element->setHidden(true);
+        $this->assertEquals(true, $this->element->getHidden());
     }
 
     public function testSetAndGetInert()
     {
-        $this->setInert(true);
-        $this->assertEquals(true, $this->getInert());
+        $this->element->setInert(true);
+        $this->assertEquals(true, $this->element->getInert());
     }
 
     public function testSetAndGetInputMode()
     {
-        $this->setInputMode('numeric');
-        $this->assertEquals('numeric', $this->getInputMode());
+        $this->element->setInputMode('numeric');
+        $this->assertEquals('numeric', $this->element->getInputMode()->value);
+
+        $this->element->setInputMode();
+        $this->assertEquals('numeric', $this->element->getInputMode()->value);
     }
 
     public function testSetAndGetIs()
