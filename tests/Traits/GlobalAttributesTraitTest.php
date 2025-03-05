@@ -82,11 +82,17 @@ class GlobalAttributesTraitTest extends TestCase
         $this->setDir('hallo-welt');
     }
 
-    // public function testSetAndGetDraggable()
-    // {
-    //     $this->setDraggable(true);
-    //     $this->assertEquals(true, $this->getDraggable());
-    // }
+    public function testSetAndGetDraggable()
+    {
+        $this->setDraggable();
+        $this->assertEquals(true, $this->getDraggable());
+
+        $this->setDraggable(true);
+        $this->assertEquals(true, $this->getDraggable());
+
+        $this->setDraggable('true');
+        $this->assertEquals(true, $this->getDraggable());
+    }
 
     // public function testSetAndGetHidden()
     // {

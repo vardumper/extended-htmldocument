@@ -174,15 +174,12 @@ trait GlobalAttributesTrait
 
     /**
      * @description Specifies whether an element is draggable (true, false).
-     * @todo sounds like enum
-     * ->setDraggable() // true
-     * ->setDraggable(true) // true
-     * ->setDraggable('true') // true
-     * ->setDraggable(false) // false
-     * ->setDraggable('false') // false
      */
     public function setDraggable(bool|string $draggable = true): static
     {
+        if (is_string($draggable) && in_array($draggable, ['true', 'false'])) {
+            $draggable = $draggable === 'true' ? true : false;
+        }
         $this->draggable = $draggable;
         $this->htmlElement->setAttribute('draggable', $draggable);
         return $this;
