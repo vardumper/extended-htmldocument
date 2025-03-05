@@ -24,7 +24,7 @@ jobs:
           php-version: '8.4'
 
       - name: Install dependencies
-        run: composer self-update && composer install && composer dump-autoload
+        run: composer self-update && composer install && composer dump-autoload -o -a
 
       - name: Show that Composer Lockfile exists
         run: |
@@ -35,14 +35,14 @@ jobs:
           sudo apt-get update
           curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.58.0
       - name: Create CycloneDX SBOM with Trivy
-        run: trivy fs ./ --format cyclonedx --output sbom.json --include-dev-deps --scanners vuln
+        run: trivy fs ./ --format cyclonedx --output sbom.json --include-dev-deps --scanners vuln,license,secret
 
       - name: Commit SBOM if changed
         run: |
             git config --global user.name 'github-actions[bot]'
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
             git add sbom.json
-            git commit -am "sbom.json updated" --no-verify
+            git commit -am "sbom.json updated" --no-verify || echo "No changes to commit"
             git push --no-verify
         continue-on-error: true
 
