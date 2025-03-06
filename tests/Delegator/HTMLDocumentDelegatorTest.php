@@ -20,7 +20,7 @@ test('constructor', function () {
         ->toBeInstanceOf(HtmlDocument::class);
 });
 
-test('call call', function () {
+test('call', function () {
     $this->expectOutputString($this->document->saveXml());
     $this->delegator->saveXml();
 
@@ -37,7 +37,7 @@ test('call call', function () {
     $this->delegator->nonExistentMethod();
 });
 
-test('get get', function () {
+test('get', function () {
     $this->document = HTMLDocument::createEmpty();
     $this->delegator = HTMLDocumentDelegator::createEmpty();
     $properties = [
@@ -81,7 +81,7 @@ test('get get', function () {
     $this->delegator->nonExistentProperty;
 });
 
-test('set set', function () {
+test('set', function () {
     $URL = 'http://example.com';
     $this->delegator->URL = $URL;
     $this->document->URL = $URL;
@@ -282,6 +282,8 @@ test('get elements by tag name', function () {
         ->toBeInstanceOf(DOMNodeListDelegator::class);
     expect($delegator->getElementsByTagName('div')->count())
         ->toEqual(1);
-    expect($delegator->getElementsByTagName('p')->count())->toEqual(1);
-    expect($delegator->getElementsByTagName('span')->count())->toEqual(0);
+    expect($delegator->getElementsByTagName('p')->count())
+        ->toEqual(1);
+    expect($delegator->getElementsByTagName('span')->count())
+        ->toEqual(0);
 });

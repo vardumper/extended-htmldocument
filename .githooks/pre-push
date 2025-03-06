@@ -16,7 +16,8 @@ $redColor = "\033[31m";
 $yellowColor = "\033[33m";
 $greenColor = "\033[32m";
 $resetColor = "\033[0m";
-$orangeColor = "\033[33m";
+$brownColor = "\033[34m";
+$orangeColor = "\033[35m";
 
 $failureNeedles = [
     'FAIL',
@@ -37,17 +38,17 @@ if ($returnCode != 0) {
     // ignore warnings
     foreach($output as $line) {
         foreach ($failureNeedles as $needle) {
-            if (strpos($line, $needle) !== false) {
+            if (strpos('_'.$line, $needle) > 0) {
                 if (in_array($currentBranch, $protectedBranches) && $allowFailuresInProtectedBranches === false) {
-                    echo "{$redColor}Pushing to protected branch {$currentBranch} is not allowed with failures.{$resetColor}" . PHP_EOL;
+                    echo "{$redColor}Pushing to protected branch {$currentBranch} not allowed with failures.{$resetColor}" . PHP_EOL;
                     exit(1);
                 }
                 if (!in_array($currentBranch, $protectedBranches) && $allowFailuresInOtherBranches === false) {
-                    echo "{$redColor}Pushing to {$currentBranch} is not allowed.{$resetColor}" . PHP_EOL;
+                    echo "{$redColor}Pushing to {$currentBranch} not allowed.{$resetColor}" . PHP_EOL;
                     exit(1);
                 }
                 if (!in_array($currentBranch, $protectedBranches) && $allowFailuresInOtherBranches === true) {
-                    echo "{$orangeColor}Pushing to {$currentBranch} with test errors or failures.{$resetColor}" . PHP_EOL;
+                    echo "{$orangeColor}Pushing to {$currentBranch} with errors or failures.{$resetColor}" . PHP_EOL;
                     exit(0);
                 }
             }
