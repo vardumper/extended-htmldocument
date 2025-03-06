@@ -19,9 +19,8 @@ $resetColor = "\033[0m";
 $orangeColor = "\033[33m";
 
 $failureNeedles = [
-    'FAILURES!',
-    'Fatal error:',
-    'ERROR!',
+    'FAIL',
+    'FAILED',
 ];
 
 exec('git rev-parse --abbrev-ref HEAD', $branchNameOutput, $branchNameReturnCode);
@@ -32,7 +31,7 @@ if ($branchNameReturnCode !== 0) {
 $currentBranch = trim(implode(PHP_EOL, $branchNameOutput));
 
 echo "Running tests on branch: {$yellowColor}$currentBranch{$resetColor}" . PHP_EOL;
-exec('./vendor/bin/phpunit --colors=always --display-warnings', $output, $returnCode);
+exec('./vendor/bin/pest', $output, $returnCode);
 print(implode(PHP_EOL, $output) . PHP_EOL); // first show output
 if ($returnCode != 0) {
     // ignore warnings
