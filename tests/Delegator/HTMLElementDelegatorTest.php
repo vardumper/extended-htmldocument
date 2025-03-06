@@ -1,8 +1,5 @@
 <?php
 
-namespace Tests\Delegator;
-
-use BadMethodCallException;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
 use Html\Element\Block\Body;
@@ -12,282 +9,290 @@ use Html\Element\Void\Head;
 use Html\Enum\ContentEditableEnum;
 use Html\Enum\RelEnum;
 use Html\Enum\TargetEnum;
-use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
-use TypeError;
 
-final class HTMLElementDelegatorTest extends TestCase
-{
-    private HTMLDocumentDelegator $document;
+beforeEach(function () {
+    $this->document = HTMLDocumentDelegator::createEmpty();
+    $this->delegator = Anchor::create($this->document);
+});
 
-    private HTMLElementDelegator $htmlElement;
+test('constructor', function () {
+    expect($this->delegator)->toBeInstanceOf(HTMLElementDelegator::class);
+});
 
-    private HTMLElementDelegator $delegator;
+test('call get global attribute', function () {
+    $this->delegator->setAttribute('id', 'test');
+    expect($this->delegator->getAttribute('id'))
+        ->toEqual('test');
+});
 
-    protected function setUp(): void
-    {
-        $this->document = HTMLDocumentDelegator::createEmpty();
-        $this->delegator = Anchor::create($this->document);
-    }
+test('call get element attribute', function () {
+    $this->delegator->setAttribute('href', 'https://example.com');
 
-    public function testConstructor(): void
-    {
-        $this->assertInstanceOf(HTMLElementDelegator::class, $this->delegator);
-    }
+    // var_dump((string) $this->delegator);
+    expect($this->delegator->getAttribute('href'))
+        ->toEqual('https://example.com');
+});
 
-    public function testCallGetGlobalAttribute(): void
-    {
-        $this->delegator->setAttribute('id', 'test');
-        $this->assertEquals('test', $this->delegator->getAttribute('id'));
-    }
+test('get', function () {
+    $this->delegator->setAttribute('href', 'https://example.com');
 
-    public function testCallGetElementAttribute(): void
-    {
-        $this->delegator->setAttribute('href', 'https://example.com');
-        // var_dump((string) $this->delegator);
-        $this->assertEquals('https://example.com', $this->delegator->getAttribute('href'));
-    }
+    // var_dump((string) $this->delegator);
+    expect($this->delegator->href)
+        ->toEqual('https://example.com');
+    expect($this->delegator->htmlElement->getAttribute('href'))
+        ->toEqual('https://example.com');
+});
 
-    public function testGet(): void
-    {
-        $this->delegator->setAttribute('href', 'https://example.com');
-        // var_dump((string) $this->delegator);
-        $this->assertEquals('https://example.com', $this->delegator->href);
-        $this->assertEquals('https://example.com', $this->delegator->htmlElement->getAttribute('href'));
-    }
+test('get global id', function () {
+    $this->delegator->setAttribute('id', 'unique-id');
 
-    public function testGetGlobalId(): void
-    {
-        $this->delegator->setAttribute('id', 'unique-id');
-        // var_dump((string) $this->delegator);
-        $this->assertEquals('unique-id', $this->delegator->id);
-    }
+    // var_dump((string) $this->delegator);
+    expect($this->delegator->id)
+        ->toEqual('unique-id');
+});
 
-    public function testGetGlobalClassName(): void
-    {
-        $this->delegator->setAttribute('class', 'my-class');
-        // var_dump((string) $this->delegator);
-        $this->assertEquals('my-class', $this->delegator->className);
-        $this->assertEquals('my-class', $this->delegator->getAttribute('class'));
-        $this->assertEquals('my-class', $this->delegator->htmlElement->getAttribute('class'));
-        $this->assertEquals('my-class', $this->delegator->htmlElement->className);
-    }
+test('get global class name', function () {
+    $this->delegator->setAttribute('class', 'my-class');
 
-    public function testSetGlobalClassName(): void
-    {
-        $this->delegator->className = 'my-new-class';
-        $this->assertEquals('my-new-class', $this->delegator->className);
-        $this->assertEquals('my-new-class', $this->delegator->getAttribute('class'));
-        $this->assertEquals('my-new-class', $this->delegator->htmlElement->getAttribute('class'));
-        $this->assertEquals('my-new-class', $this->delegator->htmlElement->className);
-    }
+    // var_dump((string) $this->delegator);
+    expect($this->delegator->className)
+        ->toEqual('my-class');
+    expect($this->delegator->getAttribute('class'))
+        ->toEqual('my-class');
+    expect($this->delegator->htmlElement->getAttribute('class'))
+        ->toEqual('my-class');
+    expect($this->delegator->htmlElement->className)
+        ->toEqual('my-class');
+});
 
-    public function testSetGlobalAttributeSetAttribute()
-    {
-        $this->delegator->setAttribute(ContentEditableEnum::getQualifiedName(), ContentEditableEnum::TRUE);
-        $this->assertEquals(ContentEditableEnum::TRUE, $this->delegator->getContentEditable());
-        $this->assertEquals('true', $this->delegator->getContentEditable()->value);
-        $this->assertEquals('true', $this->delegator->getAttribute('contenteditable'));
-        $this->assertEquals('true', $this->delegator->htmlElement->getAttribute('contenteditable'));
-    }
+test('set global class name', function () {
+    $this->delegator->className = 'my-new-class';
+    expect($this->delegator->className)
+        ->toEqual('my-new-class');
+    expect($this->delegator->getAttribute('class'))
+        ->toEqual('my-new-class');
+    expect($this->delegator->htmlElement->getAttribute('class'))
+        ->toEqual('my-new-class');
+    expect($this->delegator->htmlElement->className)
+        ->toEqual('my-new-class');
+});
 
-    public function testGlobalAttributeSetDirectly()
-    {
-        $this->delegator->contenteditable = ContentEditableEnum::TRUE;
-        // $this->{ContentEditableEnum::getQualifiedName()} = ContentEditableEnum::TRUE;
-        $this->assertEquals(ContentEditableEnum::TRUE, $this->delegator->getContentEditable());
-        $this->assertEquals('true', $this->delegator->getContentEditable()->value); // Changed from $this->element
-        $this->assertEquals(
-            ContentEditableEnum::TRUE,
-            $this->delegator->getAttribute('contenteditable')
-        ); // Changed from $this->element
-        $this->assertEquals(
-            'true',
-            $this->delegator->htmlElement->getAttribute(ContentEditableEnum::getQualifiedName())
-        ); // Changed from $this->element
-    }
+test('set global attribute set attribute', function () {
+    $this->delegator->setAttribute(ContentEditableEnum::getQualifiedName(), ContentEditableEnum::TRUE);
+    expect($this->delegator->getContentEditable())
+        ->toEqual(ContentEditableEnum::TRUE);
+    expect($this->delegator->getContentEditable()->value)
+        ->toEqual('true');
+    expect($this->delegator->getAttribute('contenteditable'))
+        ->toEqual('true');
+    expect($this->delegator->htmlElement->getAttribute('contenteditable'))
+        ->toEqual('true');
+});
 
-    public function testSet(): void
-    {
-        $this->delegator->href = 'https://different.com';
-        $this->assertEquals('https://different.com', $this->delegator->href);
-    }
+test('global attribute set directly', function () {
+    $this->delegator->contenteditable = ContentEditableEnum::TRUE;
 
-    public function testSetUnexpectedType(): void
-    {
-        $this->delegator->href = 1;
-        $this->assertEquals(1, $this->delegator->href);
-    }
+    // $this->{ContentEditableEnum::getQualifiedName()} = ContentEditableEnum::TRUE;
+    expect($this->delegator->getContentEditable())
+        ->toEqual(ContentEditableEnum::TRUE);
+    expect($this->delegator->getContentEditable()->value)
+        ->toEqual('true');
+    // Changed from $this->element
+    expect($this->delegator->getAttribute('contenteditable'))
+        ->toEqual(ContentEditableEnum::TRUE);
+    // Changed from $this->element
+    expect($this->delegator->htmlElement->getAttribute(ContentEditableEnum::getQualifiedName()))->toEqual('true');
+    // Changed from $this->element
+});
 
-    public function testSetGlobalClass(): void
-    {
-        $this->delegator->class = 'new-classname';
-        $this->assertEquals('new-classname', $this->delegator->className);
-        $this->assertEquals('new-classname', $this->delegator->getAttribute('class'));
-        $this->assertEquals('new-classname', $this->delegator->htmlElement->className);
-        $this->assertEquals('new-classname', $this->delegator->htmlElement->getAttribute('class'));
-    }
+test('set', function () {
+    $this->delegator->href = 'https://different.com';
+    expect($this->delegator->href)
+        ->toEqual('https://different.com');
+});
 
-    /**
-     * @description added getter and setter and changed visibility to protected
-     */
-    public function testSetEnum(): void
-    {
-        $this->delegator->setRel(RelEnum::NOFOLLOW);
-        $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
-        $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->getRel());
-        $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
-    }
+test('set unexpected type', function () {
+    $this->delegator->href = 1;
+    expect($this->delegator->href)
+        ->toEqual(1);
+});
 
-    /**
-     * @description added getter and setter and changed visibility to protected
-     */
-    public function testSetEnumDirectly(): void
-    {
-        $this->delegator->rel = RelEnum::NOFOLLOW;
-        $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
-        $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->getRel());
-        $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
-    }
+test('set global class', function () {
+    $this->delegator->class = 'new-classname';
+    expect($this->delegator->className)
+        ->toEqual('new-classname');
+    expect($this->delegator->getAttribute('class'))
+        ->toEqual('new-classname');
+    expect($this->delegator->htmlElement->className)
+        ->toEqual('new-classname');
+    expect($this->delegator->htmlElement->getAttribute('class'))
+        ->toEqual('new-classname');
+});
 
-    /**
-     * @todo consider allowing to set array value. eg: data-json="{\"some\": \"data here\"}". currently value must be Enum or string
-     */
-    public function testSetAttributeWithInvalidValue(): void
-    {
-        $this->expectException(TypeError::class);
-        $this->expectExceptionMessage('Value for nonexistant must be a string, boolean or a BackedEnum');
-        $this->delegator->setAttribute('nonexistant', [
-            'foo' => 'bar',
-        ]);
-    }
+test('set enum', function () {
+    $this->delegator->setRel(RelEnum::NOFOLLOW);
+    expect($this->delegator->rel)
+        ->toEqual(RelEnum::NOFOLLOW);
+    expect($this->delegator->getRel())
+        ->toEqual(RelEnum::NOFOLLOW);
+    expect($this->delegator->htmlElement->getAttribute('rel'))
+        ->toEqual('nofollow');
+});
 
-    public function testSetEnumSetAttributes(): void
-    {
-        $this->delegator->setAttributes([
-            'rel' => RelEnum::NOFOLLOW,
-        ]);
-        $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
-        $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
-    }
+test('set enum directly', function () {
+    $this->delegator->rel = RelEnum::NOFOLLOW;
+    expect($this->delegator->rel)
+        ->toEqual(RelEnum::NOFOLLOW);
+    expect($this->delegator->getRel())
+        ->toEqual(RelEnum::NOFOLLOW);
+    expect($this->delegator->htmlElement->getAttribute('rel'))
+        ->toEqual('nofollow');
+});
 
-    public function testSetEnumSetAttribute(): void
-    {
-        $this->delegator->setAttribute('rel', RelEnum::NOFOLLOW);
-        $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
-        $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
-    }
+test('set attribute with invalid value', function () {
+    $this->expectException(TypeError::class);
+    $this->expectExceptionMessage('Value for nonexistant must be a string, boolean or a BackedEnum');
+    $this->delegator->setAttribute('nonexistant', [
+        'foo' => 'bar',
+    ]);
+});
 
-    public function testCallInvalidMethod(): void
-    {
-        $this->expectException(BadMethodCallException::class);
-        $this->delegator->nonExistentMethod();
-    }
+test('set enum set attributes', function () {
+    $this->delegator->setAttributes([
+        'rel' => RelEnum::NOFOLLOW,
+    ]);
+    expect($this->delegator->rel)
+        ->toEqual(RelEnum::NOFOLLOW);
+    expect($this->delegator->htmlElement->getAttribute('rel'))
+        ->toEqual('nofollow');
+});
 
-    public function testGetInvalidProperty(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->delegator->nonExistentProperty;
-    }
+test('set enum set attribute', function () {
+    $this->delegator->setAttribute('rel', RelEnum::NOFOLLOW);
+    expect($this->delegator->rel)
+        ->toEqual(RelEnum::NOFOLLOW);
+    expect($this->delegator->htmlElement->getAttribute('rel'))
+        ->toEqual('nofollow');
+});
 
-    public function testSetInvalidProperty(): void
-    {
-        $this->delegator->nonExistentProperty = 'value';
-        $this->assertEquals('value', $this->delegator->htmlElement->getAttribute('nonexistentproperty'));
-        $this->assertEquals('value', $this->delegator->getAttribute('nonexistentproperty'));
+test('call invalid method', function () {
+    $this->expectException(BadMethodCallException::class);
+    $this->delegator->nonExistentMethod();
+});
 
-        $this->expectException(InvalidArgumentException::class);
-        $this->delegator->nonExistentProperty;
-    }
+test('get invalid property', function () {
+    $this->expectException(InvalidArgumentException::class);
+    $this->delegator->nonExistentProperty;
+});
 
-    public function testToString(): void
-    {
-        $this->delegator->setAttribute('id', 'test');
-        $this->assertEquals('<a id="test"></a>', (string) $this->delegator);
-    }
+test('set invalid property', function () {
+    $this->delegator->nonExistentProperty = 'value';
+    expect($this->delegator->htmlElement->getAttribute('nonexistentproperty'))
+        ->toEqual('value');
+    expect($this->delegator->getAttribute('nonexistentproperty'))
+        ->toEqual('value');
 
-    public function testSetAttributes(): void
-    {
-        $this->delegator->setAttributes([
-            'id' => 'test',
-            'class' => 'example',
-            'href' => 'https://example.com',
-        ]);
-        // var_dump((string) $this->delegator);exit;
-        $this->assertEquals('test', $this->delegator->getAttribute('id'));
-        $this->assertEquals('example', $this->delegator->getAttribute('class'));
-        $this->assertEquals(
-            'https://example.com',
-            $this->delegator->htmlElement->getAttribute('href')
-        ); // Assert the href attribute
-        $this->assertEquals('https://example.com', $this->delegator->href); // Assert the href attribute
-    }
+    $this->expectException(InvalidArgumentException::class);
+    $this->delegator->nonExistentProperty;
+});
 
-    public function testSetAttributesEnum(): void
-    {
-        $this->delegator->setAttributes([
-            'rel' => RelEnum::NOFOLLOW,
-        ]);
-        $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
-        $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
-    }
+test('to string', function () {
+    $this->delegator->setAttribute('id', 'test');
+    expect((string) $this->delegator)
+        ->toEqual('<a id="test"></a>');
+});
 
-    public function testSetAttributesEnumValue(): void
-    {
-        $this->delegator->setAttributes([
-            'rel' => 'nofollow',
-            'target' => '_blank',
-        ]);
-        $this->assertEquals('nofollow', $this->delegator->htmlElement->getAttribute('rel'));
-        $this->assertEquals('nofollow', $this->delegator->getAttribute('rel'));
-        $this->assertEquals('_blank', $this->delegator->htmlElement->getAttribute('target'));
-        $this->assertEquals('_blank', $this->delegator->getAttribute('target'));
-        $this->assertEquals(RelEnum::NOFOLLOW, $this->delegator->rel);
-        $this->assertEquals(TargetEnum::_BLANK, $this->delegator->target);
-    }
+test('set attributes', function () {
+    $this->delegator->setAttributes([
+        'id' => 'test',
+        'class' => 'example',
+        'href' => 'https://example.com',
+    ]);
 
-    public function testSetId(): void
-    {
-        $this->delegator->setId('test');
-        $this->assertEquals('test', $this->delegator->id);
-        $this->assertEquals('test', $this->delegator->htmlElement->getAttribute('id'));
-    }
+    // var_dump((string) $this->delegator);exit;
+    expect($this->delegator->getAttribute('id'))
+        ->toEqual('test');
+    expect($this->delegator->getAttribute('class'))
+        ->toEqual('example');
+    expect($this->delegator->htmlElement->getAttribute('href'))
+        ->toEqual('https://example.com');
+    // Assert the href attribute
+    expect($this->delegator->href)
+        ->toEqual('https://example.com');
+    // Assert the href attribute
+});
 
-    public function testGetId(): void
-    {
-        $this->delegator->setId('test');
-        $this->assertEquals('test', $this->delegator->getId());
-    }
+test('set attributes enum', function () {
+    $this->delegator->setAttributes([
+        'rel' => RelEnum::NOFOLLOW,
+    ]);
+    expect($this->delegator->htmlElement->getAttribute('rel'))
+        ->toEqual('nofollow');
+    expect($this->delegator->rel)
+        ->toEqual(RelEnum::NOFOLLOW);
+});
 
-    public function testSetClassName(): void
-    {
-        $this->delegator->setClassName('example-class');
-        $this->assertEquals('example-class', $this->delegator->className);
-        $this->assertEquals('example-class', $this->delegator->htmlElement->getAttribute('class'));
-    }
+test('set attributes enum value', function () {
+    $this->delegator->setAttributes([
+        'rel' => 'nofollow',
+        'target' => '_blank',
+    ]);
+    expect($this->delegator->htmlElement->getAttribute('rel'))
+        ->toEqual('nofollow');
+    expect($this->delegator->getAttribute('rel'))
+        ->toEqual('nofollow');
+    expect($this->delegator->htmlElement->getAttribute('target'))
+        ->toEqual('_blank');
+    expect($this->delegator->getAttribute('target'))
+        ->toEqual('_blank');
+    expect($this->delegator->rel)
+        ->toEqual(RelEnum::NOFOLLOW);
+    expect($this->delegator->target)
+        ->toEqual(TargetEnum::_BLANK);
+});
 
-    public function testGetClassName(): void
-    {
-        $this->delegator->setClassName('example-class');
-        $this->assertEquals('example-class', $this->delegator->getClassName());
-    }
+test('set id', function () {
+    $this->delegator->setId('test');
+    expect($this->delegator->id)
+        ->toEqual('test');
+    expect($this->delegator->htmlElement->getAttribute('id'))
+        ->toEqual('test');
+});
 
-    public function testGetClass(): void
-    {
-        $this->delegator->setClassName('example-class');
-        $this->assertEquals('example-class', $this->delegator->getClass());
-    }
+test('get id', function () {
+    $this->delegator->setId('test');
+    expect($this->delegator->getId())
+        ->toEqual('test');
+});
 
-    public function testParentOf(): void
-    {
-        // $this->delegator->setClassName('example-class');
-        $element = HTML::create($this->document);
-        $this->assertEquals([Body::class, Head::class], $element->parentOf());
-    }
+test('set class name', function () {
+    $this->delegator->setClassName('example-class');
+    expect($this->delegator->className)
+        ->toEqual('example-class');
+    expect($this->delegator->htmlElement->getAttribute('class'))
+        ->toEqual('example-class');
+});
 
-    public function testChildOf(): void
-    {
-        $element = Body::create($this->document);
-        $this->assertEquals([HTML::class], $element->childOf());
-    }
-}
+test('get class name', function () {
+    $this->delegator->setClassName('example-class');
+    expect($this->delegator->getClassName())
+        ->toEqual('example-class');
+});
+
+test('get class', function () {
+    $this->delegator->setClassName('example-class');
+    expect($this->delegator->getClass())
+        ->toEqual('example-class');
+});
+
+test('parent of', function () {
+    // $this->delegator->setClassName('example-class');
+    $element = HTML::create($this->document);
+    expect($element->parentOf())
+        ->toEqual([Body::class, Head::class]);
+});
+
+test('child of', function () {
+    $element = Body::create($this->document);
+    expect($element->childOf())->toEqual([HTML::class]);
+});

@@ -1,286 +1,287 @@
 <?php
 
-namespace Tests\Delegator;
-
-use BadMethodCallException;
 use DOM\HTMLDocument;
 use Dom\HTMLElement;
-use Error;
-use Exception;
 use Html\Delegator\DOMNodeListDelegator;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
 use Html\Element\Block\Body;
 use Html\Element\Block\TableData;
 use Html\Element\Block\TableRow;
-use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
 
-final class HTMLDocumentDelegatorTest extends TestCase
-{
-    private HTMLDocument $document;
+beforeEach(function () {
+    $this->document = HTMLDocument::createEmpty();
+    $this->delegator = HTMLDocumentDelegator::createEmpty();
+});
 
-    private HTMLDocumentDelegator $delegator;
+test('constructor', function () {
+    expect($this->delegator)->toBeInstanceOf(HTMLDocumentDelegator::class);
+    expect($this->delegator->htmlDocument)
+        ->toBeInstanceOf(HtmlDocument::class);
+});
 
-    protected function setUp(): void
-    {
-        $this->document = HTMLDocument::createEmpty();
-        $this->delegator = HTMLDocumentDelegator::createEmpty();
+test('call call', function () {
+    $this->expectOutputString($this->document->saveXml());
+    $this->delegator->saveXml();
+
+    $this->expectOutputString($this->document->saveHtml());
+    $this->delegator->saveHtml();
+
+    // why does this fail?
+    // $this->delegator->debugGetTemplateCount();
+    // $this->expectOutputString($this->document->debugGetTemplateCount());
+    $this->expectException(BadMethodCallException::class);
+    $this->expectExceptionMessage(
+        'Method nonExistentMethod does not exist on Dom\HTMLDocument. However you can implement it on Html\Delegator\HTMLDocumentDelegator'
+    );
+    $this->delegator->nonExistentMethod();
+});
+
+test('get get', function () {
+    $this->document = HTMLDocument::createEmpty();
+    $this->delegator = HTMLDocumentDelegator::createEmpty();
+    $properties = [
+        'URL',
+        'documentURI',
+        'characterSet',
+        'charset',
+        'inputEncoding',
+        'doctype',
+        'documentElement',
+        'firstElementChild',
+        'lastElementChild',
+        'childElementCount',
+        'body',
+        'head',
+        'title',
+        'nodeType',
+        'nodeName',
+        'baseURI',
+        'isConnected',
+        'ownerDocument',
+        'parentNode',
+        'parentElement',
+        'childNodes',
+        'firstChild',
+        'lastChild',
+        'previousSibling',
+        'nextSibling',
+        'nodeValue',
+        'textContent',
+    ];
+
+    foreach ($properties as $property) {
+        expect($this->delegator->{$property})->toEqual($this->document->{$property});
     }
 
-    public function testConstructor(): void
-    {
-        $this->assertInstanceOf(HTMLDocumentDelegator::class, $this->delegator);
-        $this->assertInstanceOf(HtmlDocument::class, $this->delegator->htmlDocument);
-    }
+    $this->expectException(InvalidArgumentException::class);
+    $this->expectExceptionMessage(
+        'Property nonExistentProperty does not exist on Dom\HTMLDocument. However you can implement it on Html\Delegator\HTMLDocumentDelegator'
+    );
+    $this->delegator->nonExistentProperty;
+});
 
-    public function testCallCall(): void
-    {
-        $this->expectOutputString($this->document->saveXml());
-        $this->delegator->saveXml();
+test('set set', function () {
+    $URL = 'http://example.com';
+    $this->delegator->URL = $URL;
+    $this->document->URL = $URL;
+    expect($URL)
+        ->toEqual($this->document->URL);
+    expect($this->delegator->URL)
+        ->toBe($this->document->URL);
 
-        $this->expectOutputString($this->document->saveHtml());
-        $this->delegator->saveHtml();
+    // string $documentURI
+    $this->delegator->documentURI = 'http://example.com/document';
+    $this->document->documentURI = 'http://example.com/document';
+    expect($this->delegator->documentURI)
+        ->toBe($this->document->documentURI);
 
-        // why does this fail?
-        // $this->delegator->debugGetTemplateCount();
-        // $this->expectOutputString($this->document->debugGetTemplateCount());
+    // string $characterSet
+    $this->delegator->characterSet = 'UTF-8';
+    $this->document->characterSet = 'UTF-8';
+    expect($this->delegator->characterSet)
+        ->toBe('UTF-8');
+    expect($this->delegator->characterSet)
+        ->toBe($this->document->characterSet);
 
-        $this->expectException(BadMethodCallException::class);
-        $this->expectExceptionMessage(
-            'Method nonExistentMethod does not exist on Dom\HTMLDocument. However you can implement it on Html\Delegator\HTMLDocumentDelegator'
-        );
-        $this->delegator->nonExistentMethod();
-    }
+    // string $charset
+    $this->delegator->charset = 'UTF-8';
+    $this->document->charset = 'UTF-8';
+    expect($this->delegator->charset)
+        ->toBe('UTF-8');
+    expect($this->delegator->charset)
+        ->toBe($this->document->charset);
 
-    public function testGetGet(): void
-    {
-        $this->document = HTMLDocument::createEmpty();
-        $this->delegator = HTMLDocumentDelegator::createEmpty();
-        $properties = [
-            'URL',
-            'documentURI',
-            'characterSet',
-            'charset',
-            'inputEncoding',
-            'doctype',
-            'documentElement',
-            'firstElementChild',
-            'lastElementChild',
-            'childElementCount',
-            'body',
-            'head',
-            'title',
-            'nodeType',
-            'nodeName',
-            'baseURI',
-            'isConnected',
-            'ownerDocument',
-            'parentNode',
-            'parentElement',
-            'childNodes',
-            'firstChild',
-            'lastChild',
-            'previousSibling',
-            'nextSibling',
-            'nodeValue',
-            'textContent',
-        ];
+    // string $inputEncoding
+    $this->delegator->inputEncoding = 'UTF-8';
+    $this->document->inputEncoding = 'UTF-8';
+    expect($this->delegator->inputEncoding)
+        ->toBe('UTF-8');
+    expect($this->delegator->inputEncoding)
+        ->toBe($this->document->inputEncoding);
 
-        foreach ($properties as $property) {
-            $this->assertEquals($this->document->{$property}, $this->delegator->{$property});
-        }
+    // ?\DOM\DocumentType $doctype
+    $this->expectException(Error::class);
+    $this->expectExceptionMessage('annot modify readonly property Dom\HTMLDocument::$doctype');
+    $this->delegator->doctype = null;
+    $this->document->doctype = null;
+    expect($this->delegator->doctype)
+        ->toBe($this->document->doctype);
 
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage(
-            'Property nonExistentProperty does not exist on Dom\HTMLDocument. However you can implement it on Html\Delegator\HTMLDocumentDelegator'
-        );
-        $this->delegator->nonExistentProperty;
-    }
+    $body = $this->delegator->createElement('body');
+    $this->delegator->body = $body;
 
-    /**
-     * test setting public properties, non readonly
-     */
-    public function testSetSet(): void
-    {
-        $URL = 'http://example.com';
-        $this->delegator->URL = $URL;
-        $this->document->URL = $URL;
-        $this->assertEquals($this->document->URL, $URL);
-        $this->assertSame($this->document->URL, $this->delegator->URL);
+    $body = $this->document->createElement('body');
+    $this->document->body = $body;
+    expect($this->delegator->body)
+        ->toBe($this->document->body);
 
+    $this->document->title = 'Test title';
+    $this->delegator->title = 'Test title';
+    expect($this->delegator->title)
+        ->toBe($this->document->title);
+    expect('Test title')
+        ->toBe($this->document->title);
+    expect('Test title')
+        ->toBe($this->delegator->title);
 
-        // string $documentURI
-        $this->delegator->documentURI = 'http://example.com/document';
-        $this->document->documentURI = 'http://example.com/document';
-        $this->assertSame($this->document->documentURI, $this->delegator->documentURI);
+    $this->document->body->nodeValue = 'Test body';
+    $this->delegator->body->nodeValue = 'Test body';
+    expect($this->delegator->body->nodeValue)
+        ->toBe($this->document->body->nodeValue);
+    expect('Test body')
+        ->toBe($this->document->body->nodeValue);
+    expect('Test body')
+        ->toBe($this->delegator->body->nodeValue);
 
-        // string $characterSet
-        $this->delegator->characterSet = 'UTF-8';
-        $this->document->characterSet = 'UTF-8';
-        $this->assertSame('UTF-8', $this->delegator->characterSet);
-        $this->assertSame($this->document->characterSet, $this->delegator->characterSet);
+    // ?string $textContent
+    expect('Test body')
+        ->toBe($this->document->body->textContent);
+    expect('Test body')
+        ->toBe($this->delegator->body->textContent);
+    $this->document->body->textContent = 'Test body text content';
+    $this->delegator->body->textContent = 'Test body text content';
+    expect($this->delegator->body->textContent)
+        ->toBe($this->document->body->textContent);
+    expect('Test body text content')
+        ->toBe($this->document->body->textContent);
+    expect('Test body text content')
+        ->toBe($this->delegator->body->textContent);
+});
 
-        // string $charset
-        $this->delegator->charset = 'UTF-8';
-        $this->document->charset = 'UTF-8';
-        $this->assertSame('UTF-8', $this->delegator->charset);
-        $this->assertSame($this->document->charset, $this->delegator->charset);
+test('set inexistent property', function () {
+    $this->expectException(InvalidArgumentException::class);
+    $this->expectExceptionMessage(
+        'Property nonExistentProperty does not exist on Dom\HTMLDocument. However you can implement it on Html\Delegator\HTMLDocumentDelegator'
+    );
+    $this->delegator->nonExistentProperty = 'value';
+});
 
-        // string $inputEncoding
-        $this->delegator->inputEncoding = 'UTF-8';
-        $this->document->inputEncoding = 'UTF-8';
-        $this->assertSame('UTF-8', $this->delegator->inputEncoding);
-        $this->assertSame($this->document->inputEncoding, $this->delegator->inputEncoding);
+test('to string', function () {
+    $body = $this->delegator->createElement('body');
+    $this->delegator->appendChild($body);
+    expect((string) $this->delegator)
+        ->toEqual('<body></body>');
 
-        // ?\DOM\DocumentType $doctype
-        $this->expectException(Error::class);
-        $this->expectExceptionMessage('annot modify readonly property Dom\HTMLDocument::$doctype');
-        $this->delegator->doctype = null;
-        $this->document->doctype = null;
-        $this->assertSame($this->document->doctype, $this->delegator->doctype);
+    $this->expectException(Error::class);
+    $this->expectExceptionMessage('Object of class Dom\HTMLDocument could not be converted to string');
+    $body = $this->document->createElement('body');
+    $this->document->appendChild($body);
+    expect((string) $this->document)
+        ->toEqual('<body></body>');
 
-        $body = $this->delegator->createElement('body');
-        $this->delegator->body = $body;
+    $this->delegator = HTMLDocumentDelegator::createFromString($this->document->saveHtml());
+    expect((string) $this->delegator)
+        ->toEqual((string) $this->document);
+});
 
-        $body = $this->document->createElement('body');
-        $this->document->body = $body;
-        $this->assertSame($this->document->body, $this->delegator->body);
+test('create', function () {
+    $body = Body::create($this->delegator);
+    expect($body)
+        ->toBeInstanceOf(HTMLElementDelegator::class);
+    expect($body->htmlElement)
+        ->toBeInstanceOf(HtmlElement::class);
+});
 
-        $this->document->title = 'Test title';
-        $this->delegator->title = 'Test title';
-        $this->assertSame($this->document->title, $this->delegator->title);
-        $this->assertSame($this->document->title, 'Test title');
-        $this->assertSame($this->delegator->title, 'Test title');
+test('is unique per parent', function () {
+    $element = Body::create($this->delegator);
 
-        $this->document->body->nodeValue = 'Test body';
-        $this->delegator->body->nodeValue = 'Test body';
-        $this->assertSame($this->document->body->nodeValue, $this->delegator->body->nodeValue);
-        $this->assertSame($this->document->body->nodeValue, 'Test body');
-        $this->assertSame($this->delegator->body->nodeValue, 'Test body');
+    // $element = $this->delegator->createElement('body');
+    expect($element::isUniquePerParent())->toBeTrue();
+});
 
-        // ?string $textContent
-        $this->assertSame($this->document->body->textContent, 'Test body');
-        $this->assertSame($this->delegator->body->textContent, 'Test body');
-        $this->document->body->textContent = 'Test body text content';
-        $this->delegator->body->textContent = 'Test body text content';
-        $this->assertSame($this->document->body->textContent, $this->delegator->body->textContent);
-        $this->assertSame($this->document->body->textContent, 'Test body text content');
-        $this->assertSame($this->delegator->body->textContent, 'Test body text content');
-    }
+test('is unique', function () {
+    $element = Body::create($this->delegator);
 
-    public function testSetInexistentProperty(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage(
-            'Property nonExistentProperty does not exist on Dom\HTMLDocument. However you can implement it on Html\Delegator\HTMLDocumentDelegator'
-        );
-        $this->delegator->nonExistentProperty = 'value';
-    }
+    // $element = $this->delegator->createElement('body');
+    // var_dump(\get_class_vars(get_class($body)));
+    expect($element::isUnique())->toBeTrue();
+});
 
-    public function testToString(): void
-    {
-        $body = $this->delegator->createElement('body');
-        $this->delegator->appendChild($body);
-        $this->assertEquals('<body></body>', (string) $this->delegator);
+test('is self closing', function () {
+    // In this class, SELF_CLOSING might not be defined, so adjust as needed
+    // Example assumes it's been defined somewhere
+    $this->expectException(Error::class);
+    // or comment out if the constant is set in a subclass
+    $this->expectExceptionMessage('Undefined constant Html\Delegator\HTMLElementDelegator::SELF_CLOSING');
+    $element = $this->delegator->createElement('div');
+    expect($element::isSelfClosing())->toBeFalse();
 
-        $this->expectException(Error::class);
-        $this->expectExceptionMessage('Object of class Dom\HTMLDocument could not be converted to string');
-        $body = $this->document->createElement('body');
-        $this->document->appendChild($body);
-        $this->assertEquals('<body></body>', (string) $this->document);
+    $element = $this->delegator->createElement('br');
+    expect($element::isSelfClosing())->toBeTrue();
+});
 
-        $this->delegator = HTMLDocumentDelegator::createFromString($this->document->saveHtml());
-        $this->assertEquals((string) $this->document, (string) $this->delegator);
-    }
+test('get qualified name', function () {
+    $element = $this->delegator->createElement('br');
 
-    public function testCreate(): void
-    {
-        $body = Body::create($this->delegator);
-        $this->assertInstanceOf(HTMLElementDelegator::class, $body);
-        $this->assertInstanceOf(HtmlElement::class, $body->htmlElement);
-    }
+    // $this->expectError(); // or remove if QUALIFIED_NAME is defined in a subclass
+    $this->expectException(Error::class);
+    $this->expectExceptionMessage('Undefined constant Html\Delegator\HTMLElementDelegator::QUALIFIED_NAME');
+    expect($element::getQualifiedName())->toEqual('br');
+});
 
-    public function testIsUniquePerParent(): void
-    {
-        $element = Body::create($this->delegator);
-        // $element = $this->delegator->createElement('body');
-        $this->assertTrue($element::isUniquePerParent());
-    }
+test('child of', function () {
+    $element = TableData::create($this->delegator);
 
-    public function testIsUnique(): void
-    {
-        $element = Body::create($this->delegator);
-        // $element = $this->delegator->createElement('body');
-        // var_dump(\get_class_vars(get_class($body)));
-        $this->assertTrue($element::isUnique());
-    }
+    // $element = $this->delegator->createElement('td');
+    expect($element::childOf())->toBeArray();
+    expect($element::childOf())->toContain(TableRow::class);
+});
 
-    public function testIsSelfClosing(): void
-    {
-        // In this class, SELF_CLOSING might not be defined, so adjust as needed
-        // Example assumes it's been defined somewhere
-        $this->expectException(Error::class); // or comment out if the constant is set in a subclass
-        $this->expectExceptionMessage('Undefined constant Html\Delegator\HTMLElementDelegator::SELF_CLOSING');
-        $element = $this->delegator->createElement('div');
-        $this->assertFalse($element::isSelfClosing());
+test('parent of', function () {
+    $element = $this->delegator->createElement('td');
+    expect($element::parentOf())->toBeArray();
+    expect($element::parentOf())->toBeEmpty();
+});
 
-        $element = $this->delegator->createElement('br');
-        $this->assertTrue($element::isSelfClosing());
-    }
+test('create empty', function () {
+    expect(HTMLDocumentDelegator::createEmpty())->toBeInstanceOf(HTMLDocumentDelegator::class);
+});
 
-    public function testGetQualifiedName(): void
-    {
-        $element = $this->delegator->createElement('br');
-        // $this->expectError(); // or remove if QUALIFIED_NAME is defined in a subclass
-        $this->expectException(Error::class);
-        $this->expectExceptionMessage('Undefined constant Html\Delegator\HTMLElementDelegator::QUALIFIED_NAME');
-        $this->assertEquals('br', $element::getQualifiedName());
-    }
+test('create from string', function () {
+    $html = '<!DOCTYPE html><html><head><title>Test</title></head><body></body></html>';
+    $delegator = HTMLDocumentDelegator::createFromString($html);
+    expect($delegator)
+        ->toBeInstanceOf(HTMLDocumentDelegator::class);
+    expect($delegator->saveHtml())
+        ->toEqual($html);
+});
 
-    public function testChildOf(): void
-    {
-        $element = TableData::create($this->delegator);
-        // $element = $this->delegator->createElement('td');
-        $this->assertIsArray($element::childOf());
-        $this->assertContains(TableRow::class, $element::childOf());
-    }
+test('create from invalid file', function () {
+    expect(file_exists('invalid-file.html'))
+        ->toBeFalse();
+    $this->expectException(Exception::class);
+    $this->expectExceptionMessage("Cannot open file 'invalid-file.html'");
+    HTMLDocumentDelegator::createFromFile('invalid-file.html');
+});
 
-    public function testParentOf(): void
-    {
-        $element = $this->delegator->createElement('td');
-        $this->assertIsArray($element::parentOf());
-        $this->assertEmpty($element::parentOf());
-    }
-
-    public function testCreateEmpty(): void
-    {
-        $this->assertInstanceOf(HTMLDocumentDelegator::class, HTMLDocumentDelegator::createEmpty());
-    }
-
-    public function testCreateFromString(): void
-    {
-        $html = '<!DOCTYPE html><html><head><title>Test</title></head><body></body></html>';
-        $delegator = HTMLDocumentDelegator::createFromString($html);
-        $this->assertInstanceOf(HTMLDocumentDelegator::class, $delegator);
-        $this->assertEquals($html, $delegator->saveHtml());
-    }
-
-    public function testCreateFromInvalidFile(): void
-    {
-        $this->assertFalse(file_exists('invalid-file.html'));
-        $this->expectException(Exception::class);
-        $this->expectExceptionMessage("Cannot open file 'invalid-file.html'");
-        HTMLDocumentDelegator::createFromFile('invalid-file.html');
-    }
-
-    public function testGetElementsByTagName(): void
-    {
-        $html = '<!DOCTYPE html><html><head><title>Test</title></head><body><div><p>Test</p></div></body></html>';
-        $delegator = HTMLDocumentDelegator::createFromString($html);
-        $this->assertInstanceOf(DOMNodeListDelegator::class, $delegator->getElementsByTagName('div'));
-        $this->assertEquals(1, $delegator->getElementsByTagName('div')->count());
-        $this->assertEquals(1, $delegator->getElementsByTagName('p')->count());
-        $this->assertEquals(0, $delegator->getElementsByTagName('span')->count());
-    }
-}
+test('get elements by tag name', function () {
+    $html = '<!DOCTYPE html><html><head><title>Test</title></head><body><div><p>Test</p></div></body></html>';
+    $delegator = HTMLDocumentDelegator::createFromString($html);
+    expect($delegator->getElementsByTagName('div'))
+        ->toBeInstanceOf(DOMNodeListDelegator::class);
+    expect($delegator->getElementsByTagName('div')->count())
+        ->toEqual(1);
+    expect($delegator->getElementsByTagName('p')->count())->toEqual(1);
+    expect($delegator->getElementsByTagName('span')->count())->toEqual(0);
+});

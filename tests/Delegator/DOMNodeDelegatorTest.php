@@ -1,92 +1,75 @@
 <?php
 
-namespace Tests\Delegator;
-
-use BadMethodCallException;
 use DOM\Node;
-use DOMNode;
 use Html\Delegator\DOMNodeDelegator;
 use Html\Delegator\HTMLDocumentDelegator;
-use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
 
-final class DOMNodeDelegatorTest extends TestCase
-{
-    private HTMLDocumentDelegator $document;
+beforeEach(function () {
+    $this->document = HTMLDocumentDelegator::createEmpty();
+    $node = $this->document->createTextNode('test');
+    $this->domNode = $node;
+    $this->delegator = new DOMNodeDelegator($node);
+});
 
-    private DOMNodeDelegator $delegator;
+test('constructor', function () {
+    expect($this->delegator)->toBeInstanceOf(DOMNodeDelegator::class);
+    expect($this->delegator->domNode)
+        ->toBeInstanceOf(Node::class);
+});
 
-    private Node $domNode;
+test('call', function () {
+    $clone = $this->delegator->cloneNode();
+    expect($this->delegator->domNode)
+        ->toEqual($clone);
+    // $this->assertEquals($clone, $this->delegator->domNode);
+});
 
-    protected function setUp(): void
-    {
-        $this->document = HTMLDocumentDelegator::createEmpty();
-        $node = $this->document->createTextNode('test');
-        $this->domNode = $node;
-        $this->delegator = new DOMNodeDelegator($node);
-    }
+test('get', function () {
+    $this->delegator->nodeValue = 'custom node value';
+    expect($this->delegator->nodeValue)
+        ->toEqual('custom node value');
+    expect($this->delegator->domNode->nodeValue)
+        ->toEqual('custom node value');
+});
 
-    public function testConstructor(): void
-    {
-        $this->assertInstanceOf(DOMNodeDelegator::class, $this->delegator);
-        $this->assertInstanceOf(Node::class, $this->delegator->domNode);
-    }
+test('set', function () {
+    $this->delegator->nodeValue = 'test';
+    expect($this->delegator->nodeValue)
+        ->toEqual('test');
+    expect($this->delegator->domNode->nodeValue)
+        ->toEqual('test');
+});
 
-    public function testCall(): void
-    {
-        $clone = $this->delegator->cloneNode();
-        $this->assertEquals($clone, $this->delegator->domNode);
-        // $this->assertEquals($clone, $this->delegator->domNode);
-    }
+test('get dom node', function () {
+    expect($this->delegator->getDomNode())
+        ->toBe($this->delegator->domNode);
+});
 
-    public function testGet(): void
-    {
-        $this->delegator->nodeValue = 'custom node value';
-        $this->assertEquals('custom node value', $this->delegator->nodeValue);
-        $this->assertEquals('custom node value', $this->delegator->domNode->nodeValue);
-    }
+test('call invalid method', function () {
+    $this->expectException(BadMethodCallException::class);
+    $this->delegator->nonExistentMethod();
+});
 
-    public function testSet(): void
-    {
-        $this->delegator->nodeValue = 'test';
-        $this->assertEquals('test', $this->delegator->nodeValue);
-        $this->assertEquals('test', $this->delegator->domNode->nodeValue);
-    }
+test('get invalid property', function () {
+    $this->expectException(InvalidArgumentException::class);
+    $this->delegator->nonExistentProperty;
+});
 
-    public function testGetDomNode(): void
-    {
-        $this->assertSame($this->delegator->domNode, $this->delegator->getDomNode());
-    }
+test('set invalid property', function () {
+    $this->expectException(InvalidArgumentException::class);
+    $this->delegator->nonExistentProperty = 'value';
+});
 
-    public function testCallInvalidMethod(): void
-    {
-        $this->expectException(BadMethodCallException::class);
-        $this->delegator->nonExistentMethod();
-    }
+test('call with htmlelement delegator argument', function () {
+    // Create an HTMLElementDelegator instance
+    $anchor = $this->document->createElement('a');
+    $anchor->htmlElement->setAttribute('href', 'https://example.com');
 
-    public function testGetInvalidProperty(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->delegator->nonExistentProperty;
-    }
+    $other = $this->document->createTextNode('I\'m a node, too');
+    $anchor->appendChild($other);
 
-    public function testSetInvalidProperty(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->delegator->nonExistentProperty = 'value';
-    }
-
-    public function testCallWithHTMLElementDelegatorArgument(): void
-    {
-        // Create an HTMLElementDelegator instance
-        $anchor = $this->document->createElement('a');
-        $anchor->htmlElement->setAttribute('href', 'https://example.com');
-
-        $other = $this->document->createTextNode('I\'m a node, too');
-        $anchor->appendChild($other);
-
-        // $this->assertEquals(1, $anchor->childNodes->length);
-        // $this->assertEquals('I\'m a node, too', $anchor->childNodes->item(0)->nodeValue);
-        $this->assertTrue($anchor->contains($other));
-    }
-}
+    // $this->assertEquals(1, $anchor->childNodes->length);
+    // $this->assertEquals('I\'m a node, too', $anchor->childNodes->item(0)->nodeValue);
+    expect($anchor->contains($other))
+        ->toBeTrue();
+});
