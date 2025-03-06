@@ -11,7 +11,7 @@ It adds additional functionality and a stronger focus on HTML5 while being fully
 
 ## TL;DR
 
-This library adds the HTML5 specification to PHP and is DOM\HTMLDocument compatible, so that a `Anchor()` object can be appended to any DOM\Document.
+This library adds the HTML5 specification to PHP and is fully compatible with `DOM\HTMLDocument`. You can create an `Anchor()` object and append it to any DOM\Document.
 
 ```php
 $dom = HTMLDocumentDelegator::createEmpty()
