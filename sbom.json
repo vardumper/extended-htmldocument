@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:f702c897-cdbb-4882-b498-0fe9a9d50a92",
+  "serialNumber": "urn:uuid:4c376905-9998-44bb-a98f-5bc19f088532",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-03-07T00:44:03+00:00",
+    "timestamp": "2025-03-07T01:40:34+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "67be5322-8f71-43fd-9c95-52bbfa3a7cdc",
+      "bom-ref": "0062c5da-baf5-4bf5-8ef4-9fe35a7be59c",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,7 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "e197148c-36d7-42ec-9630-ddb1890a899d",
+      "bom-ref": "d6cf5510-a23e-405a-8376-ef2d35761c15",
       "type": "application",
       "name": "yarn.lock",
       "properties": [
@@ -117,16 +117,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/client-abtesting@5.20.3",
+      "bom-ref": "pkg:npm/%40algolia/client-abtesting@5.20.4",
       "type": "library",
       "group": "@algolia",
       "name": "client-abtesting",
-      "version": "5.20.3",
-      "purl": "pkg:npm/%40algolia/client-abtesting@5.20.3",
+      "version": "5.20.4",
+      "purl": "pkg:npm/%40algolia/client-abtesting@5.20.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/client-abtesting@5.20.3"
+          "value": "@algolia/client-abtesting@5.20.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -135,16 +135,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/client-analytics@5.20.3",
+      "bom-ref": "pkg:npm/%40algolia/client-analytics@5.20.4",
       "type": "library",
       "group": "@algolia",
       "name": "client-analytics",
-      "version": "5.20.3",
-      "purl": "pkg:npm/%40algolia/client-analytics@5.20.3",
+      "version": "5.20.4",
+      "purl": "pkg:npm/%40algolia/client-analytics@5.20.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/client-analytics@5.20.3"
+          "value": "@algolia/client-analytics@5.20.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -153,16 +153,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/client-common@5.20.3",
+      "bom-ref": "pkg:npm/%40algolia/client-common@5.20.4",
       "type": "library",
       "group": "@algolia",
       "name": "client-common",
-      "version": "5.20.3",
-      "purl": "pkg:npm/%40algolia/client-common@5.20.3",
+      "version": "5.20.4",
+      "purl": "pkg:npm/%40algolia/client-common@5.20.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/client-common@5.20.3"
+          "value": "@algolia/client-common@5.20.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -171,16 +171,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/client-insights@5.20.3",
+      "bom-ref": "pkg:npm/%40algolia/client-insights@5.20.4",
       "type": "library",
       "group": "@algolia",
       "name": "client-insights",
-      "version": "5.20.3",
-      "purl": "pkg:npm/%40algolia/client-insights@5.20.3",
+      "version": "5.20.4",
+      "purl": "pkg:npm/%40algolia/client-insights@5.20.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/client-insights@5.20.3"
+          "value": "@algolia/client-insights@5.20.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -189,16 +189,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/client-personalization@5.20.3",
+      "bom-ref": "pkg:npm/%40algolia/client-personalization@5.20.4",
       "type": "library",
       "group": "@algolia",
       "name": "client-personalization",
-      "version": "5.20.3",
-      "purl": "pkg:npm/%40algolia/client-personalization@5.20.3",
+      "version": "5.20.4",
+      "purl": "pkg:npm/%40algolia/client-personalization@5.20.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/client-personalization@5.20.3"
+          "value": "@algolia/client-personalization@5.20.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -207,16 +207,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/client-query-suggestions@5.20.3",
+      "bom-ref": "pkg:npm/%40algolia/client-query-suggestions@5.20.4",
       "type": "library",
       "group": "@algolia",
       "name": "client-query-suggestions",
-      "version": "5.20.3",
-      "purl": "pkg:npm/%40algolia/client-query-suggestions@5.20.3",
+      "version": "5.20.4",
+      "purl": "pkg:npm/%40algolia/client-query-suggestions@5.20.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/client-query-suggestions@5.20.3"
+          "value": "@algolia/client-query-suggestions@5.20.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -225,16 +225,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/client-search@5.20.3",
+      "bom-ref": "pkg:npm/%40algolia/client-search@5.20.4",
       "type": "library",
       "group": "@algolia",
       "name": "client-search",
-      "version": "5.20.3",
-      "purl": "pkg:npm/%40algolia/client-search@5.20.3",
+      "version": "5.20.4",
+      "purl": "pkg:npm/%40algolia/client-search@5.20.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/client-search@5.20.3"
+          "value": "@algolia/client-search@5.20.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -243,16 +243,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/ingestion@1.20.3",
+      "bom-ref": "pkg:npm/%40algolia/ingestion@1.20.4",
       "type": "library",
       "group": "@algolia",
       "name": "ingestion",
-      "version": "1.20.3",
-      "purl": "pkg:npm/%40algolia/ingestion@1.20.3",
+      "version": "1.20.4",
+      "purl": "pkg:npm/%40algolia/ingestion@1.20.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/ingestion@1.20.3"
+          "value": "@algolia/ingestion@1.20.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -261,16 +261,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/monitoring@1.20.3",
+      "bom-ref": "pkg:npm/%40algolia/monitoring@1.20.4",
       "type": "library",
       "group": "@algolia",
       "name": "monitoring",
-      "version": "1.20.3",
-      "purl": "pkg:npm/%40algolia/monitoring@1.20.3",
+      "version": "1.20.4",
+      "purl": "pkg:npm/%40algolia/monitoring@1.20.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/monitoring@1.20.3"
+          "value": "@algolia/monitoring@1.20.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -279,16 +279,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/recommend@5.20.3",
+      "bom-ref": "pkg:npm/%40algolia/recommend@5.20.4",
       "type": "library",
       "group": "@algolia",
       "name": "recommend",
-      "version": "5.20.3",
-      "purl": "pkg:npm/%40algolia/recommend@5.20.3",
+      "version": "5.20.4",
+      "purl": "pkg:npm/%40algolia/recommend@5.20.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/recommend@5.20.3"
+          "value": "@algolia/recommend@5.20.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -297,16 +297,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/requester-browser-xhr@5.20.3",
+      "bom-ref": "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
       "type": "library",
       "group": "@algolia",
       "name": "requester-browser-xhr",
-      "version": "5.20.3",
-      "purl": "pkg:npm/%40algolia/requester-browser-xhr@5.20.3",
+      "version": "5.20.4",
+      "purl": "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/requester-browser-xhr@5.20.3"
+          "value": "@algolia/requester-browser-xhr@5.20.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -315,16 +315,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/requester-fetch@5.20.3",
+      "bom-ref": "pkg:npm/%40algolia/requester-fetch@5.20.4",
       "type": "library",
       "group": "@algolia",
       "name": "requester-fetch",
-      "version": "5.20.3",
-      "purl": "pkg:npm/%40algolia/requester-fetch@5.20.3",
+      "version": "5.20.4",
+      "purl": "pkg:npm/%40algolia/requester-fetch@5.20.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/requester-fetch@5.20.3"
+          "value": "@algolia/requester-fetch@5.20.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -333,16 +333,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/requester-node-http@5.20.3",
+      "bom-ref": "pkg:npm/%40algolia/requester-node-http@5.20.4",
       "type": "library",
       "group": "@algolia",
       "name": "requester-node-http",
-      "version": "5.20.3",
-      "purl": "pkg:npm/%40algolia/requester-node-http@5.20.3",
+      "version": "5.20.4",
+      "purl": "pkg:npm/%40algolia/requester-node-http@5.20.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/requester-node-http@5.20.3"
+          "value": "@algolia/requester-node-http@5.20.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -801,16 +801,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40types/web-bluetooth@0.0.20",
+      "bom-ref": "pkg:npm/%40types/web-bluetooth@0.0.21",
       "type": "library",
       "group": "@types",
       "name": "web-bluetooth",
-      "version": "0.0.20",
-      "purl": "pkg:npm/%40types/web-bluetooth@0.0.20",
+      "version": "0.0.21",
+      "purl": "pkg:npm/%40types/web-bluetooth@0.0.21",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@types/web-bluetooth@0.0.20"
+          "value": "@types/web-bluetooth@0.0.21"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1071,16 +1071,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vueuse/core@12.7.0",
+      "bom-ref": "pkg:npm/%40vueuse/core@12.8.2",
       "type": "library",
       "group": "@vueuse",
       "name": "core",
-      "version": "12.7.0",
-      "purl": "pkg:npm/%40vueuse/core@12.7.0",
+      "version": "12.8.2",
+      "purl": "pkg:npm/%40vueuse/core@12.8.2",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vueuse/core@12.7.0"
+          "value": "@vueuse/core@12.8.2"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1089,16 +1089,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vueuse/integrations@12.7.0",
+      "bom-ref": "pkg:npm/%40vueuse/integrations@12.8.2",
       "type": "library",
       "group": "@vueuse",
       "name": "integrations",
-      "version": "12.7.0",
-      "purl": "pkg:npm/%40vueuse/integrations@12.7.0",
+      "version": "12.8.2",
+      "purl": "pkg:npm/%40vueuse/integrations@12.8.2",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vueuse/integrations@12.7.0"
+          "value": "@vueuse/integrations@12.8.2"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1107,16 +1107,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vueuse/metadata@12.7.0",
+      "bom-ref": "pkg:npm/%40vueuse/metadata@12.8.2",
       "type": "library",
       "group": "@vueuse",
       "name": "metadata",
-      "version": "12.7.0",
-      "purl": "pkg:npm/%40vueuse/metadata@12.7.0",
+      "version": "12.8.2",
+      "purl": "pkg:npm/%40vueuse/metadata@12.8.2",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vueuse/metadata@12.7.0"
+          "value": "@vueuse/metadata@12.8.2"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1125,16 +1125,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vueuse/shared@12.7.0",
+      "bom-ref": "pkg:npm/%40vueuse/shared@12.8.2",
       "type": "library",
       "group": "@vueuse",
       "name": "shared",
-      "version": "12.7.0",
-      "purl": "pkg:npm/%40vueuse/shared@12.7.0",
+      "version": "12.8.2",
+      "purl": "pkg:npm/%40vueuse/shared@12.8.2",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vueuse/shared@12.7.0"
+          "value": "@vueuse/shared@12.8.2"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1143,15 +1143,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/algoliasearch@5.20.3",
+      "bom-ref": "pkg:npm/algoliasearch@5.20.4",
       "type": "library",
       "name": "algoliasearch",
-      "version": "5.20.3",
-      "purl": "pkg:npm/algoliasearch@5.20.3",
+      "version": "5.20.4",
+      "purl": "pkg:npm/algoliasearch@5.20.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "algoliasearch@5.20.3"
+          "value": "algoliasearch@5.20.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2182,13 +2182,13 @@
   ],
   "dependencies": [
     {
-      "ref": "67be5322-8f71-43fd-9c95-52bbfa3a7cdc",
+      "ref": "0062c5da-baf5-4bf5-8ef4-9fe35a7be59c",
       "dependsOn": [
-        "e197148c-36d7-42ec-9630-ddb1890a899d"
+        "d6cf5510-a23e-405a-8376-ef2d35761c15"
       ]
     },
     {
-      "ref": "e197148c-36d7-42ec-9630-ddb1890a899d",
+      "ref": "d6cf5510-a23e-405a-8376-ef2d35761c15",
       "dependsOn": [
         "pkg:npm/vitepress@1.6.3"
       ]
@@ -2217,106 +2217,106 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40algolia/client-abtesting@5.20.3",
+      "ref": "pkg:npm/%40algolia/client-abtesting@5.20.4",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.3",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.3",
-        "pkg:npm/%40algolia/requester-fetch@5.20.3",
-        "pkg:npm/%40algolia/requester-node-http@5.20.3"
+        "pkg:npm/%40algolia/client-common@5.20.4",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
+        "pkg:npm/%40algolia/requester-fetch@5.20.4",
+        "pkg:npm/%40algolia/requester-node-http@5.20.4"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/client-analytics@5.20.3",
+      "ref": "pkg:npm/%40algolia/client-analytics@5.20.4",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.3",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.3",
-        "pkg:npm/%40algolia/requester-fetch@5.20.3",
-        "pkg:npm/%40algolia/requester-node-http@5.20.3"
+        "pkg:npm/%40algolia/client-common@5.20.4",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
+        "pkg:npm/%40algolia/requester-fetch@5.20.4",
+        "pkg:npm/%40algolia/requester-node-http@5.20.4"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/client-common@5.20.3",
+      "ref": "pkg:npm/%40algolia/client-common@5.20.4",
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40algolia/client-insights@5.20.3",
+      "ref": "pkg:npm/%40algolia/client-insights@5.20.4",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.3",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.3",
-        "pkg:npm/%40algolia/requester-fetch@5.20.3",
-        "pkg:npm/%40algolia/requester-node-http@5.20.3"
+        "pkg:npm/%40algolia/client-common@5.20.4",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
+        "pkg:npm/%40algolia/requester-fetch@5.20.4",
+        "pkg:npm/%40algolia/requester-node-http@5.20.4"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/client-personalization@5.20.3",
+      "ref": "pkg:npm/%40algolia/client-personalization@5.20.4",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.3",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.3",
-        "pkg:npm/%40algolia/requester-fetch@5.20.3",
-        "pkg:npm/%40algolia/requester-node-http@5.20.3"
+        "pkg:npm/%40algolia/client-common@5.20.4",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
+        "pkg:npm/%40algolia/requester-fetch@5.20.4",
+        "pkg:npm/%40algolia/requester-node-http@5.20.4"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/client-query-suggestions@5.20.3",
+      "ref": "pkg:npm/%40algolia/client-query-suggestions@5.20.4",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.3",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.3",
-        "pkg:npm/%40algolia/requester-fetch@5.20.3",
-        "pkg:npm/%40algolia/requester-node-http@5.20.3"
+        "pkg:npm/%40algolia/client-common@5.20.4",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
+        "pkg:npm/%40algolia/requester-fetch@5.20.4",
+        "pkg:npm/%40algolia/requester-node-http@5.20.4"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/client-search@5.20.3",
+      "ref": "pkg:npm/%40algolia/client-search@5.20.4",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.3",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.3",
-        "pkg:npm/%40algolia/requester-fetch@5.20.3",
-        "pkg:npm/%40algolia/requester-node-http@5.20.3"
+        "pkg:npm/%40algolia/client-common@5.20.4",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
+        "pkg:npm/%40algolia/requester-fetch@5.20.4",
+        "pkg:npm/%40algolia/requester-node-http@5.20.4"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/ingestion@1.20.3",
+      "ref": "pkg:npm/%40algolia/ingestion@1.20.4",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.3",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.3",
-        "pkg:npm/%40algolia/requester-fetch@5.20.3",
-        "pkg:npm/%40algolia/requester-node-http@5.20.3"
+        "pkg:npm/%40algolia/client-common@5.20.4",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
+        "pkg:npm/%40algolia/requester-fetch@5.20.4",
+        "pkg:npm/%40algolia/requester-node-http@5.20.4"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/monitoring@1.20.3",
+      "ref": "pkg:npm/%40algolia/monitoring@1.20.4",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.3",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.3",
-        "pkg:npm/%40algolia/requester-fetch@5.20.3",
-        "pkg:npm/%40algolia/requester-node-http@5.20.3"
+        "pkg:npm/%40algolia/client-common@5.20.4",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
+        "pkg:npm/%40algolia/requester-fetch@5.20.4",
+        "pkg:npm/%40algolia/requester-node-http@5.20.4"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/recommend@5.20.3",
+      "ref": "pkg:npm/%40algolia/recommend@5.20.4",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.3",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.3",
-        "pkg:npm/%40algolia/requester-fetch@5.20.3",
-        "pkg:npm/%40algolia/requester-node-http@5.20.3"
+        "pkg:npm/%40algolia/client-common@5.20.4",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
+        "pkg:npm/%40algolia/requester-fetch@5.20.4",
+        "pkg:npm/%40algolia/requester-node-http@5.20.4"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/requester-browser-xhr@5.20.3",
+      "ref": "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.3"
+        "pkg:npm/%40algolia/client-common@5.20.4"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/requester-fetch@5.20.3",
+      "ref": "pkg:npm/%40algolia/requester-fetch@5.20.4",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.3"
+        "pkg:npm/%40algolia/client-common@5.20.4"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/requester-node-http@5.20.3",
+      "ref": "pkg:npm/%40algolia/requester-node-http@5.20.4",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.3"
+        "pkg:npm/%40algolia/client-common@5.20.4"
       ]
     },
     {
@@ -2357,7 +2357,7 @@
         "pkg:npm/%40algolia/autocomplete-core@1.17.7",
         "pkg:npm/%40algolia/autocomplete-preset-algolia@1.17.7",
         "pkg:npm/%40docsearch/css@3.8.2",
-        "pkg:npm/algoliasearch@5.20.3"
+        "pkg:npm/algoliasearch@5.20.4"
       ]
     },
     {
@@ -2466,7 +2466,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40types/web-bluetooth@0.0.20",
+      "ref": "pkg:npm/%40types/web-bluetooth@0.0.21",
       "dependsOn": []
     },
     {
@@ -2573,48 +2573,48 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40vueuse/core@12.7.0",
+      "ref": "pkg:npm/%40vueuse/core@12.8.2",
       "dependsOn": [
-        "pkg:npm/%40types/web-bluetooth@0.0.20",
-        "pkg:npm/%40vueuse/metadata@12.7.0",
-        "pkg:npm/%40vueuse/shared@12.7.0",
+        "pkg:npm/%40types/web-bluetooth@0.0.21",
+        "pkg:npm/%40vueuse/metadata@12.8.2",
+        "pkg:npm/%40vueuse/shared@12.8.2",
         "pkg:npm/vue@3.5.13"
       ]
     },
     {
-      "ref": "pkg:npm/%40vueuse/integrations@12.7.0",
+      "ref": "pkg:npm/%40vueuse/integrations@12.8.2",
       "dependsOn": [
-        "pkg:npm/%40vueuse/core@12.7.0",
-        "pkg:npm/%40vueuse/shared@12.7.0",
+        "pkg:npm/%40vueuse/core@12.8.2",
+        "pkg:npm/%40vueuse/shared@12.8.2",
         "pkg:npm/vue@3.5.13"
       ]
     },
     {
-      "ref": "pkg:npm/%40vueuse/metadata@12.7.0",
+      "ref": "pkg:npm/%40vueuse/metadata@12.8.2",
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40vueuse/shared@12.7.0",
+      "ref": "pkg:npm/%40vueuse/shared@12.8.2",
       "dependsOn": [
         "pkg:npm/vue@3.5.13"
       ]
     },
     {
-      "ref": "pkg:npm/algoliasearch@5.20.3",
+      "ref": "pkg:npm/algoliasearch@5.20.4",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-abtesting@5.20.3",
-        "pkg:npm/%40algolia/client-analytics@5.20.3",
-        "pkg:npm/%40algolia/client-common@5.20.3",
-        "pkg:npm/%40algolia/client-insights@5.20.3",
-        "pkg:npm/%40algolia/client-personalization@5.20.3",
-        "pkg:npm/%40algolia/client-query-suggestions@5.20.3",
-        "pkg:npm/%40algolia/client-search@5.20.3",
-        "pkg:npm/%40algolia/ingestion@1.20.3",
-        "pkg:npm/%40algolia/monitoring@1.20.3",
-        "pkg:npm/%40algolia/recommend@5.20.3",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.3",
-        "pkg:npm/%40algolia/requester-fetch@5.20.3",
-        "pkg:npm/%40algolia/requester-node-http@5.20.3"
+        "pkg:npm/%40algolia/client-abtesting@5.20.4",
+        "pkg:npm/%40algolia/client-analytics@5.20.4",
+        "pkg:npm/%40algolia/client-common@5.20.4",
+        "pkg:npm/%40algolia/client-insights@5.20.4",
+        "pkg:npm/%40algolia/client-personalization@5.20.4",
+        "pkg:npm/%40algolia/client-query-suggestions@5.20.4",
+        "pkg:npm/%40algolia/client-search@5.20.4",
+        "pkg:npm/%40algolia/ingestion@1.20.4",
+        "pkg:npm/%40algolia/monitoring@1.20.4",
+        "pkg:npm/%40algolia/recommend@5.20.4",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
+        "pkg:npm/%40algolia/requester-fetch@5.20.4",
+        "pkg:npm/%40algolia/requester-node-http@5.20.4"
       ]
     },
     {
@@ -2948,8 +2948,8 @@
         "pkg:npm/%40vitejs/plugin-vue@5.2.1",
         "pkg:npm/%40vue/devtools-api@7.7.2",
         "pkg:npm/%40vue/shared@3.5.13",
-        "pkg:npm/%40vueuse/core@12.7.0",
-        "pkg:npm/%40vueuse/integrations@12.7.0",
+        "pkg:npm/%40vueuse/core@12.8.2",
+        "pkg:npm/%40vueuse/integrations@12.8.2",
         "pkg:npm/focus-trap@7.6.4",
         "pkg:npm/mark.js@8.11.1",
         "pkg:npm/minisearch@7.1.2",
