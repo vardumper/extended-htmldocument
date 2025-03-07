@@ -122,14 +122,17 @@ fi
 
 printf "${YELLOW}Pest${NC}\n"
 if $HAS_PEST; then
-  if $PEST --colors=always --coverage-clover=clover.xml --ci --no-output; then
+  PEST_OUTPUT=$($PEST --colors=always --coverage-clover=clover.xml --ci --no-output 2>&1)
+  if [ $? -eq 0 ]; then
     printf "${GREEN}Pest passed${NC}\n"
   else
     if [[ " ${protectedBranches[@]} " =~ " ${currentBranch} " ]] && [ "$allowFailuresInProtectedBranches" = false ]; then
+        printf "\n${PEST_OUTPUT}\n"
         printf "${RED}Committing to protected branch ${currentBranch} is not allowed with failures.${NC}\n"
         PASS=false
     fi
     if [[ ! " ${protectedBranches[@]} " =~ " ${currentBranch} " ]] && [ "$allowFailuresInOtherBranches" = false ]; then
+        printf "\n${PEST_OUTPUT}\n"
         printf "${RED}Committing to ${currentBranch} is not allowed.${NC}\n"
         PASS=false
     fi
