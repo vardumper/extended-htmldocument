@@ -1,209 +1,214 @@
 <?php
 
-namespace Tests\Traits;
-
 use Html\Delegator\HTMLDocumentDelegator;
-use Html\Delegator\HTMLElementDelegator;
 use Html\Enum\AutoCapitalizeEnum;
 use Html\Enum\ContentEditableEnum;
 use Html\Enum\DirectionEnum;
 use Html\Enum\SpellCheckEnum;
-use Html\Traits\GlobalAttributesTrait;
-use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
 
-class GlobalAttributesTraitTest extends TestCase
-{
-    use GlobalAttributesTrait;
+uses(\Html\Trait\GlobalAttributesTrait::class);
 
-    private HTMLDocumentDelegator $document;
+beforeEach(function () {
+    $this->document = HTMLDocumentDelegator::createEmpty();
+    $this->element = $this->document->createElement('div');
+});
 
-    private HTMLElementDelegator $element;
+test('set and get access key', function () {
+    $this->setAccessKey('a');
+    expect($this->getAccessKey())
+        ->toEqual('a');
+});
 
-    protected function setUp(): void
-    {
-        $this->document = HTMLDocumentDelegator::createEmpty();
-        $this->element = $this->document->createElement('div');
-    }
+test('set and get auto capitalize', function () {
+    // set as string
+    $this->element->setAutoCapitalize('words');
+    expect($this->element->getAutoCapitalize()->value)
+        ->toEqual('words');
+    expect($this->element->getAutoCapitalize())
+        ->toEqual(AutoCapitalizeEnum::WORDS);
 
-    public function testSetAndGetAccessKey()
-    {
-        $this->setAccessKey('a');
-        $this->assertEquals('a', $this->getAccessKey());
-    }
+    // set as Enum
+    $this->element->setAutoCapitalize(AutoCapitalizeEnum::CHARACTERS);
+    expect($this->element->getAutoCapitalize()->value)
+        ->toEqual('characters');
+    expect($this->element->getAutoCapitalize())
+        ->toEqual(AutoCapitalizeEnum::CHARACTERS);
+});
 
-    public function testSetAndGetAutoCapitalize()
-    {
-        // set as string
-        $this->element->setAutoCapitalize('words');
-        $this->assertEquals('words', $this->element->getAutoCapitalize()->value);
-        $this->assertEquals(AutoCapitalizeEnum::WORDS, $this->element->getAutoCapitalize());
+test('set and get content editable', function () {
+    $this->element->setContentEditable();
+    expect($this->element->getContentEditable())
+        ->toEqual(ContentEditableEnum::TRUE);
+    expect($this->element->getContentEditable()->value)
+        ->toEqual('true');
+    expect($this->element->getAttribute('contenteditable'))
+        ->toEqual('true');
 
-        // set as Enum
-        $this->element->setAutoCapitalize(AutoCapitalizeEnum::CHARACTERS);
-        $this->assertEquals('characters', $this->element->getAutoCapitalize()->value);
-        $this->assertEquals(AutoCapitalizeEnum::CHARACTERS, $this->element->getAutoCapitalize());
-    }
+    $this->element->setContentEditable(false);
+    expect($this->element->getContentEditable())
+        ->toEqual(ContentEditableEnum::FALSE);
+    expect($this->element->getContentEditable()->value)
+        ->toEqual('false');
+    expect($this->element->getAttribute('contenteditable'))
+        ->toEqual('false');
 
-    public function testSetAndGetContentEditable()
-    {
-        $this->element->setContentEditable();
-        $this->assertEquals(ContentEditableEnum::TRUE, $this->element->getContentEditable());
-        $this->assertEquals('true', $this->element->getContentEditable()->value);
-        $this->assertEquals('true', $this->element->getAttribute('contenteditable'));
+    $this->element->setContentEditable('false');
+    expect($this->element->getContentEditable())
+        ->toEqual(ContentEditableEnum::FALSE);
+    expect($this->element->getContentEditable()->value)
+        ->toEqual('false');
+    expect($this->element->getAttribute('contenteditable'))
+        ->toEqual('false');
 
-        $this->element->setContentEditable(false);
-        $this->assertEquals(ContentEditableEnum::FALSE, $this->element->getContentEditable());
-        $this->assertEquals('false', $this->element->getContentEditable()->value);
-        $this->assertEquals('false', $this->element->getAttribute('contenteditable'));
+    $this->element->setContentEditable('inherit');
+    expect($this->element->getContentEditable())
+        ->toEqual(ContentEditableEnum::INHERIT);
+    expect($this->element->getContentEditable()->value)
+        ->toEqual('inherit');
+    expect($this->element->getAttribute('contenteditable'))
+        ->toEqual('inherit');
+});
 
-        $this->element->setContentEditable('false');
-        $this->assertEquals(ContentEditableEnum::FALSE, $this->element->getContentEditable());
-        $this->assertEquals('false', $this->element->getContentEditable()->value);
-        $this->assertEquals('false', $this->element->getAttribute('contenteditable'));
+test('set and get content editable invalid value', function () {
+    $this->expectException(InvalidArgumentException::class);
+    $this->expectExceptionMessage('Invalid value for contenteditable');
+    $this->element->setContentEditable('invalid-value');
+});
 
+test('set and get dir', function () {
+    $this->element->setDir('ltr');
+    expect($this->element->getDir()->value)
+        ->toEqual('ltr');
+    expect($this->element->getDir())
+        ->toEqual(DirectionEnum::LTR);
+    expect($this->element->getAttribute('dir'))
+        ->toEqual('ltr');
+});
 
-        $this->element->setContentEditable('inherit');
-        $this->assertEquals(ContentEditableEnum::INHERIT, $this->element->getContentEditable());
-        $this->assertEquals('inherit', $this->element->getContentEditable()->value);
-        $this->assertEquals('inherit', $this->element->getAttribute('contenteditable'));
-    }
+test('set and get dir invalid', function () {
+    $this->expectException(InvalidArgumentException::class);
+    $this->expectExceptionMessage('Invalid value for dir');
+    $this->element->setDir('hallo-welt');
+});
 
-    public function testSetAndGetContentEditableInvalidValue()
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Invalid value for contenteditable');
-        $this->element->setContentEditable('invalid-value');
-    }
+test('set and get draggable', function () {
+    $this->element->setDraggable();
+    expect($this->element->getDraggable())
+        ->toEqual(true);
 
-    public function testSetAndGetDir()
-    {
-        $this->element->setDir('ltr');
-        $this->assertEquals('ltr', $this->element->getDir()->value);
-        $this->assertEquals(DirectionEnum::LTR, $this->element->getDir());
-        $this->assertEquals('ltr', $this->element->getAttribute('dir'));
-    }
+    $this->element->setDraggable(true);
+    expect($this->element->getDraggable())
+        ->toEqual(true);
 
-    public function testSetAndGetDirInvalid()
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Invalid value for dir');
-        $this->element->setDir('hallo-welt');
-    }
+    $this->element->setDraggable('true');
+    expect($this->element->getDraggable())
+        ->toEqual(true);
 
-    public function testSetAndGetDraggable()
-    {
-        $this->element->setDraggable();
-        $this->assertEquals(true, $this->element->getDraggable());
+    $this->element->setDraggable(false);
+    expect($this->element->getDraggable())
+        ->toEqual(false);
+});
 
-        $this->element->setDraggable(true);
-        $this->assertEquals(true, $this->element->getDraggable());
+test('set and get hidden', function () {
+    $this->element->setHidden(true);
+    expect($this->element->getHidden())
+        ->toEqual(true);
+});
 
-        $this->element->setDraggable('true');
-        $this->assertEquals(true, $this->element->getDraggable());
+test('set and get inert', function () {
+    $this->element->setInert(true);
+    expect($this->element->getInert())
+        ->toEqual(true);
+});
 
-        $this->element->setDraggable(false);
-        $this->assertEquals(false, $this->element->getDraggable());
-    }
+test('set and get input mode', function () {
+    $this->element->setInputMode('numeric');
+    expect($this->element->getInputMode()->value)
+        ->toEqual('numeric');
 
-    public function testSetAndGetHidden()
-    {
-        $this->element->setHidden(true);
-        $this->assertEquals(true, $this->element->getHidden());
-    }
+    $this->element->setInputMode();
+    expect($this->element->getInputMode()->value)
+        ->toEqual('numeric');
+});
 
-    public function testSetAndGetInert()
-    {
-        $this->element->setInert(true);
-        $this->assertEquals(true, $this->element->getInert());
-    }
+test('set and get is', function () {
+    $this->setIs('custom-element');
+    expect($this->getIs())
+        ->toEqual('custom-element');
+});
 
-    public function testSetAndGetInputMode()
-    {
-        $this->element->setInputMode('numeric');
-        $this->assertEquals('numeric', $this->element->getInputMode()->value);
+test('set and get lang', function () {
+    $this->setLang('en');
+    expect($this->getLang())
+        ->toEqual('en');
+});
 
-        $this->element->setInputMode();
-        $this->assertEquals('numeric', $this->element->getInputMode()->value);
-    }
+test('set and get nonce', function () {
+    $this->setNonce('random-nonce');
+    expect($this->getNonce())
+        ->toEqual('random-nonce');
+});
 
-    public function testSetAndGetIs()
-    {
-        $this->setIs('custom-element');
-        $this->assertEquals('custom-element', $this->getIs());
-    }
+test('set and get part', function () {
+    $this->setPart('part-name');
+    expect($this->getPart())
+        ->toEqual('part-name');
+});
 
-    public function testSetAndGetLang()
-    {
-        $this->setLang('en');
-        $this->assertEquals('en', $this->getLang());
-    }
+test('set and get popover', function () {
+    $this->setPopover('auto');
+    expect($this->getPopover())
+        ->toEqual('auto');
+});
 
-    public function testSetAndGetNonce()
-    {
-        $this->setNonce('random-nonce');
-        $this->assertEquals('random-nonce', $this->getNonce());
-    }
+test('set and get role', function () {
+    $this->setRole('button');
+    expect($this->getRole())
+        ->toEqual('button');
+});
 
-    public function testSetAndGetPart()
-    {
-        $this->setPart('part-name');
-        $this->assertEquals('part-name', $this->getPart());
-    }
+test('set and get slot', function () {
+    $this->setSlot('slot-name');
+    expect($this->getSlot())
+        ->toEqual('slot-name');
+});
 
-    public function testSetAndGetPopover()
-    {
-        $this->setPopover('auto');
-        $this->assertEquals('auto', $this->getPopover());
-    }
+test('set and get spell check', function () {
+    $this->element->setSpellCheck(true);
+    expect($this->element->getSpellCheck())
+        ->toBeInstanceOf(SpellCheckEnum::class);
+    expect($this->element->getSpellCheck()->value)
+        ->toEqual('true');
+    expect($this->element->htmlElement->getAttribute('spellcheck'))
+        ->toEqual('true');
+});
 
-    public function testSetAndGetRole()
-    {
-        $this->setRole('button');
-        $this->assertEquals('button', $this->getRole());
-    }
+test('set and get style', function () {
+    $this->setStyle('color: red;');
+    expect($this->getStyle())
+        ->toEqual('color: red;');
+});
 
-    public function testSetAndGetSlot()
-    {
-        $this->setSlot('slot-name');
-        $this->assertEquals('slot-name', $this->getSlot());
-    }
+test('set and get tab index', function () {
+    $this->setTabIndex(1);
+    expect($this->getTabIndex())
+        ->toEqual(1);
+});
 
-    public function testSetAndGetSpellCheck()
-    {
-        $this->element->setSpellCheck(true);
-        $this->assertInstanceOf(SpellCheckEnum::class, $this->element->getSpellCheck());
-        $this->assertEquals('true', $this->element->getSpellCheck()->value);
-        $this->assertEquals('true', $this->element->htmlElement->getAttribute('spellcheck'));
-    }
+test('set and get title', function () {
+    $this->setTitle('Test Title');
+    expect($this->getTitle())
+        ->toEqual('Test Title');
+});
 
-    public function testSetAndGetStyle()
-    {
-        $this->setStyle('color: red;');
-        $this->assertEquals('color: red;', $this->getStyle());
-    }
+test('set and get translate', function () {
+    $this->setTranslate('yes');
+    expect($this->getTranslate())
+        ->toEqual('yes');
+});
 
-    public function testSetAndGetTabIndex()
-    {
-        $this->setTabIndex(1);
-        $this->assertEquals(1, $this->getTabIndex());
-    }
-
-    public function testSetAndGetTitle()
-    {
-        $this->setTitle('Test Title');
-        $this->assertEquals('Test Title', $this->getTitle());
-    }
-
-    public function testSetAndGetTranslate()
-    {
-        $this->setTranslate('yes');
-        $this->assertEquals('yes', $this->getTranslate());
-    }
-
-    public function testSetAndGetDataAttribute()
-    {
-        $this->setDataAttribute('test', 'value');
-        $this->assertEquals('value', $this->getDataAttribute('test'));
-    }
-}
+test('set and get data attribute', function () {
+    $this->setDataAttribute('test', 'value');
+    expect($this->getDataAttribute('test'))
+        ->toEqual('value');
+});

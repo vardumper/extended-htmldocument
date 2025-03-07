@@ -135,37 +135,6 @@ address:
   parent: article
   unique_per_parent: true
   text: string
-  children:
-    - a
-    - abbr
-    - b
-    - bdi
-    - bdo
-    - br
-    - cite
-    - code
-    - data
-    - dfn
-    - em
-    - i
-    - img
-    - kbd
-    - mark
-    - q
-    - rp
-    - rt
-    - ruby
-    - s
-    - samp
-    - small
-    - span
-    - strong
-    - sub
-    - sup
-    - time
-    - u
-    - var
-    - wbr
 area:
   name: Area
   description: 'The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.'
@@ -268,32 +237,60 @@ article:
   level: block
   unique: false
   children:
-    - header
-    - footer
-    - address
-    - p
-    - hr
-    - pre
-    - blockquote
-    - ol
-    - ul
-    - dl
-    - figure
-    - table
-    - form
-    - fieldset
-    - div
-    - main
-    - section
-    - nav
+    - a
+    - abbr
+    - area
     - article
-    - aside
+    - audio
+    - b
+    - bdi
+    - bdo
+    - br
+    - cite
+    - code
+    - data
+    - del
+    - dfn
+    - div
+    - dl
+    - em
+    - embed
+    - figure
+    - form
     - h1
     - h2
     - h3
     - h4
     - h5
     - h6
+    - i
+    - iframe
+    - img
+    - ins
+    - kbd
+    - map
+    - mark
+    - object
+    - ol
+    - p
+    - picture
+    - pre
+    - q
+    - ruby
+    - s
+    - samp
+    - small
+    - span
+    - strong
+    - sub
+    - sup
+    - table
+    - time
+    - u
+    - ul
+    - var
+    - video
+    - wbr
 aside:
   name: Aside
   description: 'The aside element represents a section of a page that consists of content that is tangentially related to the content around the aside element, and which could be considered separate from that content.'
@@ -2647,33 +2644,75 @@ p:
   children:
     - a
     - abbr
+    - area
+    - article
+    - aside
+    - audio
     - b
     - bdi
     - bdo
+    - blockquote
     - br
+    - button
+    - canvas
     - cite
     - code
     - data
+    - del
+    - details
     - dfn
+    - div
+    - dl
     - em
+    - embed
+    - fieldset
+    - figure
+    - footer
+    - form
+    - h1
+    - h2
+    - h3
+    - h4
+    - h5
+    - h6
+    - header
+    - hr
     - i
+    - iframe
     - img
+    - input
+    - ins
     - kbd
+    - label
+    - map
     - mark
+    - meter
+    - nav
+    - object
+    - ol
+    - output
+    - p
+    - pre
+    - progress
     - q
-    - rp
-    - rt
     - ruby
     - s
     - samp
+    - section
+    - select
     - small
     - span
     - strong
     - sub
+    - summary
     - sup
+    - table
+    - textarea
     - time
     - u
+    - ul
     - var
+    - video
     - wbr
   text: string
 param:
