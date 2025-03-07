@@ -6,7 +6,7 @@ use Html\Enum\ContentEditableEnum;
 use Html\Enum\DirectionEnum;
 use Html\Enum\SpellCheckEnum;
 
-uses(\Html\Traits\GlobalAttributesTrait::class);
+uses(\Html\Trait\GlobalAttributesTrait::class);
 
 beforeEach(function () {
     $this->document = HTMLDocumentDelegator::createEmpty();
@@ -209,5 +209,6 @@ test('set and get translate', function () {
 
 test('set and get data attribute', function () {
     $this->setDataAttribute('test', 'value');
-    expect($this->getDataAttribute('test'))->toEqual('value');
+    expect($this->getDataAttribute('test'))
+        ->toEqual('value');
 });

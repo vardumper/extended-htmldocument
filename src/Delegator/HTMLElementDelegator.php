@@ -7,7 +7,7 @@ use BadMethodCallException;
 use DOM\Document;
 use DOM\HtmlElement;
 use Html\Interface\HTMLElementDelegatorInterface;
-use Html\Traits\GlobalAttributesTrait;
+use Html\Trait\GlobalAttributesTrait;
 use InvalidArgumentException;
 use ReflectionClass;
 use TypeError;

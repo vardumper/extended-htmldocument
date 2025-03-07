@@ -12,20 +12,13 @@
     <report>
       <clover outputFile="clover.xml"/>
     </report>
-    <exclude>
-      <directory suffix=".php">src/Resources</directory>
-      <directory suffix=".php">src/Element</directory>
-      <directory suffix=".php">src/Enum</directory>
-    </exclude>
   </coverage>
   <source>
     <include>
-      <directory suffix=".php">src</directory>
-    </include>
-    <exclude>
-      <directory suffix=".php">src/Resources</directory>
-      <directory suffix=".php">src/Element</directory>
+      <directory suffix=".php">src/Delegator</directory>
+      <directory suffix=".php">src/Helper</directory>
       <directory suffix=".php">src/Enum</directory>
-    </exclude>
+      <directory suffix=".php">src/Trait</directory>
+    </include>
   </source>
 </phpunit>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Html\Traits;
+namespace Html\Trait;
 
 use Html\Enum\AutoCapitalizeEnum;
 use Html\Enum\ContentEditableEnum;
