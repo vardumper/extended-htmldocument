@@ -122,7 +122,7 @@ fi
 
 printf "${YELLOW}Pest${NC}\n"
 if $HAS_PEST; then
-  if $PEST --colors=always --coverage-clover=clover.xml --only-summary-for-coverage-text; then
+  if $PEST --colors=always --coverage-clover=clover.xml --ci --no-output; then
     printf "${GREEN}Pest passed${NC}\n"
   else
     if [[ " ${protectedBranches[@]} " =~ " ${currentBranch} " ]] && [ "$allowFailuresInProtectedBranches" = false ]; then
