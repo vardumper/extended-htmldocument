@@ -16,12 +16,14 @@ $redColor = "\033[31m";
 $yellowColor = "\033[33m";
 $greenColor = "\033[32m";
 $resetColor = "\033[0m";
-$brownColor = "\033[34m";
-$orangeColor = "\033[35m";
+$orangeColor = "\033[1;31m";
+$brownColor = "\033[33m";
+
 
 $failureNeedles = [
-    'FAIL',
-    'FAILED',
+    'FAILURES!',
+    'Fatal error:',
+    'ERROR!',
 ];
 
 exec('git rev-parse --abbrev-ref HEAD', $branchNameOutput, $branchNameReturnCode);
@@ -32,23 +34,23 @@ if ($branchNameReturnCode !== 0) {
 $currentBranch = trim(implode(PHP_EOL, $branchNameOutput));
 
 echo "Running tests on branch: {$yellowColor}$currentBranch{$resetColor}" . PHP_EOL;
-exec('./vendor/bin/pest --colors=always --coverage-clover=clover.xml', $output, $returnCode);
+exec('./vendor/bin/phpunit --colors=always --display-warnings', $output, $returnCode);
 print(implode(PHP_EOL, $output) . PHP_EOL); // first show output
 if ($returnCode != 0) {
     // ignore warnings
     foreach($output as $line) {
         foreach ($failureNeedles as $needle) {
-            if (strpos('_'.$line, $needle) > 0) {
+            if (strpos($line, $needle) !== false) {
                 if (in_array($currentBranch, $protectedBranches) && $allowFailuresInProtectedBranches === false) {
-                    echo "{$redColor}Pushing to protected branch {$currentBranch} not allowed with failures.{$resetColor}" . PHP_EOL;
+                    echo "{$redColor}Pushing to protected branch {$currentBranch} is not allowed with failures.{$resetColor}" . PHP_EOL;
                     exit(1);
                 }
                 if (!in_array($currentBranch, $protectedBranches) && $allowFailuresInOtherBranches === false) {
-                    echo "{$redColor}Pushing to {$currentBranch} not allowed.{$resetColor}" . PHP_EOL;
+                    echo "{$redColor}Pushing to {$currentBranch} is not allowed.{$resetColor}" . PHP_EOL;
                     exit(1);
                 }
                 if (!in_array($currentBranch, $protectedBranches) && $allowFailuresInOtherBranches === true) {
-                    echo "{$orangeColor}Pushing to {$currentBranch} with errors or failures.{$resetColor}" . PHP_EOL;
+                    echo "{$orangeColor}Pushing to {$currentBranch} with test errors or failures.{$resetColor}" . PHP_EOL;
                     exit(0);
                 }
             }

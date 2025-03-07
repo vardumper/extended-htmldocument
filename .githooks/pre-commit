@@ -4,9 +4,23 @@
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
+ORANGE='\033[1;31m'
 NC='\033[0m' # No Color
 
-printf "Committing as ${YELLOW}$(git config user.name) ${NC}/ ${YELLOW}$(git config user.email)${NC}\n"
+# Settings
+protectedBranches=("master" "main" "develop")
+allowFailuresInProtectedBranches=false
+allowFailuresInOtherBranches=true
+
+# Get the current branch name
+currentBranch=$(git rev-parse --abbrev-ref HEAD)
+if [ $? -ne 0 ]; then
+    echo -e "${RED}Failed to get the current branch name.${NC}"
+    exit 1
+fi
+
+echo -e "Committing as ${YELLOW}$(git config user.name) ${NC}/ ${YELLOW}$(git config user.email)${NC}"
+echo -e "Running tests on branch: ${YELLOW}$currentBranch${NC}"
 
 PASS=true
 
@@ -99,15 +113,33 @@ else
   printf "\nphpstan is required. Install it with:\n\n  ddev composer req --dev phpstan/phpstan\n\n"
 fi
 
-# @todo add sonar scanner
-# check if sonar-scanner is installed
-# printf "${YELLOW}Sonar Scanner${NC}\n"
-# sonar-scanner -Dsonar.projectKey=suhe-craft5 -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.qualitygate.wait=true
-# whats returned?
-#ret_code=$?
-#if [[ $ret_code == 1 ]]; then
-#    PASS=false
-#fi
+# pest
+HAS_PEST=false
+PEST="./vendor/bin/pest"
+if [ -x $PEST ]; then
+    HAS_PEST=true
+fi
+
+printf "${YELLOW}Pest${NC}\n"
+if $HAS_PEST; then
+  if $PEST --colors=always --coverage-clover=clover.xml --only-summary-for-coverage-text; then
+    printf "${GREEN}Pest passed${NC}\n"
+  else
+    if [[ " ${protectedBranches[@]} " =~ " ${currentBranch} " ]] && [ "$allowFailuresInProtectedBranches" = false ]; then
+        printf "${RED}Committing to protected branch ${currentBranch} is not allowed with failures.${NC}\n"
+        PASS=false
+    fi
+    if [[ ! " ${protectedBranches[@]} " =~ " ${currentBranch} " ]] && [ "$allowFailuresInOtherBranches" = false ]; then
+        printf "${RED}Committing to ${currentBranch} is not allowed.${NC}\n"
+        PASS=false
+    fi
+    if [[ ! " ${protectedBranches[@]} " =~ " ${currentBranch} " ]] && [ "$allowFailuresInOtherBranches" = true ]; then
+        printf "${ORANGE}Committing to ${currentBranch} with test errors or failures.${NC}\n"
+    fi
+  fi
+else
+  printf "\npest is required. Install it with:\n\n  composer require --dev pestphp/pest\n\n"
+fi
 
 # Run composer audit locally
 printf "${YELLOW}Composer Audit${NC}\n"
