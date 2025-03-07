@@ -34,7 +34,7 @@ if ($branchNameReturnCode !== 0) {
 $currentBranch = trim(implode(PHP_EOL, $branchNameOutput));
 
 echo "Running tests on branch: {$yellowColor}$currentBranch{$resetColor}" . PHP_EOL;
-exec('./vendor/bin/pest --colors=always --no-results', $output, $returnCode);
+exec('./vendor/bin/pest --colors=always --no-results --compact', $output, $returnCode);
 print(implode(PHP_EOL, $output) . PHP_EOL); // first show output
 if ($returnCode != 0) {
     // ignore warnings
