@@ -144,6 +144,7 @@ else
   printf "\npest is required. Install it with:\n\n  composer require --dev pestphp/pest\n\n"
 fi
 
+
 # Run composer audit locally
 printf "${YELLOW}Composer Audit${NC}\n"
 composer audit
