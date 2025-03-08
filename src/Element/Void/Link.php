@@ -1,20 +1,20 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Link - The link element defines a link between a document and an external resource. It is used to link to external stylesheets.
- * 
- * @generated 2025-03-08 16:37:58
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
  */
+
 namespace Html\Element\Void;
 
+use BackedEnum;
 use Html\Element\VoidElement;
-use Html\Element\Void\Head;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\RelEnum;
@@ -45,54 +45,65 @@ class Link extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        Head::class,
-    ];
+    public static array $childOf = [Head::class];
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-    /**  */
-    protected ?CrossoriginEnum $crossorigin = null;
-
-    /** 
+    /**
      * Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.
-     * @category HTML attribute
      * @required
      */
     public ?string $href = null;
 
-    /** Specifies the language of the linked resource. */
+    /**
+     * Specifies the language of the linked resource.
+     */
     public ?string $hreflang = null;
 
-    /** Specifies the integrity value of a resource. */
+    /**
+     * Specifies the integrity value of a resource.
+     */
     public ?string $integrity = null;
 
-    /** Specifies the media type for which the linked resource or style sheet is intended. */
+    /**
+     * Specifies the media type for which the linked resource or style sheet is intended.
+     */
     public ?string $media = null;
 
-    /** Specifies the referrer policy for fetches initiated by the element. */
-    protected ?ReferrerpolicyEnum $referrerpolicy = null;
-
-    /** Specifies the relationship between the current document and the linked document. */
-    protected ?RelEnum $rel = null;
-
-    /** Specifies the sizes of the images or icons for different display/window sizes. */
+    /**
+     * Specifies the sizes of the images or icons for different display/window sizes.
+     */
     public ?string $sizes = null;
 
-    /** Specifies the media type of the linked resource. */
+    /**
+     * Specifies the media type of the linked resource.
+     */
     public ?string $type = null;
 
+    protected ?CrossoriginEnum $crossorigin = null;
+
+    /**
+     * Specifies the referrer policy for fetches initiated by the element.
+     */
+    protected ?ReferrerpolicyEnum $referrerpolicy = null;
+
+    /**
+     * Specifies the relationship between the current document and the linked document.
+     */
+    protected ?RelEnum $rel = null;
 
     public function setCrossorigin(CrossoriginEnum $crossorigin): self
     {
         $this->crossorigin = $crossorigin;
-        $this->htmlElement->setAttribute('crossorigin', $crossorigin->value);
+        $this->htmlElement->setAttribute(
+            'crossorigin',
+            \is_subclass_of($crossorigin, BackedEnum::class) ? (string) $crossorigin->value : $crossorigin
+        );
+
         return $this;
     }
 
@@ -148,7 +159,11 @@ class Link extends VoidElement
     public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): self
     {
         $this->referrerpolicy = $referrerpolicy;
-        $this->htmlElement->setAttribute('referrerpolicy', $referrerpolicy->value);
+        $this->htmlElement->setAttribute(
+            'referrerpolicy',
+            \is_subclass_of($referrerpolicy, BackedEnum::class) ? (string) $referrerpolicy->value : $referrerpolicy
+        );
+
         return $this;
     }
 
@@ -160,7 +175,11 @@ class Link extends VoidElement
     public function setRel(RelEnum $rel): self
     {
         $this->rel = $rel;
-        $this->htmlElement->setAttribute('rel', $rel->value);
+        $this->htmlElement->setAttribute(
+            'rel',
+            \is_subclass_of($rel, BackedEnum::class) ? (string) $rel->value : $rel
+        );
+
         return $this;
     }
 
@@ -190,5 +209,4 @@ class Link extends VoidElement
     {
         return $this->type;
     }
-
 }

@@ -53,8 +53,11 @@ final class CreateEnumCommand extends Command
                     $className .= ucfirst($attributes['elements'][0]);
                 }
 
+                $defaultCase = $this->getCaseName($attributes['defaultValue'] ?? '');
                 foreach ($attributes['choices'] as $option) {
-                    $cases .= sprintf("    case %s = '%s';", $this->getCaseName($option), $option) . \PHP_EOL;
+                    $caseName = $this->getCaseName($option);
+                    $default = $caseName === $defaultCase ? ' // default' : '';
+                    $cases .= sprintf("    case %s = '%s';%s", $caseName, $option, $default) . \PHP_EOL;
                 }
 
                 $className = $this->getClassName($className . 'Enum');
@@ -65,7 +68,7 @@ final class CreateEnumCommand extends Command
                     'description' => $attributes['description'] ?? '', // fixed double dollar sign
                     'element_name' => $element,
                     'defaultValue' => $attributes['defaultValue'] ?? '',
-                    'defaultCase' => $this->getCaseName($attributes['defaultValue'] ?? ''),
+                    'defaultCase' => $defaultCase,
                     'generatedAt' => $generatedAt,
                 ];
 

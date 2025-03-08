@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Time - The time element represents a specific period in time. It may include the datetime attribute to translate dates into machine-readable format, allowing for better search engine results or custom features such as reminders.
- * 
- * @generated 2025-03-08 16:37:58
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -65,13 +65,12 @@ class Time extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** Specifies the date and time of the change in the format 'YYYY-MM-DDThh:mm:ss' or a subset of it. */
+    /**
+     * Specifies the date and time of the change in the format 'YYYY-MM-DDThh:mm:ss' or a subset of it.
+     */
     public ?string $datetime = null;
-
 
     public function setDatetime(string $datetime): self
     {
@@ -83,5 +82,4 @@ class Time extends InlineElement
     {
         return $this->datetime;
     }
-
 }

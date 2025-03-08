@@ -1,33 +1,20 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * OrderedList - The ol element represents an ordered list of items. The order of the list is meaningful.
- * 
- * @generated 2025-03-08 16:37:58
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
  */
+
 namespace Html\Element\Block;
 
+use BackedEnum;
 use Html\Element\BlockElement;
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Body;
-use Html\Element\Block\DefinitionDescription;
-use Html\Element\Block\Details;
-use Html\Element\Block\Dialog;
-use Html\Element\Block\Division;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Header;
-use Html\Element\Block\ListItem;
-use Html\Element\Block\Main;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Section;
-use Html\Element\Block\Template;
 use Html\Element\Inline\Slot;
 use Html\Enum\TypeOlEnum;
 
@@ -74,24 +61,23 @@ class OrderedList extends BlockElement
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [
-        ListItem::class,
-    ];
+    public static array $parentOf = [ListItem::class];
 
-
-    /** When present, it specifies that the list order should be descending (9,8,7...). */
+    /**
+     * When present, it specifies that the list order should be descending (9,8,7...).
+     */
     public ?bool $reversed = null;
 
-    /** Specifies the starting value of an ordered list. */
+    /**
+     * Specifies the starting value of an ordered list.
+     */
     public ?int $start = null;
 
-    /** 
+    /**
      * Specifies the numbering type of the ordered list.
-     * @category HTML attribute
      * @example 1
      */
     protected ?TypeOlEnum $type = null;
-
 
     public function setReversed(bool $reversed): self
     {
@@ -118,7 +104,11 @@ class OrderedList extends BlockElement
     public function setType(TypeOlEnum $type): self
     {
         $this->type = $type;
-        $this->htmlElement->setAttribute('type', $type->value);
+        $this->htmlElement->setAttribute(
+            'type',
+            \is_subclass_of($type, BackedEnum::class) ? (string) $type->value : $type
+        );
+
         return $this;
     }
 
@@ -126,6 +116,4 @@ class OrderedList extends BlockElement
     {
         return $this->type;
     }
-
-
 }

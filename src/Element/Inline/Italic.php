@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Italic - The i element represents a span of text in an alternate voice or mood, or otherwise offset from the normal prose, such as a taxonomic designation, a technical term, an idiomatic phrase from another language, a thought, or a ship name in Western texts.
- * 
- * @generated 2025-03-08 16:37:58
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -65,9 +65,5 @@ class Italic extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
-
-
-
+    public static array $parentOf = [];
 }

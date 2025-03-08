@@ -1,21 +1,19 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * TableFoot - The tfoot element groups the footer content in a table.
- * 
- * @generated 2025-03-08 16:37:58
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Table;
-use Html\Element\Block\TableRow;
 
 class TableFoot extends BlockElement
 {
@@ -38,19 +36,11 @@ class TableFoot extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        Table::class,
-    ];
+    public static array $childOf = [Table::class];
 
     /**
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [
-        TableRow::class,
-    ];
-
-
-
-
+    public static array $parentOf = [TableRow::class];
 }

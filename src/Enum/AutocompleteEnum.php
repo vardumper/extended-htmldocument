@@ -5,7 +5,7 @@
  *
  * AutocompleteEnum -
  *
- * @generated 2025-03-08 16:40:26
+ * @generated 2025-03-08 16:46:59
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete/
@@ -17,7 +17,7 @@ namespace Html\Enum;
 enum AutocompleteEnum: string
 {
     case OFF = 'off';
-    case ON = 'on';
+    case ON = 'on'; // default
 
     public static function getQualifiedName(): string
     {

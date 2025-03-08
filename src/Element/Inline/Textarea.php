@@ -1,18 +1,19 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Textarea - The textarea element represents a multiline plain text edit control for the element's raw value.
- * 
- * @generated 2025-03-08 16:37:58
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
  */
+
 namespace Html\Element\Inline;
 
+use BackedEnum;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
@@ -27,8 +28,6 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
-use Html\Element\Inline\MarkedText;
-use Html\Element\Inline\Slot;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\WrapEnum;
 
@@ -75,59 +74,76 @@ class Textarea extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
+    /**
+     * Specifies the visible width of a text area, in average character widths.
+     */
+    public ?int $cols = null;
 
-    /** 
-     * 
-     * @category HTML attribute
+    /**
+     * Specifies the direction of the text.
+     */
+    public ?string $dirname = null;
+
+    /**
+     * When present, it specifies that an input element should be disabled.
+     */
+    public ?bool $disabled = null;
+
+    /**
+     * Specifies the maximum number of characters allowed in an input field.
+     */
+    public ?int $maxlength = null;
+
+    /**
+     * Specifies the minimum number of characters required in an input field.
+     */
+    public ?int $minlength = null;
+
+    /**
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     */
+    public ?string $name = null;
+
+    /**
+     * Specifies a short hint that describes the expected value of an input field.
+     */
+    public ?string $placeholder = null;
+
+    /**
+     * When present, it specifies that an input element is read-only.
+     */
+    public ?bool $readonly = null;
+
+    /**
+     * When present, it specifies that an input field must be filled out before submitting the form.
+     */
+    public ?bool $required = null;
+
+    /**
+     * Specifies the visible number of lines in a text area.
+     */
+    public ?int $rows = null;
+
+    /**
      * @example on
      */
     protected ?AutocompleteEnum $autocomplete = null;
 
-    /** Specifies the visible width of a text area, in average character widths. */
-    public ?int $cols = null;
-
-    /** Specifies the direction of the text. */
-    public ?string $dirname = null;
-
-    /** When present, it specifies that an input element should be disabled. */
-    public ?bool $disabled = null;
-
-    /** Specifies the maximum number of characters allowed in an input field. */
-    public ?int $maxlength = null;
-
-    /** Specifies the minimum number of characters required in an input field. */
-    public ?int $minlength = null;
-
-    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
-    public ?string $name = null;
-
-    /** Specifies a short hint that describes the expected value of an input field. */
-    public ?string $placeholder = null;
-
-    /** When present, it specifies that an input element is read-only. */
-    public ?bool $readonly = null;
-
-    /** When present, it specifies that an input field must be filled out before submitting the form. */
-    public ?bool $required = null;
-
-    /** Specifies the visible number of lines in a text area. */
-    public ?int $rows = null;
-
-    /** 
-     * 
-     * @category HTML attribute
+    /**
      * @example soft
      */
     protected ?WrapEnum $wrap = null;
 
-
     public function setAutocomplete(AutocompleteEnum $autocomplete): self
     {
         $this->autocomplete = $autocomplete;
-        $this->htmlElement->setAttribute('autocomplete', $autocomplete->value);
+        $this->htmlElement->setAttribute(
+            'autocomplete',
+            \is_subclass_of($autocomplete, BackedEnum::class) ? (string) $autocomplete->value : $autocomplete
+        );
+
         return $this;
     }
 
@@ -249,7 +265,11 @@ class Textarea extends InlineElement
     public function setWrap(WrapEnum $wrap): self
     {
         $this->wrap = $wrap;
-        $this->htmlElement->setAttribute('wrap', $wrap->value);
+        $this->htmlElement->setAttribute(
+            'wrap',
+            \is_subclass_of($wrap, BackedEnum::class) ? (string) $wrap->value : $wrap
+        );
+
         return $this;
     }
 
@@ -257,5 +277,4 @@ class Textarea extends InlineElement
     {
         return $this->wrap;
     }
-
 }

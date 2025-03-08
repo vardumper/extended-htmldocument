@@ -1,37 +1,20 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
- * 
- * @generated 2025-03-08 16:37:58
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
  */
+
 namespace Html\Element\Block;
 
+use BackedEnum;
 use Html\Element\BlockElement;
-use Html\Element\Block\Article;
-use Html\Element\Block\Body;
-use Html\Element\Block\Canvas;
-use Html\Element\Block\DataList;
-use Html\Element\Block\DefinitionDescription;
-use Html\Element\Block\Details;
-use Html\Element\Block\Dialog;
-use Html\Element\Block\Division;
-use Html\Element\Block\Fieldset;
-use Html\Element\Block\Header;
-use Html\Element\Block\Legend;
-use Html\Element\Block\Main;
-use Html\Element\Block\Menu;
-use Html\Element\Block\NoScript;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Section;
-use Html\Element\Block\Summary;
-use Html\Element\Block\Template;
 use Html\Element\Inline\Button;
 use Html\Element\Inline\Input;
 use Html\Element\Inline\Label;
@@ -112,43 +95,47 @@ class Form extends BlockElement
         Textarea::class,
     ];
 
-
-    /** Specifies the character encodings that are to be used for form submission. */
+    /**
+     * Specifies the character encodings that are to be used for form submission.
+     */
     public ?string $acceptCharset = null;
 
-    /** Specifies the URL where the form data should be submitted when the form is submitted. */
+    /**
+     * Specifies the URL where the form data should be submitted when the form is submitted.
+     */
     public ?string $action = null;
 
-    /** 
-     * 
-     * @category HTML attribute
+    /**
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     */
+    public ?string $name = null;
+
+    /**
+     * When present, it specifies that a form should not be validated when submitted.
+     */
+    public ?bool $novalidate = null;
+
+    /**
+     * Specifies whether a form or input field should have autocomplete enabled. Default is on.
      * @example on
      */
     protected ?AutocompleteEnum $autocomplete = null;
 
-    /**  */
+    /**
+     * Specifies how form data should be encoded before sending it to a server. Only used if the method attribute is set to post. Default is application/x-www-form-urlencoded.
+     */
     protected ?EnctypeEnum $enctype = null;
 
-    /** 
-     * 
-     * @category HTML attribute
+    /**
      * @example get
      */
     protected ?MethodEnum $method = null;
 
-    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
-    public ?string $name = null;
-
-    /** When present, it specifies that a form should not be validated when submitted. */
-    public ?bool $novalidate = null;
-
-    /** 
+    /**
      * Specifies where to open the linked document.
-     * @category HTML attribute
      * @example _self
      */
     protected ?TargetEnum $target = null;
-
 
     public function setAcceptCharset(string $acceptCharset): self
     {
@@ -175,7 +162,11 @@ class Form extends BlockElement
     public function setAutocomplete(AutocompleteEnum $autocomplete): self
     {
         $this->autocomplete = $autocomplete;
-        $this->htmlElement->setAttribute('autocomplete', $autocomplete->value);
+        $this->htmlElement->setAttribute(
+            'autocomplete',
+            \is_subclass_of($autocomplete, BackedEnum::class) ? (string) $autocomplete->value : $autocomplete
+        );
+
         return $this;
     }
 
@@ -187,7 +178,11 @@ class Form extends BlockElement
     public function setEnctype(EnctypeEnum $enctype): self
     {
         $this->enctype = $enctype;
-        $this->htmlElement->setAttribute('enctype', $enctype->value);
+        $this->htmlElement->setAttribute(
+            'enctype',
+            \is_subclass_of($enctype, BackedEnum::class) ? (string) $enctype->value : $enctype
+        );
+
         return $this;
     }
 
@@ -199,7 +194,11 @@ class Form extends BlockElement
     public function setMethod(MethodEnum $method): self
     {
         $this->method = $method;
-        $this->htmlElement->setAttribute('method', $method->value);
+        $this->htmlElement->setAttribute(
+            'method',
+            \is_subclass_of($method, BackedEnum::class) ? (string) $method->value : $method
+        );
+
         return $this;
     }
 
@@ -233,7 +232,11 @@ class Form extends BlockElement
     public function setTarget(TargetEnum $target): self
     {
         $this->target = $target;
-        $this->htmlElement->setAttribute('target', $target->value);
+        $this->htmlElement->setAttribute(
+            'target',
+            \is_subclass_of($target, BackedEnum::class) ? (string) $target->value : $target
+        );
+
         return $this;
     }
 
@@ -241,6 +244,4 @@ class Form extends BlockElement
     {
         return $this->target;
     }
-
-
 }

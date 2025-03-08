@@ -5,7 +5,7 @@
  *
  * TypeInputEnum - Specifies the type of the input. Defaults to text if the attribute is omitted
  *
- * @generated 2025-03-08 16:40:26
+ * @generated 2025-03-08 16:46:59
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/type/
@@ -34,7 +34,7 @@ enum TypeInputEnum: string
     case SEARCH = 'search';
     case SUBMIT = 'submit';
     case TEL = 'tel';
-    case TEXT = 'text';
+    case TEXT = 'text'; // default
     case TIME = 'time';
     case URL = 'url';
     case WEEK = 'week';

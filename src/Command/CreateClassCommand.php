@@ -182,20 +182,40 @@ final class CreateClassCommand extends Command
             $type = $this->mapToPhpType($type);
             $variableName = $this->toVariableName($attribute);
             $methodName = ucfirst($this->toVariableName($attribute));
-            if ($type === 'enum') {
+            if (str_contains($type, 'enum')) {
+                $isUnionType = true;
+                $otherTypes = '';
+                $otherTypesDef = '';
+                if (str_replace('enum', '', $type) === '') {
+                    $isUnionType = false;
+                }
+                if ($isUnionType) {
+                    $otherTypes = explode('|', trim(str_replace('enum', '', $type), '|'));
+                    $otherTypes = array_map(function ($type) {
+                        return $this->mapToPhpType($type);
+                    }, $otherTypes);
+                    $otherTypesDef = implode('|', $otherTypes) . '|';
+                }
                 $kebapCase = $this->toKebapCase($attribute);
                 if ($this->manyElementsHaveAttribute($attribute) && count($details['elements']) === 1) {
                     $kebapCase .= ucfirst($element);
                 }
-                $type = \sprintf('%sEnum', $kebapCase);
+                $enumType = \sprintf('%sEnum', $kebapCase);
+                $type = \sprintf('%s%sEnum', $otherTypesDef, $kebapCase);
+                $returnType = \sprintf('?%s', $type);
+                if ($isUnionType) {
+                    $returnType = \sprintf('null|%s', $type);
+                }
+
                 $signature = "    public function set%s(%s \$%s): self
     {
         \$this->%s = \$%s;
-        \$this->htmlElement->setAttribute('%s', \$%s->value);
+        \$this->htmlElement->setAttribute('%s', \is_subclass_of(\$%s, \BackedEnum::class) ? (string) \$%s->value : \$%s);
+
         return \$this;
     }
 
-    public function get%s(): ?%s
+    public function get%s(): %s
     {
         return \$this->%s;
     }\n\n";
@@ -208,8 +228,10 @@ final class CreateClassCommand extends Command
                     $variableName,
                     $attribute,
                     $variableName,
+                    $variableName,
+                    $variableName,
                     $methodName,
-                    $type,
+                    $returnType,
                     $variableName
                 );
             } else {
@@ -244,25 +266,45 @@ final class CreateClassCommand extends Command
         $transformedAttributes = '';
         foreach ($attributes as $attribute => $details) {
             $type = $details['type'] ?? '';
+            $returnType = $details['type'] ?? '';
+
             $comment = $this->getAttributeComment($details);
             $type = $this->mapToPhpType($type);
+            $returnType = '?' . $type; // nullabel by default
             $visibility = 'public';
-            if ($type === 'enum') {
+            if (str_contains($type, 'enum')) {
+                $isUnionType = true;
+                $otherTypes = '';
+                $otherTypesDef = '';
+                if (str_replace('enum', '', $type) === '') {
+                    $isUnionType = false;
+                }
+                if ($isUnionType) {
+                    $otherTypes = explode('|', trim(str_replace('enum', '', $type), '|'));
+                    $otherTypes = array_map(function ($type) {
+                        return $this->mapToPhpType($type);
+                    }, $otherTypes);
+                    $otherTypesDef = implode('|', $otherTypes) . '|';
+                }
                 $kebapCase = $this->toKebapCase($attribute);
                 if ($this->manyElementsHaveAttribute($attribute) && count($details['elements']) === 1) {
                     $kebapCase .= ucfirst($element);
                 }
                 $this->uses[] = sprintf("Html\Enum\%sEnum", $kebapCase);
-                $type = \sprintf('%sEnum', $kebapCase);
+                $type = \sprintf('%s%sEnum', $otherTypesDef, $kebapCase);
+                $returnType = \sprintf('?%s', $type);
+                if ($isUnionType) {
+                    $returnType = \sprintf('null|%s', $type);
+                }
                 $visibility = 'protected';
                 // $default = isset($details['defaultValue']) ? sprintf(" = %sEnum::from('%s')", $kebapCase, $details['defaultValue']) : '';
             }
             $variableName = $this->toVariableName($attribute);
             $transformedAttributes .= \sprintf(
-                "    %s    %s ?%s \$%s = null;\n\n",
+                "    %s    %s %s \$%s = null;\n\n",
                 $comment,
                 $visibility,
-                $type,
+                $returnType,
                 $variableName,
             );
         }

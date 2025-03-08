@@ -7,7 +7,6 @@ test('enum functionality', function () {
         \Html\Enum\AlignEnum::class,
         \Html\Enum\AutoCapitalizeEnum::class,
         \Html\Enum\AutocompleteEnum::class,
-        \Html\Enum\ClearEnum::class,
         \Html\Enum\CrossoriginEnum::class,
         \Html\Enum\DecodingEnum::class,
         \Html\Enum\EnctypeEnum::class,
@@ -41,6 +40,5 @@ test('enum functionality', function () {
         if (\method_exists($enum, 'getDefault')) {
             expect($enum::getDefault())->toBeInstanceOf($enum);
         }
-        // $this->assertSame($enum::cases()[0], $enum::cases()[0]::cases()[0]);
     }
 });

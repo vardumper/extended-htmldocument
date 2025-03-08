@@ -1,23 +1,23 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Script - The script element is used to embed or reference an executable script within an HTML or XHTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.
- * 
- * @generated 2025-03-08 16:37:58
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
  */
+
 namespace Html\Element\Void;
 
+use BackedEnum;
 use Html\Element\Block\Body;
 use Html\Element\Block\Form;
 use Html\Element\Block\Menu;
 use Html\Element\VoidElement;
-use Html\Element\Void\Head;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\TypeScriptEnum;
@@ -43,56 +43,57 @@ class Script extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        Body::class,
-        Form::class,
-        Head::class,
-        Menu::class,
-    ];
+    public static array $childOf = [Body::class, Form::class, Head::class, Menu::class];
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-    /** When present, it specifies that the script will be executed asynchronously as soon as it is available. */
+    /**
+     * When present, it specifies that the script will be executed asynchronously as soon as it is available.
+     */
     public ?bool $async = null;
 
-    /** Specifies the character encoding for the resource. */
+    /**
+     * Specifies the character encoding for the resource.
+     */
     public ?string $charset = null;
 
-    /**  */
-    protected ?CrossoriginEnum $crossorigin = null;
-
-    /** When present, it specifies that the script should be executed after the page has been parsed. */
+    /**
+     * When present, it specifies that the script should be executed after the page has been parsed.
+     */
     public ?bool $defer = null;
 
-    /** Specifies the integrity value of a resource. */
+    /**
+     * Specifies the integrity value of a resource.
+     */
     public ?string $integrity = null;
 
-    /** Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks. */
+    /**
+     * Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks.
+     */
     public ?string $nonce = null;
 
-    /** Specifies the referrer policy for fetches initiated by the element. */
-    protected ?ReferrerpolicyEnum $referrerpolicy = null;
-
-    /** 
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
-     * @category HTML attribute
      * @required
      */
     public ?string $src = null;
 
-    /** 
+    protected ?CrossoriginEnum $crossorigin = null;
+
+    /**
+     * Specifies the referrer policy for fetches initiated by the element.
+     */
+    protected ?ReferrerpolicyEnum $referrerpolicy = null;
+
+    /**
      * Specifies the media type of the linked resource.
-     * @category HTML attribute
      * @example text/javascript
      */
     protected ?TypeScriptEnum $type = null;
-
 
     public function setAsync(bool $async): self
     {
@@ -119,7 +120,11 @@ class Script extends VoidElement
     public function setCrossorigin(CrossoriginEnum $crossorigin): self
     {
         $this->crossorigin = $crossorigin;
-        $this->htmlElement->setAttribute('crossorigin', $crossorigin->value);
+        $this->htmlElement->setAttribute(
+            'crossorigin',
+            \is_subclass_of($crossorigin, BackedEnum::class) ? (string) $crossorigin->value : $crossorigin
+        );
+
         return $this;
     }
 
@@ -164,7 +169,11 @@ class Script extends VoidElement
     public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): self
     {
         $this->referrerpolicy = $referrerpolicy;
-        $this->htmlElement->setAttribute('referrerpolicy', $referrerpolicy->value);
+        $this->htmlElement->setAttribute(
+            'referrerpolicy',
+            \is_subclass_of($referrerpolicy, BackedEnum::class) ? (string) $referrerpolicy->value : $referrerpolicy
+        );
+
         return $this;
     }
 
@@ -187,7 +196,11 @@ class Script extends VoidElement
     public function setType(TypeScriptEnum $type): self
     {
         $this->type = $type;
-        $this->htmlElement->setAttribute('type', $type->value);
+        $this->htmlElement->setAttribute(
+            'type',
+            \is_subclass_of($type, BackedEnum::class) ? (string) $type->value : $type
+        );
+
         return $this;
     }
 
@@ -195,5 +208,4 @@ class Script extends VoidElement
     {
         return $this->type;
     }
-
 }

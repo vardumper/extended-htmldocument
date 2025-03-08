@@ -1,18 +1,19 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Select - The select element represents a control for selecting amongst a set of options.
- * 
- * @generated 2025-03-08 16:37:58
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
  */
+
 namespace Html\Element\Inline;
 
+use BackedEnum;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
@@ -29,8 +30,6 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
-use Html\Element\Inline\MarkedText;
-use Html\Element\Inline\Slot;
 use Html\Enum\AutocompleteEnum;
 
 class Select extends InlineElement
@@ -76,39 +75,46 @@ class Select extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-        OptionGroup::class,
-        Option::class,
-    ];
+    public static array $parentOf = [OptionGroup::class, Option::class];
 
+    /**
+     * When present, it specifies that an input element should be disabled.
+     */
+    public ?bool $disabled = null;
 
-    /** 
-     * 
-     * @category HTML attribute
+    /**
+     * When present, it specifies that the user is allowed to enter more than one value in an input element.
+     */
+    public ?bool $multiple = null;
+
+    /**
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     */
+    public ?string $name = null;
+
+    /**
+     * When present, it specifies that an input field must be filled out before submitting the form.
+     */
+    public ?bool $required = null;
+
+    /**
+     * Specifies the height of a hr element in pixels.
+     */
+    public ?int $size = null;
+
+    /**
      * @example on
      */
     protected ?AutocompleteEnum $autocomplete = null;
 
-    /** When present, it specifies that an input element should be disabled. */
-    public ?bool $disabled = null;
-
-    /** When present, it specifies that the user is allowed to enter more than one value in an input element. */
-    public ?bool $multiple = null;
-
-    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
-    public ?string $name = null;
-
-    /** When present, it specifies that an input field must be filled out before submitting the form. */
-    public ?bool $required = null;
-
-    /** Specifies the height of a hr element in pixels. */
-    public ?int $size = null;
-
-
     public function setAutocomplete(AutocompleteEnum $autocomplete): self
     {
         $this->autocomplete = $autocomplete;
-        $this->htmlElement->setAttribute('autocomplete', $autocomplete->value);
+        $this->htmlElement->setAttribute(
+            'autocomplete',
+            \is_subclass_of($autocomplete, BackedEnum::class) ? (string) $autocomplete->value : $autocomplete
+        );
+
         return $this;
     }
 
@@ -171,5 +177,4 @@ class Select extends InlineElement
     {
         return $this->size;
     }
-
 }

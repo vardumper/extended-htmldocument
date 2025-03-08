@@ -1,31 +1,20 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * InlineFrame - The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.
- * 
- * @generated 2025-03-08 16:37:58
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
  */
+
 namespace Html\Element\Block;
 
+use BackedEnum;
 use Html\Element\BlockElement;
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Body;
-use Html\Element\Block\DefinitionDescription;
-use Html\Element\Block\Dialog;
-use Html\Element\Block\Division;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Header;
-use Html\Element\Block\Main;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Section;
-use Html\Element\Block\Template;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
 use Html\Enum\ReferrerpolicyEnum;
@@ -72,41 +61,47 @@ class InlineFrame extends BlockElement
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** Enables the iframe to be displayed in fullscreen mode. */
+    /**
+     * Enables the iframe to be displayed in fullscreen mode.
+     */
     public ?bool $allowfullscreen = null;
 
-    /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     public ?string $height = null;
 
-    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /**
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     */
     public ?string $name = null;
 
-    /** Specifies the referrer policy for fetches initiated by the element. */
-    protected ?ReferrerpolicyEnum $referrerpolicy = null;
-
-    /**  */
     public ?string $sandbox = null;
 
-    /** When present, it specifies that the iframe should look like it is a part of the containing document (no borders or scrollbars). */
+    /**
+     * When present, it specifies that the iframe should look like it is a part of the containing document (no borders or scrollbars).
+     */
     public ?bool $seamless = null;
 
-    /** 
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
-     * @category HTML attribute
      * @required
      */
     public ?string $src = null;
 
-    /**  */
     public ?string $srcdoc = null;
 
-    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     public ?string $width = null;
 
+    /**
+     * Specifies the referrer policy for fetches initiated by the element.
+     */
+    protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
     public function setAllowfullscreen(bool $allowfullscreen): self
     {
@@ -144,7 +139,11 @@ class InlineFrame extends BlockElement
     public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): self
     {
         $this->referrerpolicy = $referrerpolicy;
-        $this->htmlElement->setAttribute('referrerpolicy', $referrerpolicy->value);
+        $this->htmlElement->setAttribute(
+            'referrerpolicy',
+            \is_subclass_of($referrerpolicy, BackedEnum::class) ? (string) $referrerpolicy->value : $referrerpolicy
+        );
+
         return $this;
     }
 
@@ -207,6 +206,4 @@ class InlineFrame extends BlockElement
     {
         return $this->width;
     }
-
-
 }
