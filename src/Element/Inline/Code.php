@@ -1,17 +1,18 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Code - The code element represents a fragment of computer code. This could be an XML element name, a filename, a computer program, or any other string that a computer would recognize.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code
  */
+
 namespace Html\Element\Inline;
 
+use Html\Element\Block\Article;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
@@ -23,7 +24,6 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
-use Html\Element\Inline\Address;
 
 class Code extends InlineElement
 {
@@ -47,7 +47,7 @@ class Code extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [
-        Address::class,
+        Article::class,
         Aside::class,
         Body::class,
         DefinitionDescription::class,
@@ -64,9 +64,5 @@ class Code extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
-
-
-
+    public static array $parentOf = [];
 }

@@ -247,11 +247,11 @@ test('set attributes enum value', function () {
     expect($this->delegator->htmlElement->getAttribute('target'))
         ->toEqual('_blank');
     expect($this->delegator->getAttribute('target'))
-        ->toEqual(TargetEnum::_BLANK);
+        ->toEqual(TargetEnum::BLANK);
     expect($this->delegator->rel)
         ->toEqual(RelEnum::NOFOLLOW);
     expect($this->delegator->target)
-        ->toEqual(TargetEnum::_BLANK);
+        ->toEqual(TargetEnum::BLANK);
 });
 
 test('set id', function () {

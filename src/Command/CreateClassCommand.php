@@ -62,8 +62,8 @@ final class CreateClassCommand extends Command
 
             $this->uses[] = \sprintf("Html\Element\%sElement", \ucfirst($level)); // extends
 
-            $methods = $this->getMethods($attributes);
-            $attributes = $this->getAttributes($attributes); // before use statements
+            $methods = $this->getMethods($attributes, $element);
+            $attributes = $this->getAttributes($attributes, $element); // before use statements
             $parents = $this->resolveParents($element, explode(' | ', $this->data[$element]['parent'] ?? ''));
             $children = $this->resolveChildren($this->data[$element]['children'] ?? []);
             $use_statements = $this->getUseStatements($children, $parents, $namespace . '\\' . $className);
@@ -133,6 +133,21 @@ final class CreateClassCommand extends Command
             ->addArgument('element', InputArgument::OPTIONAL, 'The HTML element name to create a class for');
     }
 
+    private function manyElementsHaveAttribute($attributeNAme): bool
+    {
+        $elementsWithTypeAttribute = [];
+        foreach ($this->data as $element => $details) {
+            if (isset($details['attributes']) && isset($details['attributes'][$attributeNAme])) {
+                // found the second element with the same attribute
+                if (count($elementsWithTypeAttribute) > 1) {
+                    return true;
+                }
+                $elementsWithTypeAttribute[] = $element;
+            }
+        }
+        return false;
+    }
+
     private function findElementsByChild($element): array
     {
         $elements = [];
@@ -158,7 +173,7 @@ final class CreateClassCommand extends Command
         \file_put_contents(__DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . $path, $file);
     }
 
-    private function getMethods(array $attributes): string
+    private function getMethods(array $attributes, string $element): string
     {
         $retVal = '';
         foreach ($attributes as $attribute => $details) {
@@ -168,6 +183,9 @@ final class CreateClassCommand extends Command
             $methodName = ucfirst($this->toVariableName($attribute));
             if ($type === 'enum') {
                 $kebapCase = $this->toKebapCase($attribute);
+                if ($this->manyElementsHaveAttribute($attribute) && count($details['elements']) === 1) {
+                    $kebapCase .= ucfirst($element);
+                }
                 $type = \sprintf('%sEnum', $kebapCase);
                 $signature = "    public function set%s(%s \$%s): self
     {
@@ -220,7 +238,7 @@ final class CreateClassCommand extends Command
         return $retVal;
     }
 
-    private function getAttributes(array $attributes): string
+    private function getAttributes(array $attributes, string $element): string
     {
         $transformedAttributes = '';
         foreach ($attributes as $attribute => $details) {
@@ -230,6 +248,9 @@ final class CreateClassCommand extends Command
             $visibility = 'public';
             if ($type === 'enum') {
                 $kebapCase = $this->toKebapCase($attribute);
+                if ($this->manyElementsHaveAttribute($attribute) && count($details['elements']) === 1) {
+                    $kebapCase .= ucfirst($element);
+                }
                 $this->uses[] = sprintf("Html\Enum\%sEnum", $kebapCase);
                 $type = \sprintf('%sEnum', $kebapCase);
                 $visibility = 'protected';
