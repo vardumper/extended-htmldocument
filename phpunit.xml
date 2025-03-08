@@ -8,7 +8,7 @@
           <directory suffix="Test.php">./tests</directory>
       </testsuite>
   </testsuites>
-  <coverage>
+  <coverage includeUncoveredFiles="false">
     <report>
       <clover outputFile="clover.xml"/>
     </report>
@@ -24,7 +24,6 @@
     <exclude>
        <directory suffix=".php">src/Resources</directory>
        <directory suffix=".php">src/Element</directory>
-       <directory suffix=".php">src/Enum</directory>
      </exclude>
   </source>
 </phpunit>
