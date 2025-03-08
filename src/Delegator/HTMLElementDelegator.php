@@ -9,6 +9,7 @@ use DOM\HtmlElement;
 use Html\Helper\Helper;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Trait\GlobalAttributesTrait;
+use Html\Trait\NativePropertiesTrait;
 use InvalidArgumentException;
 use ReflectionClass;
 use ReflectionUnionType;
@@ -27,6 +28,7 @@ use TypeError;
 class HTMLElementDelegator implements HTMLElementDelegatorInterface
 {
     use GlobalAttributesTrait;
+    use NativePropertiesTrait;
 
     public HtmlElement $htmlElement;
 

@@ -300,3 +300,20 @@ test('child of', function () {
     expect($element->childOf())
         ->toEqual([HTML::class]);
 });
+
+test('test set native public propeties with setter', function () {
+    $element = Body::create($this->document);
+    $element->setTextContent('test');
+    expect($element->textContent)
+        ->toEqual('test');
+
+    $element->setInnerHTML('<span>Hello</span>');
+    expect($element->getInnerHTML())
+        ->toEqual('<span>Hello</span>');
+
+    expect($element->innerHTML)
+        ->toEqual('<span>Hello</span>');
+
+    expect((string) $element)
+        ->toEqual('<body><span>Hello</span></body>');
+});
