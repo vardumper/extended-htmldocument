@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1741439695">
-  <project timestamp="1741439695">
+<coverage generated="1741440296">
+  <project timestamp="1741440296">
     <package name="Html\Delegator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/DOMNodeDelegator.php">
         <class name="Html\Delegator\DOMNodeDelegator" namespace="Html\Delegator">
@@ -234,11 +234,11 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/AutoCapitalizeEnum.php">
         <class name="Html\Enum\AutoCapitalizeEnum" namespace="Html\Enum">
-          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
-        <line num="26" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="28" type="stmt" count="0"/>
-        <metrics loc="31" ncloc="15" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        <line num="26" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="28" type="stmt" count="1"/>
+        <metrics loc="31" ncloc="15" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/AutocompleteEnum.php">
         <class name="Html\Enum\AutocompleteEnum" namespace="Html\Enum">
@@ -306,11 +306,11 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/InputModeEnum.php">
         <class name="Html\Enum\InputModeEnum" namespace="Html\Enum">
-          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
-        <line num="24" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="26" type="stmt" count="0"/>
-        <metrics loc="29" ncloc="22" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="0" elements="2" coveredelements="0"/>
+        <line num="24" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="26" type="stmt" count="1"/>
+        <metrics loc="29" ncloc="22" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/KindEnum.php">
         <class name="Html\Enum\KindEnum" namespace="Html\Enum">
@@ -511,7 +511,7 @@
     <package name="Html\Trait">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttributesTrait.php">
         <class name="Html\Trait\GlobalAttributesTrait" namespace="Html\Trait">
-          <metrics complexity="72" methods="48" coveredmethods="47" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="106" elements="157" coveredelements="153"/>
+          <metrics complexity="72" methods="48" coveredmethods="47" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="108" elements="157" coveredelements="155"/>
         </class>
         <line num="68" type="method" name="setId" visibility="public" complexity="1" crap="1" count="2"/>
         <line num="70" type="stmt" count="2"/>
@@ -638,12 +638,12 @@
         <line num="377" type="stmt" count="1"/>
         <line num="380" type="method" name="getSlot" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="382" type="stmt" count="1"/>
-        <line num="388" type="method" name="setSpellCheck" visibility="public" complexity="5" crap="5.93" count="1"/>
+        <line num="388" type="method" name="setSpellCheck" visibility="public" complexity="5" crap="5.03" count="1"/>
         <line num="390" type="stmt" count="1"/>
         <line num="391" type="stmt" count="1"/>
         <line num="393" type="stmt" count="1"/>
-        <line num="394" type="stmt" count="0"/>
-        <line num="395" type="stmt" count="0"/>
+        <line num="394" type="stmt" count="1"/>
+        <line num="395" type="stmt" count="1"/>
         <line num="397" type="stmt" count="0"/>
         <line num="399" type="stmt" count="1"/>
         <line num="400" type="stmt" count="1"/>
@@ -670,9 +670,9 @@
         <line num="460" type="stmt" count="1"/>
         <line num="463" type="method" name="getTranslate" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="465" type="stmt" count="1"/>
-        <metrics loc="468" ncloc="373" classes="1" methods="48" coveredmethods="47" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="106" elements="157" coveredelements="153"/>
+        <metrics loc="468" ncloc="373" classes="1" methods="48" coveredmethods="47" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="108" elements="157" coveredelements="155"/>
       </file>
     </package>
-    <metrics files="30" loc="1820" ncloc="1344" classes="28" methods="105" coveredmethods="100" conditionals="0" coveredconditionals="0" statements="385" coveredstatements="378" elements="490" coveredelements="478"/>
+    <metrics files="30" loc="1820" ncloc="1344" classes="28" methods="105" coveredmethods="102" conditionals="0" coveredconditionals="0" statements="385" coveredstatements="382" elements="490" coveredelements="484"/>
   </project>
 </coverage>

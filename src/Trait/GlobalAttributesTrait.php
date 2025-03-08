@@ -392,7 +392,7 @@ trait GlobalAttributesTrait
         }
         if (is_string($spellCheck)) {
             if (! in_array($spellCheck, array_map(fn ($e) => $e->value, SpellCheckEnum::cases()))) {
-                throw new InvalidArgumentException('Invalid value for spellCheck');
+                throw new InvalidArgumentException('Invalid value for spellcheck');
             }
             $spellCheck = SpellCheckEnum::from($spellCheck);
         }

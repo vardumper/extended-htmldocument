@@ -5,12 +5,14 @@ declare(strict_types=1);
 test('enum functionality', function () {
     $enums = [
         \Html\Enum\AlignEnum::class,
+        \Html\Enum\AutoCapitalizeEnum::class,
         \Html\Enum\AutocompleteEnum::class,
         \Html\Enum\ClearEnum::class,
         \Html\Enum\CrossoriginEnum::class,
         \Html\Enum\DecodingEnum::class,
         \Html\Enum\EnctypeEnum::class,
         \Html\Enum\HttpEquivEnum::class,
+        \Html\Enum\InputModeEnum::class,
         \Html\Enum\KindEnum::class,
         \Html\Enum\MethodEnum::class,
         \Html\Enum\PreloadEnum::class,

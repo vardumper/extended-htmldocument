@@ -187,6 +187,14 @@ test('set and get spell check', function () {
         ->toEqual('true');
     expect($this->element->htmlElement->getAttribute('spellcheck'))
         ->toEqual('true');
+
+    $this->expectException(InvalidArgumentException::class);
+    $this->expectExceptionMessage('Invalid value for spellcheck');
+    $this->element->setSpellCheck('invalid-value');
+
+    $this->element->setSpellCheck('true');
+    expect($this->element->getSpellCheck())
+        ->toBeInstanceOf(SpellCheckEnum::class);
 });
 
 test('set and get style', function () {
