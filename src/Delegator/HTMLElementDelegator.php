@@ -6,6 +6,7 @@ use BackedEnum;
 use BadMethodCallException;
 use DOM\Document;
 use DOM\HtmlElement;
+use Html\Helper\Helper;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Trait\GlobalAttributesTrait;
 use InvalidArgumentException;
@@ -80,7 +81,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             $name = 'className';
         }
 
-        if ($this->isBackedEnum($value)) {
+        if (Helper::isBackedEnum($value)) {
             $value = $value->value;
         }
 
@@ -108,7 +109,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             $property->setValue($this->htmlElement, $value);
             return;
         }
-        $this->htmlElement->setAttribute($name, $this->isBackedEnum($value) ? $value->value : $value);
+        $this->htmlElement->setAttribute($name, Helper::isBackedEnum($value) ? $value->value : $value);
         return;
     }
 
@@ -229,13 +230,5 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     public static function parentOf(): array
     {
         return static::$parentOf;
-    }
-
-    /**
-     * Helper method
-     */
-    private function isBackedEnum($value): bool
-    {
-        return is_object($value) && is_subclass_of($value, BackedEnum::class);
     }
 }

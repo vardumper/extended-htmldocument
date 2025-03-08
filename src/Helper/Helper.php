@@ -4,8 +4,15 @@ declare(strict_types=1);
 
 namespace Html\Helper;
 
+use BackedEnum;
+
 class Helper
 {
+    public static function isBackedEnum($value): bool
+    {
+        return is_object($value) && is_subclass_of($value, BackedEnum::class);
+    }
+
     public static function getReservedWords(): array
     {
         return [

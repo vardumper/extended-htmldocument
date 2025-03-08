@@ -120,9 +120,10 @@ if [ -x $PEST ]; then
     HAS_PEST=true
 fi
 
-printf "${YELLOW}Pest${NC}\n"
+printf "${YELLOW}Pest Unit Tests${NC}\n"
 if $HAS_PEST; then
-  PEST_OUTPUT=$($PEST XDEBUG_MODE=coverage vendor/bin/pest --coverage-clover clover.xml 2>&1)
+  # execute coverage tests
+  PEST_OUTPUT=$(XDEBUG_MODE=coverage $PEST --color=always --coverage-clover=clover.xml --coverage-html=coverage-report 2>&1)
   if [ $? -eq 0 ]; then
     printf "${GREEN}Pest passed${NC}\n"
   else
@@ -140,6 +141,8 @@ if $HAS_PEST; then
         printf "${ORANGE}Committing to ${currentBranch} with test errors or failures.${NC}\n"
     fi
   fi
+  # add coverage report to current commit
+  git add clover.xml
 else
   printf "\npest is required. Install it with:\n\n  composer require --dev pestphp/pest\n\n"
 fi
