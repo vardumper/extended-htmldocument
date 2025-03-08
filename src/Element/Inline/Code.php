@@ -5,7 +5,7 @@
  *
  * Code - The code element represents a fragment of computer code. This could be an XML element name, a filename, a computer program, or any other string that a computer would recognize.
  *
- * @generated 2025-03-08 17:22:28
+ * @generated 2025-03-08 18:09:25
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code

@@ -5,7 +5,7 @@
  *
  * TableFoot - The tfoot element groups the footer content in a table.
  *
- * @generated 2025-03-08 17:22:28
+ * @generated 2025-03-08 18:09:25
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot
@@ -30,7 +30,7 @@ class TableFoot extends BlockElement
     /**
      * If an element is allowed once its allowed parents
      */
-    public static bool $uniquePerParent = false;
+    public static bool $uniquePerParent = true;
 
     /**
      * The list of allowed direct parents. Any if empty.

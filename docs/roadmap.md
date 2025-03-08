@@ -22,13 +22,13 @@ Current pre-release version is v0.1.4. The first public release will be v0.2.0
 - Add chainable setters for all attributes
 - Finalize Delegator tests (above 98% yay)
 - Fix issues with `body`. doesnt have childOf HTML 2. unique per parent isn't true although its unique per document. Add more tests for this.
-
-## Work in Progress & Pending <Badge type="info" text="Milestone" /> <Badge type="tip" text="0.2.0" />
 - [Handle different kinds of attributes that go by the same name correctly](https://github.com/vardumper/extended-htmldocument/issues/6) (eg. `type` is used in `<button|input>` vs `<link|a|...>` vs `<ol>`). Create an OlTypeEnum, LinkTypeEnum, if needed.
 - [Allow for union types for mixed attributes](https://github.com/vardumper/extended-htmldocument/issues/5) - (eg. target which can be both a TargetEnum (_self, _blank, etc.) and a string value)
+- [Add getters/setters for all global attributes to HTMLDocumentDelegator](https://github.com/vardumper/extended-htmldocument/issues/2)
+
+## Work in Progress & Pending <Badge type="info" text="Milestone" /> <Badge type="tip" text="0.2.0" />
 - [Properly link between relevant sections in the docs](https://github.com/vardumper/extended-htmldocument/issues/4). Add links to external resources where appropriate.
 - [Add more examples to the documentation](https://github.com/vardumper/extended-htmldocument/issues/3).
-- [Add getters/setters for all global attributes to HTMLDocumentDelegator](https://github.com/vardumper/extended-htmldocument/issues/2)
 - Allow adding `data-attributes` as array. eg `->setAttrbutes(['data' => ['attribute' => 'value'])` would become `data-attribute="value"`. Also `->setData(['attribute' => 'value'])` should work or `->data = ['attribute' => 'value']`. The same logic or functionality would apply to `aria` and `itemprop` as well.
 - [Add chainable setters to native properties such as `textContent` and `nodeValue` and add a `textContent` param to Element constructor or create() method. Or modify to be createElement with standard signature.](https://github.com/vardumper/extended-htmldocument/issues/7)
 - Add missing interfaces, implement all methods from Traits. Add missing tests for these.

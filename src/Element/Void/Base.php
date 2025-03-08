@@ -5,7 +5,7 @@
  *
  * Base - The base element specifies the base URL to use for all relative URLs in a document. There can be at maximum one <base> element in a document, and it must be inside the <head> element.
  *
- * @generated 2025-03-08 17:22:28
+ * @generated 2025-03-08 18:09:25
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
@@ -37,7 +37,7 @@ class Base extends VoidElement
     /**
      * If an element is allowed once its allowed parents
      */
-    public static bool $uniquePerParent = false;
+    public static bool $uniquePerParent = true;
 
     /**
      * The list of allowed direct parents. Any if empty.

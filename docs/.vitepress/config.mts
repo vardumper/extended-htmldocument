@@ -21,7 +21,7 @@ export default defineConfig({
           { text: 'Installation', link: '/install' },
           { text: 'Element Classes', link: '/elements' },
           { text: 'HTML5 Specification', link: '/html5' },
-          { text: 'Code Generation', link: '/code-generation' } // adding 'Code Generation'
+          { text: 'Code Generation', link: '/code-generation' },
         ]
       },
       {
@@ -30,6 +30,13 @@ export default defineConfig({
           { text: 'Basic Examples', link: '/usage-examples' },
           { text: 'Components in Design Systems', link: '/advanced-examples' },
           { text: 'Extend HTML5 Specification with CSS Framework', link: '/extending-html5-specifications' },
+        ]
+      },
+      {
+        text: 'Development',
+        items: [
+          { text: 'Roadmap', link: '/roadmap' },
+          { text: 'Issues', link: 'https://github.com/vardumper/extended-htmldocument/issues' },
         ]
       }
     ],

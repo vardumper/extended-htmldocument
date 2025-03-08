@@ -2037,14 +2037,17 @@ legend:
   name: Legend
   description: 'The legend element represents a caption for the content of its parent fieldset.'
   level: block
+  unique: false
   unique_per_parent: true
   parent: fieldset
-  attributes:
-    text:
-      description: 'Specifies the default value of the <textarea> element.'
-      type: string
-      elements:
-        - textarea
+  children:
+    - h1
+    - h2
+    - h3
+    - h4
+    - h5
+    - h6
+
 li:
   name: 'List Item'
   description: "The li element represents a list item. If its parent element is an ol, ul, or menu, then the element is an item of the parent element's list, as defined for those elements. Otherwise, the list item has no defined list-related semantics."

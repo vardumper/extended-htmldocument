@@ -51,7 +51,10 @@ final class CreateClassCommand extends Command
             $className = $this->getClassName(\str_replace(' ', '', \ucfirst($this->data[$element]['name'])));
             $level = $this->data[$element]['level'];
             $unique_per_parent = $this->data[$element]['unique_per_parent'] ?? false;
-            $unique = $unique_per_parent = $this->data[$element]['unique'] ?? false;
+            $unique = $this->data[$element]['unique'] ?? false;
+            if ($unique === true) {
+                $unique_per_parent = true;
+            }
             $self_closing = $this->data[$element]['self_closing'] ?? false;
             $namespace = 'Html\\Element\\' . ucfirst($level);
             $description = $this->data[$element]['description'] ?? '';

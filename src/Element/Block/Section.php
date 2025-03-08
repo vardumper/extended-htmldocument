@@ -5,7 +5,7 @@
  *
  * Section - The section element helps in structuring the content of a webpage by grouping related information together.
  *
- * @generated 2025-03-08 17:22:28
+ * @generated 2025-03-08 18:09:25
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section

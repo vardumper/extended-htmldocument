@@ -5,7 +5,7 @@
  *
  * Heading1 - The h1 element represents a section heading. It has the highest rank among the six levels of section headings.
  *
- * @generated 2025-03-08 17:22:28
+ * @generated 2025-03-08 18:09:25
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1
@@ -46,6 +46,7 @@ class Heading1 extends BlockElement
         Footer::class,
         Header::class,
         HeadingsGroup::class,
+        Legend::class,
         Main::class,
         Paragraph::class,
         Section::class,

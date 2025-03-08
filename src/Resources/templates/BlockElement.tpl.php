@@ -2,15 +2,15 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * <?= /** @phpstan-ignore variable.undefined */ $class_name ?> - <?= /** @phpstan-ignore variable.undefined */ $description . PHP_EOL ?>
- * <?= PHP_EOL ?>
+ * <?= /** @phpstan-ignore variable.undefined */ $class_name ?> - <?= /** @phpstan-ignore variable.undefined */ $description . \PHP_EOL ?>
+ * <?= \PHP_EOL ?>
  * @generated <?= $generatedAt . \PHP_EOL ?>
  * @category HTML
  * @package vardumper/extended-htmldocument
- * @subpackage <?= /** @phpstan-ignore variable.undefined */ $namespace . PHP_EOL ?>
+ * @subpackage <?= /** @phpstan-ignore variable.undefined */ $namespace . \PHP_EOL ?>
  * @link https://vardumper.github.io/extended-htmldocument/
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/<?= /** @phpstan-ignore variable.undefined */ $element_name . PHP_EOL ?>
-<?php /** @phpstan-ignore variable.undefined */ if ($defaultValue): ?> * @tutorial an example value can be <?= $defaultValue . PHP_EOL ?><?php endif; ?>
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/<?= /** @phpstan-ignore variable.undefined */ $element_name . \PHP_EOL ?>
+<?php /** @phpstan-ignore variable.undefined */ if ($defaultValue): ?> * @tutorial an example value can be <?= $defaultValue . \PHP_EOL ?><?php endif; ?>
  */
 namespace <?= /** @phpstan-ignore variable.undefined */ $namespace; ?>;
 
@@ -36,12 +36,12 @@ class <?= /** @phpstan-ignore variable.undefined */ $class_name ?> extends <?= u
     /**
      * If an element is unique per HTML document
      */
-    public static bool $unique = <?= /** @phpstan-ignore variable.undefined */ $unique ? 'true' : 'false' ?>;
+    public static bool $unique = <?php /** @phpstan-ignore variable.undefined */ echo $unique ? 'true' : 'false' ?>;
 
     /**
      * If an element is allowed once its allowed parents
      */
-    public static bool $uniquePerParent = <?= /** @phpstan-ignore variable.undefined */ $unique_per_parent ? 'true' : 'false' ?>;
+    public static bool $uniquePerParent = <?php /** @phpstan-ignore variable.undefined */ echo $unique_per_parent ? 'true' : 'false' ?>;
 
     /**
      * The list of allowed direct parents. Any if empty.

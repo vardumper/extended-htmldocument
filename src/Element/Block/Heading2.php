@@ -5,7 +5,7 @@
  *
  * Heading2 - The h2 element represents a section heading. It has the second highest rank among the six levels of section headings.
  *
- * @generated 2025-03-08 17:22:28
+ * @generated 2025-03-08 18:09:25
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h2
@@ -46,6 +46,7 @@ class Heading2 extends BlockElement
         Footer::class,
         Header::class,
         HeadingsGroup::class,
+        Legend::class,
         Main::class,
         Paragraph::class,
         Section::class,
