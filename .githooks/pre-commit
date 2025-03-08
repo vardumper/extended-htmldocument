@@ -175,7 +175,7 @@ if $HAS_PHPMD; then
     PASS=false
   fi
 
-  printf "Checking against cleancode rule... "
+  printf "Checking cleancode rule... "
   PHPMD_OUTPUT=$($PHPMD ./src ansi cleancode 2>&1)
   if [ $? -eq 0 ]; then
     printf "${GREEN}PASSED${NC}\n"
@@ -184,7 +184,7 @@ if $HAS_PHPMD; then
     PASS=false
   fi
 
-  printf "Checking against cleancode rule... "
+  printf "Checking code design... "
   PHPMD_OUTPUT=$($PHPMD ./src ansi design 2>&1)
   if [ $? -eq 0 ]; then
     printf "${GREEN}PASSED${NC}\n"
