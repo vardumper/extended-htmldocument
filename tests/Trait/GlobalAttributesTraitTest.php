@@ -6,7 +6,7 @@ use Html\Enum\ContentEditableEnum;
 use Html\Enum\DirectionEnum;
 use Html\Enum\SpellCheckEnum;
 
-// uses(\Html\Trait\GlobalAttributesTrait::class);
+uses(\Html\Trait\GlobalAttributesTrait::class);
 
 beforeEach(function () {
     $this->document = HTMLDocumentDelegator::createEmpty();
@@ -14,9 +14,9 @@ beforeEach(function () {
 });
 
 test('set and get access key', function () {
-    $this->setAccessKey('a');
-    expect($this->getAccessKey())
-        ->toEqual('a');
+    $this->element->setAccessKey('a');
+    expect($this->element->getAccessKey())
+        ->toBe('a');
 });
 
 test('set and get auto capitalize', function () {
@@ -42,7 +42,7 @@ test('set and get content editable', function () {
     expect($this->element->getContentEditable()->value)
         ->toEqual('true');
     expect($this->element->getAttribute('contenteditable'))
-        ->toEqual('true');
+        ->toEqual(ContentEditableEnum::TRUE);
 
     $this->element->setContentEditable(false);
     expect($this->element->getContentEditable())
@@ -50,7 +50,7 @@ test('set and get content editable', function () {
     expect($this->element->getContentEditable()->value)
         ->toEqual('false');
     expect($this->element->getAttribute('contenteditable'))
-        ->toEqual('false');
+        ->toEqual(ContentEditableEnum::FALSE);
 
     $this->element->setContentEditable('false');
     expect($this->element->getContentEditable())
@@ -58,7 +58,7 @@ test('set and get content editable', function () {
     expect($this->element->getContentEditable()->value)
         ->toEqual('false');
     expect($this->element->getAttribute('contenteditable'))
-        ->toEqual('false');
+        ->toEqual(ContentEditableEnum::FALSE);
 
     $this->element->setContentEditable('inherit');
     expect($this->element->getContentEditable())
@@ -66,7 +66,7 @@ test('set and get content editable', function () {
     expect($this->element->getContentEditable()->value)
         ->toEqual('inherit');
     expect($this->element->getAttribute('contenteditable'))
-        ->toEqual('inherit');
+        ->toEqual(ContentEditableEnum::INHERIT);
 });
 
 test('set and get content editable invalid value', function () {
@@ -82,7 +82,7 @@ test('set and get dir', function () {
     expect($this->element->getDir())
         ->toEqual(DirectionEnum::LTR);
     expect($this->element->getAttribute('dir'))
-        ->toEqual('ltr');
+        ->toEqual(DirectionEnum::LTR);
 });
 
 test('set and get dir invalid', function () {

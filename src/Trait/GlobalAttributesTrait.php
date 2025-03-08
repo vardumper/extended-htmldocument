@@ -20,7 +20,7 @@ trait GlobalAttributesTrait
 {
     // global attributes
 
-    public ?string $accessKey = null;
+    public ?string $accesskey = null;
 
     public ?bool $draggable = null;
 
@@ -112,7 +112,7 @@ trait GlobalAttributesTrait
     public function setAccessKey(string $accesskey): static
     {
         $this->accesskey = $accesskey;
-        $this->element->setAttribute('accesskey', $accesskey);
+        $this->htmlElement->setAttribute('accesskey', $accesskey);
         return $this;
     }
 

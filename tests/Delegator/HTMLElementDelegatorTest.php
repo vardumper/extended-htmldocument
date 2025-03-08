@@ -243,11 +243,11 @@ test('set attributes enum value', function () {
     expect($this->delegator->htmlElement->getAttribute('rel'))
         ->toEqual('nofollow');
     expect($this->delegator->getAttribute('rel'))
-        ->toEqual('nofollow');
+        ->toEqual(RelEnum::NOFOLLOW);
     expect($this->delegator->htmlElement->getAttribute('target'))
         ->toEqual('_blank');
     expect($this->delegator->getAttribute('target'))
-        ->toEqual('_blank');
+        ->toEqual(TargetEnum::_BLANK);
     expect($this->delegator->rel)
         ->toEqual(RelEnum::NOFOLLOW);
     expect($this->delegator->target)
