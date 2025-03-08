@@ -1,12 +1,11 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * TargetEnum - Specifies where to open the linked document.
- * 
- * @generated 2025-03-08 16:37:55
- * @category HTML Attribute
- * @package vardumper/extended-htmldocument
+ *
+ * @generated 2025-03-08 16:40:26
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/target/
@@ -15,7 +14,8 @@
 
 namespace Html\Enum;
 
-enum TargetEnum: string {
+enum TargetEnum: string
+{
     case BLANK = '_blank';
     case PARENT = '_parent';
     case SELF = '_self';

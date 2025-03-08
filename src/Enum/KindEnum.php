@@ -1,12 +1,11 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * KindEnum - 
- * 
- * @generated 2025-03-08 16:37:55
- * @category HTML Attribute
- * @package vardumper/extended-htmldocument
+ * KindEnum -
+ *
+ * @generated 2025-03-08 16:40:26
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/kind/
@@ -15,7 +14,8 @@
 
 namespace Html\Enum;
 
-enum KindEnum: string {
+enum KindEnum: string
+{
     case CAPTIONS = 'captions';
     case CHAPTERS = 'chapters';
     case DESCRIPTIONS = 'descriptions';

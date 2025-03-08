@@ -51,7 +51,7 @@ a:
         - link
     target:
       description: 'Specifies where to open the linked document.'
-      type: enum
+      type: enum|string
       defaultValue: _self
       choices:
         - _blank
