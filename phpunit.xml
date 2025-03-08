@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php" colors="true">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.3/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true">
   <testsuites>
-    <testsuite name="Unit Tests">
-      <directory>tests</directory>
-    </testsuite>
+      <testsuite name="Test Suite">
+          <directory suffix="Test.php">./tests</directory>
+      </testsuite>
   </testsuites>
-  <php>
-    <ini name="error_reporting" value="-1"/>
-  </php>
   <coverage>
     <report>
       <clover outputFile="clover.xml"/>
     </report>
   </coverage>
+  <php>
+    <ini name="log_errors" value="On" ></ini>
+    <ini name="display_errors" value="On"></ini>
+  </php>
   <source>
     <include>
-      <directory suffix=".php">src/Delegator</directory>
-      <directory suffix=".php">src/Helper</directory>
-      <directory suffix=".php">src/Enum</directory>
-      <directory suffix=".php">src/Trait</directory>
+        <directory suffix=".php">./src</directory>
     </include>
+    <exclude>
+        <directory suffix=".php">./src/Delegator</directory>
+    </exclude>
   </source>
 </phpunit>

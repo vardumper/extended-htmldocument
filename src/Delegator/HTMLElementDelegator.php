@@ -86,6 +86,9 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         }
 
         if (\property_exists($this, $name)) {
+            if ($name === 'contenteditable') {
+                die('yes');
+            }
             // use reflection to check if this property is a BackedEnum and instantiate it with ::from()
             $reflection = new ReflectionClass($this);
             $property = $reflection->getProperty($name);

@@ -10,6 +10,8 @@ use Html\Enum\ContentEditableEnum;
 use Html\Enum\RelEnum;
 use Html\Enum\TargetEnum;
 
+uses(\Html\Trait\GlobalAttributesTrait::class);
+
 beforeEach(function () {
     $this->document = HTMLDocumentDelegator::createEmpty();
     $this->delegator = Anchor::create($this->document);
@@ -78,18 +80,19 @@ test('set global class name', function () {
 });
 
 test('set global attribute set attribute', function () {
-    $this->delegator->setAttribute(ContentEditableEnum::getQualifiedName(), ContentEditableEnum::TRUE);
+    $this->delegator->setAttribute('contenteditable', ContentEditableEnum::TRUE);
     expect($this->delegator->getContentEditable())
         ->toEqual(ContentEditableEnum::TRUE);
     expect($this->delegator->getContentEditable()->value)
         ->toEqual('true');
     expect($this->delegator->getAttribute('contenteditable'))
-        ->toEqual('true');
+        ->toEqual(ContentEditableEnum::TRUE);
     expect($this->delegator->htmlElement->getAttribute('contenteditable'))
         ->toEqual('true');
 });
 
-test('global attribute set directly', function () {
+test('set global attribute directly', function () {
+    // __set is not used, property exists, the contenteditable attribute is not set
     $this->delegator->contenteditable = ContentEditableEnum::TRUE;
 
     // $this->{ContentEditableEnum::getQualifiedName()} = ContentEditableEnum::TRUE;
@@ -97,12 +100,12 @@ test('global attribute set directly', function () {
         ->toEqual(ContentEditableEnum::TRUE);
     expect($this->delegator->getContentEditable()->value)
         ->toEqual('true');
-    // Changed from $this->element
     expect($this->delegator->getAttribute('contenteditable'))
         ->toEqual(ContentEditableEnum::TRUE);
-    // Changed from $this->element
-    expect($this->delegator->htmlElement->getAttribute(ContentEditableEnum::getQualifiedName()))->toEqual('true');
-    // Changed from $this->element
+    expect($this->delegator->contenteditable)
+        ->toEqual(ContentEditableEnum::TRUE);
+    expect($this->delegator->htmlElement->getAttribute('contenteditable'))
+        ->toEqual('true');
 });
 
 test('set', function () {
@@ -294,5 +297,6 @@ test('parent of', function () {
 
 test('child of', function () {
     $element = Body::create($this->document);
-    expect($element->childOf())->toEqual([HTML::class]);
+    expect($element->childOf())
+        ->toEqual([HTML::class]);
 });

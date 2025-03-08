@@ -9,6 +9,8 @@ use Html\Element\Block\Body;
 use Html\Element\Block\TableData;
 use Html\Element\Block\TableRow;
 
+uses(\Html\Trait\GlobalAttributesTrait::class);
+
 beforeEach(function () {
     $this->document = HTMLDocument::createEmpty();
     $this->delegator = HTMLDocumentDelegator::createEmpty();

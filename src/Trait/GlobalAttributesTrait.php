@@ -22,8 +22,6 @@ trait GlobalAttributesTrait
 
     public ?string $accessKey = null;
 
-    public ?ContentEditableEnum $contenteditable = null;
-
     public ?bool $draggable = null;
 
     public ?bool $hidden = null;
@@ -51,6 +49,8 @@ trait GlobalAttributesTrait
     public ?string $title = null;
 
     public ?string $translate = null;
+
+    protected ?ContentEditableEnum $contenteditable = null;
 
     protected ?SpellCheckEnum $spellcheck = null;
 

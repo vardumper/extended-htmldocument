@@ -6,7 +6,7 @@ use Html\Enum\ContentEditableEnum;
 use Html\Enum\DirectionEnum;
 use Html\Enum\SpellCheckEnum;
 
-uses(\Html\Trait\GlobalAttributesTrait::class);
+// uses(\Html\Trait\GlobalAttributesTrait::class);
 
 beforeEach(function () {
     $this->document = HTMLDocumentDelegator::createEmpty();
