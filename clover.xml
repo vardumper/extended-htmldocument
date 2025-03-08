@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1741432442">
-  <project timestamp="1741432442">
+<coverage generated="1741433791">
+  <project timestamp="1741433791">
     <package name="Html\Command">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Command/CreateClassCommand.php">
         <class name="Html\Command\CreateClassCommand" namespace="Html\Command">
@@ -2963,7 +2963,7 @@
     <package name="Html\Trait">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttributesTrait.php">
         <class name="Html\Trait\GlobalAttributesTrait" namespace="Html\Trait">
-          <metrics complexity="69" methods="48" coveredmethods="46" conditionals="0" coveredconditionals="0" statements="103" coveredstatements="99" elements="151" coveredelements="145"/>
+          <metrics complexity="70" methods="48" coveredmethods="46" conditionals="0" coveredconditionals="0" statements="105" coveredstatements="100" elements="153" coveredelements="146"/>
         </class>
         <line num="68" type="method" name="setId" visibility="public" complexity="1" crap="1" count="2"/>
         <line num="70" type="stmt" count="2"/>
@@ -3036,89 +3036,91 @@
         <line num="229" type="stmt" count="1"/>
         <line num="232" type="method" name="getInert" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="234" type="stmt" count="1"/>
-        <line num="240" type="method" name="setInputMode" visibility="public" complexity="4" crap="4.13" count="1"/>
+        <line num="240" type="method" name="setInputMode" visibility="public" complexity="5" crap="5.58" count="1"/>
         <line num="242" type="stmt" count="1"/>
         <line num="243" type="stmt" count="0"/>
         <line num="245" type="stmt" count="1"/>
-        <line num="246" type="stmt" count="1"/>
-        <line num="247" type="stmt" count="1"/>
-        <line num="250" type="method" name="getInputMode" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="252" type="stmt" count="1"/>
-        <line num="258" type="method" name="setIs" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="260" type="stmt" count="1"/>
-        <line num="262" type="stmt" count="1"/>
-        <line num="265" type="method" name="getIs" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="267" type="stmt" count="1"/>
-        <line num="273" type="method" name="setLang" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="275" type="stmt" count="1"/>
-        <line num="277" type="stmt" count="1"/>
-        <line num="280" type="method" name="getLang" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="282" type="stmt" count="1"/>
-        <line num="288" type="method" name="setNonce" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="290" type="stmt" count="1"/>
-        <line num="292" type="stmt" count="1"/>
-        <line num="295" type="method" name="getNonce" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="297" type="stmt" count="1"/>
-        <line num="303" type="method" name="setPart" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="305" type="stmt" count="1"/>
-        <line num="307" type="stmt" count="1"/>
-        <line num="310" type="method" name="getPart" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="312" type="stmt" count="1"/>
-        <line num="318" type="method" name="setPopover" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="320" type="stmt" count="1"/>
-        <line num="322" type="stmt" count="1"/>
-        <line num="325" type="method" name="getPopover" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="327" type="stmt" count="1"/>
-        <line num="333" type="method" name="setRole" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="335" type="stmt" count="1"/>
-        <line num="337" type="stmt" count="1"/>
-        <line num="340" type="method" name="getRole" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="342" type="stmt" count="1"/>
-        <line num="348" type="method" name="setSlot" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="350" type="stmt" count="1"/>
-        <line num="352" type="stmt" count="1"/>
-        <line num="355" type="method" name="getSlot" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="357" type="stmt" count="1"/>
-        <line num="363" type="method" name="setSpellCheck" visibility="public" complexity="5" crap="5.93" count="1"/>
-        <line num="365" type="stmt" count="1"/>
-        <line num="366" type="stmt" count="1"/>
+        <line num="246" type="stmt" count="0"/>
+        <line num="248" type="stmt" count="1"/>
+        <line num="249" type="stmt" count="1"/>
+        <line num="250" type="stmt" count="1"/>
+        <line num="253" type="method" name="getInputMode" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="255" type="stmt" count="1"/>
+        <line num="261" type="method" name="setIs" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="263" type="stmt" count="1"/>
+        <line num="265" type="stmt" count="1"/>
+        <line num="268" type="method" name="getIs" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="270" type="stmt" count="1"/>
+        <line num="276" type="method" name="setLang" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="278" type="stmt" count="1"/>
+        <line num="280" type="stmt" count="1"/>
+        <line num="283" type="method" name="getLang" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="285" type="stmt" count="1"/>
+        <line num="291" type="method" name="setNonce" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="293" type="stmt" count="1"/>
+        <line num="295" type="stmt" count="1"/>
+        <line num="298" type="method" name="getNonce" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="300" type="stmt" count="1"/>
+        <line num="306" type="method" name="setPart" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="308" type="stmt" count="1"/>
+        <line num="310" type="stmt" count="1"/>
+        <line num="313" type="method" name="getPart" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="315" type="stmt" count="1"/>
+        <line num="321" type="method" name="setPopover" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="323" type="stmt" count="1"/>
+        <line num="325" type="stmt" count="1"/>
+        <line num="328" type="method" name="getPopover" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="330" type="stmt" count="1"/>
+        <line num="336" type="method" name="setRole" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="338" type="stmt" count="1"/>
+        <line num="340" type="stmt" count="1"/>
+        <line num="343" type="method" name="getRole" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="345" type="stmt" count="1"/>
+        <line num="351" type="method" name="setSlot" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="353" type="stmt" count="1"/>
+        <line num="355" type="stmt" count="1"/>
+        <line num="358" type="method" name="getSlot" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="360" type="stmt" count="1"/>
+        <line num="366" type="method" name="setSpellCheck" visibility="public" complexity="5" crap="5.93" count="1"/>
         <line num="368" type="stmt" count="1"/>
-        <line num="369" type="stmt" count="0"/>
-        <line num="370" type="stmt" count="0"/>
+        <line num="369" type="stmt" count="1"/>
+        <line num="371" type="stmt" count="1"/>
         <line num="372" type="stmt" count="0"/>
-        <line num="374" type="stmt" count="1"/>
-        <line num="375" type="stmt" count="1"/>
-        <line num="376" type="stmt" count="1"/>
-        <line num="379" type="method" name="getSpellCheck" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="381" type="stmt" count="1"/>
-        <line num="387" type="method" name="setStyle" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="389" type="stmt" count="1"/>
-        <line num="391" type="stmt" count="1"/>
-        <line num="394" type="method" name="getStyle" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="396" type="stmt" count="1"/>
-        <line num="402" type="method" name="setTabIndex" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="404" type="stmt" count="1"/>
-        <line num="406" type="stmt" count="1"/>
-        <line num="409" type="method" name="getTabIndex" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="411" type="stmt" count="1"/>
-        <line num="417" type="method" name="setTitle" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="419" type="stmt" count="1"/>
-        <line num="420" type="stmt" count="1"/>
-        <line num="423" type="method" name="getTitle" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="425" type="stmt" count="1"/>
-        <line num="431" type="method" name="setTranslate" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="433" type="stmt" count="1"/>
-        <line num="435" type="stmt" count="1"/>
-        <line num="438" type="method" name="getTranslate" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="440" type="stmt" count="1"/>
-        <line num="446" type="method" name="setDataAttribute" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="448" type="stmt" count="1"/>
-        <line num="450" type="stmt" count="1"/>
-        <line num="453" type="method" name="getDataAttribute" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="455" type="stmt" count="1"/>
-        <metrics loc="458" ncloc="362" classes="1" methods="48" coveredmethods="46" conditionals="0" coveredconditionals="0" statements="103" coveredstatements="99" elements="151" coveredelements="145"/>
+        <line num="373" type="stmt" count="0"/>
+        <line num="375" type="stmt" count="0"/>
+        <line num="377" type="stmt" count="1"/>
+        <line num="378" type="stmt" count="1"/>
+        <line num="379" type="stmt" count="1"/>
+        <line num="382" type="method" name="getSpellCheck" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="384" type="stmt" count="1"/>
+        <line num="390" type="method" name="setStyle" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="392" type="stmt" count="1"/>
+        <line num="394" type="stmt" count="1"/>
+        <line num="397" type="method" name="getStyle" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="399" type="stmt" count="1"/>
+        <line num="405" type="method" name="setTabIndex" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="407" type="stmt" count="1"/>
+        <line num="409" type="stmt" count="1"/>
+        <line num="412" type="method" name="getTabIndex" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="414" type="stmt" count="1"/>
+        <line num="420" type="method" name="setTitle" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="422" type="stmt" count="1"/>
+        <line num="423" type="stmt" count="1"/>
+        <line num="426" type="method" name="getTitle" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="428" type="stmt" count="1"/>
+        <line num="434" type="method" name="setTranslate" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="436" type="stmt" count="1"/>
+        <line num="438" type="stmt" count="1"/>
+        <line num="441" type="method" name="getTranslate" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="443" type="stmt" count="1"/>
+        <line num="449" type="method" name="setDataAttribute" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="451" type="stmt" count="1"/>
+        <line num="453" type="stmt" count="1"/>
+        <line num="456" type="method" name="getDataAttribute" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="458" type="stmt" count="1"/>
+        <metrics loc="461" ncloc="365" classes="1" methods="48" coveredmethods="46" conditionals="0" coveredconditionals="0" statements="105" coveredstatements="100" elements="153" coveredelements="146"/>
       </file>
     </package>
-    <metrics files="152" loc="15275" ncloc="11204" classes="81" methods="589" coveredmethods="102" conditionals="0" coveredconditionals="0" statements="1617" coveredstatements="375" elements="2206" coveredelements="477"/>
+    <metrics files="152" loc="15278" ncloc="11207" classes="81" methods="589" coveredmethods="102" conditionals="0" coveredconditionals="0" statements="1619" coveredstatements="376" elements="2208" coveredelements="478"/>
   </project>
 </coverage>

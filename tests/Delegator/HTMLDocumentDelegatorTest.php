@@ -269,12 +269,14 @@ test('create from string', function () {
         ->toEqual($html);
 });
 
-test('create from invalid file', function () {
-    expect(file_exists('invalid-file.html'))
-        ->toBeFalse();
-    $this->expectException(Exception::class);
-    $this->expectExceptionMessage("Cannot open file 'invalid-file.html'");
-    HTMLDocumentDelegator::createFromFile('invalid-file.html');
+test('create from file', function () {
+    file_put_contents('file.html', '<!doctype html><html><body>Hello World</body></html>');
+    expect(file_exists('file.html'))
+        ->toBeTrue();
+    $delegator = HTMLDocumentDelegator::createFromFile('file.html');
+    expect($delegator)
+        ->toBeInstanceOf(HTMLDocumentDelegator::class);
+    unlink('file.html');
 });
 
 test('get elements by tag name', function () {

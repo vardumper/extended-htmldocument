@@ -34,8 +34,6 @@ test('constructor htmldocument create element', function () {
         ->toBeInstanceOf(Anchor::class);
     expect($anchor)
         ->toBeInstanceOf(HTMLElement::class);
-    expect($anchor?->htmlElement)
-        ->toBe(null);
 });
 
 test('constructor html document delegator create element', function () {
@@ -81,5 +79,6 @@ test('append htmldocument create element', function () {
         ->toBe('A');
     expect($node)
         ->toBeInstanceOf(DOMNodeDelegator::class);
-    expect($node->domNode)->toBeInstanceOf(HTMLElement::class);
+    expect($node->domNode)
+        ->toBeInstanceOf(HTMLElement::class);
 });

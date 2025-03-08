@@ -237,13 +237,16 @@ trait GlobalAttributesTrait
     /**
      * @description Suggests an input mode (e.g., numeric, email, tel).
      */
-    public function setInputMode(string|InputModeEnum $inputMode = InputModeEnum::NUMERIC->value): static
+    public function setInputMode(string|InputModeEnum $inputMode = InputModeEnum::NUMERIC): static
     {
+        if ($inputMode === null) {
+            $inputMode = InputModeEnum::NUMERIC;
+        }
         if (is_string($inputMode) && ! in_array($inputMode, array_map(fn ($e) => $e->value, InputModeEnum::cases()))) {
             throw new InvalidArgumentException('Invalid value for inputMode');
         }
         $this->inputmode = is_string($inputMode) ? InputModeEnum::from($inputMode) : $inputMode;
-        $this->htmlElement->setAttribute('inputmode', $inputMode->value);
+        $this->htmlElement->setAttribute('inputmode', $this->inputmode->value);
         return $this;
     }
 

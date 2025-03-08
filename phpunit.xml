@@ -21,9 +21,5 @@
     <include>
         <directory suffix=".php">./src</directory>
     </include>
-    <exclude>
-        <directory suffix=".php">vendor/rector/swiss-knife</directory>
-        <directory suffix=".php">vendor/simplify/easy-coding-standards</directory>
-    </exclude>
   </source>
 </phpunit>
