@@ -33,9 +33,14 @@ test('enum functionality', function () {
         $obj = $enum::cases()[0];
         expect(class_exists($enum))
             ->toBeTrue();
+        expect($obj)
+            ->toBeInstanceOf($enum);
         expect(is_subclass_of($enum, BackedEnum::class))->toBeTrue();
         expect($enum::getQualifiedName())->toBeString();
 
+        if (\method_exists($enum, 'getDefault')) {
+            expect($enum::getDefault())->toBeInstanceOf($enum);
+        }
         // $this->assertSame($enum::cases()[0], $enum::cases()[0]::cases()[0]);
     }
 });

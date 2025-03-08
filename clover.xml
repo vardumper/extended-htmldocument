@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1741450705">
-  <project timestamp="1741450705">
+<coverage generated="1741451230">
+  <project timestamp="1741451230">
     <package name="Html\Delegator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/DOMNodeDelegator.php">
         <class name="Html\Delegator\DOMNodeDelegator" namespace="Html\Delegator">
@@ -242,13 +242,13 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/AutocompleteEnum.php">
         <class name="Html\Enum\AutocompleteEnum" namespace="Html\Enum">
-          <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
         <line num="21" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="23" type="stmt" count="1"/>
-        <line num="26" type="method" name="getDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="28" type="stmt" count="0"/>
-        <metrics loc="31" ncloc="21" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+        <line num="26" type="method" name="getDefault" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="28" type="stmt" count="1"/>
+        <metrics loc="31" ncloc="21" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/ClearEnum.php">
         <class name="Html\Enum\ClearEnum" namespace="Html\Enum">
@@ -316,23 +316,23 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/KindEnum.php">
         <class name="Html\Enum\KindEnum" namespace="Html\Enum">
-          <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
         <line num="24" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="26" type="stmt" count="1"/>
-        <line num="29" type="method" name="getDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="31" type="stmt" count="0"/>
-        <metrics loc="34" ncloc="24" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+        <line num="29" type="method" name="getDefault" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="31" type="stmt" count="1"/>
+        <metrics loc="34" ncloc="24" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/MethodEnum.php">
         <class name="Html\Enum\MethodEnum" namespace="Html\Enum">
-          <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
         <line num="21" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="23" type="stmt" count="1"/>
-        <line num="26" type="method" name="getDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="28" type="stmt" count="0"/>
-        <metrics loc="31" ncloc="21" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+        <line num="26" type="method" name="getDefault" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="28" type="stmt" count="1"/>
+        <metrics loc="31" ncloc="21" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/PreloadEnum.php">
         <class name="Html\Enum\PreloadEnum" namespace="Html\Enum">
@@ -376,13 +376,13 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TargetEnum.php">
         <class name="Html\Enum\TargetEnum" namespace="Html\Enum">
-          <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
         <line num="23" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="25" type="stmt" count="1"/>
-        <line num="28" type="method" name="getDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="30" type="stmt" count="0"/>
-        <metrics loc="33" ncloc="23" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+        <line num="28" type="method" name="getDefault" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="30" type="stmt" count="1"/>
+        <metrics loc="33" ncloc="23" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeButtonEnum.php">
         <class name="Html\Enum\TypeButtonEnum" namespace="Html\Enum">
@@ -394,43 +394,43 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeInputEnum.php">
         <class name="Html\Enum\TypeInputEnum" namespace="Html\Enum">
-          <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
         <line num="41" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="43" type="stmt" count="1"/>
-        <line num="46" type="method" name="getDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="48" type="stmt" count="0"/>
-        <metrics loc="51" ncloc="39" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+        <line num="46" type="method" name="getDefault" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <metrics loc="51" ncloc="39" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeOlEnum.php">
         <class name="Html\Enum\TypeOlEnum" namespace="Html\Enum">
-          <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
         <line num="24" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="26" type="stmt" count="1"/>
-        <line num="29" type="method" name="getDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="31" type="stmt" count="0"/>
-        <metrics loc="34" ncloc="24" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+        <line num="29" type="method" name="getDefault" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="31" type="stmt" count="1"/>
+        <metrics loc="34" ncloc="24" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeScriptEnum.php">
         <class name="Html\Enum\TypeScriptEnum" namespace="Html\Enum">
-          <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
         <line num="21" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="23" type="stmt" count="1"/>
-        <line num="26" type="method" name="getDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="28" type="stmt" count="0"/>
-        <metrics loc="31" ncloc="21" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+        <line num="26" type="method" name="getDefault" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="28" type="stmt" count="1"/>
+        <metrics loc="31" ncloc="21" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeStyleEnum.php">
         <class name="Html\Enum\TypeStyleEnum" namespace="Html\Enum">
-          <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
         <line num="20" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="22" type="stmt" count="1"/>
-        <line num="25" type="method" name="getDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="27" type="stmt" count="0"/>
-        <metrics loc="30" ncloc="20" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+        <line num="25" type="method" name="getDefault" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="27" type="stmt" count="1"/>
+        <metrics loc="30" ncloc="20" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/ValignEnum.php">
         <class name="Html\Enum\ValignEnum" namespace="Html\Enum">
@@ -442,13 +442,13 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/WrapEnum.php">
         <class name="Html\Enum\WrapEnum" namespace="Html\Enum">
-          <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
         <line num="22" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="24" type="stmt" count="1"/>
-        <line num="27" type="method" name="getDefault" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="29" type="stmt" count="0"/>
-        <metrics loc="32" ncloc="22" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="1" elements="4" coveredelements="2"/>
+        <line num="27" type="method" name="getDefault" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="29" type="stmt" count="1"/>
+        <metrics loc="32" ncloc="22" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
     </package>
     <package name="Html\Helper">
@@ -723,6 +723,6 @@
         <metrics loc="468" ncloc="373" classes="1" methods="48" coveredmethods="47" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="108" elements="157" coveredelements="155"/>
       </file>
     </package>
-    <metrics files="34" loc="1983" ncloc="1475" classes="32" methods="118" coveredmethods="106" conditionals="0" coveredconditionals="0" statements="398" coveredstatements="386" elements="516" coveredelements="492"/>
+    <metrics files="34" loc="1983" ncloc="1475" classes="32" methods="118" coveredmethods="115" conditionals="0" coveredconditionals="0" statements="398" coveredstatements="395" elements="516" coveredelements="510"/>
   </project>
 </coverage>
