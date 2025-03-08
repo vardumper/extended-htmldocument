@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:46db7bb4-5547-479f-8327-53bbf165a837",
+  "serialNumber": "urn:uuid:f91690f6-1694-48a7-8875-1cc747302b6e",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-03-08T10:50:06+00:00",
+    "timestamp": "2025-03-08T17:37:11+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "1b27db3e-7016-49e5-b1f1-9fc80bb1c80f",
+      "bom-ref": "a95d8a5c-46fb-44ec-abc4-15941bdc5a97",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,7 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "6ba492f5-d778-43c7-bdea-80e0d64b4a58",
+      "bom-ref": "2c5380f3-57bc-4684-be52-49b25f3efc54",
       "type": "application",
       "name": "yarn.lock",
       "properties": [
@@ -1653,15 +1653,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/nanoid@3.3.8",
+      "bom-ref": "pkg:npm/nanoid@3.3.9",
       "type": "library",
       "name": "nanoid",
-      "version": "3.3.8",
-      "purl": "pkg:npm/nanoid@3.3.8",
+      "version": "3.3.9",
+      "purl": "pkg:npm/nanoid@3.3.9",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "nanoid@3.3.8"
+          "value": "nanoid@3.3.9"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1840,15 +1840,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/rollup@4.34.9",
+      "bom-ref": "pkg:npm/rollup@4.35.0",
       "type": "library",
       "name": "rollup",
-      "version": "4.34.9",
-      "purl": "pkg:npm/rollup@4.34.9",
+      "version": "4.35.0",
+      "purl": "pkg:npm/rollup@4.35.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "rollup@4.34.9"
+          "value": "rollup@4.35.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2182,15 +2182,15 @@
   ],
   "dependencies": [
     {
-      "ref": "1b27db3e-7016-49e5-b1f1-9fc80bb1c80f",
+      "ref": "2c5380f3-57bc-4684-be52-49b25f3efc54",
       "dependsOn": [
-        "6ba492f5-d778-43c7-bdea-80e0d64b4a58"
+        "pkg:npm/vitepress@1.6.3"
       ]
     },
     {
-      "ref": "6ba492f5-d778-43c7-bdea-80e0d64b4a58",
+      "ref": "a95d8a5c-46fb-44ec-abc4-15941bdc5a97",
       "dependsOn": [
-        "pkg:npm/vitepress@1.6.3"
+        "2c5380f3-57bc-4684-be52-49b25f3efc54"
       ]
     },
     {
@@ -2773,7 +2773,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/nanoid@3.3.8",
+      "ref": "pkg:npm/nanoid@3.3.9",
       "dependsOn": []
     },
     {
@@ -2795,7 +2795,7 @@
     {
       "ref": "pkg:npm/postcss@8.5.3",
       "dependsOn": [
-        "pkg:npm/nanoid@3.3.8",
+        "pkg:npm/nanoid@3.3.9",
         "pkg:npm/picocolors@1.1.1",
         "pkg:npm/source-map-js@1.2.1"
       ]
@@ -2829,7 +2829,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/rollup@4.34.9",
+      "ref": "pkg:npm/rollup@4.35.0",
       "dependsOn": [
         "pkg:npm/%40types/estree@1.0.6"
       ]
@@ -2932,7 +2932,7 @@
       "dependsOn": [
         "pkg:npm/esbuild@0.21.5",
         "pkg:npm/postcss@8.5.3",
-        "pkg:npm/rollup@4.34.9"
+        "pkg:npm/rollup@4.35.0"
       ]
     },
     {
