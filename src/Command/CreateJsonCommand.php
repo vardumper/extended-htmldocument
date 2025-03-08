@@ -20,8 +20,8 @@ final class CreateJsonCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $htmlDefinitionPath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'definitions' . \DIRECTORY_SEPARATOR . 'html5.yaml';
-        $htmlDefinitionPathJson = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'definitions' . \DIRECTORY_SEPARATOR . 'html5.json';
+        $htmlDefinitionPath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'specifications' . \DIRECTORY_SEPARATOR . 'html5.yaml';
+        $htmlDefinitionPathJson = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'specifications' . \DIRECTORY_SEPARATOR . 'html5.json';
 
         if (! file_exists($htmlDefinitionPath)) {
             $io->error("The HTML definition file does not exist at: {$htmlDefinitionPath}");

@@ -28,7 +28,7 @@ final class CreateClassCommand extends Command
 
         $elements = [];
 
-        $htmlDefinitionPath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'definitions' . \DIRECTORY_SEPARATOR . 'html5.yaml';
+        $htmlDefinitionPath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'specifications' . \DIRECTORY_SEPARATOR . 'html5.yaml';
         if (! is_file($htmlDefinitionPath)) {
             $io->error('HTML definition file not found.');
             return Command::FAILURE;
@@ -40,7 +40,7 @@ final class CreateClassCommand extends Command
 
         foreach ($batchElements as $element) {
             if (! in_array($element, $availableElements)) {
-                $io->error('Element not found in definitions.');
+                $io->error('Element not found in specifications.');
                 return Command::FAILURE;
             }
 
