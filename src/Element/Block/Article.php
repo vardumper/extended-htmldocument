@@ -13,7 +13,35 @@
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Inline\Address;
+use Html\Element\Inline\Abbreviation;
+use Html\Element\Inline\Anchor;
+use Html\Element\Inline\BidirectionalIsolation;
+use Html\Element\Inline\BidirectionalOverride;
+use Html\Element\Inline\Bold;
+use Html\Element\Inline\Citation;
+use Html\Element\Inline\Code;
+use Html\Element\Inline\Data;
+use Html\Element\Inline\Definition;
+use Html\Element\Inline\Emphasis;
+use Html\Element\Inline\Image;
+use Html\Element\Inline\Italic;
+use Html\Element\Inline\KeyboardInput;
+use Html\Element\Inline\MarkedText;
+use Html\Element\Inline\Quotation;
+use Html\Element\Inline\Ruby;
+use Html\Element\Inline\SampleOutput;
+use Html\Element\Inline\Small;
+use Html\Element\Inline\Span;
+use Html\Element\Inline\Strikethrough;
+use Html\Element\Inline\Strong;
+use Html\Element\Inline\Subscript;
+use Html\Element\Inline\Superscript;
+use Html\Element\Inline\Time;
+use Html\Element\Inline\Underline;
+use Html\Element\Inline\Variable;
+use Html\Element\Void\Area;
+use Html\Element\Void\BreakElement;
+use Html\Element\Void\WordBreakOpportunity;
 
 class Article extends BlockElement
 {
@@ -44,6 +72,7 @@ class Article extends BlockElement
         Division::class,
         Main::class,
         Navigation::class,
+        Paragraph::class,
         Section::class,
     ];
 
@@ -52,31 +81,59 @@ class Article extends BlockElement
      * @var array<string>
      */
     public static array $parentOf = [
-        Header::class,
-        Footer::class,
-        Address::class,
-        Paragraph::class,
-        HorizontalRule::class,
-        PreformattedText::class,
-        Blockquote::class,
-        OrderedList::class,
-        UnorderedList::class,
-        DefinitionList::class,
-        Figure::class,
-        Table::class,
-        Form::class,
-        Fieldset::class,
-        Division::class,
-        Main::class,
-        Section::class,
-        Navigation::class,
+        Anchor::class,
+        Abbreviation::class,
+        Area::class,
         self::class,
-        Aside::class,
+        Audio::class,
+        Bold::class,
+        BidirectionalIsolation::class,
+        BidirectionalOverride::class,
+        BreakElement::class,
+        Citation::class,
+        Code::class,
+        Data::class,
+        DeletedText::class,
+        Definition::class,
+        Division::class,
+        DefinitionList::class,
+        Emphasis::class,
+        Embed::class,
+        Figure::class,
+        Form::class,
         Heading1::class,
         Heading2::class,
         Heading3::class,
         Heading4::class,
         Heading5::class,
         Heading6::class,
+        Italic::class,
+        InlineFrame::class,
+        Image::class,
+        InsertedText::class,
+        KeyboardInput::class,
+        Map::class,
+        MarkedText::class,
+        ObjectElement::class,
+        OrderedList::class,
+        Paragraph::class,
+        Picture::class,
+        PreformattedText::class,
+        Quotation::class,
+        Ruby::class,
+        Strikethrough::class,
+        SampleOutput::class,
+        Small::class,
+        Span::class,
+        Strong::class,
+        Subscript::class,
+        Superscript::class,
+        Table::class,
+        Time::class,
+        Underline::class,
+        UnorderedList::class,
+        Variable::class,
+        Video::class,
+        WordBreakOpportunity::class,
     ];
 }

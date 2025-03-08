@@ -20,7 +20,11 @@ test('enum functionality', function () {
         \Html\Enum\RelEnum::class,
         \Html\Enum\ShapeEnum::class,
         \Html\Enum\TargetEnum::class,
-        \Html\Enum\TypeEnum::class,
+        \Html\Enum\TypeButtonEnum::class,
+        \Html\Enum\TypeInputEnum::class,
+        \Html\Enum\TypeOlEnum::class,
+        \Html\Enum\TypeScriptEnum::class,
+        \Html\Enum\TypeStyleEnum::class,
         \Html\Enum\ValignEnum::class,
         \Html\Enum\WrapEnum::class,
     ];

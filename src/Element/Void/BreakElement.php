@@ -1,17 +1,18 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * BreakElement - The br element represents a line break.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/br
  */
+
 namespace Html\Element\Void;
 
+use Html\Element\Block\Article;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
@@ -21,10 +22,8 @@ use Html\Element\Block\Header;
 use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
-use Html\Element\Inline\Address;
 use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
-use Html\Enum\ClearEnum;
 
 class BreakElement extends VoidElement
 {
@@ -53,7 +52,7 @@ class BreakElement extends VoidElement
      * @var array<string>
      */
     public static array $childOf = [
-        Address::class,
+        Article::class,
         Aside::class,
         Body::class,
         DefinitionDescription::class,
@@ -68,30 +67,7 @@ class BreakElement extends VoidElement
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
-
-    /** 
-     * 
-     * @category HTML attribute
-     * @deprecated
-     */
-    protected ?ClearEnum $clear = null;
-
-
-    public function setClear(ClearEnum $clear): self
-    {
-        $this->clear = $clear;
-        $this->htmlElement->setAttribute('clear', $clear->value);
-        return $this;
-    }
-
-    public function getClear(): ?ClearEnum
-    {
-        return $this->clear;
-    }
-
+    public static array $parentOf = [];
 }

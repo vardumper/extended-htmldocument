@@ -86,6 +86,7 @@ class Division extends BlockElement
         Header::class,
         ListItem::class,
         Main::class,
+        Paragraph::class,
         Section::class,
         Slot::class,
         Template::class,

@@ -1,15 +1,15 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Source - The source element allows authors to specify multiple media resources for media elements. It is an empty element. It is commonly used within the picture element.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source
  */
+
 namespace Html\Element\Void;
 
 use Html\Element\Block\Aside;
@@ -22,7 +22,6 @@ use Html\Element\Block\Picture;
 use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
-use Html\Enum\TypeEnum;
 
 class Source extends VoidElement
 {
@@ -64,28 +63,30 @@ class Source extends VoidElement
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-    /** Specifies the media type for which the linked resource or style sheet is intended. */
+    /**
+     * Specifies the media type for which the linked resource or style sheet is intended.
+     */
     public ?string $media = null;
 
-    /** Specifies the sizes of the images or icons for different display/window sizes. */
+    /**
+     * Specifies the sizes of the images or icons for different display/window sizes.
+     */
     public ?string $sizes = null;
 
-    /** 
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
-     * @category HTML attribute
      * @required
      */
     public ?string $src = null;
 
-    /** Specifies the media type of the linked resource. */
-    protected ?TypeEnum $type = null;
-
+    /**
+     * Specifies the media type of the linked resource.
+     */
+    public ?string $type = null;
 
     public function setMedia(string $media): self
     {
@@ -120,16 +121,14 @@ class Source extends VoidElement
         return $this->src;
     }
 
-    public function setType(TypeEnum $type): self
+    public function setType(string $type): self
     {
         $this->type = $type;
-        $this->htmlElement->setAttribute('type', $type->value);
         return $this;
     }
 
-    public function getType(): ?TypeEnum
+    public function getType(): ?string
     {
         return $this->type;
     }
-
 }

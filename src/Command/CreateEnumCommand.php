@@ -2,6 +2,7 @@
 
 namespace Html\Command;
 
+use Exception;
 use Silly\Input\InputArgument;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -16,6 +17,8 @@ use Symplify\EasyCodingStandard\Console\ExitCode;
  */
 final class CreateEnumCommand extends Command
 {
+    private array $data;
+
     public function __invoke(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
@@ -26,37 +29,49 @@ final class CreateEnumCommand extends Command
             return ExitCode::FAILURE;
         }
 
-        $data = Yaml::parseFile($htmlDefinitionPath);
+        $this->data = Yaml::parseFile($htmlDefinitionPath);
         // Get the enum attributes
-        $enumAttributes = $this->findEnumAttributes($data);
+        $enumAttributes = $this->findEnumAttributes();
 
-        foreach ($enumAttributes as $element => $attributes) {
-            $io->info("Creating enumeration class for '{$element}'");
+        foreach ($enumAttributes as $enumAttribute) {
+            foreach ($enumAttribute as $element => $attributes) {
+                $io->info("Creating enumeration class for '{$element}'");
 
-            $cases = '';
-            foreach ($attributes['choices'] as $option) {
-                $cases .= sprintf(
-                    "    case %s = '%s';",
-                    str_replace(['-', '/'], '_', strtoupper($option)),
-                    $option
-                ) . \PHP_EOL;
+                if (! isset($attributes['choices'])) {
+                    throw new Exception('An enum attribute must have choices. Add choices or change type to string.');
+                }
+                if (! isset($attributes['elements'])) {
+                    throw new Exception(
+                        'An enum attribute must have elements. Add elements or change type to string.'
+                    );
+                }
+                $cases = '';
+                $className = ucfirst($element);
+
+                if ($this->manyElementsHaveAttribute($element) && count($attributes['elements']) === 1) {
+                    $className .= ucfirst($attributes['elements'][0]);
+                }
+
+                foreach ($attributes['choices'] as $option) {
+                    $cases .= sprintf("    case %s = '%s';", $this->getCaseName($option), $option) . \PHP_EOL;
+                }
+
+                $className = $this->getClassName($className . 'Enum');
+                $parameters = [
+                    'namespace' => 'Html\Enum',
+                    'class_name' => $className, // fixed missing parenthesis
+                    'cases' => rtrim($cases),
+                    'description' => $attributes['description'] ?? '', // fixed double dollar sign
+                    'element_name' => $element,
+                    'defaultValue' => $attributes['defaultValue'] ?? '',
+                    'defaultCase' => $this->getCaseName($attributes['defaultValue'] ?? ''),
+                ];
+
+                $path = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Enum' . \DIRECTORY_SEPARATOR . "{$className}.php"; // corrected variable syntax
+                $templatePath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'templates' . \DIRECTORY_SEPARATOR . 'Enum.tpl.php';
+                $this->createEnumFile($templatePath, $parameters, $path);
+                $io->success("Enumeration class for '{$element}' created successfully.");
             }
-
-            $className = $this->getClassName(ucfirst($element) . 'Enum');
-            $parameters = [
-                'namespace' => 'Html\Enum',
-                'class_name' => $className, // fixed missing parenthesis
-                'cases' => rtrim($cases),
-                'description' => $attributes['description'] ?? '', // fixed double dollar sign
-                'element_name' => $element,
-                'defaultValue' => $attributes['defaultValue'] ?? '',
-            ];
-
-            $path = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Enum' . \DIRECTORY_SEPARATOR . "{$className}.php"; // corrected variable syntax
-            $templatePath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'templates' . \DIRECTORY_SEPARATOR . 'Enum.tpl.php';
-            $this->createEnumFile($templatePath, $parameters, $path);
-            $io->success("Enumeration class for '{$element}' created successfully.");
-            // die;
         }
 
         return ExitCode::SUCCESS;
@@ -70,13 +85,52 @@ final class CreateEnumCommand extends Command
             ->addArgument('element', InputArgument::OPTIONAL, 'The HTML element name to create a class for');
     }
 
+    private function getCaseName(string $option): string
+    {
+        // special case single chars
+        if (strlen($option) === 1) {
+            if (strtolower($option) === $option) {
+                $ret = 'L' . $option;
+            }
+            if (strtoupper($option) === $option) {
+                $ret = 'U' . $option;
+            }
+            if (is_numeric($option)) {
+                $ret = 'N' . $option;
+            }
+
+            $option = $ret;
+        }
+
+        // clenaup
+        $option = str_replace(['-', '/'], '_', strtoupper($option));
+        $option = trim($option, '_');
+
+        return $option;
+    }
+
+    private function manyElementsHaveAttribute($attributeNAme): bool
+    {
+        $elementsWithTypeAttribute = [];
+        foreach ($this->data as $element => $details) {
+            if (isset($details['attributes']) && isset($details['attributes'][$attributeNAme])) {
+                // found the second element with the same attribute
+                if (count($elementsWithTypeAttribute) > 1) {
+                    return true;
+                }
+                $elementsWithTypeAttribute[] = $element;
+            }
+        }
+        return false;
+    }
+
     // Function to find attributes of type 'enum'
     // @todo: consider union types. eg target="framename"|"_self"
-    private function findEnumAttributes(array $data): array
+    private function findEnumAttributes(): array
     {
         $enumAttributes = [];
         $i = 0;
-        foreach ($data as $details) {
+        foreach ($this->data as $details) {
             if (isset($details['attributes'])) {
                 foreach ($details['attributes'] as $attribute => $attributeDetails) {
                     if (isset($attributeDetails['type']) && $attributeDetails['type'] === 'enum') {
@@ -86,8 +140,6 @@ final class CreateEnumCommand extends Command
                 }
             }
         }
-        var_dump($enumAttributes);
-        exit;
         return $enumAttributes;
     }
 

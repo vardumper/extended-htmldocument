@@ -1,17 +1,18 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Underline - The u element represents a span of text with an unarticulated, though explicitly rendered, non-textual annotation, such as labeling the text as being a proper name in Chinese text (a Chinese proper name mark), or labeling the text as being misspelt.
- * 
- * @category HTML
- * @package vardumper/extended-htmldocument
+ *
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u
  */
+
 namespace Html\Element\Inline;
 
+use Html\Element\Block\Article;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
@@ -23,7 +24,6 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
-use Html\Element\Inline\Address;
 
 class Underline extends InlineElement
 {
@@ -47,7 +47,7 @@ class Underline extends InlineElement
      * @var array<string>
      */
     public static array $childOf = [
-        Address::class,
+        Article::class,
         Aside::class,
         Body::class,
         DefinitionDescription::class,
@@ -64,9 +64,5 @@ class Underline extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
-
-
-
+    public static array $parentOf = [];
 }

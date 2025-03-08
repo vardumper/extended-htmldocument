@@ -93,6 +93,8 @@ a:
         - a
         - area
         - link
+        - object
+        - embed
         - source
   text: string
 abbr:
@@ -204,6 +206,8 @@ area:
         - default
         - poly
         - rect
+      elements:
+        - area
     target:
       description: 'Specifies where to open the linked document.'
       type: enum
@@ -220,12 +224,13 @@ area:
         - form
     type:
       description: 'Specifies the media type of the linked resource.'
-      type: enum
+      type: string
       elements:
         - a
         - area
         - link
         - object
+        - embed
         - source
 article:
   name: Article
@@ -386,6 +391,12 @@ audio:
       choices:
         - anonymous
         - use-credentials
+      elements:
+        - audio
+        - img
+        - link
+        - script
+        - video
     loop:
       description: 'When present, it specifies that the audio or video will start over again every time it is finished.'
       type: boolean
@@ -404,6 +415,9 @@ audio:
         - auto
         - metadata
         - none
+      elements:
+        - audio
+        - video
     src:
       description: 'Specifies the URL of the external resource to be embedded or referenced.'
       type: uri
@@ -657,15 +671,6 @@ br:
   level: void
   unique: false
   self_closing: true
-  attributes:
-    clear:
-      type: enum
-      choices:
-        - all
-        - left
-        - none
-        - right
-      deprecated: true
 button:
   name: Button
   description: 'The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.'
@@ -713,35 +718,14 @@ button:
         - select
         - textarea
     type:
-      description: 'Specifies the media type of the linked resource.'
+      description: 'Specifies the type of the button.'
       type: enum
       elements:
-        - a
-        - area
         - button
-        - input
-        - link
-        - object
-        - script
-        - source
-        - style
       choices:
-        - text
-        - password
-        - checkbox
-        - radio
-        - button
-        - file
-        - hidden
-        - image
-        - email
-        - url
-        - number
-        - range
-        - date
-        - time
         - submit
         - reset
+        - button
     value:
       description: 'Specifies the value associated with the element. The meaning and usage may vary depending on the element type.'
       type: string
@@ -1152,15 +1136,14 @@ embed:
         - video
     type:
       description: 'Specifies the media type of the linked resource.'
-      type: enum
+      type: string
       elements:
         - a
         - area
         - link
         - object
-        - script
+        - embed
         - source
-        - style
     width:
       description: 'Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).'
       type: string
@@ -1300,17 +1283,28 @@ form:
       choices:
         - 'off'
         - 'on'
+      elements:
+        - form
+        - input
+        - select
+        - textarea
+      defaultValue: 'on'
     enctype:
       type: enum
       choices:
         - application/x-www-form-urlencoded
         - multipart/form-data
         - text/plain
+      elements:
+        - form
     method:
       type: enum
       choices:
         - get
         - post
+      elements:
+        - form
+      defaultValue: get
     name:
       description: 'Specifies the name associated with the element. The meaning may vary depending on the context.'
       type: string
@@ -1685,6 +1679,12 @@ img:
       choices:
         - anonymous
         - use-credentials
+      elements:
+        - audio
+        - img
+        - link
+        - script
+        - video
     decoding:
       description: 'Specifies the decoding process applied to the image.'
       type: enum
@@ -1797,6 +1797,12 @@ input:
       choices:
         - 'off'
         - 'on'
+      elements:
+        - form
+        - input
+        - select
+        - textarea
+      defaultValue: 'on'
     checked:
       description: 'When present, it indicates that an input element should be pre-selected (checked) when the page loads.'
       type: boolean
@@ -1936,15 +1942,30 @@ input:
       type: enum
       defaultValue: text
       elements:
-        - a
-        - area
-        - button
         - input
-        - link
-        - object
-        - script
-        - source
-        - style
+      choices:
+        - button
+        - checkbox
+        - color
+        - date
+        - datetime-local
+        - email
+        - file
+        - hidden
+        - image
+        - month
+        - number
+        - password
+        - radio
+        - range
+        - reset
+        - search
+        - submit
+        - tel
+        - text
+        - time
+        - url
+        - week
     value:
       description: 'Specifies the value associated with the element. The meaning and usage may vary depending on the element type.'
       type: string
@@ -2080,6 +2101,12 @@ link:
       choices:
         - anonymous
         - use-credentials
+      elements:
+        - audio
+        - img
+        - link
+        - script
+        - video
     href:
       description: 'Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.'
       type: uri
@@ -2529,6 +2556,7 @@ ol:
         - i # for lowercase Roman numerals
         - I # for uppercase Roman numerals
         - 1 # for numbers (default)
+      defaultValue: 1
   children:
     - li
 optgroup:
@@ -2838,6 +2866,12 @@ script:
       choices:
         - anonymous
         - use-credentials
+      elements:
+        - audio
+        - img
+        - link
+        - script
+        - video
     defer:
       description: 'When present, it specifies that the script should be executed after the page has been parsed.'
       type: boolean
@@ -2895,6 +2929,7 @@ script:
       choices:
         - text/javascript
         - module
+      defaultValue: text/javascript
   text: string
 section:
   name: Section
@@ -2984,6 +3019,12 @@ select:
       choices:
         - 'off'
         - 'on'
+      elements:
+        - form
+        - input
+        - select
+        - textarea
+      defaultValue: 'on'
     disabled:
       description: 'When present, it specifies that an input element should be disabled.'
       type: boolean
@@ -3122,7 +3163,7 @@ source:
         - video
     type:
       description: 'Specifies the media type of the linked resource.'
-      type: enum
+      type: string
       elements:
         - a
         - area
@@ -3196,12 +3237,13 @@ style:
         - time
         - video
     type:
-      description: 'Specifies the media type of the linked resource.'
+      description: 'Specifies the media type of the inline styles.'
       type: enum
       elements:
         - style
       choices:
         - text/css
+      defaultValue: text/css
 sub:
   name: Subscript
   description: 'The sub element represents a subscript.'
@@ -3305,6 +3347,12 @@ textarea:
       choices:
         - 'off'
         - 'on'
+      elements:
+        - form
+        - input
+        - select
+        - textarea
+      defaultValue: 'on'
     cols:
       description: 'Specifies the visible width of a text area, in average character widths.'
       type: integer
@@ -3385,6 +3433,9 @@ textarea:
         - hard
         - 'off'
         - soft
+      elements:
+        - textarea
+      defaultValue: soft
 tfoot:
   name: 'Table Foot'
   description: 'The tfoot element groups the footer content in a table.'
@@ -3473,6 +3524,21 @@ tr:
         - right
         - justify
         - char
+      elements:
+        - caption
+        - col
+        - colgroup
+        - hr
+        - iframe
+        - img
+        - table
+        - tbody
+        - td
+        - tfoot
+        - th
+        - thead
+        - tr
+
       deprecated: true
     bgcolor:
       description: 'Defines the background color of each row cell. The value is an HTML color; either a 6-digit hexadecimal RGB code, prefixed by a #, or a color keyword. Other CSS <color> values are not supported. Use the background-color CSS property instead, as this attribute is deprecated.'
@@ -3494,6 +3560,16 @@ tr:
         - bottom
         - middle
         - top
+      elements:
+        - col
+        - colgroup
+        - table
+        - tbody
+        - td
+        - tfoot
+        - th
+        - thead
+        - tr
       deprecated: true
 track:
   name: Track
@@ -3515,6 +3591,9 @@ track:
         - descriptions
         - metadata
         - subtitles
+      elements:
+        - track
+      defaultValue: subtitles
     label:
       description: 'Specifies a label for the associated form control, option group, or option.'
       type: string
@@ -3583,6 +3662,12 @@ video:
       choices:
         - anonymous
         - use-credentials
+      elements:
+        - audio
+        - img
+        - link
+        - script
+        - video
     height:
       description: 'Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).'
       type: string
@@ -3617,6 +3702,9 @@ video:
         - auto
         - metadata
         - none
+      elements:
+        - audio
+        - video
     src:
       description: 'Specifies the URL of the external resource to be embedded or referenced.'
       type: uri
