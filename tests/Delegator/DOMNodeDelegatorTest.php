@@ -24,6 +24,44 @@ test('call', function () {
     // $this->assertEquals($clone, $this->delegator->domNode);
 });
 
+test('call with invalid parameter', function () {
+    //expect()->
+    $delegator = new DOMNodeDelegator($this->document->createTextNode('test'));
+    $node = $this->document->createElement('a');
+    $this->expectException(InvalidArgumentException::class);
+    $delegator->isSameNode($node);
+
+    // $this->expectException(InvalidArgumentException::class);
+    expect($delegator->isSameNode('string'))
+        ->toBeFalse();
+
+
+    $span = $this->document->createElement('span');
+    $delegator = new DOMNodeDelegator($span);
+    $delegator->appendChild($this->delegator); // This should trigger line 29
+});
+
+
+test('call with delegator args', function () {
+    $node = $this->document->createComment('This is a comment');
+    $otherNode = $this->document->createComment('This is a comment');
+    $delegator = new DOMNodeDelegator($node);
+    expect($delegator->isEqualNode($otherNode))
+        ->toBe(true);
+    expect($delegator->isSameNode($otherNode))
+        ->toBe(false);
+
+    expect($delegator->isSameNode($node))
+        ->toBe(true);
+
+    // expect($delegator->domNode)
+    //     ->isEqual($node);
+
+    // expect($delegator->isSameNode($node->domNode))
+    // ->toBe(true);
+});
+
+
 test('get', function () {
     $this->delegator->nodeValue = 'custom node value';
     expect($this->delegator->nodeValue)

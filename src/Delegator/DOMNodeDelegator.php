@@ -18,8 +18,15 @@ class DOMNodeDelegator
     {
         // Convert any HTMLElementDelegator arguments to their underlying DOM\HtmlElement
         foreach ($arguments as &$argument) {
-            if (is_object($argument) && $argument instanceof HTMLElementDelegator) {
-                $argument = $argument->htmlElement;
+            // i dont think DOM\Node has any methods that accept HTMLElement as argument
+            if ($argument instanceof HTMLElementDelegator) {
+                // $argument = $argument->htmlElement;
+                throw new InvalidArgumentException('HTMLElementDelegator is not a valid argument for ' . $name);
+            }
+
+            // there are many methods in DOM\Node that expect DOM\Node arguments
+            if (is_object($argument) && $argument instanceof self) {
+                $argument = $argument->domNode;
             }
         }
 
