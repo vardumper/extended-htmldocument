@@ -5,6 +5,7 @@
  *
  * TypeScriptEnum - Specifies the media type of the linked resource.
  *
+ * @generated 2025-03-08 16:46:59
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/type/
@@ -15,7 +16,7 @@ namespace Html\Enum;
 
 enum TypeScriptEnum: string
 {
-    case TEXT_JAVASCRIPT = 'text/javascript';
+    case TEXT_JAVASCRIPT = 'text/javascript'; // default
     case MODULE = 'module';
 
     public static function getQualifiedName(): string

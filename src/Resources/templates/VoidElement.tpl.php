@@ -4,6 +4,7 @@
  *
  * <?= $class_name ?> - <?= $description . PHP_EOL ?>
  * <?= PHP_EOL ?>
+ * @generated <?= $generatedAt . \PHP_EOL ?>
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage <?= $namespace . PHP_EOL ?>

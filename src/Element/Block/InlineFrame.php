@@ -5,6 +5,7 @@
  *
  * InlineFrame - The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.
  *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
@@ -12,6 +13,7 @@
 
 namespace Html\Element\Block;
 
+use BackedEnum;
 use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
@@ -137,7 +139,11 @@ class InlineFrame extends BlockElement
     public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): self
     {
         $this->referrerpolicy = $referrerpolicy;
-        $this->htmlElement->setAttribute('referrerpolicy', $referrerpolicy->value);
+        $this->htmlElement->setAttribute(
+            'referrerpolicy',
+            \is_subclass_of($referrerpolicy, BackedEnum::class) ? (string) $referrerpolicy->value : $referrerpolicy
+        );
+
         return $this;
     }
 

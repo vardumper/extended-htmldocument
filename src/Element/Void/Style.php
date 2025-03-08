@@ -5,6 +5,7 @@
  *
  * Style - The style element is used to embed CSS styles directly into an HTML document.
  *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
@@ -12,6 +13,7 @@
 
 namespace Html\Element\Void;
 
+use BackedEnum;
 use Html\Element\VoidElement;
 use Html\Enum\TypeStyleEnum;
 
@@ -117,7 +119,11 @@ class Style extends VoidElement
     public function setType(TypeStyleEnum $type): self
     {
         $this->type = $type;
-        $this->htmlElement->setAttribute('type', $type->value);
+        $this->htmlElement->setAttribute(
+            'type',
+            \is_subclass_of($type, BackedEnum::class) ? (string) $type->value : $type
+        );
+
         return $this;
     }
 

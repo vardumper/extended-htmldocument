@@ -5,6 +5,7 @@
  *
  * Heading3 - The h3 element represents a section heading. It has the third highest rank among the six levels of section headings.
  *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h3

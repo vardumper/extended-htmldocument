@@ -5,6 +5,7 @@
  *
  * Textarea - The textarea element represents a multiline plain text edit control for the element's raw value.
  *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
@@ -12,6 +13,7 @@
 
 namespace Html\Element\Inline;
 
+use BackedEnum;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
@@ -137,7 +139,11 @@ class Textarea extends InlineElement
     public function setAutocomplete(AutocompleteEnum $autocomplete): self
     {
         $this->autocomplete = $autocomplete;
-        $this->htmlElement->setAttribute('autocomplete', $autocomplete->value);
+        $this->htmlElement->setAttribute(
+            'autocomplete',
+            \is_subclass_of($autocomplete, BackedEnum::class) ? (string) $autocomplete->value : $autocomplete
+        );
+
         return $this;
     }
 
@@ -259,7 +265,11 @@ class Textarea extends InlineElement
     public function setWrap(WrapEnum $wrap): self
     {
         $this->wrap = $wrap;
-        $this->htmlElement->setAttribute('wrap', $wrap->value);
+        $this->htmlElement->setAttribute(
+            'wrap',
+            \is_subclass_of($wrap, BackedEnum::class) ? (string) $wrap->value : $wrap
+        );
+
         return $this;
     }
 

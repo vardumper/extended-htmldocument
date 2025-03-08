@@ -5,6 +5,7 @@
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
  *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
@@ -12,6 +13,7 @@
 
 namespace Html\Element\Block;
 
+use BackedEnum;
 use Html\Element\BlockElement;
 use Html\Element\Inline\Button;
 use Html\Element\Inline\Input;
@@ -114,10 +116,14 @@ class Form extends BlockElement
     public ?bool $novalidate = null;
 
     /**
+     * Specifies whether a form or input field should have autocomplete enabled. Default is on.
      * @example on
      */
     protected ?AutocompleteEnum $autocomplete = null;
 
+    /**
+     * Specifies how form data should be encoded before sending it to a server. Only used if the method attribute is set to post. Default is application/x-www-form-urlencoded.
+     */
     protected ?EnctypeEnum $enctype = null;
 
     /**
@@ -156,7 +162,11 @@ class Form extends BlockElement
     public function setAutocomplete(AutocompleteEnum $autocomplete): self
     {
         $this->autocomplete = $autocomplete;
-        $this->htmlElement->setAttribute('autocomplete', $autocomplete->value);
+        $this->htmlElement->setAttribute(
+            'autocomplete',
+            \is_subclass_of($autocomplete, BackedEnum::class) ? (string) $autocomplete->value : $autocomplete
+        );
+
         return $this;
     }
 
@@ -168,7 +178,11 @@ class Form extends BlockElement
     public function setEnctype(EnctypeEnum $enctype): self
     {
         $this->enctype = $enctype;
-        $this->htmlElement->setAttribute('enctype', $enctype->value);
+        $this->htmlElement->setAttribute(
+            'enctype',
+            \is_subclass_of($enctype, BackedEnum::class) ? (string) $enctype->value : $enctype
+        );
+
         return $this;
     }
 
@@ -180,7 +194,11 @@ class Form extends BlockElement
     public function setMethod(MethodEnum $method): self
     {
         $this->method = $method;
-        $this->htmlElement->setAttribute('method', $method->value);
+        $this->htmlElement->setAttribute(
+            'method',
+            \is_subclass_of($method, BackedEnum::class) ? (string) $method->value : $method
+        );
+
         return $this;
     }
 
@@ -214,7 +232,11 @@ class Form extends BlockElement
     public function setTarget(TargetEnum $target): self
     {
         $this->target = $target;
-        $this->htmlElement->setAttribute('target', $target->value);
+        $this->htmlElement->setAttribute(
+            'target',
+            \is_subclass_of($target, BackedEnum::class) ? (string) $target->value : $target
+        );
+
         return $this;
     }
 

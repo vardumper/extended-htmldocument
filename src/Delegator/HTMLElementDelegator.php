@@ -11,6 +11,7 @@ use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Trait\GlobalAttributesTrait;
 use InvalidArgumentException;
 use ReflectionClass;
+use ReflectionUnionType;
 use TypeError;
 
 /**
@@ -130,7 +131,17 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             $reflection = new ReflectionClass($this);
             $property = $reflection->getProperty($qualifiedName);
             $propertyType = $property->getType();
-            $enumClass = $propertyType->getName();
+            // find correct enum type form union type list
+            if ($propertyType instanceof ReflectionUnionType) {
+                foreach ($propertyType->getTypes() as $type) {
+                    if (\is_subclass_of($type->getName(), BackedEnum::class)) {
+                        $enumClass = $type->getName();
+                        continue;
+                    }
+                }
+            } else {
+                $enumClass = $propertyType->getName();
+            }
             if (\is_subclass_of($enumClass, BackedEnum::class) && \is_string($value)) {
                 $value = $enumClass::from($value);
                 $methodName = 'set' . $qualifiedName;

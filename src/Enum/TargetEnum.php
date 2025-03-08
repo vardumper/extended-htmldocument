@@ -5,6 +5,7 @@
  *
  * TargetEnum - Specifies where to open the linked document.
  *
+ * @generated 2025-03-08 16:46:59
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/target/
@@ -17,7 +18,7 @@ enum TargetEnum: string
 {
     case BLANK = '_blank';
     case PARENT = '_parent';
-    case SELF = '_self';
+    case SELF = '_self'; // default
     case TOP = '_top';
 
     public static function getQualifiedName(): string

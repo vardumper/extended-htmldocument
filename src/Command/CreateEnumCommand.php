@@ -33,6 +33,7 @@ final class CreateEnumCommand extends Command
         // Get the enum attributes
         $enumAttributes = $this->findEnumAttributes();
 
+        $generatedAt = \date('Y-m-d H:i:s');
         foreach ($enumAttributes as $enumAttribute) {
             foreach ($enumAttribute as $element => $attributes) {
                 $io->info("Creating enumeration class for '{$element}'");
@@ -52,8 +53,11 @@ final class CreateEnumCommand extends Command
                     $className .= ucfirst($attributes['elements'][0]);
                 }
 
+                $defaultCase = $this->getCaseName($attributes['defaultValue'] ?? '');
                 foreach ($attributes['choices'] as $option) {
-                    $cases .= sprintf("    case %s = '%s';", $this->getCaseName($option), $option) . \PHP_EOL;
+                    $caseName = $this->getCaseName($option);
+                    $default = $caseName === $defaultCase ? ' // default' : '';
+                    $cases .= sprintf("    case %s = '%s';%s", $caseName, $option, $default) . \PHP_EOL;
                 }
 
                 $className = $this->getClassName($className . 'Enum');
@@ -64,7 +68,8 @@ final class CreateEnumCommand extends Command
                     'description' => $attributes['description'] ?? '', // fixed double dollar sign
                     'element_name' => $element,
                     'defaultValue' => $attributes['defaultValue'] ?? '',
-                    'defaultCase' => $this->getCaseName($attributes['defaultValue'] ?? ''),
+                    'defaultCase' => $defaultCase,
+                    'generatedAt' => $generatedAt,
                 ];
 
                 $path = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Enum' . \DIRECTORY_SEPARATOR . "{$className}.php"; // corrected variable syntax

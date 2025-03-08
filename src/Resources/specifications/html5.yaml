@@ -51,7 +51,7 @@ a:
         - link
     target:
       description: 'Specifies where to open the linked document.'
-      type: enum
+      type: enum|string
       defaultValue: _self
       choices:
         - _blank
@@ -388,6 +388,7 @@ audio:
         - video
     crossorigin:
       type: enum
+      description: 'Specifies how the element handles cross-origin requests.'
       choices:
         - anonymous
         - use-credentials
@@ -1280,6 +1281,7 @@ form:
         - form
     autocomplete:
       type: enum
+      description: 'Specifies whether a form or input field should have autocomplete enabled. Default is on.'
       choices:
         - 'off'
         - 'on'
@@ -1291,6 +1293,7 @@ form:
       defaultValue: 'on'
     enctype:
       type: enum
+      description: 'Specifies how form data should be encoded before sending it to a server. Only used if the method attribute is set to post. Default is application/x-www-form-urlencoded.'
       choices:
         - application/x-www-form-urlencoded
         - multipart/form-data

@@ -5,6 +5,7 @@
  *
  * Emphasis - The em element represents stress emphasis of its contents.
  *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em

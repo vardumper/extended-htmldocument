@@ -5,6 +5,7 @@
  *
  * Track - The track element is used as a child of the media elements—audio and video. It lets you specify timed text tracks (or time-based data), for example to automatically handle subtitles. The tracks are formatted in WebVTT format (.vtt files) — Web Video Text Tracks.
  *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track
@@ -12,6 +13,7 @@
 
 namespace Html\Element\Void;
 
+use BackedEnum;
 use Html\Element\Block\Aside;
 use Html\Element\Block\DefinitionDescription;
 use Html\Element\Block\Division;
@@ -106,7 +108,11 @@ class Track extends VoidElement
     public function setKind(KindEnum $kind): self
     {
         $this->kind = $kind;
-        $this->htmlElement->setAttribute('kind', $kind->value);
+        $this->htmlElement->setAttribute(
+            'kind',
+            \is_subclass_of($kind, BackedEnum::class) ? (string) $kind->value : $kind
+        );
+
         return $this;
     }
 

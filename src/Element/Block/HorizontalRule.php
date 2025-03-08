@@ -5,6 +5,7 @@
  *
  * HorizontalRule - The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.
  *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr
@@ -12,6 +13,7 @@
 
 namespace Html\Element\Block;
 
+use BackedEnum;
 use Html\Element\BlockElement;
 use Html\Enum\AlignEnum;
 
@@ -79,7 +81,11 @@ class HorizontalRule extends BlockElement
     public function setAlign(AlignEnum $align): self
     {
         $this->align = $align;
-        $this->htmlElement->setAttribute('align', $align->value);
+        $this->htmlElement->setAttribute(
+            'align',
+            \is_subclass_of($align, BackedEnum::class) ? (string) $align->value : $align
+        );
+
         return $this;
     }
 

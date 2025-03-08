@@ -5,6 +5,7 @@
  *
  * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
  *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
@@ -12,6 +13,7 @@
 
 namespace Html\Element\Inline;
 
+use BackedEnum;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
@@ -136,7 +138,11 @@ class Button extends InlineElement
     public function setType(TypeButtonEnum $type): self
     {
         $this->type = $type;
-        $this->htmlElement->setAttribute('type', $type->value);
+        $this->htmlElement->setAttribute(
+            'type',
+            \is_subclass_of($type, BackedEnum::class) ? (string) $type->value : $type
+        );
+
         return $this;
     }
 

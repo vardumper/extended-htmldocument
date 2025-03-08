@@ -5,6 +5,7 @@
  *
  * Progress - The progress element represents the completion progress of a task.
  *
+ * @generated 2025-03-08 17:22:28
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
