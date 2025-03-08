@@ -36,6 +36,18 @@ interface HTMLElementDelegatorInterface
 
     public function setAttribute(string $name, mixed $value): static;
 
+    public function setTextContent(string $textContent): static;
+
+    public function getTextContent(): ?string;
+
+    public function setInnerHTML(string $innerHTML): static;
+
+    public function getInnerHTML(): ?string;
+
+    public function setSubstitutedNodeValue(string $value): static;
+
+    public function getSubstitutedNodeValue(): ?string;
+
     public static function create(HTMLDocumentDelegator $dom): HTMLElementDelegator;
 
     public static function isUniquePerParent(): bool;
