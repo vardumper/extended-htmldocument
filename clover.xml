@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1741440296">
-  <project timestamp="1741440296">
+<coverage generated="1741443856">
+  <project timestamp="1741443856">
     <package name="Html\Delegator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/DOMNodeDelegator.php">
         <class name="Html\Delegator\DOMNodeDelegator" namespace="Html\Delegator">
@@ -348,9 +348,9 @@
         <class name="Html\Enum\RelEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
-        <line num="33" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="35" type="stmt" count="1"/>
-        <metrics loc="38" ncloc="27" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+        <line num="34" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="36" type="stmt" count="1"/>
+        <metrics loc="39" ncloc="30" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/ShapeEnum.php">
         <class name="Html\Enum\ShapeEnum" namespace="Html\Enum">
@@ -673,6 +673,6 @@
         <metrics loc="468" ncloc="373" classes="1" methods="48" coveredmethods="47" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="108" elements="157" coveredelements="155"/>
       </file>
     </package>
-    <metrics files="30" loc="1820" ncloc="1344" classes="28" methods="105" coveredmethods="102" conditionals="0" coveredconditionals="0" statements="385" coveredstatements="382" elements="490" coveredelements="484"/>
+    <metrics files="30" loc="1821" ncloc="1347" classes="28" methods="105" coveredmethods="102" conditionals="0" coveredconditionals="0" statements="385" coveredstatements="382" elements="490" coveredelements="484"/>
   </project>
 </coverage>

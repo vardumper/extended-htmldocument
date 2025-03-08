@@ -75,18 +75,19 @@ final class CreateEnumCommand extends Command
     private function findEnumAttributes(array $data): array
     {
         $enumAttributes = [];
-
+        $i = 0;
         foreach ($data as $details) {
             if (isset($details['attributes'])) {
                 foreach ($details['attributes'] as $attribute => $attributeDetails) {
                     if (isset($attributeDetails['type']) && $attributeDetails['type'] === 'enum') {
-                        $enumAttributes[$attribute] = $attributeDetails;
+                        $enumAttributes[$i][$attribute] = $attributeDetails;
+                        $i++;
                     }
                 }
             }
         }
-        // var_dump($enumAttributes);
-        // exit;
+        var_dump($enumAttributes);
+        exit;
         return $enumAttributes;
     }
 
