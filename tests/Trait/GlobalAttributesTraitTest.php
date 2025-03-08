@@ -131,45 +131,51 @@ test('set and get input mode', function () {
         ->toEqual('numeric');
 });
 
+test('set and get invalid input mode', function () {
+    $this->expectException(InvalidArgumentException::class);
+    $this->expectExceptionMessage('Invalid value for inputmode');
+    $this->element->setInputMode('phone');
+});
+
 test('set and get is', function () {
-    $this->setIs('custom-element');
-    expect($this->getIs())
+    $this->element->setIs('custom-element');
+    expect($this->element->getIs())
         ->toEqual('custom-element');
 });
 
 test('set and get lang', function () {
-    $this->setLang('en');
-    expect($this->getLang())
+    $this->element->setLang('en');
+    expect($this->element->getLang())
         ->toEqual('en');
 });
 
 test('set and get nonce', function () {
-    $this->setNonce('random-nonce');
-    expect($this->getNonce())
+    $this->element->setNonce('random-nonce');
+    expect($this->element->getNonce())
         ->toEqual('random-nonce');
 });
 
 test('set and get part', function () {
-    $this->setPart('part-name');
-    expect($this->getPart())
+    $this->element->setPart('part-name');
+    expect($this->element->getPart())
         ->toEqual('part-name');
 });
 
 test('set and get popover', function () {
-    $this->setPopover('auto');
-    expect($this->getPopover())
+    $this->element->setPopover('auto');
+    expect($this->element->getPopover())
         ->toEqual('auto');
 });
 
 test('set and get role', function () {
-    $this->setRole('button');
-    expect($this->getRole())
+    $this->element->setRole('button');
+    expect($this->element->getRole())
         ->toEqual('button');
 });
 
 test('set and get slot', function () {
-    $this->setSlot('slot-name');
-    expect($this->getSlot())
+    $this->element->setSlot('slot-name');
+    expect($this->element->getSlot())
         ->toEqual('slot-name');
 });
 
@@ -184,31 +190,80 @@ test('set and get spell check', function () {
 });
 
 test('set and get style', function () {
-    $this->setStyle('color: red;');
-    expect($this->getStyle())
+    $this->element->setStyle('color: red;');
+    expect($this->element->getStyle())
         ->toEqual('color: red;');
 });
 
 test('set and get tab index', function () {
-    $this->setTabIndex(1);
-    expect($this->getTabIndex())
+    $this->element->setTabIndex(1);
+    expect($this->element->getTabIndex())
         ->toEqual(1);
 });
 
 test('set and get title', function () {
-    $this->setTitle('Test Title');
-    expect($this->getTitle())
+    $this->element->setTitle('Test Title');
+    expect($this->element->getTitle())
         ->toEqual('Test Title');
 });
 
 test('set and get translate', function () {
-    $this->setTranslate('yes');
-    expect($this->getTranslate())
+    $this->element->setTranslate('yes');
+    expect($this->element->getTranslate())
         ->toEqual('yes');
 });
 
-test('set and get data attribute', function () {
-    $this->setDataAttribute('test', 'value');
-    expect($this->getDataAttribute('test'))
+test('test setDataAttribute', function () {
+    $this->element->setDataAttribute([
+        'name' => 'value',
+        'more' => 'another',
+    ]);
+    expect($this->element->getDataAttribute())
+        ->toEqual([
+            'name' => 'value',
+            'more' => 'another',
+        ]);
+
+    expect($this->element->getAttribute('data-name'))
         ->toEqual('value');
+});
+
+test('test setDataAttribute with indexed array', function () {
+    $this->element->setDataAttribute(['value', 'another']);
+    expect($this->element->getDataAttribute())
+        ->toEqual(['value', 'another']);
+
+    expect($this->element->getAttribute('data-0'))
+        ->toEqual('value');
+});
+
+test('test getDataAttribute', function () {
+    $this->element->setDataAttribute(['value', 'another']);
+    expect($this->element->getDataAttribute(0))
+        ->toEqual('value');
+
+    expect($this->element->getDataAttribute('0'))
+        ->toEqual('value');
+
+    $this->element->setDataAttribute([
+        'name' => 'value',
+        'more' => 'another',
+    ]);
+    expect($this->element->getDataAttribute('name'))
+        ->toEqual('value');
+
+    expect($this->element->getDataAttribute('more'))
+        ->toEqual('another');
+
+    expect($this->element->getDataAttribute('undefined'))
+        ->toBe(null);
+
+    // expect($this->element->getAttribute('data-0'))
+    //     ->toEqual('value');
+});
+
+test('test setDataAttribute unsupported parameter type', function () {
+    $this->expectException(TypeError::class);
+    $this->expectExceptionMessage('Argument #1 ($data) must be of type array, string given');
+    $this->element->setDataAttribute('invalid');
 });

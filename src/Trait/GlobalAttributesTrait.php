@@ -24,6 +24,8 @@ trait GlobalAttributesTrait
 
     public ?bool $draggable = null;
 
+    public ?array $data = null;
+
     public ?bool $hidden = null;
 
     public ?bool $inert = null;
@@ -59,8 +61,6 @@ trait GlobalAttributesTrait
     private ?DirectionEnum $dir = null;
 
     private ?InputModeEnum $inputmode = null;
-
-    private array $data = [];
 
     /**
      * @description Specifies a unique identifier for the element
@@ -166,6 +166,31 @@ trait GlobalAttributesTrait
     }
 
     /**
+     * @description Sets a custom data attribute.
+     */
+    public function setDataAttribute(array $data): static
+    {
+        $this->data = $data;
+        foreach ($data as $name => $value) {
+            $this->htmlElement->setAttribute('data-' . $name, $value);
+        }
+        return $this;
+    }
+
+    public function getDataAttribute(?string $name = null): null|string|array
+    {
+        if ($name === null) {
+            return $this->data;
+        }
+
+        if (! isset($this->data[$name])) {
+            return null;
+        }
+
+        return $this->data[$name];
+    }
+
+    /**
      * @todo sounds like enum
      * @description Specifies text direction (ltr, rtl, auto).
      */
@@ -239,11 +264,8 @@ trait GlobalAttributesTrait
      */
     public function setInputMode(string|InputModeEnum $inputMode = InputModeEnum::NUMERIC): static
     {
-        if ($inputMode === null) {
-            $inputMode = InputModeEnum::NUMERIC;
-        }
         if (is_string($inputMode) && ! in_array($inputMode, array_map(fn ($e) => $e->value, InputModeEnum::cases()))) {
-            throw new InvalidArgumentException('Invalid value for inputMode');
+            throw new InvalidArgumentException('Invalid value for inputmode');
         }
         $this->inputmode = is_string($inputMode) ? InputModeEnum::from($inputMode) : $inputMode;
         $this->htmlElement->setAttribute('inputmode', $this->inputmode->value);
@@ -404,14 +426,14 @@ trait GlobalAttributesTrait
      */
     public function setTabIndex(int $tabIndex): static
     {
-        $this->tabIndex = $tabIndex;
+        $this->tabindex = $tabIndex;
         // $this->htmlElement->setAttribute('tabindex', (string)$tabIndex);
         return $this;
     }
 
     public function getTabIndex(): ?int
     {
-        return $this->tabIndex;
+        return $this->tabindex;
     }
 
     /**
@@ -441,20 +463,5 @@ trait GlobalAttributesTrait
     public function getTranslate(): ?string
     {
         return $this->translate;
-    }
-
-    /**
-     * @description Sets a custom data attribute.
-     */
-    public function setDataAttribute(string $name, string $value): static
-    {
-        $this->dataAttributes[$name] = $value;
-        // $this->htmlElement->setAttribute('data-' . $name, $value);
-        return $this;
-    }
-
-    public function getDataAttribute(string $name): ?string
-    {
-        return $this->dataAttributes[$name] ?? null;
     }
 }
