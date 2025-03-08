@@ -317,3 +317,23 @@ test('test set native public propeties with setter', function () {
     expect((string) $element)
         ->toEqual('<body><span>Hello</span></body>');
 });
+
+test('test get text content', function () {
+    // $this->delegator->getTextContent();
+    expect($this->delegator->getTextContent())
+        ->toEqual('');
+
+    $this->delegator->setTextContent('test');
+    expect($this->delegator->getTextContent())
+        ->toEqual('test');
+});
+
+test('test get/set substitutedNodeValue', function () {
+    // $this->delegator->getSubstitutedNodeValue();
+    expect($this->delegator->getSubstitutedNodeValue())
+        ->toEqual('');
+
+    $this->delegator->setSubstitutedNodeValue('test');
+    expect($this->delegator->getSubstitutedNodeValue())
+        ->toEqual('test');
+});

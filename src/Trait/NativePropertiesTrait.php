@@ -36,17 +36,9 @@ trait NativePropertiesTrait
         return $this;
     }
 
-    public function getOuterHTML(): string
-    {
-        return $this->outerHTML;
+    /** access seems restricted, at least in body element
     }
-
-    public function setOuterHTML(string $outerHTML): static
-    {
-        $this->outerHTML = $outerHTML;
-        return $this;
-    }
-
+     **/
     public function getSubstitutedNodeValue(): string
     {
         return $this->substitutedNodeValue;
