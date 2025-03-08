@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:4c376905-9998-44bb-a98f-5bc19f088532",
+  "serialNumber": "urn:uuid:46db7bb4-5547-479f-8327-53bbf165a837",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-03-07T01:40:34+00:00",
+    "timestamp": "2025-03-08T10:50:06+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "0062c5da-baf5-4bf5-8ef4-9fe35a7be59c",
+      "bom-ref": "1b27db3e-7016-49e5-b1f1-9fc80bb1c80f",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,7 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "d6cf5510-a23e-405a-8376-ef2d35761c15",
+      "bom-ref": "6ba492f5-d778-43c7-bdea-80e0d64b4a58",
       "type": "application",
       "name": "yarn.lock",
       "properties": [
@@ -2182,13 +2182,13 @@
   ],
   "dependencies": [
     {
-      "ref": "0062c5da-baf5-4bf5-8ef4-9fe35a7be59c",
+      "ref": "1b27db3e-7016-49e5-b1f1-9fc80bb1c80f",
       "dependsOn": [
-        "d6cf5510-a23e-405a-8376-ef2d35761c15"
+        "6ba492f5-d778-43c7-bdea-80e0d64b4a58"
       ]
     },
     {
-      "ref": "d6cf5510-a23e-405a-8376-ef2d35761c15",
+      "ref": "6ba492f5-d778-43c7-bdea-80e0d64b4a58",
       "dependsOn": [
         "pkg:npm/vitepress@1.6.3"
       ]
