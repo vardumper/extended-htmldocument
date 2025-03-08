@@ -120,12 +120,12 @@ if [ -x $PEST ]; then
     HAS_PEST=true
 fi
 
-printf "${YELLOW}Pest Unit Tests${NC}\n"
+printf "${YELLOW}PEST Unit Tests${NC} "
 if $HAS_PEST; then
   # execute coverage tests
   PEST_OUTPUT=$(XDEBUG_MODE=coverage $PEST --color=always --coverage-clover=clover.xml --coverage-html=coverage-report 2>&1)
   if [ $? -eq 0 ]; then
-    printf "${GREEN}Pest passed${NC}\n"
+    printf "${GREEN}PASSED${NC}\n"
   else
     if [[ " ${protectedBranches[@]} " =~ " ${currentBranch} " ]] && [ "$allowFailuresInProtectedBranches" = false ]; then
         printf "\n${PEST_OUTPUT}\n"
@@ -147,6 +147,54 @@ else
   printf "\npest is required. Install it with:\n\n  composer require --dev pestphp/pest\n\n"
 fi
 
+# PHPMD - PHP Mess Detector
+HAS_PHPMD=false
+PHPMD="./vendor/bin/phpmd"
+if [ -x $PHPMD ]; then
+    HAS_PHPMD=true
+fi
+
+printf "${YELLOW}PHP Mess Detector${NC}\n"
+
+if $HAS_PHPMD; then
+  printf "Searching for unused code... "
+  PHPMD_OUTPUT=$($PHPMD ./src github unusedcode 2>&1)
+  if [ $? -eq 0 ]; then
+    printf "${GREEN}PASSED${NC}\n"
+  else
+    printf "${RED}FAILED${NC}\n"
+    PASS=false
+  fi
+
+  printf "Checking code size rule... "
+  PHPMD_OUTPUT=$($PHPMD ./src github codesize 2>&1)
+  if [ $? -eq 0 ]; then
+    printf "${GREEN}PASSED${NC}\n"
+  else
+    printf "${RED}FAILED${NC}\n"
+    PASS=false
+  fi
+
+  printf "Checking against cleancode rule... "
+  PHPMD_OUTPUT=$($PHPMD ./src ansi cleancode 2>&1)
+  if [ $? -eq 0 ]; then
+    printf "${GREEN}PASSED${NC}\n"
+  else
+    printf "${RED}FAILED${NC}\n"
+    PASS=false
+  fi
+
+  printf "Checking against cleancode rule... "
+  PHPMD_OUTPUT=$($PHPMD ./src ansi design 2>&1)
+  if [ $? -eq 0 ]; then
+    printf "${GREEN}PASSED${NC}\n"
+  else
+    printf "${RED}FAILED${NC}\n"
+    PASS=false
+  fi
+else
+  printf "\nphpmd is required. Install it with:\n\n  composer require --dev phpmd/phpmd\n\n"
+fi
 
 # Run composer audit locally
 printf "${YELLOW}Composer Audit${NC}\n"

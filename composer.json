@@ -61,6 +61,7 @@
         "pestphp/pest": "^3.7.4",
         "pestphp/pest-plugin-drift": "^3.0",
         "pestphp/pest-plugin-type-coverage": "^3.3",
+        "phpmd/phpmd": "^2.15",
         "phpstan/phpstan": "^2.1.7",
         "rector/swiss-knife": "^2.1.15",
         "symfony/yaml": "^7.2.3",

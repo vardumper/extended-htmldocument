@@ -26,8 +26,6 @@ final class CreateClassCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $elements = [];
-
         $htmlDefinitionPath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'specifications' . \DIRECTORY_SEPARATOR . 'html5.yaml';
         if (! is_file($htmlDefinitionPath)) {
             $io->error('HTML definition file not found.');
@@ -203,7 +201,6 @@ final class CreateClassCommand extends Command
                 if ($this->manyElementsHaveAttribute($attribute) && count($details['elements']) === 1) {
                     $kebapCase .= ucfirst($element);
                 }
-                $enumType = \sprintf('%sEnum', $kebapCase);
                 $type = \sprintf('%s%sEnum', $otherTypesDef, $kebapCase);
                 $returnType = \sprintf('?%s', $type);
                 if ($isUnionType) {
