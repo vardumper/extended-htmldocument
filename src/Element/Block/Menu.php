@@ -4,6 +4,7 @@
  *
  * Menu - The menu element represents a group of commands that a user can perform or activate. It can be used for toolbars, context menus, or listing form controls.
  * 
+ * @generated 2025-03-08 16:37:58
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

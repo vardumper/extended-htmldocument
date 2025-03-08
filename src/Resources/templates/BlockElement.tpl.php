@@ -4,6 +4,7 @@
  *
  * <?= /** @phpstan-ignore variable.undefined */ $class_name ?> - <?= /** @phpstan-ignore variable.undefined */ $description . PHP_EOL ?>
  * <?= PHP_EOL ?>
+ * @generated <?= $generatedAt . \PHP_EOL ?>
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage <?= /** @phpstan-ignore variable.undefined */ $namespace . PHP_EOL ?>

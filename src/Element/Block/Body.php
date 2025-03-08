@@ -4,6 +4,7 @@
  *
  * Body - The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
  * 
+ * @generated 2025-03-08 16:37:58
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

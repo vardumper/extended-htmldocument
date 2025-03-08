@@ -1,15 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Ruby - The ruby element represents a ruby annotation. Ruby annotations are short runs of text presented alongside base text, primarily used for East Asian typography to indicate pronunciation or to provide a short annotation.
- *
+ * 
+ * @generated 2025-03-08 16:37:58
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -23,6 +24,9 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
+use Html\Element\Inline\MarkedText;
+use Html\Element\Inline\RubyParenthesis;
+use Html\Element\Inline\RubyText;
 
 class Ruby extends InlineElement
 {
@@ -63,5 +67,11 @@ class Ruby extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [RubyParenthesis::class, RubyText::class];
+    public static array $parentOf = [
+        RubyParenthesis::class,
+        RubyText::class,
+    ];
+
+
+
 }

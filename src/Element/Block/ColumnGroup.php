@@ -4,6 +4,7 @@
  *
  * ColumnGroup - The colgroup element represents a group of one or more columns in the table that is its parent, if it has a parent and that is a table element.
  * 
+ * @generated 2025-03-08 16:37:58
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

@@ -1,18 +1,20 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Style - The style element is used to embed CSS styles directly into an HTML document.
- *
+ * 
+ * @generated 2025-03-08 16:37:58
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
  */
-
 namespace Html\Element\Void;
 
 use Html\Element\VoidElement;
+use Html\Element\Void\Head;
 use Html\Enum\TypeStyleEnum;
 
 class Style extends VoidElement
@@ -36,39 +38,37 @@ class Style extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Head::class];
+    public static array $childOf = [
+        Head::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
+     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * When present, it specifies that an input element should be disabled.
-     */
+    /** When present, it specifies that an input element should be disabled. */
     public ?bool $disabled = null;
 
-    /**
-     * Specifies the media type for which the linked resource or style sheet is intended.
-     */
+    /** Specifies the media type for which the linked resource or style sheet is intended. */
     public ?string $media = null;
 
-    /**
-     * Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks.
-     */
+    /** Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks. */
     public ?string $nonce = null;
 
-    /**
-     * Specifies additional information about the element, typically displayed as a tooltip.
-     */
+    /** Specifies additional information about the element, typically displayed as a tooltip. */
     public ?string $title = null;
 
-    /**
+    /** 
      * Specifies the media type of the inline styles.
+     * @category HTML attribute
      * @example text/css
      */
     protected ?TypeStyleEnum $type = null;
+
 
     public function setDisabled(bool $disabled): self
     {
@@ -125,4 +125,5 @@ class Style extends VoidElement
     {
         return $this->type;
     }
+
 }

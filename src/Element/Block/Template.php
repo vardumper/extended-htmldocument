@@ -4,6 +4,7 @@
  *
  * Template - The template element is a mechanism for holding client-side content that is not to be rendered when a page is loaded but may subsequently be instantiated during runtime using JavaScript.
  * 
+ * @generated 2025-03-08 16:37:58
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

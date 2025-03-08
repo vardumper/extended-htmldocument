@@ -1,18 +1,38 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Details - The details element represents a disclosure widget from which the user can obtain additional information or controls.
- *
+ * 
+ * @generated 2025-03-08 16:37:58
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Aside;
+use Html\Element\Block\Body;
+use Html\Element\Block\DefinitionDescription;
+use Html\Element\Block\DefinitionList;
+use Html\Element\Block\Dialog;
+use Html\Element\Block\Division;
+use Html\Element\Block\Footer;
+use Html\Element\Block\Form;
+use Html\Element\Block\Header;
+use Html\Element\Block\ListItem;
+use Html\Element\Block\Main;
+use Html\Element\Block\OrderedList;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\PreformattedText;
+use Html\Element\Block\Section;
+use Html\Element\Block\Summary;
+use Html\Element\Block\Table;
+use Html\Element\Block\Template;
+use Html\Element\Block\UnorderedList;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
 
@@ -71,10 +91,10 @@ class Details extends BlockElement
         UnorderedList::class,
     ];
 
-    /**
-     * When present, it specifies that the details should be visible (open) to the user.
-     */
+
+    /** When present, it specifies that the details should be visible (open) to the user. */
     public ?bool $open = null;
+
 
     public function setOpen(bool $open): self
     {
@@ -86,4 +106,6 @@ class Details extends BlockElement
     {
         return $this->open;
     }
+
+
 }

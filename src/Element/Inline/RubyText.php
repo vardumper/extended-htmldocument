@@ -1,15 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * RubyText - The rt element marks the ruby text component of a ruby annotation, which is used to provide pronunciation, translation, or transliteration information for East Asian typography. The rt element must be a child of a ruby element.
- *
+ * 
+ * @generated 2025-03-08 16:37:58
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rt
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Aside;
@@ -20,6 +21,8 @@ use Html\Element\Block\Header;
 use Html\Element\Block\Main;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
+use Html\Element\Inline\MarkedText;
+use Html\Element\Inline\Ruby;
 
 class RubyText extends InlineElement
 {
@@ -58,5 +61,9 @@ class RubyText extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
+
+
+
 }

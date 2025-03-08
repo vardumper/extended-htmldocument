@@ -1,15 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Abbreviation - The abbr element represents an abbreviation or acronym, optionally with its expansion. The title attribute can be used to provide an expansion of the abbreviation. The attribute, if specified, must contain an expansion of the abbreviation, and nothing else.
- *
+ * 
+ * @generated 2025-03-08 16:37:58
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -64,12 +65,13 @@ class Abbreviation extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies additional information about the element, typically displayed as a tooltip.
-     */
+
+    /** Specifies additional information about the element, typically displayed as a tooltip. */
     public ?string $title = null;
+
 
     public function setTitle(string $title): self
     {
@@ -81,4 +83,5 @@ class Abbreviation extends InlineElement
     {
         return $this->title;
     }
+
 }

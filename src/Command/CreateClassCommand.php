@@ -37,7 +37,7 @@ final class CreateClassCommand extends Command
         $availableElements = array_keys($this->data);
 
         $batchElements = $element ? [$element] : $availableElements;
-
+        $generatedAt = \date('Y-m-d H:i:s');
         foreach ($batchElements as $element) {
             if (! in_array($element, $availableElements)) {
                 $io->error('Element not found in specifications.');
@@ -84,6 +84,7 @@ final class CreateClassCommand extends Command
                 'path' => $path,
                 'self_closing' => $self_closing,
                 'methods' => $methods,
+                'generatedAt' => $generatedAt,
             ];
 
             $templatePath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'templates' . \DIRECTORY_SEPARATOR . \ucfirst(

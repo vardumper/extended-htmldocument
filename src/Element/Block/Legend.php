@@ -4,6 +4,7 @@
  *
  * Legend - The legend element represents a caption for the content of its parent fieldset.
  * 
+ * @generated 2025-03-08 16:37:58
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

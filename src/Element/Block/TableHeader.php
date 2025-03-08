@@ -4,6 +4,7 @@
  *
  * TableHeader - The th element represents a header cell in a table.
  * 
+ * @generated 2025-03-08 16:37:58
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

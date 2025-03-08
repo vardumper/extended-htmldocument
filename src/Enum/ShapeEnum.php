@@ -4,6 +4,7 @@
  *
  * ShapeEnum - 
  * 
+ * @generated 2025-03-08 16:37:55
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

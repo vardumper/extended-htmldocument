@@ -33,6 +33,7 @@ final class CreateEnumCommand extends Command
         // Get the enum attributes
         $enumAttributes = $this->findEnumAttributes();
 
+        $generatedAt = \date('Y-m-d H:i:s');
         foreach ($enumAttributes as $enumAttribute) {
             foreach ($enumAttribute as $element => $attributes) {
                 $io->info("Creating enumeration class for '{$element}'");
@@ -65,6 +66,7 @@ final class CreateEnumCommand extends Command
                     'element_name' => $element,
                     'defaultValue' => $attributes['defaultValue'] ?? '',
                     'defaultCase' => $this->getCaseName($attributes['defaultValue'] ?? ''),
+                    'generatedAt' => $generatedAt,
                 ];
 
                 $path = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Enum' . \DIRECTORY_SEPARATOR . "{$className}.php"; // corrected variable syntax
