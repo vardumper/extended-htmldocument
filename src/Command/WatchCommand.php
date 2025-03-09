@@ -29,31 +29,38 @@ class WatchCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
         if ($source === $dest) {
-            $io->error('Source and destination directories cannot be the same.');
+            $io->error(sprintf('Source and destination directories cannot be the same (%s).', $dest));
             return Command::FAILURE;
         }
 
-        if (! is_file($source) || ! is_dir($source)) {
-            $io->error('Source must be a file or directory.');
+        if (! is_file($source) && ! is_dir($source)) {
+            $io->error(sprintf('Source (%s) must be a file or directory.', $source));
             return Command::FAILURE;
         }
 
         $pathinfo = pathinfo($dest);
         $seemsFile = ! empty($pathinfo['extension']);
         if ($seemsFile && is_dir(dirname($dest))) {
-            $io->info('Destination directory exists.');
+            $io->info(sprintf('Destination directory (%s) exists.', $dest));
         }
 
         if (! $seemsFile && is_dir($dest)) {
-            $io->info('Destination directory exists.');
+            $io->info(sprintf('Destination directory (%s) exists.', $dest));
         }
 
         if (! $seemsFile && ! is_dir($dest)) {
-            $io->info('Destination directory does not exist.');
-            $createDir = $io->askQuestion('Would you like to create it now?');
+            $io->info(sprintf('Destination directory (%s) does not exist.', $dest));
+            $createDir = $io->confirm(
+                sprintf('Destination directory (%s) does not exist. Would you like to create it now?', $dest),
+                false
+            );
             if ($createDir) {
-                mkdir($dest, 0777, true);
-                $io->success('Directory created successfully.');
+                if (mkdir($dest, 0777, true)) {
+                    $io->success(sprintf('Directory created successfully (%s).', $dest));
+                } else {
+                    $io->error(sprintf('Failed to create directory (%s).', $dest));
+                    return Command::FAILURE;
+                }
             }
         }
 

@@ -1,0 +1,4 @@
+example-component:
+  label: Example Component
+  description: This is an example component.
+  fields:
