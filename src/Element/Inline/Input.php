@@ -5,7 +5,7 @@
  *
  * Input - The input element represents a typed data field, usually with a form control to allow user input.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-09 20:34:45
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
@@ -200,7 +200,7 @@ class Input extends InlineElement
      * Specifies the type of the input. Defaults to text if the attribute is omitted
      * @example text
      */
-    protected null|string|TypeInputEnum $type = null;
+    protected ?TypeInputEnum $type = null;
 
     public function setAccept(string $accept): self
     {
@@ -438,10 +438,13 @@ class Input extends InlineElement
         return $this->step;
     }
 
-    public function setType(string|TypeInputEnum $type): self
+    public function setType(TypeInputEnum $type): self
     {
         $this->type = $type;
-        $this->setAttribute('type', \is_subclass_of($type, BackedEnum::class) ? (string) $type->value : $type);
+        $this->htmlElement->setAttribute(
+            'type',
+            \is_subclass_of($type, BackedEnum::class) ? (string) $type->value : $type
+        );
 
         return $this;
     }

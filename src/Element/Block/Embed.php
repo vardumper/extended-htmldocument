@@ -5,7 +5,7 @@
  *
  * Embed - The embed element provides an integration point for an external (typically non-HTML) application or interactive content.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-09 20:34:45
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed

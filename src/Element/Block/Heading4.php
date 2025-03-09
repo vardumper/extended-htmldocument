@@ -5,7 +5,7 @@
  *
  * Heading4 - The h4 element represents a section heading. It has the fourth highest rank among the six levels of section headings.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-09 20:34:45
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h4

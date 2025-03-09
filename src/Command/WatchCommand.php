@@ -2,52 +2,73 @@
 
 // filepath: /src/Command/FolderWatchCommand.php
 
-namespace App\Command;
+namespace Html\Command;
 
-use React\EventLoop\Loop;
-use React\Filesystem\Filesystem;
+use Revolt\EventLoop;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 class WatchCommand extends Command
 {
-    protected static $defaultName = 'app:folder-watch';
+    /**
+     * @param string $generator The generator to use
+     * @param string $source The source directory or file to watch
+     * @param string $dest  The destination directory to write to
+     * @param bool $overwriteExisting Whether to overwrite existing files
+     */
+    public function __invoke(
+        string $generator,
+        string $source,
+        string $dest,
+        $overwriteExisting,
+        InputInterface $input,
+        OutputInterface $output
+    ): int {
+        $io = new SymfonyStyle($input, $output);
 
-    protected function configure(): void
-    {
-        $this
-            ->setDescription('Watches a specified folder for changes using ReactPHP.')
-            ->setHelp('This command starts a ReactPHP loop that continuously monitors the folder.');
-    }
+        if ($source === $dest) {
+            $io->error('Source and destination directories cannot be the same.');
+            return Command::FAILURE;
+        }
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
-        // Create a ReactPHP event loop
-        $loop = Loop::get();
+        if (! is_file($source) || ! is_dir($source)) {
+            $io->error('Source must be a file or directory.');
+            return Command::FAILURE;
+        }
 
-        // Create a React Filesystem instance
-        $filesystem = Filesystem::create($loop);
+        $pathinfo = pathinfo($dest);
+        $seemsFile = ! empty($pathinfo['extension']);
+        if ($seemsFile && is_dir(dirname($dest))) {
+            $io->info('Destination directory exists.');
+        }
 
-        // Folder/path you want to watch
-        $pathToWatch = '/path/to/watch';
+        if (! $seemsFile && is_dir($dest)) {
+            $io->info('Destination directory exists.');
+        }
 
-        $output->writeln('Starting to watch: ' . $pathToWatch);
+        if (! $seemsFile && ! is_dir($dest)) {
+            $io->info('Destination directory does not exist.');
+            $createDir = $io->askQuestion('Would you like to create it now?');
+            if ($createDir) {
+                mkdir($dest, 0777, true);
+                $io->success('Directory created successfully.');
+            }
+        }
 
-        // ReactPHP doesn’t have built-in “watch” in react/filesystem,
-        // so you could periodically scan or hook into OS-level events if available.
-        $loop->addPeriodicTimer(2.0, function () use ($filesystem, $pathToWatch, $output) {
-            $filesystem
-                ->dir($pathToWatch)
-                ->ls()
-                ->then(function (array $nodes) use ($output) {
-                    $output->writeln('Scanned folder at ' . date('H:i:s'));
-                    // Check for changes, new files, removed files, etc.
-                });
+        $io->info(sprintf('Starting to watch: %s', $source));
+
+        // Start Amp's event loop
+        EventLoop::run(function () use ($pathToWatch, $output) {
+            // Schedule a repeated scan every two seconds
+            EventLoop::repeat(2000, function (string $watcherId) use ($pathToWatch, $output) {
+                // Perform directory scanning or other checks here
+                $output->writeln('Scanned folder at ' . date('H:i:s'));
+
+                // TODO: Compare with previous state for file changes, etc.
+            });
         });
-
-        // Start the event loop
-        $loop->run();
 
         return Command::SUCCESS;
     }

@@ -5,7 +5,7 @@
  *
  * Image - The img element represents an image.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-09 20:34:45
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img

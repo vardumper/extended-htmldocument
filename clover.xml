@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1741530341">
-  <project timestamp="1741530341">
+<coverage generated="1741555416">
+  <project timestamp="1741555416">
     <package name="Html\Delegator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/DOMNodeDelegator.php">
         <class name="Html\Delegator\DOMNodeDelegator" namespace="Html\Delegator">
@@ -71,8 +71,8 @@
         <class name="Html\Delegator\HTMLDocumentDelegator" namespace="Html\Delegator">
           <metrics complexity="15" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="37" coveredstatements="37" elements="47" coveredelements="47"/>
         </class>
-        <line num="54" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="101"/>
-        <line num="57" type="stmt" count="101"/>
+        <line num="54" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="103"/>
+        <line num="57" type="stmt" count="103"/>
         <line num="59" type="method" name="__call" visibility="public" complexity="4" crap="4" count="19"/>
         <line num="62" type="stmt" count="19"/>
         <line num="63" type="stmt" count="17"/>
@@ -106,8 +106,8 @@
         <line num="106" type="stmt" count="1"/>
         <line num="109" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="111" type="stmt" count="1"/>
-        <line num="114" type="method" name="createEmpty" visibility="public" complexity="1" crap="1" count="101"/>
-        <line num="116" type="stmt" count="101"/>
+        <line num="114" type="method" name="createEmpty" visibility="public" complexity="1" crap="1" count="103"/>
+        <line num="116" type="stmt" count="103"/>
         <line num="119" type="method" name="createFromString" visibility="public" complexity="1" crap="1" count="2"/>
         <line num="121" type="stmt" count="2"/>
         <line num="124" type="method" name="createFromFile" visibility="public" complexity="1" crap="1" count="1"/>
@@ -124,8 +124,8 @@
         <class name="Html\Delegator\HTMLElementDelegator" namespace="Html\Delegator">
           <metrics complexity="41" methods="15" coveredmethods="14" conditionals="0" coveredconditionals="0" statements="88" coveredstatements="87" elements="103" coveredelements="101"/>
         </class>
-        <line num="47" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="78"/>
-        <line num="49" type="stmt" count="78"/>
+        <line num="47" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="80"/>
+        <line num="49" type="stmt" count="80"/>
         <line num="52" type="method" name="__call" visibility="public" complexity="2" crap="2" count="2"/>
         <line num="54" type="stmt" count="2"/>
         <line num="55" type="stmt" count="2"/>
@@ -146,30 +146,30 @@
         <line num="78" type="stmt" count="2"/>
         <line num="79" type="stmt" count="2"/>
         <line num="80" type="stmt" count="2"/>
-        <line num="83" type="method" name="__set" visibility="public" complexity="9" crap="9" count="13"/>
-        <line num="85" type="stmt" count="13"/>
+        <line num="83" type="method" name="__set" visibility="public" complexity="9" crap="9" count="15"/>
+        <line num="85" type="stmt" count="15"/>
         <line num="86" type="stmt" count="1"/>
-        <line num="89" type="stmt" count="13"/>
-        <line num="90" type="stmt" count="2"/>
-        <line num="93" type="stmt" count="13"/>
-        <line num="95" type="stmt" count="2"/>
-        <line num="96" type="stmt" count="2"/>
-        <line num="97" type="stmt" count="2"/>
-        <line num="98" type="stmt" count="2"/>
-        <line num="99" type="stmt" count="2"/>
-        <line num="100" type="stmt" count="2"/>
-        <line num="101" type="stmt" count="2"/>
-        <line num="102" type="stmt" count="2"/>
-        <line num="103" type="stmt" count="2"/>
+        <line num="89" type="stmt" count="15"/>
+        <line num="90" type="stmt" count="4"/>
+        <line num="93" type="stmt" count="15"/>
+        <line num="95" type="stmt" count="4"/>
+        <line num="96" type="stmt" count="4"/>
+        <line num="97" type="stmt" count="4"/>
+        <line num="98" type="stmt" count="4"/>
+        <line num="99" type="stmt" count="4"/>
+        <line num="100" type="stmt" count="4"/>
+        <line num="101" type="stmt" count="4"/>
+        <line num="102" type="stmt" count="4"/>
+        <line num="103" type="stmt" count="4"/>
         <line num="106" type="stmt" count="0"/>
-        <line num="110" type="stmt" count="13"/>
-        <line num="111" type="stmt" count="13"/>
+        <line num="110" type="stmt" count="15"/>
+        <line num="111" type="stmt" count="15"/>
         <line num="112" type="stmt" count="10"/>
         <line num="113" type="stmt" count="10"/>
         <line num="114" type="stmt" count="10"/>
         <line num="115" type="stmt" count="10"/>
-        <line num="117" type="stmt" count="3"/>
-        <line num="118" type="stmt" count="3"/>
+        <line num="117" type="stmt" count="5"/>
+        <line num="118" type="stmt" count="5"/>
         <line num="124" type="method" name="__toString" visibility="public" complexity="1" crap="1" count="2"/>
         <line num="127" type="stmt" count="2"/>
         <line num="131" type="method" name="setAttribute" visibility="public" complexity="14" crap="14" count="14"/>
@@ -200,29 +200,29 @@
         <line num="171" type="stmt" count="1"/>
         <line num="173" type="stmt" count="13"/>
         <line num="174" type="stmt" count="13"/>
-        <line num="177" type="method" name="getAttribute" visibility="public" complexity="2" crap="2" count="14"/>
-        <line num="179" type="stmt" count="14"/>
-        <line num="180" type="stmt" count="6"/>
+        <line num="177" type="method" name="getAttribute" visibility="public" complexity="2" crap="2" count="16"/>
+        <line num="179" type="stmt" count="16"/>
+        <line num="180" type="stmt" count="8"/>
         <line num="182" type="stmt" count="8"/>
         <line num="185" type="method" name="setAttributes" visibility="public" complexity="2" crap="2" count="4"/>
         <line num="188" type="stmt" count="4"/>
         <line num="189" type="stmt" count="4"/>
         <line num="190" type="stmt" count="4"/>
         <line num="192" type="stmt" count="4"/>
-        <line num="196" type="method" name="create" visibility="public" complexity="1" crap="1" count="41"/>
-        <line num="198" type="stmt" count="41"/>
-        <line num="199" type="stmt" count="41"/>
-        <line num="200" type="stmt" count="41"/>
-        <line num="201" type="stmt" count="41"/>
-        <line num="202" type="stmt" count="41"/>
+        <line num="196" type="method" name="create" visibility="public" complexity="1" crap="1" count="43"/>
+        <line num="198" type="stmt" count="43"/>
+        <line num="199" type="stmt" count="43"/>
+        <line num="200" type="stmt" count="43"/>
+        <line num="201" type="stmt" count="43"/>
+        <line num="202" type="stmt" count="43"/>
         <line num="208" type="method" name="isUniquePerParent" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="210" type="stmt" count="1"/>
         <line num="216" type="method" name="isUnique" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="218" type="stmt" count="1"/>
         <line num="224" type="method" name="isSelfClosing" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="226" type="stmt" count="1"/>
-        <line num="232" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="42"/>
-        <line num="234" type="stmt" count="42"/>
+        <line num="232" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="44"/>
+        <line num="234" type="stmt" count="44"/>
         <line num="240" type="method" name="childOf" visibility="public" complexity="1" crap="1" count="2"/>
         <line num="242" type="stmt" count="2"/>
         <line num="248" type="method" name="parentOf" visibility="public" complexity="1" crap="1" count="2"/>
@@ -455,8 +455,8 @@
         <class name="Html\Helper\Helper" namespace="Html\Helper">
           <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="91" coveredstatements="91" elements="93" coveredelements="93"/>
         </class>
-        <line num="11" type="method" name="isBackedEnum" visibility="public" complexity="2" crap="2" count="14"/>
-        <line num="13" type="stmt" count="14"/>
+        <line num="11" type="method" name="isBackedEnum" visibility="public" complexity="2" crap="2" count="16"/>
+        <line num="13" type="stmt" count="16"/>
         <line num="16" type="method" name="getReservedWords" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="18" type="stmt" count="1"/>
         <line num="19" type="stmt" count="1"/>
