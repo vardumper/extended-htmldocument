@@ -1,85 +1,45 @@
-# Markdown Extension Examples
+# Installation
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+If you are intending to use this library for code generation, adding it as a dev dependency is recommended.
 
-## Syntax Highlighting
-
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
-
-**Input**
-
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
-```
-````
-
-**Output**
-
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
+```bash
+composer require --dev vardumper/extended-htmldocument
 ```
 
-## Custom Containers
+# Usage
+::: code-group
 
-**Input**
+```php [PHP]
+use Html\Element\Inline\Anchor;
 
-```md
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
+echo (string) (new Anchor('Click here'))
+  ->setHref('https://example.com')
+  ->setTitle('Some info about the link')
+  ->setRel('nofollow')
+  ->setRole('button');
 ```
 
-**Output**
+```html [HTML5]
+<a
+    href="https://example.com"
+    title="Some info about the link"
+    rel="nofollow"
+    role="button">
+    Click here
+</a>
+```
 
-::: info
-This is an info box.
+```php [DOM\HTMLDocument] equivalent
+use DOM\HTMLDocument;
+
+$dom = DOM\HTMLDocument::createEmpty();
+$anchor = $dom->createElement('a', 'Click here');
+$anchor->setAttribute('href', 'https://example.com')
+$anchor->setAttribute('title', 'Some info about the link')
+$anchor->setAttribute('rel', 'nofollow')
+$anchor->setAttribute('role', 'button');
+$dom->appendChild($anchor);
+echo $dom->saveHTML();
+```
+
 :::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).

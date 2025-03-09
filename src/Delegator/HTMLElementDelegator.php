@@ -32,6 +32,8 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public HtmlElement $htmlElement;
 
+    public static HtmlDocumentDelegator $ownerDocument;
+
     // meta information
 
     public static bool $unique = false; // Default value, change as needed
@@ -130,28 +132,30 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     {
         if (\property_exists($this, $qualifiedName)) {
             // use reflection to check if this property is a BackedEnum and instantiate it with ::from()
-            $reflection = new ReflectionClass($this);
-            $property = $reflection->getProperty($qualifiedName);
-            $propertyType = $property->getType();
-            // find correct enum type form union type list
-            if ($propertyType instanceof ReflectionUnionType) {
-                foreach ($propertyType->getTypes() as $type) {
-                    if (\is_subclass_of($type->getName(), BackedEnum::class)) {
-                        $enumClass = $type->getName();
-                        continue;
+            if ($this->{$qualifiedName} === null) {
+                $reflection = new ReflectionClass($this);
+                $property = $reflection->getProperty($qualifiedName);
+                $propertyType = $property->getType();
+                // find correct enum type form union type list
+                if ($propertyType instanceof ReflectionUnionType) {
+                    foreach ($propertyType->getTypes() as $type) {
+                        if (\is_subclass_of($type->getName(), BackedEnum::class)) {
+                            $enumClass = $type->getName();
+                            continue;
+                        }
                     }
+                } else {
+                    $enumClass = $propertyType->getName();
                 }
-            } else {
-                $enumClass = $propertyType->getName();
-            }
-            if (\is_subclass_of($enumClass, BackedEnum::class) && \is_string($value)) {
-                $value = $enumClass::from($value);
-                $methodName = 'set' . $qualifiedName;
-                if (\method_exists($this, $methodName)) {
-                    $this->{$methodName}($value);
+                if (\is_subclass_of($enumClass, BackedEnum::class) && \is_string($value)) {
+                    $value = $enumClass::from($value);
+                    $methodName = 'set' . $qualifiedName;
+                    if (\method_exists($this, $methodName)) {
+                        $this->{$methodName}($value);
+                    }
+                } else {
+                    $this->{$qualifiedName} = $value; // here we allow Enums
                 }
-            } else {
-                $this->{$qualifiedName} = $value; // here we allow Enums
             }
         }
         if (\is_subclass_of($value, BackedEnum::class)) {
@@ -191,6 +195,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     // Generic static factory method
     public static function create(HTMLDocumentDelegator $dom): static
     {
+        static::$ownerDocument = $dom;
         $className = static::class;
         $qualifiedName = $className::getQualifiedName();
         $elementNode = $dom->htmlDocument->createElement($qualifiedName);

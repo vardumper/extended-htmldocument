@@ -200,7 +200,7 @@ class Input extends InlineElement
      * Specifies the type of the input. Defaults to text if the attribute is omitted
      * @example text
      */
-    protected ?TypeInputEnum $type = null;
+    protected null|string|TypeInputEnum $type = null;
 
     public function setAccept(string $accept): self
     {
@@ -438,13 +438,10 @@ class Input extends InlineElement
         return $this->step;
     }
 
-    public function setType(TypeInputEnum $type): self
+    public function setType(string|TypeInputEnum $type): self
     {
         $this->type = $type;
-        $this->htmlElement->setAttribute(
-            'type',
-            \is_subclass_of($type, BackedEnum::class) ? (string) $type->value : $type
-        );
+        $this->setAttribute('type', \is_subclass_of($type, BackedEnum::class) ? (string) $type->value : $type);
 
         return $this;
     }
