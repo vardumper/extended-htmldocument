@@ -24,7 +24,7 @@ echo (string) Anchor::create($dom)
     ->setHref('https://google.com')
     ->setTitle('Google it');
 // output is:
-//  <a class="secondary" href="https://google.com" rel="nofollow" title="Google it"></a>
+// <a class="secondary" href="https://google.com" rel="nofollow" title="Google it"></a>
 ```
 
 ## Documentation
