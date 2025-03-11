@@ -15,32 +15,41 @@ class HTMLGenerator implements TemplateGeneratorInterface
 
     public function getExtension(): string
     {
+        return 'html';
     }
 
     public function getNamePattern(): string
     {
+        return '{component}.html';
     }
 
     public function canRenderElements(): bool
     {
+        return true;
     }
 
     public function canRenderDocuments(): bool
     {
+        return true;
     }
 
     public function render(HTMLElementDelegatorInterface|HTMLDocumentDelegatorInterface $elementOrDocument): string
     {
+        if ($elementOrDocument instanceof HTMLDocumentDelegatorInterface) {
+            return $this->renderDocument($elementOrDocument);
+        } elseif ($elementOrDocument instanceof HTMLElementDelegatorInterface) {
+            return $this->renderElement($elementOrDocument);
+        }
         return '';
     }
 
     public function renderElement(HTMLElementDelegatorInterface $element): string
     {
-        return '';
+        return (string) $element->htmlElement;
     }
 
     public function renderDocument(HTMLDocumentDelegatorInterface $document): string
     {
-        return '';
+        return (string) $document->htmlDocument;
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1741556173">
-  <project timestamp="1741556173">
+<coverage generated="1741678571">
+  <project timestamp="1741678571">
     <package name="Html\Delegator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/DOMNodeDelegator.php">
         <class name="Html\Delegator\DOMNodeDelegator" namespace="Html\Delegator">

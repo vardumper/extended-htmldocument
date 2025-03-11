@@ -40,7 +40,7 @@
     ],
     "require": {
         "php": "^8.4",
-        "revolt/event-loop": "^1.0"
+        "revolt/event-loop": "^1.0.7"
     },
     "config": {
         "sort-packages": true,

@@ -1,4 +1,17 @@
-example-component:
-  label: Example Component
+teaser-component:
+  label: Teaser Component
   description: This is an example component.
-  fields:
+  structure:
+    Division:
+      class: teaser
+      children:
+        - Heading3:
+            text: 'Teaser Component'
+        - Paragraph:
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        - Image:
+            src: /path/to/image.jpg
+            alt: Image
+        - Button:
+            text: Read more
+            link: /path/to/page

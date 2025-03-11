@@ -34,12 +34,14 @@ $app->command('make:generate [generator] [source] [dest]', function (InputInterf
     $output->writeln('Generates templpates. Uses a given generator. Requires a source path with your component YAMLs and a destination path for the generated templates.');
 })->descriptions('Generates templates for HTML Elements');
 
+$sourceDefault = realpath(__DIR__ . '/../examples/template-generator/source');
+$destDefault = realpath(__DIR__ . '/../examples/template-generator/dest');
 $app
     ->command('make:watch [generator] [source] [dest] [--overwrite-existing=]', function ($generator, $source, $dest, $overwriteExisting = false, InputInterface $input, OutputInterface $output) {
         (new WatchCommand())($generator, $source, $dest, $overwriteExisting, $input, $output);
     })
     ->descriptions('Observes a directory or file for changes, and generates templates for HTML Elements', ['generator' => 'name of the generator', 'source' => 'source path', 'dest' => 'destination path'])
-    ->defaults(['generator' => 'html', 'source' => __DIR__ . '/../examples/template-generator/source', 'dest' => __DIR__ . '/../examples/template-generator/dest' ]);
+    ->defaults(['generator' => 'html', 'source' =>$sourceDefault, 'dest' => $destDefault ]);
 
 // $app->setDefaultCommand('make:all');
 $app->run();
