@@ -14,13 +14,17 @@ It adds additional functionality and a stronger focus on HTML5 while being fully
 This library adds the HTML5 specification to PHP and is fully compatible with `DOM\HTMLDocument`. You can create an `Anchor()` object and append it to any `DOM\Document`.
 
 ```php
-$dom = HTMLDocumentDelegator::createEmpty()
-echo (string) (Anchor::create($dom))
+use Html\Delegator\HTMLDocumentDelegator as HTMLDocument;
+use Html\Element\Inline\Anchor;
+
+$dom = HTMLDocument::createEmpty()
+echo (string) Anchor::create($dom)
     ->setClass('secondary')
     ->setRel(RelEnum::NOFOLLOW)
     ->setHref('https://google.com')
     ->setTitle('Google it');
-// outputs: <a class="secondary" href="https://google.com" rel="nofollow" title="Google it"></a>
+// output is:
+//  <a class="secondary" href="https://google.com" rel="nofollow" title="Google it"></a>
 ```
 
 ## Documentation
