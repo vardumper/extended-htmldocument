@@ -39,7 +39,7 @@ $anchor->setAttribute('title', 'Some info about the link')
 $anchor->setAttribute('rel', 'nofollow')
 $anchor->setAttribute('role', 'button');
 $dom->appendChild($anchor);
-echo $dom->saveHTML();
+echo $dom->saveHTML(anchor);
 ```
 
 :::

@@ -44,7 +44,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public static array $parentOf = []; // Default value, change as needed
 
-    public function __construct(HTMLElement $htmlElement)
+    public function __construct(HTMLElement $htmlElement, RendererInterface $renderer)
     {
         $this->htmlElement = $htmlElement;
     }

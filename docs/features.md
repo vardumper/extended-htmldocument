@@ -14,8 +14,8 @@ There are two ways to do this:
 - You duplicate the `html5.yaml` file, modify it to your needs and then [recompile the PHP classes](/recompile-classes) for HTML elements.
 - The more elegant way to do this is to create specification mixin files. This library comes with an exemplary
 
-## Chainable Template Generators
-The library is designed to be flexible. You can swap out the renderer for the
+## Template Generators
+The library is designed to be flexible. That's why template generators are interchangeable and chainable (if you need mutliple formats). You can create your own generators or swap out the renderer for the
 HTMLDocumentDelegator and HTMLElementDelegator classes, which are responsible for rendering the HTML elements, once you cast them to a string, or echo them.
 
 By default, the library uses the `HtmlGenerator` which simply returns standards-conform HTML5.
