@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:bf904adb-b755-42b8-a403-ddf3fc494bfa",
+  "serialNumber": "urn:uuid:050df7d1-7b7b-4e8d-9b33-e0d1ddc19e9a",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-03-09T21:24:32+00:00",
+    "timestamp": "2025-03-11T08:07:09+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "493361e1-baea-4456-adfa-e56aaf75ab27",
+      "bom-ref": "dc440cc1-c59f-4ea2-a892-1a0e40e9134c",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,7 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "3b836af2-2c52-41a7-832e-d234ffd459cc",
+      "bom-ref": "0e3d7389-625e-4216-8b01-7f8f2ed2ece6",
       "type": "application",
       "name": "yarn.lock",
       "properties": [
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "bom-ref": "5b307e85-2a39-4c5c-b08e-34c13d970d96",
+      "bom-ref": "917de535-9278-4b72-a4c4-97e1a9bf40a8",
       "type": "application",
       "name": "composer.lock",
       "properties": [
@@ -2221,22 +2221,22 @@
   ],
   "dependencies": [
     {
-      "ref": "3b836af2-2c52-41a7-832e-d234ffd459cc",
+      "ref": "0e3d7389-625e-4216-8b01-7f8f2ed2ece6",
       "dependsOn": [
         "pkg:npm/vitepress@1.6.3"
       ]
     },
     {
-      "ref": "493361e1-baea-4456-adfa-e56aaf75ab27",
+      "ref": "917de535-9278-4b72-a4c4-97e1a9bf40a8",
       "dependsOn": [
-        "3b836af2-2c52-41a7-832e-d234ffd459cc",
-        "5b307e85-2a39-4c5c-b08e-34c13d970d96"
+        "pkg:composer/revolt/event-loop@v1.0.7"
       ]
     },
     {
-      "ref": "5b307e85-2a39-4c5c-b08e-34c13d970d96",
+      "ref": "dc440cc1-c59f-4ea2-a892-1a0e40e9134c",
       "dependsOn": [
-        "pkg:composer/revolt/event-loop@v1.0.7"
+        "0e3d7389-625e-4216-8b01-7f8f2ed2ece6",
+        "917de535-9278-4b72-a4c4-97e1a9bf40a8"
       ]
     },
     {
