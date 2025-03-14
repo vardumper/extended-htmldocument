@@ -80,7 +80,9 @@ EOF
       printf "${RED}FAILED${NC}\n"
       PASS=false
     fi
-    #rm -rf "$DIR"
+    rm -rf "$DIR"
+    git add docs/phpmd.md
+    printf "Report generation completed.\n"
   else
     printf "\nphpmd is required. Install it with:\n\n  composer require --dev phpmd/phpmd\n\n"
   fi
