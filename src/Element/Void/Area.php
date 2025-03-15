@@ -5,7 +5,7 @@
  *
  * Area - The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.
  *
- * @generated 2025-03-09 20:34:45
+ * @generated 2025-03-15 11:37:47
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area
@@ -13,7 +13,6 @@
 
 namespace Html\Element\Void;
 
-use BackedEnum;
 use Html\Element\Block\Article;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
@@ -181,10 +180,7 @@ class Area extends VoidElement
     public function setRel(RelEnum $rel): self
     {
         $this->rel = $rel;
-        $this->htmlElement->setAttribute(
-            'rel',
-            \is_subclass_of($rel, BackedEnum::class) ? (string) $rel->value : $rel
-        );
+        $this->htmlElement->setAttribute('rel', (string) $rel->value);
 
         return $this;
     }
@@ -197,10 +193,7 @@ class Area extends VoidElement
     public function setShape(ShapeEnum $shape): self
     {
         $this->shape = $shape;
-        $this->htmlElement->setAttribute(
-            'shape',
-            \is_subclass_of($shape, BackedEnum::class) ? (string) $shape->value : $shape
-        );
+        $this->htmlElement->setAttribute('shape', (string) $shape->value);
 
         return $this;
     }
@@ -213,10 +206,7 @@ class Area extends VoidElement
     public function setTarget(TargetEnum $target): self
     {
         $this->target = $target;
-        $this->htmlElement->setAttribute(
-            'target',
-            \is_subclass_of($target, BackedEnum::class) ? (string) $target->value : $target
-        );
+        $this->htmlElement->setAttribute('target', (string) $target->value);
 
         return $this;
     }

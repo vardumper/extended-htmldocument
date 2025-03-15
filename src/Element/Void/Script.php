@@ -5,7 +5,7 @@
  *
  * Script - The script element is used to embed or reference an executable script within an HTML or XHTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.
  *
- * @generated 2025-03-09 20:34:45
+ * @generated 2025-03-15 11:37:47
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
@@ -13,7 +13,6 @@
 
 namespace Html\Element\Void;
 
-use BackedEnum;
 use Html\Element\Block\Body;
 use Html\Element\Block\Form;
 use Html\Element\Block\Menu;
@@ -120,10 +119,7 @@ class Script extends VoidElement
     public function setCrossorigin(CrossoriginEnum $crossorigin): self
     {
         $this->crossorigin = $crossorigin;
-        $this->htmlElement->setAttribute(
-            'crossorigin',
-            \is_subclass_of($crossorigin, BackedEnum::class) ? (string) $crossorigin->value : $crossorigin
-        );
+        $this->htmlElement->setAttribute('crossorigin', (string) $crossorigin->value);
 
         return $this;
     }
@@ -169,10 +165,7 @@ class Script extends VoidElement
     public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): self
     {
         $this->referrerpolicy = $referrerpolicy;
-        $this->htmlElement->setAttribute(
-            'referrerpolicy',
-            \is_subclass_of($referrerpolicy, BackedEnum::class) ? (string) $referrerpolicy->value : $referrerpolicy
-        );
+        $this->htmlElement->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
 
         return $this;
     }
@@ -196,10 +189,7 @@ class Script extends VoidElement
     public function setType(TypeScriptEnum $type): self
     {
         $this->type = $type;
-        $this->htmlElement->setAttribute(
-            'type',
-            \is_subclass_of($type, BackedEnum::class) ? (string) $type->value : $type
-        );
+        $this->htmlElement->setAttribute('type', (string) $type->value);
 
         return $this;
     }

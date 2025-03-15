@@ -14,3 +14,8 @@ parameters:
     ignoreErrors:
     reportUnmatchedIgnoredErrors: false
     universalObjectCratesClasses:
+        - Html\Delegator\HTMLElementDelegator
+        - Html\Delegator\HTMLDocumentDelegator
+        - Html\Delegator\DOMNodeDelegator
+        - Html\Delegator\DOMNodeListDelegator
+    treatPhpDocTypesAsCertain: false

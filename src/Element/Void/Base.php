@@ -5,7 +5,7 @@
  *
  * Base - The base element specifies the base URL to use for all relative URLs in a document. There can be at maximum one <base> element in a document, and it must be inside the <head> element.
  *
- * @generated 2025-03-09 20:34:45
+ * @generated 2025-03-15 11:37:47
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
@@ -13,7 +13,6 @@
 
 namespace Html\Element\Void;
 
-use BackedEnum;
 use Html\Element\VoidElement;
 use Html\Enum\TargetEnum;
 
@@ -77,10 +76,7 @@ class Base extends VoidElement
     public function setTarget(TargetEnum $target): self
     {
         $this->target = $target;
-        $this->htmlElement->setAttribute(
-            'target',
-            \is_subclass_of($target, BackedEnum::class) ? (string) $target->value : $target
-        );
+        $this->htmlElement->setAttribute('target', (string) $target->value);
 
         return $this;
     }

@@ -2,6 +2,7 @@
 
 namespace Html\Delegator;
 
+use AllowDynamicProperties;
 use BackedEnum;
 use BadMethodCallException;
 use DOM\Document;
@@ -9,11 +10,13 @@ use DOM\HtmlElement;
 use Html\Helper\Helper;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
+use Html\TemplateGenerator\HTMLGenerator;
 use Html\Trait\GlobalAttributesTrait;
 use Html\Trait\NativePropertiesTrait;
 use InvalidArgumentException;
 use ReflectionClass;
 use ReflectionUnionType;
+use RuntimeException;
 use TypeError;
 
 /**
@@ -26,6 +29,7 @@ use TypeError;
  * @property string $id
  * @property string $className
  */
+#[AllowDynamicProperties]
 class HTMLElementDelegator implements HTMLElementDelegatorInterface
 {
     use GlobalAttributesTrait;
@@ -45,10 +49,12 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public static array $parentOf = []; // Default value, change as needed
 
-    public function __construct(HTMLElement $htmlElement, TemplateGeneratorInterface $renderer)
+    private TemplateGeneratorInterface $renderer;
+
+    public function __construct(HTMLElement $htmlElement, ?TemplateGeneratorInterface $renderer = null)
     {
         $this->htmlElement = $htmlElement;
-        $this->renderer = $renderer;
+        $this->renderer = $renderer ?? new HTMLGenerator();
     }
 
     public function __call($name, $arguments)
@@ -116,17 +122,24 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             $property->setValue($this->htmlElement, $value);
             return;
         }
-        $this->htmlElement->setAttribute($name, Helper::isBackedEnum($value) ? $value->value : $value);
+        $value = Helper::isBackedEnum($value) ? (string) $value->value : (string) $value;
+        $this->htmlElement->setAttribute($name, $value);
         return;
     }
 
-    /**
-     * this is what I wrote all this for, in order to being able to add functionality, like cutsom methods
-     */
+    // turn an element into a string, using the configured renderer
     public function __toString(): string
     {
-        /** @var Document $ownerDocument */
-        return (string) $this->htmlElement->ownerDocument->saveHtml($this->htmlElement);
+        if (! $this->renderer->canRenderElements()) {
+            throw new RuntimeException('Renderer cannot render elements.');
+        }
+        return $this->renderer->renderElement($this->htmlElement);
+    }
+
+    public function setRenderer(TemplateGeneratorInterface $renderer): static
+    {
+        $this->renderer = $renderer;
+        return $this;
     }
 
     // two ways to set an attribute via HTML\Element::$property or HTML\Element->setAttribute()

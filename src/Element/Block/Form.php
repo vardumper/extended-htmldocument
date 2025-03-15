@@ -5,7 +5,7 @@
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
  *
- * @generated 2025-03-09 20:34:45
+ * @generated 2025-03-15 11:37:47
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
@@ -13,7 +13,6 @@
 
 namespace Html\Element\Block;
 
-use BackedEnum;
 use Html\Element\BlockElement;
 use Html\Element\Inline\Button;
 use Html\Element\Inline\Input;
@@ -162,10 +161,7 @@ class Form extends BlockElement
     public function setAutocomplete(AutocompleteEnum $autocomplete): self
     {
         $this->autocomplete = $autocomplete;
-        $this->htmlElement->setAttribute(
-            'autocomplete',
-            \is_subclass_of($autocomplete, BackedEnum::class) ? (string) $autocomplete->value : $autocomplete
-        );
+        $this->htmlElement->setAttribute('autocomplete', (string) $autocomplete->value);
 
         return $this;
     }
@@ -178,10 +174,7 @@ class Form extends BlockElement
     public function setEnctype(EnctypeEnum $enctype): self
     {
         $this->enctype = $enctype;
-        $this->htmlElement->setAttribute(
-            'enctype',
-            \is_subclass_of($enctype, BackedEnum::class) ? (string) $enctype->value : $enctype
-        );
+        $this->htmlElement->setAttribute('enctype', (string) $enctype->value);
 
         return $this;
     }
@@ -194,10 +187,7 @@ class Form extends BlockElement
     public function setMethod(MethodEnum $method): self
     {
         $this->method = $method;
-        $this->htmlElement->setAttribute(
-            'method',
-            \is_subclass_of($method, BackedEnum::class) ? (string) $method->value : $method
-        );
+        $this->htmlElement->setAttribute('method', (string) $method->value);
 
         return $this;
     }
@@ -232,10 +222,7 @@ class Form extends BlockElement
     public function setTarget(TargetEnum $target): self
     {
         $this->target = $target;
-        $this->htmlElement->setAttribute(
-            'target',
-            \is_subclass_of($target, BackedEnum::class) ? (string) $target->value : $target
-        );
+        $this->htmlElement->setAttribute('target', (string) $target->value);
 
         return $this;
     }

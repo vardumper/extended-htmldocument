@@ -2,8 +2,10 @@
 
 namespace Html\TemplateGenerator;
 
-use Html\Delegator\HTMLDocumentDelegatorInterface;
-use Html\Delegator\HTMLElementDelegatorInterface;
+#use Html\Delegator\HTMLDocumentDelegatorInterface;
+#use Html\Delegator\HTMLElementDelegatorInterface;
+use Html\Interface\HTMLDocumentDelegatorInterface;
+use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 
 class HTMLGenerator implements TemplateGeneratorInterface
@@ -33,7 +35,7 @@ class HTMLGenerator implements TemplateGeneratorInterface
         return true;
     }
 
-    public function render(HTMLElementDelegatorInterface|HTMLDocumentDelegatorInterface $elementOrDocument): string
+    public function render($elementOrDocument): string
     {
         if ($elementOrDocument instanceof HTMLDocumentDelegatorInterface) {
             return $this->renderDocument($elementOrDocument);

@@ -210,7 +210,7 @@ final class CreateClassCommand extends Command
                 $signature = "    public function set%s(%s \$%s): self
     {
         \$this->%s = \$%s;
-        \$this->htmlElement->setAttribute('%s', \is_subclass_of(\$%s, \BackedEnum::class) ? (string) \$%s->value : \$%s);
+        \$this->htmlElement->setAttribute('%s', (string) \$%s->value);
 
         return \$this;
     }
@@ -228,10 +228,10 @@ final class CreateClassCommand extends Command
                     $variableName,
                     $attribute,
                     $variableName,
-                    $variableName,
-                    $variableName,
                     $methodName,
                     $returnType,
+                    $variableName,
+                    $methodName,
                     $variableName
                 );
             } else {

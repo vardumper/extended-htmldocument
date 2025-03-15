@@ -5,7 +5,7 @@
  *
  * TableRow - The tr element represents a row of cells in a table.
  *
- * @generated 2025-03-09 20:34:45
+ * @generated 2025-03-15 11:37:47
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
@@ -13,7 +13,6 @@
 
 namespace Html\Element\Block;
 
-use BackedEnum;
 use Html\Element\BlockElement;
 use Html\Enum\AlignEnum;
 use Html\Enum\ValignEnum;
@@ -80,10 +79,7 @@ class TableRow extends BlockElement
     public function setAlign(AlignEnum $align): self
     {
         $this->align = $align;
-        $this->htmlElement->setAttribute(
-            'align',
-            \is_subclass_of($align, BackedEnum::class) ? (string) $align->value : $align
-        );
+        $this->htmlElement->setAttribute('align', (string) $align->value);
 
         return $this;
     }
@@ -129,10 +125,7 @@ class TableRow extends BlockElement
     public function setValign(ValignEnum $valign): self
     {
         $this->valign = $valign;
-        $this->htmlElement->setAttribute(
-            'valign',
-            \is_subclass_of($valign, BackedEnum::class) ? (string) $valign->value : $valign
-        );
+        $this->htmlElement->setAttribute('valign', (string) $valign->value);
 
         return $this;
     }

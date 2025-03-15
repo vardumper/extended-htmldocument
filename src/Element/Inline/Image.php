@@ -5,7 +5,7 @@
  *
  * Image - The img element represents an image.
  *
- * @generated 2025-03-09 20:34:45
+ * @generated 2025-03-15 11:37:47
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
@@ -13,7 +13,6 @@
 
 namespace Html\Element\Inline;
 
-use BackedEnum;
 use Html\Element\Block\Article;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
@@ -147,10 +146,7 @@ class Image extends InlineElement
     public function setCrossorigin(CrossoriginEnum $crossorigin): self
     {
         $this->crossorigin = $crossorigin;
-        $this->htmlElement->setAttribute(
-            'crossorigin',
-            \is_subclass_of($crossorigin, BackedEnum::class) ? (string) $crossorigin->value : $crossorigin
-        );
+        $this->htmlElement->setAttribute('crossorigin', (string) $crossorigin->value);
 
         return $this;
     }
@@ -163,10 +159,7 @@ class Image extends InlineElement
     public function setDecoding(DecodingEnum $decoding): self
     {
         $this->decoding = $decoding;
-        $this->htmlElement->setAttribute(
-            'decoding',
-            \is_subclass_of($decoding, BackedEnum::class) ? (string) $decoding->value : $decoding
-        );
+        $this->htmlElement->setAttribute('decoding', (string) $decoding->value);
 
         return $this;
     }
@@ -201,10 +194,7 @@ class Image extends InlineElement
     public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): self
     {
         $this->referrerpolicy = $referrerpolicy;
-        $this->htmlElement->setAttribute(
-            'referrerpolicy',
-            \is_subclass_of($referrerpolicy, BackedEnum::class) ? (string) $referrerpolicy->value : $referrerpolicy
-        );
+        $this->htmlElement->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
 
         return $this;
     }

@@ -5,7 +5,7 @@
  *
  * Anchor - The a element represents a hyperlink, linking to another resource.
  *
- * @generated 2025-03-09 20:34:45
+ * @generated 2025-03-15 11:37:47
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
@@ -13,7 +13,6 @@
 
 namespace Html\Element\Inline;
 
-use BackedEnum;
 use Html\Element\Block\Article;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
@@ -151,10 +150,7 @@ class Anchor extends InlineElement
     public function setRel(RelEnum $rel): self
     {
         $this->rel = $rel;
-        $this->htmlElement->setAttribute(
-            'rel',
-            \is_subclass_of($rel, BackedEnum::class) ? (string) $rel->value : $rel
-        );
+        $this->htmlElement->setAttribute('rel', (string) $rel->value);
 
         return $this;
     }
@@ -167,10 +163,7 @@ class Anchor extends InlineElement
     public function setTarget(string|TargetEnum $target): self
     {
         $this->target = $target;
-        $this->htmlElement->setAttribute(
-            'target',
-            \is_subclass_of($target, BackedEnum::class) ? (string) $target->value : $target
-        );
+        $this->htmlElement->setAttribute('target', (string) $target->value);
 
         return $this;
     }

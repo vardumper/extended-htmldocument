@@ -5,7 +5,7 @@
  *
  * Audio - The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.
  *
- * @generated 2025-03-09 20:34:45
+ * @generated 2025-03-15 11:37:47
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
@@ -13,7 +13,6 @@
 
 namespace Html\Element\Block;
 
-use BackedEnum;
 use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
 use Html\Enum\CrossoriginEnum;
@@ -118,10 +117,7 @@ class Audio extends BlockElement
     public function setCrossorigin(CrossoriginEnum $crossorigin): self
     {
         $this->crossorigin = $crossorigin;
-        $this->htmlElement->setAttribute(
-            'crossorigin',
-            \is_subclass_of($crossorigin, BackedEnum::class) ? (string) $crossorigin->value : $crossorigin
-        );
+        $this->htmlElement->setAttribute('crossorigin', (string) $crossorigin->value);
 
         return $this;
     }
@@ -156,10 +152,7 @@ class Audio extends BlockElement
     public function setPreload(PreloadEnum $preload): self
     {
         $this->preload = $preload;
-        $this->htmlElement->setAttribute(
-            'preload',
-            \is_subclass_of($preload, BackedEnum::class) ? (string) $preload->value : $preload
-        );
+        $this->htmlElement->setAttribute('preload', (string) $preload->value);
 
         return $this;
     }
