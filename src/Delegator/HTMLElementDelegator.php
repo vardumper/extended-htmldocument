@@ -8,6 +8,7 @@ use DOM\Document;
 use DOM\HtmlElement;
 use Html\Helper\Helper;
 use Html\Interface\HTMLElementDelegatorInterface;
+use Html\Interface\TemplateGeneratorInterface;
 use Html\Trait\GlobalAttributesTrait;
 use Html\Trait\NativePropertiesTrait;
 use InvalidArgumentException;
@@ -44,9 +45,10 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public static array $parentOf = []; // Default value, change as needed
 
-    public function __construct(HTMLElement $htmlElement, RendererInterface $renderer)
+    public function __construct(HTMLElement $htmlElement, TemplateGeneratorInterface $renderer)
     {
         $this->htmlElement = $htmlElement;
+        $this->renderer = $renderer;
     }
 
     public function __call($name, $arguments)

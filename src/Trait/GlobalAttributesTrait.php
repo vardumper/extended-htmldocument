@@ -18,53 +18,112 @@ use InvalidArgumentException;
  */
 trait GlobalAttributesTrait
 {
-    // global attributes
-
+    /**
+     * specifies a shortcut key (or keys) to activate or focus an element
+     */
     public ?string $accesskey = null;
 
+    /**
+     * Indicates whether the element is draggable
+     */
     public ?bool $draggable = null;
 
+    /**
+     * Represents custom data attributes on the element
+     */
     public ?array $data = null;
 
+    /**
+     * Indicates whether the element is hidden
+     */
     public ?bool $hidden = null;
 
+    /**
+     * Indicates whether the element is inert
+     */
     public ?bool $inert = null;
 
+    /**
+     * allows you to specify a particular custom element that extends a built-in element
+     */
     public ?string $is = null;
 
+    /**
+     * Specifies the primary language for the element's content
+     */
     public ?string $lang = null;
 
+    /**
+     * Represents a unique cryptographic nonce used to verify requests
+     */
     public ?string $nonce = null;
 
+    /**
+     * Represents a specific purpose or role for the element, typically for styling or functionality
+     */
     public ?string $part = null;
 
+    /**
+     * Represents a contextual popover for additional information related to the element
+     */
     public ?string $popover = null;
 
+    /**
+     * Represents the role of the element
+     */
     public ?string $role = null;
 
+    /**
+     * Represents a slot in a shadow DOM
+     */
     public ?string $slot = null;
 
+    /**
+     * Represents the CSS inline style of the element
+     */
     public ?string $style = null;
 
+    /**
+     * Represents a tab order of the element
+     */
     public ?int $tabindex = null;
 
+    /**
+     * Represents a title or tooltip for the element
+     */
     public ?string $title = null;
 
+    /**
+     *  used to tell user agents (browsers or translation tools) whether the content should be translated.
+     */
     public ?string $translate = null;
 
+    /**
+     * Indicates whether the element can be edited in place
+     */
     protected ?ContentEditableEnum $contenteditable = null;
 
+    /**
+     * Represents the spellchecking behavior of the element
+     */
     protected ?SpellCheckEnum $spellcheck = null;
 
+    /**
+     * Represents the autocapitalize behavior of the element
+     */
     private ?AutoCapitalizeEnum $autocapitalize = null;
 
+    /**
+     * Represents the text direction of the element
+     */
     private ?DirectionEnum $dir = null;
 
+    /**
+     * used to specify the data entry mode for an input. It helps guide on-screen keyboards (especially on mobile devices)
+     * to show the appropriate layout for the expected input type
+     */
     private ?InputModeEnum $inputmode = null;
 
-    /**
-     * @description Specifies a unique identifier for the element
-     */
     public function setId(string $id): static
     {
         $this->id = $id;

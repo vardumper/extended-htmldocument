@@ -10,7 +10,7 @@ use Html\Delegator\HTMLElementDelegator;
 
 interface HTMLElementDelegatorInterface
 {
-    public function __construct(HTMLElement $htmlElement);
+    public function __construct(HTMLElement $htmlElement, TemplateGeneratorInterface $renderer);
 
     public function __call($name, $arguments);
 
