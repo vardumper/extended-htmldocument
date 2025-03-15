@@ -5,7 +5,7 @@
  *
  * Input - The input element represents a typed data field, usually with a form control to allow user input.
  *
- * @generated 2025-03-15 11:37:47
+ * @generated 2025-03-15 16:30:45
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
@@ -29,6 +29,7 @@ use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\TypeInputEnum;
+use InvalidArgumentException;
 
 class Input extends InlineElement
 {
@@ -223,8 +224,13 @@ class Input extends InlineElement
         return $this->alt;
     }
 
-    public function setAutocomplete(AutocompleteEnum $autocomplete): self
+    public function setAutocomplete(string|AutocompleteEnum $autocomplete): self
     {
+        if (is_string($autocomplete)) {
+            $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new InvalidArgumentException(
+                'Invalid value for $autocomplete.'
+            );
+        }
         $this->autocomplete = $autocomplete;
         $this->htmlElement->setAttribute('autocomplete', (string) $autocomplete->value);
 
@@ -434,8 +440,11 @@ class Input extends InlineElement
         return $this->step;
     }
 
-    public function setType(TypeInputEnum $type): self
+    public function setType(string|TypeInputEnum $type): self
     {
+        if (is_string($type)) {
+            $type = TypeInputEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
+        }
         $this->type = $type;
         $this->htmlElement->setAttribute('type', (string) $type->value);
 

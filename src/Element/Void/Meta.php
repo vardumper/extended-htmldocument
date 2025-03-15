@@ -5,7 +5,7 @@
  *
  * Meta - The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.
  *
- * @generated 2025-03-15 11:37:47
+ * @generated 2025-03-15 16:30:45
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
@@ -15,6 +15,7 @@ namespace Html\Element\Void;
 
 use Html\Element\VoidElement;
 use Html\Enum\HttpEquivEnum;
+use InvalidArgumentException;
 
 class Meta extends VoidElement
 {
@@ -97,8 +98,13 @@ class Meta extends VoidElement
         return $this->content;
     }
 
-    public function setHttpEquiv(HttpEquivEnum $httpEquiv): self
+    public function setHttpEquiv(string|HttpEquivEnum $httpEquiv): self
     {
+        if (is_string($httpEquiv)) {
+            $httpEquiv = HttpEquivEnum::tryFrom($httpEquiv) ?? throw new InvalidArgumentException(
+                'Invalid value for $httpEquiv.'
+            );
+        }
         $this->httpEquiv = $httpEquiv;
         $this->htmlElement->setAttribute('http-equiv', (string) $httpEquiv->value);
 

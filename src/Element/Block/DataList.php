@@ -5,7 +5,7 @@
  *
  * DataList - The datalist element contains a set of option elements that represent the permissible or recommended options available to users.
  *
- * @generated 2025-03-15 11:37:47
+ * @generated 2025-03-15 16:30:45
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist

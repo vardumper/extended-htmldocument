@@ -5,7 +5,7 @@
  *
  * Script - The script element is used to embed or reference an executable script within an HTML or XHTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.
  *
- * @generated 2025-03-15 11:37:47
+ * @generated 2025-03-15 16:30:45
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
@@ -20,6 +20,7 @@ use Html\Element\VoidElement;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\TypeScriptEnum;
+use InvalidArgumentException;
 
 class Script extends VoidElement
 {
@@ -116,8 +117,13 @@ class Script extends VoidElement
         return $this->charset;
     }
 
-    public function setCrossorigin(CrossoriginEnum $crossorigin): self
+    public function setCrossorigin(string|CrossoriginEnum $crossorigin): self
     {
+        if (is_string($crossorigin)) {
+            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
+                'Invalid value for $crossorigin.'
+            );
+        }
         $this->crossorigin = $crossorigin;
         $this->htmlElement->setAttribute('crossorigin', (string) $crossorigin->value);
 
@@ -162,8 +168,13 @@ class Script extends VoidElement
         return $this->nonce;
     }
 
-    public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): self
+    public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): self
     {
+        if (is_string($referrerpolicy)) {
+            $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new InvalidArgumentException(
+                'Invalid value for $referrerpolicy.'
+            );
+        }
         $this->referrerpolicy = $referrerpolicy;
         $this->htmlElement->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
 
@@ -186,8 +197,11 @@ class Script extends VoidElement
         return $this->src;
     }
 
-    public function setType(TypeScriptEnum $type): self
+    public function setType(string|TypeScriptEnum $type): self
     {
+        if (is_string($type)) {
+            $type = TypeScriptEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
+        }
         $this->type = $type;
         $this->htmlElement->setAttribute('type', (string) $type->value);
 

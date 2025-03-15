@@ -5,7 +5,7 @@
  *
  * Textarea - The textarea element represents a multiline plain text edit control for the element's raw value.
  *
- * @generated 2025-03-15 11:37:47
+ * @generated 2025-03-15 16:30:45
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
@@ -29,6 +29,7 @@ use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\WrapEnum;
+use InvalidArgumentException;
 
 class Textarea extends InlineElement
 {
@@ -135,8 +136,13 @@ class Textarea extends InlineElement
      */
     protected ?WrapEnum $wrap = null;
 
-    public function setAutocomplete(AutocompleteEnum $autocomplete): self
+    public function setAutocomplete(string|AutocompleteEnum $autocomplete): self
     {
+        if (is_string($autocomplete)) {
+            $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new InvalidArgumentException(
+                'Invalid value for $autocomplete.'
+            );
+        }
         $this->autocomplete = $autocomplete;
         $this->htmlElement->setAttribute('autocomplete', (string) $autocomplete->value);
 
@@ -258,8 +264,11 @@ class Textarea extends InlineElement
         return $this->rows;
     }
 
-    public function setWrap(WrapEnum $wrap): self
+    public function setWrap(string|WrapEnum $wrap): self
     {
+        if (is_string($wrap)) {
+            $wrap = WrapEnum::tryFrom($wrap) ?? throw new InvalidArgumentException('Invalid value for $wrap.');
+        }
         $this->wrap = $wrap;
         $this->htmlElement->setAttribute('wrap', (string) $wrap->value);
 

@@ -5,7 +5,7 @@
  *
  * Select - The select element represents a control for selecting amongst a set of options.
  *
- * @generated 2025-03-15 11:37:47
+ * @generated 2025-03-15 16:30:45
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
@@ -30,6 +30,7 @@ use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Enum\AutocompleteEnum;
+use InvalidArgumentException;
 
 class Select extends InlineElement
 {
@@ -106,8 +107,13 @@ class Select extends InlineElement
      */
     protected ?AutocompleteEnum $autocomplete = null;
 
-    public function setAutocomplete(AutocompleteEnum $autocomplete): self
+    public function setAutocomplete(string|AutocompleteEnum $autocomplete): self
     {
+        if (is_string($autocomplete)) {
+            $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new InvalidArgumentException(
+                'Invalid value for $autocomplete.'
+            );
+        }
         $this->autocomplete = $autocomplete;
         $this->htmlElement->setAttribute('autocomplete', (string) $autocomplete->value);
 

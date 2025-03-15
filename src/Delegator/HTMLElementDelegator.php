@@ -133,7 +133,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         if (! $this->renderer->canRenderElements()) {
             throw new RuntimeException('Renderer cannot render elements.');
         }
-        return $this->renderer->renderElement($this->htmlElement);
+        return $this->renderer->render($this);
     }
 
     public function setRenderer(TemplateGeneratorInterface $renderer): static

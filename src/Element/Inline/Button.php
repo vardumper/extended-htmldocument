@@ -5,7 +5,7 @@
  *
  * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
  *
- * @generated 2025-03-15 11:37:47
+ * @generated 2025-03-15 16:30:45
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
@@ -29,6 +29,7 @@ use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Enum\TypeButtonEnum;
+use InvalidArgumentException;
 
 class Button extends InlineElement
 {
@@ -134,8 +135,11 @@ class Button extends InlineElement
         return $this->name;
     }
 
-    public function setType(TypeButtonEnum $type): self
+    public function setType(string|TypeButtonEnum $type): self
     {
+        if (is_string($type)) {
+            $type = TypeButtonEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
+        }
         $this->type = $type;
         $this->htmlElement->setAttribute('type', (string) $type->value);
 

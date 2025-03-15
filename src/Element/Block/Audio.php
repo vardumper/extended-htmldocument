@@ -5,7 +5,7 @@
  *
  * Audio - The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.
  *
- * @generated 2025-03-15 11:37:47
+ * @generated 2025-03-15 16:30:45
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
@@ -17,6 +17,7 @@ use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\PreloadEnum;
+use InvalidArgumentException;
 
 class Audio extends BlockElement
 {
@@ -114,8 +115,13 @@ class Audio extends BlockElement
         return $this->controls;
     }
 
-    public function setCrossorigin(CrossoriginEnum $crossorigin): self
+    public function setCrossorigin(string|CrossoriginEnum $crossorigin): self
     {
+        if (is_string($crossorigin)) {
+            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
+                'Invalid value for $crossorigin.'
+            );
+        }
         $this->crossorigin = $crossorigin;
         $this->htmlElement->setAttribute('crossorigin', (string) $crossorigin->value);
 
@@ -149,8 +155,13 @@ class Audio extends BlockElement
         return $this->muted;
     }
 
-    public function setPreload(PreloadEnum $preload): self
+    public function setPreload(string|PreloadEnum $preload): self
     {
+        if (is_string($preload)) {
+            $preload = PreloadEnum::tryFrom($preload) ?? throw new InvalidArgumentException(
+                'Invalid value for $preload.'
+            );
+        }
         $this->preload = $preload;
         $this->htmlElement->setAttribute('preload', (string) $preload->value);
 

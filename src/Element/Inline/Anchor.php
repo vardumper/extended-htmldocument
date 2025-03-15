@@ -5,7 +5,7 @@
  *
  * Anchor - The a element represents a hyperlink, linking to another resource.
  *
- * @generated 2025-03-15 11:37:47
+ * @generated 2025-03-15 16:30:45
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
@@ -30,6 +30,7 @@ use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Enum\RelEnum;
 use Html\Enum\TargetEnum;
+use InvalidArgumentException;
 
 class Anchor extends InlineElement
 {
@@ -147,8 +148,11 @@ class Anchor extends InlineElement
         return $this->hreflang;
     }
 
-    public function setRel(RelEnum $rel): self
+    public function setRel(string|RelEnum $rel): self
     {
+        if (is_string($rel)) {
+            $rel = RelEnum::tryFrom($rel) ?? throw new InvalidArgumentException('Invalid value for $rel.');
+        }
         $this->rel = $rel;
         $this->htmlElement->setAttribute('rel', (string) $rel->value);
 
@@ -162,13 +166,23 @@ class Anchor extends InlineElement
 
     public function setTarget(string|TargetEnum $target): self
     {
+        $value = $target;
+        if (is_string($target)) {
+            $resolved = TargetEnum::tryFrom($target);
+            if ($resolved !== null) {
+                $target = $resolved;
+            }
+        }
+        if ($target instanceof TargetEnum) {
+            $value = $target->value;
+        }
         $this->target = $target;
-        $this->htmlElement->setAttribute('target', (string) $target->value);
+        $this->htmlElement->setAttribute('target', (string) $value);
 
         return $this;
     }
 
-    public function getTarget(): null|string|TargetEnum
+    public function getTarget(): string|TargetEnum
     {
         return $this->target;
     }

@@ -5,7 +5,7 @@
  *
  * OrderedList - The ol element represents an ordered list of items. The order of the list is meaningful.
  *
- * @generated 2025-03-15 11:37:47
+ * @generated 2025-03-15 16:30:45
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
@@ -16,6 +16,7 @@ namespace Html\Element\Block;
 use Html\Element\BlockElement;
 use Html\Element\Inline\Slot;
 use Html\Enum\TypeOlEnum;
+use InvalidArgumentException;
 
 class OrderedList extends BlockElement
 {
@@ -100,8 +101,11 @@ class OrderedList extends BlockElement
         return $this->start;
     }
 
-    public function setType(TypeOlEnum $type): self
+    public function setType(string|TypeOlEnum $type): self
     {
+        if (is_string($type)) {
+            $type = TypeOlEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
+        }
         $this->type = $type;
         $this->htmlElement->setAttribute('type', (string) $type->value);
 

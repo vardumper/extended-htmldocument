@@ -5,7 +5,7 @@
  *
  * Video - The video element is used to embed video content in a document, such as a movie clip or other video streams.
  *
- * @generated 2025-03-15 11:37:47
+ * @generated 2025-03-15 16:30:45
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
@@ -17,6 +17,7 @@ use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\PreloadEnum;
+use InvalidArgumentException;
 
 class Video extends BlockElement
 {
@@ -126,8 +127,13 @@ class Video extends BlockElement
         return $this->controls;
     }
 
-    public function setCrossorigin(CrossoriginEnum $crossorigin): self
+    public function setCrossorigin(string|CrossoriginEnum $crossorigin): self
     {
+        if (is_string($crossorigin)) {
+            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
+                'Invalid value for $crossorigin.'
+            );
+        }
         $this->crossorigin = $crossorigin;
         $this->htmlElement->setAttribute('crossorigin', (string) $crossorigin->value);
 
@@ -183,8 +189,13 @@ class Video extends BlockElement
         return $this->poster;
     }
 
-    public function setPreload(PreloadEnum $preload): self
+    public function setPreload(string|PreloadEnum $preload): self
     {
+        if (is_string($preload)) {
+            $preload = PreloadEnum::tryFrom($preload) ?? throw new InvalidArgumentException(
+                'Invalid value for $preload.'
+            );
+        }
         $this->preload = $preload;
         $this->htmlElement->setAttribute('preload', (string) $preload->value);
 

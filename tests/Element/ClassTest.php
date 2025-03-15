@@ -89,9 +89,9 @@ test('setting properties via Setter', function () {
     $input = Input::create($this->document);
     $input->setType('text');
     expect($input->getType())
-        ->toBe('text');
+        ->toBe(TypeInputEnum::TEXT);
     expect($input->getAttribute('type'))
-        ->toBe('text');
+        ->toBe(TypeInputEnum::TEXT);
 });
 
 test('setting properties via direct property access', function () {

@@ -5,7 +5,7 @@
  *
  * Image - The img element represents an image.
  *
- * @generated 2025-03-15 11:37:47
+ * @generated 2025-03-15 16:30:45
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
@@ -29,6 +29,7 @@ use Html\Element\InlineElement;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\DecodingEnum;
 use Html\Enum\ReferrerpolicyEnum;
+use InvalidArgumentException;
 
 class Image extends InlineElement
 {
@@ -143,8 +144,13 @@ class Image extends InlineElement
         return $this->alt;
     }
 
-    public function setCrossorigin(CrossoriginEnum $crossorigin): self
+    public function setCrossorigin(string|CrossoriginEnum $crossorigin): self
     {
+        if (is_string($crossorigin)) {
+            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
+                'Invalid value for $crossorigin.'
+            );
+        }
         $this->crossorigin = $crossorigin;
         $this->htmlElement->setAttribute('crossorigin', (string) $crossorigin->value);
 
@@ -156,8 +162,13 @@ class Image extends InlineElement
         return $this->crossorigin;
     }
 
-    public function setDecoding(DecodingEnum $decoding): self
+    public function setDecoding(string|DecodingEnum $decoding): self
     {
+        if (is_string($decoding)) {
+            $decoding = DecodingEnum::tryFrom($decoding) ?? throw new InvalidArgumentException(
+                'Invalid value for $decoding.'
+            );
+        }
         $this->decoding = $decoding;
         $this->htmlElement->setAttribute('decoding', (string) $decoding->value);
 
@@ -191,8 +202,13 @@ class Image extends InlineElement
         return $this->ismap;
     }
 
-    public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): self
+    public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): self
     {
+        if (is_string($referrerpolicy)) {
+            $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new InvalidArgumentException(
+                'Invalid value for $referrerpolicy.'
+            );
+        }
         $this->referrerpolicy = $referrerpolicy;
         $this->htmlElement->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
 

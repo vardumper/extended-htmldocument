@@ -47,11 +47,11 @@ class HTMLGenerator implements TemplateGeneratorInterface
 
     public function renderElement(HTMLElementDelegatorInterface $element): string
     {
-        return (string) $element->htmlElement;
+        return (string) $element->htmlElement->ownerDocument->saveHTML($element->htmlElement);
     }
 
     public function renderDocument(HTMLDocumentDelegatorInterface $document): string
     {
-        return (string) $document->htmlDocument;
+        return (string) $document->ownerDocument->saveHTML($document->htmlDocument);
     }
 }

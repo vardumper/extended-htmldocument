@@ -179,14 +179,22 @@ final class CreateClassCommand extends Command
     {
         $retVal = '';
         foreach ($attributes as $attribute => $details) {
+            $isEnumType = false;
             $type = $details['type'] ?? '';
             $type = $this->mapToPhpType($type);
             $variableName = $this->toVariableName($attribute);
             $methodName = ucfirst($this->toVariableName($attribute));
-            if (str_contains($type, 'enum')) {
+            if (\str_contains($type, 'enum')) {
+                $kebapCase = $this->toKebapCase($attribute);
+                if ($this->manyElementsHaveAttribute($attribute) && count($details['elements']) === 1) {
+                    $kebapCase .= ucfirst($element);
+                }
+                $returnType = \sprintf('?%sEnum', $kebapCase);
+
+                $isEnumType = true;
                 $isUnionType = true;
                 $otherTypes = '';
-                $otherTypesDef = '';
+                $otherTypesDef = 'string|';
                 if (str_replace('enum', '', $type) === '') {
                     $isUnionType = false;
                 }
@@ -195,34 +203,23 @@ final class CreateClassCommand extends Command
                     $otherTypes = array_map(function ($type) {
                         return $this->mapToPhpType($type);
                     }, $otherTypes);
+                    $otherTypes[] = 'string';
+                    $otherTypes = array_unique($otherTypes);
                     $otherTypesDef = implode('|', $otherTypes) . '|';
+                    $returnType = \sprintf('%s%sEnum', $otherTypesDef, $kebapCase);
                 }
-                $kebapCase = $this->toKebapCase($attribute);
-                if ($this->manyElementsHaveAttribute($attribute) && count($details['elements']) === 1) {
-                    $kebapCase .= ucfirst($element);
-                }
+                $enumName = $kebapCase . 'Enum';
                 $type = \sprintf('%s%sEnum', $otherTypesDef, $kebapCase);
-                $returnType = \sprintf('?%s', $type);
-                if ($isUnionType) {
-                    $returnType = \sprintf('null|%s', $type);
-                }
 
-                $signature = "    public function set%s(%s \$%s): self
-    {
-        \$this->%s = \$%s;
-        \$this->htmlElement->setAttribute('%s', (string) \$%s->value);
-
-        return \$this;
-    }
-
-    public function get%s(): %s
-    {
-        return \$this->%s;
-    }\n\n";
-                $retVal .= \sprintf(
-                    $signature,
+                $signature = $this->getSignatureEnum();
+                $args = [
                     $methodName,
                     $type,
+                    $variableName,
+                    $variableName,
+                    $variableName,
+                    $enumName,
+                    $variableName,
                     $variableName,
                     $variableName,
                     $variableName,
@@ -231,22 +228,33 @@ final class CreateClassCommand extends Command
                     $methodName,
                     $returnType,
                     $variableName,
-                    $methodName,
-                    $variableName
-                );
-            } else {
-                $signature = "    public function set%s(%s \$%s): self
-    {
-        \$this->%s = \$%s;
-        return \$this;
-    }
+                ];
 
-    public function get%s(): ?%s
-    {
-        return \$this->%s;
-    }\n\n";
-                $retVal .= \sprintf(
-                    $signature,
+                if ($isUnionType) {
+                    $signature = $this->getSignatureEnumUnionString();
+                    $args = [
+                        $methodName,
+                        $type,
+                        $variableName,
+                        $variableName,
+                        $variableName,
+                        $enumName,
+                        $variableName,
+                        $variableName,
+                        $variableName,
+                        $enumName,
+                        $variableName,
+                        $variableName,
+                        $attribute,
+                        $variableName,
+                        $methodName,
+                        $returnType,
+                        $variableName,
+                    ];
+                }
+            } else {
+                $signature = $this->getSignatureSimple();
+                $args = [
                     $methodName,
                     $type,
                     $variableName,
@@ -254,9 +262,10 @@ final class CreateClassCommand extends Command
                     $variableName,
                     $methodName,
                     $type,
-                    $variableName
-                );
+                    $variableName,
+                ];
             }
+            $retVal .= vsprintf($signature, $args);
         }
         return $retVal;
     }
@@ -284,6 +293,8 @@ final class CreateClassCommand extends Command
                     $otherTypes = array_map(function ($type) {
                         return $this->mapToPhpType($type);
                     }, $otherTypes);
+                    $otherTypes[] = 'string';
+                    $otherTypes = array_unique($otherTypes);
                     $otherTypesDef = implode('|', $otherTypes) . '|';
                 }
                 $kebapCase = $this->toKebapCase($attribute);
@@ -411,5 +422,64 @@ final class CreateClassCommand extends Command
             return $classname . 'Element';
         }
         return $classname;
+    }
+
+    private function getSignatureSimple(): string
+    {
+        return "    public function set%s(%s \$%s): self
+    {
+        \$this->%s = \$%s;
+        return \$this;
+    }
+
+    public function get%s(): ?%s
+    {
+        return \$this->%s;
+    }\n\n";
+    }
+
+    private function getSignatureEnum(): string
+    {
+        return "    public function set%s(%s \$%s): self
+    {
+        if (is_string(\$%s)) {
+            \$%s = %s::tryFrom(\$%s) ?? throw new \InvalidArgumentException(\"Invalid value for \\$%s.\");
+        }
+        \$this->%s = \$%s;
+        \$this->htmlElement->setAttribute('%s', (string) \$%s->value);
+
+        return \$this;
+    }
+
+    public function get%s(): %s
+    {
+        return \$this->%s;
+    }\n\n";
+    }
+
+    private function getSignatureEnumUnionString(): string
+    {
+        return "    public function set%s(%s \$%s): self
+    {
+        \$value = \$%s;
+        if (is_string(\$%s)) {
+            \$resolved = %s::tryFrom(\$%s);
+            if (!is_null(\$resolved)) {
+                \$%s = \$resolved;
+            }
+        }
+        if (\$%s instanceof %s) {
+            \$value = \$%s->value;
+        }
+        \$this->%s = \$%s;
+        \$this->htmlElement->setAttribute('%s', (string) \$value);
+
+        return \$this;
+    }
+
+    public function get%s(): %s
+    {
+        return \$this->%s;
+    }\n\n";
     }
 }
