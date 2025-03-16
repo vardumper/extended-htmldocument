@@ -9,8 +9,8 @@ layout: home
 | Priority | File   | Line         |  Rule | Message |
 | -------- | ------ | ------------ | ----- | ------- |
 | <span class="prio3">3</span> | src/Command/CreateClassCommand.php | 182 | [UnusedLocalVariable](https://phpmd.org/rules/unusedcode.html#unusedlocalvariable) | Avoid unused local variables such as `$isEnumType`. |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 29 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$overwriteExisting`. |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 75 | [UnusedLocalVariable](https://phpmd.org/rules/unusedcode.html#unusedlocalvariable) | Avoid unused local variables such as `$sourceFiles`. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 15 | [UnusedPrivateField](https://phpmd.org/rules/unusedcode.html#unusedprivatefield) | Avoid unused private fields such as `$data`. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 27 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$overwriteExisting`. |
 
 Issues detected: 3
 ## Code Size
@@ -19,8 +19,8 @@ Issues detected: 3
 | -------- | ------ | ------------ | ----- | ------- |
 | <span class="prio3">3</span> | src/Command/CreateClassCommand.php | 19 | [ExcessiveClassComplexity](https://phpmd.org/rules/codesize.html#excessiveclasscomplexity) | The class CreateClassCommand has an overall complexity of 57 which is very high. The configured complexity threshold is 50. |
 | <span class="prio3">3</span> | src/Command/CreateEnumCommand.php | 22 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method __invoke() has a Cyclomatic Complexity of 10. The configured cyclomatic complexity threshold is 10. |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 25 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method __invoke() has a Cyclomatic Complexity of 15. The configured cyclomatic complexity threshold is 10. |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 25 | [NPathComplexity](https://phpmd.org/rules/codesize.html#npathcomplexity) | The method __invoke() has an NPath complexity of 1620. The configured NPath complexity threshold is 200. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 23 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method __invoke() has a Cyclomatic Complexity of 15. The configured cyclomatic complexity threshold is 10. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 23 | [NPathComplexity](https://phpmd.org/rules/codesize.html#npathcomplexity) | The method __invoke() has an NPath complexity of 1620. The configured NPath complexity threshold is 200. |
 | <span class="prio3">3</span> | src/Delegator/HTMLElementDelegator.php | 146 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method setAttribute() has a Cyclomatic Complexity of 14. The configured cyclomatic complexity threshold is 10. |
 | <span class="prio3">3</span> | src/Delegator/HTMLElementDelegator.php | 146 | [NPathComplexity](https://phpmd.org/rules/codesize.html#npathcomplexity) | The method setAttribute() has an NPath complexity of 324. The configured NPath complexity threshold is 200. |
 | <span class="prio3">3</span> | src/Element/Block/Body.php | 57 | [ExcessivePublicCount](https://phpmd.org/rules/codesize.html#excessivepubliccount) | The class Body has 52 public methods and attributes. Consider reducing the number of public items to less than 45. |
@@ -36,18 +36,18 @@ Issues detected: 13
 
 | Priority | File   | Line         |  Rule | Message |
 | -------- | ------ | ------------ | ----- | ------- |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 75 | [UndefinedVariable](https://phpmd.org/rules/cleancode.html#undefinedvariable) | Avoid using undefined variables such as `$sourceFiles` which will lead to PHP notices. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 73 | [UndefinedVariable](https://phpmd.org/rules/cleancode.html#undefinedvariable) | Avoid using undefined variables such as `$sourceFiles` which will lead to PHP notices. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 85 | [UndefinedVariable](https://phpmd.org/rules/cleancode.html#undefinedvariable) | Avoid using undefined variables such as `$sourceFiles` which will lead to PHP notices. |
 | <span class="prio1">1</span> | src/Command/CreateClassCommand.php | 34 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Symfony\Component\Yaml\Yaml` in method `__invoke`. |
 | <span class="prio1">1</span> | src/Command/CreateClassCommand.php | 255 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method getMethods uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
 | <span class="prio1">1</span> | src/Command/CreateClassCommand.php | 358 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method getAttributeComment uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
 | <span class="prio1">1</span> | src/Command/CreateClassCommand.php | 420 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Helper\Helper` in method `getClassName`. |
 | <span class="prio1">1</span> | src/Command/CreateEnumCommand.php | 32 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Symfony\Component\Yaml\Yaml` in method `__invoke`. |
 | <span class="prio1">1</span> | src/Command/CreateJsonCommand.php | 31 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Symfony\Component\Yaml\Yaml` in method `__invoke`. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 63 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method __invoke uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 82 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Revolt\EventLoop` in method `__invoke`. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 96 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Revolt\EventLoop` in method `__invoke`. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 101 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Revolt\EventLoop` in method `__invoke`. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 131 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Symfony\Component\Yaml\Yaml` in method `isValidYaml`. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 61 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method __invoke uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 80 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Revolt\EventLoop` in method `__invoke`. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 94 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Revolt\EventLoop` in method `__invoke`. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 99 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Revolt\EventLoop` in method `__invoke`. |
 | <span class="prio1">1</span> | src/Delegator/HTMLDocumentDelegator.php | 116 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\DOM\HTMLDocument` in method `createEmpty`. |
 | <span class="prio1">1</span> | src/Delegator/HTMLDocumentDelegator.php | 121 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\DOM\HTMLDocument` in method `createFromString`. |
 | <span class="prio1">1</span> | src/Delegator/HTMLDocumentDelegator.php | 126 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\DOM\HTMLDocument` in method `createFromFile`. |
@@ -116,12 +116,12 @@ Issues detected: 71
 | <span class="prio2">2</span> | src/Delegator/HTMLElementDelegator.php | 33 | [CouplingBetweenObjects](https://phpmd.org/rules/design.html#couplingbetweenobjects) | The class HTMLElementDelegator has a coupling between objects value of 13. Consider to reduce the number of dependencies under 13. |
 | <span class="prio2">2</span> | src/Element/BlockElement.php | 7 | [NumberOfChildren](https://phpmd.org/rules/design.html#numberofchildren) | The class BlockElement has 60 children. Consider to rebalance this class hierarchy to keep number of children under 15. |
 | <span class="prio2">2</span> | src/Element/InlineElement.php | 7 | [NumberOfChildren](https://phpmd.org/rules/design.html#numberofchildren) | The class InlineElement has 38 children. Consider to rebalance this class hierarchy to keep number of children under 15. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 37 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method __invoke() contains an exit expression. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 42 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method __invoke() contains an exit expression. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 65 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method __invoke() contains an exit expression. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 73 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method __invoke() contains an exit expression. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 98 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method __invoke() contains an exit expression. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 35 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method __invoke() contains an exit expression. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 40 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method __invoke() contains an exit expression. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 63 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method __invoke() contains an exit expression. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 71 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method __invoke() contains an exit expression. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 96 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method __invoke() contains an exit expression. |
 
 Issues detected: 8
 
-Sat Mar 15 05:35:41 PM CET 2025
+Mon Mar 17 12:02:02 AM CET 2025

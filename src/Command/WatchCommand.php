@@ -2,13 +2,11 @@
 
 namespace Html\Command;
 
-use Exception;
 use Revolt\EventLoop;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Yaml\Yaml;
 
 class WatchCommand extends Command
 {
@@ -84,7 +82,7 @@ class WatchCommand extends Command
             $diff = time() - $lastMod;
 
             if ($diff > self::INTERVAL) {
-                $this->processFile($generator, $source, $dest, $io);
+                $this->processFiles($generator, $sourceFiles, $dest, $io);
             }
 
             $io->info(sprintf('Last modified: %s seconds ago', $diff));
@@ -117,21 +115,5 @@ class WatchCommand extends Command
 
         // Otherwise, treat as path/directory
         return 'directory';
-    }
-
-    private function seemsFile(string $path): bool
-    {
-        $pathinfo = pathinfo($path);
-        return ! empty($pathinfo['extension']);
-    }
-
-    private function isValidYaml(string $path): bool
-    {
-        try {
-            $this->data = Yaml::parseFile($path);
-            return true;
-        } catch (Exception $e) {
-            return false;
-        }
     }
 }
