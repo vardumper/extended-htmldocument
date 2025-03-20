@@ -7,14 +7,11 @@ namespace Html\TemplateGenerator;
 use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
+use Html\Mapping\TemplateGenerator;
 
+#[TemplateGenerator('html')]
 class HTMLGenerator implements TemplateGeneratorInterface
 {
-    public function getName(): string
-    {
-        return 'html';
-    }
-
     public function getExtension(): string
     {
         return 'html';
@@ -22,7 +19,7 @@ class HTMLGenerator implements TemplateGeneratorInterface
 
     public function getNamePattern(): string
     {
-        return '{component}.html';
+        return '{component}.{extension}';
     }
 
     public function canRenderElements(): bool

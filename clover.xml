@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1742166119">
-  <project timestamp="1742166119">
+<coverage generated="1742513443">
+  <project timestamp="1742513443">
     <package name="Html\Delegator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/DOMNodeDelegator.php">
         <class name="Html\Delegator\DOMNodeDelegator" namespace="Html\Delegator">
@@ -568,34 +568,32 @@
       <metrics loc="63" ncloc="63" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
     <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Interface/TemplateGeneratorInterface.php">
-      <metrics loc="23" ncloc="23" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      <metrics loc="21" ncloc="21" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
     <package name="Html\TemplateGenerator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/TemplateGenerator/HTMLGenerator.php">
         <class name="Html\TemplateGenerator\HTMLGenerator" namespace="Html\TemplateGenerator">
-          <metrics complexity="10" methods="8" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="5" elements="20" coveredelements="7"/>
+          <metrics complexity="9" methods="7" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="5" elements="18" coveredelements="7"/>
         </class>
-        <line num="13" type="method" name="getName" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="15" type="stmt" count="0"/>
-        <line num="18" type="method" name="getExtension" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="20" type="stmt" count="0"/>
-        <line num="23" type="method" name="getNamePattern" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="25" type="stmt" count="0"/>
-        <line num="28" type="method" name="canRenderElements" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="30" type="stmt" count="2"/>
-        <line num="33" type="method" name="canRenderDocuments" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="35" type="stmt" count="0"/>
-        <line num="38" type="method" name="render" visibility="public" complexity="3" crap="3.58" count="2"/>
+        <line num="15" type="method" name="getExtension" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="20" type="method" name="getNamePattern" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="25" type="method" name="canRenderElements" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="27" type="stmt" count="2"/>
+        <line num="30" type="method" name="canRenderDocuments" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="35" type="method" name="render" visibility="public" complexity="3" crap="3.58" count="2"/>
+        <line num="37" type="stmt" count="2"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="2"/>
         <line num="40" type="stmt" count="2"/>
-        <line num="41" type="stmt" count="0"/>
-        <line num="42" type="stmt" count="2"/>
-        <line num="43" type="stmt" count="2"/>
-        <line num="45" type="stmt" count="0"/>
-        <line num="48" type="method" name="renderElement" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="50" type="stmt" count="2"/>
-        <line num="53" type="method" name="renderDocument" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="55" type="stmt" count="0"/>
-        <metrics loc="58" ncloc="56" classes="1" methods="8" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="5" elements="20" coveredelements="7"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="45" type="method" name="renderElement" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="47" type="stmt" count="2"/>
+        <line num="50" type="method" name="renderDocument" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <metrics loc="55" ncloc="53" classes="1" methods="7" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="5" elements="18" coveredelements="7"/>
       </file>
     </package>
     <package name="Html\Trait">
@@ -784,6 +782,6 @@
         <metrics loc="53" ncloc="40" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="15" coveredelements="15"/>
       </file>
     </package>
-    <metrics files="37" loc="2228" ncloc="1658" classes="33" methods="132" coveredmethods="121" conditionals="0" coveredconditionals="0" statements="431" coveredstatements="418" elements="563" coveredelements="539"/>
+    <metrics files="37" loc="2223" ncloc="1653" classes="33" methods="131" coveredmethods="121" conditionals="0" coveredconditionals="0" statements="430" coveredstatements="418" elements="561" coveredelements="539"/>
   </project>
 </coverage>

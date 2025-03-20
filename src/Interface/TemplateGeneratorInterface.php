@@ -4,8 +4,6 @@ namespace Html\Interface;
 
 interface TemplateGeneratorInterface
 {
-    public function getName(): string;
-
     public function getExtension(): string;
 
     public function getNamePattern(): string;

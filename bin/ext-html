@@ -41,7 +41,7 @@ $app
         (new WatchCommand())($generator, $source, $dest, $overwriteExisting, $input, $output);
     })
     ->descriptions('Observes a directory or file for changes, and generates templates for HTML Elements', ['generator' => 'name of the generator', 'source' => 'source path', 'dest' => 'destination path'])
-    ->defaults(['generator' => 'html', 'source' =>$sourceDefault, 'dest' => $destDefault ]);
+    ->defaults(['generator' => 'html', 'source' =>$sourceDefault, 'dest' => $destDefault, 'overwrite-existing' => false]);
 
 // $app->setDefaultCommand('make:all');
 $app->run();
