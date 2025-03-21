@@ -60,7 +60,7 @@ class ObjectElement extends BlockElement
     /**
      * Specifies the address of the external data that the object requires.
      */
-    public ?string $data = null;
+    public ?array $data = null;
 
     /**
      * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).

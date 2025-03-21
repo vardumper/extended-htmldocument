@@ -94,7 +94,7 @@ class Style extends VoidElement
         return $this->media;
     }
 
-    public function setNonce(string $nonce): self
+    public function setNonce(string $nonce): static
     {
         $this->nonce = $nonce;
         return $this;

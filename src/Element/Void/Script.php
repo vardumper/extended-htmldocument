@@ -157,7 +157,7 @@ class Script extends VoidElement
         return $this->integrity;
     }
 
-    public function setNonce(string $nonce): self
+    public function setNonce(string $nonce): static
     {
         $this->nonce = $nonce;
         return $this;

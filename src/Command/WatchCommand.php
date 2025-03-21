@@ -4,8 +4,11 @@ namespace Html\Command;
 
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 use ReflectionClass;
 use Revolt\EventLoop;
+use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -94,6 +97,58 @@ class WatchCommand extends Command
     }
 
     /**
+     * Recursively scan a directory for PHP files and require them.
+     */
+    public function loadAllPhpFiles(string $directory): void
+    {
+        $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
+
+        foreach ($files as $file) {
+            if ($file->isFile() && $file->getExtension() === 'php') {
+                if (str_ends_with($file->getFilename(), '.tpl.php')) {
+                    continue;
+                }
+
+                require_once $file->getPathname();
+            }
+        }
+    }
+
+    /**
+     * Get all classes implementing a specific interface.
+     */
+    public function getClassesImplementingInterface(string $interface): array
+    {
+        // Ensure all classes are loaded before scanning
+        $projectRoot = $this->getProjectRoot();
+        $this->loadAllPhpFiles($projectRoot . '/src');
+
+        $classes = get_declared_classes();
+        $implementingClasses = [];
+
+        foreach ($classes as $class) {
+            if (in_array($interface, class_implements($class))) {
+                $implementingClasses[] = $class;
+            }
+        }
+
+        return $implementingClasses;
+    }
+
+    public function getProjectRoot(): string
+    {
+        // Locate the Composer autoloader
+        $composerAutoload = realpath(__DIR__ . '/../../vendor/autoload.php');
+
+        if ($composerAutoload === false) {
+            throw new RuntimeException('Composer autoload.php not found.');
+        }
+
+        // The root directory is two levels up from the autoloader
+        return dirname($composerAutoload, 2);
+    }
+
+    /**
      * on first iteration, all source files will be processed (since they will be older than our interval
      */
     private function processFiles(string $generator, array $sourceFiles, string $dest, SymfonyStyle $io): void
@@ -117,7 +172,6 @@ class WatchCommand extends Command
                     exit;
                 }
 
-                var_dump($data);
                 // $this->parseFile ($generator, $sourceFile, $dest, $io);
             }
         }
@@ -125,23 +179,21 @@ class WatchCommand extends Command
 
     private function getGenerator(string $generator): ?TemplateGeneratorInterface
     {
-        // check autoloaded classes for TemplateGeneratorInterfaces
         $generators = [];
-        foreach (get_declared_classes() as $class) {
-            if (is_subclass_of($class, TemplateGeneratorInterface::class)) {
-                $generators[] = $class;
-            }
+        // check all php files in src/ for TemplateGeneratorInterfaces
+        $interface = TemplateGeneratorInterface::class;
+        $generators = $this->getClassesImplementingInterface($interface);
+
+        if (empty($generators)) {
+            return null;
         }
 
         foreach ($generators as $className) {
             $reflectionClass = new ReflectionClass($className);
-            $attributes = $reflectionClass->getAttributes(TemplateGenerator::class);
-            foreach ($attributes as $attribute) {
+            foreach ($reflectionClass->getAttributes(TemplateGenerator::class) as $attribute) {
                 $args = $attribute->getArguments();
-                if (! array_key_exists('name', $args)) {
-                    continue;
-                }
-                if ($args['name'] === $generator) {
+                $name = $args[0] ?? null; // first argument
+                if ($name === $generator) {
                     return new $className();
                 }
             }

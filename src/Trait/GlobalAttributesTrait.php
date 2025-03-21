@@ -31,7 +31,7 @@ trait GlobalAttributesTrait
     /**
      * Represents custom data attributes on the element
      */
-    public ?array $data = null;
+    public ?array $dataAttributes = null;
 
     /**
      * Indicates whether the element is hidden
@@ -229,7 +229,7 @@ trait GlobalAttributesTrait
      */
     public function setDataAttribute(array $data): static
     {
-        $this->data = $data;
+        $this->dataAttributes = $data;
         foreach ($data as $name => $value) {
             $this->htmlElement->setAttribute('data-' . $name, $value);
         }
@@ -239,14 +239,14 @@ trait GlobalAttributesTrait
     public function getDataAttribute(?string $name = null): null|string|array
     {
         if ($name === null) {
-            return $this->data;
+            return $this->dataAttributes;
         }
 
-        if (! isset($this->data[$name])) {
+        if (! isset($this->dataAttributes[$name])) {
             return null;
         }
 
-        return $this->data[$name];
+        return $this->dataAttributes[$name];
     }
 
     /**
