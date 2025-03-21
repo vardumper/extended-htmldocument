@@ -32,13 +32,15 @@ class HTMLGenerator implements TemplateGeneratorInterface
         return true;
     }
 
-    public function render($elementOrDocument): string
+    public function render(HTMLDocumentDelegatorInterface|HTMLElementDelegatorInterface $elementOrDocument): string
     {
         if ($elementOrDocument instanceof HTMLDocumentDelegatorInterface) {
             return $this->renderDocument($elementOrDocument);
-        } elseif ($elementOrDocument instanceof HTMLElementDelegatorInterface) {
+        }
+        if ($elementOrDocument instanceof HTMLElementDelegatorInterface) {
             return $this->renderElement($elementOrDocument);
         }
+
         return '';
     }
 
@@ -49,6 +51,6 @@ class HTMLGenerator implements TemplateGeneratorInterface
 
     public function renderDocument(HTMLDocumentDelegatorInterface $document): string
     {
-        return (string) $document->ownerDocument->saveHTML($document->htmlDocument);
+        return (string) $document->htmlDocument->saveHTML($document->htmlDocument);
     }
 }
