@@ -27,7 +27,7 @@ In short, I advocate for using standardized HTML5 markup, in order to having to 
 ## Where to go next?
 - [Features Overview](./features)
 - [Getting Started](./getting-started)
-- [Basic Usage Examples](./basic-examples)
+- [Basic Usage Examples](./usage-examples)
 - [Advanced Usage Examples](./advanced-examples)
 
 ## Credits

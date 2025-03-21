@@ -11,11 +11,11 @@ While you can create HTML with DOM\HTMLDocument or DOMDocument, this library is 
 
 The PHP classes in this library are auto-generated from the HTML5 specification. In order to automatically generate templates, we want to factor in these specifications into our PHP classes.
 There are two ways to do this:
-- You duplicate the `html5.yaml` file, modify it to your needs and then [recompile the PHP classes](/recompile-classes) for HTML elements.
+- You duplicate the `html5.yaml` file, modify it to your needs and then [recompile the PHP classes](/code-generation) for HTML elements.
 - The more elegant way to do this is to create specification mixin files. This library comes with an exemplary
 
 ## Template Generators
-The library is designed to be flexible. That's why template generators are interchangeable and chainable (if you need mutliple formats). You can create your own generators or swap out the renderer for the
+The library is designed to be flexible. That's why template generators are interchangeable and chainable (if you need multiple formats). You can create your own generators or swap out the renderer for the
 HTMLDocumentDelegator and HTMLElementDelegator classes, which are responsible for rendering the HTML elements, once you cast them to a string, or echo them.
 
 By default, the library uses the `HtmlGenerator` which simply returns standards-conform HTML5.
@@ -24,7 +24,7 @@ You can swap them out for a more sophisticated renderer, such as a TwigRenderer,
 ## Versatile Usage
 To render HTML into different formats (such as .twig, .jsx, .vue, .svelte, .html, .md) you can use one of:
 - **CLI** Provide YAML describing your components and generate HTML, Twig, React, Vue, Svelte, or Markdown files from the command line.
-- **CLI Watcher** The Watcher observes a file or path with your YAML compoenent definition(s) and updates the generated templates as you make changes.
+- **CLI Watcher** The Watcher observes a file or path with your YAML component definition(s) and updates the generated templates as you make changes.
 - **PHP** You can also create components programmatically.
 - **PHP** You can also have PHP parse pre-made YAML files and generate multiple output formats at once. This is useful if you use Storybook with React, Vue or Twig, or if you want to generate Twig templates for a Symfony project.
 
