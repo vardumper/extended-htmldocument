@@ -15,7 +15,7 @@ hero:
       link: /getting-started
     - theme: alt
       text: Code Examples
-      link: /examples
+      link: /usage-examples
 
 features:
    - title: HTML Elements as PHP Classes
