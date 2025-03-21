@@ -32,7 +32,7 @@ class HTMLGenerator implements TemplateGeneratorInterface
         return true;
     }
 
-    public function render(HTMLDocumentDelegatorInterface|HTMLElementDelegatorInterface $elementOrDocument): string
+    public function render(HTMLDocumentDelegatorInterface|HTMLElementDelegatorInterface $elementOrDocument): ?string
     {
         if ($elementOrDocument instanceof HTMLDocumentDelegatorInterface) {
             return $this->renderDocument($elementOrDocument);
@@ -41,12 +41,12 @@ class HTMLGenerator implements TemplateGeneratorInterface
             return $this->renderElement($elementOrDocument);
         }
 
-        return '';
+        return null;
     }
 
     public function renderElement(HTMLElementDelegatorInterface $element): string
     {
-        return (string) $element->htmlElement->ownerDocument->saveHTML($element->htmlElement);
+        return (string) $element->htmlElement->saveHTML($element->htmlElement);
     }
 
     public function renderDocument(HTMLDocumentDelegatorInterface $document): string
