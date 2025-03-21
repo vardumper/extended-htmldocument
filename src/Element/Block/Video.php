@@ -5,7 +5,7 @@
  *
  * Video - The video element is used to embed video content in a document, such as a movie clip or other video streams.
  *
- * @generated 2025-03-15 16:30:45
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
@@ -108,6 +108,7 @@ class Video extends BlockElement
     public function setAutoplay(bool $autoplay): self
     {
         $this->autoplay = $autoplay;
+        $this->htmlElement->setAttribute('autoplay', $autoplay);
         return $this;
     }
 
@@ -119,6 +120,7 @@ class Video extends BlockElement
     public function setControls(bool $controls): self
     {
         $this->controls = $controls;
+        $this->htmlElement->setAttribute('controls', $controls);
         return $this;
     }
 
@@ -148,6 +150,7 @@ class Video extends BlockElement
     public function setHeight(string $height): self
     {
         $this->height = $height;
+        $this->htmlElement->setAttribute('height', $height);
         return $this;
     }
 
@@ -159,6 +162,7 @@ class Video extends BlockElement
     public function setLoop(bool $loop): self
     {
         $this->loop = $loop;
+        $this->htmlElement->setAttribute('loop', $loop);
         return $this;
     }
 
@@ -170,6 +174,7 @@ class Video extends BlockElement
     public function setMuted(bool $muted): self
     {
         $this->muted = $muted;
+        $this->htmlElement->setAttribute('muted', $muted);
         return $this;
     }
 
@@ -181,6 +186,7 @@ class Video extends BlockElement
     public function setPoster(string $poster): self
     {
         $this->poster = $poster;
+        $this->htmlElement->setAttribute('poster', $poster);
         return $this;
     }
 
@@ -210,6 +216,7 @@ class Video extends BlockElement
     public function setSrc(string $src): self
     {
         $this->src = $src;
+        $this->htmlElement->setAttribute('src', $src);
         return $this;
     }
 
@@ -221,6 +228,7 @@ class Video extends BlockElement
     public function setWidth(string $width): self
     {
         $this->width = $width;
+        $this->htmlElement->setAttribute('width', $width);
         return $this;
     }
 

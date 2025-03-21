@@ -5,7 +5,7 @@
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
  *
- * @generated 2025-03-15 16:30:45
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
@@ -140,6 +140,7 @@ class Form extends BlockElement
     public function setAcceptCharset(string $acceptCharset): self
     {
         $this->acceptCharset = $acceptCharset;
+        $this->htmlElement->setAttribute('acceptCharset', $acceptCharset);
         return $this;
     }
 
@@ -151,6 +152,7 @@ class Form extends BlockElement
     public function setAction(string $action): self
     {
         $this->action = $action;
+        $this->htmlElement->setAttribute('action', $action);
         return $this;
     }
 
@@ -214,6 +216,7 @@ class Form extends BlockElement
     public function setName(string $name): self
     {
         $this->name = $name;
+        $this->htmlElement->setAttribute('name', $name);
         return $this;
     }
 
@@ -225,6 +228,7 @@ class Form extends BlockElement
     public function setNovalidate(bool $novalidate): self
     {
         $this->novalidate = $novalidate;
+        $this->htmlElement->setAttribute('novalidate', $novalidate);
         return $this;
     }
 

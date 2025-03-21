@@ -5,7 +5,7 @@
  *
  * Script - The script element is used to embed or reference an executable script within an HTML or XHTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.
  *
- * @generated 2025-03-15 16:30:45
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
@@ -98,6 +98,7 @@ class Script extends VoidElement
     public function setAsync(bool $async): self
     {
         $this->async = $async;
+        $this->htmlElement->setAttribute('async', $async);
         return $this;
     }
 
@@ -109,6 +110,7 @@ class Script extends VoidElement
     public function setCharset(string $charset): self
     {
         $this->charset = $charset;
+        $this->htmlElement->setAttribute('charset', $charset);
         return $this;
     }
 
@@ -138,6 +140,7 @@ class Script extends VoidElement
     public function setDefer(bool $defer): self
     {
         $this->defer = $defer;
+        $this->htmlElement->setAttribute('defer', $defer);
         return $this;
     }
 
@@ -149,6 +152,7 @@ class Script extends VoidElement
     public function setIntegrity(string $integrity): self
     {
         $this->integrity = $integrity;
+        $this->htmlElement->setAttribute('integrity', $integrity);
         return $this;
     }
 
@@ -157,9 +161,10 @@ class Script extends VoidElement
         return $this->integrity;
     }
 
-    public function setNonce(string $nonce): static
+    public function setNonce(string $nonce): self
     {
         $this->nonce = $nonce;
+        $this->htmlElement->setAttribute('nonce', $nonce);
         return $this;
     }
 
@@ -189,6 +194,7 @@ class Script extends VoidElement
     public function setSrc(string $src): self
     {
         $this->src = $src;
+        $this->htmlElement->setAttribute('src', $src);
         return $this;
     }
 

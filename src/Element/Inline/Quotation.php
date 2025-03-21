@@ -5,7 +5,7 @@
  *
  * Quotation - The q element represents some phrasing content quoted from another source.
  *
- * @generated 2025-03-15 16:30:45
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
@@ -77,6 +77,7 @@ class Quotation extends InlineElement
     public function setCite(string $cite): self
     {
         $this->cite = $cite;
+        $this->htmlElement->setAttribute('cite', $cite);
         return $this;
     }
 

@@ -5,7 +5,7 @@
  *
  * Anchor - The a element represents a hyperlink, linking to another resource.
  *
- * @generated 2025-03-15 16:30:45
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
@@ -118,6 +118,7 @@ class Anchor extends InlineElement
     public function setDownload(string $download): self
     {
         $this->download = $download;
+        $this->htmlElement->setAttribute('download', $download);
         return $this;
     }
 
@@ -129,6 +130,7 @@ class Anchor extends InlineElement
     public function setHref(string $href): self
     {
         $this->href = $href;
+        $this->htmlElement->setAttribute('href', $href);
         return $this;
     }
 
@@ -140,6 +142,7 @@ class Anchor extends InlineElement
     public function setHreflang(string $hreflang): self
     {
         $this->hreflang = $hreflang;
+        $this->htmlElement->setAttribute('hreflang', $hreflang);
         return $this;
     }
 
@@ -190,6 +193,7 @@ class Anchor extends InlineElement
     public function setTitle(string $title): self
     {
         $this->title = $title;
+        $this->htmlElement->setAttribute('title', $title);
         return $this;
     }
 
@@ -201,6 +205,7 @@ class Anchor extends InlineElement
     public function setType(string $type): self
     {
         $this->type = $type;
+        $this->htmlElement->setAttribute('type', $type);
         return $this;
     }
 

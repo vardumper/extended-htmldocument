@@ -1,6 +1,7 @@
 <?php
 
 use Html\Delegator\HTMLDocumentDelegator;
+use Html\Element\Block\Body;
 use Html\Element\Inline\Anchor;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\TemplateGenerator\HTMLGenerator;
@@ -40,12 +41,15 @@ test('can render documents', function () {
 test('render element', function () {
     $document = HTMLDocumentDelegator::createEmpty();
     $element = Anchor::create($document);
+    $element->setHref('https://example.com');
     expect($this->generator->render($element))
-        ->toBe('<a></a>');
+        ->toBe('<a href="https://example.com"></a>');
 });
 
 test('render document', function () {
     $document = HTMLDocumentDelegator::createEmpty();
+    $element = Body::create($document);
+    $document->appendChild($element);
     expect($this->generator->render($document))
-        ->toBe('');
+        ->toBe('<body></body>');
 });

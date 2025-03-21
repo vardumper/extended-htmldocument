@@ -5,7 +5,7 @@
  *
  * TableRow - The tr element represents a row of cells in a table.
  *
- * @generated 2025-03-15 16:30:45
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
@@ -96,6 +96,7 @@ class TableRow extends BlockElement
     public function setBgcolor(string $bgcolor): self
     {
         $this->bgcolor = $bgcolor;
+        $this->htmlElement->setAttribute('bgcolor', $bgcolor);
         return $this;
     }
 
@@ -107,6 +108,7 @@ class TableRow extends BlockElement
     public function setChar(string $char): self
     {
         $this->char = $char;
+        $this->htmlElement->setAttribute('char', $char);
         return $this;
     }
 
@@ -118,6 +120,7 @@ class TableRow extends BlockElement
     public function setCharoff(string $charoff): self
     {
         $this->charoff = $charoff;
+        $this->htmlElement->setAttribute('charoff', $charoff);
         return $this;
     }
 

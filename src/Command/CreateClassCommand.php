@@ -260,6 +260,8 @@ final class CreateClassCommand extends Command
                     $variableName,
                     $variableName,
                     $variableName,
+                    $variableName,
+                    $variableName,
                     $methodName,
                     $type,
                     $variableName,
@@ -429,6 +431,7 @@ final class CreateClassCommand extends Command
         return "    public function set%s(%s \$%s): self
     {
         \$this->%s = \$%s;
+        \$this->htmlElement->setAttribute('%s', \$%s);
         return \$this;
     }
 

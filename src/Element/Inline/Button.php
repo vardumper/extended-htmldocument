@@ -5,7 +5,7 @@
  *
  * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
  *
- * @generated 2025-03-15 16:30:45
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
@@ -105,6 +105,7 @@ class Button extends InlineElement
     public function setAutofocus(bool $autofocus): self
     {
         $this->autofocus = $autofocus;
+        $this->htmlElement->setAttribute('autofocus', $autofocus);
         return $this;
     }
 
@@ -116,6 +117,7 @@ class Button extends InlineElement
     public function setDisabled(bool $disabled): self
     {
         $this->disabled = $disabled;
+        $this->htmlElement->setAttribute('disabled', $disabled);
         return $this;
     }
 
@@ -127,6 +129,7 @@ class Button extends InlineElement
     public function setName(string $name): self
     {
         $this->name = $name;
+        $this->htmlElement->setAttribute('name', $name);
         return $this;
     }
 
@@ -154,6 +157,7 @@ class Button extends InlineElement
     public function setValue(string $value): self
     {
         $this->value = $value;
+        $this->htmlElement->setAttribute('value', $value);
         return $this;
     }
 

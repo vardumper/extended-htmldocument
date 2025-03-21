@@ -5,7 +5,7 @@
  *
  * Audio - The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.
  *
- * @generated 2025-03-15 16:30:45
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
@@ -96,6 +96,7 @@ class Audio extends BlockElement
     public function setAutoplay(bool $autoplay): self
     {
         $this->autoplay = $autoplay;
+        $this->htmlElement->setAttribute('autoplay', $autoplay);
         return $this;
     }
 
@@ -107,6 +108,7 @@ class Audio extends BlockElement
     public function setControls(bool $controls): self
     {
         $this->controls = $controls;
+        $this->htmlElement->setAttribute('controls', $controls);
         return $this;
     }
 
@@ -136,6 +138,7 @@ class Audio extends BlockElement
     public function setLoop(bool $loop): self
     {
         $this->loop = $loop;
+        $this->htmlElement->setAttribute('loop', $loop);
         return $this;
     }
 
@@ -147,6 +150,7 @@ class Audio extends BlockElement
     public function setMuted(bool $muted): self
     {
         $this->muted = $muted;
+        $this->htmlElement->setAttribute('muted', $muted);
         return $this;
     }
 
@@ -176,6 +180,7 @@ class Audio extends BlockElement
     public function setSrc(string $src): self
     {
         $this->src = $src;
+        $this->htmlElement->setAttribute('src', $src);
         return $this;
     }
 

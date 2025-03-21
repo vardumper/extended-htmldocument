@@ -5,7 +5,7 @@
  *
  * HorizontalRule - The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.
  *
- * @generated 2025-03-15 16:30:45
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr
@@ -97,6 +97,7 @@ class HorizontalRule extends BlockElement
     public function setColor(string $color): self
     {
         $this->color = $color;
+        $this->htmlElement->setAttribute('color', $color);
         return $this;
     }
 
@@ -108,6 +109,7 @@ class HorizontalRule extends BlockElement
     public function setNoshade(bool $noshade): self
     {
         $this->noshade = $noshade;
+        $this->htmlElement->setAttribute('noshade', $noshade);
         return $this;
     }
 
@@ -119,6 +121,7 @@ class HorizontalRule extends BlockElement
     public function setSize(int $size): self
     {
         $this->size = $size;
+        $this->htmlElement->setAttribute('size', $size);
         return $this;
     }
 
@@ -130,6 +133,7 @@ class HorizontalRule extends BlockElement
     public function setWidth(string $width): self
     {
         $this->width = $width;
+        $this->htmlElement->setAttribute('width', $width);
         return $this;
     }
 

@@ -5,7 +5,7 @@
  *
  * Image - The img element represents an image.
  *
- * @generated 2025-03-15 16:30:45
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
@@ -136,6 +136,7 @@ class Image extends InlineElement
     public function setAlt(string $alt): self
     {
         $this->alt = $alt;
+        $this->htmlElement->setAttribute('alt', $alt);
         return $this;
     }
 
@@ -183,6 +184,7 @@ class Image extends InlineElement
     public function setHeight(string $height): self
     {
         $this->height = $height;
+        $this->htmlElement->setAttribute('height', $height);
         return $this;
     }
 
@@ -194,6 +196,7 @@ class Image extends InlineElement
     public function setIsmap(bool $ismap): self
     {
         $this->ismap = $ismap;
+        $this->htmlElement->setAttribute('ismap', $ismap);
         return $this;
     }
 
@@ -223,6 +226,7 @@ class Image extends InlineElement
     public function setSizes(string $sizes): self
     {
         $this->sizes = $sizes;
+        $this->htmlElement->setAttribute('sizes', $sizes);
         return $this;
     }
 
@@ -234,6 +238,7 @@ class Image extends InlineElement
     public function setSrc(string $src): self
     {
         $this->src = $src;
+        $this->htmlElement->setAttribute('src', $src);
         return $this;
     }
 
@@ -245,6 +250,7 @@ class Image extends InlineElement
     public function setSrcset(string $srcset): self
     {
         $this->srcset = $srcset;
+        $this->htmlElement->setAttribute('srcset', $srcset);
         return $this;
     }
 
@@ -256,6 +262,7 @@ class Image extends InlineElement
     public function setUsemap(string $usemap): self
     {
         $this->usemap = $usemap;
+        $this->htmlElement->setAttribute('usemap', $usemap);
         return $this;
     }
 
@@ -267,6 +274,7 @@ class Image extends InlineElement
     public function setWidth(string $width): self
     {
         $this->width = $width;
+        $this->htmlElement->setAttribute('width', $width);
         return $this;
     }
 

@@ -5,7 +5,7 @@
  *
  * OrderedList - The ol element represents an ordered list of items. The order of the list is meaningful.
  *
- * @generated 2025-03-15 16:30:45
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
@@ -82,6 +82,7 @@ class OrderedList extends BlockElement
     public function setReversed(bool $reversed): self
     {
         $this->reversed = $reversed;
+        $this->htmlElement->setAttribute('reversed', $reversed);
         return $this;
     }
 
@@ -93,6 +94,7 @@ class OrderedList extends BlockElement
     public function setStart(int $start): self
     {
         $this->start = $start;
+        $this->htmlElement->setAttribute('start', $start);
         return $this;
     }
 

@@ -5,7 +5,7 @@
  *
  * InlineFrame - The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.
  *
- * @generated 2025-03-15 16:30:45
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
@@ -106,6 +106,7 @@ class InlineFrame extends BlockElement
     public function setAllowfullscreen(bool $allowfullscreen): self
     {
         $this->allowfullscreen = $allowfullscreen;
+        $this->htmlElement->setAttribute('allowfullscreen', $allowfullscreen);
         return $this;
     }
 
@@ -117,6 +118,7 @@ class InlineFrame extends BlockElement
     public function setHeight(string $height): self
     {
         $this->height = $height;
+        $this->htmlElement->setAttribute('height', $height);
         return $this;
     }
 
@@ -128,6 +130,7 @@ class InlineFrame extends BlockElement
     public function setName(string $name): self
     {
         $this->name = $name;
+        $this->htmlElement->setAttribute('name', $name);
         return $this;
     }
 
@@ -157,6 +160,7 @@ class InlineFrame extends BlockElement
     public function setSandbox(string $sandbox): self
     {
         $this->sandbox = $sandbox;
+        $this->htmlElement->setAttribute('sandbox', $sandbox);
         return $this;
     }
 
@@ -168,6 +172,7 @@ class InlineFrame extends BlockElement
     public function setSeamless(bool $seamless): self
     {
         $this->seamless = $seamless;
+        $this->htmlElement->setAttribute('seamless', $seamless);
         return $this;
     }
 
@@ -179,6 +184,7 @@ class InlineFrame extends BlockElement
     public function setSrc(string $src): self
     {
         $this->src = $src;
+        $this->htmlElement->setAttribute('src', $src);
         return $this;
     }
 
@@ -190,6 +196,7 @@ class InlineFrame extends BlockElement
     public function setSrcdoc(string $srcdoc): self
     {
         $this->srcdoc = $srcdoc;
+        $this->htmlElement->setAttribute('srcdoc', $srcdoc);
         return $this;
     }
 
@@ -201,6 +208,7 @@ class InlineFrame extends BlockElement
     public function setWidth(string $width): self
     {
         $this->width = $width;
+        $this->htmlElement->setAttribute('width', $width);
         return $this;
     }
 

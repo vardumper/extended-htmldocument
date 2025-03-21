@@ -5,7 +5,7 @@
  *
  * Base - The base element specifies the base URL to use for all relative URLs in a document. There can be at maximum one <base> element in a document, and it must be inside the <head> element.
  *
- * @generated 2025-03-15 16:30:45
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
@@ -66,6 +66,7 @@ class Base extends VoidElement
     public function setHref(string $href): self
     {
         $this->href = $href;
+        $this->htmlElement->setAttribute('href', $href);
         return $this;
     }
 
