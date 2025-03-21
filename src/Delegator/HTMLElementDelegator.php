@@ -16,7 +16,6 @@ use Html\Trait\NativePropertiesTrait;
 use InvalidArgumentException;
 use ReflectionClass;
 use ReflectionUnionType;
-use RuntimeException;
 use TypeError;
 
 /**
@@ -35,8 +34,6 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     use GlobalAttributesTrait;
     use NativePropertiesTrait;
 
-    public HtmlElement $htmlElement;
-
     public static HtmlDocumentDelegator $ownerDocument;
 
     // meta information
@@ -49,12 +46,16 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public static array $parentOf = []; // Default value, change as needed
 
-    private TemplateGeneratorInterface $renderer;
-
-    public function __construct(HTMLElement $htmlElement, ?TemplateGeneratorInterface $renderer = null)
-    {
-        $this->htmlElement = $htmlElement;
-        $this->renderer = $renderer ?? new HTMLGenerator();
+    public function __construct(
+        public readonly HTMLElement $htmlElement,
+        public ?TemplateGeneratorInterface $renderer = null
+    ) {
+        if ($renderer !== null && ! $renderer->canRenderDocuments()) {
+            throw new InvalidArgumentException('The given renderer cannot render documents.');
+        }
+        if ($renderer === null) {
+            $this->renderer = new HTMLGenerator();
+        }
     }
 
     public function __call($name, $arguments)
@@ -130,16 +131,12 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     // turn an element into a string, using the configured renderer
     public function __toString(): string
     {
-        if (! $this->renderer->canRenderElements()) {
-            throw new RuntimeException('Renderer cannot render elements.');
-        }
         return $this->renderer->render($this);
     }
 
-    public function setRenderer(TemplateGeneratorInterface $renderer): static
+    public function setRenderer(TemplateGeneratorInterface $renderer): void
     {
         $this->renderer = $renderer;
-        return $this;
     }
 
     // two ways to set an attribute via HTML\Element::$property or HTML\Element->setAttribute()

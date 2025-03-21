@@ -12,6 +12,7 @@ teaser-component:
         - image:
             src: /path/to/image.jpg
             alt: Image
+
         - button:
             text: Read more
             link: /path/to/page

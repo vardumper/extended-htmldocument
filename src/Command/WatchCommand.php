@@ -2,6 +2,7 @@
 
 namespace Html\Command;
 
+use Html\Delegator\HTMLDocumentDelegator;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
 use RecursiveDirectoryIterator;
@@ -18,6 +19,8 @@ use Symfony\Component\Yaml\Yaml;
 class WatchCommand extends Command
 {
     private const int INTERVAL = 2;
+
+    private bool $isFirstRun = true;
 
     private ?array $data = null;
 
@@ -157,8 +160,13 @@ class WatchCommand extends Command
         foreach ($sourceFiles as $sourceFile) {
             $lastMod = \filemtime($sourceFile);
             $diff = time() - $lastMod;
-
-            if ($diff > self::INTERVAL) {
+            $io->info(
+                sprintf('File: %s, Last Modified: %s, Current Time: %s, Diff: %s', $sourceFile, date(
+                    'Y-m-d H:i:s',
+                    $lastMod
+                ), date('Y-m-d H:i:s', time()), $diff)
+            );
+            if ($this->isFirstRun || $diff <= self::INTERVAL) {
                 $io->info(sprintf('Processing file: %s', $sourceFile));
                 try {
                     $data = $yaml->parseFile($sourceFile);
@@ -167,14 +175,16 @@ class WatchCommand extends Command
                         $io->error(sprintf('Failed to find generator for %s.', $generator));
                         exit;
                     }
+
+                    $dom = HTMLDocumentDelegator::createEmpty();
+                    $dom->setRenderer($templateGenerator);
                 } catch (\Symfony\Component\Yaml\Exception\ParseException $e) {
                     $io->error('Failed to parse component description file. ' . $e->getMessage());
                     exit;
                 }
-
-                // $this->parseFile ($generator, $sourceFile, $dest, $io);
             }
         }
+        $this->isFirstRun = false;
     }
 
     private function getGenerator(string $generator): ?TemplateGeneratorInterface
