@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:050df7d1-7b7b-4e8d-9b33-e0d1ddc19e9a",
+  "serialNumber": "urn:uuid:fa3b55d5-2237-4f91-84f6-1ca3c2ee2f90",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-03-11T08:07:09+00:00",
+    "timestamp": "2025-03-21T08:02:20+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "dc440cc1-c59f-4ea2-a892-1a0e40e9134c",
+      "bom-ref": "2b303add-269e-48b3-8ca2-658da1f8d7bf",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,22 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "0e3d7389-625e-4216-8b01-7f8f2ed2ece6",
-      "type": "application",
-      "name": "yarn.lock",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:Class",
-          "value": "lang-pkgs"
-        },
-        {
-          "name": "aquasecurity:trivy:Type",
-          "value": "yarn"
-        }
-      ]
-    },
-    {
-      "bom-ref": "917de535-9278-4b72-a4c4-97e1a9bf40a8",
+      "bom-ref": "c026f6ac-f8e7-4543-9229-82ff757414c7",
       "type": "application",
       "name": "composer.lock",
       "properties": [
@@ -56,6 +41,21 @@
         {
           "name": "aquasecurity:trivy:Type",
           "value": "composer"
+        }
+      ]
+    },
+    {
+      "bom-ref": "de948271-63ea-4d25-b749-b5b64808bd57",
+      "type": "application",
+      "name": "yarn.lock",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:Class",
+          "value": "lang-pkgs"
+        },
+        {
+          "name": "aquasecurity:trivy:Type",
+          "value": "yarn"
         }
       ]
     },
@@ -2221,22 +2221,22 @@
   ],
   "dependencies": [
     {
-      "ref": "0e3d7389-625e-4216-8b01-7f8f2ed2ece6",
+      "ref": "2b303add-269e-48b3-8ca2-658da1f8d7bf",
       "dependsOn": [
-        "pkg:npm/vitepress@1.6.3"
+        "c026f6ac-f8e7-4543-9229-82ff757414c7",
+        "de948271-63ea-4d25-b749-b5b64808bd57"
       ]
     },
     {
-      "ref": "917de535-9278-4b72-a4c4-97e1a9bf40a8",
+      "ref": "c026f6ac-f8e7-4543-9229-82ff757414c7",
       "dependsOn": [
         "pkg:composer/revolt/event-loop@v1.0.7"
       ]
     },
     {
-      "ref": "dc440cc1-c59f-4ea2-a892-1a0e40e9134c",
+      "ref": "de948271-63ea-4d25-b749-b5b64808bd57",
       "dependsOn": [
-        "0e3d7389-625e-4216-8b01-7f8f2ed2ece6",
-        "917de535-9278-4b72-a4c4-97e1a9bf40a8"
+        "pkg:npm/vitepress@1.6.3"
       ]
     },
     {
