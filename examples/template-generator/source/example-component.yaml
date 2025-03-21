@@ -1,0 +1,18 @@
+teaser-component:
+  label: Teaser Component
+  description: This is an example component.
+  structure:
+    division:
+      class: teaser
+      children:
+        - heading3:
+            text: 'Teaser Component'
+        - parapgraph:
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.'
+        - image:
+            src: /path/to/image.jpg
+            alt: Image
+
+        - button:
+            text: Read more
+            link: /path/to/page

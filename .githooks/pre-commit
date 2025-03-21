@@ -148,53 +148,7 @@ else
 fi
 
 # PHPMD - PHP Mess Detector
-HAS_PHPMD=false
-PHPMD="./vendor/bin/phpmd"
-if [ -x $PHPMD ]; then
-    HAS_PHPMD=true
-fi
-
-printf "${YELLOW}PHP Mess Detector${NC}\n"
-
-if $HAS_PHPMD; then
-  printf "Searching for unused code... "
-  PHPMD_OUTPUT=$($PHPMD ./src github unusedcode 2>&1)
-  if [ $? -eq 0 ]; then
-    printf "${GREEN}PASSED${NC}\n"
-  else
-    printf "${RED}FAILED${NC}\n"
-    PASS=false
-  fi
-
-  printf "Checking code size rule... "
-  PHPMD_OUTPUT=$($PHPMD ./src github codesize 2>&1)
-  if [ $? -eq 0 ]; then
-    printf "${GREEN}PASSED${NC}\n"
-  else
-    printf "${RED}FAILED${NC}\n"
-    PASS=false
-  fi
-
-  printf "Checking cleancode rule... "
-  PHPMD_OUTPUT=$($PHPMD ./src ansi cleancode 2>&1)
-  if [ $? -eq 0 ]; then
-    printf "${GREEN}PASSED${NC}\n"
-  else
-    printf "${RED}FAILED${NC}\n"
-    PASS=false
-  fi
-
-  printf "Checking code design... "
-  PHPMD_OUTPUT=$($PHPMD ./src ansi design 2>&1)
-  if [ $? -eq 0 ]; then
-    printf "${GREEN}PASSED${NC}\n"
-  else
-    printf "${RED}FAILED${NC}\n"
-    PASS=false
-  fi
-else
-  printf "\nphpmd is required. Install it with:\n\n  composer require --dev phpmd/phpmd\n\n"
-fi
+source ./bin/phpmd.sh
 
 # Run composer audit locally
 printf "${YELLOW}Composer Audit${NC}\n"

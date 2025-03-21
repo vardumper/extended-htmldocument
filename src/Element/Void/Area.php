@@ -5,7 +5,7 @@
  *
  * Area - The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area
@@ -13,7 +13,6 @@
 
 namespace Html\Element\Void;
 
-use BackedEnum;
 use Html\Element\Block\Article;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
@@ -30,6 +29,7 @@ use Html\Element\VoidElement;
 use Html\Enum\RelEnum;
 use Html\Enum\ShapeEnum;
 use Html\Enum\TargetEnum;
+use InvalidArgumentException;
 
 class Area extends VoidElement
 {
@@ -126,6 +126,7 @@ class Area extends VoidElement
     public function setAlt(string $alt): self
     {
         $this->alt = $alt;
+        $this->htmlElement->setAttribute('alt', $alt);
         return $this;
     }
 
@@ -137,6 +138,7 @@ class Area extends VoidElement
     public function setCoords(string $coords): self
     {
         $this->coords = $coords;
+        $this->htmlElement->setAttribute('coords', $coords);
         return $this;
     }
 
@@ -148,6 +150,7 @@ class Area extends VoidElement
     public function setDownload(string $download): self
     {
         $this->download = $download;
+        $this->htmlElement->setAttribute('download', $download);
         return $this;
     }
 
@@ -159,6 +162,7 @@ class Area extends VoidElement
     public function setHref(string $href): self
     {
         $this->href = $href;
+        $this->htmlElement->setAttribute('href', $href);
         return $this;
     }
 
@@ -170,6 +174,7 @@ class Area extends VoidElement
     public function setHreflang(string $hreflang): self
     {
         $this->hreflang = $hreflang;
+        $this->htmlElement->setAttribute('hreflang', $hreflang);
         return $this;
     }
 
@@ -178,13 +183,13 @@ class Area extends VoidElement
         return $this->hreflang;
     }
 
-    public function setRel(RelEnum $rel): self
+    public function setRel(string|RelEnum $rel): self
     {
+        if (is_string($rel)) {
+            $rel = RelEnum::tryFrom($rel) ?? throw new InvalidArgumentException('Invalid value for $rel.');
+        }
         $this->rel = $rel;
-        $this->htmlElement->setAttribute(
-            'rel',
-            \is_subclass_of($rel, BackedEnum::class) ? (string) $rel->value : $rel
-        );
+        $this->htmlElement->setAttribute('rel', (string) $rel->value);
 
         return $this;
     }
@@ -194,13 +199,13 @@ class Area extends VoidElement
         return $this->rel;
     }
 
-    public function setShape(ShapeEnum $shape): self
+    public function setShape(string|ShapeEnum $shape): self
     {
+        if (is_string($shape)) {
+            $shape = ShapeEnum::tryFrom($shape) ?? throw new InvalidArgumentException('Invalid value for $shape.');
+        }
         $this->shape = $shape;
-        $this->htmlElement->setAttribute(
-            'shape',
-            \is_subclass_of($shape, BackedEnum::class) ? (string) $shape->value : $shape
-        );
+        $this->htmlElement->setAttribute('shape', (string) $shape->value);
 
         return $this;
     }
@@ -210,13 +215,13 @@ class Area extends VoidElement
         return $this->shape;
     }
 
-    public function setTarget(TargetEnum $target): self
+    public function setTarget(string|TargetEnum $target): self
     {
+        if (is_string($target)) {
+            $target = TargetEnum::tryFrom($target) ?? throw new InvalidArgumentException('Invalid value for $target.');
+        }
         $this->target = $target;
-        $this->htmlElement->setAttribute(
-            'target',
-            \is_subclass_of($target, BackedEnum::class) ? (string) $target->value : $target
-        );
+        $this->htmlElement->setAttribute('target', (string) $target->value);
 
         return $this;
     }
@@ -229,6 +234,7 @@ class Area extends VoidElement
     public function setType(string $type): self
     {
         $this->type = $type;
+        $this->htmlElement->setAttribute('type', $type);
         return $this;
     }
 

@@ -5,7 +5,7 @@
  *
  * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
@@ -13,7 +13,6 @@
 
 namespace Html\Element\Inline;
 
-use BackedEnum;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
@@ -30,6 +29,7 @@ use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Enum\TypeButtonEnum;
+use InvalidArgumentException;
 
 class Button extends InlineElement
 {
@@ -105,6 +105,7 @@ class Button extends InlineElement
     public function setAutofocus(bool $autofocus): self
     {
         $this->autofocus = $autofocus;
+        $this->htmlElement->setAttribute('autofocus', $autofocus);
         return $this;
     }
 
@@ -116,6 +117,7 @@ class Button extends InlineElement
     public function setDisabled(bool $disabled): self
     {
         $this->disabled = $disabled;
+        $this->htmlElement->setAttribute('disabled', $disabled);
         return $this;
     }
 
@@ -127,6 +129,7 @@ class Button extends InlineElement
     public function setName(string $name): self
     {
         $this->name = $name;
+        $this->htmlElement->setAttribute('name', $name);
         return $this;
     }
 
@@ -135,13 +138,13 @@ class Button extends InlineElement
         return $this->name;
     }
 
-    public function setType(TypeButtonEnum $type): self
+    public function setType(string|TypeButtonEnum $type): self
     {
+        if (is_string($type)) {
+            $type = TypeButtonEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
+        }
         $this->type = $type;
-        $this->htmlElement->setAttribute(
-            'type',
-            \is_subclass_of($type, BackedEnum::class) ? (string) $type->value : $type
-        );
+        $this->htmlElement->setAttribute('type', (string) $type->value);
 
         return $this;
     }
@@ -154,6 +157,7 @@ class Button extends InlineElement
     public function setValue(string $value): self
     {
         $this->value = $value;
+        $this->htmlElement->setAttribute('value', $value);
         return $this;
     }
 

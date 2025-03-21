@@ -5,7 +5,7 @@
  *
  * OrderedList - The ol element represents an ordered list of items. The order of the list is meaningful.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
@@ -13,10 +13,10 @@
 
 namespace Html\Element\Block;
 
-use BackedEnum;
 use Html\Element\BlockElement;
 use Html\Element\Inline\Slot;
 use Html\Enum\TypeOlEnum;
+use InvalidArgumentException;
 
 class OrderedList extends BlockElement
 {
@@ -82,6 +82,7 @@ class OrderedList extends BlockElement
     public function setReversed(bool $reversed): self
     {
         $this->reversed = $reversed;
+        $this->htmlElement->setAttribute('reversed', $reversed);
         return $this;
     }
 
@@ -93,6 +94,7 @@ class OrderedList extends BlockElement
     public function setStart(int $start): self
     {
         $this->start = $start;
+        $this->htmlElement->setAttribute('start', $start);
         return $this;
     }
 
@@ -101,13 +103,13 @@ class OrderedList extends BlockElement
         return $this->start;
     }
 
-    public function setType(TypeOlEnum $type): self
+    public function setType(string|TypeOlEnum $type): self
     {
+        if (is_string($type)) {
+            $type = TypeOlEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
+        }
         $this->type = $type;
-        $this->htmlElement->setAttribute(
-            'type',
-            \is_subclass_of($type, BackedEnum::class) ? (string) $type->value : $type
-        );
+        $this->htmlElement->setAttribute('type', (string) $type->value);
 
         return $this;
     }

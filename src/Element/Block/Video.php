@@ -5,7 +5,7 @@
  *
  * Video - The video element is used to embed video content in a document, such as a movie clip or other video streams.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
@@ -13,11 +13,11 @@
 
 namespace Html\Element\Block;
 
-use BackedEnum;
 use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\PreloadEnum;
+use InvalidArgumentException;
 
 class Video extends BlockElement
 {
@@ -108,6 +108,7 @@ class Video extends BlockElement
     public function setAutoplay(bool $autoplay): self
     {
         $this->autoplay = $autoplay;
+        $this->htmlElement->setAttribute('autoplay', $autoplay);
         return $this;
     }
 
@@ -119,6 +120,7 @@ class Video extends BlockElement
     public function setControls(bool $controls): self
     {
         $this->controls = $controls;
+        $this->htmlElement->setAttribute('controls', $controls);
         return $this;
     }
 
@@ -127,13 +129,15 @@ class Video extends BlockElement
         return $this->controls;
     }
 
-    public function setCrossorigin(CrossoriginEnum $crossorigin): self
+    public function setCrossorigin(string|CrossoriginEnum $crossorigin): self
     {
+        if (is_string($crossorigin)) {
+            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
+                'Invalid value for $crossorigin.'
+            );
+        }
         $this->crossorigin = $crossorigin;
-        $this->htmlElement->setAttribute(
-            'crossorigin',
-            \is_subclass_of($crossorigin, BackedEnum::class) ? (string) $crossorigin->value : $crossorigin
-        );
+        $this->htmlElement->setAttribute('crossorigin', (string) $crossorigin->value);
 
         return $this;
     }
@@ -146,6 +150,7 @@ class Video extends BlockElement
     public function setHeight(string $height): self
     {
         $this->height = $height;
+        $this->htmlElement->setAttribute('height', $height);
         return $this;
     }
 
@@ -157,6 +162,7 @@ class Video extends BlockElement
     public function setLoop(bool $loop): self
     {
         $this->loop = $loop;
+        $this->htmlElement->setAttribute('loop', $loop);
         return $this;
     }
 
@@ -168,6 +174,7 @@ class Video extends BlockElement
     public function setMuted(bool $muted): self
     {
         $this->muted = $muted;
+        $this->htmlElement->setAttribute('muted', $muted);
         return $this;
     }
 
@@ -179,6 +186,7 @@ class Video extends BlockElement
     public function setPoster(string $poster): self
     {
         $this->poster = $poster;
+        $this->htmlElement->setAttribute('poster', $poster);
         return $this;
     }
 
@@ -187,13 +195,15 @@ class Video extends BlockElement
         return $this->poster;
     }
 
-    public function setPreload(PreloadEnum $preload): self
+    public function setPreload(string|PreloadEnum $preload): self
     {
+        if (is_string($preload)) {
+            $preload = PreloadEnum::tryFrom($preload) ?? throw new InvalidArgumentException(
+                'Invalid value for $preload.'
+            );
+        }
         $this->preload = $preload;
-        $this->htmlElement->setAttribute(
-            'preload',
-            \is_subclass_of($preload, BackedEnum::class) ? (string) $preload->value : $preload
-        );
+        $this->htmlElement->setAttribute('preload', (string) $preload->value);
 
         return $this;
     }
@@ -206,6 +216,7 @@ class Video extends BlockElement
     public function setSrc(string $src): self
     {
         $this->src = $src;
+        $this->htmlElement->setAttribute('src', $src);
         return $this;
     }
 
@@ -217,6 +228,7 @@ class Video extends BlockElement
     public function setWidth(string $width): self
     {
         $this->width = $width;
+        $this->htmlElement->setAttribute('width', $width);
         return $this;
     }
 

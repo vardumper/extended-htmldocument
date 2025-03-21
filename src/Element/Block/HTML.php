@@ -5,7 +5,7 @@
  *
  * HTML - The root element of an HTML document. It represents the top-level of the HTML structure.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html
@@ -53,6 +53,7 @@ class HTML extends BlockElement
     public function setManifest(string $manifest): self
     {
         $this->manifest = $manifest;
+        $this->htmlElement->setAttribute('manifest', $manifest);
         return $this;
     }
 

@@ -1,0 +1,39 @@
+.prio1 {
+    color: var(--vp-c-gray-1);
+    font-weight: normal;
+}
+
+.prio2 {
+    color: var(--vp-c-yellow-soft);
+    font-weight: normal;
+}
+td > span.prio3 {
+    background: var(--vp-badge-danger-bg) !important;
+}
+.prio3 {
+    color: var(----vp-badge-danger-text);
+    font-weight: bold;
+}
+
+.prio4 {
+    color: var(--vp-c-red-soft);
+    font-weight: bold;
+}
+
+.prio5 {
+    color: var(--vp-c-red-1);
+    font-weight: bold;
+}
+/**
+  --vp-badge-info-text: var(--vp-c-text-2);
+  --vp-badge-info-bg: var(--vp-c-default-soft);
+
+  --vp-badge-tip-text: var(--vp-c-tip-1);
+  --vp-badge-tip-bg: var(--vp-c-tip-soft);
+
+  --vp-badge-warning-text: var(--vp-c-warning-1);
+  --vp-badge-warning-bg: var(--vp-c-warning-soft);
+
+  --vp-badge-danger-text: var(--vp-c-danger-1);
+  --vp-badge-danger-bg: var(--vp-c-danger-soft);
+**/

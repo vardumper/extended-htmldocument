@@ -5,7 +5,7 @@
  *
  * ObjectElement - The object element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
@@ -90,6 +90,7 @@ class ObjectElement extends BlockElement
     public function setData(string $data): self
     {
         $this->data = $data;
+        $this->htmlElement->setAttribute('data', $data);
         return $this;
     }
 
@@ -101,6 +102,7 @@ class ObjectElement extends BlockElement
     public function setHeight(string $height): self
     {
         $this->height = $height;
+        $this->htmlElement->setAttribute('height', $height);
         return $this;
     }
 
@@ -112,6 +114,7 @@ class ObjectElement extends BlockElement
     public function setName(string $name): self
     {
         $this->name = $name;
+        $this->htmlElement->setAttribute('name', $name);
         return $this;
     }
 
@@ -123,6 +126,7 @@ class ObjectElement extends BlockElement
     public function setType(string $type): self
     {
         $this->type = $type;
+        $this->htmlElement->setAttribute('type', $type);
         return $this;
     }
 
@@ -134,6 +138,7 @@ class ObjectElement extends BlockElement
     public function setUsemap(string $usemap): self
     {
         $this->usemap = $usemap;
+        $this->htmlElement->setAttribute('usemap', $usemap);
         return $this;
     }
 
@@ -145,6 +150,7 @@ class ObjectElement extends BlockElement
     public function setWidth(string $width): self
     {
         $this->width = $width;
+        $this->htmlElement->setAttribute('width', $width);
         return $this;
     }
 

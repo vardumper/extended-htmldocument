@@ -5,7 +5,7 @@
  *
  * Script - The script element is used to embed or reference an executable script within an HTML or XHTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
@@ -13,7 +13,6 @@
 
 namespace Html\Element\Void;
 
-use BackedEnum;
 use Html\Element\Block\Body;
 use Html\Element\Block\Form;
 use Html\Element\Block\Menu;
@@ -21,6 +20,7 @@ use Html\Element\VoidElement;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\TypeScriptEnum;
+use InvalidArgumentException;
 
 class Script extends VoidElement
 {
@@ -98,6 +98,7 @@ class Script extends VoidElement
     public function setAsync(bool $async): self
     {
         $this->async = $async;
+        $this->htmlElement->setAttribute('async', $async);
         return $this;
     }
 
@@ -109,6 +110,7 @@ class Script extends VoidElement
     public function setCharset(string $charset): self
     {
         $this->charset = $charset;
+        $this->htmlElement->setAttribute('charset', $charset);
         return $this;
     }
 
@@ -117,13 +119,15 @@ class Script extends VoidElement
         return $this->charset;
     }
 
-    public function setCrossorigin(CrossoriginEnum $crossorigin): self
+    public function setCrossorigin(string|CrossoriginEnum $crossorigin): self
     {
+        if (is_string($crossorigin)) {
+            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
+                'Invalid value for $crossorigin.'
+            );
+        }
         $this->crossorigin = $crossorigin;
-        $this->htmlElement->setAttribute(
-            'crossorigin',
-            \is_subclass_of($crossorigin, BackedEnum::class) ? (string) $crossorigin->value : $crossorigin
-        );
+        $this->htmlElement->setAttribute('crossorigin', (string) $crossorigin->value);
 
         return $this;
     }
@@ -136,6 +140,7 @@ class Script extends VoidElement
     public function setDefer(bool $defer): self
     {
         $this->defer = $defer;
+        $this->htmlElement->setAttribute('defer', $defer);
         return $this;
     }
 
@@ -147,6 +152,7 @@ class Script extends VoidElement
     public function setIntegrity(string $integrity): self
     {
         $this->integrity = $integrity;
+        $this->htmlElement->setAttribute('integrity', $integrity);
         return $this;
     }
 
@@ -158,6 +164,7 @@ class Script extends VoidElement
     public function setNonce(string $nonce): self
     {
         $this->nonce = $nonce;
+        $this->htmlElement->setAttribute('nonce', $nonce);
         return $this;
     }
 
@@ -166,13 +173,15 @@ class Script extends VoidElement
         return $this->nonce;
     }
 
-    public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): self
+    public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): self
     {
+        if (is_string($referrerpolicy)) {
+            $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new InvalidArgumentException(
+                'Invalid value for $referrerpolicy.'
+            );
+        }
         $this->referrerpolicy = $referrerpolicy;
-        $this->htmlElement->setAttribute(
-            'referrerpolicy',
-            \is_subclass_of($referrerpolicy, BackedEnum::class) ? (string) $referrerpolicy->value : $referrerpolicy
-        );
+        $this->htmlElement->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
 
         return $this;
     }
@@ -185,6 +194,7 @@ class Script extends VoidElement
     public function setSrc(string $src): self
     {
         $this->src = $src;
+        $this->htmlElement->setAttribute('src', $src);
         return $this;
     }
 
@@ -193,13 +203,13 @@ class Script extends VoidElement
         return $this->src;
     }
 
-    public function setType(TypeScriptEnum $type): self
+    public function setType(string|TypeScriptEnum $type): self
     {
+        if (is_string($type)) {
+            $type = TypeScriptEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
+        }
         $this->type = $type;
-        $this->htmlElement->setAttribute(
-            'type',
-            \is_subclass_of($type, BackedEnum::class) ? (string) $type->value : $type
-        );
+        $this->htmlElement->setAttribute('type', (string) $type->value);
 
         return $this;
     }

@@ -5,7 +5,7 @@
  *
  * DeletedText - The del element represents a deletion from the document.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del
@@ -70,6 +70,7 @@ class DeletedText extends BlockElement
     public function setCite(string $cite): self
     {
         $this->cite = $cite;
+        $this->htmlElement->setAttribute('cite', $cite);
         return $this;
     }
 
@@ -81,6 +82,7 @@ class DeletedText extends BlockElement
     public function setDatetime(string $datetime): self
     {
         $this->datetime = $datetime;
+        $this->htmlElement->setAttribute('datetime', $datetime);
         return $this;
     }
 

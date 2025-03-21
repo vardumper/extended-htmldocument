@@ -8,11 +8,14 @@ hero:
   tagline: "This library provides a way to work with HTML elements in PHP, offering an object-oriented approach that aligns with the HTML5 specifications. Built on top of <samp>DOM\\HTMLDocument</samp>."
   actions:
     - theme: brand
-      text: Getting Started
-      link: /intro
+      text: Introduction
+      link: /introduction
     - theme: alt
-      text: Usage Examples
-      link: /usage-examples
+      text: Getting Started
+      link: /getting-started
+    - theme: alt
+      text: Code Examples
+      link: /examples
 
 features:
    - title: HTML Elements as PHP Classes

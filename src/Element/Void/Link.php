@@ -5,7 +5,7 @@
  *
  * Link - The link element defines a link between a document and an external resource. It is used to link to external stylesheets.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
@@ -13,11 +13,11 @@
 
 namespace Html\Element\Void;
 
-use BackedEnum;
 use Html\Element\VoidElement;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\RelEnum;
+use InvalidArgumentException;
 
 class Link extends VoidElement
 {
@@ -96,13 +96,15 @@ class Link extends VoidElement
      */
     protected ?RelEnum $rel = null;
 
-    public function setCrossorigin(CrossoriginEnum $crossorigin): self
+    public function setCrossorigin(string|CrossoriginEnum $crossorigin): self
     {
+        if (is_string($crossorigin)) {
+            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
+                'Invalid value for $crossorigin.'
+            );
+        }
         $this->crossorigin = $crossorigin;
-        $this->htmlElement->setAttribute(
-            'crossorigin',
-            \is_subclass_of($crossorigin, BackedEnum::class) ? (string) $crossorigin->value : $crossorigin
-        );
+        $this->htmlElement->setAttribute('crossorigin', (string) $crossorigin->value);
 
         return $this;
     }
@@ -115,6 +117,7 @@ class Link extends VoidElement
     public function setHref(string $href): self
     {
         $this->href = $href;
+        $this->htmlElement->setAttribute('href', $href);
         return $this;
     }
 
@@ -126,6 +129,7 @@ class Link extends VoidElement
     public function setHreflang(string $hreflang): self
     {
         $this->hreflang = $hreflang;
+        $this->htmlElement->setAttribute('hreflang', $hreflang);
         return $this;
     }
 
@@ -137,6 +141,7 @@ class Link extends VoidElement
     public function setIntegrity(string $integrity): self
     {
         $this->integrity = $integrity;
+        $this->htmlElement->setAttribute('integrity', $integrity);
         return $this;
     }
 
@@ -148,6 +153,7 @@ class Link extends VoidElement
     public function setMedia(string $media): self
     {
         $this->media = $media;
+        $this->htmlElement->setAttribute('media', $media);
         return $this;
     }
 
@@ -156,13 +162,15 @@ class Link extends VoidElement
         return $this->media;
     }
 
-    public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): self
+    public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): self
     {
+        if (is_string($referrerpolicy)) {
+            $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new InvalidArgumentException(
+                'Invalid value for $referrerpolicy.'
+            );
+        }
         $this->referrerpolicy = $referrerpolicy;
-        $this->htmlElement->setAttribute(
-            'referrerpolicy',
-            \is_subclass_of($referrerpolicy, BackedEnum::class) ? (string) $referrerpolicy->value : $referrerpolicy
-        );
+        $this->htmlElement->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
 
         return $this;
     }
@@ -172,13 +180,13 @@ class Link extends VoidElement
         return $this->referrerpolicy;
     }
 
-    public function setRel(RelEnum $rel): self
+    public function setRel(string|RelEnum $rel): self
     {
+        if (is_string($rel)) {
+            $rel = RelEnum::tryFrom($rel) ?? throw new InvalidArgumentException('Invalid value for $rel.');
+        }
         $this->rel = $rel;
-        $this->htmlElement->setAttribute(
-            'rel',
-            \is_subclass_of($rel, BackedEnum::class) ? (string) $rel->value : $rel
-        );
+        $this->htmlElement->setAttribute('rel', (string) $rel->value);
 
         return $this;
     }
@@ -191,6 +199,7 @@ class Link extends VoidElement
     public function setSizes(string $sizes): self
     {
         $this->sizes = $sizes;
+        $this->htmlElement->setAttribute('sizes', $sizes);
         return $this;
     }
 
@@ -202,6 +211,7 @@ class Link extends VoidElement
     public function setType(string $type): self
     {
         $this->type = $type;
+        $this->htmlElement->setAttribute('type', $type);
         return $this;
     }
 

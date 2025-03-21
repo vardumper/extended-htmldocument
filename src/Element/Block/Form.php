@@ -5,7 +5,7 @@
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
@@ -13,7 +13,6 @@
 
 namespace Html\Element\Block;
 
-use BackedEnum;
 use Html\Element\BlockElement;
 use Html\Element\Inline\Button;
 use Html\Element\Inline\Input;
@@ -30,6 +29,7 @@ use Html\Enum\AutocompleteEnum;
 use Html\Enum\EnctypeEnum;
 use Html\Enum\MethodEnum;
 use Html\Enum\TargetEnum;
+use InvalidArgumentException;
 
 class Form extends BlockElement
 {
@@ -140,6 +140,7 @@ class Form extends BlockElement
     public function setAcceptCharset(string $acceptCharset): self
     {
         $this->acceptCharset = $acceptCharset;
+        $this->htmlElement->setAttribute('acceptCharset', $acceptCharset);
         return $this;
     }
 
@@ -151,6 +152,7 @@ class Form extends BlockElement
     public function setAction(string $action): self
     {
         $this->action = $action;
+        $this->htmlElement->setAttribute('action', $action);
         return $this;
     }
 
@@ -159,13 +161,15 @@ class Form extends BlockElement
         return $this->action;
     }
 
-    public function setAutocomplete(AutocompleteEnum $autocomplete): self
+    public function setAutocomplete(string|AutocompleteEnum $autocomplete): self
     {
+        if (is_string($autocomplete)) {
+            $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new InvalidArgumentException(
+                'Invalid value for $autocomplete.'
+            );
+        }
         $this->autocomplete = $autocomplete;
-        $this->htmlElement->setAttribute(
-            'autocomplete',
-            \is_subclass_of($autocomplete, BackedEnum::class) ? (string) $autocomplete->value : $autocomplete
-        );
+        $this->htmlElement->setAttribute('autocomplete', (string) $autocomplete->value);
 
         return $this;
     }
@@ -175,13 +179,15 @@ class Form extends BlockElement
         return $this->autocomplete;
     }
 
-    public function setEnctype(EnctypeEnum $enctype): self
+    public function setEnctype(string|EnctypeEnum $enctype): self
     {
+        if (is_string($enctype)) {
+            $enctype = EnctypeEnum::tryFrom($enctype) ?? throw new InvalidArgumentException(
+                'Invalid value for $enctype.'
+            );
+        }
         $this->enctype = $enctype;
-        $this->htmlElement->setAttribute(
-            'enctype',
-            \is_subclass_of($enctype, BackedEnum::class) ? (string) $enctype->value : $enctype
-        );
+        $this->htmlElement->setAttribute('enctype', (string) $enctype->value);
 
         return $this;
     }
@@ -191,13 +197,13 @@ class Form extends BlockElement
         return $this->enctype;
     }
 
-    public function setMethod(MethodEnum $method): self
+    public function setMethod(string|MethodEnum $method): self
     {
+        if (is_string($method)) {
+            $method = MethodEnum::tryFrom($method) ?? throw new InvalidArgumentException('Invalid value for $method.');
+        }
         $this->method = $method;
-        $this->htmlElement->setAttribute(
-            'method',
-            \is_subclass_of($method, BackedEnum::class) ? (string) $method->value : $method
-        );
+        $this->htmlElement->setAttribute('method', (string) $method->value);
 
         return $this;
     }
@@ -210,6 +216,7 @@ class Form extends BlockElement
     public function setName(string $name): self
     {
         $this->name = $name;
+        $this->htmlElement->setAttribute('name', $name);
         return $this;
     }
 
@@ -221,6 +228,7 @@ class Form extends BlockElement
     public function setNovalidate(bool $novalidate): self
     {
         $this->novalidate = $novalidate;
+        $this->htmlElement->setAttribute('novalidate', $novalidate);
         return $this;
     }
 
@@ -229,13 +237,13 @@ class Form extends BlockElement
         return $this->novalidate;
     }
 
-    public function setTarget(TargetEnum $target): self
+    public function setTarget(string|TargetEnum $target): self
     {
+        if (is_string($target)) {
+            $target = TargetEnum::tryFrom($target) ?? throw new InvalidArgumentException('Invalid value for $target.');
+        }
         $this->target = $target;
-        $this->htmlElement->setAttribute(
-            'target',
-            \is_subclass_of($target, BackedEnum::class) ? (string) $target->value : $target
-        );
+        $this->htmlElement->setAttribute('target', (string) $target->value);
 
         return $this;
     }

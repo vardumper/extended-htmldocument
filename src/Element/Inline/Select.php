@@ -5,7 +5,7 @@
  *
  * Select - The select element represents a control for selecting amongst a set of options.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
@@ -13,7 +13,6 @@
 
 namespace Html\Element\Inline;
 
-use BackedEnum;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
 use Html\Element\Block\DefinitionDescription;
@@ -31,6 +30,7 @@ use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Enum\AutocompleteEnum;
+use InvalidArgumentException;
 
 class Select extends InlineElement
 {
@@ -107,13 +107,15 @@ class Select extends InlineElement
      */
     protected ?AutocompleteEnum $autocomplete = null;
 
-    public function setAutocomplete(AutocompleteEnum $autocomplete): self
+    public function setAutocomplete(string|AutocompleteEnum $autocomplete): self
     {
+        if (is_string($autocomplete)) {
+            $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new InvalidArgumentException(
+                'Invalid value for $autocomplete.'
+            );
+        }
         $this->autocomplete = $autocomplete;
-        $this->htmlElement->setAttribute(
-            'autocomplete',
-            \is_subclass_of($autocomplete, BackedEnum::class) ? (string) $autocomplete->value : $autocomplete
-        );
+        $this->htmlElement->setAttribute('autocomplete', (string) $autocomplete->value);
 
         return $this;
     }
@@ -126,6 +128,7 @@ class Select extends InlineElement
     public function setDisabled(bool $disabled): self
     {
         $this->disabled = $disabled;
+        $this->htmlElement->setAttribute('disabled', $disabled);
         return $this;
     }
 
@@ -137,6 +140,7 @@ class Select extends InlineElement
     public function setMultiple(bool $multiple): self
     {
         $this->multiple = $multiple;
+        $this->htmlElement->setAttribute('multiple', $multiple);
         return $this;
     }
 
@@ -148,6 +152,7 @@ class Select extends InlineElement
     public function setName(string $name): self
     {
         $this->name = $name;
+        $this->htmlElement->setAttribute('name', $name);
         return $this;
     }
 
@@ -159,6 +164,7 @@ class Select extends InlineElement
     public function setRequired(bool $required): self
     {
         $this->required = $required;
+        $this->htmlElement->setAttribute('required', $required);
         return $this;
     }
 
@@ -170,6 +176,7 @@ class Select extends InlineElement
     public function setSize(int $size): self
     {
         $this->size = $size;
+        $this->htmlElement->setAttribute('size', $size);
         return $this;
     }
 

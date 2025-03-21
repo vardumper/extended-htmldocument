@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Html\Command\CreateClassCommand;
 use Html\Command\CreateEnumCommand;
 use Html\Command\CreateJsonCommand;
+use Html\Command\WatchCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -16,7 +17,8 @@ includeCwdVendorAutoloadIfExists($alreadyLoadedAutoloadFiles);
 autoloadProjectAutoloaderFile('/../../autoload.php', $alreadyLoadedAutoloadFiles);
 includeDependencyOrRepositoryVendorAutoloadIfExists($alreadyLoadedAutoloadFiles);
 
-$app = new Silly\Application('Extended HTML Document Generator', '1.0.0 (stable)');
+// generating PHP classes for HTML elements
+$app = new Silly\Application('Extended HTMLDocument', '0.2.0 (stable)');
 $app->command('make:classes [element]', function ($element, InputInterface $input, OutputInterface $output) {
     return (new CreateClassCommand())($element, $input, $output);
 })->descriptions('Creates a new PHP class for all or for a given HTML Element');
@@ -26,5 +28,20 @@ $app->command('make:all', function (InputInterface $input, OutputInterface $outp
     (new CreateEnumCommand())($input, $output);
     (new CreateClassCommand())(null, $input, $output);
 })->descriptions('Creates or re-creates all PHP classes for all HTML Elements and backed enums for static HTML attributes');
-$app->setDefaultCommand('make:all');
+
+// generating Templates (.html,.twig,.php) for HTML elements
+$app->command('make:generate [generator] [source] [dest]', function (InputInterface $input, OutputInterface $output) {
+    $output->writeln('Generates templpates. Uses a given generator. Requires a source path with your component YAMLs and a destination path for the generated templates.');
+})->descriptions('Generates templates for HTML Elements');
+
+$sourceDefault = realpath(__DIR__ . '/../examples/template-generator/source');
+$destDefault = realpath(__DIR__ . '/../examples/template-generator/dest');
+$app
+    ->command('make:watch [generator] [source] [dest] [--overwrite-existing=]', function ($generator, $source, $dest, $overwriteExisting = false, InputInterface $input, OutputInterface $output) {
+        (new WatchCommand())($generator, $source, $dest, $overwriteExisting, $input, $output);
+    })
+    ->descriptions('Observes a directory or file for changes, and generates templates for HTML Elements', ['generator' => 'name of the generator', 'source' => 'source path', 'dest' => 'destination path'])
+    ->defaults(['generator' => 'html', 'source' =>$sourceDefault, 'dest' => $destDefault, 'overwrite-existing' => false]);
+
+// $app->setDefaultCommand('make:all');
 $app->run();

@@ -7,6 +7,8 @@ namespace Html\Delegator;
 use BadMethodCallException;
 use DOM\HTMLDocument;
 use Html\Interface\HTMLDocumentDelegatorInterface;
+use Html\Interface\TemplateGeneratorInterface;
+use Html\TemplateGenerator\HTMLGenerator;
 use InvalidArgumentException;
 use ReflectionClass;
 
@@ -52,8 +54,12 @@ use ReflectionClass;
 class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
 {
     public function __construct(
-        public readonly HTMLDocument $htmlDocument
+        public readonly HTMLDocument $htmlDocument,
+        public ?TemplateGeneratorInterface $renderer = null
     ) {
+        if ($renderer === null) {
+            $this->renderer = new HTMLGenerator();
+        }
     }
 
     public function __call($name, $arguments)
@@ -109,6 +115,11 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
     public function __toString(): string
     {
         return $this->htmlDocument->saveHtml();
+    }
+
+    public function setRenderer(TemplateGeneratorInterface $renderer): void
+    {
+        $this->renderer = $renderer;
     }
 
     public static function createEmpty(): self

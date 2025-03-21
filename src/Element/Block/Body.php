@@ -5,7 +5,7 @@
  *
  * Body - The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
@@ -246,6 +246,7 @@ class Body extends BlockElement
     public function setOnafterprint(string $onafterprint): self
     {
         $this->onafterprint = $onafterprint;
+        $this->htmlElement->setAttribute('onafterprint', $onafterprint);
         return $this;
     }
 
@@ -257,6 +258,7 @@ class Body extends BlockElement
     public function setOnbeforeprint(string $onbeforeprint): self
     {
         $this->onbeforeprint = $onbeforeprint;
+        $this->htmlElement->setAttribute('onbeforeprint', $onbeforeprint);
         return $this;
     }
 
@@ -268,6 +270,7 @@ class Body extends BlockElement
     public function setOnbeforeunload(string $onbeforeunload): self
     {
         $this->onbeforeunload = $onbeforeunload;
+        $this->htmlElement->setAttribute('onbeforeunload', $onbeforeunload);
         return $this;
     }
 
@@ -279,6 +282,7 @@ class Body extends BlockElement
     public function setOnhashchange(string $onhashchange): self
     {
         $this->onhashchange = $onhashchange;
+        $this->htmlElement->setAttribute('onhashchange', $onhashchange);
         return $this;
     }
 
@@ -290,6 +294,7 @@ class Body extends BlockElement
     public function setOnlanguagechange(string $onlanguagechange): self
     {
         $this->onlanguagechange = $onlanguagechange;
+        $this->htmlElement->setAttribute('onlanguagechange', $onlanguagechange);
         return $this;
     }
 
@@ -301,6 +306,7 @@ class Body extends BlockElement
     public function setOnmessage(string $onmessage): self
     {
         $this->onmessage = $onmessage;
+        $this->htmlElement->setAttribute('onmessage', $onmessage);
         return $this;
     }
 
@@ -312,6 +318,7 @@ class Body extends BlockElement
     public function setOnmessageerror(string $onmessageerror): self
     {
         $this->onmessageerror = $onmessageerror;
+        $this->htmlElement->setAttribute('onmessageerror', $onmessageerror);
         return $this;
     }
 
@@ -323,6 +330,7 @@ class Body extends BlockElement
     public function setOnoffline(string $onoffline): self
     {
         $this->onoffline = $onoffline;
+        $this->htmlElement->setAttribute('onoffline', $onoffline);
         return $this;
     }
 
@@ -334,6 +342,7 @@ class Body extends BlockElement
     public function setOnonline(string $ononline): self
     {
         $this->ononline = $ononline;
+        $this->htmlElement->setAttribute('ononline', $ononline);
         return $this;
     }
 
@@ -345,6 +354,7 @@ class Body extends BlockElement
     public function setOnpagehide(string $onpagehide): self
     {
         $this->onpagehide = $onpagehide;
+        $this->htmlElement->setAttribute('onpagehide', $onpagehide);
         return $this;
     }
 
@@ -356,6 +366,7 @@ class Body extends BlockElement
     public function setOnpageshow(string $onpageshow): self
     {
         $this->onpageshow = $onpageshow;
+        $this->htmlElement->setAttribute('onpageshow', $onpageshow);
         return $this;
     }
 
@@ -367,6 +378,7 @@ class Body extends BlockElement
     public function setOnpopstate(string $onpopstate): self
     {
         $this->onpopstate = $onpopstate;
+        $this->htmlElement->setAttribute('onpopstate', $onpopstate);
         return $this;
     }
 
@@ -378,6 +390,7 @@ class Body extends BlockElement
     public function setOnrejectionhandled(string $onrejectionhandled): self
     {
         $this->onrejectionhandled = $onrejectionhandled;
+        $this->htmlElement->setAttribute('onrejectionhandled', $onrejectionhandled);
         return $this;
     }
 
@@ -389,6 +402,7 @@ class Body extends BlockElement
     public function setOnstorage(string $onstorage): self
     {
         $this->onstorage = $onstorage;
+        $this->htmlElement->setAttribute('onstorage', $onstorage);
         return $this;
     }
 
@@ -400,6 +414,7 @@ class Body extends BlockElement
     public function setOnunhandledrejection(string $onunhandledrejection): self
     {
         $this->onunhandledrejection = $onunhandledrejection;
+        $this->htmlElement->setAttribute('onunhandledrejection', $onunhandledrejection);
         return $this;
     }
 
@@ -411,6 +426,7 @@ class Body extends BlockElement
     public function setOnunload(string $onunload): self
     {
         $this->onunload = $onunload;
+        $this->htmlElement->setAttribute('onunload', $onunload);
         return $this;
     }
 

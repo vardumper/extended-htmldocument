@@ -5,7 +5,7 @@
  *
  * Anchor - The a element represents a hyperlink, linking to another resource.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
@@ -13,7 +13,6 @@
 
 namespace Html\Element\Inline;
 
-use BackedEnum;
 use Html\Element\Block\Article;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
@@ -31,6 +30,7 @@ use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Enum\RelEnum;
 use Html\Enum\TargetEnum;
+use InvalidArgumentException;
 
 class Anchor extends InlineElement
 {
@@ -118,6 +118,7 @@ class Anchor extends InlineElement
     public function setDownload(string $download): self
     {
         $this->download = $download;
+        $this->htmlElement->setAttribute('download', $download);
         return $this;
     }
 
@@ -129,6 +130,7 @@ class Anchor extends InlineElement
     public function setHref(string $href): self
     {
         $this->href = $href;
+        $this->htmlElement->setAttribute('href', $href);
         return $this;
     }
 
@@ -140,6 +142,7 @@ class Anchor extends InlineElement
     public function setHreflang(string $hreflang): self
     {
         $this->hreflang = $hreflang;
+        $this->htmlElement->setAttribute('hreflang', $hreflang);
         return $this;
     }
 
@@ -148,13 +151,13 @@ class Anchor extends InlineElement
         return $this->hreflang;
     }
 
-    public function setRel(RelEnum $rel): self
+    public function setRel(string|RelEnum $rel): self
     {
+        if (is_string($rel)) {
+            $rel = RelEnum::tryFrom($rel) ?? throw new InvalidArgumentException('Invalid value for $rel.');
+        }
         $this->rel = $rel;
-        $this->htmlElement->setAttribute(
-            'rel',
-            \is_subclass_of($rel, BackedEnum::class) ? (string) $rel->value : $rel
-        );
+        $this->htmlElement->setAttribute('rel', (string) $rel->value);
 
         return $this;
     }
@@ -166,16 +169,23 @@ class Anchor extends InlineElement
 
     public function setTarget(string|TargetEnum $target): self
     {
+        $value = $target;
+        if (is_string($target)) {
+            $resolved = TargetEnum::tryFrom($target);
+            if ($resolved !== null) {
+                $target = $resolved;
+            }
+        }
+        if ($target instanceof TargetEnum) {
+            $value = $target->value;
+        }
         $this->target = $target;
-        $this->htmlElement->setAttribute(
-            'target',
-            \is_subclass_of($target, BackedEnum::class) ? (string) $target->value : $target
-        );
+        $this->htmlElement->setAttribute('target', (string) $value);
 
         return $this;
     }
 
-    public function getTarget(): null|string|TargetEnum
+    public function getTarget(): string|TargetEnum
     {
         return $this->target;
     }
@@ -183,6 +193,7 @@ class Anchor extends InlineElement
     public function setTitle(string $title): self
     {
         $this->title = $title;
+        $this->htmlElement->setAttribute('title', $title);
         return $this;
     }
 
@@ -194,6 +205,7 @@ class Anchor extends InlineElement
     public function setType(string $type): self
     {
         $this->type = $type;
+        $this->htmlElement->setAttribute('type', $type);
         return $this;
     }
 

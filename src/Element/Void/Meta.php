@@ -5,7 +5,7 @@
  *
  * Meta - The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
@@ -13,9 +13,9 @@
 
 namespace Html\Element\Void;
 
-use BackedEnum;
 use Html\Element\VoidElement;
 use Html\Enum\HttpEquivEnum;
+use InvalidArgumentException;
 
 class Meta extends VoidElement
 {
@@ -79,6 +79,7 @@ class Meta extends VoidElement
     public function setCharset(string $charset): self
     {
         $this->charset = $charset;
+        $this->htmlElement->setAttribute('charset', $charset);
         return $this;
     }
 
@@ -90,6 +91,7 @@ class Meta extends VoidElement
     public function setContent(string $content): self
     {
         $this->content = $content;
+        $this->htmlElement->setAttribute('content', $content);
         return $this;
     }
 
@@ -98,13 +100,15 @@ class Meta extends VoidElement
         return $this->content;
     }
 
-    public function setHttpEquiv(HttpEquivEnum $httpEquiv): self
+    public function setHttpEquiv(string|HttpEquivEnum $httpEquiv): self
     {
+        if (is_string($httpEquiv)) {
+            $httpEquiv = HttpEquivEnum::tryFrom($httpEquiv) ?? throw new InvalidArgumentException(
+                'Invalid value for $httpEquiv.'
+            );
+        }
         $this->httpEquiv = $httpEquiv;
-        $this->htmlElement->setAttribute(
-            'http-equiv',
-            \is_subclass_of($httpEquiv, BackedEnum::class) ? (string) $httpEquiv->value : $httpEquiv
-        );
+        $this->htmlElement->setAttribute('http-equiv', (string) $httpEquiv->value);
 
         return $this;
     }
@@ -117,6 +121,7 @@ class Meta extends VoidElement
     public function setName(string $name): self
     {
         $this->name = $name;
+        $this->htmlElement->setAttribute('name', $name);
         return $this;
     }
 
@@ -128,6 +133,7 @@ class Meta extends VoidElement
     public function setScheme(string $scheme): self
     {
         $this->scheme = $scheme;
+        $this->htmlElement->setAttribute('scheme', $scheme);
         return $this;
     }
 

@@ -5,7 +5,7 @@
  *
  * Image - The img element represents an image.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
@@ -13,7 +13,6 @@
 
 namespace Html\Element\Inline;
 
-use BackedEnum;
 use Html\Element\Block\Article;
 use Html\Element\Block\Aside;
 use Html\Element\Block\Body;
@@ -30,6 +29,7 @@ use Html\Element\InlineElement;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\DecodingEnum;
 use Html\Enum\ReferrerpolicyEnum;
+use InvalidArgumentException;
 
 class Image extends InlineElement
 {
@@ -136,6 +136,7 @@ class Image extends InlineElement
     public function setAlt(string $alt): self
     {
         $this->alt = $alt;
+        $this->htmlElement->setAttribute('alt', $alt);
         return $this;
     }
 
@@ -144,13 +145,15 @@ class Image extends InlineElement
         return $this->alt;
     }
 
-    public function setCrossorigin(CrossoriginEnum $crossorigin): self
+    public function setCrossorigin(string|CrossoriginEnum $crossorigin): self
     {
+        if (is_string($crossorigin)) {
+            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
+                'Invalid value for $crossorigin.'
+            );
+        }
         $this->crossorigin = $crossorigin;
-        $this->htmlElement->setAttribute(
-            'crossorigin',
-            \is_subclass_of($crossorigin, BackedEnum::class) ? (string) $crossorigin->value : $crossorigin
-        );
+        $this->htmlElement->setAttribute('crossorigin', (string) $crossorigin->value);
 
         return $this;
     }
@@ -160,13 +163,15 @@ class Image extends InlineElement
         return $this->crossorigin;
     }
 
-    public function setDecoding(DecodingEnum $decoding): self
+    public function setDecoding(string|DecodingEnum $decoding): self
     {
+        if (is_string($decoding)) {
+            $decoding = DecodingEnum::tryFrom($decoding) ?? throw new InvalidArgumentException(
+                'Invalid value for $decoding.'
+            );
+        }
         $this->decoding = $decoding;
-        $this->htmlElement->setAttribute(
-            'decoding',
-            \is_subclass_of($decoding, BackedEnum::class) ? (string) $decoding->value : $decoding
-        );
+        $this->htmlElement->setAttribute('decoding', (string) $decoding->value);
 
         return $this;
     }
@@ -179,6 +184,7 @@ class Image extends InlineElement
     public function setHeight(string $height): self
     {
         $this->height = $height;
+        $this->htmlElement->setAttribute('height', $height);
         return $this;
     }
 
@@ -190,6 +196,7 @@ class Image extends InlineElement
     public function setIsmap(bool $ismap): self
     {
         $this->ismap = $ismap;
+        $this->htmlElement->setAttribute('ismap', $ismap);
         return $this;
     }
 
@@ -198,13 +205,15 @@ class Image extends InlineElement
         return $this->ismap;
     }
 
-    public function setReferrerpolicy(ReferrerpolicyEnum $referrerpolicy): self
+    public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): self
     {
+        if (is_string($referrerpolicy)) {
+            $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new InvalidArgumentException(
+                'Invalid value for $referrerpolicy.'
+            );
+        }
         $this->referrerpolicy = $referrerpolicy;
-        $this->htmlElement->setAttribute(
-            'referrerpolicy',
-            \is_subclass_of($referrerpolicy, BackedEnum::class) ? (string) $referrerpolicy->value : $referrerpolicy
-        );
+        $this->htmlElement->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
 
         return $this;
     }
@@ -217,6 +226,7 @@ class Image extends InlineElement
     public function setSizes(string $sizes): self
     {
         $this->sizes = $sizes;
+        $this->htmlElement->setAttribute('sizes', $sizes);
         return $this;
     }
 
@@ -228,6 +238,7 @@ class Image extends InlineElement
     public function setSrc(string $src): self
     {
         $this->src = $src;
+        $this->htmlElement->setAttribute('src', $src);
         return $this;
     }
 
@@ -239,6 +250,7 @@ class Image extends InlineElement
     public function setSrcset(string $srcset): self
     {
         $this->srcset = $srcset;
+        $this->htmlElement->setAttribute('srcset', $srcset);
         return $this;
     }
 
@@ -250,6 +262,7 @@ class Image extends InlineElement
     public function setUsemap(string $usemap): self
     {
         $this->usemap = $usemap;
+        $this->htmlElement->setAttribute('usemap', $usemap);
         return $this;
     }
 
@@ -261,6 +274,7 @@ class Image extends InlineElement
     public function setWidth(string $width): self
     {
         $this->width = $width;
+        $this->htmlElement->setAttribute('width', $width);
         return $this;
     }
 

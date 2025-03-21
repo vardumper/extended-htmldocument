@@ -5,7 +5,7 @@
  *
  * Meter - The meter element represents a scalar measurement within a known range, or a fractional value.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
@@ -81,6 +81,7 @@ class Meter extends InlineElement
     public function setHigh(string $high): self
     {
         $this->high = $high;
+        $this->htmlElement->setAttribute('high', $high);
         return $this;
     }
 
@@ -92,6 +93,7 @@ class Meter extends InlineElement
     public function setLow(string $low): self
     {
         $this->low = $low;
+        $this->htmlElement->setAttribute('low', $low);
         return $this;
     }
 
@@ -103,6 +105,7 @@ class Meter extends InlineElement
     public function setMax(int $max): self
     {
         $this->max = $max;
+        $this->htmlElement->setAttribute('max', $max);
         return $this;
     }
 
@@ -114,6 +117,7 @@ class Meter extends InlineElement
     public function setMin(string $min): self
     {
         $this->min = $min;
+        $this->htmlElement->setAttribute('min', $min);
         return $this;
     }
 
@@ -125,6 +129,7 @@ class Meter extends InlineElement
     public function setOptimum(string $optimum): self
     {
         $this->optimum = $optimum;
+        $this->htmlElement->setAttribute('optimum', $optimum);
         return $this;
     }
 
@@ -136,6 +141,7 @@ class Meter extends InlineElement
     public function setValue(string $value): self
     {
         $this->value = $value;
+        $this->htmlElement->setAttribute('value', $value);
         return $this;
     }
 

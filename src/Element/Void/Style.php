@@ -5,7 +5,7 @@
  *
  * Style - The style element is used to embed CSS styles directly into an HTML document.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
@@ -13,9 +13,9 @@
 
 namespace Html\Element\Void;
 
-use BackedEnum;
 use Html\Element\VoidElement;
 use Html\Enum\TypeStyleEnum;
+use InvalidArgumentException;
 
 class Style extends VoidElement
 {
@@ -75,6 +75,7 @@ class Style extends VoidElement
     public function setDisabled(bool $disabled): self
     {
         $this->disabled = $disabled;
+        $this->htmlElement->setAttribute('disabled', $disabled);
         return $this;
     }
 
@@ -86,6 +87,7 @@ class Style extends VoidElement
     public function setMedia(string $media): self
     {
         $this->media = $media;
+        $this->htmlElement->setAttribute('media', $media);
         return $this;
     }
 
@@ -97,6 +99,7 @@ class Style extends VoidElement
     public function setNonce(string $nonce): self
     {
         $this->nonce = $nonce;
+        $this->htmlElement->setAttribute('nonce', $nonce);
         return $this;
     }
 
@@ -108,6 +111,7 @@ class Style extends VoidElement
     public function setTitle(string $title): self
     {
         $this->title = $title;
+        $this->htmlElement->setAttribute('title', $title);
         return $this;
     }
 
@@ -116,13 +120,13 @@ class Style extends VoidElement
         return $this->title;
     }
 
-    public function setType(TypeStyleEnum $type): self
+    public function setType(string|TypeStyleEnum $type): self
     {
+        if (is_string($type)) {
+            $type = TypeStyleEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
+        }
         $this->type = $type;
-        $this->htmlElement->setAttribute(
-            'type',
-            \is_subclass_of($type, BackedEnum::class) ? (string) $type->value : $type
-        );
+        $this->htmlElement->setAttribute('type', (string) $type->value);
 
         return $this;
     }

@@ -5,7 +5,7 @@
  *
  * Progress - The progress element represents the completion progress of a task.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
@@ -61,6 +61,7 @@ class Progress extends InlineElement
     public function setMax(int $max): self
     {
         $this->max = $max;
+        $this->htmlElement->setAttribute('max', $max);
         return $this;
     }
 
@@ -72,6 +73,7 @@ class Progress extends InlineElement
     public function setValue(string $value): self
     {
         $this->value = $value;
+        $this->htmlElement->setAttribute('value', $value);
         return $this;
     }
 

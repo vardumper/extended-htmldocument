@@ -5,7 +5,7 @@
  *
  * Output - The output element represents the result of a calculation or user action.
  *
- * @generated 2025-03-08 18:09:25
+ * @generated 2025-03-21 21:04:01
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
@@ -56,6 +56,7 @@ class Output extends InlineElement
     public function setFor(string $for): self
     {
         $this->for = $for;
+        $this->htmlElement->setAttribute('for', $for);
         return $this;
     }
 

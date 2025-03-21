@@ -5,7 +5,9 @@ use Html\Delegator\DOMNodeDelegator;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
 use Html\Element\Inline\Anchor;
+use Html\Element\Inline\Input;
 use Html\Element\InlineElement;
+use Html\Enum\TypeInputEnum;
 
 beforeEach(function () {
     $this->document = HTMLDocumentDelegator::createEmpty();
@@ -81,4 +83,41 @@ test('append htmldocument create element', function () {
         ->toBeInstanceOf(DOMNodeDelegator::class);
     expect($node->domNode)
         ->toBeInstanceOf(HTMLElement::class);
+});
+
+test('setting properties via Setter', function () {
+    $input = Input::create($this->document);
+    $input->setType('text');
+    expect($input->getType())
+        ->toBe(TypeInputEnum::TEXT);
+    expect($input->getAttribute('type'))
+        ->toBe(TypeInputEnum::TEXT);
+});
+
+test('setting properties via direct property access', function () {
+    $input = Input::create($this->document);
+    $input->type = TypeInputEnum::from('text');
+    expect($input->getType())
+        ->toBe(TypeInputEnum::TEXT);
+    expect($input->getAttribute('type'))
+        ->toBe(TypeInputEnum::TEXT);
+    expect($input->getAttribute('type')->value)
+        ->toBe('text');
+});
+
+test('setting properties via direct property access different enum instantiation', function () {
+    $input = Input::create($this->document);
+    $input->type = TypeInputEnum::TEXT;
+    expect($input->getType())
+        ->toBe(TypeInputEnum::TEXT);
+    expect($input->getAttribute('type'))
+        ->toBe(TypeInputEnum::TEXT);
+    expect($input->getAttribute('type')->value)
+        ->toBe('text');
+});
+
+test('check type of ownerDocument', function () {
+    $input = Input::create($this->document);
+    expect($input->ownerDocument)
+        ->toBeInstanceOf(HTMLDocumentDelegator::class);
 });

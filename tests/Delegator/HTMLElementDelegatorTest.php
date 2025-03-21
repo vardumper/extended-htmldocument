@@ -254,6 +254,16 @@ test('set attributes enum value', function () {
         ->toEqual(TargetEnum::BLANK);
 });
 
+test('set union type string setter', function () {
+    $this->delegator->setTarget('framename');
+    expect($this->delegator->target)
+        ->toBe('framename');
+    expect($this->delegator->getTarget())
+        ->toBe('framename');
+    expect($this->delegator->htmlElement->getAttribute('target'))
+        ->toEqual('framename');
+});
+
 test('set id', function () {
     $this->delegator->setId('test');
     expect($this->delegator->id)

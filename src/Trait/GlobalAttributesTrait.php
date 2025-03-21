@@ -18,53 +18,112 @@ use InvalidArgumentException;
  */
 trait GlobalAttributesTrait
 {
-    // global attributes
-
+    /**
+     * specifies a shortcut key (or keys) to activate or focus an element
+     */
     public ?string $accesskey = null;
 
+    /**
+     * Indicates whether the element is draggable
+     */
     public ?bool $draggable = null;
 
-    public ?array $data = null;
-
-    public ?bool $hidden = null;
-
-    public ?bool $inert = null;
-
-    public ?string $is = null;
-
-    public ?string $lang = null;
-
-    public ?string $nonce = null;
-
-    public ?string $part = null;
-
-    public ?string $popover = null;
-
-    public ?string $role = null;
-
-    public ?string $slot = null;
-
-    public ?string $style = null;
-
-    public ?int $tabindex = null;
-
-    public ?string $title = null;
-
-    public ?string $translate = null;
-
-    protected ?ContentEditableEnum $contenteditable = null;
-
-    protected ?SpellCheckEnum $spellcheck = null;
-
-    private ?AutoCapitalizeEnum $autocapitalize = null;
-
-    private ?DirectionEnum $dir = null;
-
-    private ?InputModeEnum $inputmode = null;
+    /**
+     * Represents custom data attributes on the element
+     */
+    public ?array $dataAttributes = null;
 
     /**
-     * @description Specifies a unique identifier for the element
+     * Indicates whether the element is hidden
      */
+    public ?bool $hidden = null;
+
+    /**
+     * Indicates whether the element is inert
+     */
+    public ?bool $inert = null;
+
+    /**
+     * allows you to specify a particular custom element that extends a built-in element
+     */
+    public ?string $is = null;
+
+    /**
+     * Specifies the primary language for the element's content
+     */
+    public ?string $lang = null;
+
+    /**
+     * Represents a unique cryptographic nonce used to verify requests
+     */
+    public ?string $nonce = null;
+
+    /**
+     * Represents a specific purpose or role for the element, typically for styling or functionality
+     */
+    public ?string $part = null;
+
+    /**
+     * Represents a contextual popover for additional information related to the element
+     */
+    public ?string $popover = null;
+
+    /**
+     * Represents the role of the element
+     */
+    public ?string $role = null;
+
+    /**
+     * Represents a slot in a shadow DOM
+     */
+    public ?string $slot = null;
+
+    /**
+     * Represents the CSS inline style of the element
+     */
+    public ?string $style = null;
+
+    /**
+     * Represents a tab order of the element
+     */
+    public ?int $tabindex = null;
+
+    /**
+     * Represents a title or tooltip for the element
+     */
+    public ?string $title = null;
+
+    /**
+     *  used to tell user agents (browsers or translation tools) whether the content should be translated.
+     */
+    public ?string $translate = null;
+
+    /**
+     * Indicates whether the element can be edited in place
+     */
+    protected ?ContentEditableEnum $contenteditable = null;
+
+    /**
+     * Represents the spellchecking behavior of the element
+     */
+    protected ?SpellCheckEnum $spellcheck = null;
+
+    /**
+     * Represents the autocapitalize behavior of the element
+     */
+    private ?AutoCapitalizeEnum $autocapitalize = null;
+
+    /**
+     * Represents the text direction of the element
+     */
+    private ?DirectionEnum $dir = null;
+
+    /**
+     * used to specify the data entry mode for an input. It helps guide on-screen keyboards (especially on mobile devices)
+     * to show the appropriate layout for the expected input type
+     */
+    private ?InputModeEnum $inputmode = null;
+
     public function setId(string $id): static
     {
         $this->id = $id;
@@ -170,7 +229,7 @@ trait GlobalAttributesTrait
      */
     public function setDataAttribute(array $data): static
     {
-        $this->data = $data;
+        $this->dataAttributes = $data;
         foreach ($data as $name => $value) {
             $this->htmlElement->setAttribute('data-' . $name, $value);
         }
@@ -180,14 +239,14 @@ trait GlobalAttributesTrait
     public function getDataAttribute(?string $name = null): null|string|array
     {
         if ($name === null) {
-            return $this->data;
+            return $this->dataAttributes;
         }
 
-        if (! isset($this->data[$name])) {
+        if (! isset($this->dataAttributes[$name])) {
             return null;
         }
 
-        return $this->data[$name];
+        return $this->dataAttributes[$name];
     }
 
     /**

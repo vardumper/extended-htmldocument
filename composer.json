@@ -39,7 +39,8 @@
         }
     ],
     "require": {
-        "php": "^8.4"
+        "php": "^8.4",
+        "revolt/event-loop": "^1.0.7"
     },
     "config": {
         "sort-packages": true,
@@ -51,21 +52,23 @@
             "*": "dist"
         },
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "wyrihaximus/composer-update-bin-autoload-path": true
         }
     },
     "require-dev": {
+        "amphp/file": ">=3.2",
         "brainmaestro/composer-git-hooks": "dev-master",
-        "friendsofphp/php-cs-fixer": "^3.71.0",
+        "friendsofphp/php-cs-fixer": "^3.73.1",
         "mnapoli/silly": "^1.9.1",
         "pestphp/pest": "^3.7.4",
         "pestphp/pest-plugin-drift": "^3.0",
-        "pestphp/pest-plugin-type-coverage": "^3.3",
+        "pestphp/pest-plugin-type-coverage": "^3.4",
         "phpmd/phpmd": "^2.15",
-        "phpstan/phpstan": "^2.1.7",
+        "phpstan/phpstan": "^2.1.8",
         "rector/swiss-knife": "^2.1.15",
         "symfony/yaml": "^7.2.3",
-        "symplify/easy-coding-standard": "^12.5.8"
+        "symplify/easy-coding-standard": "^12.5.9"
     },
     "extra": {
         "hooks": {
@@ -93,6 +96,7 @@
             "@composer git-hooks-init"
         ],
         "post-update-cmd": [
+            "@composer bump",
             "@composer dump-autoload -o",
             "@composer git-hooks-update"
         ],

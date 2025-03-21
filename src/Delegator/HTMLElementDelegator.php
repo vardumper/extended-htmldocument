@@ -2,12 +2,15 @@
 
 namespace Html\Delegator;
 
+use AllowDynamicProperties;
 use BackedEnum;
 use BadMethodCallException;
 use DOM\Document;
 use DOM\HtmlElement;
 use Html\Helper\Helper;
 use Html\Interface\HTMLElementDelegatorInterface;
+use Html\Interface\TemplateGeneratorInterface;
+use Html\TemplateGenerator\HTMLGenerator;
 use Html\Trait\GlobalAttributesTrait;
 use Html\Trait\NativePropertiesTrait;
 use InvalidArgumentException;
@@ -25,12 +28,13 @@ use TypeError;
  * @property string $id
  * @property string $className
  */
+#[AllowDynamicProperties]
 class HTMLElementDelegator implements HTMLElementDelegatorInterface
 {
     use GlobalAttributesTrait;
     use NativePropertiesTrait;
 
-    public HtmlElement $htmlElement;
+    public static HtmlDocumentDelegator $ownerDocument;
 
     // meta information
 
@@ -42,9 +46,16 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public static array $parentOf = []; // Default value, change as needed
 
-    public function __construct(HTMLElement $htmlElement)
-    {
-        $this->htmlElement = $htmlElement;
+    public function __construct(
+        public readonly HTMLElement $htmlElement,
+        public ?TemplateGeneratorInterface $renderer = null
+    ) {
+        if ($renderer !== null && ! $renderer->canRenderDocuments()) {
+            throw new InvalidArgumentException('The given renderer cannot render documents.');
+        }
+        if ($renderer === null) {
+            $this->renderer = new HTMLGenerator();
+        }
     }
 
     public function __call($name, $arguments)
@@ -112,17 +123,20 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             $property->setValue($this->htmlElement, $value);
             return;
         }
-        $this->htmlElement->setAttribute($name, Helper::isBackedEnum($value) ? $value->value : $value);
+        $value = Helper::isBackedEnum($value) ? (string) $value->value : (string) $value;
+        $this->htmlElement->setAttribute($name, $value);
         return;
     }
 
-    /**
-     * this is what I wrote all this for, in order to being able to add functionality, like cutsom methods
-     */
+    // turn an element into a string, using the configured renderer
     public function __toString(): string
     {
-        /** @var Document $ownerDocument */
-        return (string) $this->htmlElement->ownerDocument->saveHtml($this->htmlElement);
+        return $this->renderer->render($this);
+    }
+
+    public function setRenderer(TemplateGeneratorInterface $renderer): void
+    {
+        $this->renderer = $renderer;
     }
 
     // two ways to set an attribute via HTML\Element::$property or HTML\Element->setAttribute()
@@ -130,28 +144,30 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     {
         if (\property_exists($this, $qualifiedName)) {
             // use reflection to check if this property is a BackedEnum and instantiate it with ::from()
-            $reflection = new ReflectionClass($this);
-            $property = $reflection->getProperty($qualifiedName);
-            $propertyType = $property->getType();
-            // find correct enum type form union type list
-            if ($propertyType instanceof ReflectionUnionType) {
-                foreach ($propertyType->getTypes() as $type) {
-                    if (\is_subclass_of($type->getName(), BackedEnum::class)) {
-                        $enumClass = $type->getName();
-                        continue;
+            if ($this->{$qualifiedName} === null) {
+                $reflection = new ReflectionClass($this);
+                $property = $reflection->getProperty($qualifiedName);
+                $propertyType = $property->getType();
+                // find correct enum type form union type list
+                if ($propertyType instanceof ReflectionUnionType) {
+                    foreach ($propertyType->getTypes() as $type) {
+                        if (\is_subclass_of($type->getName(), BackedEnum::class)) {
+                            $enumClass = $type->getName();
+                            continue;
+                        }
                     }
+                } else {
+                    $enumClass = $propertyType->getName();
                 }
-            } else {
-                $enumClass = $propertyType->getName();
-            }
-            if (\is_subclass_of($enumClass, BackedEnum::class) && \is_string($value)) {
-                $value = $enumClass::from($value);
-                $methodName = 'set' . $qualifiedName;
-                if (\method_exists($this, $methodName)) {
-                    $this->{$methodName}($value);
+                if (\is_subclass_of($enumClass, BackedEnum::class) && \is_string($value)) {
+                    $value = $enumClass::from($value);
+                    $methodName = 'set' . $qualifiedName;
+                    if (\method_exists($this, $methodName)) {
+                        $this->{$methodName}($value);
+                    }
+                } else {
+                    $this->{$qualifiedName} = $value; // here we allow Enums
                 }
-            } else {
-                $this->{$qualifiedName} = $value; // here we allow Enums
             }
         }
         if (\is_subclass_of($value, BackedEnum::class)) {
@@ -191,6 +207,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     // Generic static factory method
     public static function create(HTMLDocumentDelegator $dom): static
     {
+        static::$ownerDocument = $dom;
         $className = static::class;
         $qualifiedName = $className::getQualifiedName();
         $elementNode = $dom->htmlDocument->createElement($qualifiedName);

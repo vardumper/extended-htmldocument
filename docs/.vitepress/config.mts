@@ -18,7 +18,8 @@ export default defineConfig({
         text: 'Getting Started',
         items: [
           { text: 'Introduction', link: '/intro' },
-          { text: 'Installation', link: '/install' },
+          { text: 'Feature Overview', link: '/features' },
+          { text: 'Getting Started', link: '/getting-started' },
           { text: 'Element Classes', link: '/elements' },
           { text: 'HTML5 Specification', link: '/html5' },
           { text: 'Code Generation', link: '/code-generation' },
@@ -36,6 +37,7 @@ export default defineConfig({
         text: 'Development',
         items: [
           { text: 'Roadmap', link: '/roadmap' },
+          { text: 'Unit Tests ', link: '/unit-tests' },
           { text: 'Issues', link: 'https://github.com/vardumper/extended-htmldocument/issues' },
         ]
       }
