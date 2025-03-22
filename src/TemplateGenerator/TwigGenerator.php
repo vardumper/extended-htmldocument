@@ -7,12 +7,12 @@ use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
 
-#[TemplateGenerator('html')]
-class HTMLGenerator implements TemplateGeneratorInterface
+#[TemplateGenerator('twig')]
+class TwigGenerator implements TemplateGeneratorInterface
 {
     public function getExtension(): string
     {
-        return 'html';
+        return 'twig';
     }
 
     public function getNamePattern(): string
@@ -49,6 +49,8 @@ class HTMLGenerator implements TemplateGeneratorInterface
 
     public function renderDocument(HTMLDocumentDelegatorInterface $document): string
     {
+        $document->htmlDocument->formatOutput = true;
+        $document->htmlDocument->preserveWhiteSpace = false;
         return (string) $document->htmlDocument->saveHTML($document->htmlDocument);
     }
 }

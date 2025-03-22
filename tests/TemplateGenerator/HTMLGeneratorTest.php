@@ -53,3 +53,8 @@ test('render document', function () {
     expect($this->generator->render($document))
         ->toBe('<body></body>');
 });
+
+test('render invalid', function () {
+    expect($this->generator->render('string'))
+        ->toBe(null);
+});

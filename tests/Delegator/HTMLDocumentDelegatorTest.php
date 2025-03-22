@@ -8,6 +8,7 @@ use Html\Delegator\HTMLElementDelegator;
 use Html\Element\Block\Body;
 use Html\Element\Block\TableData;
 use Html\Element\Block\TableRow;
+use Html\TemplateGenerator\HTMLGenerator;
 
 uses(\Html\Trait\GlobalAttributesTrait::class);
 
@@ -290,4 +291,12 @@ test('get elements by tag name', function () {
         ->toEqual(1);
     expect($delegator->getElementsByTagName('span')->count())
         ->toEqual(0);
+});
+
+test('set renderer test', function () {
+    $renderer = new HTMLGenerator();
+
+    $this->delegator->setRenderer($renderer);
+    expect($this->delegator->renderer)
+        ->toBe($renderer);
 });

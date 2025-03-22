@@ -57,6 +57,9 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
         public readonly HTMLDocument $htmlDocument,
         public ?TemplateGeneratorInterface $renderer = null
     ) {
+        if ($renderer !== null && ! $renderer->canRenderElements()) {
+            throw new InvalidArgumentException('The given renderer cannot render elements.');
+        }
         if ($renderer === null) {
             $this->renderer = new HTMLGenerator();
         }

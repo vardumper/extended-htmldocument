@@ -53,9 +53,9 @@ Issues detected: 13
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 105 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Revolt\EventLoop` in method `__invoke`. |
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 129 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Delegator\HTMLDocumentDelegator` in method `processFiles`. |
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 184 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method createDirectory uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
-| <span class="prio1">1</span> | src/Delegator/HTMLDocumentDelegator.php | 127 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\DOM\HTMLDocument` in method `createEmpty`. |
-| <span class="prio1">1</span> | src/Delegator/HTMLDocumentDelegator.php | 132 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\DOM\HTMLDocument` in method `createFromString`. |
-| <span class="prio1">1</span> | src/Delegator/HTMLDocumentDelegator.php | 137 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\DOM\HTMLDocument` in method `createFromFile`. |
+| <span class="prio1">1</span> | src/Delegator/HTMLDocumentDelegator.php | 130 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\DOM\HTMLDocument` in method `createEmpty`. |
+| <span class="prio1">1</span> | src/Delegator/HTMLDocumentDelegator.php | 135 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\DOM\HTMLDocument` in method `createFromString`. |
+| <span class="prio1">1</span> | src/Delegator/HTMLDocumentDelegator.php | 140 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\DOM\HTMLDocument` in method `createFromFile`. |
 | <span class="prio1">1</span> | src/Delegator/HTMLElementDelegator.php | 98 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Helper\Helper` in method `__set`. |
 | <span class="prio1">1</span> | src/Delegator/HTMLElementDelegator.php | 114 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method __set uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
 | <span class="prio1">1</span> | src/Delegator/HTMLElementDelegator.php | 126 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Helper\Helper` in method `__set`. |
@@ -130,4 +130,4 @@ Issues detected: 73
 
 Issues detected: 7
 
-Sat Mar 22 12:57:38 PM CET 2025
+Sat Mar 22 01:54:03 PM CET 2025

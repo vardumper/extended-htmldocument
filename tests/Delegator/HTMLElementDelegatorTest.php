@@ -9,6 +9,7 @@ use Html\Element\Void\Head;
 use Html\Enum\ContentEditableEnum;
 use Html\Enum\RelEnum;
 use Html\Enum\TargetEnum;
+use Html\TemplateGenerator\HTMLGenerator;
 
 uses(\Html\Trait\GlobalAttributesTrait::class);
 
@@ -346,4 +347,13 @@ test('test get/set substitutedNodeValue', function () {
     $this->delegator->setSubstitutedNodeValue('test');
     expect($this->delegator->getSubstitutedNodeValue())
         ->toEqual('test');
+});
+
+
+test('set renderer test', function () {
+    $renderer = new HTMLGenerator();
+
+    $this->delegator->setRenderer($renderer);
+    expect($this->delegator->renderer)
+        ->toBe($renderer);
 });

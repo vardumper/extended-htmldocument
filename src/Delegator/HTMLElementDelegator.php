@@ -50,8 +50,8 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         public readonly HTMLElement $htmlElement,
         public ?TemplateGeneratorInterface $renderer = null
     ) {
-        if ($renderer !== null && ! $renderer->canRenderDocuments()) {
-            throw new InvalidArgumentException('The given renderer cannot render documents.');
+        if ($renderer !== null && ! $renderer->canRenderElements()) {
+            throw new InvalidArgumentException('The given renderer cannot render elements.');
         }
         if ($renderer === null) {
             $this->renderer = new HTMLGenerator();
