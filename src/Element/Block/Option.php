@@ -5,7 +5,7 @@
  *
  * Option - The option element represents an item in a select dropdown list.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
@@ -15,7 +15,9 @@ namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
 use Html\Element\Inline\Select;
+use Html\Mapping\Element;
 
+#[Element('option')]
 class Option extends BlockElement
 {
     /**
@@ -65,7 +67,7 @@ class Option extends BlockElement
      */
     public ?string $value = null;
 
-    public function setDisabled(bool $disabled): self
+    public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
         $this->htmlElement->setAttribute('disabled', $disabled);
@@ -77,7 +79,7 @@ class Option extends BlockElement
         return $this->disabled;
     }
 
-    public function setLabel(string $label): self
+    public function setLabel(string $label): static
     {
         $this->label = $label;
         $this->htmlElement->setAttribute('label', $label);
@@ -89,7 +91,7 @@ class Option extends BlockElement
         return $this->label;
     }
 
-    public function setSelected(bool $selected): self
+    public function setSelected(bool $selected): static
     {
         $this->selected = $selected;
         $this->htmlElement->setAttribute('selected', $selected);
@@ -101,7 +103,7 @@ class Option extends BlockElement
         return $this->selected;
     }
 
-    public function setValue(string $value): self
+    public function setValue(string $value): static
     {
         $this->value = $value;
         $this->htmlElement->setAttribute('value', $value);

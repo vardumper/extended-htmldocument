@@ -5,7 +5,7 @@
  *
  * Parameter - The param element defines parameters for an object element.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param
@@ -22,7 +22,9 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
+use Html\Mapping\Element;
 
+#[Element('param')]
 class Parameter extends VoidElement
 {
     /**
@@ -76,7 +78,7 @@ class Parameter extends VoidElement
      */
     public ?string $value = null;
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
         $this->htmlElement->setAttribute('name', $name);
@@ -88,7 +90,7 @@ class Parameter extends VoidElement
         return $this->name;
     }
 
-    public function setValue(string $value): self
+    public function setValue(string $value): static
     {
         $this->value = $value;
         $this->htmlElement->setAttribute('value', $value);

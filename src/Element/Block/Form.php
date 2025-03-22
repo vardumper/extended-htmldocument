@@ -5,7 +5,7 @@
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
@@ -29,8 +29,10 @@ use Html\Enum\AutocompleteEnum;
 use Html\Enum\EnctypeEnum;
 use Html\Enum\MethodEnum;
 use Html\Enum\TargetEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('form')]
 class Form extends BlockElement
 {
     /**
@@ -137,7 +139,7 @@ class Form extends BlockElement
      */
     protected ?TargetEnum $target = null;
 
-    public function setAcceptCharset(string $acceptCharset): self
+    public function setAcceptCharset(string $acceptCharset): static
     {
         $this->acceptCharset = $acceptCharset;
         $this->htmlElement->setAttribute('acceptCharset', $acceptCharset);
@@ -149,7 +151,7 @@ class Form extends BlockElement
         return $this->acceptCharset;
     }
 
-    public function setAction(string $action): self
+    public function setAction(string $action): static
     {
         $this->action = $action;
         $this->htmlElement->setAttribute('action', $action);
@@ -161,7 +163,7 @@ class Form extends BlockElement
         return $this->action;
     }
 
-    public function setAutocomplete(string|AutocompleteEnum $autocomplete): self
+    public function setAutocomplete(string|AutocompleteEnum $autocomplete): static
     {
         if (is_string($autocomplete)) {
             $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new InvalidArgumentException(
@@ -179,7 +181,7 @@ class Form extends BlockElement
         return $this->autocomplete;
     }
 
-    public function setEnctype(string|EnctypeEnum $enctype): self
+    public function setEnctype(string|EnctypeEnum $enctype): static
     {
         if (is_string($enctype)) {
             $enctype = EnctypeEnum::tryFrom($enctype) ?? throw new InvalidArgumentException(
@@ -197,7 +199,7 @@ class Form extends BlockElement
         return $this->enctype;
     }
 
-    public function setMethod(string|MethodEnum $method): self
+    public function setMethod(string|MethodEnum $method): static
     {
         if (is_string($method)) {
             $method = MethodEnum::tryFrom($method) ?? throw new InvalidArgumentException('Invalid value for $method.');
@@ -213,7 +215,7 @@ class Form extends BlockElement
         return $this->method;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
         $this->htmlElement->setAttribute('name', $name);
@@ -225,7 +227,7 @@ class Form extends BlockElement
         return $this->name;
     }
 
-    public function setNovalidate(bool $novalidate): self
+    public function setNovalidate(bool $novalidate): static
     {
         $this->novalidate = $novalidate;
         $this->htmlElement->setAttribute('novalidate', $novalidate);
@@ -237,7 +239,7 @@ class Form extends BlockElement
         return $this->novalidate;
     }
 
-    public function setTarget(string|TargetEnum $target): self
+    public function setTarget(string|TargetEnum $target): static
     {
         if (is_string($target)) {
             $target = TargetEnum::tryFrom($target) ?? throw new InvalidArgumentException('Invalid value for $target.');

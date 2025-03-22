@@ -5,7 +5,7 @@
  *
  * TableHeader - The th element represents a header cell in a table.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
@@ -14,7 +14,9 @@
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Mapping\Element;
 
+#[Element('th')]
 class TableHeader extends BlockElement
 {
     /**
@@ -64,7 +66,7 @@ class TableHeader extends BlockElement
      */
     public ?string $scope = null;
 
-    public function setColspan(int $colspan): self
+    public function setColspan(int $colspan): static
     {
         $this->colspan = $colspan;
         $this->htmlElement->setAttribute('colspan', $colspan);
@@ -76,7 +78,7 @@ class TableHeader extends BlockElement
         return $this->colspan;
     }
 
-    public function setHeaders(string $headers): self
+    public function setHeaders(string $headers): static
     {
         $this->headers = $headers;
         $this->htmlElement->setAttribute('headers', $headers);
@@ -88,7 +90,7 @@ class TableHeader extends BlockElement
         return $this->headers;
     }
 
-    public function setRowspan(int $rowspan): self
+    public function setRowspan(int $rowspan): static
     {
         $this->rowspan = $rowspan;
         $this->htmlElement->setAttribute('rowspan', $rowspan);
@@ -100,7 +102,7 @@ class TableHeader extends BlockElement
         return $this->rowspan;
     }
 
-    public function setScope(string $scope): self
+    public function setScope(string $scope): static
     {
         $this->scope = $scope;
         $this->htmlElement->setAttribute('scope', $scope);

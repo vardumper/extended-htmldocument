@@ -15,7 +15,9 @@
 namespace <?= /** @phpstan-ignore variable.undefined */ $namespace; ?>;
 
 <?= /** @phpstan-ignore variable.undefined */ $use_statements ?>
+use Html\Mapping\Element;
 
+#[Element('<?= $element_name ?>')]
 class <?= /** @phpstan-ignore variable.undefined */ $class_name ?> extends <?= ucfirst(
     /** @phpstan-ignore variable.undefined */
     $level
@@ -24,7 +26,7 @@ class <?= /** @phpstan-ignore variable.undefined */ $class_name ?> extends <?= u
     /**
      * The HTML element name
      */
-    public const string QUALIFIED_NAME = '<?= /** @phpstan-ignore variable.undefined */$element_name ?>';
+    public const string QUALIFIED_NAME = '<?= /** @phpstan-ignore variable.undefined */ $element_name ?>';
 
 <?php if ($self_closing): ?>
     /**

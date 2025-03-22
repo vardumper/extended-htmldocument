@@ -5,7 +5,7 @@
  *
  * Slot - The slot element is a placeholder inside a web component that you can fill with your own markup, which lets you create separate DOM trees and present them together.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
@@ -32,7 +32,9 @@ use Html\Element\Block\Summary;
 use Html\Element\Block\Table;
 use Html\Element\Block\UnorderedList;
 use Html\Element\InlineElement;
+use Html\Mapping\Element;
 
+#[Element('slot')]
 class Slot extends InlineElement
 {
     /**
@@ -91,7 +93,7 @@ class Slot extends InlineElement
      */
     public ?string $name = null;
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
         $this->htmlElement->setAttribute('name', $name);

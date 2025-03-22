@@ -5,7 +5,7 @@
  *
  * Heading6 - The h6 element represents a section heading. It has the lowest rank among the six levels of section headings.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h6
@@ -15,7 +15,9 @@ namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
 use Html\Element\Inline\Slot;
+use Html\Mapping\Element;
 
+#[Element('h6')]
 class Heading6 extends BlockElement
 {
     /**

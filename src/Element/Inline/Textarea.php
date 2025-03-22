@@ -5,7 +5,7 @@
  *
  * Textarea - The textarea element represents a multiline plain text edit control for the element's raw value.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
@@ -29,8 +29,10 @@ use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\WrapEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('textarea')]
 class Textarea extends InlineElement
 {
     /**
@@ -136,7 +138,7 @@ class Textarea extends InlineElement
      */
     protected ?WrapEnum $wrap = null;
 
-    public function setAutocomplete(string|AutocompleteEnum $autocomplete): self
+    public function setAutocomplete(string|AutocompleteEnum $autocomplete): static
     {
         if (is_string($autocomplete)) {
             $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new InvalidArgumentException(
@@ -154,7 +156,7 @@ class Textarea extends InlineElement
         return $this->autocomplete;
     }
 
-    public function setCols(int $cols): self
+    public function setCols(int $cols): static
     {
         $this->cols = $cols;
         $this->htmlElement->setAttribute('cols', $cols);
@@ -166,7 +168,7 @@ class Textarea extends InlineElement
         return $this->cols;
     }
 
-    public function setDirname(string $dirname): self
+    public function setDirname(string $dirname): static
     {
         $this->dirname = $dirname;
         $this->htmlElement->setAttribute('dirname', $dirname);
@@ -178,7 +180,7 @@ class Textarea extends InlineElement
         return $this->dirname;
     }
 
-    public function setDisabled(bool $disabled): self
+    public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
         $this->htmlElement->setAttribute('disabled', $disabled);
@@ -190,7 +192,7 @@ class Textarea extends InlineElement
         return $this->disabled;
     }
 
-    public function setMaxlength(int $maxlength): self
+    public function setMaxlength(int $maxlength): static
     {
         $this->maxlength = $maxlength;
         $this->htmlElement->setAttribute('maxlength', $maxlength);
@@ -202,7 +204,7 @@ class Textarea extends InlineElement
         return $this->maxlength;
     }
 
-    public function setMinlength(int $minlength): self
+    public function setMinlength(int $minlength): static
     {
         $this->minlength = $minlength;
         $this->htmlElement->setAttribute('minlength', $minlength);
@@ -214,7 +216,7 @@ class Textarea extends InlineElement
         return $this->minlength;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
         $this->htmlElement->setAttribute('name', $name);
@@ -226,7 +228,7 @@ class Textarea extends InlineElement
         return $this->name;
     }
 
-    public function setPlaceholder(string $placeholder): self
+    public function setPlaceholder(string $placeholder): static
     {
         $this->placeholder = $placeholder;
         $this->htmlElement->setAttribute('placeholder', $placeholder);
@@ -238,7 +240,7 @@ class Textarea extends InlineElement
         return $this->placeholder;
     }
 
-    public function setReadonly(bool $readonly): self
+    public function setReadonly(bool $readonly): static
     {
         $this->readonly = $readonly;
         $this->htmlElement->setAttribute('readonly', $readonly);
@@ -250,7 +252,7 @@ class Textarea extends InlineElement
         return $this->readonly;
     }
 
-    public function setRequired(bool $required): self
+    public function setRequired(bool $required): static
     {
         $this->required = $required;
         $this->htmlElement->setAttribute('required', $required);
@@ -262,7 +264,7 @@ class Textarea extends InlineElement
         return $this->required;
     }
 
-    public function setRows(int $rows): self
+    public function setRows(int $rows): static
     {
         $this->rows = $rows;
         $this->htmlElement->setAttribute('rows', $rows);
@@ -274,7 +276,7 @@ class Textarea extends InlineElement
         return $this->rows;
     }
 
-    public function setWrap(string|WrapEnum $wrap): self
+    public function setWrap(string|WrapEnum $wrap): static
     {
         if (is_string($wrap)) {
             $wrap = WrapEnum::tryFrom($wrap) ?? throw new InvalidArgumentException('Invalid value for $wrap.');

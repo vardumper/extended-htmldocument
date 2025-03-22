@@ -5,7 +5,7 @@
  *
  * Table - The table element represents tabular data — that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table
@@ -16,7 +16,9 @@ namespace Html\Element\Block;
 use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
+use Html\Mapping\Element;
 
+#[Element('table')]
 class Table extends BlockElement
 {
     /**

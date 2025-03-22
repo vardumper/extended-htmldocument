@@ -5,7 +5,7 @@
  *
  * WordBreakOpportunity - The wbr element represents a word break opportunity.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr
@@ -25,7 +25,9 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
+use Html\Mapping\Element;
 
+#[Element('wbr')]
 class WordBreakOpportunity extends VoidElement
 {
     /**

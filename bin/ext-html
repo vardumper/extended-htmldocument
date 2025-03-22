@@ -6,6 +6,7 @@ use Html\Command\CreateClassCommand;
 use Html\Command\CreateEnumCommand;
 use Html\Command\CreateJsonCommand;
 use Html\Command\WatchCommand;
+use Html\Service\ComponentBuilder;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -38,7 +39,7 @@ $sourceDefault = realpath(__DIR__ . '/../examples/template-generator/source');
 $destDefault = realpath(__DIR__ . '/../examples/template-generator/dest');
 $app
     ->command('make:watch [generator] [source] [dest] [--overwrite-existing=]', function ($generator, $source, $dest, $overwriteExisting = false, InputInterface $input, OutputInterface $output) {
-        (new WatchCommand())($generator, $source, $dest, $overwriteExisting, $input, $output);
+        (new WatchCommand(new ComponentBuilder()))($generator, $source, $dest, $overwriteExisting, $input, $output);
     })
     ->descriptions('Observes a directory or file for changes, and generates templates for HTML Elements', ['generator' => 'name of the generator', 'source' => 'source path', 'dest' => 'destination path'])
     ->defaults(['generator' => 'html', 'source' =>$sourceDefault, 'dest' => $destDefault, 'overwrite-existing' => false]);

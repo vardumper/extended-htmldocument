@@ -428,7 +428,7 @@ final class CreateClassCommand extends Command
 
     private function getSignatureSimple(): string
     {
-        return "    public function set%s(%s \$%s): self
+        return "    public function set%s(%s \$%s): static
     {
         \$this->%s = \$%s;
         \$this->htmlElement->setAttribute('%s', \$%s);
@@ -443,7 +443,7 @@ final class CreateClassCommand extends Command
 
     private function getSignatureEnum(): string
     {
-        return "    public function set%s(%s \$%s): self
+        return "    public function set%s(%s \$%s): static
     {
         if (is_string(\$%s)) {
             \$%s = %s::tryFrom(\$%s) ?? throw new \InvalidArgumentException(\"Invalid value for \\$%s.\");
@@ -462,7 +462,7 @@ final class CreateClassCommand extends Command
 
     private function getSignatureEnumUnionString(): string
     {
-        return "    public function set%s(%s \$%s): self
+        return "    public function set%s(%s \$%s): static
     {
         \$value = \$%s;
         if (is_string(\$%s)) {

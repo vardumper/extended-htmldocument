@@ -5,7 +5,7 @@
  *
  * Figure - The figure element represents self-contained content, potentially with an optional caption, which is specified using the (optional) figcaption element.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure
@@ -15,7 +15,9 @@ namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
 use Html\Element\Inline\Image;
+use Html\Mapping\Element;
 
+#[Element('figure')]
 class Figure extends BlockElement
 {
     /**

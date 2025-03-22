@@ -5,7 +5,7 @@
  *
  * Embed - The embed element provides an integration point for an external (typically non-HTML) application or interactive content.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed
@@ -15,7 +15,9 @@ namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
+use Html\Mapping\Element;
 
+#[Element('embed')]
 class Embed extends BlockElement
 {
     /**
@@ -83,7 +85,7 @@ class Embed extends BlockElement
      */
     public ?string $width = null;
 
-    public function setHeight(string $height): self
+    public function setHeight(string $height): static
     {
         $this->height = $height;
         $this->htmlElement->setAttribute('height', $height);
@@ -95,7 +97,7 @@ class Embed extends BlockElement
         return $this->height;
     }
 
-    public function setSrc(string $src): self
+    public function setSrc(string $src): static
     {
         $this->src = $src;
         $this->htmlElement->setAttribute('src', $src);
@@ -107,7 +109,7 @@ class Embed extends BlockElement
         return $this->src;
     }
 
-    public function setType(string $type): self
+    public function setType(string $type): static
     {
         $this->type = $type;
         $this->htmlElement->setAttribute('type', $type);
@@ -119,7 +121,7 @@ class Embed extends BlockElement
         return $this->type;
     }
 
-    public function setWidth(string $width): self
+    public function setWidth(string $width): static
     {
         $this->width = $width;
         $this->htmlElement->setAttribute('width', $width);

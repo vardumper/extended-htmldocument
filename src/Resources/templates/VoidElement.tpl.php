@@ -2,26 +2,28 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * <?= $class_name ?> - <?= $description . PHP_EOL ?>
- * <?= PHP_EOL ?>
+ * <?= $class_name ?> - <?= $description . \PHP_EOL ?>
+ * <?= \PHP_EOL ?>
  * @generated <?= $generatedAt . \PHP_EOL ?>
  * @category HTML
  * @package vardumper/extended-htmldocument
- * @subpackage <?= $namespace . PHP_EOL ?>
+ * @subpackage <?= $namespace . \PHP_EOL ?>
  * @link https://vardumper.github.io/extended-htmldocument/
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/<?= $element_name . PHP_EOL ?>
-<?php if ($defaultValue): ?> * @tutorial an example value can be <?= $defaultValue . PHP_EOL ?><?php endif; ?>
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/<?= $element_name . \PHP_EOL ?>
+<?php if ($defaultValue): ?> * @tutorial an example value can be <?= $defaultValue . \PHP_EOL ?><?php endif; ?>
  */
 namespace <?= $namespace; ?>;
 
 <?= $use_statements ?>
+use Html\Mapping\Element;
 
+#[Element('<?= $element_name ?>')]
 class <?= $class_name ?> extends <?= ucfirst($level) ?>Element
 {
     /**
      * The HTML element name
      */
-    public const string QUALIFIED_NAME = '<?= /** @phpstan-ignore variable.undefined */$element_name ?>';
+    public const string QUALIFIED_NAME = '<?= /** @phpstan-ignore variable.undefined */ $element_name ?>';
 
 <?php if ($self_closing): ?>
     /**

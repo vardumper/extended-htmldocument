@@ -2,8 +2,6 @@
 
 namespace Html\TemplateGenerator;
 
-#use Html\Delegator\HTMLDocumentDelegatorInterface;
-#use Html\Delegator\HTMLElementDelegatorInterface;
 use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;

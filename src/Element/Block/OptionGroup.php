@@ -5,7 +5,7 @@
  *
  * OptionGroup - The optgroup element represents a group of option elements with a common label.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
@@ -15,7 +15,9 @@ namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
 use Html\Element\Inline\Select;
+use Html\Mapping\Element;
 
+#[Element('optgroup')]
 class OptionGroup extends BlockElement
 {
     /**
@@ -55,7 +57,7 @@ class OptionGroup extends BlockElement
      */
     public ?string $label = null;
 
-    public function setDisabled(bool $disabled): self
+    public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
         $this->htmlElement->setAttribute('disabled', $disabled);
@@ -67,7 +69,7 @@ class OptionGroup extends BlockElement
         return $this->disabled;
     }
 
-    public function setLabel(string $label): self
+    public function setLabel(string $label): static
     {
         $this->label = $label;
         $this->htmlElement->setAttribute('label', $label);

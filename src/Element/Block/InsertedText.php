@@ -5,7 +5,7 @@
  *
  * InsertedText - The ins element represents an addition to the document.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ins
@@ -15,7 +15,9 @@ namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
+use Html\Mapping\Element;
 
+#[Element('ins')]
 class InsertedText extends BlockElement
 {
     /**
@@ -67,7 +69,7 @@ class InsertedText extends BlockElement
      */
     public ?string $datetime = null;
 
-    public function setCite(string $cite): self
+    public function setCite(string $cite): static
     {
         $this->cite = $cite;
         $this->htmlElement->setAttribute('cite', $cite);
@@ -79,7 +81,7 @@ class InsertedText extends BlockElement
         return $this->cite;
     }
 
-    public function setDatetime(string $datetime): self
+    public function setDatetime(string $datetime): static
     {
         $this->datetime = $datetime;
         $this->htmlElement->setAttribute('datetime', $datetime);

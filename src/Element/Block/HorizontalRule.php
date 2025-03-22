@@ -5,7 +5,7 @@
  *
  * HorizontalRule - The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr
@@ -15,8 +15,10 @@ namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
 use Html\Enum\AlignEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('hr')]
 class HorizontalRule extends BlockElement
 {
     /**
@@ -78,7 +80,7 @@ class HorizontalRule extends BlockElement
      */
     protected ?AlignEnum $align = null;
 
-    public function setAlign(string|AlignEnum $align): self
+    public function setAlign(string|AlignEnum $align): static
     {
         if (is_string($align)) {
             $align = AlignEnum::tryFrom($align) ?? throw new InvalidArgumentException('Invalid value for $align.');
@@ -94,7 +96,7 @@ class HorizontalRule extends BlockElement
         return $this->align;
     }
 
-    public function setColor(string $color): self
+    public function setColor(string $color): static
     {
         $this->color = $color;
         $this->htmlElement->setAttribute('color', $color);
@@ -106,7 +108,7 @@ class HorizontalRule extends BlockElement
         return $this->color;
     }
 
-    public function setNoshade(bool $noshade): self
+    public function setNoshade(bool $noshade): static
     {
         $this->noshade = $noshade;
         $this->htmlElement->setAttribute('noshade', $noshade);
@@ -118,7 +120,7 @@ class HorizontalRule extends BlockElement
         return $this->noshade;
     }
 
-    public function setSize(int $size): self
+    public function setSize(int $size): static
     {
         $this->size = $size;
         $this->htmlElement->setAttribute('size', $size);
@@ -130,7 +132,7 @@ class HorizontalRule extends BlockElement
         return $this->size;
     }
 
-    public function setWidth(string $width): self
+    public function setWidth(string $width): static
     {
         $this->width = $width;
         $this->htmlElement->setAttribute('width', $width);

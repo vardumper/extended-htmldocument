@@ -5,7 +5,7 @@
  *
  * Article - The article element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
@@ -43,7 +43,9 @@ use Html\Element\Inline\Variable;
 use Html\Element\Void\Area;
 use Html\Element\Void\BreakElement;
 use Html\Element\Void\WordBreakOpportunity;
+use Html\Mapping\Element;
 
+#[Element('article')]
 class Article extends BlockElement
 {
     /**

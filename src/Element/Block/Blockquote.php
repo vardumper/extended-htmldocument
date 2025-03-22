@@ -5,7 +5,7 @@
  *
  * Blockquote - The blockquote element represents a section that is quoted from another source. Content inside a blockquote must be quoted from another source, whose address, if it has one, may be cited in the cite attribute.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote
@@ -14,7 +14,9 @@
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Mapping\Element;
 
+#[Element('blockquote')]
 class Blockquote extends BlockElement
 {
     /**
@@ -49,7 +51,7 @@ class Blockquote extends BlockElement
      */
     public ?string $cite = null;
 
-    public function setCite(string $cite): self
+    public function setCite(string $cite): static
     {
         $this->cite = $cite;
         $this->htmlElement->setAttribute('cite', $cite);

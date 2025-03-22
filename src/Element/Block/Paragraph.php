@@ -5,7 +5,7 @@
  *
  * Paragraph - The p element represents a paragraph.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
@@ -52,7 +52,9 @@ use Html\Element\Inline\Variable;
 use Html\Element\Void\Area;
 use Html\Element\Void\BreakElement;
 use Html\Element\Void\WordBreakOpportunity;
+use Html\Mapping\Element;
 
+#[Element('p')]
 class Paragraph extends BlockElement
 {
     /**

@@ -5,7 +5,7 @@
  *
  * Anchor - The a element represents a hyperlink, linking to another resource.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
@@ -30,8 +30,10 @@ use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Enum\RelEnum;
 use Html\Enum\TargetEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('a')]
 class Anchor extends InlineElement
 {
     /**
@@ -115,7 +117,7 @@ class Anchor extends InlineElement
      */
     protected null|string|TargetEnum $target = null;
 
-    public function setDownload(string $download): self
+    public function setDownload(string $download): static
     {
         $this->download = $download;
         $this->htmlElement->setAttribute('download', $download);
@@ -127,7 +129,7 @@ class Anchor extends InlineElement
         return $this->download;
     }
 
-    public function setHref(string $href): self
+    public function setHref(string $href): static
     {
         $this->href = $href;
         $this->htmlElement->setAttribute('href', $href);
@@ -139,7 +141,7 @@ class Anchor extends InlineElement
         return $this->href;
     }
 
-    public function setHreflang(string $hreflang): self
+    public function setHreflang(string $hreflang): static
     {
         $this->hreflang = $hreflang;
         $this->htmlElement->setAttribute('hreflang', $hreflang);
@@ -151,7 +153,7 @@ class Anchor extends InlineElement
         return $this->hreflang;
     }
 
-    public function setRel(string|RelEnum $rel): self
+    public function setRel(string|RelEnum $rel): static
     {
         if (is_string($rel)) {
             $rel = RelEnum::tryFrom($rel) ?? throw new InvalidArgumentException('Invalid value for $rel.');
@@ -167,7 +169,7 @@ class Anchor extends InlineElement
         return $this->rel;
     }
 
-    public function setTarget(string|TargetEnum $target): self
+    public function setTarget(string|TargetEnum $target): static
     {
         $value = $target;
         if (is_string($target)) {
@@ -190,7 +192,7 @@ class Anchor extends InlineElement
         return $this->target;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(string $title): static
     {
         $this->title = $title;
         $this->htmlElement->setAttribute('title', $title);
@@ -202,7 +204,7 @@ class Anchor extends InlineElement
         return $this->title;
     }
 
-    public function setType(string $type): self
+    public function setType(string $type): static
     {
         $this->type = $type;
         $this->htmlElement->setAttribute('type', $type);

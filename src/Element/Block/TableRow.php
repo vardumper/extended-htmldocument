@@ -5,7 +5,7 @@
  *
  * TableRow - The tr element represents a row of cells in a table.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
@@ -16,8 +16,10 @@ namespace Html\Element\Block;
 use Html\Element\BlockElement;
 use Html\Enum\AlignEnum;
 use Html\Enum\ValignEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('tr')]
 class TableRow extends BlockElement
 {
     /**
@@ -77,7 +79,7 @@ class TableRow extends BlockElement
      */
     protected ?ValignEnum $valign = null;
 
-    public function setAlign(string|AlignEnum $align): self
+    public function setAlign(string|AlignEnum $align): static
     {
         if (is_string($align)) {
             $align = AlignEnum::tryFrom($align) ?? throw new InvalidArgumentException('Invalid value for $align.');
@@ -93,7 +95,7 @@ class TableRow extends BlockElement
         return $this->align;
     }
 
-    public function setBgcolor(string $bgcolor): self
+    public function setBgcolor(string $bgcolor): static
     {
         $this->bgcolor = $bgcolor;
         $this->htmlElement->setAttribute('bgcolor', $bgcolor);
@@ -105,7 +107,7 @@ class TableRow extends BlockElement
         return $this->bgcolor;
     }
 
-    public function setChar(string $char): self
+    public function setChar(string $char): static
     {
         $this->char = $char;
         $this->htmlElement->setAttribute('char', $char);
@@ -117,7 +119,7 @@ class TableRow extends BlockElement
         return $this->char;
     }
 
-    public function setCharoff(string $charoff): self
+    public function setCharoff(string $charoff): static
     {
         $this->charoff = $charoff;
         $this->htmlElement->setAttribute('charoff', $charoff);
@@ -129,7 +131,7 @@ class TableRow extends BlockElement
         return $this->charoff;
     }
 
-    public function setValign(string|ValignEnum $valign): self
+    public function setValign(string|ValignEnum $valign): static
     {
         if (is_string($valign)) {
             $valign = ValignEnum::tryFrom($valign) ?? throw new InvalidArgumentException('Invalid value for $valign.');

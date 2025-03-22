@@ -5,7 +5,7 @@
  *
  * InlineFrame - The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
@@ -17,8 +17,10 @@ use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
 use Html\Enum\ReferrerpolicyEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('iframe')]
 class InlineFrame extends BlockElement
 {
     /**
@@ -103,7 +105,7 @@ class InlineFrame extends BlockElement
      */
     protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
-    public function setAllowfullscreen(bool $allowfullscreen): self
+    public function setAllowfullscreen(bool $allowfullscreen): static
     {
         $this->allowfullscreen = $allowfullscreen;
         $this->htmlElement->setAttribute('allowfullscreen', $allowfullscreen);
@@ -115,7 +117,7 @@ class InlineFrame extends BlockElement
         return $this->allowfullscreen;
     }
 
-    public function setHeight(string $height): self
+    public function setHeight(string $height): static
     {
         $this->height = $height;
         $this->htmlElement->setAttribute('height', $height);
@@ -127,7 +129,7 @@ class InlineFrame extends BlockElement
         return $this->height;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
         $this->htmlElement->setAttribute('name', $name);
@@ -139,7 +141,7 @@ class InlineFrame extends BlockElement
         return $this->name;
     }
 
-    public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): self
+    public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): static
     {
         if (is_string($referrerpolicy)) {
             $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new InvalidArgumentException(
@@ -157,7 +159,7 @@ class InlineFrame extends BlockElement
         return $this->referrerpolicy;
     }
 
-    public function setSandbox(string $sandbox): self
+    public function setSandbox(string $sandbox): static
     {
         $this->sandbox = $sandbox;
         $this->htmlElement->setAttribute('sandbox', $sandbox);
@@ -169,7 +171,7 @@ class InlineFrame extends BlockElement
         return $this->sandbox;
     }
 
-    public function setSeamless(bool $seamless): self
+    public function setSeamless(bool $seamless): static
     {
         $this->seamless = $seamless;
         $this->htmlElement->setAttribute('seamless', $seamless);
@@ -181,7 +183,7 @@ class InlineFrame extends BlockElement
         return $this->seamless;
     }
 
-    public function setSrc(string $src): self
+    public function setSrc(string $src): static
     {
         $this->src = $src;
         $this->htmlElement->setAttribute('src', $src);
@@ -193,7 +195,7 @@ class InlineFrame extends BlockElement
         return $this->src;
     }
 
-    public function setSrcdoc(string $srcdoc): self
+    public function setSrcdoc(string $srcdoc): static
     {
         $this->srcdoc = $srcdoc;
         $this->htmlElement->setAttribute('srcdoc', $srcdoc);
@@ -205,7 +207,7 @@ class InlineFrame extends BlockElement
         return $this->srcdoc;
     }
 
-    public function setWidth(string $width): self
+    public function setWidth(string $width): static
     {
         $this->width = $width;
         $this->htmlElement->setAttribute('width', $width);

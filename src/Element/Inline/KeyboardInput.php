@@ -5,7 +5,7 @@
  *
  * KeyboardInput - The kbd element represents user input (typically keyboard input, although it may also be used to represent other input methods, such as voice commands).
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/kbd
@@ -25,7 +25,9 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
+use Html\Mapping\Element;
 
+#[Element('kbd')]
 class KeyboardInput extends InlineElement
 {
     /**

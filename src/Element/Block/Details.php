@@ -5,7 +5,7 @@
  *
  * Details - The details element represents a disclosure widget from which the user can obtain additional information or controls.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
@@ -16,7 +16,9 @@ namespace Html\Element\Block;
 use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
+use Html\Mapping\Element;
 
+#[Element('details')]
 class Details extends BlockElement
 {
     /**
@@ -77,7 +79,7 @@ class Details extends BlockElement
      */
     public ?bool $open = null;
 
-    public function setOpen(bool $open): self
+    public function setOpen(bool $open): static
     {
         $this->open = $open;
         $this->htmlElement->setAttribute('open', $open);

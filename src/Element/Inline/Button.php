@@ -5,7 +5,7 @@
  *
  * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
@@ -29,8 +29,10 @@ use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Enum\TypeButtonEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('button')]
 class Button extends InlineElement
 {
     /**
@@ -102,7 +104,7 @@ class Button extends InlineElement
      */
     protected ?TypeButtonEnum $type = null;
 
-    public function setAutofocus(bool $autofocus): self
+    public function setAutofocus(bool $autofocus): static
     {
         $this->autofocus = $autofocus;
         $this->htmlElement->setAttribute('autofocus', $autofocus);
@@ -114,7 +116,7 @@ class Button extends InlineElement
         return $this->autofocus;
     }
 
-    public function setDisabled(bool $disabled): self
+    public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
         $this->htmlElement->setAttribute('disabled', $disabled);
@@ -126,7 +128,7 @@ class Button extends InlineElement
         return $this->disabled;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
         $this->htmlElement->setAttribute('name', $name);
@@ -138,7 +140,7 @@ class Button extends InlineElement
         return $this->name;
     }
 
-    public function setType(string|TypeButtonEnum $type): self
+    public function setType(string|TypeButtonEnum $type): static
     {
         if (is_string($type)) {
             $type = TypeButtonEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
@@ -154,7 +156,7 @@ class Button extends InlineElement
         return $this->type;
     }
 
-    public function setValue(string $value): self
+    public function setValue(string $value): static
     {
         $this->value = $value;
         $this->htmlElement->setAttribute('value', $value);

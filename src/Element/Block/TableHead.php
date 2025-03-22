@@ -5,7 +5,7 @@
  *
  * TableHead - The thead element groups the header content in a table.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead
@@ -14,7 +14,9 @@
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Mapping\Element;
 
+#[Element('thead')]
 class TableHead extends BlockElement
 {
     /**

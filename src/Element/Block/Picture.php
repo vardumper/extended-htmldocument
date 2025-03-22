@@ -5,7 +5,7 @@
  *
  * Picture - The picture element contains zero or more source elements and one img element to offer alternative versions of an image for different display/device scenarios.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
@@ -17,7 +17,9 @@ use Html\Element\BlockElement;
 use Html\Element\Inline\Image;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Void\Source;
+use Html\Mapping\Element;
 
+#[Element('picture')]
 class Picture extends BlockElement
 {
     /**

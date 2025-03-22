@@ -5,7 +5,7 @@
  *
  * Video - The video element is used to embed video content in a document, such as a movie clip or other video streams.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
@@ -17,8 +17,10 @@ use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\PreloadEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('video')]
 class Video extends BlockElement
 {
     /**
@@ -105,7 +107,7 @@ class Video extends BlockElement
 
     protected ?PreloadEnum $preload = null;
 
-    public function setAutoplay(bool $autoplay): self
+    public function setAutoplay(bool $autoplay): static
     {
         $this->autoplay = $autoplay;
         $this->htmlElement->setAttribute('autoplay', $autoplay);
@@ -117,7 +119,7 @@ class Video extends BlockElement
         return $this->autoplay;
     }
 
-    public function setControls(bool $controls): self
+    public function setControls(bool $controls): static
     {
         $this->controls = $controls;
         $this->htmlElement->setAttribute('controls', $controls);
@@ -129,7 +131,7 @@ class Video extends BlockElement
         return $this->controls;
     }
 
-    public function setCrossorigin(string|CrossoriginEnum $crossorigin): self
+    public function setCrossorigin(string|CrossoriginEnum $crossorigin): static
     {
         if (is_string($crossorigin)) {
             $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
@@ -147,7 +149,7 @@ class Video extends BlockElement
         return $this->crossorigin;
     }
 
-    public function setHeight(string $height): self
+    public function setHeight(string $height): static
     {
         $this->height = $height;
         $this->htmlElement->setAttribute('height', $height);
@@ -159,7 +161,7 @@ class Video extends BlockElement
         return $this->height;
     }
 
-    public function setLoop(bool $loop): self
+    public function setLoop(bool $loop): static
     {
         $this->loop = $loop;
         $this->htmlElement->setAttribute('loop', $loop);
@@ -171,7 +173,7 @@ class Video extends BlockElement
         return $this->loop;
     }
 
-    public function setMuted(bool $muted): self
+    public function setMuted(bool $muted): static
     {
         $this->muted = $muted;
         $this->htmlElement->setAttribute('muted', $muted);
@@ -183,7 +185,7 @@ class Video extends BlockElement
         return $this->muted;
     }
 
-    public function setPoster(string $poster): self
+    public function setPoster(string $poster): static
     {
         $this->poster = $poster;
         $this->htmlElement->setAttribute('poster', $poster);
@@ -195,7 +197,7 @@ class Video extends BlockElement
         return $this->poster;
     }
 
-    public function setPreload(string|PreloadEnum $preload): self
+    public function setPreload(string|PreloadEnum $preload): static
     {
         if (is_string($preload)) {
             $preload = PreloadEnum::tryFrom($preload) ?? throw new InvalidArgumentException(
@@ -213,7 +215,7 @@ class Video extends BlockElement
         return $this->preload;
     }
 
-    public function setSrc(string $src): self
+    public function setSrc(string $src): static
     {
         $this->src = $src;
         $this->htmlElement->setAttribute('src', $src);
@@ -225,7 +227,7 @@ class Video extends BlockElement
         return $this->src;
     }
 
-    public function setWidth(string $width): self
+    public function setWidth(string $width): static
     {
         $this->width = $width;
         $this->htmlElement->setAttribute('width', $width);

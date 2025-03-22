@@ -5,7 +5,7 @@
  *
  * Script - The script element is used to embed or reference an executable script within an HTML or XHTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
@@ -20,8 +20,10 @@ use Html\Element\VoidElement;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\TypeScriptEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('script')]
 class Script extends VoidElement
 {
     /**
@@ -95,7 +97,7 @@ class Script extends VoidElement
      */
     protected ?TypeScriptEnum $type = null;
 
-    public function setAsync(bool $async): self
+    public function setAsync(bool $async): static
     {
         $this->async = $async;
         $this->htmlElement->setAttribute('async', $async);
@@ -107,7 +109,7 @@ class Script extends VoidElement
         return $this->async;
     }
 
-    public function setCharset(string $charset): self
+    public function setCharset(string $charset): static
     {
         $this->charset = $charset;
         $this->htmlElement->setAttribute('charset', $charset);
@@ -119,7 +121,7 @@ class Script extends VoidElement
         return $this->charset;
     }
 
-    public function setCrossorigin(string|CrossoriginEnum $crossorigin): self
+    public function setCrossorigin(string|CrossoriginEnum $crossorigin): static
     {
         if (is_string($crossorigin)) {
             $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
@@ -137,7 +139,7 @@ class Script extends VoidElement
         return $this->crossorigin;
     }
 
-    public function setDefer(bool $defer): self
+    public function setDefer(bool $defer): static
     {
         $this->defer = $defer;
         $this->htmlElement->setAttribute('defer', $defer);
@@ -149,7 +151,7 @@ class Script extends VoidElement
         return $this->defer;
     }
 
-    public function setIntegrity(string $integrity): self
+    public function setIntegrity(string $integrity): static
     {
         $this->integrity = $integrity;
         $this->htmlElement->setAttribute('integrity', $integrity);
@@ -161,7 +163,7 @@ class Script extends VoidElement
         return $this->integrity;
     }
 
-    public function setNonce(string $nonce): self
+    public function setNonce(string $nonce): static
     {
         $this->nonce = $nonce;
         $this->htmlElement->setAttribute('nonce', $nonce);
@@ -173,7 +175,7 @@ class Script extends VoidElement
         return $this->nonce;
     }
 
-    public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): self
+    public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): static
     {
         if (is_string($referrerpolicy)) {
             $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new InvalidArgumentException(
@@ -191,7 +193,7 @@ class Script extends VoidElement
         return $this->referrerpolicy;
     }
 
-    public function setSrc(string $src): self
+    public function setSrc(string $src): static
     {
         $this->src = $src;
         $this->htmlElement->setAttribute('src', $src);
@@ -203,7 +205,7 @@ class Script extends VoidElement
         return $this->src;
     }
 
-    public function setType(string|TypeScriptEnum $type): self
+    public function setType(string|TypeScriptEnum $type): static
     {
         if (is_string($type)) {
             $type = TypeScriptEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');

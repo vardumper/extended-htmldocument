@@ -5,7 +5,7 @@
  *
  * Audio - The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
@@ -17,8 +17,10 @@ use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\PreloadEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('audio')]
 class Audio extends BlockElement
 {
     /**
@@ -93,7 +95,7 @@ class Audio extends BlockElement
 
     protected ?PreloadEnum $preload = null;
 
-    public function setAutoplay(bool $autoplay): self
+    public function setAutoplay(bool $autoplay): static
     {
         $this->autoplay = $autoplay;
         $this->htmlElement->setAttribute('autoplay', $autoplay);
@@ -105,7 +107,7 @@ class Audio extends BlockElement
         return $this->autoplay;
     }
 
-    public function setControls(bool $controls): self
+    public function setControls(bool $controls): static
     {
         $this->controls = $controls;
         $this->htmlElement->setAttribute('controls', $controls);
@@ -117,7 +119,7 @@ class Audio extends BlockElement
         return $this->controls;
     }
 
-    public function setCrossorigin(string|CrossoriginEnum $crossorigin): self
+    public function setCrossorigin(string|CrossoriginEnum $crossorigin): static
     {
         if (is_string($crossorigin)) {
             $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
@@ -135,7 +137,7 @@ class Audio extends BlockElement
         return $this->crossorigin;
     }
 
-    public function setLoop(bool $loop): self
+    public function setLoop(bool $loop): static
     {
         $this->loop = $loop;
         $this->htmlElement->setAttribute('loop', $loop);
@@ -147,7 +149,7 @@ class Audio extends BlockElement
         return $this->loop;
     }
 
-    public function setMuted(bool $muted): self
+    public function setMuted(bool $muted): static
     {
         $this->muted = $muted;
         $this->htmlElement->setAttribute('muted', $muted);
@@ -159,7 +161,7 @@ class Audio extends BlockElement
         return $this->muted;
     }
 
-    public function setPreload(string|PreloadEnum $preload): self
+    public function setPreload(string|PreloadEnum $preload): static
     {
         if (is_string($preload)) {
             $preload = PreloadEnum::tryFrom($preload) ?? throw new InvalidArgumentException(
@@ -177,7 +179,7 @@ class Audio extends BlockElement
         return $this->preload;
     }
 
-    public function setSrc(string $src): self
+    public function setSrc(string $src): static
     {
         $this->src = $src;
         $this->htmlElement->setAttribute('src', $src);

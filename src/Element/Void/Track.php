@@ -5,7 +5,7 @@
  *
  * Track - The track element is used as a child of the media elements—audio and video. It lets you specify timed text tracks (or time-based data), for example to automatically handle subtitles. The tracks are formatted in WebVTT format (.vtt files) — Web Video Text Tracks.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track
@@ -23,8 +23,10 @@ use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
 use Html\Enum\KindEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('track')]
 class Track extends VoidElement
 {
     /**
@@ -94,7 +96,7 @@ class Track extends VoidElement
      */
     protected ?KindEnum $kind = null;
 
-    public function setDefault(bool $default): self
+    public function setDefault(bool $default): static
     {
         $this->default = $default;
         $this->htmlElement->setAttribute('default', $default);
@@ -106,7 +108,7 @@ class Track extends VoidElement
         return $this->default;
     }
 
-    public function setKind(string|KindEnum $kind): self
+    public function setKind(string|KindEnum $kind): static
     {
         if (is_string($kind)) {
             $kind = KindEnum::tryFrom($kind) ?? throw new InvalidArgumentException('Invalid value for $kind.');
@@ -122,7 +124,7 @@ class Track extends VoidElement
         return $this->kind;
     }
 
-    public function setLabel(string $label): self
+    public function setLabel(string $label): static
     {
         $this->label = $label;
         $this->htmlElement->setAttribute('label', $label);
@@ -134,7 +136,7 @@ class Track extends VoidElement
         return $this->label;
     }
 
-    public function setSrc(string $src): self
+    public function setSrc(string $src): static
     {
         $this->src = $src;
         $this->htmlElement->setAttribute('src', $src);
@@ -146,7 +148,7 @@ class Track extends VoidElement
         return $this->src;
     }
 
-    public function setSrclang(string $srclang): self
+    public function setSrclang(string $srclang): static
     {
         $this->srclang = $srclang;
         $this->htmlElement->setAttribute('srclang', $srclang);

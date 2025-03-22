@@ -5,7 +5,7 @@
  *
  * Dialog - The dialog element represents a part of an application that a user interacts with to perform a task, for example a dialog box, inspector, or window.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
@@ -19,7 +19,9 @@ use Html\Element\Inline\Button;
 use Html\Element\Inline\Input;
 use Html\Element\Inline\Select;
 use Html\Element\Inline\Textarea;
+use Html\Mapping\Element;
 
+#[Element('dialog')]
 class Dialog extends BlockElement
 {
     /**
@@ -78,7 +80,7 @@ class Dialog extends BlockElement
      */
     public ?bool $open = null;
 
-    public function setOpen(bool $open): self
+    public function setOpen(bool $open): static
     {
         $this->open = $open;
         $this->htmlElement->setAttribute('open', $open);

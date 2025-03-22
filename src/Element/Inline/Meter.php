@@ -5,7 +5,7 @@
  *
  * Meter - The meter element represents a scalar measurement within a known range, or a fractional value.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
@@ -18,7 +18,9 @@ use Html\Element\Block\Fieldset;
 use Html\Element\Block\Form;
 use Html\Element\Block\Paragraph;
 use Html\Element\InlineElement;
+use Html\Mapping\Element;
 
+#[Element('meter')]
 class Meter extends InlineElement
 {
     /**
@@ -78,7 +80,7 @@ class Meter extends InlineElement
      */
     public ?string $value = null;
 
-    public function setHigh(string $high): self
+    public function setHigh(string $high): static
     {
         $this->high = $high;
         $this->htmlElement->setAttribute('high', $high);
@@ -90,7 +92,7 @@ class Meter extends InlineElement
         return $this->high;
     }
 
-    public function setLow(string $low): self
+    public function setLow(string $low): static
     {
         $this->low = $low;
         $this->htmlElement->setAttribute('low', $low);
@@ -102,7 +104,7 @@ class Meter extends InlineElement
         return $this->low;
     }
 
-    public function setMax(int $max): self
+    public function setMax(int $max): static
     {
         $this->max = $max;
         $this->htmlElement->setAttribute('max', $max);
@@ -114,7 +116,7 @@ class Meter extends InlineElement
         return $this->max;
     }
 
-    public function setMin(string $min): self
+    public function setMin(string $min): static
     {
         $this->min = $min;
         $this->htmlElement->setAttribute('min', $min);
@@ -126,7 +128,7 @@ class Meter extends InlineElement
         return $this->min;
     }
 
-    public function setOptimum(string $optimum): self
+    public function setOptimum(string $optimum): static
     {
         $this->optimum = $optimum;
         $this->htmlElement->setAttribute('optimum', $optimum);
@@ -138,7 +140,7 @@ class Meter extends InlineElement
         return $this->optimum;
     }
 
-    public function setValue(string $value): self
+    public function setValue(string $value): static
     {
         $this->value = $value;
         $this->htmlElement->setAttribute('value', $value);

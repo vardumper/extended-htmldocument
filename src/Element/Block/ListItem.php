@@ -5,7 +5,7 @@
  *
  * ListItem - The li element represents a list item. If its parent element is an ol, ul, or menu, then the element is an item of the parent element's list, as defined for those elements. Otherwise, the list item has no defined list-related semantics.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
@@ -34,7 +34,9 @@ use Html\Element\Inline\Superscript;
 use Html\Element\Inline\Time;
 use Html\Element\Inline\Underline;
 use Html\Element\Inline\Variable;
+use Html\Mapping\Element;
 
+#[Element('li')]
 class ListItem extends BlockElement
 {
     /**
@@ -111,7 +113,7 @@ class ListItem extends BlockElement
      */
     public ?string $value = null;
 
-    public function setValue(string $value): self
+    public function setValue(string $value): static
     {
         $this->value = $value;
         $this->htmlElement->setAttribute('value', $value);

@@ -5,7 +5,7 @@
  *
  * ObjectElement - The object element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
@@ -15,7 +15,9 @@ namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
+use Html\Mapping\Element;
 
+#[Element('object')]
 class ObjectElement extends BlockElement
 {
     /**
@@ -87,7 +89,7 @@ class ObjectElement extends BlockElement
      */
     public ?string $width = null;
 
-    public function setData(string $data): self
+    public function setData(string $data): static
     {
         $this->data = $data;
         $this->htmlElement->setAttribute('data', $data);
@@ -99,7 +101,7 @@ class ObjectElement extends BlockElement
         return $this->data;
     }
 
-    public function setHeight(string $height): self
+    public function setHeight(string $height): static
     {
         $this->height = $height;
         $this->htmlElement->setAttribute('height', $height);
@@ -111,7 +113,7 @@ class ObjectElement extends BlockElement
         return $this->height;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
         $this->htmlElement->setAttribute('name', $name);
@@ -123,7 +125,7 @@ class ObjectElement extends BlockElement
         return $this->name;
     }
 
-    public function setType(string $type): self
+    public function setType(string $type): static
     {
         $this->type = $type;
         $this->htmlElement->setAttribute('type', $type);
@@ -135,7 +137,7 @@ class ObjectElement extends BlockElement
         return $this->type;
     }
 
-    public function setUsemap(string $usemap): self
+    public function setUsemap(string $usemap): static
     {
         $this->usemap = $usemap;
         $this->htmlElement->setAttribute('usemap', $usemap);
@@ -147,7 +149,7 @@ class ObjectElement extends BlockElement
         return $this->usemap;
     }
 
-    public function setWidth(string $width): self
+    public function setWidth(string $width): static
     {
         $this->width = $width;
         $this->htmlElement->setAttribute('width', $width);

@@ -5,7 +5,7 @@
  *
  * Menu - The menu element represents a group of commands that a user can perform or activate. It can be used for toolbars, context menus, or listing form controls.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/menu
@@ -16,7 +16,9 @@ namespace Html\Element\Block;
 use Html\Element\BlockElement;
 use Html\Element\Inline\Button;
 use Html\Element\Void\Script;
+use Html\Mapping\Element;
 
+#[Element('menu')]
 class Menu extends BlockElement
 {
     /**

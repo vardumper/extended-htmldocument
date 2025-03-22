@@ -3,6 +3,7 @@
 namespace Html\Command;
 
 use Html\Delegator\HTMLDocumentDelegator;
+use Html\Interface\ComponentBuilderInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
 use RecursiveDirectoryIterator;
@@ -23,6 +24,12 @@ class WatchCommand extends Command
     private bool $isFirstRun = true;
 
     private ?array $data = null;
+
+    public function __construct(
+        private readonly ComponentBuilderInterface $componentBuilder
+    ) {
+        parent::__construct();
+    }
 
     /**
      * @param string $generator The generator to use
@@ -86,7 +93,6 @@ class WatchCommand extends Command
 
         $io->info(sprintf('Starting to watch: %s', $source));
 
-        // Let's tick off output once per second, so we can see activity.
         EventLoop::repeat(self::INTERVAL, function () use ($generator, $sourceFiles, $dest, $io): void {
             $this->processFiles($generator, $sourceFiles, $dest, $io);
         });
@@ -160,12 +166,7 @@ class WatchCommand extends Command
         foreach ($sourceFiles as $sourceFile) {
             $lastMod = \filemtime($sourceFile);
             $diff = time() - $lastMod;
-            $io->info(
-                sprintf('File: %s, Last Modified: %s, Current Time: %s, Diff: %s', $sourceFile, date(
-                    'Y-m-d H:i:s',
-                    $lastMod
-                ), date('Y-m-d H:i:s', time()), $diff)
-            );
+
             if ($this->isFirstRun || $diff <= self::INTERVAL) {
                 $io->info(sprintf('Processing file: %s', $sourceFile));
                 try {
@@ -178,6 +179,8 @@ class WatchCommand extends Command
 
                     $dom = HTMLDocumentDelegator::createEmpty();
                     $dom->setRenderer($templateGenerator);
+                    $this->componentBuilder->buildComponent($dom, $data);
+                    echo $dom;
                 } catch (\Symfony\Component\Yaml\Exception\ParseException $e) {
                     $io->error('Failed to parse component description file. ' . $e->getMessage());
                     exit;

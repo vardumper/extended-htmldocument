@@ -5,7 +5,7 @@
  *
  * Source - The source element allows authors to specify multiple media resources for media elements. It is an empty element. It is commonly used within the picture element.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source
@@ -23,7 +23,9 @@ use Html\Element\Block\Picture;
 use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
+use Html\Mapping\Element;
 
+#[Element('source')]
 class Source extends VoidElement
 {
     /**
@@ -89,7 +91,7 @@ class Source extends VoidElement
      */
     public ?string $type = null;
 
-    public function setMedia(string $media): self
+    public function setMedia(string $media): static
     {
         $this->media = $media;
         $this->htmlElement->setAttribute('media', $media);
@@ -101,7 +103,7 @@ class Source extends VoidElement
         return $this->media;
     }
 
-    public function setSizes(string $sizes): self
+    public function setSizes(string $sizes): static
     {
         $this->sizes = $sizes;
         $this->htmlElement->setAttribute('sizes', $sizes);
@@ -113,7 +115,7 @@ class Source extends VoidElement
         return $this->sizes;
     }
 
-    public function setSrc(string $src): self
+    public function setSrc(string $src): static
     {
         $this->src = $src;
         $this->htmlElement->setAttribute('src', $src);
@@ -125,7 +127,7 @@ class Source extends VoidElement
         return $this->src;
     }
 
-    public function setType(string $type): self
+    public function setType(string $type): static
     {
         $this->type = $type;
         $this->htmlElement->setAttribute('type', $type);

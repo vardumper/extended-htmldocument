@@ -5,7 +5,7 @@
  *
  * Input - The input element represents a typed data field, usually with a form control to allow user input.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
@@ -29,8 +29,10 @@ use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\TypeInputEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('input')]
 class Input extends InlineElement
 {
     /**
@@ -202,7 +204,7 @@ class Input extends InlineElement
      */
     protected ?TypeInputEnum $type = null;
 
-    public function setAccept(string $accept): self
+    public function setAccept(string $accept): static
     {
         $this->accept = $accept;
         $this->htmlElement->setAttribute('accept', $accept);
@@ -214,7 +216,7 @@ class Input extends InlineElement
         return $this->accept;
     }
 
-    public function setAlt(string $alt): self
+    public function setAlt(string $alt): static
     {
         $this->alt = $alt;
         $this->htmlElement->setAttribute('alt', $alt);
@@ -226,7 +228,7 @@ class Input extends InlineElement
         return $this->alt;
     }
 
-    public function setAutocomplete(string|AutocompleteEnum $autocomplete): self
+    public function setAutocomplete(string|AutocompleteEnum $autocomplete): static
     {
         if (is_string($autocomplete)) {
             $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new InvalidArgumentException(
@@ -244,7 +246,7 @@ class Input extends InlineElement
         return $this->autocomplete;
     }
 
-    public function setChecked(bool $checked): self
+    public function setChecked(bool $checked): static
     {
         $this->checked = $checked;
         $this->htmlElement->setAttribute('checked', $checked);
@@ -256,7 +258,7 @@ class Input extends InlineElement
         return $this->checked;
     }
 
-    public function setDirname(string $dirname): self
+    public function setDirname(string $dirname): static
     {
         $this->dirname = $dirname;
         $this->htmlElement->setAttribute('dirname', $dirname);
@@ -268,7 +270,7 @@ class Input extends InlineElement
         return $this->dirname;
     }
 
-    public function setDisabled(bool $disabled): self
+    public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
         $this->htmlElement->setAttribute('disabled', $disabled);
@@ -280,7 +282,7 @@ class Input extends InlineElement
         return $this->disabled;
     }
 
-    public function setHeight(string $height): self
+    public function setHeight(string $height): static
     {
         $this->height = $height;
         $this->htmlElement->setAttribute('height', $height);
@@ -292,7 +294,7 @@ class Input extends InlineElement
         return $this->height;
     }
 
-    public function setList(string $list): self
+    public function setList(string $list): static
     {
         $this->list = $list;
         $this->htmlElement->setAttribute('list', $list);
@@ -304,7 +306,7 @@ class Input extends InlineElement
         return $this->list;
     }
 
-    public function setMax(int $max): self
+    public function setMax(int $max): static
     {
         $this->max = $max;
         $this->htmlElement->setAttribute('max', $max);
@@ -316,7 +318,7 @@ class Input extends InlineElement
         return $this->max;
     }
 
-    public function setMaxlength(int $maxlength): self
+    public function setMaxlength(int $maxlength): static
     {
         $this->maxlength = $maxlength;
         $this->htmlElement->setAttribute('maxlength', $maxlength);
@@ -328,7 +330,7 @@ class Input extends InlineElement
         return $this->maxlength;
     }
 
-    public function setMin(string $min): self
+    public function setMin(string $min): static
     {
         $this->min = $min;
         $this->htmlElement->setAttribute('min', $min);
@@ -340,7 +342,7 @@ class Input extends InlineElement
         return $this->min;
     }
 
-    public function setMinlength(int $minlength): self
+    public function setMinlength(int $minlength): static
     {
         $this->minlength = $minlength;
         $this->htmlElement->setAttribute('minlength', $minlength);
@@ -352,7 +354,7 @@ class Input extends InlineElement
         return $this->minlength;
     }
 
-    public function setMultiple(bool $multiple): self
+    public function setMultiple(bool $multiple): static
     {
         $this->multiple = $multiple;
         $this->htmlElement->setAttribute('multiple', $multiple);
@@ -364,7 +366,7 @@ class Input extends InlineElement
         return $this->multiple;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
         $this->htmlElement->setAttribute('name', $name);
@@ -376,7 +378,7 @@ class Input extends InlineElement
         return $this->name;
     }
 
-    public function setPattern(string $pattern): self
+    public function setPattern(string $pattern): static
     {
         $this->pattern = $pattern;
         $this->htmlElement->setAttribute('pattern', $pattern);
@@ -388,7 +390,7 @@ class Input extends InlineElement
         return $this->pattern;
     }
 
-    public function setPlaceholder(string $placeholder): self
+    public function setPlaceholder(string $placeholder): static
     {
         $this->placeholder = $placeholder;
         $this->htmlElement->setAttribute('placeholder', $placeholder);
@@ -400,7 +402,7 @@ class Input extends InlineElement
         return $this->placeholder;
     }
 
-    public function setReadonly(bool $readonly): self
+    public function setReadonly(bool $readonly): static
     {
         $this->readonly = $readonly;
         $this->htmlElement->setAttribute('readonly', $readonly);
@@ -412,7 +414,7 @@ class Input extends InlineElement
         return $this->readonly;
     }
 
-    public function setRequired(bool $required): self
+    public function setRequired(bool $required): static
     {
         $this->required = $required;
         $this->htmlElement->setAttribute('required', $required);
@@ -424,7 +426,7 @@ class Input extends InlineElement
         return $this->required;
     }
 
-    public function setSize(int $size): self
+    public function setSize(int $size): static
     {
         $this->size = $size;
         $this->htmlElement->setAttribute('size', $size);
@@ -436,7 +438,7 @@ class Input extends InlineElement
         return $this->size;
     }
 
-    public function setSrc(string $src): self
+    public function setSrc(string $src): static
     {
         $this->src = $src;
         $this->htmlElement->setAttribute('src', $src);
@@ -448,7 +450,7 @@ class Input extends InlineElement
         return $this->src;
     }
 
-    public function setStep(string $step): self
+    public function setStep(string $step): static
     {
         $this->step = $step;
         $this->htmlElement->setAttribute('step', $step);
@@ -460,7 +462,7 @@ class Input extends InlineElement
         return $this->step;
     }
 
-    public function setType(string|TypeInputEnum $type): self
+    public function setType(string|TypeInputEnum $type): static
     {
         if (is_string($type)) {
             $type = TypeInputEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
@@ -476,7 +478,7 @@ class Input extends InlineElement
         return $this->type;
     }
 
-    public function setValue(string $value): self
+    public function setValue(string $value): static
     {
         $this->value = $value;
         $this->htmlElement->setAttribute('value', $value);
@@ -488,7 +490,7 @@ class Input extends InlineElement
         return $this->value;
     }
 
-    public function setWidth(string $width): self
+    public function setWidth(string $width): static
     {
         $this->width = $width;
         $this->htmlElement->setAttribute('width', $width);

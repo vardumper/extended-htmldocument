@@ -5,7 +5,7 @@
  *
  * Data - The data element represents its contents, along with a machine-readable form of those contents in the value attribute.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
@@ -25,7 +25,9 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
+use Html\Mapping\Element;
 
+#[Element('data')]
 class Data extends InlineElement
 {
     /**
@@ -72,7 +74,7 @@ class Data extends InlineElement
      */
     public ?string $value = null;
 
-    public function setValue(string $value): self
+    public function setValue(string $value): static
     {
         $this->value = $value;
         $this->htmlElement->setAttribute('value', $value);

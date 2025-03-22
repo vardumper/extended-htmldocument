@@ -5,7 +5,7 @@
  *
  * Title - The title element defines the title of the document, shown in a browser's title bar or a page's tab. It is only text, not meant to be displayed.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
@@ -14,7 +14,9 @@
 namespace Html\Element\Void;
 
 use Html\Element\VoidElement;
+use Html\Mapping\Element;
 
+#[Element('title')]
 class Title extends VoidElement
 {
     /**

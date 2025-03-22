@@ -5,7 +5,7 @@
  *
  * Area - The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area
@@ -29,8 +29,10 @@ use Html\Element\VoidElement;
 use Html\Enum\RelEnum;
 use Html\Enum\ShapeEnum;
 use Html\Enum\TargetEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('area')]
 class Area extends VoidElement
 {
     /**
@@ -123,7 +125,7 @@ class Area extends VoidElement
      */
     protected ?TargetEnum $target = null;
 
-    public function setAlt(string $alt): self
+    public function setAlt(string $alt): static
     {
         $this->alt = $alt;
         $this->htmlElement->setAttribute('alt', $alt);
@@ -135,7 +137,7 @@ class Area extends VoidElement
         return $this->alt;
     }
 
-    public function setCoords(string $coords): self
+    public function setCoords(string $coords): static
     {
         $this->coords = $coords;
         $this->htmlElement->setAttribute('coords', $coords);
@@ -147,7 +149,7 @@ class Area extends VoidElement
         return $this->coords;
     }
 
-    public function setDownload(string $download): self
+    public function setDownload(string $download): static
     {
         $this->download = $download;
         $this->htmlElement->setAttribute('download', $download);
@@ -159,7 +161,7 @@ class Area extends VoidElement
         return $this->download;
     }
 
-    public function setHref(string $href): self
+    public function setHref(string $href): static
     {
         $this->href = $href;
         $this->htmlElement->setAttribute('href', $href);
@@ -171,7 +173,7 @@ class Area extends VoidElement
         return $this->href;
     }
 
-    public function setHreflang(string $hreflang): self
+    public function setHreflang(string $hreflang): static
     {
         $this->hreflang = $hreflang;
         $this->htmlElement->setAttribute('hreflang', $hreflang);
@@ -183,7 +185,7 @@ class Area extends VoidElement
         return $this->hreflang;
     }
 
-    public function setRel(string|RelEnum $rel): self
+    public function setRel(string|RelEnum $rel): static
     {
         if (is_string($rel)) {
             $rel = RelEnum::tryFrom($rel) ?? throw new InvalidArgumentException('Invalid value for $rel.');
@@ -199,7 +201,7 @@ class Area extends VoidElement
         return $this->rel;
     }
 
-    public function setShape(string|ShapeEnum $shape): self
+    public function setShape(string|ShapeEnum $shape): static
     {
         if (is_string($shape)) {
             $shape = ShapeEnum::tryFrom($shape) ?? throw new InvalidArgumentException('Invalid value for $shape.');
@@ -215,7 +217,7 @@ class Area extends VoidElement
         return $this->shape;
     }
 
-    public function setTarget(string|TargetEnum $target): self
+    public function setTarget(string|TargetEnum $target): static
     {
         if (is_string($target)) {
             $target = TargetEnum::tryFrom($target) ?? throw new InvalidArgumentException('Invalid value for $target.');
@@ -231,7 +233,7 @@ class Area extends VoidElement
         return $this->target;
     }
 
-    public function setType(string $type): self
+    public function setType(string $type): static
     {
         $this->type = $type;
         $this->htmlElement->setAttribute('type', $type);

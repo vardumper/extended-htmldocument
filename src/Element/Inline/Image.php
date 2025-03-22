@@ -5,7 +5,7 @@
  *
  * Image - The img element represents an image.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
@@ -29,8 +29,10 @@ use Html\Element\InlineElement;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\DecodingEnum;
 use Html\Enum\ReferrerpolicyEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('img')]
 class Image extends InlineElement
 {
     /**
@@ -133,7 +135,7 @@ class Image extends InlineElement
      */
     protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
-    public function setAlt(string $alt): self
+    public function setAlt(string $alt): static
     {
         $this->alt = $alt;
         $this->htmlElement->setAttribute('alt', $alt);
@@ -145,7 +147,7 @@ class Image extends InlineElement
         return $this->alt;
     }
 
-    public function setCrossorigin(string|CrossoriginEnum $crossorigin): self
+    public function setCrossorigin(string|CrossoriginEnum $crossorigin): static
     {
         if (is_string($crossorigin)) {
             $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
@@ -163,7 +165,7 @@ class Image extends InlineElement
         return $this->crossorigin;
     }
 
-    public function setDecoding(string|DecodingEnum $decoding): self
+    public function setDecoding(string|DecodingEnum $decoding): static
     {
         if (is_string($decoding)) {
             $decoding = DecodingEnum::tryFrom($decoding) ?? throw new InvalidArgumentException(
@@ -181,7 +183,7 @@ class Image extends InlineElement
         return $this->decoding;
     }
 
-    public function setHeight(string $height): self
+    public function setHeight(string $height): static
     {
         $this->height = $height;
         $this->htmlElement->setAttribute('height', $height);
@@ -193,7 +195,7 @@ class Image extends InlineElement
         return $this->height;
     }
 
-    public function setIsmap(bool $ismap): self
+    public function setIsmap(bool $ismap): static
     {
         $this->ismap = $ismap;
         $this->htmlElement->setAttribute('ismap', $ismap);
@@ -205,7 +207,7 @@ class Image extends InlineElement
         return $this->ismap;
     }
 
-    public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): self
+    public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): static
     {
         if (is_string($referrerpolicy)) {
             $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new InvalidArgumentException(
@@ -223,7 +225,7 @@ class Image extends InlineElement
         return $this->referrerpolicy;
     }
 
-    public function setSizes(string $sizes): self
+    public function setSizes(string $sizes): static
     {
         $this->sizes = $sizes;
         $this->htmlElement->setAttribute('sizes', $sizes);
@@ -235,7 +237,7 @@ class Image extends InlineElement
         return $this->sizes;
     }
 
-    public function setSrc(string $src): self
+    public function setSrc(string $src): static
     {
         $this->src = $src;
         $this->htmlElement->setAttribute('src', $src);
@@ -247,7 +249,7 @@ class Image extends InlineElement
         return $this->src;
     }
 
-    public function setSrcset(string $srcset): self
+    public function setSrcset(string $srcset): static
     {
         $this->srcset = $srcset;
         $this->htmlElement->setAttribute('srcset', $srcset);
@@ -259,7 +261,7 @@ class Image extends InlineElement
         return $this->srcset;
     }
 
-    public function setUsemap(string $usemap): self
+    public function setUsemap(string $usemap): static
     {
         $this->usemap = $usemap;
         $this->htmlElement->setAttribute('usemap', $usemap);
@@ -271,7 +273,7 @@ class Image extends InlineElement
         return $this->usemap;
     }
 
-    public function setWidth(string $width): self
+    public function setWidth(string $width): static
     {
         $this->width = $width;
         $this->htmlElement->setAttribute('width', $width);

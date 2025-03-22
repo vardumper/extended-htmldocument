@@ -5,7 +5,7 @@
  *
  * Body - The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
@@ -53,7 +53,9 @@ use Html\Element\Void\Area;
 use Html\Element\Void\BreakElement;
 use Html\Element\Void\Script;
 use Html\Element\Void\WordBreakOpportunity;
+use Html\Mapping\Element;
 
+#[Element('body')]
 class Body extends BlockElement
 {
     /**
@@ -243,7 +245,7 @@ class Body extends BlockElement
      */
     public ?string $onunload = null;
 
-    public function setOnafterprint(string $onafterprint): self
+    public function setOnafterprint(string $onafterprint): static
     {
         $this->onafterprint = $onafterprint;
         $this->htmlElement->setAttribute('onafterprint', $onafterprint);
@@ -255,7 +257,7 @@ class Body extends BlockElement
         return $this->onafterprint;
     }
 
-    public function setOnbeforeprint(string $onbeforeprint): self
+    public function setOnbeforeprint(string $onbeforeprint): static
     {
         $this->onbeforeprint = $onbeforeprint;
         $this->htmlElement->setAttribute('onbeforeprint', $onbeforeprint);
@@ -267,7 +269,7 @@ class Body extends BlockElement
         return $this->onbeforeprint;
     }
 
-    public function setOnbeforeunload(string $onbeforeunload): self
+    public function setOnbeforeunload(string $onbeforeunload): static
     {
         $this->onbeforeunload = $onbeforeunload;
         $this->htmlElement->setAttribute('onbeforeunload', $onbeforeunload);
@@ -279,7 +281,7 @@ class Body extends BlockElement
         return $this->onbeforeunload;
     }
 
-    public function setOnhashchange(string $onhashchange): self
+    public function setOnhashchange(string $onhashchange): static
     {
         $this->onhashchange = $onhashchange;
         $this->htmlElement->setAttribute('onhashchange', $onhashchange);
@@ -291,7 +293,7 @@ class Body extends BlockElement
         return $this->onhashchange;
     }
 
-    public function setOnlanguagechange(string $onlanguagechange): self
+    public function setOnlanguagechange(string $onlanguagechange): static
     {
         $this->onlanguagechange = $onlanguagechange;
         $this->htmlElement->setAttribute('onlanguagechange', $onlanguagechange);
@@ -303,7 +305,7 @@ class Body extends BlockElement
         return $this->onlanguagechange;
     }
 
-    public function setOnmessage(string $onmessage): self
+    public function setOnmessage(string $onmessage): static
     {
         $this->onmessage = $onmessage;
         $this->htmlElement->setAttribute('onmessage', $onmessage);
@@ -315,7 +317,7 @@ class Body extends BlockElement
         return $this->onmessage;
     }
 
-    public function setOnmessageerror(string $onmessageerror): self
+    public function setOnmessageerror(string $onmessageerror): static
     {
         $this->onmessageerror = $onmessageerror;
         $this->htmlElement->setAttribute('onmessageerror', $onmessageerror);
@@ -327,7 +329,7 @@ class Body extends BlockElement
         return $this->onmessageerror;
     }
 
-    public function setOnoffline(string $onoffline): self
+    public function setOnoffline(string $onoffline): static
     {
         $this->onoffline = $onoffline;
         $this->htmlElement->setAttribute('onoffline', $onoffline);
@@ -339,7 +341,7 @@ class Body extends BlockElement
         return $this->onoffline;
     }
 
-    public function setOnonline(string $ononline): self
+    public function setOnonline(string $ononline): static
     {
         $this->ononline = $ononline;
         $this->htmlElement->setAttribute('ononline', $ononline);
@@ -351,7 +353,7 @@ class Body extends BlockElement
         return $this->ononline;
     }
 
-    public function setOnpagehide(string $onpagehide): self
+    public function setOnpagehide(string $onpagehide): static
     {
         $this->onpagehide = $onpagehide;
         $this->htmlElement->setAttribute('onpagehide', $onpagehide);
@@ -363,7 +365,7 @@ class Body extends BlockElement
         return $this->onpagehide;
     }
 
-    public function setOnpageshow(string $onpageshow): self
+    public function setOnpageshow(string $onpageshow): static
     {
         $this->onpageshow = $onpageshow;
         $this->htmlElement->setAttribute('onpageshow', $onpageshow);
@@ -375,7 +377,7 @@ class Body extends BlockElement
         return $this->onpageshow;
     }
 
-    public function setOnpopstate(string $onpopstate): self
+    public function setOnpopstate(string $onpopstate): static
     {
         $this->onpopstate = $onpopstate;
         $this->htmlElement->setAttribute('onpopstate', $onpopstate);
@@ -387,7 +389,7 @@ class Body extends BlockElement
         return $this->onpopstate;
     }
 
-    public function setOnrejectionhandled(string $onrejectionhandled): self
+    public function setOnrejectionhandled(string $onrejectionhandled): static
     {
         $this->onrejectionhandled = $onrejectionhandled;
         $this->htmlElement->setAttribute('onrejectionhandled', $onrejectionhandled);
@@ -399,7 +401,7 @@ class Body extends BlockElement
         return $this->onrejectionhandled;
     }
 
-    public function setOnstorage(string $onstorage): self
+    public function setOnstorage(string $onstorage): static
     {
         $this->onstorage = $onstorage;
         $this->htmlElement->setAttribute('onstorage', $onstorage);
@@ -411,7 +413,7 @@ class Body extends BlockElement
         return $this->onstorage;
     }
 
-    public function setOnunhandledrejection(string $onunhandledrejection): self
+    public function setOnunhandledrejection(string $onunhandledrejection): static
     {
         $this->onunhandledrejection = $onunhandledrejection;
         $this->htmlElement->setAttribute('onunhandledrejection', $onunhandledrejection);
@@ -423,7 +425,7 @@ class Body extends BlockElement
         return $this->onunhandledrejection;
     }
 
-    public function setOnunload(string $onunload): self
+    public function setOnunload(string $onunload): static
     {
         $this->onunload = $onunload;
         $this->htmlElement->setAttribute('onunload', $onunload);

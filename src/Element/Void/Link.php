@@ -5,7 +5,7 @@
  *
  * Link - The link element defines a link between a document and an external resource. It is used to link to external stylesheets.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
@@ -17,8 +17,10 @@ use Html\Element\VoidElement;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\RelEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('link')]
 class Link extends VoidElement
 {
     /**
@@ -96,7 +98,7 @@ class Link extends VoidElement
      */
     protected ?RelEnum $rel = null;
 
-    public function setCrossorigin(string|CrossoriginEnum $crossorigin): self
+    public function setCrossorigin(string|CrossoriginEnum $crossorigin): static
     {
         if (is_string($crossorigin)) {
             $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
@@ -114,7 +116,7 @@ class Link extends VoidElement
         return $this->crossorigin;
     }
 
-    public function setHref(string $href): self
+    public function setHref(string $href): static
     {
         $this->href = $href;
         $this->htmlElement->setAttribute('href', $href);
@@ -126,7 +128,7 @@ class Link extends VoidElement
         return $this->href;
     }
 
-    public function setHreflang(string $hreflang): self
+    public function setHreflang(string $hreflang): static
     {
         $this->hreflang = $hreflang;
         $this->htmlElement->setAttribute('hreflang', $hreflang);
@@ -138,7 +140,7 @@ class Link extends VoidElement
         return $this->hreflang;
     }
 
-    public function setIntegrity(string $integrity): self
+    public function setIntegrity(string $integrity): static
     {
         $this->integrity = $integrity;
         $this->htmlElement->setAttribute('integrity', $integrity);
@@ -150,7 +152,7 @@ class Link extends VoidElement
         return $this->integrity;
     }
 
-    public function setMedia(string $media): self
+    public function setMedia(string $media): static
     {
         $this->media = $media;
         $this->htmlElement->setAttribute('media', $media);
@@ -162,7 +164,7 @@ class Link extends VoidElement
         return $this->media;
     }
 
-    public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): self
+    public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): static
     {
         if (is_string($referrerpolicy)) {
             $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new InvalidArgumentException(
@@ -180,7 +182,7 @@ class Link extends VoidElement
         return $this->referrerpolicy;
     }
 
-    public function setRel(string|RelEnum $rel): self
+    public function setRel(string|RelEnum $rel): static
     {
         if (is_string($rel)) {
             $rel = RelEnum::tryFrom($rel) ?? throw new InvalidArgumentException('Invalid value for $rel.');
@@ -196,7 +198,7 @@ class Link extends VoidElement
         return $this->rel;
     }
 
-    public function setSizes(string $sizes): self
+    public function setSizes(string $sizes): static
     {
         $this->sizes = $sizes;
         $this->htmlElement->setAttribute('sizes', $sizes);
@@ -208,7 +210,7 @@ class Link extends VoidElement
         return $this->sizes;
     }
 
-    public function setType(string $type): self
+    public function setType(string $type): static
     {
         $this->type = $type;
         $this->htmlElement->setAttribute('type', $type);

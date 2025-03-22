@@ -5,7 +5,7 @@
  *
  * Style - The style element is used to embed CSS styles directly into an HTML document.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
@@ -15,8 +15,10 @@ namespace Html\Element\Void;
 
 use Html\Element\VoidElement;
 use Html\Enum\TypeStyleEnum;
+use Html\Mapping\Element;
 use InvalidArgumentException;
 
+#[Element('style')]
 class Style extends VoidElement
 {
     /**
@@ -72,7 +74,7 @@ class Style extends VoidElement
      */
     protected ?TypeStyleEnum $type = null;
 
-    public function setDisabled(bool $disabled): self
+    public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
         $this->htmlElement->setAttribute('disabled', $disabled);
@@ -84,7 +86,7 @@ class Style extends VoidElement
         return $this->disabled;
     }
 
-    public function setMedia(string $media): self
+    public function setMedia(string $media): static
     {
         $this->media = $media;
         $this->htmlElement->setAttribute('media', $media);
@@ -96,7 +98,7 @@ class Style extends VoidElement
         return $this->media;
     }
 
-    public function setNonce(string $nonce): self
+    public function setNonce(string $nonce): static
     {
         $this->nonce = $nonce;
         $this->htmlElement->setAttribute('nonce', $nonce);
@@ -108,7 +110,7 @@ class Style extends VoidElement
         return $this->nonce;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(string $title): static
     {
         $this->title = $title;
         $this->htmlElement->setAttribute('title', $title);
@@ -120,7 +122,7 @@ class Style extends VoidElement
         return $this->title;
     }
 
-    public function setType(string|TypeStyleEnum $type): self
+    public function setType(string|TypeStyleEnum $type): static
     {
         if (is_string($type)) {
             $type = TypeStyleEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');

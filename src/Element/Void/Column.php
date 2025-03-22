@@ -5,7 +5,7 @@
  *
  * Column - The col element represents a column in a table.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col
@@ -15,7 +15,9 @@ namespace Html\Element\Void;
 
 use Html\Element\Block\ColumnGroup;
 use Html\Element\VoidElement;
+use Html\Mapping\Element;
 
+#[Element('col')]
 class Column extends VoidElement
 {
     /**
@@ -60,7 +62,7 @@ class Column extends VoidElement
      */
     public ?string $width = null;
 
-    public function setSpan(int $span): self
+    public function setSpan(int $span): static
     {
         $this->span = $span;
         $this->htmlElement->setAttribute('span', $span);
@@ -72,7 +74,7 @@ class Column extends VoidElement
         return $this->span;
     }
 
-    public function setWidth(string $width): self
+    public function setWidth(string $width): static
     {
         $this->width = $width;
         $this->htmlElement->setAttribute('width', $width);

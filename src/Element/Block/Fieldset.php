@@ -5,7 +5,7 @@
  *
  * Fieldset - The fieldset element represents a set of form controls optionally grouped under a common name.
  *
- * @generated 2025-03-21 21:04:01
+ * @generated 2025-03-22 10:00:57
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset
@@ -22,7 +22,9 @@ use Html\Element\Inline\Output;
 use Html\Element\Inline\Progress;
 use Html\Element\Inline\Select;
 use Html\Element\Inline\Textarea;
+use Html\Mapping\Element;
 
+#[Element('fieldset')]
 class Fieldset extends BlockElement
 {
     /**
