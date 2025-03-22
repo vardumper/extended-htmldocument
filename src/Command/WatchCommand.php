@@ -6,11 +6,9 @@ use Html\Delegator\HTMLDocumentDelegator;
 use Html\Interface\ComponentBuilderInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
+use Html\Trait\ClassResolverTrait;
 use ReflectionClass;
 use Revolt\EventLoop;
-use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -19,6 +17,8 @@ use Symfony\Component\Yaml\Yaml;
 
 class WatchCommand extends Command
 {
+    use ClassResolverTrait;
+
     private const int INTERVAL = 2;
 
     private bool $isFirstRun = true;
@@ -106,58 +106,6 @@ class WatchCommand extends Command
     }
 
     /**
-     * Recursively scan a directory for PHP files and require them.
-     */
-    public function loadAllPhpFiles(string $directory): void
-    {
-        $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
-
-        foreach ($files as $file) {
-            if ($file->isFile() && $file->getExtension() === 'php') {
-                if (str_ends_with($file->getFilename(), '.tpl.php')) {
-                    continue;
-                }
-
-                require_once $file->getPathname();
-            }
-        }
-    }
-
-    /**
-     * Get all classes implementing a specific interface.
-     */
-    public function getClassesImplementingInterface(string $interface): array
-    {
-        // Ensure all classes are loaded before scanning
-        $projectRoot = $this->getProjectRoot();
-        $this->loadAllPhpFiles($projectRoot . '/src');
-
-        $classes = get_declared_classes();
-        $implementingClasses = [];
-
-        foreach ($classes as $class) {
-            if (in_array($interface, class_implements($class))) {
-                $implementingClasses[] = $class;
-            }
-        }
-
-        return $implementingClasses;
-    }
-
-    public function getProjectRoot(): string
-    {
-        // Locate the Composer autoloader
-        $composerAutoload = realpath(__DIR__ . '/../../vendor/autoload.php');
-
-        if ($composerAutoload === false) {
-            throw new RuntimeException('Composer autoload.php not found.');
-        }
-
-        // The root directory is two levels up from the autoloader
-        return dirname($composerAutoload, 2);
-    }
-
-    /**
      * on first iteration, all source files will be processed (since they will be older than our interval
      */
     private function processFiles(string $generator, array $sourceFiles, string $dest, SymfonyStyle $io): void
@@ -171,6 +119,7 @@ class WatchCommand extends Command
                 $io->info(sprintf('Processing file: %s', $sourceFile));
                 try {
                     $data = $yaml->parseFile($sourceFile);
+                    $componentHandle = array_key_first($data);
                     $templateGenerator = $this->getGenerator($generator);
                     if ($templateGenerator === null) {
                         $io->error(sprintf('Failed to find generator for %s.', $generator));
@@ -180,7 +129,15 @@ class WatchCommand extends Command
                     $dom = HTMLDocumentDelegator::createEmpty();
                     $dom->setRenderer($templateGenerator);
                     $this->componentBuilder->buildComponent($dom, $data);
-                    echo $dom;
+                    $detsinationPath = sprintf(
+                        '%s/%s',
+                        $dest,
+                        str_replace(['{component}', '{extension}'], [
+                            $componentHandle,
+                            $templateGenerator->getExtension(),
+                        ], $templateGenerator->getNamePattern())
+                    );
+                    file_put_contents($detsinationPath, (string) $dom);
                 } catch (\Symfony\Component\Yaml\Exception\ParseException $e) {
                     $io->error('Failed to parse component description file. ' . $e->getMessage());
                     exit;

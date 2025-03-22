@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1742637741">
-  <project timestamp="1742637741">
+<coverage generated="1742644655">
+  <project timestamp="1742644655">
     <package name="Html\Delegator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/DOMNodeDelegator.php">
         <class name="Html\Delegator\DOMNodeDelegator" namespace="Html\Delegator">
@@ -575,7 +575,7 @@
     <package name="Html\TemplateGenerator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/TemplateGenerator/HTMLGenerator.php">
         <class name="Html\TemplateGenerator\HTMLGenerator" namespace="Html\TemplateGenerator">
-          <metrics complexity="9" methods="7" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="10" elements="18" coveredelements="16"/>
+          <metrics complexity="9" methods="7" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="12" elements="20" coveredelements="18"/>
         </class>
         <line num="13" type="method" name="getExtension" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="15" type="stmt" count="1"/>
@@ -595,7 +595,9 @@
         <line num="47" type="stmt" count="3"/>
         <line num="50" type="method" name="renderDocument" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="52" type="stmt" count="1"/>
-        <metrics loc="55" ncloc="55" classes="1" methods="7" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="10" elements="18" coveredelements="16"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="1"/>
+        <metrics loc="57" ncloc="57" classes="1" methods="7" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="12" elements="20" coveredelements="18"/>
       </file>
     </package>
     <package name="Html\Trait">
@@ -784,6 +786,6 @@
         <metrics loc="53" ncloc="40" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="15" coveredelements="15"/>
       </file>
     </package>
-    <metrics files="37" loc="2231" ncloc="1663" classes="33" methods="132" coveredmethods="125" conditionals="0" coveredconditionals="0" statements="431" coveredstatements="424" elements="563" coveredelements="549"/>
+    <metrics files="37" loc="2233" ncloc="1665" classes="33" methods="132" coveredmethods="125" conditionals="0" coveredconditionals="0" statements="433" coveredstatements="426" elements="565" coveredelements="551"/>
   </project>
 </coverage>

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Html\Service;
 
+use Dom\HTMLDocument;
 use Html\Interface\ComponentBuilderInterface;
 use Html\Interface\HTMLDocumentDelegatorInterface;
-use Html\Interface\HTMLElementDelegatorInterface;
 use InvalidArgumentException;
 
 class ComponentBuilder implements ComponentBuilderInterface
@@ -27,55 +27,40 @@ class ComponentBuilder implements ComponentBuilderInterface
 
         $comment = $document->createComment(sprintf('Component %s start', $componentHandle));
         $document->appendChild($comment);
-
-        foreach ($data[$componentHandle]['structure'] as $element => $attributes) {
-            $this->addElement($document, $element, $attributes);
-        }
+        $this->buildDOM($document->htmlDocument, $data[$componentHandle]['structure']);
 
         $comment = $document->createComment(sprintf('Component %s end', $componentHandle));
         $document->appendChild($comment);
         return $document;
     }
 
-    /**
-     * @todo use shiny new methods and/or reflection
-     */
-    private function addElement(
-        HTMLDocumentDelegatorInterface $document,
-        string $element,
-        array $attributes,
-        ?HTMLElementDelegatorInterface $parent = null
-    ): void {
-        // Create the element
-        $node = $document->createElement($element);
-        var_dump(get_class($node), $parent ? get_class($parent) : 'null');
+    private function buildDOM(HTMLDocument $doc, array $nodeData, $parent = null)
+    {
+        foreach ($nodeData as $tag => $attributes) {
+            // Create element
+            $element = $doc->createElement($tag);
 
-        // Set attributes and text content
-        foreach ($attributes as $attribute => $value) {
-            if ($attribute === 'text') {
-                $node->textContent = $value; // Set text content
-            } elseif ($attribute === 'children') {
-                // Recursively add child elements
-                foreach ($value as $child) {
-                    $childElement = array_key_first($child);
-                    $childAttributes = $child[$childElement];
-                    $this->addElement($document, $childElement, $childAttributes, $node);
+            // Process attributes
+            foreach ($attributes as $key => $value) {
+                if ($key === 'text') {
+                    $element->textContent = $value;
+                } elseif ($key === 'children' && is_array($value)) {
+                    foreach ($value as $child) {
+                        $childElement = array_key_first($child);
+                        // $nodeData = $child[$childElement];
+                        $this->buildDOM($doc, $child, $element);
+                    }
+                } else {
+                    $element->setAttribute($key, $value);
                 }
-            } else {
-                $node->setAttribute($attribute, $value); // Set other attributes
             }
-        }
 
-        // Append the node to the parent or document
-        if ($parent !== null) {
-            if (method_exists($parent, 'appendChild')) {
-                $parent->appendChild($node);
+            // Append to parent or document
+            if ($parent === null) {
+                $doc->appendChild($element);
             } else {
-                $parent->htmlElement->appendChild($node);
-                // throw new \RuntimeException(sprintf('Parent element does not support appendChild: %s', get_class($parent)));
+                $parent->appendChild($element);
             }
-        } else {
-            $document->appendChild($node);
         }
     }
 }

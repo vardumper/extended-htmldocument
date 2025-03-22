@@ -6,9 +6,9 @@ teaser-component:
       class: teaser
       children:
         - h3:
-            text: 'Teaser Component'
+            text: Teaser Component
         - p:
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.'
+            text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.
         - img:
             src: /path/to/image.jpg
             alt: Image

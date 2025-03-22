@@ -49,6 +49,8 @@ class HTMLGenerator implements TemplateGeneratorInterface
 
     public function renderDocument(HTMLDocumentDelegatorInterface $document): string
     {
+        $document->htmlDocument->formatOutput = true;
+        $document->htmlDocument->preserveWhiteSpace = false;
         return (string) $document->htmlDocument->saveHTML($document->htmlDocument);
     }
 }
