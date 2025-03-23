@@ -10,6 +10,8 @@ use Html\Mapping\TemplateGenerator;
 #[TemplateGenerator('twig')]
 class TwigGenerator implements TemplateGeneratorInterface
 {
+    public const TEMPLATE = 'src/Resources/templates/twig.tpl.php';
+
     public function getExtension(): string
     {
         return 'twig';
@@ -26,6 +28,11 @@ class TwigGenerator implements TemplateGeneratorInterface
     }
 
     public function canRenderDocuments(): bool
+    {
+        return true;
+    }
+
+    public function isTemplated(): bool
     {
         return true;
     }

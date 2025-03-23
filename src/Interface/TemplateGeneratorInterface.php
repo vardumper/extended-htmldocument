@@ -12,6 +12,8 @@ interface TemplateGeneratorInterface
 
     public function canRenderDocuments(): bool;
 
+    public function isTemplated(): bool;
+
     public function render(HTMLElementDelegatorInterface|HTMLDocumentDelegatorInterface $elementOrDocument): ?string;
 
     public function renderElement(HTMLElementDelegatorInterface $element): string;

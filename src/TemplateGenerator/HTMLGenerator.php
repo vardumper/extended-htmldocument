@@ -30,6 +30,11 @@ class HTMLGenerator implements TemplateGeneratorInterface
         return true;
     }
 
+    public function isTemplated(): bool
+    {
+        return false;
+    }
+
     public function render($elementOrDocument): ?string
     {
         if ($elementOrDocument instanceof HTMLDocumentDelegatorInterface) {

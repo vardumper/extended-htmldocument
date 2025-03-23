@@ -115,7 +115,7 @@ class WatchCommand extends Command
             $lastMod = \filemtime($sourceFile);
             $diff = time() - $lastMod;
 
-            if ($this->isFirstRun || $diff <= self::INTERVAL) {
+            if ($this->isFirstRun || $diff >= self::INTERVAL) {
                 $io->info(sprintf('Processing file: %s', $sourceFile));
                 try {
                     $data = $yaml->parseFile($sourceFile);

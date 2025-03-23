@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1742648039">
-  <project timestamp="1742648039">
+<coverage generated="1742739557">
+  <project timestamp="1742739557">
     <package name="Html\Delegator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/DOMNodeDelegator.php">
         <class name="Html\Delegator\DOMNodeDelegator" namespace="Html\Delegator">
@@ -572,12 +572,12 @@
       <metrics loc="63" ncloc="63" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
     <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Interface/TemplateGeneratorInterface.php">
-      <metrics loc="21" ncloc="21" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      <metrics loc="23" ncloc="23" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
     <package name="Html\TemplateGenerator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/TemplateGenerator/HTMLGenerator.php">
         <class name="Html\TemplateGenerator\HTMLGenerator" namespace="Html\TemplateGenerator">
-          <metrics complexity="9" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="18" coveredelements="18"/>
+          <metrics complexity="10" methods="8" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="11" elements="20" coveredelements="18"/>
         </class>
         <line num="13" type="method" name="getExtension" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="15" type="stmt" count="1"/>
@@ -587,17 +587,19 @@
         <line num="25" type="stmt" count="1"/>
         <line num="28" type="method" name="canRenderDocuments" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="30" type="stmt" count="1"/>
-        <line num="33" type="method" name="render" visibility="public" complexity="3" crap="3" count="5"/>
-        <line num="35" type="stmt" count="5"/>
-        <line num="36" type="stmt" count="1"/>
-        <line num="38" type="stmt" count="4"/>
-        <line num="39" type="stmt" count="3"/>
-        <line num="42" type="stmt" count="1"/>
-        <line num="45" type="method" name="renderElement" visibility="public" complexity="1" crap="1" count="3"/>
-        <line num="47" type="stmt" count="3"/>
-        <line num="50" type="method" name="renderDocument" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="52" type="stmt" count="1"/>
-        <metrics loc="55" ncloc="55" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="18" coveredelements="18"/>
+        <line num="33" type="method" name="isTemplated" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="38" type="method" name="render" visibility="public" complexity="3" crap="3" count="5"/>
+        <line num="40" type="stmt" count="5"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="43" type="stmt" count="4"/>
+        <line num="44" type="stmt" count="3"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="50" type="method" name="renderElement" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="52" type="stmt" count="3"/>
+        <line num="55" type="method" name="renderDocument" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="57" type="stmt" count="1"/>
+        <metrics loc="60" ncloc="60" classes="1" methods="8" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="11" elements="20" coveredelements="18"/>
       </file>
     </package>
     <package name="Html\Trait">
@@ -786,6 +788,6 @@
         <metrics loc="53" ncloc="40" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="15" coveredelements="15"/>
       </file>
     </package>
-    <metrics files="37" loc="2234" ncloc="1666" classes="33" methods="132" coveredmethods="127" conditionals="0" coveredconditionals="0" statements="433" coveredstatements="428" elements="565" coveredelements="555"/>
+    <metrics files="37" loc="2241" ncloc="1673" classes="33" methods="133" coveredmethods="127" conditionals="0" coveredconditionals="0" statements="434" coveredstatements="428" elements="567" coveredelements="555"/>
   </project>
 </coverage>

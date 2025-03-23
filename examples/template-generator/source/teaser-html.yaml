@@ -5,8 +5,12 @@ teaser-example-one:
     div:
       class: teaser
       children:
-        - h3:
-            text: Teaser Component
+        - hrgroup:
+            children:
+              - h3:
+                  text: Teaser Component
+              - h4:
+                  text: Subline
         - p:
             text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula.
         - img:
