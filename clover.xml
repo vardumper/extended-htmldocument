@@ -2,7 +2,7 @@
 <coverage generated="1742739557">
   <project timestamp="1742739557">
     <package name="Html\Delegator">
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/DOMNodeDelegator.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Delegator/DOMNodeDelegator.php">
         <class name="Html\Delegator\DOMNodeDelegator" namespace="Html\Delegator">
           <metrics complexity="13" methods="5" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="33" elements="39" coveredelements="37"/>
         </class>
@@ -47,7 +47,7 @@
         <line num="78" type="stmt" count="1"/>
         <metrics loc="81" ncloc="77" classes="1" methods="5" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="33" elements="39" coveredelements="37"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/DOMNodeListDelegator.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Delegator/DOMNodeListDelegator.php">
         <class name="Html\Delegator\DOMNodeListDelegator" namespace="Html\Delegator">
           <metrics complexity="5" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="14" coveredelements="14"/>
         </class>
@@ -67,7 +67,7 @@
         <line num="93" type="stmt" count="3"/>
         <metrics loc="96" ncloc="39" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="14" coveredelements="14"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/HTMLDocumentDelegator.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Delegator/HTMLDocumentDelegator.php">
         <class name="Html\Delegator\HTMLDocumentDelegator" namespace="Html\Delegator">
           <metrics complexity="19" methods="11" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="41" coveredstatements="40" elements="52" coveredelements="50"/>
         </class>
@@ -125,7 +125,7 @@
         <line num="152" type="stmt" count="3"/>
         <metrics loc="155" ncloc="115" classes="1" methods="11" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="41" coveredstatements="40" elements="52" coveredelements="50"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/HTMLElementDelegator.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Delegator/HTMLElementDelegator.php">
         <class name="Html\Delegator\HTMLElementDelegator" namespace="Html\Delegator">
           <metrics complexity="45" methods="16" coveredmethods="14" conditionals="0" coveredconditionals="0" statements="93" coveredstatements="91" elements="109" coveredelements="105"/>
         </class>
@@ -242,7 +242,7 @@
       </file>
     </package>
     <package name="Html\Enum">
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/AlignEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/AlignEnum.php">
         <class name="Html\Enum\AlignEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -250,7 +250,7 @@
         <line num="26" type="stmt" count="1"/>
         <metrics loc="29" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/AutoCapitalizeEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/AutoCapitalizeEnum.php">
         <class name="Html\Enum\AutoCapitalizeEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -258,7 +258,7 @@
         <line num="22" type="stmt" count="1"/>
         <metrics loc="25" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/AutocompleteEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/AutocompleteEnum.php">
         <class name="Html\Enum\AutocompleteEnum" namespace="Html\Enum">
           <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
@@ -268,7 +268,7 @@
         <line num="29" type="stmt" count="1"/>
         <metrics loc="32" ncloc="20" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/ContentEditableEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/ContentEditableEnum.php">
         <class name="Html\Enum\ContentEditableEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -276,7 +276,7 @@
         <line num="21" type="stmt" count="2"/>
         <metrics loc="24" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/CrossoriginEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/CrossoriginEnum.php">
         <class name="Html\Enum\CrossoriginEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -284,7 +284,7 @@
         <line num="23" type="stmt" count="1"/>
         <metrics loc="26" ncloc="16" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/DecodingEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/DecodingEnum.php">
         <class name="Html\Enum\DecodingEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -292,7 +292,7 @@
         <line num="24" type="stmt" count="1"/>
         <metrics loc="27" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/DirectionEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/DirectionEnum.php">
         <class name="Html\Enum\DirectionEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -300,7 +300,7 @@
         <line num="21" type="stmt" count="1"/>
         <metrics loc="24" ncloc="15" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/EnctypeEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/EnctypeEnum.php">
         <class name="Html\Enum\EnctypeEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -308,7 +308,7 @@
         <line num="24" type="stmt" count="1"/>
         <metrics loc="27" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/HttpEquivEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/HttpEquivEnum.php">
         <class name="Html\Enum\HttpEquivEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -316,7 +316,7 @@
         <line num="25" type="stmt" count="1"/>
         <metrics loc="28" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/InputModeEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/InputModeEnum.php">
         <class name="Html\Enum\InputModeEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -324,7 +324,7 @@
         <line num="26" type="stmt" count="1"/>
         <metrics loc="29" ncloc="22" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/KindEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/KindEnum.php">
         <class name="Html\Enum\KindEnum" namespace="Html\Enum">
           <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
@@ -334,7 +334,7 @@
         <line num="32" type="stmt" count="1"/>
         <metrics loc="35" ncloc="23" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/MethodEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/MethodEnum.php">
         <class name="Html\Enum\MethodEnum" namespace="Html\Enum">
           <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
@@ -344,7 +344,7 @@
         <line num="29" type="stmt" count="1"/>
         <metrics loc="32" ncloc="20" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/PreloadEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/PreloadEnum.php">
         <class name="Html\Enum\PreloadEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -352,7 +352,7 @@
         <line num="24" type="stmt" count="1"/>
         <metrics loc="27" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/ReferrerpolicyEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/ReferrerpolicyEnum.php">
         <class name="Html\Enum\ReferrerpolicyEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -360,7 +360,7 @@
         <line num="29" type="stmt" count="1"/>
         <metrics loc="32" ncloc="22" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/RelEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/RelEnum.php">
         <class name="Html\Enum\RelEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -368,7 +368,7 @@
         <line num="37" type="stmt" count="1"/>
         <metrics loc="40" ncloc="30" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/ShapeEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/ShapeEnum.php">
         <class name="Html\Enum\ShapeEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -376,7 +376,7 @@
         <line num="25" type="stmt" count="1"/>
         <metrics loc="28" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/SpellCheckEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/SpellCheckEnum.php">
         <class name="Html\Enum\SpellCheckEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -384,7 +384,7 @@
         <line num="20" type="stmt" count="1"/>
         <metrics loc="23" ncloc="16" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TargetEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/TargetEnum.php">
         <class name="Html\Enum\TargetEnum" namespace="Html\Enum">
           <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
@@ -394,7 +394,7 @@
         <line num="31" type="stmt" count="1"/>
         <metrics loc="34" ncloc="22" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeButtonEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/TypeButtonEnum.php">
         <class name="Html\Enum\TypeButtonEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -402,7 +402,7 @@
         <line num="24" type="stmt" count="1"/>
         <metrics loc="27" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeInputEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/TypeInputEnum.php">
         <class name="Html\Enum\TypeInputEnum" namespace="Html\Enum">
           <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
@@ -412,7 +412,7 @@
         <line num="49" type="stmt" count="1"/>
         <metrics loc="52" ncloc="40" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeOlEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/TypeOlEnum.php">
         <class name="Html\Enum\TypeOlEnum" namespace="Html\Enum">
           <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
@@ -422,7 +422,7 @@
         <line num="32" type="stmt" count="1"/>
         <metrics loc="35" ncloc="23" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeScriptEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/TypeScriptEnum.php">
         <class name="Html\Enum\TypeScriptEnum" namespace="Html\Enum">
           <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
@@ -432,7 +432,7 @@
         <line num="29" type="stmt" count="1"/>
         <metrics loc="32" ncloc="20" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeStyleEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/TypeStyleEnum.php">
         <class name="Html\Enum\TypeStyleEnum" namespace="Html\Enum">
           <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
@@ -442,7 +442,7 @@
         <line num="28" type="stmt" count="1"/>
         <metrics loc="31" ncloc="19" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/ValignEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/ValignEnum.php">
         <class name="Html\Enum\ValignEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
@@ -450,7 +450,7 @@
         <line num="25" type="stmt" count="1"/>
         <metrics loc="28" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/WrapEnum.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Enum/WrapEnum.php">
         <class name="Html\Enum\WrapEnum" namespace="Html\Enum">
           <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
@@ -462,7 +462,7 @@
       </file>
     </package>
     <package name="Html\Helper">
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Helper/Helper.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Helper/Helper.php">
         <class name="Html\Helper\Helper" namespace="Html\Helper">
           <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="91" coveredstatements="91" elements="93" coveredelements="93"/>
         </class>
@@ -562,20 +562,20 @@
         <metrics loc="110" ncloc="110" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="91" coveredstatements="91" elements="93" coveredelements="93"/>
       </file>
     </package>
-    <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Interface/DOMNodeDelegatorInterface.php">
+    <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Interface/DOMNodeDelegatorInterface.php">
       <metrics loc="19" ncloc="19" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Interface/HTMLDocumentDelegatorInterface.php">
+    <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Interface/HTMLDocumentDelegatorInterface.php">
       <metrics loc="29" ncloc="29" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Interface/HTMLElementDelegatorInterface.php">
+    <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Interface/HTMLElementDelegatorInterface.php">
       <metrics loc="63" ncloc="63" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Interface/TemplateGeneratorInterface.php">
+    <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Interface/TemplateGeneratorInterface.php">
       <metrics loc="23" ncloc="23" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
     <package name="Html\TemplateGenerator">
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/TemplateGenerator/HTMLGenerator.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/TemplateGenerator/HTMLGenerator.php">
         <class name="Html\TemplateGenerator\HTMLGenerator" namespace="Html\TemplateGenerator">
           <metrics complexity="10" methods="8" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="11" elements="20" coveredelements="18"/>
         </class>
@@ -603,7 +603,7 @@
       </file>
     </package>
     <package name="Html\Trait">
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttributesTrait.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Trait/GlobalAttributesTrait.php">
         <class name="Html\Trait\GlobalAttributesTrait" namespace="Html\Trait">
           <metrics complexity="72" methods="48" coveredmethods="47" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="108" elements="157" coveredelements="155"/>
         </class>
@@ -766,7 +766,7 @@
         <line num="524" type="stmt" count="1"/>
         <metrics loc="527" ncloc="372" classes="1" methods="48" coveredmethods="47" conditionals="0" coveredconditionals="0" statements="109" coveredstatements="108" elements="157" coveredelements="155"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/NativePropertiesTrait.php">
+      <file name="/Users/erik.poehler/Sites/extended-htmldocument/src/Trait/NativePropertiesTrait.php">
         <class name="Html\Trait\NativePropertiesTrait" namespace="Html\Trait">
           <metrics complexity="6" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="9" elements="15" coveredelements="15"/>
         </class>
