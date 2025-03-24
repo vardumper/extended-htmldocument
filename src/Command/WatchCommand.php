@@ -47,6 +47,12 @@ class WatchCommand extends Command
     ): void {
         $io = new SymfonyStyle($input, $output);
 
+        if (! \str_contains($generator, ',')) {
+            $generators = [$generator];
+        } else {
+            $generators = explode(',', $generator);
+        }
+
         if ($source === $dest) {
             $io->error(sprintf('Source and destination directories cannot be the same (%s).', $dest));
             exit;
@@ -93,8 +99,8 @@ class WatchCommand extends Command
 
         $io->info(sprintf('Starting to watch: %s', $source));
 
-        EventLoop::repeat(self::INTERVAL, function () use ($generator, $sourceFiles, $dest, $io): void {
-            $this->processFiles($generator, $sourceFiles, $dest, $io);
+        EventLoop::repeat(self::INTERVAL, function () use ($generators, $sourceFiles, $dest, $io): void {
+            $this->processFiles($generators, $sourceFiles, $dest, $io);
         });
 
         EventLoop::onSignal(\SIGINT, function (): void {
@@ -108,7 +114,7 @@ class WatchCommand extends Command
     /**
      * on first iteration, all source files will be processed (since they will be older than our interval
      */
-    private function processFiles(string $generator, array $sourceFiles, string $dest, SymfonyStyle $io): void
+    private function processFiles(array $generators, array $sourceFiles, string $dest, SymfonyStyle $io): void
     {
         $yaml = new Yaml();
         foreach ($sourceFiles as $sourceFile) {
@@ -137,7 +143,10 @@ class WatchCommand extends Command
                             $templateGenerator->getExtension(),
                         ], $templateGenerator->getNamePattern())
                     );
-                    file_put_contents($detsinationPath, (string) $dom);
+                    file_put_contents(
+                        $detsinationPath,
+                        (string) $dom
+                    ); // this is where a generators __toString method is called
                 } catch (\Symfony\Component\Yaml\Exception\ParseException $e) {
                     $io->error('Failed to parse component description file. ' . $e->getMessage());
                     exit;
@@ -177,12 +186,12 @@ class WatchCommand extends Command
         // @todo
     }
 
-    private function createDirectory(string $dest, SymfonyStyle $io): void
+    private function createDirectory(string $dir, SymfonyStyle $io): void
     {
-        if (mkdir($dest, 0777, true)) {
-            $io->success(sprintf('Directory created successfully (%s).', $dest));
+        if (\mkdir($dir, 0777, true)) {
+            $io->success(sprintf('Directory created successfully (%s).', $dir));
         } else {
-            $io->error(sprintf('Failed to create directory (%s).', $dest));
+            $io->error(sprintf('Failed to create directory (%s).', $dir));
             exit;
         }
     }
