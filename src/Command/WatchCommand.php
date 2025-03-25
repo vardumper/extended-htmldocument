@@ -210,8 +210,9 @@ class WatchCommand extends Command
         $dom = new DOMDocument('1.0', 'utf-8');
         $dom->preserveWhiteSpace = false;
         $dom->formatOutput = true;
-        @$dom->loadHTML($html, \LIBXML_HTML_NOIMPLIED | \LIBXML_HTML_NODEFDTD);
-        return $dom->saveHTML();
+        $dom->validateOnParse = false;
+        @$dom->loadHTML($html);
+        return $dom->saveXML($dom->documentElement);
     }
 
     private function createDirectory(string $dir, SymfonyStyle $io): void

@@ -15,7 +15,7 @@ Current pre-release version is v0.1.4. The first public release will be v0.2.0
  - Investigate WCAG 2.2 and ARIA specs and how to implement them in the library (possibly with separate mixin specs one can recompile things with) `html5-with-aria.yaml`, `html5-with-wcag.yaml`, `html5-with-aria-and-wcag.yaml`
  - Investigate how WCAG can be enforced or HTML can be analyzed (eg. by throwing exceptions when invalid attributes are set), probably requires a long list or matrix of rules. Find inconsistencies,
 
-## Done <Badge type="warning" text="Pre-Release" /> <Badge type="tip" text="0.1.4" />
+## Done <Badge type="warning" text="Pre-Release" /> <Badge type="tip" text="0.1.11" />
 - Fix inconsistencies in the HTML5 specification
 - Add basic functionality and compatibility tests for Delegators
 - Mark deprecated attributes (e.g., clear in `<br>`, align in `<hr>`) as deprecated in PHP, too.
