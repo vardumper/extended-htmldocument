@@ -2,6 +2,7 @@
 
 namespace Html\Command;
 
+use DOMDocument;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Interface\ComponentBuilderInterface;
 use Html\Interface\TemplateGeneratorInterface;
@@ -24,6 +25,8 @@ class WatchCommand extends Command
     private bool $isFirstRun = true;
 
     private ?array $data = null;
+
+    private array $lastModifiedTimes = [];
 
     public function __construct(
         private readonly ComponentBuilderInterface $componentBuilder
@@ -50,19 +53,19 @@ class WatchCommand extends Command
         if (! \str_contains($generator, ',')) {
             $generators = [$generator];
         } else {
-            $generators = explode(',', $generator);
+            $generators = \explode(',', $generator);
         }
 
         if ($source === $dest) {
-            $io->error(sprintf('Source and destination directories cannot be the same (%s).', $dest));
+            $io->error(\sprintf('Source and destination directories cannot be the same (%s).', $dest));
             exit;
         }
 
         $sourceType = $this->classifyPathString($source);
         $sourceFiles = match ($sourceType) {
             'file' => [$source],
-            'directory' => glob($source . '/*'),
-            'glob' => glob($source),
+            'directory' => \glob($source . '/*'),
+            'glob' => \glob($source),
             'unknown' => [],
             default => [],
         };
@@ -116,44 +119,60 @@ class WatchCommand extends Command
      */
     private function processFiles(array $generators, array $sourceFiles, string $dest, SymfonyStyle $io): void
     {
-        $yaml = new Yaml();
         foreach ($sourceFiles as $sourceFile) {
-            $lastMod = \filemtime($sourceFile);
-            $diff = time() - $lastMod;
+            $lastMod = \filemtime($sourceFile) ?: 0;
 
-            if ($this->isFirstRun || $diff >= self::INTERVAL) {
+            if (
+                $this->isFirstRun ||
+                ! isset($this->lastModifiedTimes[$sourceFile]) ||
+                $lastMod > $this->lastModifiedTimes[$sourceFile]
+            ) {
                 $io->info(sprintf('Processing file: %s', $sourceFile));
-                try {
-                    $data = $yaml->parseFile($sourceFile);
-                    $componentHandle = array_key_first($data);
-                    $templateGenerator = $this->getGenerator($generator);
-                    if ($templateGenerator === null) {
-                        $io->error(sprintf('Failed to find generator for %s.', $generator));
-                        exit;
-                    }
-
-                    $dom = HTMLDocumentDelegator::createEmpty();
-                    $dom->setRenderer($templateGenerator);
-                    $this->componentBuilder->buildComponent($dom, $data);
-                    $detsinationPath = sprintf(
-                        '%s/%s',
-                        $dest,
-                        str_replace(['{component}', '{extension}'], [
-                            $componentHandle,
-                            $templateGenerator->getExtension(),
-                        ], $templateGenerator->getNamePattern())
-                    );
-                    file_put_contents(
-                        $detsinationPath,
-                        (string) $dom
-                    ); // this is where a generators __toString method is called
-                } catch (\Symfony\Component\Yaml\Exception\ParseException $e) {
-                    $io->error('Failed to parse component description file. ' . $e->getMessage());
-                    exit;
-                }
+                $this->processSingleFile($generators, $sourceFile, $dest, $io);
+                $this->lastModifiedTimes[$sourceFile] = $lastMod;
             }
         }
         $this->isFirstRun = false;
+    }
+
+    private function processSingleFile(
+        array $generators,
+        string $sourceFile,
+        string $dest,
+        SymfonyStyle $io
+    ): void {
+        $yaml = new Yaml();
+
+        try {
+            $data = $yaml->parseFile($sourceFile);
+            $componentHandle = array_key_first($data);
+            foreach ($generators as $generator) {
+                $templateGenerator = $this->getGenerator($generator);
+                if ($templateGenerator === null) {
+                    $io->error(sprintf('Failed to find generator for %s.', $generator));
+                    exit;
+                }
+
+                $dom = HTMLDocumentDelegator::createEmpty();
+                $dom->setRenderer($templateGenerator);
+                $this->componentBuilder->buildComponent($dom, $data);
+                $detsinationPath = sprintf(
+                    '%s/%s',
+                    $dest,
+                    str_replace(['{component}', '{extension}'], [
+                        $componentHandle,
+                        $templateGenerator->getExtension(),
+                    ], $templateGenerator->getNamePattern())
+                );
+                file_put_contents(
+                    $detsinationPath,
+                    $this->formatHtml((string) $dom)
+                ); // this is where a generators __toString method is called
+            }
+        } catch (\Symfony\Component\Yaml\Exception\ParseException $e) {
+            $io->error('Failed to parse component description file. ' . $e->getMessage());
+            exit;
+        }
     }
 
     private function getGenerator(string $generator): ?TemplateGeneratorInterface
@@ -184,6 +203,15 @@ class WatchCommand extends Command
     private function parseFile(string $generator, string $sourceFile, string $dest, SymfonyStyle $io): void
     {
         // @todo
+    }
+
+    private function formatHtml(string $html): string
+    {
+        $dom = new DOMDocument('1.0', 'utf-8');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        @$dom->loadHTML($html, \LIBXML_HTML_NOIMPLIED | \LIBXML_HTML_NODEFDTD);
+        return $dom->saveHTML();
     }
 
     private function createDirectory(string $dir, SymfonyStyle $io): void
