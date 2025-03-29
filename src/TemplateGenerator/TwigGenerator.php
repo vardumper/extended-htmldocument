@@ -6,6 +6,7 @@ use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
+use HtmlFormatter\HtmlFormatter;
 
 #[TemplateGenerator('twig')]
 class TwigGenerator implements TemplateGeneratorInterface
@@ -56,8 +57,10 @@ class TwigGenerator implements TemplateGeneratorInterface
 
     public function renderDocument(HTMLDocumentDelegatorInterface $document): string
     {
-        $document->htmlDocument->formatOutput = true;
-        $document->htmlDocument->preserveWhiteSpace = false;
-        return (string) $document->htmlDocument->saveHTML($document->htmlDocument);
+        $html5 = (string) $document->htmlDocument->saveHTML($document->htmlDocument);
+        if ($document->formatOutput) {
+            return (new HtmlFormatter($html5))->getText();
+        }
+        return $html5;
     }
 }

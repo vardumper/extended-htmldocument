@@ -34,6 +34,8 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     use GlobalAttributesTrait;
     use NativePropertiesTrait;
 
+    public bool $formatOutput = true;
+
     public static HtmlDocumentDelegator $ownerDocument;
 
     // meta information

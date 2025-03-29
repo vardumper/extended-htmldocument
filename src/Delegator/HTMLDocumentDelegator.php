@@ -53,6 +53,8 @@ use ReflectionClass;
  */
 class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
 {
+    public bool $formatOutput;
+
     public function __construct(
         public readonly HTMLDocument $htmlDocument,
         public ?TemplateGeneratorInterface $renderer = null
@@ -117,7 +119,7 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
 
     public function __toString(): string
     {
-        return $this->htmlDocument->saveHtml();
+        return $this->renderer->render($this);
     }
 
     public function setRenderer(TemplateGeneratorInterface $renderer): void

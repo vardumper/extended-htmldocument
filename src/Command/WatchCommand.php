@@ -154,9 +154,10 @@ class WatchCommand extends Command
                 }
 
                 $dom = HTMLDocumentDelegator::createEmpty();
+                $dom->formatOutput = true;
                 $dom->setRenderer($templateGenerator);
                 $this->componentBuilder->buildComponent($dom, $data);
-                var_dump($dom->saveHTML());
+                var_dump((string) $dom);
                 exit;
                 $detsinationPath = sprintf(
                     '%s/%s',
@@ -213,7 +214,7 @@ class WatchCommand extends Command
         $dom->preserveWhiteSpace = false;
         $dom->formatOutput = true;
         $dom->validateOnParse = false;
-        @$dom->loadHTML($html);
+        @$dom->loadXML($html);
         return $dom->saveXML($dom->documentElement);
     }
 
