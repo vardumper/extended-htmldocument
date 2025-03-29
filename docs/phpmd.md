@@ -10,12 +10,12 @@ layout: home
 | -------- | ------ | ------------ | ----- | ------- |
 | <span class="prio3">3</span> | src/Command/CreateClassCommand.php | 182 | [UnusedLocalVariable](https://phpmd.org/rules/unusedcode.html#unusedlocalvariable) | Avoid unused local variables such as `$isEnumType`. |
 | <span class="prio3">3</span> | src/Command/WatchCommand.php | 27 | [UnusedPrivateField](https://phpmd.org/rules/unusedcode.html#unusedprivatefield) | Avoid unused private fields such as `$data`. |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 203 | [UnusedPrivateMethod](https://phpmd.org/rules/unusedcode.html#unusedprivatemethod) | Avoid unused private methods such as `parseFile`. |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 203 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$generator`. |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 203 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$sourceFile`. |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 203 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$dest`. |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 203 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$io`. |
-| <span class="prio3">3</span> | src/Service/ComponentBuilder.php | 49 | [UnusedLocalVariable](https://phpmd.org/rules/unusedcode.html#unusedlocalvariable) | Avoid unused local variables such as `$childElement`. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 205 | [UnusedPrivateMethod](https://phpmd.org/rules/unusedcode.html#unusedprivatemethod) | Avoid unused private methods such as `parseFile`. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 205 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$generator`. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 205 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$sourceFile`. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 205 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$dest`. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 205 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$io`. |
+| <span class="prio3">3</span> | src/Service/ComponentBuilder.php | 50 | [UnusedLocalVariable](https://phpmd.org/rules/unusedcode.html#unusedlocalvariable) | Avoid unused local variables such as `$childElement`. |
 
 Issues detected: 8
 ## Code Size
@@ -26,17 +26,20 @@ Issues detected: 8
 | <span class="prio3">3</span> | src/Command/CreateEnumCommand.php | 22 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method __invoke() has a Cyclomatic Complexity of 10. The configured cyclomatic complexity threshold is 10. |
 | <span class="prio3">3</span> | src/Command/WatchCommand.php | 43 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method __invoke() has a Cyclomatic Complexity of 14. The configured cyclomatic complexity threshold is 10. |
 | <span class="prio3">3</span> | src/Command/WatchCommand.php | 43 | [NPathComplexity](https://phpmd.org/rules/codesize.html#npathcomplexity) | The method __invoke() has an NPath complexity of 768. The configured NPath complexity threshold is 200. |
-| <span class="prio3">3</span> | src/Delegator/HTMLElementDelegator.php | 143 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method setAttribute() has a Cyclomatic Complexity of 14. The configured cyclomatic complexity threshold is 10. |
-| <span class="prio3">3</span> | src/Delegator/HTMLElementDelegator.php | 143 | [NPathComplexity](https://phpmd.org/rules/codesize.html#npathcomplexity) | The method setAttribute() has an NPath complexity of 324. The configured NPath complexity threshold is 200. |
+| <span class="prio3">3</span> | src/Delegator/HTMLElementDelegator.php | 32 | [TooManyPublicMethods](https://phpmd.org/rules/codesize.html#toomanypublicmethods) | The class HTMLElementDelegator has 11 public methods. Consider refactoring HTMLElementDelegator to keep number of public methods under 10. |
+| <span class="prio3">3</span> | src/Delegator/HTMLElementDelegator.php | 32 | [ExcessiveClassComplexity](https://phpmd.org/rules/codesize.html#excessiveclasscomplexity) | The class HTMLElementDelegator has an overall complexity of 52 which is very high. The configured complexity threshold is 50. |
+| <span class="prio3">3</span> | src/Delegator/HTMLElementDelegator.php | 178 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method setAttribute() has a Cyclomatic Complexity of 14. The configured cyclomatic complexity threshold is 10. |
+| <span class="prio3">3</span> | src/Delegator/HTMLElementDelegator.php | 178 | [NPathComplexity](https://phpmd.org/rules/codesize.html#npathcomplexity) | The method setAttribute() has an NPath complexity of 324. The configured NPath complexity threshold is 200. |
 | <span class="prio3">3</span> | src/Element/Block/Body.php | 59 | [ExcessivePublicCount](https://phpmd.org/rules/codesize.html#excessivepubliccount) | The class Body has 52 public methods and attributes. Consider reducing the number of public items to less than 45. |
 | <span class="prio3">3</span> | src/Element/Block/Body.php | 59 | [TooManyFields](https://phpmd.org/rules/codesize.html#toomanyfields) | The class Body has 20 fields. Consider redesigning Body to keep the number of fields under 15. |
 | <span class="prio3">3</span> | src/Element/Inline/Input.php | 36 | [ExcessivePublicCount](https://phpmd.org/rules/codesize.html#excessivepubliccount) | The class Input has 74 public methods and attributes. Consider reducing the number of public items to less than 45. |
 | <span class="prio3">3</span> | src/Element/Inline/Input.php | 36 | [TooManyFields](https://phpmd.org/rules/codesize.html#toomanyfields) | The class Input has 28 fields. Consider redesigning Input to keep the number of fields under 15. |
 | <span class="prio3">3</span> | src/Element/Inline/Input.php | 36 | [ExcessiveClassComplexity](https://phpmd.org/rules/codesize.html#excessiveclasscomplexity) | The class Input has an overall complexity of 50 which is very high. The configured complexity threshold is 50. |
 | <span class="prio3">3</span> | src/Element/Inline/Textarea.php | 36 | [TooManyFields](https://phpmd.org/rules/codesize.html#toomanyfields) | The class Textarea has 16 fields. Consider redesigning Textarea to keep the number of fields under 15. |
+| <span class="prio3">3</span> | src/Trait/ClassResolverTrait.php | 45 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method getElementByQualifiedName() has a Cyclomatic Complexity of 12. The configured cyclomatic complexity threshold is 10. |
 | <span class="prio3">3</span> | src/Trait/GlobalAttributesTrait.php | 19 | [ExcessivePublicCount](https://phpmd.org/rules/codesize.html#excessivepubliccount) | The trait GlobalAttributesTrait has 48 public methods and attributes. Consider reducing the number of public items to less than 45. |
 
-Issues detected: 13
+Issues detected: 16
 ## Clean Code
 
 | Priority | File   | Line         |  Rule | Message |
@@ -53,16 +56,16 @@ Issues detected: 13
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 109 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Revolt\EventLoop` in method `__invoke`. |
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 114 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Revolt\EventLoop` in method `__invoke`. |
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 156 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Delegator\HTMLDocumentDelegator` in method `processSingleFile`. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 208 | [ErrorControlOperator](http://phpmd.org/rules/cleancode.html#errorcontroloperator) | Remove error control operator `@` on line 214. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 222 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method createDirectory uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 210 | [ErrorControlOperator](http://phpmd.org/rules/cleancode.html#errorcontroloperator) | Remove error control operator `@` on line 216. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 224 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method createDirectory uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
 | <span class="prio1">1</span> | src/Delegator/HTMLDocumentDelegator.php | 130 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\DOM\HTMLDocument` in method `createEmpty`. |
 | <span class="prio1">1</span> | src/Delegator/HTMLDocumentDelegator.php | 135 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\DOM\HTMLDocument` in method `createFromString`. |
 | <span class="prio1">1</span> | src/Delegator/HTMLDocumentDelegator.php | 140 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\DOM\HTMLDocument` in method `createFromFile`. |
 | <span class="prio1">1</span> | src/Delegator/HTMLElementDelegator.php | 98 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Helper\Helper` in method `__set`. |
 | <span class="prio1">1</span> | src/Delegator/HTMLElementDelegator.php | 114 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method __set uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
 | <span class="prio1">1</span> | src/Delegator/HTMLElementDelegator.php | 126 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Helper\Helper` in method `__set`. |
-| <span class="prio1">1</span> | src/Delegator/HTMLElementDelegator.php | 159 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method setAttribute uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
-| <span class="prio1">1</span> | src/Delegator/HTMLElementDelegator.php | 168 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method setAttribute uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
+| <span class="prio1">1</span> | src/Delegator/HTMLElementDelegator.php | 194 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method setAttribute uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
+| <span class="prio1">1</span> | src/Delegator/HTMLElementDelegator.php | 203 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method setAttribute uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
 | <span class="prio1">1</span> | src/Element/Block/Audio.php | 125 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\CrossoriginEnum` in method `setCrossorigin`. |
 | <span class="prio1">1</span> | src/Element/Block/Audio.php | 167 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\PreloadEnum` in method `setPreload`. |
 | <span class="prio1">1</span> | src/Element/Block/Form.php | 169 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\AutocompleteEnum` in method `setAutocomplete`. |
@@ -100,8 +103,8 @@ Issues detected: 13
 | <span class="prio1">1</span> | src/Element/Void/Script.php | 211 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\TypeScriptEnum` in method `setType`. |
 | <span class="prio1">1</span> | src/Element/Void/Style.php | 128 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\TypeStyleEnum` in method `setType`. |
 | <span class="prio1">1</span> | src/Element/Void/Track.php | 114 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\KindEnum` in method `setKind`. |
-| <span class="prio1">1</span> | src/Service/ComponentBuilder.php | 53 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method buildDOM uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
-| <span class="prio1">1</span> | src/Service/ComponentBuilder.php | 61 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method buildDOM uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
+| <span class="prio1">1</span> | src/Service/ComponentBuilder.php | 54 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method buildDOM uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
+| <span class="prio1">1</span> | src/Service/ComponentBuilder.php | 62 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method buildDOM uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
 | <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 189 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\AutoCapitalizeEnum` in method `setAutoCapitalize`. |
 | <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 209 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\ContentEditableEnum` in method `setContentEditable`. |
 | <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 216 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\ContentEditableEnum` in method `setContentEditable`. |
@@ -127,9 +130,10 @@ Issues detected: 75
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 61 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method __invoke() contains an exit expression. |
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 111 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method __invoke() contains an exit expression. |
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 153 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method processSingleFile() contains an exit expression. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 174 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method processSingleFile() contains an exit expression. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 224 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method createDirectory() contains an exit expression. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 160 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method processSingleFile() contains an exit expression. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 176 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method processSingleFile() contains an exit expression. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 226 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method createDirectory() contains an exit expression. |
 
-Issues detected: 7
+Issues detected: 8
 
-Tue 25 Mar 2025 10:08:38 AM CET
+Sat Mar 29 01:04:54 PM CET 2025

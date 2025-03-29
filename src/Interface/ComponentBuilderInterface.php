@@ -6,8 +6,5 @@ namespace Html\Interface;
 
 interface ComponentBuilderInterface
 {
-    public function buildComponent(
-        HTMLDocumentDelegatorInterface $document,
-        array $data
-    ): HTMLDocumentDelegatorInterface;
+    public function buildComponent(HTMLDocumentDelegatorInterface $document, array $data): void;
 }

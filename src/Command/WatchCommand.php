@@ -156,6 +156,8 @@ class WatchCommand extends Command
                 $dom = HTMLDocumentDelegator::createEmpty();
                 $dom->setRenderer($templateGenerator);
                 $this->componentBuilder->buildComponent($dom, $data);
+                var_dump($dom->saveHTML());
+                exit;
                 $detsinationPath = sprintf(
                     '%s/%s',
                     $dest,

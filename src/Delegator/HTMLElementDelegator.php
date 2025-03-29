@@ -134,6 +134,41 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         return $this->renderer->render($this);
     }
 
+    public function appendChild(HTMLElementDelegatorInterface $child): static
+    {
+        if ($child->getOwnerDocument() !== $this->getOwnerDocument()) {
+            throw new InvalidArgumentException(
+                'The child element must belong to the same document as the parent element.'
+            );
+        }
+        $this->htmlElement->appendChild($child->htmlElement);
+        return $this;
+    }
+
+    public function removeChild(HTMLElementDelegatorInterface $child): static
+    {
+        if ($child->getOwnerDocument() !== $this->getOwnerDocument()) {
+            throw new InvalidArgumentException(
+                'The child element must belong to the same document as the parent element.'
+            );
+        }
+        $this->htmlElement->removeChild($child->htmlElement);
+        return $this;
+    }
+
+    public function replaceChild(
+        HTMLElementDelegatorInterface $node,
+        HTMLElementDelegatorInterface $child
+    ): HTMLElementDelegatorInterface {
+        if ($node->getOwnerDocument() !== $this->getOwnerDocument()) {
+            throw new InvalidArgumentException(
+                'The child element must belong to the same document as the parent element.'
+            );
+        }
+        $this->htmlElement->replaceChild($node->htmlElement, $child->htmlElement);
+        return $node;
+    }
+
     public function setRenderer(TemplateGeneratorInterface $renderer): void
     {
         $this->renderer = $renderer;
@@ -260,5 +295,10 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     public static function parentOf(): array
     {
         return static::$parentOf;
+    }
+
+    public static function getOwnerDocument(): HTMLDocumentDelegator
+    {
+        return static::$ownerDocument;
     }
 }

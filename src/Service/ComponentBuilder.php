@@ -4,17 +4,20 @@ declare(strict_types=1);
 
 namespace Html\Service;
 
-use Dom\HTMLDocument;
 use Html\Interface\ComponentBuilderInterface;
 use Html\Interface\HTMLDocumentDelegatorInterface;
+use Html\Trait\ClassResolverTrait;
 use InvalidArgumentException;
 
+/**
+ * ComponentBuilder is responsible for transforming a given YAML/array description of a component into a DOM.
+ */
 class ComponentBuilder implements ComponentBuilderInterface
 {
-    public function buildComponent(
-        HTMLDocumentDelegatorInterface $document,
-        array $data
-    ): HTMLDocumentDelegatorInterface {
+    use ClassResolverTrait;
+
+    public function buildComponent(HTMLDocumentDelegatorInterface $document, array $data): void
+    {
         if (count($data) > 1) {
             throw new InvalidArgumentException('Only one component per file is allowed.');
         }
@@ -25,20 +28,18 @@ class ComponentBuilder implements ComponentBuilderInterface
             throw new InvalidArgumentException('Component structure is required');
         }
 
-        $comment = $document->createComment(sprintf('Component %s start', $componentHandle));
-        $document->appendChild($comment);
-        $this->buildDOM($document->htmlDocument, $data[$componentHandle]['structure']);
-
-        $comment = $document->createComment(sprintf('Component %s end', $componentHandle));
-        $document->appendChild($comment);
-        return $document;
+        $this->buildDOM($document, $data[$componentHandle]['structure']);
+        // return $document;
     }
 
-    private function buildDOM(HTMLDocument $doc, array $nodeData, $parent = null)
+    private function buildDOM(HTMLDocumentDelegatorInterface $doc, array $nodeData, $parent = null)
     {
         foreach ($nodeData as $tag => $attributes) {
-            // Create element
-            $element = $doc->createElement($tag);
+            $className = $this->getElementByQualifiedName($tag);
+            if ($className === null) {
+                throw new InvalidArgumentException("Element class for tag '{$tag}' not found.");
+            }
+            $element = $className::create($doc); // @todo add constructor to elements
 
             // Process attributes
             foreach ($attributes as $key => $value) {
@@ -47,7 +48,7 @@ class ComponentBuilder implements ComponentBuilderInterface
                 } elseif ($key === 'children' && is_array($value)) {
                     foreach ($value as $child) {
                         $childElement = array_key_first($child);
-                        // $nodeData = $child[$childElement];
+                        // recursion
                         $this->buildDOM($doc, $child, $element);
                     }
                 } else {
