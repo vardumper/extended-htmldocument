@@ -157,8 +157,6 @@ class WatchCommand extends Command
                 $dom->formatOutput = true;
                 $dom->setRenderer($templateGenerator);
                 $this->componentBuilder->buildComponent($dom, $data);
-                var_dump((string) $dom);
-                exit;
                 $detsinationPath = sprintf(
                     '%s/%s',
                     $dest,
@@ -169,8 +167,25 @@ class WatchCommand extends Command
                 );
                 file_put_contents(
                     $detsinationPath,
-                    $this->formatHtml((string) $dom)
+                    (string) $dom
                 ); // this is where a generators __toString method is called
+                if ($dom->formatOutput) {
+                    exec(
+                        sprintf('yarn exec prettier %s --write 2>&1 &', $detsinationPath),
+                        $return,
+                        $code
+                    ); // formats the generated files
+                    if ($code != 0) {
+                        $io->error(
+                            sprintf('Dang! Something went wrong during formatting of output files: %s (%s)', join(
+                                '<br />',
+                                $return
+                            ), $code)
+                        );
+                    } else {
+                        $io->success('All components have been created.');
+                    }
+                }
             }
         } catch (\Symfony\Component\Yaml\Exception\ParseException $e) {
             $io->error('Failed to parse component description file. ' . $e->getMessage());
