@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:1b4dac56-3469-4452-a0c9-ec4854597640",
+  "serialNumber": "urn:uuid:5efa00d7-048a-4f3a-9b66-d4cc29c184d4",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-03-29T21:28:13+00:00",
+    "timestamp": "2025-03-31T07:10:16+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "ab071f16-95be-4883-8230-64bea6065328",
+      "bom-ref": "d00d10d2-bc57-49d2-a893-e4bbdf25dd62",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,22 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "509cd0a1-8075-4774-81c3-3814c5a20125",
-      "type": "application",
-      "name": "yarn.lock",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:Class",
-          "value": "lang-pkgs"
-        },
-        {
-          "name": "aquasecurity:trivy:Type",
-          "value": "yarn"
-        }
-      ]
-    },
-    {
-      "bom-ref": "8ceec85a-298b-4607-9a16-6e200e4fac4e",
+      "bom-ref": "3d6f4bc9-be7e-400b-83d9-ece8ee4f3292",
       "type": "application",
       "name": "composer.lock",
       "properties": [
@@ -56,6 +41,21 @@
         {
           "name": "aquasecurity:trivy:Type",
           "value": "composer"
+        }
+      ]
+    },
+    {
+      "bom-ref": "76718b3f-deae-467e-baab-6d7ef8db60d6",
+      "type": "application",
+      "name": "yarn.lock",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:Class",
+          "value": "lang-pkgs"
+        },
+        {
+          "name": "aquasecurity:trivy:Type",
+          "value": "yarn"
         }
       ]
     },
@@ -714,6 +714,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:npm/%40ttskch/prettier-plugin-tailwindcss-anywhere@0.1.0",
+      "type": "library",
+      "group": "@ttskch",
+      "name": "prettier-plugin-tailwindcss-anywhere",
+      "version": "0.1.0",
+      "purl": "pkg:npm/%40ttskch/prettier-plugin-tailwindcss-anywhere@0.1.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "@ttskch/prettier-plugin-tailwindcss-anywhere@0.1.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:npm/%40types/estree@1.0.6",
       "type": "library",
       "group": "@types",
@@ -1182,6 +1200,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
+      "type": "library",
+      "group": "@zackad",
+      "name": "prettier-plugin-twig-melody",
+      "version": "0.6.0",
+      "purl": "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "@zackad/prettier-plugin-twig-melody@0.6.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:npm/algoliasearch@5.20.4",
       "type": "library",
       "name": "algoliasearch",
@@ -1191,6 +1227,159 @@
         {
           "name": "aquasecurity:trivy:PkgID",
           "value": "algoliasearch@5.20.4"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/ansi-regex@2.1.1",
+      "type": "library",
+      "name": "ansi-regex",
+      "version": "2.1.1",
+      "purl": "pkg:npm/ansi-regex@2.1.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "ansi-regex@2.1.1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/ansi-styles@2.2.1",
+      "type": "library",
+      "name": "ansi-styles",
+      "version": "2.2.1",
+      "purl": "pkg:npm/ansi-styles@2.2.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "ansi-styles@2.2.1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/babel-code-frame@6.26.0",
+      "type": "library",
+      "name": "babel-code-frame",
+      "version": "6.26.0",
+      "purl": "pkg:npm/babel-code-frame@6.26.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "babel-code-frame@6.26.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/babel-messages@6.23.0",
+      "type": "library",
+      "name": "babel-messages",
+      "version": "6.23.0",
+      "purl": "pkg:npm/babel-messages@6.23.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "babel-messages@6.23.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/babel-runtime@6.26.0",
+      "type": "library",
+      "name": "babel-runtime",
+      "version": "6.26.0",
+      "purl": "pkg:npm/babel-runtime@6.26.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "babel-runtime@6.26.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/babel-template@6.26.0",
+      "type": "library",
+      "name": "babel-template",
+      "version": "6.26.0",
+      "purl": "pkg:npm/babel-template@6.26.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "babel-template@6.26.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/babel-traverse@6.26.0",
+      "type": "library",
+      "name": "babel-traverse",
+      "version": "6.26.0",
+      "purl": "pkg:npm/babel-traverse@6.26.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "babel-traverse@6.26.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/babel-types@6.26.0",
+      "type": "library",
+      "name": "babel-types",
+      "version": "6.26.0",
+      "purl": "pkg:npm/babel-types@6.26.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "babel-types@6.26.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/babylon@6.18.0",
+      "type": "library",
+      "name": "babylon",
+      "version": "6.18.0",
+      "purl": "pkg:npm/babylon@6.18.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "babylon@6.18.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1225,6 +1414,23 @@
         {
           "name": "aquasecurity:trivy:PkgID",
           "value": "ccount@2.0.1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/chalk@1.1.3",
+      "type": "library",
+      "name": "chalk",
+      "version": "1.1.3",
+      "purl": "pkg:npm/chalk@1.1.3",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "chalk@1.1.3"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1301,6 +1507,23 @@
       ]
     },
     {
+      "bom-ref": "pkg:npm/core-js@2.6.12",
+      "type": "library",
+      "name": "core-js",
+      "version": "2.6.12",
+      "purl": "pkg:npm/core-js@2.6.12",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "core-js@2.6.12"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:npm/csstype@3.1.3",
       "type": "library",
       "name": "csstype",
@@ -1310,6 +1533,23 @@
         {
           "name": "aquasecurity:trivy:PkgID",
           "value": "csstype@3.1.3"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/debug@2.6.9",
+      "type": "library",
+      "name": "debug",
+      "version": "2.6.9",
+      "purl": "pkg:npm/debug@2.6.9",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "debug@2.6.9"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1403,6 +1643,23 @@
       ]
     },
     {
+      "bom-ref": "pkg:npm/escape-string-regexp@1.0.5",
+      "type": "library",
+      "name": "escape-string-regexp",
+      "version": "1.0.5",
+      "purl": "pkg:npm/escape-string-regexp@1.0.5",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "escape-string-regexp@1.0.5"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:npm/estree-walker@2.0.2",
       "type": "library",
       "name": "estree-walker",
@@ -1420,6 +1677,23 @@
       ]
     },
     {
+      "bom-ref": "pkg:npm/esutils@2.0.3",
+      "type": "library",
+      "name": "esutils",
+      "version": "2.0.3",
+      "purl": "pkg:npm/esutils@2.0.3",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "esutils@2.0.3"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:npm/focus-trap@7.6.4",
       "type": "library",
       "name": "focus-trap",
@@ -1429,6 +1703,74 @@
         {
           "name": "aquasecurity:trivy:PkgID",
           "value": "focus-trap@7.6.4"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/function-bind@1.1.2",
+      "type": "library",
+      "name": "function-bind",
+      "version": "1.1.2",
+      "purl": "pkg:npm/function-bind@1.1.2",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "function-bind@1.1.2"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/globals@9.18.0",
+      "type": "library",
+      "name": "globals",
+      "version": "9.18.0",
+      "purl": "pkg:npm/globals@9.18.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "globals@9.18.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/has-ansi@2.0.0",
+      "type": "library",
+      "name": "has-ansi",
+      "version": "2.0.0",
+      "purl": "pkg:npm/has-ansi@2.0.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "has-ansi@2.0.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/hasown@2.0.2",
+      "type": "library",
+      "name": "hasown",
+      "version": "2.0.2",
+      "purl": "pkg:npm/hasown@2.0.2",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "hasown@2.0.2"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1471,6 +1813,23 @@
       ]
     },
     {
+      "bom-ref": "pkg:npm/he@1.2.0",
+      "type": "library",
+      "name": "he",
+      "version": "1.2.0",
+      "purl": "pkg:npm/he@1.2.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "he@1.2.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:npm/hookable@5.5.3",
       "type": "library",
       "name": "hookable",
@@ -1505,6 +1864,40 @@
       ]
     },
     {
+      "bom-ref": "pkg:npm/invariant@2.2.4",
+      "type": "library",
+      "name": "invariant",
+      "version": "2.2.4",
+      "purl": "pkg:npm/invariant@2.2.4",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "invariant@2.2.4"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/is-core-module@2.16.1",
+      "type": "library",
+      "name": "is-core-module",
+      "version": "2.16.1",
+      "purl": "pkg:npm/is-core-module@2.16.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "is-core-module@2.16.1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:npm/is-what@4.1.16",
       "type": "library",
       "name": "is-what",
@@ -1514,6 +1907,74 @@
         {
           "name": "aquasecurity:trivy:PkgID",
           "value": "is-what@4.1.16"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/js-tokens@3.0.2",
+      "type": "library",
+      "name": "js-tokens",
+      "version": "3.0.2",
+      "purl": "pkg:npm/js-tokens@3.0.2",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "js-tokens@3.0.2"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/js-tokens@4.0.0",
+      "type": "library",
+      "name": "js-tokens",
+      "version": "4.0.0",
+      "purl": "pkg:npm/js-tokens@4.0.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "js-tokens@4.0.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/lodash@4.17.21",
+      "type": "library",
+      "name": "lodash",
+      "version": "4.17.21",
+      "purl": "pkg:npm/lodash@4.17.21",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "lodash@4.17.21"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/loose-envify@1.4.0",
+      "type": "library",
+      "name": "loose-envify",
+      "version": "1.4.0",
+      "purl": "pkg:npm/loose-envify@1.4.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "loose-envify@1.4.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1565,6 +2026,91 @@
         {
           "name": "aquasecurity:trivy:PkgID",
           "value": "mdast-util-to-hast@13.2.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/melody-code-frame@1.7.5",
+      "type": "library",
+      "name": "melody-code-frame",
+      "version": "1.7.5",
+      "purl": "pkg:npm/melody-code-frame@1.7.5",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "melody-code-frame@1.7.5"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/melody-extension-core@1.7.5",
+      "type": "library",
+      "name": "melody-extension-core",
+      "version": "1.7.5",
+      "purl": "pkg:npm/melody-extension-core@1.7.5",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "melody-extension-core@1.7.5"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/melody-parser@1.7.5",
+      "type": "library",
+      "name": "melody-parser",
+      "version": "1.7.5",
+      "purl": "pkg:npm/melody-parser@1.7.5",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "melody-parser@1.7.5"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/melody-traverse@1.7.5",
+      "type": "library",
+      "name": "melody-traverse",
+      "version": "1.7.5",
+      "purl": "pkg:npm/melody-traverse@1.7.5",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "melody-traverse@1.7.5"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/melody-types@1.7.5",
+      "type": "library",
+      "name": "melody-types",
+      "version": "1.7.5",
+      "purl": "pkg:npm/melody-types@1.7.5",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "melody-types@1.7.5"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1692,6 +2238,23 @@
       ]
     },
     {
+      "bom-ref": "pkg:npm/ms@2.0.0",
+      "type": "library",
+      "name": "ms",
+      "version": "2.0.0",
+      "purl": "pkg:npm/ms@2.0.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "ms@2.0.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:npm/nanoid@3.3.9",
       "type": "library",
       "name": "nanoid",
@@ -1718,6 +2281,23 @@
         {
           "name": "aquasecurity:trivy:PkgID",
           "value": "oniguruma-to-es@3.1.1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/path-parse@1.0.7",
+      "type": "library",
+      "name": "path-parse",
+      "version": "1.0.7",
+      "purl": "pkg:npm/path-parse@1.0.7",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "path-parse@1.0.7"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1794,6 +2374,74 @@
       ]
     },
     {
+      "bom-ref": "pkg:npm/prettier-plugin-tailwindcss@0.6.11",
+      "type": "library",
+      "name": "prettier-plugin-tailwindcss",
+      "version": "0.6.11",
+      "purl": "pkg:npm/prettier-plugin-tailwindcss@0.6.11",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "prettier-plugin-tailwindcss@0.6.11"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/prettier-plugin-twig@1.0.1",
+      "type": "library",
+      "name": "prettier-plugin-twig",
+      "version": "1.0.1",
+      "purl": "pkg:npm/prettier-plugin-twig@1.0.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "prettier-plugin-twig@1.0.1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/prettier@1.19.1",
+      "type": "library",
+      "name": "prettier",
+      "version": "1.19.1",
+      "purl": "pkg:npm/prettier@1.19.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "prettier@1.19.1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/prettier@3.5.3",
+      "type": "library",
+      "name": "prettier",
+      "version": "3.5.3",
+      "purl": "pkg:npm/prettier@3.5.3",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "prettier@3.5.3"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:npm/property-information@7.0.0",
       "type": "library",
       "name": "property-information",
@@ -1803,6 +2451,23 @@
         {
           "name": "aquasecurity:trivy:PkgID",
           "value": "property-information@7.0.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/regenerator-runtime@0.11.1",
+      "type": "library",
+      "name": "regenerator-runtime",
+      "version": "0.11.1",
+      "purl": "pkg:npm/regenerator-runtime@0.11.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "regenerator-runtime@0.11.1"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1862,6 +2527,23 @@
       ]
     },
     {
+      "bom-ref": "pkg:npm/resolve@1.22.10",
+      "type": "library",
+      "name": "resolve",
+      "version": "1.22.10",
+      "purl": "pkg:npm/resolve@1.22.10",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "resolve@1.22.10"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:npm/rfdc@1.4.1",
       "type": "library",
       "name": "rfdc",
@@ -1905,6 +2587,23 @@
         {
           "name": "aquasecurity:trivy:PkgID",
           "value": "shiki@2.5.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/shortid@2.2.17",
+      "type": "library",
+      "name": "shortid",
+      "version": "2.2.17",
+      "purl": "pkg:npm/shortid@2.2.17",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "shortid@2.2.17"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1981,6 +2680,23 @@
       ]
     },
     {
+      "bom-ref": "pkg:npm/strip-ansi@3.0.1",
+      "type": "library",
+      "name": "strip-ansi",
+      "version": "3.0.1",
+      "purl": "pkg:npm/strip-ansi@3.0.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "strip-ansi@3.0.1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:npm/superjson@2.2.2",
       "type": "library",
       "name": "superjson",
@@ -1990,6 +2706,40 @@
         {
           "name": "aquasecurity:trivy:PkgID",
           "value": "superjson@2.2.2"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/supports-color@2.0.0",
+      "type": "library",
+      "name": "supports-color",
+      "version": "2.0.0",
+      "purl": "pkg:npm/supports-color@2.0.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "supports-color@2.0.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/supports-preserve-symlinks-flag@1.0.0",
+      "type": "library",
+      "name": "supports-preserve-symlinks-flag",
+      "version": "1.0.0",
+      "purl": "pkg:npm/supports-preserve-symlinks-flag@1.0.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "supports-preserve-symlinks-flag@1.0.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2015,6 +2765,23 @@
       ]
     },
     {
+      "bom-ref": "pkg:npm/to-fast-properties@1.0.3",
+      "type": "library",
+      "name": "to-fast-properties",
+      "version": "1.0.3",
+      "purl": "pkg:npm/to-fast-properties@1.0.3",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "to-fast-properties@1.0.3"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:npm/trim-lines@3.0.1",
       "type": "library",
       "name": "trim-lines",
@@ -2024,6 +2791,23 @@
         {
           "name": "aquasecurity:trivy:PkgID",
           "value": "trim-lines@3.0.1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/tslib@2.7.0",
+      "type": "library",
+      "name": "tslib",
+      "version": "2.7.0",
+      "purl": "pkg:npm/tslib@2.7.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "tslib@2.7.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2221,22 +3005,26 @@
   ],
   "dependencies": [
     {
-      "ref": "509cd0a1-8075-4774-81c3-3814c5a20125",
-      "dependsOn": [
-        "pkg:npm/vitepress@1.6.3"
-      ]
-    },
-    {
-      "ref": "8ceec85a-298b-4607-9a16-6e200e4fac4e",
+      "ref": "3d6f4bc9-be7e-400b-83d9-ece8ee4f3292",
       "dependsOn": [
         "pkg:composer/revolt/event-loop@v1.0.7"
       ]
     },
     {
-      "ref": "ab071f16-95be-4883-8230-64bea6065328",
+      "ref": "76718b3f-deae-467e-baab-6d7ef8db60d6",
       "dependsOn": [
-        "509cd0a1-8075-4774-81c3-3814c5a20125",
-        "8ceec85a-298b-4607-9a16-6e200e4fac4e"
+        "pkg:npm/%40ttskch/prettier-plugin-tailwindcss-anywhere@0.1.0",
+        "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
+        "pkg:npm/prettier-plugin-tailwindcss@0.6.11",
+        "pkg:npm/prettier-plugin-twig@1.0.1",
+        "pkg:npm/vitepress@1.6.3"
+      ]
+    },
+    {
+      "ref": "d00d10d2-bc57-49d2-a893-e4bbdf25dd62",
+      "dependsOn": [
+        "3d6f4bc9-be7e-400b-83d9-ece8ee4f3292",
+        "76718b3f-deae-467e-baab-6d7ef8db60d6"
       ]
     },
     {
@@ -2481,6 +3269,12 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:npm/%40ttskch/prettier-plugin-tailwindcss-anywhere@0.1.0",
+      "dependsOn": [
+        "pkg:npm/tslib@2.7.0"
+      ]
+    },
+    {
       "ref": "pkg:npm/%40types/estree@1.0.6",
       "dependsOn": []
     },
@@ -2650,6 +3444,18 @@
       ]
     },
     {
+      "ref": "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
+      "dependsOn": [
+        "pkg:npm/babel-types@6.26.0",
+        "pkg:npm/melody-extension-core@1.7.5",
+        "pkg:npm/melody-parser@1.7.5",
+        "pkg:npm/melody-traverse@1.7.5",
+        "pkg:npm/melody-types@1.7.5",
+        "pkg:npm/prettier@3.5.3",
+        "pkg:npm/resolve@1.22.10"
+      ]
+    },
+    {
       "ref": "pkg:npm/algoliasearch@5.20.4",
       "dependsOn": [
         "pkg:npm/%40algolia/client-abtesting@5.20.4",
@@ -2668,12 +3474,88 @@
       ]
     },
     {
+      "ref": "pkg:npm/ansi-regex@2.1.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/ansi-styles@2.2.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/babel-code-frame@6.26.0",
+      "dependsOn": [
+        "pkg:npm/chalk@1.1.3",
+        "pkg:npm/esutils@2.0.3",
+        "pkg:npm/js-tokens@3.0.2"
+      ]
+    },
+    {
+      "ref": "pkg:npm/babel-messages@6.23.0",
+      "dependsOn": [
+        "pkg:npm/babel-runtime@6.26.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/babel-runtime@6.26.0",
+      "dependsOn": [
+        "pkg:npm/core-js@2.6.12",
+        "pkg:npm/regenerator-runtime@0.11.1"
+      ]
+    },
+    {
+      "ref": "pkg:npm/babel-template@6.26.0",
+      "dependsOn": [
+        "pkg:npm/babel-runtime@6.26.0",
+        "pkg:npm/babel-traverse@6.26.0",
+        "pkg:npm/babel-types@6.26.0",
+        "pkg:npm/babylon@6.18.0",
+        "pkg:npm/lodash@4.17.21"
+      ]
+    },
+    {
+      "ref": "pkg:npm/babel-traverse@6.26.0",
+      "dependsOn": [
+        "pkg:npm/babel-code-frame@6.26.0",
+        "pkg:npm/babel-messages@6.23.0",
+        "pkg:npm/babel-runtime@6.26.0",
+        "pkg:npm/babel-types@6.26.0",
+        "pkg:npm/babylon@6.18.0",
+        "pkg:npm/debug@2.6.9",
+        "pkg:npm/globals@9.18.0",
+        "pkg:npm/invariant@2.2.4",
+        "pkg:npm/lodash@4.17.21"
+      ]
+    },
+    {
+      "ref": "pkg:npm/babel-types@6.26.0",
+      "dependsOn": [
+        "pkg:npm/babel-runtime@6.26.0",
+        "pkg:npm/esutils@2.0.3",
+        "pkg:npm/lodash@4.17.21",
+        "pkg:npm/to-fast-properties@1.0.3"
+      ]
+    },
+    {
+      "ref": "pkg:npm/babylon@6.18.0",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:npm/birpc@0.2.19",
       "dependsOn": []
     },
     {
       "ref": "pkg:npm/ccount@2.0.1",
       "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/chalk@1.1.3",
+      "dependsOn": [
+        "pkg:npm/ansi-styles@2.2.1",
+        "pkg:npm/escape-string-regexp@1.0.5",
+        "pkg:npm/has-ansi@2.0.0",
+        "pkg:npm/strip-ansi@3.0.1",
+        "pkg:npm/supports-color@2.0.0"
+      ]
     },
     {
       "ref": "pkg:npm/character-entities-html4@2.1.0",
@@ -2694,8 +3576,18 @@
       ]
     },
     {
+      "ref": "pkg:npm/core-js@2.6.12",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:npm/csstype@3.1.3",
       "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/debug@2.6.9",
+      "dependsOn": [
+        "pkg:npm/ms@2.0.0"
+      ]
     },
     {
       "ref": "pkg:npm/dequal@2.0.3",
@@ -2720,13 +3612,41 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:npm/escape-string-regexp@1.0.5",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:npm/estree-walker@2.0.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/esutils@2.0.3",
       "dependsOn": []
     },
     {
       "ref": "pkg:npm/focus-trap@7.6.4",
       "dependsOn": [
         "pkg:npm/tabbable@6.2.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/function-bind@1.1.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/globals@9.18.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/has-ansi@2.0.0",
+      "dependsOn": [
+        "pkg:npm/ansi-regex@2.1.1"
+      ]
+    },
+    {
+      "ref": "pkg:npm/hasown@2.0.2",
+      "dependsOn": [
+        "pkg:npm/function-bind@1.1.2"
       ]
     },
     {
@@ -2752,6 +3672,10 @@
       ]
     },
     {
+      "ref": "pkg:npm/he@1.2.0",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:npm/hookable@5.5.3",
       "dependsOn": []
     },
@@ -2760,8 +3684,38 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:npm/invariant@2.2.4",
+      "dependsOn": [
+        "pkg:npm/loose-envify@1.4.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/is-core-module@2.16.1",
+      "dependsOn": [
+        "pkg:npm/hasown@2.0.2"
+      ]
+    },
+    {
       "ref": "pkg:npm/is-what@4.1.16",
       "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/js-tokens@3.0.2",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/js-tokens@4.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/lodash@4.17.21",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/loose-envify@1.4.0",
+      "dependsOn": [
+        "pkg:npm/js-tokens@4.0.0"
+      ]
     },
     {
       "ref": "pkg:npm/magic-string@0.30.17",
@@ -2785,6 +3739,39 @@
         "pkg:npm/unist-util-position@5.0.0",
         "pkg:npm/unist-util-visit@5.0.0",
         "pkg:npm/vfile@6.0.3"
+      ]
+    },
+    {
+      "ref": "pkg:npm/melody-code-frame@1.7.5",
+      "dependsOn": [
+        "pkg:npm/lodash@4.17.21"
+      ]
+    },
+    {
+      "ref": "pkg:npm/melody-extension-core@1.7.5",
+      "dependsOn": [
+        "pkg:npm/babel-template@6.26.0",
+        "pkg:npm/babel-types@6.26.0",
+        "pkg:npm/lodash@4.17.21",
+        "pkg:npm/shortid@2.2.17"
+      ]
+    },
+    {
+      "ref": "pkg:npm/melody-parser@1.7.5",
+      "dependsOn": [
+        "pkg:npm/he@1.2.0",
+        "pkg:npm/lodash@4.17.21",
+        "pkg:npm/melody-code-frame@1.7.5"
+      ]
+    },
+    {
+      "ref": "pkg:npm/melody-traverse@1.7.5",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/melody-types@1.7.5",
+      "dependsOn": [
+        "pkg:npm/babel-types@6.26.0"
       ]
     },
     {
@@ -2823,6 +3810,10 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:npm/ms@2.0.0",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:npm/nanoid@3.3.9",
       "dependsOn": []
     },
@@ -2833,6 +3824,10 @@
         "pkg:npm/regex-recursion@6.0.2",
         "pkg:npm/regex@6.0.1"
       ]
+    },
+    {
+      "ref": "pkg:npm/path-parse@1.0.7",
+      "dependsOn": []
     },
     {
       "ref": "pkg:npm/perfect-debounce@1.0.0",
@@ -2855,7 +3850,35 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:npm/prettier-plugin-tailwindcss@0.6.11",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/prettier-plugin-twig@1.0.1",
+      "dependsOn": [
+        "pkg:npm/babel-types@6.26.0",
+        "pkg:npm/melody-extension-core@1.7.5",
+        "pkg:npm/melody-parser@1.7.5",
+        "pkg:npm/melody-traverse@1.7.5",
+        "pkg:npm/melody-types@1.7.5",
+        "pkg:npm/prettier@1.19.1",
+        "pkg:npm/resolve@1.22.10"
+      ]
+    },
+    {
+      "ref": "pkg:npm/prettier@1.19.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/prettier@3.5.3",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:npm/property-information@7.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/regenerator-runtime@0.11.1",
       "dependsOn": []
     },
     {
@@ -2872,6 +3895,14 @@
       "ref": "pkg:npm/regex@6.0.1",
       "dependsOn": [
         "pkg:npm/regex-utilities@2.3.0"
+      ]
+    },
+    {
+      "ref": "pkg:npm/resolve@1.22.10",
+      "dependsOn": [
+        "pkg:npm/is-core-module@2.16.1",
+        "pkg:npm/path-parse@1.0.7",
+        "pkg:npm/supports-preserve-symlinks-flag@1.0.0"
       ]
     },
     {
@@ -2898,6 +3929,12 @@
       ]
     },
     {
+      "ref": "pkg:npm/shortid@2.2.17",
+      "dependsOn": [
+        "pkg:npm/nanoid@3.3.9"
+      ]
+    },
+    {
       "ref": "pkg:npm/source-map-js@1.2.1",
       "dependsOn": []
     },
@@ -2917,17 +3954,39 @@
       ]
     },
     {
+      "ref": "pkg:npm/strip-ansi@3.0.1",
+      "dependsOn": [
+        "pkg:npm/ansi-regex@2.1.1"
+      ]
+    },
+    {
       "ref": "pkg:npm/superjson@2.2.2",
       "dependsOn": [
         "pkg:npm/copy-anything@3.0.5"
       ]
     },
     {
+      "ref": "pkg:npm/supports-color@2.0.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/supports-preserve-symlinks-flag@1.0.0",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:npm/tabbable@6.2.0",
       "dependsOn": []
     },
     {
+      "ref": "pkg:npm/to-fast-properties@1.0.3",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:npm/trim-lines@3.0.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/tslib@2.7.0",
       "dependsOn": []
     },
     {
@@ -3024,6 +4083,102 @@
     }
   ],
   "vulnerabilities": [
+    {
+      "id": "CVE-2023-45133",
+      "source": {
+        "name": "ghsa",
+        "url": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+      },
+      "ratings": [
+        {
+          "source": {
+            "name": "ghsa"
+          },
+          "score": 9.4,
+          "severity": "critical",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+        },
+        {
+          "source": {
+            "name": "nvd"
+          },
+          "score": 8.8,
+          "severity": "high",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+        },
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 8.8,
+          "severity": "high",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H"
+        }
+      ],
+      "cwes": [
+        184,
+        697
+      ],
+      "description": "Babel is a compiler for writingJavaScript. In `@babel/traverse` prior to versions 7.23.2 and 8.0.0-alpha.4 and all versions of `babel-traverse`, using Babel to compile code that was specifically crafted by an attacker can lead to arbitrary code execution during compilation, when using plugins that rely on the `path.evaluate()`or `path.evaluateTruthy()` internal Babel methods. Known affected plugins are `@babel/plugin-transform-runtime`; `@babel/preset-env` when using its `useBuiltIns` option; and any \"polyfill provider\" plugin that depends on `@babel/helper-define-polyfill-provider`, such as `babel-plugin-polyfill-corejs3`, `babel-plugin-polyfill-corejs2`, `babel-plugin-polyfill-es-shims`, `babel-plugin-polyfill-regenerator`. No other plugins under the `@babel/` namespace are impacted, but third-party plugins might be. Users that only compile trusted code are not impacted. The vulnerability has been fixed in `@babel/traverse@7.23.2` and `@babel/traverse@8.0.0-alpha.4`. Those who cannot upgrade `@babel/traverse` and are using one of the affected packages mentioned above should upgrade them to their latest version to avoid triggering the vulnerable code path in affected `@babel/traverse` versions: `@babel/plugin-transform-runtime` v7.23.2, `@babel/preset-env` v7.23.2, `@babel/helper-define-polyfill-provider` v0.4.3, `babel-plugin-polyfill-corejs2` v0.4.6, `babel-plugin-polyfill-corejs3` v0.8.5, `babel-plugin-polyfill-es-shims` v0.10.0, `babel-plugin-polyfill-regenerator` v0.5.3.",
+      "recommendation": "Upgrade babel-traverse to version 7.23.2",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2023-45133"
+        },
+        {
+          "url": "https://access.redhat.com/security/cve/CVE-2023-45133"
+        },
+        {
+          "url": "https://babeljs.io/blog/2023/10/16/cve-2023-45133"
+        },
+        {
+          "url": "https://github.com/babel/babel"
+        },
+        {
+          "url": "https://github.com/babel/babel/commit/b13376b346946e3f62fc0848c1d2a23223314c82"
+        },
+        {
+          "url": "https://github.com/babel/babel/pull/16033"
+        },
+        {
+          "url": "https://github.com/babel/babel/releases/tag/v7.23.2"
+        },
+        {
+          "url": "https://github.com/babel/babel/releases/tag/v8.0.0-alpha.4"
+        },
+        {
+          "url": "https://github.com/babel/babel/security/advisories/GHSA-67hx-6x53-jw92"
+        },
+        {
+          "url": "https://lists.debian.org/debian-lts-announce/2023/10/msg00026.html"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-45133"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2023-45133"
+        },
+        {
+          "url": "https://www.debian.org/security/2023/dsa-5528"
+        }
+      ],
+      "published": "2023-10-12T17:15:09+00:00",
+      "updated": "2024-11-21T08:26:24+00:00",
+      "affects": [
+        {
+          "ref": "pkg:npm/babel-traverse@6.26.0",
+          "versions": [
+            {
+              "version": "6.26.0",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
     {
       "id": "CVE-2025-30208",
       "source": {
