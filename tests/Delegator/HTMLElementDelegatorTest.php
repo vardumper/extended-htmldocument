@@ -42,7 +42,7 @@ test('get', function () {
     // var_dump((string) $this->delegator);
     expect($this->delegator->href)
         ->toEqual('https://example.com');
-    expect($this->delegator->htmlElement->getAttribute('href'))
+    expect($this->delegator->delegated->getAttribute('href'))
         ->toEqual('https://example.com');
 });
 
@@ -62,9 +62,9 @@ test('get global class name', function () {
         ->toEqual('my-class');
     expect($this->delegator->getAttribute('class'))
         ->toEqual('my-class');
-    expect($this->delegator->htmlElement->getAttribute('class'))
+    expect($this->delegator->delegated->getAttribute('class'))
         ->toEqual('my-class');
-    expect($this->delegator->htmlElement->className)
+    expect($this->delegator->delegated->className)
         ->toEqual('my-class');
 });
 
@@ -74,9 +74,9 @@ test('set global class name', function () {
         ->toEqual('my-new-class');
     expect($this->delegator->getAttribute('class'))
         ->toEqual('my-new-class');
-    expect($this->delegator->htmlElement->getAttribute('class'))
+    expect($this->delegator->delegated->getAttribute('class'))
         ->toEqual('my-new-class');
-    expect($this->delegator->htmlElement->className)
+    expect($this->delegator->delegated->className)
         ->toEqual('my-new-class');
 });
 
@@ -88,7 +88,7 @@ test('set global attribute set attribute', function () {
         ->toEqual('true');
     expect($this->delegator->getAttribute('contenteditable'))
         ->toEqual(ContentEditableEnum::TRUE);
-    expect($this->delegator->htmlElement->getAttribute('contenteditable'))
+    expect($this->delegator->delegated->getAttribute('contenteditable'))
         ->toEqual('true');
 });
 
@@ -105,7 +105,7 @@ test('set global attribute directly', function () {
         ->toEqual(ContentEditableEnum::TRUE);
     expect($this->delegator->contenteditable)
         ->toEqual(ContentEditableEnum::TRUE);
-    expect($this->delegator->htmlElement->getAttribute('contenteditable'))
+    expect($this->delegator->delegated->getAttribute('contenteditable'))
         ->toEqual('true');
 });
 
@@ -127,9 +127,9 @@ test('set global class', function () {
         ->toEqual('new-classname');
     expect($this->delegator->getAttribute('class'))
         ->toEqual('new-classname');
-    expect($this->delegator->htmlElement->className)
+    expect($this->delegator->delegated->className)
         ->toEqual('new-classname');
-    expect($this->delegator->htmlElement->getAttribute('class'))
+    expect($this->delegator->delegated->getAttribute('class'))
         ->toEqual('new-classname');
 });
 
@@ -139,7 +139,7 @@ test('set enum', function () {
         ->toEqual(RelEnum::NOFOLLOW);
     expect($this->delegator->getRel())
         ->toEqual(RelEnum::NOFOLLOW);
-    expect($this->delegator->htmlElement->getAttribute('rel'))
+    expect($this->delegator->delegated->getAttribute('rel'))
         ->toEqual('nofollow');
 });
 
@@ -149,7 +149,7 @@ test('set enum directly', function () {
         ->toEqual(RelEnum::NOFOLLOW);
     expect($this->delegator->getRel())
         ->toEqual(RelEnum::NOFOLLOW);
-    expect($this->delegator->htmlElement->getAttribute('rel'))
+    expect($this->delegator->delegated->getAttribute('rel'))
         ->toEqual('nofollow');
 });
 
@@ -167,7 +167,7 @@ test('set enum set attributes', function () {
     ]);
     expect($this->delegator->rel)
         ->toEqual(RelEnum::NOFOLLOW);
-    expect($this->delegator->htmlElement->getAttribute('rel'))
+    expect($this->delegator->delegated->getAttribute('rel'))
         ->toEqual('nofollow');
 });
 
@@ -175,7 +175,7 @@ test('set enum set attribute', function () {
     $this->delegator->setAttribute('rel', RelEnum::NOFOLLOW);
     expect($this->delegator->rel)
         ->toEqual(RelEnum::NOFOLLOW);
-    expect($this->delegator->htmlElement->getAttribute('rel'))
+    expect($this->delegator->delegated->getAttribute('rel'))
         ->toEqual('nofollow');
 });
 
@@ -191,7 +191,7 @@ test('get invalid property', function () {
 
 test('set invalid property', function () {
     $this->delegator->nonExistentProperty = 'value';
-    expect($this->delegator->htmlElement->getAttribute('nonexistentproperty'))
+    expect($this->delegator->delegated->getAttribute('nonexistentproperty'))
         ->toEqual('value');
     expect($this->delegator->getAttribute('nonexistentproperty'))
         ->toEqual('value');
@@ -218,7 +218,7 @@ test('set attributes', function () {
         ->toEqual('test');
     expect($this->delegator->getAttribute('class'))
         ->toEqual('example');
-    expect($this->delegator->htmlElement->getAttribute('href'))
+    expect($this->delegator->delegated->getAttribute('href'))
         ->toEqual('https://example.com');
     // Assert the href attribute
     expect($this->delegator->href)
@@ -230,7 +230,7 @@ test('set attributes enum', function () {
     $this->delegator->setAttributes([
         'rel' => RelEnum::NOFOLLOW,
     ]);
-    expect($this->delegator->htmlElement->getAttribute('rel'))
+    expect($this->delegator->delegated->getAttribute('rel'))
         ->toEqual('nofollow');
     expect($this->delegator->rel)
         ->toEqual(RelEnum::NOFOLLOW);
@@ -241,11 +241,11 @@ test('set attributes enum value', function () {
         'rel' => 'nofollow',
         'target' => '_blank',
     ]);
-    expect($this->delegator->htmlElement->getAttribute('rel'))
+    expect($this->delegator->delegated->getAttribute('rel'))
         ->toEqual('nofollow');
     expect($this->delegator->getAttribute('rel'))
         ->toEqual(RelEnum::NOFOLLOW);
-    expect($this->delegator->htmlElement->getAttribute('target'))
+    expect($this->delegator->delegated->getAttribute('target'))
         ->toEqual('_blank');
     expect($this->delegator->getAttribute('target'))
         ->toEqual(TargetEnum::BLANK);
@@ -261,7 +261,7 @@ test('set union type string setter', function () {
         ->toBe('framename');
     expect($this->delegator->getTarget())
         ->toBe('framename');
-    expect($this->delegator->htmlElement->getAttribute('target'))
+    expect($this->delegator->delegated->getAttribute('target'))
         ->toEqual('framename');
 });
 
@@ -269,7 +269,7 @@ test('set id', function () {
     $this->delegator->setId('test');
     expect($this->delegator->id)
         ->toEqual('test');
-    expect($this->delegator->htmlElement->getAttribute('id'))
+    expect($this->delegator->delegated->getAttribute('id'))
         ->toEqual('test');
 });
 
@@ -283,7 +283,7 @@ test('set class name', function () {
     $this->delegator->setClassName('example-class');
     expect($this->delegator->className)
         ->toEqual('example-class');
-    expect($this->delegator->htmlElement->getAttribute('class'))
+    expect($this->delegator->delegated->getAttribute('class'))
         ->toEqual('example-class');
 });
 

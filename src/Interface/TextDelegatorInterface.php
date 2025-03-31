@@ -4,8 +4,11 @@ namespace Html\Interface;
 
 use Dom\Text;
 
+/** @property Text $delegated */
 interface TextDelegatorInterface
 {
+    public function __construct(Text $delegated);
+
     public function __call($name, $arguments);
 
     public function __get($name);

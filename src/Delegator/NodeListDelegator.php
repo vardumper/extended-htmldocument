@@ -2,6 +2,7 @@
 
 namespace Html\Delegator;
 
+use AllowDynamicProperties;
 use BadMethodCallException;
 use Dom\HTMLCollection;
 use DOM\NodeList;
@@ -66,6 +67,8 @@ use ReflectionClass;
  * @method filter(callable $callback)
  * @method slice(int $start, int $end)
  */
+
+#[AllowDynamicProperties]
 class NodeListDelegator
 {
     use DelegatorTrait;

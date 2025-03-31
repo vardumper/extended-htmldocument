@@ -171,7 +171,7 @@ trait GlobalAttributesTrait
     public function setAccessKey(string $accesskey): static
     {
         $this->accesskey = $accesskey;
-        $this->htmlElement->setAttribute('accesskey', $accesskey);
+        $this->delegated->setAttribute('accesskey', $accesskey);
         return $this;
     }
 
@@ -189,7 +189,7 @@ trait GlobalAttributesTrait
             $autoCapitalize = AutoCapitalizeEnum::from($autoCapitalize);
         }
         $this->autocapitalize = $autoCapitalize;
-        $this->htmlElement->setAttribute('autocapitalize', $autoCapitalize->value);
+        $this->delegated->setAttribute('autocapitalize', $autoCapitalize->value);
         return $this;
     }
 
@@ -215,7 +215,7 @@ trait GlobalAttributesTrait
         ) ? ($contentEditable === true ? 'true' : 'false') : $contentEditable;
         $contentEditable = is_string($contentEditable) ? ContentEditableEnum::from($contentEditable) : $contentEditable;
         $this->contenteditable = $contentEditable;
-        $this->htmlElement->setAttribute(ContentEditableEnum::getQualifiedName(), $contentEditable->value);
+        $this->delegated->setAttribute(ContentEditableEnum::getQualifiedName(), $contentEditable->value);
         return $this;
     }
 
@@ -231,7 +231,7 @@ trait GlobalAttributesTrait
     {
         $this->dataAttributes = $data;
         foreach ($data as $name => $value) {
-            $this->htmlElement->setAttribute('data-' . $name, $value);
+            $this->delegated->setAttribute('data-' . $name, $value);
         }
         return $this;
     }
@@ -260,7 +260,7 @@ trait GlobalAttributesTrait
         }
 
         $this->dir = is_string($dir) ? DirectionEnum::from($dir) : $dir;
-        $this->htmlElement->setAttribute(DirectionEnum::getQualifiedName(), $this->dir->value);
+        $this->delegated->setAttribute(DirectionEnum::getQualifiedName(), $this->dir->value);
         return $this;
     }
 
@@ -279,7 +279,7 @@ trait GlobalAttributesTrait
         }
         $this->draggable = $draggable;
         $this->setAttribute('draggable', $draggable);
-        // $this->htmlElement->setAttribute('draggable', $draggable);
+        // $this->delegated->setAttribute('draggable', $draggable);
         return $this;
     }
 
@@ -294,7 +294,7 @@ trait GlobalAttributesTrait
     public function setHidden(bool|string $hidden = true): static
     {
         $this->hidden = $hidden;
-        $this->htmlElement->setAttribute('hidden', $hidden ? 'true' : 'false');
+        $this->delegated->setAttribute('hidden', $hidden ? 'true' : 'false');
         return $this;
     }
 
@@ -309,7 +309,7 @@ trait GlobalAttributesTrait
     public function setInert(bool $inert): static
     {
         $this->inert = $inert;
-        $this->htmlElement->setAttribute('inert', $inert ? 'true' : 'false');
+        $this->delegated->setAttribute('inert', $inert ? 'true' : 'false');
         return $this;
     }
 
@@ -327,7 +327,7 @@ trait GlobalAttributesTrait
             throw new InvalidArgumentException('Invalid value for inputmode');
         }
         $this->inputmode = is_string($inputMode) ? InputModeEnum::from($inputMode) : $inputMode;
-        $this->htmlElement->setAttribute('inputmode', $this->inputmode->value);
+        $this->delegated->setAttribute('inputmode', $this->inputmode->value);
         return $this;
     }
 
@@ -342,7 +342,7 @@ trait GlobalAttributesTrait
     public function setIs(string $is): static
     {
         $this->is = $is;
-        // $this->htmlElement->setAttribute('is', $is);
+        // $this->delegated->setAttribute('is', $is);
         return $this;
     }
 
@@ -357,7 +357,7 @@ trait GlobalAttributesTrait
     public function setLang(string $lang): static
     {
         $this->lang = $lang;
-        // $this->htmlElement->setAttribute('lang', $lang);
+        // $this->delegated->setAttribute('lang', $lang);
         return $this;
     }
 
@@ -372,7 +372,7 @@ trait GlobalAttributesTrait
     public function setNonce(string $nonce): static
     {
         $this->nonce = $nonce;
-        // $this->htmlElement->setAttribute('nonce', $nonce);
+        // $this->delegated->setAttribute('nonce', $nonce);
         return $this;
     }
 
@@ -387,7 +387,7 @@ trait GlobalAttributesTrait
     public function setPart(string $part): static
     {
         $this->part = $part;
-        // $this->htmlElement->setAttribute('part', $part);
+        // $this->delegated->setAttribute('part', $part);
         return $this;
     }
 
@@ -402,7 +402,7 @@ trait GlobalAttributesTrait
     public function setPopover(string $popover): static
     {
         $this->popover = $popover;
-        // $this->htmlElement->setAttribute('popover', $popover);
+        // $this->delegated->setAttribute('popover', $popover);
         return $this;
     }
 
@@ -417,7 +417,7 @@ trait GlobalAttributesTrait
     public function setRole(string $role): static
     {
         $this->role = $role;
-        // $this->htmlElement->setAttribute('role', $role);
+        // $this->delegated->setAttribute('role', $role);
         return $this;
     }
 
@@ -432,7 +432,7 @@ trait GlobalAttributesTrait
     public function setSlot(string $slot): static
     {
         $this->slot = $slot;
-        // $this->htmlElement->setAttribute('slot', $slot);
+        // $this->delegated->setAttribute('slot', $slot);
         return $this;
     }
 
@@ -456,7 +456,7 @@ trait GlobalAttributesTrait
             $spellCheck = SpellCheckEnum::from($spellCheck);
         }
         $this->spellcheck = $spellCheck;
-        $this->htmlElement->setAttribute(SpellCheckEnum::getQualifiedName(), $spellCheck->value);
+        $this->delegated->setAttribute(SpellCheckEnum::getQualifiedName(), $spellCheck->value);
         return $this;
     }
 
@@ -471,7 +471,7 @@ trait GlobalAttributesTrait
     public function setStyle(string $style): static
     {
         $this->style = $style;
-        // $this->htmlElement->setAttribute('style', $style);
+        // $this->delegated->setAttribute('style', $style);
         return $this;
     }
 
@@ -486,7 +486,7 @@ trait GlobalAttributesTrait
     public function setTabIndex(int $tabIndex): static
     {
         $this->tabindex = $tabIndex;
-        // $this->htmlElement->setAttribute('tabindex', (string)$tabIndex);
+        // $this->delegated->setAttribute('tabindex', (string)$tabIndex);
         return $this;
     }
 
@@ -515,7 +515,7 @@ trait GlobalAttributesTrait
     public function setTranslate(string $translate): static
     {
         $this->translate = $translate;
-        // $this->htmlElement->setAttribute('translate', $translate);
+        // $this->delegated->setAttribute('translate', $translate);
         return $this;
     }
 

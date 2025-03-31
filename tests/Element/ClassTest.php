@@ -23,12 +23,12 @@ test('constructor', function () {
         ->toBeInstanceOf(InlineElement::class);
     expect($anchor)
         ->toBeInstanceOf(HTMLElementDelegator::class);
-    expect($anchor->htmlElement)
+    expect($anchor->delegated)
         ->toBeInstanceOf(HTMLElement::class);
 });
 
 test('constructor htmldocument create element', function () {
-    $anchor = $this->document->htmlDocument->createElement('a');
+    $anchor = $this->document->delegated->createElement('a');
     expect($anchor)
         ->toBeInstanceOf(HTMLElement::class);
     expect($anchor)
@@ -53,7 +53,7 @@ test('append', function () {
         ->toBeInstanceOf(InlineElement::class);
     expect($anchor)
         ->toBeInstanceOf(HTMLElementDelegator::class);
-    expect($anchor->htmlElement)
+    expect($anchor->delegated)
         ->toBeInstanceOf(HTMLElement::class);
     $this->document->append($anchor);
     $node = $this->document->getElementsByTagName('a')
@@ -69,7 +69,7 @@ test('append', function () {
 });
 
 test('append htmldocument create element', function () {
-    $anchor = $this->document->htmlDocument->createElement('a');
+    $anchor = $this->document->delegated->createElement('a');
     expect($anchor)
         ->toBeInstanceOf(HTMLElement::class);
     $this->document->append($anchor);

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Html\Delegator;
 
-use BadMethodCallException;
+use AllowDynamicProperties;
 use DOM\HTMLDocument;
 use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\TemplateGenerator\HTMLGenerator;
+use Html\Trait\DelegatorTrait;
 use InvalidArgumentException;
-use ReflectionClass;
 
 /**
  * inherited properties
@@ -43,6 +43,7 @@ use ReflectionClass;
  * @property-read ?\DOM\Node $nextSibling
  * @property ?string $nodeValue
  * @property ?string $textContent
+ * @property HTMLDocument $delegated
  *
  * inherited methods
  * @method string saveXml()
@@ -51,12 +52,16 @@ use ReflectionClass;
  * @method HTMLElementDelegator createElement(string $qualifiedName)
  * @method NodeListDelegator getElementsByTagName(string $name)
  */
+
+#[AllowDynamicProperties]
 class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
 {
+    use DelegatorTrait;
+
     public bool $formatOutput;
 
     public function __construct(
-        public readonly HTMLDocument $htmlDocument,
+        public readonly HTMLDocument $delegated,
         public ?TemplateGeneratorInterface $renderer = null
     ) {
         if ($renderer !== null && ! $renderer->canRenderElements()) {
@@ -65,56 +70,6 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
         if ($renderer === null) {
             $this->renderer = new HTMLGenerator();
         }
-    }
-
-    public function __call($name, $arguments)
-    {
-        // Convert any HTMLElementDelegator arguments to their underlying DOM\HtmlElement (eg. appendChild)
-        foreach ($arguments as &$argument) {
-            if ($argument instanceof HTMLElementDelegator) {
-                $argument = $argument->htmlElement;
-            }
-        }
-
-        $reflection = new ReflectionClass($this->htmlDocument);
-        if ($reflection->hasMethod($name)) {
-            $method = $reflection->getMethod($name);
-            $method->setAccessible(true);
-            return $method->invokeArgs($this->htmlDocument, $arguments);
-        }
-
-        throw new BadMethodCallException(
-            "Method {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
-        );
-    }
-
-    public function __get($name)
-    {
-        $reflection = new ReflectionClass($this->htmlDocument);
-        if ($reflection->hasProperty($name)) {
-            $property = $reflection->getProperty($name);
-            $property->setAccessible(true);
-            return $property->getValue($this->htmlDocument);
-        }
-
-        throw new InvalidArgumentException(
-            "Property {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
-        );
-    }
-
-    public function __set($name, $value): void
-    {
-        $reflection = new ReflectionClass($this->htmlDocument);
-        if ($reflection->hasProperty($name)) {
-            $property = $reflection->getProperty($name);
-            $property->setAccessible(true);
-            $property->setValue($this->htmlDocument, $value);
-            return;
-        }
-
-        throw new InvalidArgumentException(
-            "Property {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
-        );
     }
 
     public function __toString(): string
@@ -142,15 +97,18 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
         return new self(HTMLDocument::createFromFile($path));
     }
 
-    public function createElement(string $qualifiedName): HTMLElementDelegator
+    public function createElement(string $qualifiedName, ?string $nodeValue = null): HTMLElementDelegator
     {
-        $htmlElement = $this->htmlDocument->createElement($qualifiedName);
+        $htmlElement = $this->delegated->createElement($qualifiedName);
+        if ($nodeValue !== null) {
+            $htmlElement->nodeValue = $nodeValue;
+        }
         return new HTMLElementDelegator($htmlElement);
     }
 
     public function getElementsByTagName(string $name): NodeListDelegator
     {
-        $nodeList = $this->htmlDocument->getElementsByTagName($name);
+        $nodeList = $this->delegated->getElementsByTagName($name);
         return new NodeListDelegator($nodeList);
     }
 }

@@ -8,9 +8,12 @@ use Dom\HTMLDocument;
 use Html\Delegator\HTMLElementDelegator;
 use Html\Delegator\NodeListDelegator;
 
+/**
+ * @property HTMLDocument $delegated
+ */
 interface HTMLDocumentDelegatorInterface
 {
-    public function __construct(HTMLDocument $htmlDocument);
+    public function __construct(HTMLDocument $delegated);
 
     public function __call($name, $arguments);
 

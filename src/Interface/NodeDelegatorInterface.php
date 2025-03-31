@@ -4,9 +4,12 @@ namespace Html\Interface;
 
 use Dom\Node;
 
+/**
+ * @property Node $delegated
+ */
 interface NodeDelegatorInterface
 {
-    public function __construct(Node $node);
+    public function __construct(Node $delegated);
 
     public function __call($name, $arguments);
 

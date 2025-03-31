@@ -185,7 +185,7 @@ test('set and get spell check', function () {
         ->toBeInstanceOf(SpellCheckEnum::class);
     expect($this->element->getSpellCheck()->value)
         ->toEqual('true');
-    expect($this->element->htmlElement->getAttribute('spellcheck'))
+    expect($this->element->delegated->getAttribute('spellcheck'))
         ->toEqual('true');
 
     $this->expectException(InvalidArgumentException::class);

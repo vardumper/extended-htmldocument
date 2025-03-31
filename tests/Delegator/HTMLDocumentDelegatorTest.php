@@ -19,7 +19,7 @@ beforeEach(function () {
 
 test('constructor', function () {
     expect($this->delegator)->toBeInstanceOf(HTMLDocumentDelegator::class);
-    expect($this->delegator->htmlDocument)
+    expect($this->delegator->delegated)
         ->toBeInstanceOf(HtmlDocument::class);
 });
 
@@ -202,7 +202,7 @@ test('create', function () {
     $body = Body::create($this->delegator);
     expect($body)
         ->toBeInstanceOf(HTMLElementDelegator::class);
-    expect($body->htmlElement)
+    expect($body->delegated)
         ->toBeInstanceOf(HtmlElement::class);
 });
 

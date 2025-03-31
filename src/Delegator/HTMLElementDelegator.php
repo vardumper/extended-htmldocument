@@ -4,15 +4,15 @@ namespace Html\Delegator;
 
 use AllowDynamicProperties;
 use BackedEnum;
-use BadMethodCallException;
-use DOM\Document;
-use DOM\HtmlElement;
+use Dom\Element;
+use DOM\HTMLElement;
 use Dom\Text;
 use Exception;
 use Html\Helper\Helper;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\TemplateGenerator\HTMLGenerator;
+use Html\Trait\DelegatorTrait;
 use Html\Trait\GlobalAttributesTrait;
 use Html\Trait\NativePropertiesTrait;
 use InvalidArgumentException;
@@ -29,16 +29,18 @@ use TypeError;
  * @property string $tagName
  * @property string $id
  * @property string $className
+ * @property HTMLElement|Element $delegated
  */
 #[AllowDynamicProperties]
 class HTMLElementDelegator implements HTMLElementDelegatorInterface
 {
     use GlobalAttributesTrait;
     use NativePropertiesTrait;
+    use DelegatorTrait;
 
     public bool $formatOutput = true;
 
-    public static HtmlDocumentDelegator $ownerDocument;
+    public static HTMLDocumentDelegator $ownerDocument;
 
     // meta information
 
@@ -51,7 +53,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     public static array $parentOf = []; // Default value, change as needed
 
     public function __construct(
-        public readonly HTMLElement $htmlElement,
+        public readonly HTMLElement|Element $delegated,
         public ?TemplateGeneratorInterface $renderer = null
     ) {
         if ($renderer !== null && ! $renderer->canRenderElements()) {
@@ -60,37 +62,6 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         if ($renderer === null) {
             $this->renderer = new HTMLGenerator();
         }
-    }
-
-    public function __call($name, $arguments)
-    {
-        $reflection = new ReflectionClass($this->htmlElement);
-        if ($reflection->hasMethod($name)) {
-            $method = $reflection->getMethod($name);
-            $method->setAccessible(true);
-            return $method->invokeArgs($this->htmlElement, $arguments);
-        }
-        throw new BadMethodCallException(
-            "Method {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
-        );
-    }
-
-    public function __get($name)
-    {
-        if (property_exists($this, $name)) {
-            return $this->{$name};
-        }
-
-        $reflection = new ReflectionClass($this->htmlElement);
-        if ($reflection->hasProperty($name)) {
-            $property = $reflection->getProperty($name);
-            $property->setAccessible(true);
-            return $property->getValue($this->htmlElement);
-        }
-
-        throw new InvalidArgumentException(
-            "Property {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
-        );
     }
 
     public function __set($name, $value): void
@@ -120,15 +91,15 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             }
         }
 
-        $reflection = new ReflectionClass($this->htmlElement);
+        $reflection = new ReflectionClass($this->delegated);
         if ($reflection->hasProperty($name)) {
             $property = $reflection->getProperty($name);
             $property->setAccessible(true);
-            $property->setValue($this->htmlElement, $value);
+            $property->setValue($this->delegated, $value);
             return;
         }
         $value = Helper::isBackedEnum($value) ? (string) $value->value : (string) $value;
-        $this->htmlElement->setAttribute($name, $value);
+        $this->delegated->setAttribute($name, $value);
         return;
     }
 
@@ -151,21 +122,30 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             );
         }
         if ($child instanceof HTMLElementDelegatorInterface) {
-            $this->htmlElement->appendChild($child->htmlElement);
+            $this->delegated->appendChild($child->delegated);
             return $this;
         }
-        $this->htmlElement->appendChild($child);
+        $this->delegated->appendChild($child);
         return $this;
     }
 
-    public function removeChild(HTMLElementDelegatorInterface $child): static
+    public function removeChild(HTMLElementDelegatorInterface|Text $child): static
     {
-        if ($child->getOwnerDocument() !== $this->getOwnerDocument()) {
+        if (! \property_exists($child, 'ownerDocument')) {
+            throw new Exception('The child element must be an instance of HTMLElementDelegatorInterface or Text.');
+        }
+
+        if ($child->ownerDocument !== self::$ownerDocument) {
+            /** @todo the child could be imported here */
             throw new InvalidArgumentException(
                 'The child element must belong to the same document as the parent element.'
             );
         }
-        $this->htmlElement->removeChild($child->htmlElement);
+        if ($child instanceof HTMLElementDelegatorInterface) {
+            $this->delegated->removeChild($child->delegated);
+            return $this;
+        }
+        $this->delegated->removeChild($child);
         return $this;
     }
 
@@ -173,12 +153,19 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         HTMLElementDelegatorInterface $node,
         HTMLElementDelegatorInterface $child
     ): HTMLElementDelegatorInterface {
-        if ($node->getOwnerDocument() !== $this->getOwnerDocument()) {
+        if (! \property_exists($child, 'ownerDocument')) {
+            throw new Exception('The child element must be an instance of HTMLElementDelegatorInterface or Text.');
+        }
+        if (! \property_exists($node, 'ownerDocument')) {
+            throw new Exception('The node element must be an instance of HTMLElementDelegatorInterface or Text.');
+        }
+        if ($node->ownerDocument !== self::$ownerDocument) {
+            /** @todo the node could be imported here */
             throw new InvalidArgumentException(
-                'The child element must belong to the same document as the parent element.'
+                'The node element must belong to the same document as the parent element.'
             );
         }
-        $this->htmlElement->replaceChild($node->htmlElement, $child->htmlElement);
+        $this->delegated->replaceChild($node->delegated, $child->delegated);
         return $node;
     }
 
@@ -230,7 +217,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
                 "Value for {$qualifiedName} must be a string, boolean or a BackedEnum"
             ); // ensure value is a string
         }
-        $this->htmlElement->setAttribute($qualifiedName, $value); // here we require string
+        $this->delegated->setAttribute($qualifiedName, $value); // here we require string
         return $this;
     }
 
@@ -239,7 +226,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         if (\property_exists($this, $qualifiedName)) {
             return $this->{$qualifiedName};
         }
-        return $this->htmlElement->getAttribute($qualifiedName);
+        return $this->delegated->getAttribute($qualifiedName);
     }
 
     public function setAttributes(array $attributes): static
@@ -258,7 +245,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         static::$ownerDocument = $dom;
         $className = static::class;
         $qualifiedName = $className::getQualifiedName();
-        $elementNode = $dom->htmlDocument->createElement($qualifiedName);
+        $elementNode = $dom->delegated->createElement($qualifiedName);
         return new $className($elementNode);
     }
 

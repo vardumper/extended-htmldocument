@@ -4,13 +4,17 @@ declare(strict_types=1);
 
 namespace Html\Interface;
 
+use Dom\HTMLDocument;
 use Dom\HTMLElement;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
 
+/**
+ * @property HTMLDocument $delegated
+ */
 interface HTMLElementDelegatorInterface
 {
-    public function __construct(HTMLElement $htmlElement, ?TemplateGeneratorInterface $renderer = null);
+    public function __construct(HTMLElement $delegated, ?TemplateGeneratorInterface $renderer = null);
 
     public function __call($name, $arguments);
 

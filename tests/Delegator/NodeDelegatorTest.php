@@ -100,7 +100,7 @@ test('set invalid property', function () {
 test('call with htmlelement delegator argument', function () {
     // Create an HTMLElementDelegator instance
     $anchor = $this->document->createElement('a');
-    $anchor->htmlElement->setAttribute('href', 'https://example.com');
+    $anchor->delegated->setAttribute('href', 'https://example.com');
 
     $other = $this->document->createTextNode('I\'m a node, too');
     $anchor->appendChild($other);

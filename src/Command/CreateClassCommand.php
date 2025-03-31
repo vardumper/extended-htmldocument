@@ -431,7 +431,7 @@ final class CreateClassCommand extends Command
         return "    public function set%s(%s \$%s): static
     {
         \$this->%s = \$%s;
-        \$this->htmlElement->setAttribute('%s', \$%s);
+        \$this->delegated->setAttribute('%s', \$%s);
         return \$this;
     }
 
@@ -449,7 +449,7 @@ final class CreateClassCommand extends Command
             \$%s = %s::tryFrom(\$%s) ?? throw new \InvalidArgumentException(\"Invalid value for \\$%s.\");
         }
         \$this->%s = \$%s;
-        \$this->htmlElement->setAttribute('%s', (string) \$%s->value);
+        \$this->delegated->setAttribute('%s', (string) \$%s->value);
 
         return \$this;
     }
@@ -475,7 +475,7 @@ final class CreateClassCommand extends Command
             \$value = \$%s->value;
         }
         \$this->%s = \$%s;
-        \$this->htmlElement->setAttribute('%s', (string) \$value);
+        \$this->delegated->setAttribute('%s', (string) \$value);
 
         return \$this;
     }
