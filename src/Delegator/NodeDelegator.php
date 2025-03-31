@@ -4,14 +4,14 @@ namespace Html\Delegator;
 
 use BadMethodCallException;
 use DOM\Node;
-use Html\Interface\DOMNodeDelegatorInterface;
+use Html\Interface\NodeDelegatorInterface;
 use InvalidArgumentException;
 use ReflectionClass;
 
-class DOMNodeDelegator implements DOMNodeDelegatorInterface
+class NodeDelegator implements NodeDelegatorInterface
 {
     public function __construct(
-        private readonly Node $domNode
+        private readonly Node $node
     ) {
     }
 
@@ -73,8 +73,8 @@ class DOMNodeDelegator implements DOMNodeDelegatorInterface
         );
     }
 
-    public function getDomNode(): Node
+    public function getNode(): Node
     {
-        return $this->domNode;
+        return $this->node;
     }
 }

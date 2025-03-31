@@ -4,7 +4,7 @@ namespace Html\Interface;
 
 use Dom\Node;
 
-interface DOMNodeDelegatorInterface
+interface NodeDelegatorInterface
 {
     public function __construct(Node $domNode);
 
@@ -14,5 +14,5 @@ interface DOMNodeDelegatorInterface
 
     public function __set($name, $value): void;
 
-    public function getDomNode(): Node;
+    public function getNode(): Node;
 }

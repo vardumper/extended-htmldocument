@@ -21,24 +21,24 @@ use ReflectionClass;
  * @method int length()
  * @method namedItem(string $name)
  * @method getNamedItem(string $name)
- * @method setNamedItem(DOMNodeDelegator $node)
+ * @method setNamedItem(NodeDelegator $node)
  * @method removeNamedItem(string $name)
  * @method getNamedItemNS(string $namespaceURI, string $localName)
- * @method setNamedItemNS(DOMNodeDelegator $node)
+ * @method setNamedItemNS(NodeDelegator $node)
  * @method removeNamedItemNS(string $namespaceURI, string $localName)
- * @method append(DOMNodeDelegator $node)
- * @method insert(DOMNodeDelegator $node, int $index)
- * @method replace(DOMNodeDelegator $node, int $index)
+ * @method append(NodeDelegator $node)
+ * @method insert(NodeDelegator $node, int $index)
+ * @method replace(NodeDelegator $node, int $index)
  * @method remove(int $index)
  * @method item(int $index)
  * @method get(int $index)
- * @method set(int $index, DOMNodeDelegator $node)
- * @method indexOf(DOMNodeDelegator $node)
- * @method push(DOMNodeDelegator $node)
+ * @method set(int $index, NodeDelegator $node)
+ * @method indexOf(NodeDelegator $node)
+ * @method push(NodeDelegator $node)
  * @method pop()
  * @method shift()
- * @method unshift(DOMNodeDelegator $node)
- * @method splice(int $start, int $deleteCount, DOMNodeDelegator ...$nodes)
+ * @method unshift(NodeDelegator $node)
+ * @method splice(int $start, int $deleteCount, NodeDelegator ...$nodes)
  * @method slice(int $start, int $end)
  * @method filter(callable $callback)
  * @method map(callable $callback)
@@ -51,8 +51,8 @@ use ReflectionClass;
  * @method findIndex(callable $callback)
  * @method every(callable $callback)
  * @method some(callable $callback)
- * @method includes(DOMNodeDelegator $node)
- * @method fill(DOMNodeDelegator $node, int $start, int $end)
+ * @method includes(NodeDelegator $node)
+ * @method fill(NodeDelegator $node, int $start, int $end)
  * @method copyWithin(int $target, int $start, int $end)
  * @method flat(int $depth)
  * @method flatMap(callable $callback)
@@ -87,9 +87,9 @@ class DOMNodeListDelegator
         );
     }
 
-    public function item(int $index): ?DOMNodeDelegator
+    public function item(int $index): ?NodeDelegator
     {
         $node = $this->nodeList->item($index);
-        return $node ? new DOMNodeDelegator($node) : null;
+        return $node ? new NodeDelegator($node) : null;
     }
 }

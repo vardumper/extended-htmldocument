@@ -1,8 +1,8 @@
 <?php
 
-use Html\Delegator\DOMNodeDelegator;
 use Html\Delegator\DOMNodeListDelegator;
 use Html\Delegator\HTMLDocumentDelegator;
+use Html\Delegator\NodeDelegator;
 
 beforeEach(function () {
     $this->document = HTMLDocumentDelegator::createEmpty();
@@ -27,7 +27,7 @@ test('item', function () {
     $element = $this->document->createElement('div', 'example content');
     $this->document->appendChild($element);
     expect($this->delegator->item(0))
-        ->toBeInstanceOf(DOMNodeDelegator::class);
+        ->toBeInstanceOf(NodeDelegator::class);
 });
 
 test('item count', function () {

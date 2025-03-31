@@ -1,18 +1,18 @@
 <?php
 
 use DOM\Node;
-use Html\Delegator\DOMNodeDelegator;
 use Html\Delegator\HTMLDocumentDelegator;
+use Html\Delegator\NodeDelegator;
 
 beforeEach(function () {
     $this->document = HTMLDocumentDelegator::createEmpty();
     $node = $this->document->createTextNode('test');
     $this->domNode = $node;
-    $this->delegator = new DOMNodeDelegator($node);
+    $this->delegator = new NodeDelegator($node);
 });
 
 test('constructor', function () {
-    expect($this->delegator)->toBeInstanceOf(DOMNodeDelegator::class);
+    expect($this->delegator)->toBeInstanceOf(NodeDelegator::class);
     expect($this->delegator->domNode)
         ->toBeInstanceOf(Node::class);
 });
@@ -26,7 +26,7 @@ test('call', function () {
 
 test('call with invalid parameter', function () {
     //expect()->
-    $delegator = new DOMNodeDelegator($this->document->createTextNode('test'));
+    $delegator = new NodeDelegator($this->document->createTextNode('test'));
     $node = $this->document->createElement('a');
     $this->expectException(InvalidArgumentException::class);
     $delegator->isSameNode($node);
@@ -37,7 +37,7 @@ test('call with invalid parameter', function () {
 
 
     $span = $this->document->createElement('span');
-    $delegator = new DOMNodeDelegator($span);
+    $delegator = new NodeDelegator($span);
     $delegator->appendChild($this->delegator); // This should trigger line 29
 });
 
@@ -45,7 +45,7 @@ test('call with invalid parameter', function () {
 test('call with delegator args', function () {
     $node = $this->document->createComment('This is a comment');
     $otherNode = $this->document->createComment('This is a comment');
-    $delegator = new DOMNodeDelegator($node);
+    $delegator = new NodeDelegator($node);
     expect($delegator->isEqualNode($otherNode))
         ->toBe(true);
     expect($delegator->isSameNode($otherNode))

@@ -1,9 +1,9 @@
 <?php
 
 use Dom\HTMLElement;
-use Html\Delegator\DOMNodeDelegator;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
+use Html\Delegator\NodeDelegator;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\Input;
 use Html\Element\InlineElement;
@@ -63,7 +63,7 @@ test('append', function () {
     expect($node->tagName)
         ->toBe('A');
     expect($node)
-        ->toBeInstanceOf(DOMNodeDelegator::class);
+        ->toBeInstanceOf(NodeDelegator::class);
     expect($node->domNode)
         ->toBeInstanceOf(HTMLElement::class);
 });
@@ -80,7 +80,7 @@ test('append htmldocument create element', function () {
     expect($node->tagName)
         ->toBe('A');
     expect($node)
-        ->toBeInstanceOf(DOMNodeDelegator::class);
+        ->toBeInstanceOf(NodeDelegator::class);
     expect($node->domNode)
         ->toBeInstanceOf(HTMLElement::class);
 });

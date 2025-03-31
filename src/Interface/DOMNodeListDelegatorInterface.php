@@ -15,5 +15,5 @@ interface DOMNodeListDelegatorInterface
 
     public function __call(string $name, array $arguments);
 
-    public function item(int $index): ?DOMNodeDelegatorInterface;
+    public function item(int $index): ?NodeDelegatorInterface;
 }
