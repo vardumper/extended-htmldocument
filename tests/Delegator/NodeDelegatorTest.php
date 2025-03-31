@@ -7,28 +7,27 @@ use Html\Delegator\NodeDelegator;
 beforeEach(function () {
     $this->document = HTMLDocumentDelegator::createEmpty();
     $node = $this->document->createTextNode('test');
-    $this->domNode = $node;
+    $this->node = $node;
     $this->delegator = new NodeDelegator($node);
 });
 
 test('constructor', function () {
     expect($this->delegator)->toBeInstanceOf(NodeDelegator::class);
-    expect($this->delegator->domNode)
+    expect($this->delegator->delegated)
         ->toBeInstanceOf(Node::class);
 });
 
 test('call', function () {
     $clone = $this->delegator->cloneNode();
-    expect($this->delegator->domNode)
+    expect($this->delegator->delegated)
         ->toEqual($clone);
-    // $this->assertEquals($clone, $this->delegator->domNode);
+    // $this->assertEquals($clone, $this->delegator->delegated);
 });
 
 test('call with invalid parameter', function () {
-    //expect()->
     $delegator = new NodeDelegator($this->document->createTextNode('test'));
     $node = $this->document->createElement('a');
-    $this->expectException(InvalidArgumentException::class);
+    $this->expectException(TypeError::class);
     $delegator->isSameNode($node);
 
     // $this->expectException(InvalidArgumentException::class);
@@ -54,10 +53,10 @@ test('call with delegator args', function () {
     expect($delegator->isSameNode($node))
         ->toBe(true);
 
-    // expect($delegator->domNode)
+    // expect($delegator->delegated)
     //     ->isEqual($node);
 
-    // expect($delegator->isSameNode($node->domNode))
+    // expect($delegator->isSameNode($node->node))
     // ->toBe(true);
 });
 
@@ -66,7 +65,7 @@ test('get', function () {
     $this->delegator->nodeValue = 'custom node value';
     expect($this->delegator->nodeValue)
         ->toEqual('custom node value');
-    expect($this->delegator->domNode->nodeValue)
+    expect($this->delegator->delegated->nodeValue)
         ->toEqual('custom node value');
 });
 
@@ -74,13 +73,13 @@ test('set', function () {
     $this->delegator->nodeValue = 'test';
     expect($this->delegator->nodeValue)
         ->toEqual('test');
-    expect($this->delegator->domNode->nodeValue)
+    expect($this->delegator->delegated->nodeValue)
         ->toEqual('test');
 });
 
 test('get dom node', function () {
-    expect($this->delegator->getDomNode())
-        ->toBe($this->delegator->domNode);
+    expect($this->delegator->getnode())
+        ->toBe($this->delegator->delegated);
 });
 
 test('call invalid method', function () {

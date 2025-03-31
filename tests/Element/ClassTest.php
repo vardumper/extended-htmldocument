@@ -64,7 +64,7 @@ test('append', function () {
         ->toBe('A');
     expect($node)
         ->toBeInstanceOf(NodeDelegator::class);
-    expect($node->domNode)
+    expect($node->node)
         ->toBeInstanceOf(HTMLElement::class);
 });
 
@@ -81,7 +81,7 @@ test('append htmldocument create element', function () {
         ->toBe('A');
     expect($node)
         ->toBeInstanceOf(NodeDelegator::class);
-    expect($node->domNode)
+    expect($node->node)
         ->toBeInstanceOf(HTMLElement::class);
 });
 

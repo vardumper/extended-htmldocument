@@ -5,6 +5,7 @@ namespace Html\Delegator;
 use BadMethodCallException;
 use Dom\HTMLCollection;
 use DOM\NodeList;
+use Html\Trait\DelegatorTrait;
 use Iterator;
 use ReflectionClass;
 
@@ -67,20 +68,20 @@ use ReflectionClass;
  */
 class NodeListDelegator
 {
-    private NodeList|HTMLCollection $nodeList;
+    use DelegatorTrait;
 
-    public function __construct(NodeList|HTMLCollection $nodeList)
-    {
-        $this->nodeList = $nodeList;
+    public function __construct(
+        private readonly NodeList|HTMLCollection $delegated
+    ) {
     }
 
     public function __call($name, $arguments)
     {
-        $reflection = new ReflectionClass($this->nodeList);
+        $reflection = new ReflectionClass($this->delegated);
         if ($reflection->hasMethod($name)) {
             $method = $reflection->getMethod($name);
             $method->setAccessible(true);
-            return $method->invokeArgs($this->nodeList, $arguments);
+            return $method->invokeArgs($this->delegated, $arguments);
         }
         throw new BadMethodCallException(
             "Method {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
@@ -89,7 +90,12 @@ class NodeListDelegator
 
     public function item(int $index): ?NodeDelegator
     {
-        $node = $this->nodeList->item($index);
+        $node = $this->delegated->item($index);
         return $node ? new NodeDelegator($node) : null;
+    }
+
+    public function getNodeList(): NodeList|HTMLCollection
+    {
+        return $this->delegated;
     }
 }

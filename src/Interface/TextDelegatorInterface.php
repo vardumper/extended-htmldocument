@@ -2,17 +2,15 @@
 
 namespace Html\Interface;
 
-use Dom\Node;
+use Dom\Text;
 
-interface NodeDelegatorInterface
+interface TextDelegatorInterface
 {
-    public function __construct(Node $node);
-
     public function __call($name, $arguments);
 
     public function __get($name);
 
     public function __set($name, $value): void;
 
-    public function getNode(): Node;
+    public function getText(): Text;
 }

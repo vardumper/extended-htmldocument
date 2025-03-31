@@ -2,20 +2,20 @@
 
 namespace Html\Delegator;
 
-use DOM\Node;
-use Html\Interface\NodeDelegatorInterface;
+use DOM\Text;
+use Html\Interface\TextDelegatorInterface;
 use Html\Trait\DelegatorTrait;
 
-class NodeDelegator implements NodeDelegatorInterface
+class TextDelegator implements TextDelegatorInterface
 {
     use DelegatorTrait;
 
     public function __construct(
-        private readonly Node $delegated
+        private readonly Text $delegated
     ) {
     }
 
-    public function getNode(): Node
+    public function getText(): Text
     {
         return $this->delegated;
     }

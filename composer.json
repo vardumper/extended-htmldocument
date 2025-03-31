@@ -61,7 +61,7 @@
         "brainmaestro/composer-git-hooks": "dev-master",
         "friendsofphp/php-cs-fixer": "^3.74.0",
         "mnapoli/silly": "^1.9.1",
-        "pestphp/pest": "^3.7.5",
+        "pestphp/pest": "^3.8.0",
         "pestphp/pest-plugin-drift": "^3.0",
         "pestphp/pest-plugin-type-coverage": "^3.5",
         "phpmd/phpmd": "^2.15",
