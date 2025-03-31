@@ -7,6 +7,14 @@ use DOM\Node;
 use Html\Interface\NodeDelegatorInterface;
 use Html\Trait\DelegatorTrait;
 
+/**
+ * @property-read string $nodeName
+ * @property-read int $nodeType
+ * @property-read string $nodeValue
+ * @property-read string $textContent
+ * @property-read ?Node $parentNode
+ * @property Node $delegated
+ */
 #[AllowDynamicProperties]
 class NodeDelegator implements NodeDelegatorInterface
 {
