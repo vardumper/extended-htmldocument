@@ -1,16 +1,16 @@
 <?php
 
-use Html\Delegator\DOMNodeListDelegator;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\NodeDelegator;
+use Html\Delegator\NodeListDelegator;
 
 beforeEach(function () {
     $this->document = HTMLDocumentDelegator::createEmpty();
-    $this->delegator = new DOMNodeListDelegator($this->document->childNodes);
+    $this->delegator = new NodeListDelegator($this->document->childNodes);
 });
 
 test('constructor', function () {
-    expect($this->delegator)->toBeInstanceOf(DOMNodeListDelegator::class);
+    expect($this->delegator)->toBeInstanceOf(NodeListDelegator::class);
 });
 
 test('child nodes count', function () {

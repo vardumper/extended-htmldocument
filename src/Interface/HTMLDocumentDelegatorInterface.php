@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Html\Interface;
 
 use Dom\HTMLDocument;
-use Html\Delegator\DOMNodeListDelegator;
 use Html\Delegator\HTMLElementDelegator;
+use Html\Delegator\NodeListDelegator;
 
 interface HTMLDocumentDelegatorInterface
 {
@@ -24,5 +24,5 @@ interface HTMLDocumentDelegatorInterface
 
     public function createElement(string $qualifiedName): HTMLElementDelegator;
 
-    public function getElementsByTagName(string $name): DOMNodeListDelegator;
+    public function getElementsByTagName(string $name): NodeListDelegator;
 }

@@ -5,7 +5,7 @@ namespace Html\Interface;
 use Dom\HTMLCollection;
 use Dom\NodeList;
 
-interface DOMNodeListDelegatorInterface
+interface NodeListDelegatorInterface
 {
     public function __construct(NodeList|HTMLCollection $nodeList);
 

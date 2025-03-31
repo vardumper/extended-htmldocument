@@ -65,7 +65,7 @@ use ReflectionClass;
  * @method filter(callable $callback)
  * @method slice(int $start, int $end)
  */
-class DOMNodeListDelegator
+class NodeListDelegator
 {
     private NodeList|HTMLCollection $nodeList;
 

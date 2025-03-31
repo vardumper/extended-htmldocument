@@ -49,7 +49,7 @@ use ReflectionClass;
  * @method string saveHtml()
  * @method int debugGetTemplateCount()
  * @method HTMLElementDelegator createElement(string $qualifiedName)
- * @method DOMNodeListDelegator getElementsByTagName(string $name)
+ * @method NodeListDelegator getElementsByTagName(string $name)
  */
 class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
 {
@@ -148,9 +148,9 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
         return new HTMLElementDelegator($htmlElement);
     }
 
-    public function getElementsByTagName(string $name): DOMNodeListDelegator
+    public function getElementsByTagName(string $name): NodeListDelegator
     {
         $nodeList = $this->htmlDocument->getElementsByTagName($name);
-        return new DOMNodeListDelegator($nodeList);
+        return new NodeListDelegator($nodeList);
     }
 }

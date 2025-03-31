@@ -2,9 +2,9 @@
 
 use DOM\HTMLDocument;
 use Dom\HTMLElement;
-use Html\Delegator\DOMNodeListDelegator;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
+use Html\Delegator\NodeListDelegator;
 use Html\Element\Block\Body;
 use Html\Element\Block\TableData;
 use Html\Element\Block\TableRow;
@@ -284,7 +284,7 @@ test('get elements by tag name', function () {
     $html = '<!DOCTYPE html><html><head><title>Test</title></head><body><div><p>Test</p></div></body></html>';
     $delegator = HTMLDocumentDelegator::createFromString($html);
     expect($delegator->getElementsByTagName('div'))
-        ->toBeInstanceOf(DOMNodeListDelegator::class);
+        ->toBeInstanceOf(NodeListDelegator::class);
     expect($delegator->getElementsByTagName('div')->count())
         ->toEqual(1);
     expect($delegator->getElementsByTagName('p')->count())
