@@ -7,6 +7,8 @@ use BackedEnum;
 use BadMethodCallException;
 use DOM\Document;
 use DOM\HtmlElement;
+use Dom\Text;
+use Exception;
 use Html\Helper\Helper;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
@@ -136,14 +138,23 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         return $this->renderer->render($this);
     }
 
-    public function appendChild(HTMLElementDelegatorInterface $child): static
+    public function appendChild(HTMLElementDelegatorInterface|Text $child): static
     {
-        if ($child->getOwnerDocument() !== $this->getOwnerDocument()) {
+        if (! \property_exists($child, 'ownerDocument')) {
+            throw new Exception('The child element must be an instance of HTMLElementDelegatorInterface or Text.');
+        }
+
+        if ($child->ownerDocument !== self::$ownerDocument) {
+            /** @todo the child could be imported here */
             throw new InvalidArgumentException(
                 'The child element must belong to the same document as the parent element.'
             );
         }
-        $this->htmlElement->appendChild($child->htmlElement);
+        if ($child instanceof HTMLElementDelegatorInterface) {
+            $this->htmlElement->appendChild($child->htmlElement);
+            return $this;
+        }
+        $this->htmlElement->appendChild($child);
         return $this;
     }
 
