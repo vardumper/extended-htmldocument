@@ -12,6 +12,16 @@ class TextDelegator implements TextDelegatorInterface
 {
     use DelegatorTrait;
 
+    public static HTMLDocumentDelegator $ownerDocument;
+
+    /**
+     * @property-read string $data
+     * @property-read int $length
+     * @property-read string $wholeText
+     * @property-read ?Text $nextSibling
+     * @property-read ?Text $previousSibling
+     * @property Text $delegated
+     */
     public function __construct(
         private readonly Text $delegated
     ) {
@@ -20,5 +30,10 @@ class TextDelegator implements TextDelegatorInterface
     public function getText(): Text
     {
         return $this->delegated;
+    }
+
+    public static function getOwnerDocument(): HTMLDocumentDelegator
+    {
+        return static::$ownerDocument;
     }
 }

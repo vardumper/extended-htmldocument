@@ -109,23 +109,20 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         return $this->renderer->render($this);
     }
 
-    public function appendChild(HTMLElementDelegatorInterface|Text $child): static
+    public function appendChild(HTMLElementDelegatorInterface|TextDelegator $child): static
     {
-        if (! \property_exists($child, 'ownerDocument')) {
-            throw new Exception('The child element must be an instance of HTMLElementDelegatorInterface or Text.');
-        }
+        // if (! \property_exists($child->delegated, 'ownerDocument') && ! \method_exists($child, 'getOwnerDocument')) {
+        //     throw new Exception('The child element does not seem to have an ownerDocument.');
+        // }
 
-        if ($child->ownerDocument !== self::$ownerDocument) {
+        if ($child->getOwnerDocument() !== $this->getOwnerDocument()) {
             /** @todo the child could be imported here */
             throw new InvalidArgumentException(
                 'The child element must belong to the same document as the parent element.'
             );
         }
-        if ($child instanceof HTMLElementDelegatorInterface) {
-            $this->delegated->appendChild($child->delegated);
-            return $this;
-        }
-        $this->delegated->appendChild($child);
+
+        $this->delegated->appendChild($child->delegated);
         return $this;
     }
 

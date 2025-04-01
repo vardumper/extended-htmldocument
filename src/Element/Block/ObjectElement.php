@@ -5,7 +5,7 @@
  *
  * ObjectElement - The object element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
@@ -92,7 +92,7 @@ class ObjectElement extends BlockElement
     public function setData(string $data): static
     {
         $this->data = $data;
-        $this->htmlElement->setAttribute('data', $data);
+        $this->delegated->setAttribute('data', $data);
         return $this;
     }
 
@@ -104,7 +104,7 @@ class ObjectElement extends BlockElement
     public function setHeight(string $height): static
     {
         $this->height = $height;
-        $this->htmlElement->setAttribute('height', $height);
+        $this->delegated->setAttribute('height', $height);
         return $this;
     }
 
@@ -116,7 +116,7 @@ class ObjectElement extends BlockElement
     public function setName(string $name): static
     {
         $this->name = $name;
-        $this->htmlElement->setAttribute('name', $name);
+        $this->delegated->setAttribute('name', $name);
         return $this;
     }
 
@@ -128,7 +128,7 @@ class ObjectElement extends BlockElement
     public function setType(string $type): static
     {
         $this->type = $type;
-        $this->htmlElement->setAttribute('type', $type);
+        $this->delegated->setAttribute('type', $type);
         return $this;
     }
 
@@ -140,7 +140,7 @@ class ObjectElement extends BlockElement
     public function setUsemap(string $usemap): static
     {
         $this->usemap = $usemap;
-        $this->htmlElement->setAttribute('usemap', $usemap);
+        $this->delegated->setAttribute('usemap', $usemap);
         return $this;
     }
 
@@ -152,7 +152,7 @@ class ObjectElement extends BlockElement
     public function setWidth(string $width): static
     {
         $this->width = $width;
-        $this->htmlElement->setAttribute('width', $width);
+        $this->delegated->setAttribute('width', $width);
         return $this;
     }
 

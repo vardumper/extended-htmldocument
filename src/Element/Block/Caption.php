@@ -5,7 +5,7 @@
  *
  * Caption - The caption element represents the title of the table that is its parent, if it has a parent and that is a table element.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption

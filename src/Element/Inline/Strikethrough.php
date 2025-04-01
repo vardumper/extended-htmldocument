@@ -5,7 +5,7 @@
  *
  * Strikethrough - The s element represents contents that are no longer accurate or no longer relevant.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s

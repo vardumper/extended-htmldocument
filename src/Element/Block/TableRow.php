@@ -5,7 +5,7 @@
  *
  * TableRow - The tr element represents a row of cells in a table.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
@@ -85,7 +85,7 @@ class TableRow extends BlockElement
             $align = AlignEnum::tryFrom($align) ?? throw new InvalidArgumentException('Invalid value for $align.');
         }
         $this->align = $align;
-        $this->htmlElement->setAttribute('align', (string) $align->value);
+        $this->delegated->setAttribute('align', (string) $align->value);
 
         return $this;
     }
@@ -98,7 +98,7 @@ class TableRow extends BlockElement
     public function setBgcolor(string $bgcolor): static
     {
         $this->bgcolor = $bgcolor;
-        $this->htmlElement->setAttribute('bgcolor', $bgcolor);
+        $this->delegated->setAttribute('bgcolor', $bgcolor);
         return $this;
     }
 
@@ -110,7 +110,7 @@ class TableRow extends BlockElement
     public function setChar(string $char): static
     {
         $this->char = $char;
-        $this->htmlElement->setAttribute('char', $char);
+        $this->delegated->setAttribute('char', $char);
         return $this;
     }
 
@@ -122,7 +122,7 @@ class TableRow extends BlockElement
     public function setCharoff(string $charoff): static
     {
         $this->charoff = $charoff;
-        $this->htmlElement->setAttribute('charoff', $charoff);
+        $this->delegated->setAttribute('charoff', $charoff);
         return $this;
     }
 
@@ -137,7 +137,7 @@ class TableRow extends BlockElement
             $valign = ValignEnum::tryFrom($valign) ?? throw new InvalidArgumentException('Invalid value for $valign.');
         }
         $this->valign = $valign;
-        $this->htmlElement->setAttribute('valign', (string) $valign->value);
+        $this->delegated->setAttribute('valign', (string) $valign->value);
 
         return $this;
     }

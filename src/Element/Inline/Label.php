@@ -5,7 +5,7 @@
  *
  * Label - The label element represents a caption in a user interface. The caption can be associated with a specific form control, known as the label element's labeled control, either using the for attribute, or by putting the form control inside the label element itself.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
@@ -58,7 +58,7 @@ class Label extends InlineElement
     public function setFor(string $for): static
     {
         $this->for = $for;
-        $this->htmlElement->setAttribute('for', $for);
+        $this->delegated->setAttribute('for', $for);
         return $this;
     }
 

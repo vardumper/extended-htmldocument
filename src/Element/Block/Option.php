@@ -5,7 +5,7 @@
  *
  * Option - The option element represents an item in a select dropdown list.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
@@ -70,7 +70,7 @@ class Option extends BlockElement
     public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
-        $this->htmlElement->setAttribute('disabled', $disabled);
+        $this->delegated->setAttribute('disabled', $disabled);
         return $this;
     }
 
@@ -82,7 +82,7 @@ class Option extends BlockElement
     public function setLabel(string $label): static
     {
         $this->label = $label;
-        $this->htmlElement->setAttribute('label', $label);
+        $this->delegated->setAttribute('label', $label);
         return $this;
     }
 
@@ -94,7 +94,7 @@ class Option extends BlockElement
     public function setSelected(bool $selected): static
     {
         $this->selected = $selected;
-        $this->htmlElement->setAttribute('selected', $selected);
+        $this->delegated->setAttribute('selected', $selected);
         return $this;
     }
 
@@ -106,7 +106,7 @@ class Option extends BlockElement
     public function setValue(string $value): static
     {
         $this->value = $value;
-        $this->htmlElement->setAttribute('value', $value);
+        $this->delegated->setAttribute('value', $value);
         return $this;
     }
 

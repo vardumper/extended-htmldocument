@@ -106,6 +106,12 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
         return new HTMLElementDelegator($htmlElement);
     }
 
+    public function createTextNode(string $nodeValue): TextDelegator
+    {
+        $textNode = $this->delegated->createTextNode($nodeValue);
+        return new TextDelegator($textNode);
+    }
+
     public function getElementsByTagName(string $name): NodeListDelegator
     {
         $nodeList = $this->delegated->getElementsByTagName($name);

@@ -21,6 +21,8 @@ trait DelegatorTrait
         $reflection = new ReflectionClass($this->delegated);
         if ($reflection->hasMethod($name)) {
             $method = $reflection->getMethod($name);
+            // var_dump(\get_class($this->delegated));
+            // exit;
             $method->setAccessible(true);
             return $method->invokeArgs($this->delegated, $arguments);
         }

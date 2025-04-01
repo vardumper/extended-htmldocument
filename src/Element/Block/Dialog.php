@@ -5,7 +5,7 @@
  *
  * Dialog - The dialog element represents a part of an application that a user interacts with to perform a task, for example a dialog box, inspector, or window.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
@@ -83,7 +83,7 @@ class Dialog extends BlockElement
     public function setOpen(bool $open): static
     {
         $this->open = $open;
-        $this->htmlElement->setAttribute('open', $open);
+        $this->delegated->setAttribute('open', $open);
         return $this;
     }
 

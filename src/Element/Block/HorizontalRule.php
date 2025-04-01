@@ -5,7 +5,7 @@
  *
  * HorizontalRule - The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr
@@ -86,7 +86,7 @@ class HorizontalRule extends BlockElement
             $align = AlignEnum::tryFrom($align) ?? throw new InvalidArgumentException('Invalid value for $align.');
         }
         $this->align = $align;
-        $this->htmlElement->setAttribute('align', (string) $align->value);
+        $this->delegated->setAttribute('align', (string) $align->value);
 
         return $this;
     }
@@ -99,7 +99,7 @@ class HorizontalRule extends BlockElement
     public function setColor(string $color): static
     {
         $this->color = $color;
-        $this->htmlElement->setAttribute('color', $color);
+        $this->delegated->setAttribute('color', $color);
         return $this;
     }
 
@@ -111,7 +111,7 @@ class HorizontalRule extends BlockElement
     public function setNoshade(bool $noshade): static
     {
         $this->noshade = $noshade;
-        $this->htmlElement->setAttribute('noshade', $noshade);
+        $this->delegated->setAttribute('noshade', $noshade);
         return $this;
     }
 
@@ -123,7 +123,7 @@ class HorizontalRule extends BlockElement
     public function setSize(int $size): static
     {
         $this->size = $size;
-        $this->htmlElement->setAttribute('size', $size);
+        $this->delegated->setAttribute('size', $size);
         return $this;
     }
 
@@ -135,7 +135,7 @@ class HorizontalRule extends BlockElement
     public function setWidth(string $width): static
     {
         $this->width = $width;
-        $this->htmlElement->setAttribute('width', $width);
+        $this->delegated->setAttribute('width', $width);
         return $this;
     }
 

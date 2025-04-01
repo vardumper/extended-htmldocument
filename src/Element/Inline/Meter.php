@@ -5,7 +5,7 @@
  *
  * Meter - The meter element represents a scalar measurement within a known range, or a fractional value.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
@@ -83,7 +83,7 @@ class Meter extends InlineElement
     public function setHigh(string $high): static
     {
         $this->high = $high;
-        $this->htmlElement->setAttribute('high', $high);
+        $this->delegated->setAttribute('high', $high);
         return $this;
     }
 
@@ -95,7 +95,7 @@ class Meter extends InlineElement
     public function setLow(string $low): static
     {
         $this->low = $low;
-        $this->htmlElement->setAttribute('low', $low);
+        $this->delegated->setAttribute('low', $low);
         return $this;
     }
 
@@ -107,7 +107,7 @@ class Meter extends InlineElement
     public function setMax(int $max): static
     {
         $this->max = $max;
-        $this->htmlElement->setAttribute('max', $max);
+        $this->delegated->setAttribute('max', $max);
         return $this;
     }
 
@@ -119,7 +119,7 @@ class Meter extends InlineElement
     public function setMin(string $min): static
     {
         $this->min = $min;
-        $this->htmlElement->setAttribute('min', $min);
+        $this->delegated->setAttribute('min', $min);
         return $this;
     }
 
@@ -131,7 +131,7 @@ class Meter extends InlineElement
     public function setOptimum(string $optimum): static
     {
         $this->optimum = $optimum;
-        $this->htmlElement->setAttribute('optimum', $optimum);
+        $this->delegated->setAttribute('optimum', $optimum);
         return $this;
     }
 
@@ -143,7 +143,7 @@ class Meter extends InlineElement
     public function setValue(string $value): static
     {
         $this->value = $value;
-        $this->htmlElement->setAttribute('value', $value);
+        $this->delegated->setAttribute('value', $value);
         return $this;
     }
 

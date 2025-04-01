@@ -5,7 +5,7 @@
  *
  * Time - The time element represents a specific period in time. It may include the datetime attribute to translate dates into machine-readable format, allowing for better search engine results or custom features such as reminders.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
@@ -77,7 +77,7 @@ class Time extends InlineElement
     public function setDatetime(string $datetime): static
     {
         $this->datetime = $datetime;
-        $this->htmlElement->setAttribute('datetime', $datetime);
+        $this->delegated->setAttribute('datetime', $datetime);
         return $this;
     }
 

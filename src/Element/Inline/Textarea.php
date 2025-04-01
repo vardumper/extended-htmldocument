@@ -5,7 +5,7 @@
  *
  * Textarea - The textarea element represents a multiline plain text edit control for the element's raw value.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
@@ -146,7 +146,7 @@ class Textarea extends InlineElement
             );
         }
         $this->autocomplete = $autocomplete;
-        $this->htmlElement->setAttribute('autocomplete', (string) $autocomplete->value);
+        $this->delegated->setAttribute('autocomplete', (string) $autocomplete->value);
 
         return $this;
     }
@@ -159,7 +159,7 @@ class Textarea extends InlineElement
     public function setCols(int $cols): static
     {
         $this->cols = $cols;
-        $this->htmlElement->setAttribute('cols', $cols);
+        $this->delegated->setAttribute('cols', $cols);
         return $this;
     }
 
@@ -171,7 +171,7 @@ class Textarea extends InlineElement
     public function setDirname(string $dirname): static
     {
         $this->dirname = $dirname;
-        $this->htmlElement->setAttribute('dirname', $dirname);
+        $this->delegated->setAttribute('dirname', $dirname);
         return $this;
     }
 
@@ -183,7 +183,7 @@ class Textarea extends InlineElement
     public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
-        $this->htmlElement->setAttribute('disabled', $disabled);
+        $this->delegated->setAttribute('disabled', $disabled);
         return $this;
     }
 
@@ -195,7 +195,7 @@ class Textarea extends InlineElement
     public function setMaxlength(int $maxlength): static
     {
         $this->maxlength = $maxlength;
-        $this->htmlElement->setAttribute('maxlength', $maxlength);
+        $this->delegated->setAttribute('maxlength', $maxlength);
         return $this;
     }
 
@@ -207,7 +207,7 @@ class Textarea extends InlineElement
     public function setMinlength(int $minlength): static
     {
         $this->minlength = $minlength;
-        $this->htmlElement->setAttribute('minlength', $minlength);
+        $this->delegated->setAttribute('minlength', $minlength);
         return $this;
     }
 
@@ -219,7 +219,7 @@ class Textarea extends InlineElement
     public function setName(string $name): static
     {
         $this->name = $name;
-        $this->htmlElement->setAttribute('name', $name);
+        $this->delegated->setAttribute('name', $name);
         return $this;
     }
 
@@ -231,7 +231,7 @@ class Textarea extends InlineElement
     public function setPlaceholder(string $placeholder): static
     {
         $this->placeholder = $placeholder;
-        $this->htmlElement->setAttribute('placeholder', $placeholder);
+        $this->delegated->setAttribute('placeholder', $placeholder);
         return $this;
     }
 
@@ -243,7 +243,7 @@ class Textarea extends InlineElement
     public function setReadonly(bool $readonly): static
     {
         $this->readonly = $readonly;
-        $this->htmlElement->setAttribute('readonly', $readonly);
+        $this->delegated->setAttribute('readonly', $readonly);
         return $this;
     }
 
@@ -255,7 +255,7 @@ class Textarea extends InlineElement
     public function setRequired(bool $required): static
     {
         $this->required = $required;
-        $this->htmlElement->setAttribute('required', $required);
+        $this->delegated->setAttribute('required', $required);
         return $this;
     }
 
@@ -267,7 +267,7 @@ class Textarea extends InlineElement
     public function setRows(int $rows): static
     {
         $this->rows = $rows;
-        $this->htmlElement->setAttribute('rows', $rows);
+        $this->delegated->setAttribute('rows', $rows);
         return $this;
     }
 
@@ -282,7 +282,7 @@ class Textarea extends InlineElement
             $wrap = WrapEnum::tryFrom($wrap) ?? throw new InvalidArgumentException('Invalid value for $wrap.');
         }
         $this->wrap = $wrap;
-        $this->htmlElement->setAttribute('wrap', (string) $wrap->value);
+        $this->delegated->setAttribute('wrap', (string) $wrap->value);
 
         return $this;
     }

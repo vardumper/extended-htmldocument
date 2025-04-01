@@ -5,7 +5,7 @@
  *
  * Body - The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
@@ -248,7 +248,7 @@ class Body extends BlockElement
     public function setOnafterprint(string $onafterprint): static
     {
         $this->onafterprint = $onafterprint;
-        $this->htmlElement->setAttribute('onafterprint', $onafterprint);
+        $this->delegated->setAttribute('onafterprint', $onafterprint);
         return $this;
     }
 
@@ -260,7 +260,7 @@ class Body extends BlockElement
     public function setOnbeforeprint(string $onbeforeprint): static
     {
         $this->onbeforeprint = $onbeforeprint;
-        $this->htmlElement->setAttribute('onbeforeprint', $onbeforeprint);
+        $this->delegated->setAttribute('onbeforeprint', $onbeforeprint);
         return $this;
     }
 
@@ -272,7 +272,7 @@ class Body extends BlockElement
     public function setOnbeforeunload(string $onbeforeunload): static
     {
         $this->onbeforeunload = $onbeforeunload;
-        $this->htmlElement->setAttribute('onbeforeunload', $onbeforeunload);
+        $this->delegated->setAttribute('onbeforeunload', $onbeforeunload);
         return $this;
     }
 
@@ -284,7 +284,7 @@ class Body extends BlockElement
     public function setOnhashchange(string $onhashchange): static
     {
         $this->onhashchange = $onhashchange;
-        $this->htmlElement->setAttribute('onhashchange', $onhashchange);
+        $this->delegated->setAttribute('onhashchange', $onhashchange);
         return $this;
     }
 
@@ -296,7 +296,7 @@ class Body extends BlockElement
     public function setOnlanguagechange(string $onlanguagechange): static
     {
         $this->onlanguagechange = $onlanguagechange;
-        $this->htmlElement->setAttribute('onlanguagechange', $onlanguagechange);
+        $this->delegated->setAttribute('onlanguagechange', $onlanguagechange);
         return $this;
     }
 
@@ -308,7 +308,7 @@ class Body extends BlockElement
     public function setOnmessage(string $onmessage): static
     {
         $this->onmessage = $onmessage;
-        $this->htmlElement->setAttribute('onmessage', $onmessage);
+        $this->delegated->setAttribute('onmessage', $onmessage);
         return $this;
     }
 
@@ -320,7 +320,7 @@ class Body extends BlockElement
     public function setOnmessageerror(string $onmessageerror): static
     {
         $this->onmessageerror = $onmessageerror;
-        $this->htmlElement->setAttribute('onmessageerror', $onmessageerror);
+        $this->delegated->setAttribute('onmessageerror', $onmessageerror);
         return $this;
     }
 
@@ -332,7 +332,7 @@ class Body extends BlockElement
     public function setOnoffline(string $onoffline): static
     {
         $this->onoffline = $onoffline;
-        $this->htmlElement->setAttribute('onoffline', $onoffline);
+        $this->delegated->setAttribute('onoffline', $onoffline);
         return $this;
     }
 
@@ -344,7 +344,7 @@ class Body extends BlockElement
     public function setOnonline(string $ononline): static
     {
         $this->ononline = $ononline;
-        $this->htmlElement->setAttribute('ononline', $ononline);
+        $this->delegated->setAttribute('ononline', $ononline);
         return $this;
     }
 
@@ -356,7 +356,7 @@ class Body extends BlockElement
     public function setOnpagehide(string $onpagehide): static
     {
         $this->onpagehide = $onpagehide;
-        $this->htmlElement->setAttribute('onpagehide', $onpagehide);
+        $this->delegated->setAttribute('onpagehide', $onpagehide);
         return $this;
     }
 
@@ -368,7 +368,7 @@ class Body extends BlockElement
     public function setOnpageshow(string $onpageshow): static
     {
         $this->onpageshow = $onpageshow;
-        $this->htmlElement->setAttribute('onpageshow', $onpageshow);
+        $this->delegated->setAttribute('onpageshow', $onpageshow);
         return $this;
     }
 
@@ -380,7 +380,7 @@ class Body extends BlockElement
     public function setOnpopstate(string $onpopstate): static
     {
         $this->onpopstate = $onpopstate;
-        $this->htmlElement->setAttribute('onpopstate', $onpopstate);
+        $this->delegated->setAttribute('onpopstate', $onpopstate);
         return $this;
     }
 
@@ -392,7 +392,7 @@ class Body extends BlockElement
     public function setOnrejectionhandled(string $onrejectionhandled): static
     {
         $this->onrejectionhandled = $onrejectionhandled;
-        $this->htmlElement->setAttribute('onrejectionhandled', $onrejectionhandled);
+        $this->delegated->setAttribute('onrejectionhandled', $onrejectionhandled);
         return $this;
     }
 
@@ -404,7 +404,7 @@ class Body extends BlockElement
     public function setOnstorage(string $onstorage): static
     {
         $this->onstorage = $onstorage;
-        $this->htmlElement->setAttribute('onstorage', $onstorage);
+        $this->delegated->setAttribute('onstorage', $onstorage);
         return $this;
     }
 
@@ -416,7 +416,7 @@ class Body extends BlockElement
     public function setOnunhandledrejection(string $onunhandledrejection): static
     {
         $this->onunhandledrejection = $onunhandledrejection;
-        $this->htmlElement->setAttribute('onunhandledrejection', $onunhandledrejection);
+        $this->delegated->setAttribute('onunhandledrejection', $onunhandledrejection);
         return $this;
     }
 
@@ -428,7 +428,7 @@ class Body extends BlockElement
     public function setOnunload(string $onunload): static
     {
         $this->onunload = $onunload;
-        $this->htmlElement->setAttribute('onunload', $onunload);
+        $this->delegated->setAttribute('onunload', $onunload);
         return $this;
     }
 

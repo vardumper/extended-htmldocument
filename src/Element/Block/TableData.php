@@ -5,7 +5,7 @@
  *
  * TableData - The td element represents a data cell in a table.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td
@@ -64,7 +64,7 @@ class TableData extends BlockElement
     public function setColspan(int $colspan): static
     {
         $this->colspan = $colspan;
-        $this->htmlElement->setAttribute('colspan', $colspan);
+        $this->delegated->setAttribute('colspan', $colspan);
         return $this;
     }
 
@@ -76,7 +76,7 @@ class TableData extends BlockElement
     public function setHeaders(string $headers): static
     {
         $this->headers = $headers;
-        $this->htmlElement->setAttribute('headers', $headers);
+        $this->delegated->setAttribute('headers', $headers);
         return $this;
     }
 
@@ -88,7 +88,7 @@ class TableData extends BlockElement
     public function setRowspan(int $rowspan): static
     {
         $this->rowspan = $rowspan;
-        $this->htmlElement->setAttribute('rowspan', $rowspan);
+        $this->delegated->setAttribute('rowspan', $rowspan);
         return $this;
     }
 

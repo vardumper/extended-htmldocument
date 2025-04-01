@@ -5,7 +5,7 @@
  *
  * Select - The select element represents a control for selecting amongst a set of options.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
@@ -117,7 +117,7 @@ class Select extends InlineElement
             );
         }
         $this->autocomplete = $autocomplete;
-        $this->htmlElement->setAttribute('autocomplete', (string) $autocomplete->value);
+        $this->delegated->setAttribute('autocomplete', (string) $autocomplete->value);
 
         return $this;
     }
@@ -130,7 +130,7 @@ class Select extends InlineElement
     public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
-        $this->htmlElement->setAttribute('disabled', $disabled);
+        $this->delegated->setAttribute('disabled', $disabled);
         return $this;
     }
 
@@ -142,7 +142,7 @@ class Select extends InlineElement
     public function setMultiple(bool $multiple): static
     {
         $this->multiple = $multiple;
-        $this->htmlElement->setAttribute('multiple', $multiple);
+        $this->delegated->setAttribute('multiple', $multiple);
         return $this;
     }
 
@@ -154,7 +154,7 @@ class Select extends InlineElement
     public function setName(string $name): static
     {
         $this->name = $name;
-        $this->htmlElement->setAttribute('name', $name);
+        $this->delegated->setAttribute('name', $name);
         return $this;
     }
 
@@ -166,7 +166,7 @@ class Select extends InlineElement
     public function setRequired(bool $required): static
     {
         $this->required = $required;
-        $this->htmlElement->setAttribute('required', $required);
+        $this->delegated->setAttribute('required', $required);
         return $this;
     }
 
@@ -178,7 +178,7 @@ class Select extends InlineElement
     public function setSize(int $size): static
     {
         $this->size = $size;
-        $this->htmlElement->setAttribute('size', $size);
+        $this->delegated->setAttribute('size', $size);
         return $this;
     }
 

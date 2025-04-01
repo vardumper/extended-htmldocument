@@ -20,6 +20,8 @@ class NodeDelegator implements NodeDelegatorInterface
 {
     use DelegatorTrait;
 
+    public static HTMLDocumentDelegator $ownerDocument;
+
     public function __construct(
         private readonly Node $delegated
     ) {
@@ -28,5 +30,10 @@ class NodeDelegator implements NodeDelegatorInterface
     public function getNode(): Node
     {
         return $this->delegated;
+    }
+
+    public static function getOwnerDocument(): HTMLDocumentDelegator
+    {
+        return static::$ownerDocument;
     }
 }

@@ -5,7 +5,7 @@
  *
  * Style - The style element is used to embed CSS styles directly into an HTML document.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
@@ -77,7 +77,7 @@ class Style extends VoidElement
     public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
-        $this->htmlElement->setAttribute('disabled', $disabled);
+        $this->delegated->setAttribute('disabled', $disabled);
         return $this;
     }
 
@@ -89,7 +89,7 @@ class Style extends VoidElement
     public function setMedia(string $media): static
     {
         $this->media = $media;
-        $this->htmlElement->setAttribute('media', $media);
+        $this->delegated->setAttribute('media', $media);
         return $this;
     }
 
@@ -101,7 +101,7 @@ class Style extends VoidElement
     public function setNonce(string $nonce): static
     {
         $this->nonce = $nonce;
-        $this->htmlElement->setAttribute('nonce', $nonce);
+        $this->delegated->setAttribute('nonce', $nonce);
         return $this;
     }
 
@@ -113,7 +113,7 @@ class Style extends VoidElement
     public function setTitle(string $title): static
     {
         $this->title = $title;
-        $this->htmlElement->setAttribute('title', $title);
+        $this->delegated->setAttribute('title', $title);
         return $this;
     }
 
@@ -128,7 +128,7 @@ class Style extends VoidElement
             $type = TypeStyleEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
         }
         $this->type = $type;
-        $this->htmlElement->setAttribute('type', (string) $type->value);
+        $this->delegated->setAttribute('type', (string) $type->value);
 
         return $this;
     }

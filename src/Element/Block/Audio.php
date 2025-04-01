@@ -5,7 +5,7 @@
  *
  * Audio - The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
@@ -98,7 +98,7 @@ class Audio extends BlockElement
     public function setAutoplay(bool $autoplay): static
     {
         $this->autoplay = $autoplay;
-        $this->htmlElement->setAttribute('autoplay', $autoplay);
+        $this->delegated->setAttribute('autoplay', $autoplay);
         return $this;
     }
 
@@ -110,7 +110,7 @@ class Audio extends BlockElement
     public function setControls(bool $controls): static
     {
         $this->controls = $controls;
-        $this->htmlElement->setAttribute('controls', $controls);
+        $this->delegated->setAttribute('controls', $controls);
         return $this;
     }
 
@@ -127,7 +127,7 @@ class Audio extends BlockElement
             );
         }
         $this->crossorigin = $crossorigin;
-        $this->htmlElement->setAttribute('crossorigin', (string) $crossorigin->value);
+        $this->delegated->setAttribute('crossorigin', (string) $crossorigin->value);
 
         return $this;
     }
@@ -140,7 +140,7 @@ class Audio extends BlockElement
     public function setLoop(bool $loop): static
     {
         $this->loop = $loop;
-        $this->htmlElement->setAttribute('loop', $loop);
+        $this->delegated->setAttribute('loop', $loop);
         return $this;
     }
 
@@ -152,7 +152,7 @@ class Audio extends BlockElement
     public function setMuted(bool $muted): static
     {
         $this->muted = $muted;
-        $this->htmlElement->setAttribute('muted', $muted);
+        $this->delegated->setAttribute('muted', $muted);
         return $this;
     }
 
@@ -169,7 +169,7 @@ class Audio extends BlockElement
             );
         }
         $this->preload = $preload;
-        $this->htmlElement->setAttribute('preload', (string) $preload->value);
+        $this->delegated->setAttribute('preload', (string) $preload->value);
 
         return $this;
     }
@@ -182,7 +182,7 @@ class Audio extends BlockElement
     public function setSrc(string $src): static
     {
         $this->src = $src;
-        $this->htmlElement->setAttribute('src', $src);
+        $this->delegated->setAttribute('src', $src);
         return $this;
     }
 

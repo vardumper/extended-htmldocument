@@ -5,7 +5,7 @@
  *
  * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
@@ -107,7 +107,7 @@ class Button extends InlineElement
     public function setAutofocus(bool $autofocus): static
     {
         $this->autofocus = $autofocus;
-        $this->htmlElement->setAttribute('autofocus', $autofocus);
+        $this->delegated->setAttribute('autofocus', $autofocus);
         return $this;
     }
 
@@ -119,7 +119,7 @@ class Button extends InlineElement
     public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
-        $this->htmlElement->setAttribute('disabled', $disabled);
+        $this->delegated->setAttribute('disabled', $disabled);
         return $this;
     }
 
@@ -131,7 +131,7 @@ class Button extends InlineElement
     public function setName(string $name): static
     {
         $this->name = $name;
-        $this->htmlElement->setAttribute('name', $name);
+        $this->delegated->setAttribute('name', $name);
         return $this;
     }
 
@@ -146,7 +146,7 @@ class Button extends InlineElement
             $type = TypeButtonEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
         }
         $this->type = $type;
-        $this->htmlElement->setAttribute('type', (string) $type->value);
+        $this->delegated->setAttribute('type', (string) $type->value);
 
         return $this;
     }
@@ -159,7 +159,7 @@ class Button extends InlineElement
     public function setValue(string $value): static
     {
         $this->value = $value;
-        $this->htmlElement->setAttribute('value', $value);
+        $this->delegated->setAttribute('value', $value);
         return $this;
     }
 

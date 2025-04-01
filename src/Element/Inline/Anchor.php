@@ -5,7 +5,7 @@
  *
  * Anchor - The a element represents a hyperlink, linking to another resource.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
@@ -120,7 +120,7 @@ class Anchor extends InlineElement
     public function setDownload(string $download): static
     {
         $this->download = $download;
-        $this->htmlElement->setAttribute('download', $download);
+        $this->delegated->setAttribute('download', $download);
         return $this;
     }
 
@@ -132,7 +132,7 @@ class Anchor extends InlineElement
     public function setHref(string $href): static
     {
         $this->href = $href;
-        $this->htmlElement->setAttribute('href', $href);
+        $this->delegated->setAttribute('href', $href);
         return $this;
     }
 
@@ -144,7 +144,7 @@ class Anchor extends InlineElement
     public function setHreflang(string $hreflang): static
     {
         $this->hreflang = $hreflang;
-        $this->htmlElement->setAttribute('hreflang', $hreflang);
+        $this->delegated->setAttribute('hreflang', $hreflang);
         return $this;
     }
 
@@ -159,7 +159,7 @@ class Anchor extends InlineElement
             $rel = RelEnum::tryFrom($rel) ?? throw new InvalidArgumentException('Invalid value for $rel.');
         }
         $this->rel = $rel;
-        $this->htmlElement->setAttribute('rel', (string) $rel->value);
+        $this->delegated->setAttribute('rel', (string) $rel->value);
 
         return $this;
     }
@@ -182,7 +182,7 @@ class Anchor extends InlineElement
             $value = $target->value;
         }
         $this->target = $target;
-        $this->htmlElement->setAttribute('target', (string) $value);
+        $this->delegated->setAttribute('target', (string) $value);
 
         return $this;
     }
@@ -195,7 +195,7 @@ class Anchor extends InlineElement
     public function setTitle(string $title): static
     {
         $this->title = $title;
-        $this->htmlElement->setAttribute('title', $title);
+        $this->delegated->setAttribute('title', $title);
         return $this;
     }
 
@@ -207,7 +207,7 @@ class Anchor extends InlineElement
     public function setType(string $type): static
     {
         $this->type = $type;
-        $this->htmlElement->setAttribute('type', $type);
+        $this->delegated->setAttribute('type', $type);
         return $this;
     }
 

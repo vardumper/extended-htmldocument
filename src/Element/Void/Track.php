@@ -5,7 +5,7 @@
  *
  * Track - The track element is used as a child of the media elements—audio and video. It lets you specify timed text tracks (or time-based data), for example to automatically handle subtitles. The tracks are formatted in WebVTT format (.vtt files) — Web Video Text Tracks.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track
@@ -99,7 +99,7 @@ class Track extends VoidElement
     public function setDefault(bool $default): static
     {
         $this->default = $default;
-        $this->htmlElement->setAttribute('default', $default);
+        $this->delegated->setAttribute('default', $default);
         return $this;
     }
 
@@ -114,7 +114,7 @@ class Track extends VoidElement
             $kind = KindEnum::tryFrom($kind) ?? throw new InvalidArgumentException('Invalid value for $kind.');
         }
         $this->kind = $kind;
-        $this->htmlElement->setAttribute('kind', (string) $kind->value);
+        $this->delegated->setAttribute('kind', (string) $kind->value);
 
         return $this;
     }
@@ -127,7 +127,7 @@ class Track extends VoidElement
     public function setLabel(string $label): static
     {
         $this->label = $label;
-        $this->htmlElement->setAttribute('label', $label);
+        $this->delegated->setAttribute('label', $label);
         return $this;
     }
 
@@ -139,7 +139,7 @@ class Track extends VoidElement
     public function setSrc(string $src): static
     {
         $this->src = $src;
-        $this->htmlElement->setAttribute('src', $src);
+        $this->delegated->setAttribute('src', $src);
         return $this;
     }
 
@@ -151,7 +151,7 @@ class Track extends VoidElement
     public function setSrclang(string $srclang): static
     {
         $this->srclang = $srclang;
-        $this->htmlElement->setAttribute('srclang', $srclang);
+        $this->delegated->setAttribute('srclang', $srclang);
         return $this;
     }
 

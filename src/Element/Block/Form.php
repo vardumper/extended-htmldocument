@@ -5,7 +5,7 @@
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
@@ -142,7 +142,7 @@ class Form extends BlockElement
     public function setAcceptCharset(string $acceptCharset): static
     {
         $this->acceptCharset = $acceptCharset;
-        $this->htmlElement->setAttribute('acceptCharset', $acceptCharset);
+        $this->delegated->setAttribute('acceptCharset', $acceptCharset);
         return $this;
     }
 
@@ -154,7 +154,7 @@ class Form extends BlockElement
     public function setAction(string $action): static
     {
         $this->action = $action;
-        $this->htmlElement->setAttribute('action', $action);
+        $this->delegated->setAttribute('action', $action);
         return $this;
     }
 
@@ -171,7 +171,7 @@ class Form extends BlockElement
             );
         }
         $this->autocomplete = $autocomplete;
-        $this->htmlElement->setAttribute('autocomplete', (string) $autocomplete->value);
+        $this->delegated->setAttribute('autocomplete', (string) $autocomplete->value);
 
         return $this;
     }
@@ -189,7 +189,7 @@ class Form extends BlockElement
             );
         }
         $this->enctype = $enctype;
-        $this->htmlElement->setAttribute('enctype', (string) $enctype->value);
+        $this->delegated->setAttribute('enctype', (string) $enctype->value);
 
         return $this;
     }
@@ -205,7 +205,7 @@ class Form extends BlockElement
             $method = MethodEnum::tryFrom($method) ?? throw new InvalidArgumentException('Invalid value for $method.');
         }
         $this->method = $method;
-        $this->htmlElement->setAttribute('method', (string) $method->value);
+        $this->delegated->setAttribute('method', (string) $method->value);
 
         return $this;
     }
@@ -218,7 +218,7 @@ class Form extends BlockElement
     public function setName(string $name): static
     {
         $this->name = $name;
-        $this->htmlElement->setAttribute('name', $name);
+        $this->delegated->setAttribute('name', $name);
         return $this;
     }
 
@@ -230,7 +230,7 @@ class Form extends BlockElement
     public function setNovalidate(bool $novalidate): static
     {
         $this->novalidate = $novalidate;
-        $this->htmlElement->setAttribute('novalidate', $novalidate);
+        $this->delegated->setAttribute('novalidate', $novalidate);
         return $this;
     }
 
@@ -245,7 +245,7 @@ class Form extends BlockElement
             $target = TargetEnum::tryFrom($target) ?? throw new InvalidArgumentException('Invalid value for $target.');
         }
         $this->target = $target;
-        $this->htmlElement->setAttribute('target', (string) $target->value);
+        $this->delegated->setAttribute('target', (string) $target->value);
 
         return $this;
     }

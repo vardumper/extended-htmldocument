@@ -5,7 +5,7 @@
  *
  * Canvas - The canvas element is used to draw graphics, on the fly, via scripting (usually JavaScript).
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas
@@ -59,7 +59,7 @@ class Canvas extends BlockElement
     public function setHeight(string $height): static
     {
         $this->height = $height;
-        $this->htmlElement->setAttribute('height', $height);
+        $this->delegated->setAttribute('height', $height);
         return $this;
     }
 
@@ -71,7 +71,7 @@ class Canvas extends BlockElement
     public function setWidth(string $width): static
     {
         $this->width = $width;
-        $this->htmlElement->setAttribute('width', $width);
+        $this->delegated->setAttribute('width', $width);
         return $this;
     }
 

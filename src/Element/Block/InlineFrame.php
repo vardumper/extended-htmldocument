@@ -5,7 +5,7 @@
  *
  * InlineFrame - The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
@@ -108,7 +108,7 @@ class InlineFrame extends BlockElement
     public function setAllowfullscreen(bool $allowfullscreen): static
     {
         $this->allowfullscreen = $allowfullscreen;
-        $this->htmlElement->setAttribute('allowfullscreen', $allowfullscreen);
+        $this->delegated->setAttribute('allowfullscreen', $allowfullscreen);
         return $this;
     }
 
@@ -120,7 +120,7 @@ class InlineFrame extends BlockElement
     public function setHeight(string $height): static
     {
         $this->height = $height;
-        $this->htmlElement->setAttribute('height', $height);
+        $this->delegated->setAttribute('height', $height);
         return $this;
     }
 
@@ -132,7 +132,7 @@ class InlineFrame extends BlockElement
     public function setName(string $name): static
     {
         $this->name = $name;
-        $this->htmlElement->setAttribute('name', $name);
+        $this->delegated->setAttribute('name', $name);
         return $this;
     }
 
@@ -149,7 +149,7 @@ class InlineFrame extends BlockElement
             );
         }
         $this->referrerpolicy = $referrerpolicy;
-        $this->htmlElement->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
+        $this->delegated->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
 
         return $this;
     }
@@ -162,7 +162,7 @@ class InlineFrame extends BlockElement
     public function setSandbox(string $sandbox): static
     {
         $this->sandbox = $sandbox;
-        $this->htmlElement->setAttribute('sandbox', $sandbox);
+        $this->delegated->setAttribute('sandbox', $sandbox);
         return $this;
     }
 
@@ -174,7 +174,7 @@ class InlineFrame extends BlockElement
     public function setSeamless(bool $seamless): static
     {
         $this->seamless = $seamless;
-        $this->htmlElement->setAttribute('seamless', $seamless);
+        $this->delegated->setAttribute('seamless', $seamless);
         return $this;
     }
 
@@ -186,7 +186,7 @@ class InlineFrame extends BlockElement
     public function setSrc(string $src): static
     {
         $this->src = $src;
-        $this->htmlElement->setAttribute('src', $src);
+        $this->delegated->setAttribute('src', $src);
         return $this;
     }
 
@@ -198,7 +198,7 @@ class InlineFrame extends BlockElement
     public function setSrcdoc(string $srcdoc): static
     {
         $this->srcdoc = $srcdoc;
-        $this->htmlElement->setAttribute('srcdoc', $srcdoc);
+        $this->delegated->setAttribute('srcdoc', $srcdoc);
         return $this;
     }
 
@@ -210,7 +210,7 @@ class InlineFrame extends BlockElement
     public function setWidth(string $width): static
     {
         $this->width = $width;
-        $this->htmlElement->setAttribute('width', $width);
+        $this->delegated->setAttribute('width', $width);
         return $this;
     }
 

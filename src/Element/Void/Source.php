@@ -5,7 +5,7 @@
  *
  * Source - The source element allows authors to specify multiple media resources for media elements. It is an empty element. It is commonly used within the picture element.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source
@@ -94,7 +94,7 @@ class Source extends VoidElement
     public function setMedia(string $media): static
     {
         $this->media = $media;
-        $this->htmlElement->setAttribute('media', $media);
+        $this->delegated->setAttribute('media', $media);
         return $this;
     }
 
@@ -106,7 +106,7 @@ class Source extends VoidElement
     public function setSizes(string $sizes): static
     {
         $this->sizes = $sizes;
-        $this->htmlElement->setAttribute('sizes', $sizes);
+        $this->delegated->setAttribute('sizes', $sizes);
         return $this;
     }
 
@@ -118,7 +118,7 @@ class Source extends VoidElement
     public function setSrc(string $src): static
     {
         $this->src = $src;
-        $this->htmlElement->setAttribute('src', $src);
+        $this->delegated->setAttribute('src', $src);
         return $this;
     }
 
@@ -130,7 +130,7 @@ class Source extends VoidElement
     public function setType(string $type): static
     {
         $this->type = $type;
-        $this->htmlElement->setAttribute('type', $type);
+        $this->delegated->setAttribute('type', $type);
         return $this;
     }
 

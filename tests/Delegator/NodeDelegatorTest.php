@@ -8,7 +8,7 @@ beforeEach(function () {
     $this->document = HTMLDocumentDelegator::createEmpty();
     $node = $this->document->createTextNode('test');
     $this->node = $node;
-    $this->delegator = new NodeDelegator($node);
+    $this->delegator = new NodeDelegator($node->delegated);
 });
 
 test('constructor', function () {
@@ -25,6 +25,7 @@ test('call', function () {
 });
 
 test('call with invalid parameter', function () {
+    $this->expectException(TypeError::class);
     $delegator = new NodeDelegator($this->document->createTextNode('test'));
     $node = $this->document->createElement('a');
     $this->expectException(TypeError::class);

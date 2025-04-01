@@ -5,7 +5,7 @@
  *
  * Link - The link element defines a link between a document and an external resource. It is used to link to external stylesheets.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
@@ -106,7 +106,7 @@ class Link extends VoidElement
             );
         }
         $this->crossorigin = $crossorigin;
-        $this->htmlElement->setAttribute('crossorigin', (string) $crossorigin->value);
+        $this->delegated->setAttribute('crossorigin', (string) $crossorigin->value);
 
         return $this;
     }
@@ -119,7 +119,7 @@ class Link extends VoidElement
     public function setHref(string $href): static
     {
         $this->href = $href;
-        $this->htmlElement->setAttribute('href', $href);
+        $this->delegated->setAttribute('href', $href);
         return $this;
     }
 
@@ -131,7 +131,7 @@ class Link extends VoidElement
     public function setHreflang(string $hreflang): static
     {
         $this->hreflang = $hreflang;
-        $this->htmlElement->setAttribute('hreflang', $hreflang);
+        $this->delegated->setAttribute('hreflang', $hreflang);
         return $this;
     }
 
@@ -143,7 +143,7 @@ class Link extends VoidElement
     public function setIntegrity(string $integrity): static
     {
         $this->integrity = $integrity;
-        $this->htmlElement->setAttribute('integrity', $integrity);
+        $this->delegated->setAttribute('integrity', $integrity);
         return $this;
     }
 
@@ -155,7 +155,7 @@ class Link extends VoidElement
     public function setMedia(string $media): static
     {
         $this->media = $media;
-        $this->htmlElement->setAttribute('media', $media);
+        $this->delegated->setAttribute('media', $media);
         return $this;
     }
 
@@ -172,7 +172,7 @@ class Link extends VoidElement
             );
         }
         $this->referrerpolicy = $referrerpolicy;
-        $this->htmlElement->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
+        $this->delegated->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
 
         return $this;
     }
@@ -188,7 +188,7 @@ class Link extends VoidElement
             $rel = RelEnum::tryFrom($rel) ?? throw new InvalidArgumentException('Invalid value for $rel.');
         }
         $this->rel = $rel;
-        $this->htmlElement->setAttribute('rel', (string) $rel->value);
+        $this->delegated->setAttribute('rel', (string) $rel->value);
 
         return $this;
     }
@@ -201,7 +201,7 @@ class Link extends VoidElement
     public function setSizes(string $sizes): static
     {
         $this->sizes = $sizes;
-        $this->htmlElement->setAttribute('sizes', $sizes);
+        $this->delegated->setAttribute('sizes', $sizes);
         return $this;
     }
 
@@ -213,7 +213,7 @@ class Link extends VoidElement
     public function setType(string $type): static
     {
         $this->type = $type;
-        $this->htmlElement->setAttribute('type', $type);
+        $this->delegated->setAttribute('type', $type);
         return $this;
     }
 

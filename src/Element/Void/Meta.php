@@ -5,7 +5,7 @@
  *
  * Meta - The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
@@ -81,7 +81,7 @@ class Meta extends VoidElement
     public function setCharset(string $charset): static
     {
         $this->charset = $charset;
-        $this->htmlElement->setAttribute('charset', $charset);
+        $this->delegated->setAttribute('charset', $charset);
         return $this;
     }
 
@@ -93,7 +93,7 @@ class Meta extends VoidElement
     public function setContent(string $content): static
     {
         $this->content = $content;
-        $this->htmlElement->setAttribute('content', $content);
+        $this->delegated->setAttribute('content', $content);
         return $this;
     }
 
@@ -110,7 +110,7 @@ class Meta extends VoidElement
             );
         }
         $this->httpEquiv = $httpEquiv;
-        $this->htmlElement->setAttribute('http-equiv', (string) $httpEquiv->value);
+        $this->delegated->setAttribute('http-equiv', (string) $httpEquiv->value);
 
         return $this;
     }
@@ -123,7 +123,7 @@ class Meta extends VoidElement
     public function setName(string $name): static
     {
         $this->name = $name;
-        $this->htmlElement->setAttribute('name', $name);
+        $this->delegated->setAttribute('name', $name);
         return $this;
     }
 
@@ -135,7 +135,7 @@ class Meta extends VoidElement
     public function setScheme(string $scheme): static
     {
         $this->scheme = $scheme;
-        $this->htmlElement->setAttribute('scheme', $scheme);
+        $this->delegated->setAttribute('scheme', $scheme);
         return $this;
     }
 

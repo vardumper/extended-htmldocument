@@ -5,7 +5,7 @@
  *
  * Script - The script element is used to embed or reference an executable script within an HTML or XHTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
@@ -100,7 +100,7 @@ class Script extends VoidElement
     public function setAsync(bool $async): static
     {
         $this->async = $async;
-        $this->htmlElement->setAttribute('async', $async);
+        $this->delegated->setAttribute('async', $async);
         return $this;
     }
 
@@ -112,7 +112,7 @@ class Script extends VoidElement
     public function setCharset(string $charset): static
     {
         $this->charset = $charset;
-        $this->htmlElement->setAttribute('charset', $charset);
+        $this->delegated->setAttribute('charset', $charset);
         return $this;
     }
 
@@ -129,7 +129,7 @@ class Script extends VoidElement
             );
         }
         $this->crossorigin = $crossorigin;
-        $this->htmlElement->setAttribute('crossorigin', (string) $crossorigin->value);
+        $this->delegated->setAttribute('crossorigin', (string) $crossorigin->value);
 
         return $this;
     }
@@ -142,7 +142,7 @@ class Script extends VoidElement
     public function setDefer(bool $defer): static
     {
         $this->defer = $defer;
-        $this->htmlElement->setAttribute('defer', $defer);
+        $this->delegated->setAttribute('defer', $defer);
         return $this;
     }
 
@@ -154,7 +154,7 @@ class Script extends VoidElement
     public function setIntegrity(string $integrity): static
     {
         $this->integrity = $integrity;
-        $this->htmlElement->setAttribute('integrity', $integrity);
+        $this->delegated->setAttribute('integrity', $integrity);
         return $this;
     }
 
@@ -166,7 +166,7 @@ class Script extends VoidElement
     public function setNonce(string $nonce): static
     {
         $this->nonce = $nonce;
-        $this->htmlElement->setAttribute('nonce', $nonce);
+        $this->delegated->setAttribute('nonce', $nonce);
         return $this;
     }
 
@@ -183,7 +183,7 @@ class Script extends VoidElement
             );
         }
         $this->referrerpolicy = $referrerpolicy;
-        $this->htmlElement->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
+        $this->delegated->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
 
         return $this;
     }
@@ -196,7 +196,7 @@ class Script extends VoidElement
     public function setSrc(string $src): static
     {
         $this->src = $src;
-        $this->htmlElement->setAttribute('src', $src);
+        $this->delegated->setAttribute('src', $src);
         return $this;
     }
 
@@ -211,7 +211,7 @@ class Script extends VoidElement
             $type = TypeScriptEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
         }
         $this->type = $type;
-        $this->htmlElement->setAttribute('type', (string) $type->value);
+        $this->delegated->setAttribute('type', (string) $type->value);
 
         return $this;
     }

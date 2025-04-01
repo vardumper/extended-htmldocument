@@ -5,7 +5,7 @@
  *
  * Image - The img element represents an image.
  *
- * @generated 2025-03-22 10:00:57
+ * @generated 2025-03-31 18:21:39
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
@@ -138,7 +138,7 @@ class Image extends InlineElement
     public function setAlt(string $alt): static
     {
         $this->alt = $alt;
-        $this->htmlElement->setAttribute('alt', $alt);
+        $this->delegated->setAttribute('alt', $alt);
         return $this;
     }
 
@@ -155,7 +155,7 @@ class Image extends InlineElement
             );
         }
         $this->crossorigin = $crossorigin;
-        $this->htmlElement->setAttribute('crossorigin', (string) $crossorigin->value);
+        $this->delegated->setAttribute('crossorigin', (string) $crossorigin->value);
 
         return $this;
     }
@@ -173,7 +173,7 @@ class Image extends InlineElement
             );
         }
         $this->decoding = $decoding;
-        $this->htmlElement->setAttribute('decoding', (string) $decoding->value);
+        $this->delegated->setAttribute('decoding', (string) $decoding->value);
 
         return $this;
     }
@@ -186,7 +186,7 @@ class Image extends InlineElement
     public function setHeight(string $height): static
     {
         $this->height = $height;
-        $this->htmlElement->setAttribute('height', $height);
+        $this->delegated->setAttribute('height', $height);
         return $this;
     }
 
@@ -198,7 +198,7 @@ class Image extends InlineElement
     public function setIsmap(bool $ismap): static
     {
         $this->ismap = $ismap;
-        $this->htmlElement->setAttribute('ismap', $ismap);
+        $this->delegated->setAttribute('ismap', $ismap);
         return $this;
     }
 
@@ -215,7 +215,7 @@ class Image extends InlineElement
             );
         }
         $this->referrerpolicy = $referrerpolicy;
-        $this->htmlElement->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
+        $this->delegated->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
 
         return $this;
     }
@@ -228,7 +228,7 @@ class Image extends InlineElement
     public function setSizes(string $sizes): static
     {
         $this->sizes = $sizes;
-        $this->htmlElement->setAttribute('sizes', $sizes);
+        $this->delegated->setAttribute('sizes', $sizes);
         return $this;
     }
 
@@ -240,7 +240,7 @@ class Image extends InlineElement
     public function setSrc(string $src): static
     {
         $this->src = $src;
-        $this->htmlElement->setAttribute('src', $src);
+        $this->delegated->setAttribute('src', $src);
         return $this;
     }
 
@@ -252,7 +252,7 @@ class Image extends InlineElement
     public function setSrcset(string $srcset): static
     {
         $this->srcset = $srcset;
-        $this->htmlElement->setAttribute('srcset', $srcset);
+        $this->delegated->setAttribute('srcset', $srcset);
         return $this;
     }
 
@@ -264,7 +264,7 @@ class Image extends InlineElement
     public function setUsemap(string $usemap): static
     {
         $this->usemap = $usemap;
-        $this->htmlElement->setAttribute('usemap', $usemap);
+        $this->delegated->setAttribute('usemap', $usemap);
         return $this;
     }
 
@@ -276,7 +276,7 @@ class Image extends InlineElement
     public function setWidth(string $width): static
     {
         $this->width = $width;
-        $this->htmlElement->setAttribute('width', $width);
+        $this->delegated->setAttribute('width', $width);
         return $this;
     }
 
