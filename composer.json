@@ -59,7 +59,7 @@
     "require-dev": {
         "amphp/file": ">=3.2",
         "brainmaestro/composer-git-hooks": "dev-master",
-        "friendsofphp/php-cs-fixer": "^3.74.0",
+        "friendsofphp/php-cs-fixer": "^3.75.0",
         "mnapoli/silly": "^1.9.1",
         "pestphp/pest": "^3.8.0",
         "pestphp/pest-plugin-drift": "^3.0",

@@ -99,7 +99,7 @@ class Track extends VoidElement
     public function setDefault(bool $default): static
     {
         $this->default = $default;
-        $this->delegated->setAttribute('default', $default);
+        $this->delegated->setAttribute('default', (string) $default);
         return $this;
     }
 
