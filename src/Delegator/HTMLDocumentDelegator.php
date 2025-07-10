@@ -137,10 +137,18 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
         return new self(HTMLDocument::createFromFile($path));
     }
 
-    public function createElement(string $qualifiedName): HTMLElementDelegator
+    public function createElement(string $qualifiedName, ?string $nodeValue = null): HTMLElementDelegator
     {
         $htmlElement = $this->htmlDocument->createElement($qualifiedName);
+        if ($nodeValue !== null) {
+            $htmlElement->textContent = $nodeValue;
+        }
         return new HTMLElementDelegator($htmlElement);
+    }
+
+    public function createTextNode(string $data): \DOM\Text
+    {
+        return $this->htmlDocument->createTextNode($data);
     }
 
     public function getElementsByTagName(string $name): DOMNodeListDelegator
