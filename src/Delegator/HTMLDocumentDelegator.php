@@ -68,10 +68,6 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
         foreach ($arguments as &$argument) {
             if ($argument instanceof HTMLElementDelegator) {
                 $argument = $argument->htmlElement;
-            } elseif ($argument instanceof TextDelegator) {
-                $argument = $argument->text;
-            } elseif ($argument instanceof DOMNodeDelegator) {
-                $argument = $argument->domNode;
             }
         }
 
@@ -141,21 +137,10 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
         return new self(HTMLDocument::createFromFile($path));
     }
 
-    public function createElement(string $qualifiedName, ?string $nodeValue = null): HTMLElementDelegator
+    public function createElement(string $qualifiedName): HTMLElementDelegator
     {
         $htmlElement = $this->htmlDocument->createElement($qualifiedName);
-        if ($nodeValue !== null) {
-            // Instead of setting nodeValue directly (readonly), set textContent
-            $htmlElement->textContent = $nodeValue;
-        }
         return new HTMLElementDelegator($htmlElement);
-    }
-
-    public function createTextNode(string $data): TextDelegator
-    {
-        $textNode = $this->htmlDocument->createTextNode($data);
-        TextDelegator::setOwnerDocument($this);
-        return new TextDelegator($textNode);
     }
 
     public function getElementsByTagName(string $name): DOMNodeListDelegator

@@ -60,19 +60,15 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public function __call($name, $arguments)
     {
+        // Convert any HTMLElementDelegator arguments to their underlying DOM objects
+        foreach ($arguments as &$argument) {
+            if ($argument instanceof HTMLElementDelegator) {
+                $argument = $argument->htmlElement;
+            }
+        }
+        
         $reflection = new ReflectionClass($this->htmlElement);
         if ($reflection->hasMethod($name)) {
-            // Convert any delegator arguments to their underlying DOM objects
-            foreach ($arguments as &$argument) {
-                if ($argument instanceof HTMLElementDelegator) {
-                    $argument = $argument->htmlElement;
-                } elseif ($argument instanceof TextDelegator) {
-                    $argument = $argument->text;
-                } elseif ($argument instanceof DOMNodeDelegator) {
-                    $argument = $argument->domNode;
-                }
-            }
-            
             $method = $reflection->getMethod($name);
             $method->setAccessible(true);
             return $method->invokeArgs($this->htmlElement, $arguments);
@@ -84,11 +80,6 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public function __get($name)
     {
-        // Handle static ownerDocument property as instance property
-        if ($name === 'ownerDocument') {
-            return static::$ownerDocument ?? null;
-        }
-
         if (property_exists($this, $name)) {
             return $this->{$name};
         }
