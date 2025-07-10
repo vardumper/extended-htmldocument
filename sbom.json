@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:0659e517-c55a-4c79-80d1-b2ea428d8f4d",
+  "serialNumber": "urn:uuid:33b4b558-348c-4568-8987-0e660f9f9d2b",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-04-01T07:03:03+00:00",
+    "timestamp": "2025-07-10T08:55:40+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "f2dd13d7-6b7b-47b9-afd4-089e5519ea2c",
+      "bom-ref": "a3f95c7b-3695-4ac6-aafa-31cd37b1a15d",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,7 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "8599e507-1977-4c4b-8101-7edcab7446ec",
+      "bom-ref": "8d9ffa67-0214-424b-abf3-b2719e02541f",
       "type": "application",
       "name": "composer.lock",
       "properties": [
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "bom-ref": "eeb11669-7191-4827-9570-93a2dcebbba4",
+      "bom-ref": "b53c6c79-e3a7-4a45-90f3-5420c4cbdfca",
       "type": "application",
       "name": "yarn.lock",
       "properties": [
@@ -3005,26 +3005,26 @@
   ],
   "dependencies": [
     {
-      "ref": "8599e507-1977-4c4b-8101-7edcab7446ec",
+      "ref": "8d9ffa67-0214-424b-abf3-b2719e02541f",
       "dependsOn": [
         "pkg:composer/revolt/event-loop@v1.0.7"
       ]
     },
     {
-      "ref": "eeb11669-7191-4827-9570-93a2dcebbba4",
+      "ref": "a3f95c7b-3695-4ac6-aafa-31cd37b1a15d",
+      "dependsOn": [
+        "8d9ffa67-0214-424b-abf3-b2719e02541f",
+        "b53c6c79-e3a7-4a45-90f3-5420c4cbdfca"
+      ]
+    },
+    {
+      "ref": "b53c6c79-e3a7-4a45-90f3-5420c4cbdfca",
       "dependsOn": [
         "pkg:npm/%40ttskch/prettier-plugin-tailwindcss-anywhere@0.1.0",
         "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
         "pkg:npm/prettier-plugin-tailwindcss@0.6.11",
         "pkg:npm/prettier-plugin-twig@1.0.1",
         "pkg:npm/vitepress@1.6.3"
-      ]
-    },
-    {
-      "ref": "f2dd13d7-6b7b-47b9-afd4-089e5519ea2c",
-      "dependsOn": [
-        "8599e507-1977-4c4b-8101-7edcab7446ec",
-        "eeb11669-7191-4827-9570-93a2dcebbba4"
       ]
     },
     {
@@ -4275,6 +4275,15 @@
           "severity": "medium",
           "method": "CVSSv31",
           "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
+        },
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 5.3,
+          "severity": "medium",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
         }
       ],
       "cwes": [
@@ -4288,6 +4297,9 @@
           "url": "https://avd.aquasec.com/nvd/cve-2025-31125"
         },
         {
+          "url": "https://access.redhat.com/security/cve/CVE-2025-31125"
+        },
+        {
           "url": "https://github.com/vitejs/vite"
         },
         {
@@ -4298,10 +4310,215 @@
         },
         {
           "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-31125"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-31125"
         }
       ],
       "published": "2025-03-31T17:15:43+00:00",
-      "updated": "2025-03-31T18:15:34+00:00",
+      "updated": "2025-04-01T20:26:22+00:00",
+      "affects": [
+        {
+          "ref": "pkg:npm/vite@5.4.14",
+          "versions": [
+            {
+              "version": "5.4.14",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2025-31486",
+      "source": {
+        "name": "ghsa",
+        "url": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+      },
+      "ratings": [
+        {
+          "source": {
+            "name": "ghsa"
+          },
+          "score": 5.3,
+          "severity": "medium",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
+        },
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 5.3,
+          "severity": "medium",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "cwes": [
+        200,
+        284
+      ],
+      "description": "Vite is a frontend tooling framework for javascript. The contents of arbitrary files can be returned to the browser. By adding ?.svg with ?.wasm?init or with sec-fetch-dest: script header, the server.fs.deny restriction was able to bypass. This bypass is only possible if the file is smaller than build.assetsInlineLimit (default: 4kB) and when using Vite 6.0+. Only apps explicitly exposing the Vite dev server to the network (using --host or server.host config option) are affected. This vulnerability is fixed in 4.5.12, 5.4.17, 6.0.14, 6.1.4, and 6.2.5.",
+      "recommendation": "Upgrade vite to version 6.2.5, 6.1.4, 6.0.14, 5.4.17, 4.5.12",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2025-31486"
+        },
+        {
+          "url": "https://access.redhat.com/security/cve/CVE-2025-31486"
+        },
+        {
+          "url": "https://github.com/vitejs/vite"
+        },
+        {
+          "url": "https://github.com/vitejs/vite/blob/037f801075ec35bb6e52145d659f71a23813c48f/packages/vite/src/node/plugins/asset.ts#L285-L290"
+        },
+        {
+          "url": "https://github.com/vitejs/vite/commit/62d7e81ee189d65899bb65f3263ddbd85247b647"
+        },
+        {
+          "url": "https://github.com/vitejs/vite/security/advisories/GHSA-xcj6-pq6g-qj4x"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-31486"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-31486"
+        }
+      ],
+      "published": "2025-04-03T19:15:39+00:00",
+      "updated": "2025-04-07T14:18:34+00:00",
+      "affects": [
+        {
+          "ref": "pkg:npm/vite@5.4.14",
+          "versions": [
+            {
+              "version": "5.4.14",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2025-32395",
+      "source": {
+        "name": "ghsa",
+        "url": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+      },
+      "ratings": [
+        {
+          "source": {
+            "name": "ghsa"
+          },
+          "severity": "medium"
+        },
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 6.5,
+          "severity": "medium",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "cwes": [
+        200
+      ],
+      "description": "Vite is a frontend tooling framework for javascript. Prior to 6.2.6, 6.1.5, 6.0.15, 5.4.18, and 4.5.13, the contents of arbitrary files can be returned to the browser if the dev server is running on Node or Bun. HTTP 1.1 spec (RFC 9112) does not allow # in request-target. Although an attacker can send such a request. For those requests with an invalid request-line (it includes request-target), the spec recommends to reject them with 400 or 301. The same can be said for HTTP 2. On Node and Bun, those requests are not rejected internally and is passed to the user land. For those requests, the value of http.IncomingMessage.url contains #. Vite assumed req.url won't contain # when checking server.fs.deny, allowing those kinds of requests to bypass the check. Only apps explicitly exposing the Vite dev server to the network (using --host or server.host config option) and running the Vite dev server on runtimes that are not Deno (e.g. Node, Bun) are affected. This vulnerability is fixed in 6.2.6, 6.1.5, 6.0.15, 5.4.18, and 4.5.13.",
+      "recommendation": "Upgrade vite to version 6.2.6, 6.1.5, 6.0.15, 5.4.18, 4.5.13",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2025-32395"
+        },
+        {
+          "url": "https://access.redhat.com/security/cve/CVE-2025-32395"
+        },
+        {
+          "url": "https://github.com/vitejs/vite"
+        },
+        {
+          "url": "https://github.com/vitejs/vite/commit/175a83909f02d3b554452a7bd02b9f340cdfef70"
+        },
+        {
+          "url": "https://github.com/vitejs/vite/security/advisories/GHSA-356w-63v5-8wf4"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-32395"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-32395"
+        }
+      ],
+      "published": "2025-04-10T14:15:29+00:00",
+      "updated": "2025-04-11T15:39:52+00:00",
+      "affects": [
+        {
+          "ref": "pkg:npm/vite@5.4.14",
+          "versions": [
+            {
+              "version": "5.4.14",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2025-46565",
+      "source": {
+        "name": "ghsa",
+        "url": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+      },
+      "ratings": [
+        {
+          "source": {
+            "name": "ghsa"
+          },
+          "severity": "medium"
+        },
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 6.5,
+          "severity": "medium",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "cwes": [
+        22
+      ],
+      "description": "Vite is a frontend tooling framework for javascript. Prior to versions 6.3.4, 6.2.7, 6.1.6, 5.4.19, and 4.5.14, the contents of files in the project root that are denied by a file matching pattern can be returned to the browser. Only apps explicitly exposing the Vite dev server to the network (using --host or server.host config option) are affected. Only files that are under project root and are denied by a file matching pattern can be bypassed. `server.fs.deny` can contain patterns matching against files (by default it includes .env, .env.*, *.{crt,pem} as such patterns). These patterns were able to bypass for files under `root` by using a combination of slash and dot (/.). This issue has been patched in versions 6.3.4, 6.2.7, 6.1.6, 5.4.19, and 4.5.14.",
+      "recommendation": "Upgrade vite to version 6.3.4, 6.2.7, 6.1.6, 5.4.19, 4.5.14",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2025-46565"
+        },
+        {
+          "url": "https://access.redhat.com/security/cve/CVE-2025-46565"
+        },
+        {
+          "url": "https://github.com/vitejs/vite"
+        },
+        {
+          "url": "https://github.com/vitejs/vite/commit/c22c43de612eebb6c182dd67850c24e4fab8cacb"
+        },
+        {
+          "url": "https://github.com/vitejs/vite/security/advisories/GHSA-859w-5945-r5v3"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-46565"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-46565"
+        }
+      ],
+      "published": "2025-05-01T18:15:57+00:00",
+      "updated": "2025-05-02T18:15:27+00:00",
       "affects": [
         {
           "ref": "pkg:npm/vite@5.4.14",
@@ -4347,6 +4564,8 @@
           "url": "https://github.com/evanw/esbuild/security/advisories/GHSA-67mh-4wv8-2f99"
         }
       ],
+      "published": "2025-02-10T17:48:07+00:00",
+      "updated": "2025-02-10T17:48:08+00:00",
       "affects": [
         {
           "ref": "pkg:npm/esbuild@0.21.5",
