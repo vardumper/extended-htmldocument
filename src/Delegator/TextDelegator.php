@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Html\Delegator;
 
 use DOM\Text;
-use Html\Interface\HTMLElementDelegatorInterface;
 
 /**
  * TextDelegator wraps DOM\Text nodes
