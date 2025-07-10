@@ -80,6 +80,11 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public function __get($name)
     {
+        // Handle static ownerDocument property as instance property
+        if ($name === 'ownerDocument') {
+            return static::$ownerDocument ?? null;
+        }
+        
         if (property_exists($this, $name)) {
             return $this->{$name};
         }
