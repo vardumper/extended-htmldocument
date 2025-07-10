@@ -68,6 +68,9 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
         foreach ($arguments as &$argument) {
             if ($argument instanceof HTMLElementDelegator) {
                 $argument = $argument->htmlElement;
+            } elseif (is_object($argument) && property_exists($argument, 'htmlElement')) {
+                // Handle specific element classes that extend HTMLElementDelegator but may not pass instanceof check
+                $argument = $argument->htmlElement;
             }
         }
 

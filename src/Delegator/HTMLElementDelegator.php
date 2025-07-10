@@ -60,6 +60,16 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public function __call($name, $arguments)
     {
+        // Convert any HTMLElementDelegator arguments to their underlying DOM\HtmlElement (eg. appendChild)
+        foreach ($arguments as &$argument) {
+            if ($argument instanceof HTMLElementDelegator) {
+                $argument = $argument->htmlElement;
+            } elseif (is_object($argument) && property_exists($argument, 'htmlElement')) {
+                // Handle specific element classes that extend HTMLElementDelegator but may not pass instanceof check
+                $argument = $argument->htmlElement;
+            }
+        }
+
         $reflection = new ReflectionClass($this->htmlElement);
         if ($reflection->hasMethod($name)) {
             $method = $reflection->getMethod($name);

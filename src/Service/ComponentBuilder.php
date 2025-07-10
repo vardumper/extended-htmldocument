@@ -48,7 +48,6 @@ class ComponentBuilder implements ComponentBuilderInterface
     ): void {
         // Create the element
         $node = $document->createElement($element);
-        var_dump(get_class($node), $parent ? get_class($parent) : 'null');
 
         // Set attributes and text content
         foreach ($attributes as $attribute => $value) {
