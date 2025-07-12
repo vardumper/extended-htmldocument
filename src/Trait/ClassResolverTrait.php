@@ -101,14 +101,50 @@ trait ClassResolverTrait
      */
     private function getProjectRoot(): string
     {
-        // Locate the Composer autoloader
-        $composerAutoload = realpath(__DIR__ . '/../../vendor/autoload.php');
+        // Try to locate the Composer autoloader from different possible locations
+        $possiblePaths = [
+            // When used as a dependency in a third-party project
+            __DIR__ . '/../../../../autoload.php',
+            // When used in development (package root)
+            __DIR__ . '/../../vendor/autoload.php',
+            // Fallback: traverse up the directory tree looking for composer.json
+            $this->findComposerRoot(__DIR__)
+        ];
 
-        if ($composerAutoload === false) {
-            throw new RuntimeException('Composer autoload.php not found.');
+        foreach ($possiblePaths as $path) {
+            if ($path !== null) {
+                $composerAutoload = realpath($path);
+                if ($composerAutoload !== false && file_exists($composerAutoload)) {
+                    // The root directory is the parent of the vendor directory
+                    return dirname($composerAutoload);
+                }
+            }
         }
 
-        // The root directory is two levels up from the autoloader
-        return dirname($composerAutoload, 2);
+        throw new RuntimeException('Composer autoload.php not found. Unable to determine project root.');
+    }
+
+    /**
+     * Find the composer root by traversing up the directory tree.
+     */
+    private function findComposerRoot(string $startPath): ?string
+    {
+        $currentPath = $startPath;
+        $maxDepth = 10; // Prevent infinite loops
+        $depth = 0;
+
+        while ($depth < $maxDepth && $currentPath !== dirname($currentPath)) {
+            $composerPath = $currentPath . '/composer.json';
+            $autoloadPath = $currentPath . '/vendor/autoload.php';
+
+            if (file_exists($composerPath) && file_exists($autoloadPath)) {
+                return $autoloadPath;
+            }
+
+            $currentPath = dirname($currentPath);
+            $depth++;
+        }
+
+        return null;
     }
 }
