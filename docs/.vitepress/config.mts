@@ -38,6 +38,7 @@ export default defineConfig({
         items: [
           { text: 'Roadmap', link: '/roadmap' },
           { text: 'Unit Tests ', link: '/unit-tests' },
+          { text: 'PHP Mess Detector', link: '/phpmd' },
           { text: 'Issues', link: 'https://github.com/vardumper/extended-htmldocument/issues' },
         ]
       }
