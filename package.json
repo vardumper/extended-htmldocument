@@ -1,9 +1,9 @@
 {
   "devDependencies": {
-    "@ttskch/prettier-plugin-tailwindcss-anywhere": "^0.1.0",
+    "@algolia/client-search": "^5.23.0",
+    "@zackad/prettier-plugin-twig": "^0.16.0",
     "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.11",
-    "prettier-plugin-twig": "^1.0.1",
+    "search-insights": "^2.17.3",
     "vitepress": "^1.6.3"
   },
   "license": "MIT",
@@ -11,8 +11,5 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
-  },
-  "dependencies": {
-    "@zackad/prettier-plugin-twig-melody": "^0.6.0"
   }
 }

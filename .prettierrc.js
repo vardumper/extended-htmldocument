@@ -7,7 +7,7 @@ const config = {
     tabWidth: 4,
     semi: false,
     singleQuote: true,
-    plugins: ["@ttskch/prettier-plugin-tailwindcss-anywhere", "prettier-plugin-tailwindcss", "@zackad/prettier-plugin-twig-melody"],
+    plugins: ["@zackad/prettier-plugin-twig"],
 };
 
 module.exports = config;

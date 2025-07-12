@@ -18,6 +18,11 @@ beforeEach(function () {
     $this->delegator = Anchor::create($this->document);
 });
 
+test('teste irgendetwas', function () {
+    expect('irgendetwas')->toEqual('irgendetwas anderes');
+});
+
+
 test('constructor', function () {
     expect($this->delegator)->toBeInstanceOf(HTMLElementDelegator::class);
 });
@@ -356,4 +361,47 @@ test('set renderer test', function () {
     $this->delegator->setRenderer($renderer);
     expect($this->delegator->renderer)
         ->toBe($renderer);
+});
+test('appendChild should successfully append a child element', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $parent = HTML::create($document);
+    $child = Body::create($document);
+
+    $result = $parent->appendChild($child);
+
+    expect($result)
+        ->toBe($parent); // Test method chaining
+    expect($parent->delegated->firstChild)
+        ->toBe($child->delegated);
+});
+
+test('appendChild should reject child from different document', function () {
+    $document1 = HTMLDocumentDelegator::createEmpty();
+    $document2 = HTMLDocumentDelegator::createEmpty();
+
+    $parent = HTML::create($document1);
+    $child = Body::create($document2);
+
+    expect(fn () => $parent->appendChild($child))
+        ->toThrow(
+            InvalidArgumentException::class,
+            'The child element must belong to the same document as the parent element.'
+        );
+});
+
+test('appendChild should handle chained calls', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $parent = HTML::create($document);
+    $child1 = Body::create($document);
+    $child2 = Head::create($document);
+
+    $parent->appendChild($child1)
+        ->appendChild($child2);
+
+    expect($parent->delegated->childNodes->length)
+        ->toBe(2);
+    expect($parent->delegated->firstChild)
+        ->toBe($child1->delegated);
+    expect($parent->delegated->lastChild)
+        ->toBe($child2->delegated);
 });

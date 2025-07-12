@@ -24,6 +24,19 @@ No matter which frontend technologies you use in a project ([Twig](https://twig.
 In short, I advocate for using standardized HTML5 markup, in order to having to write less of it and instead generate it. Descriptive, easy to read languages like YAML can help composing compositions of HTML5 elements, such as a search form.
 :::
 
+::: code-group
+
+```php [PHP]
+use ExtendedHTMLDocument\HTML\Elements\Form;
+Form::create();
+```
+
+```twig [Twig]
+form.render()
+```
+:::
+
+
 ## Where to go next?
 - [Features Overview](./features)
 - [Getting Started](./getting-started)

@@ -5,11 +5,13 @@ on:
       - .github/workflows/dtrack-trivy.yml
       - 'composer.json'
       - 'composer.lock'
+      - 'yarn.lock'
   pull_request:
     paths:
       - .github/workflows/dtrack-trivy.yml
       - 'composer.json'
       - 'composer.lock'
+      - 'yarn.lock'
   workflow_dispatch:
 
 permissions:
