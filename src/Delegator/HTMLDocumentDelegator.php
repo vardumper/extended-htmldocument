@@ -101,7 +101,7 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
     {
         $htmlElement = $this->delegated->createElement($qualifiedName);
         if ($nodeValue !== null) {
-            $htmlElement->nodeValue = $nodeValue;
+            $htmlElement->append($nodeValue);
         }
         return new HTMLElementDelegator($htmlElement);
     }
