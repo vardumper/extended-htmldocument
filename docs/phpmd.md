@@ -36,7 +36,7 @@ Issues detected: 9
 | <span class="prio3">3</span> | src/Element/Inline/Input.php | 36 | [TooManyFields](https://phpmd.org/rules/codesize.html#toomanyfields) | The class Input has 28 fields. Consider redesigning Input to keep the number of fields under 15. |
 | <span class="prio3">3</span> | src/Element/Inline/Input.php | 36 | [ExcessiveClassComplexity](https://phpmd.org/rules/codesize.html#excessiveclasscomplexity) | The class Input has an overall complexity of 50 which is very high. The configured complexity threshold is 50. |
 | <span class="prio3">3</span> | src/Element/Inline/Textarea.php | 36 | [TooManyFields](https://phpmd.org/rules/codesize.html#toomanyfields) | The class Textarea has 16 fields. Consider redesigning Textarea to keep the number of fields under 15. |
-| <span class="prio3">3</span> | src/Trait/ClassResolverTrait.php | 45 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method getElementByQualifiedName() has a Cyclomatic Complexity of 12. The configured cyclomatic complexity threshold is 10. |
+| <span class="prio3">3</span> | src/Trait/ClassResolverTrait.php | 44 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method getElementByQualifiedName() has a Cyclomatic Complexity of 12. The configured cyclomatic complexity threshold is 10. |
 | <span class="prio3">3</span> | src/Trait/GlobalAttributesTrait.php | 19 | [ExcessivePublicCount](https://phpmd.org/rules/codesize.html#excessivepubliccount) | The trait GlobalAttributesTrait has 48 public methods and attributes. Consider reducing the number of public items to less than 45. |
 
 Issues detected: 15
@@ -137,4 +137,4 @@ Issues detected: 76
 
 Issues detected: 8
 
-Sat Jul 12 02:18:18 PM CEST 2025
+Sat Jul 12 05:47:35 PM CEST 2025

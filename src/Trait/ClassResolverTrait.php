@@ -21,8 +21,7 @@ trait ClassResolverTrait
     public function getClassesImplementingInterface(string $interface): array
     {
         // Ensure all classes are loaded before scanning
-        $projectRoot = $this->getProjectRoot();
-        $this->loadAllPhpFiles($projectRoot . '/src');
+        $this->loadAllRelevantPhpFiles();
 
         $classes = get_declared_classes();
         $implementingClasses = [];
@@ -46,9 +45,8 @@ trait ClassResolverTrait
     {
         $elementClasses = [];
 
-        $projectRoot = $this->getProjectRoot();
+        $this->loadAllRelevantPhpFiles();
 
-        $this->loadAllPhpFiles($projectRoot . '/src/Element');
         foreach (get_declared_classes() as $class) {
             if (is_subclass_of($class, HTMLElementDelegator::class) || \is_subclass_of(
                 $class,
@@ -78,10 +76,41 @@ trait ClassResolverTrait
     }
 
     /**
+     * Load all relevant PHP files for class scanning.
+     */
+    private function loadAllRelevantPhpFiles(): void
+    {
+        $projectRoot = $this->getProjectRoot();
+        $packageRoot = $this->getPackageRoot();
+
+        // Always load package classes
+        $this->loadAllPhpFiles($packageRoot . '/src');
+
+        // Try to load project classes if they exist
+        $projectSrcPath = $projectRoot . '/src';
+        if (is_dir($projectSrcPath)) {
+            $this->loadAllPhpFiles($projectSrcPath);
+        }
+    }
+
+    /**
+     * Get the package root directory.
+     */
+    private function getPackageRoot(): string
+    {
+        // The package root is always relative to this file's location
+        return dirname(__DIR__, 2);
+    }
+
+    /**
      * Recursively scan a directory for PHP files and require them.
      */
     private function loadAllPhpFiles(string $directory): void
     {
+        if (! is_dir($directory)) {
+            return; // Skip if directory doesn't exist
+        }
+
         $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
 
         foreach ($files as $file) {
@@ -108,7 +137,7 @@ trait ClassResolverTrait
             // When used in development (package root)
             __DIR__ . '/../../vendor/autoload.php',
             // Fallback: traverse up the directory tree looking for composer.json
-            $this->findComposerRoot(__DIR__)
+            $this->findComposerRoot(__DIR__),
         ];
 
         foreach ($possiblePaths as $path) {
