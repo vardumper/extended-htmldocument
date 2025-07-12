@@ -25,20 +25,43 @@ trait NativePropertiesTrait
         return $this->textContent;
     }
 
+    /**
+     * @description get the inner html of the element, can be a string or HTML string
+     */
     public function getInnerHTML(): string
     {
         return $this->innerHTML;
     }
 
+    /**
+     * @description set the inner html of the element, can be a string or HTML string
+     */
     public function setInnerHTML(string $innerHTML): static
     {
         $this->innerHTML = $innerHTML;
         return $this;
     }
 
-    /** access seems restricted, at least in body element
+    /**
+     * @description get the inner html of the element, can be a string or HTML string
+     */
+    public function getNodeValue(): string
+    {
+        return $this->nodeValue;
     }
-     **/
+
+    /**
+     * @description set the inner html of the element, can be a string or HTML string
+     */
+    public function setNodeValue(string $nodeValue): static
+    {
+        $this->nodeValue = $nodeValue;
+        return $this;
+    }
+
+    /**
+     * access seems restricted, at least in body element *
+     */
     public function getSubstitutedNodeValue(): string
     {
         return $this->substitutedNodeValue;
