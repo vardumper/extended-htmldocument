@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * All delegators should use this trait to delegate methods and properties to the delegated object.
+ * This trait provides a way to access methods and properties of the delegated object dynamically.
+ * It uses reflection to access methods and properties that are not directly accessible.
+ */
+
 declare(strict_types=1);
 
 namespace Html\Trait;

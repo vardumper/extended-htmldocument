@@ -40,7 +40,8 @@
     ],
     "require": {
         "php": "^8.4",
-        "revolt/event-loop": "^1.0.7"
+        "revolt/event-loop": "^1.0.7",
+        "mnapoli/silly": "^1.9.1"
     },
     "config": {
         "sort-packages": true,
@@ -60,7 +61,6 @@
         "amphp/file": ">=3.2",
         "brainmaestro/composer-git-hooks": "dev-master",
         "friendsofphp/php-cs-fixer": "^3.75.0",
-        "mnapoli/silly": "^1.9.1",
         "pestphp/pest": "^3.8.0",
         "pestphp/pest-plugin-drift": "^3.0",
         "pestphp/pest-plugin-type-coverage": "^3.5",

@@ -5,7 +5,7 @@
  *
  * Parameter - The param element defines parameters for an object element.
  *
- * @generated 2025-03-31 18:21:39
+ * @generated 2025-07-12 09:31:57
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param

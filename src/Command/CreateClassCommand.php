@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Html\Command;
 
 use Html\Helper\Helper;
@@ -11,7 +13,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * @usage create:component [element]
+ * @usage make:classes [element]
  * @description Create a new component
  * @tutorial an example element value can be div
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element

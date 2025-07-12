@@ -1,5 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * This command watches a source directory or file for changes and generates component output based on the specified generator.
+ * It uses the Revolt Event Loop to handle file changes and execute the generation process.
+ */
+
 namespace Html\Command;
 
 use DOMDocument;

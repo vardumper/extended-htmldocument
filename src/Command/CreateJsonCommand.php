@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Html\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -9,10 +11,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * @usage create:component [element]
- * @description Create a new component
- * @tutorial an example element value can be div
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+ * @usage make:json
+ * @description Simply converts the YAML HTML5 specification into JSON.
  */
 final class CreateJsonCommand extends Command
 {

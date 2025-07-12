@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * reads the HTML5 specification and creates enum classes for static PHP (declared as 'enum' types)
+ */
+
+declare(strict_types=1);
+
 namespace Html\Command;
 
 use Exception;

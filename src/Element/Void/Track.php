@@ -5,7 +5,7 @@
  *
  * Track - The track element is used as a child of the media elements—audio and video. It lets you specify timed text tracks (or time-based data), for example to automatically handle subtitles. The tracks are formatted in WebVTT format (.vtt files) — Web Video Text Tracks.
  *
- * @generated 2025-03-31 18:21:39
+ * @generated 2025-07-12 09:31:57
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track
@@ -99,7 +99,7 @@ class Track extends VoidElement
     public function setDefault(bool $default): static
     {
         $this->default = $default;
-        $this->delegated->setAttribute('default', (string) $default);
+        $this->delegated->setAttribute('default', $default);
         return $this;
     }
 
