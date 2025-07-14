@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:33b4b558-348c-4568-8987-0e660f9f9d2b",
+  "serialNumber": "urn:uuid:4749210e-8025-4575-a28f-4dbad89b686e",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-07-10T08:55:40+00:00",
+    "timestamp": "2025-07-14T10:33:07+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "a3f95c7b-3695-4ac6-aafa-31cd37b1a15d",
+      "bom-ref": "e1fb5798-d770-43fc-8fd4-9461ef0c276c",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,7 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "8d9ffa67-0214-424b-abf3-b2719e02541f",
+      "bom-ref": "361f638a-9ca1-44da-b300-8686e523520d",
       "type": "application",
       "name": "composer.lock",
       "properties": [
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "bom-ref": "b53c6c79-e3a7-4a45-90f3-5420c4cbdfca",
+      "bom-ref": "b8a902ff-380f-4e11-b31a-15efe3fd3e4a",
       "type": "application",
       "name": "yarn.lock",
       "properties": [
@@ -56,6 +56,78 @@
         {
           "name": "aquasecurity:trivy:Type",
           "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:composer/mnapoli/silly@1.9.1",
+      "type": "library",
+      "name": "mnapoli/silly",
+      "version": "1.9.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:composer/mnapoli/silly@1.9.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "mnapoli/silly@1.9.1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "composer"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:composer/php-di/invoker@2.3.6",
+      "type": "library",
+      "name": "php-di/invoker",
+      "version": "2.3.6",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:composer/php-di/invoker@2.3.6",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "php-di/invoker@2.3.6"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "composer"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:composer/psr/container@2.0.2",
+      "type": "library",
+      "name": "psr/container",
+      "version": "2.0.2",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:composer/psr/container@2.0.2",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "psr/container@2.0.2"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "composer"
         }
       ]
     },
@@ -76,6 +148,222 @@
         {
           "name": "aquasecurity:trivy:PkgID",
           "value": "revolt/event-loop@v1.0.7"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "composer"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:composer/symfony/console@v7.3.1",
+      "type": "library",
+      "name": "symfony/console",
+      "version": "v7.3.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:composer/symfony/console@v7.3.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "symfony/console@v7.3.1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "composer"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:composer/symfony/deprecation-contracts@v3.6.0",
+      "type": "library",
+      "name": "symfony/deprecation-contracts",
+      "version": "v3.6.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:composer/symfony/deprecation-contracts@v3.6.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "symfony/deprecation-contracts@v3.6.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "composer"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:composer/symfony/polyfill-ctype@v1.32.0",
+      "type": "library",
+      "name": "symfony/polyfill-ctype",
+      "version": "v1.32.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:composer/symfony/polyfill-ctype@v1.32.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "symfony/polyfill-ctype@v1.32.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "composer"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:composer/symfony/polyfill-intl-grapheme@v1.32.0",
+      "type": "library",
+      "name": "symfony/polyfill-intl-grapheme",
+      "version": "v1.32.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:composer/symfony/polyfill-intl-grapheme@v1.32.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "symfony/polyfill-intl-grapheme@v1.32.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "composer"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:composer/symfony/polyfill-intl-normalizer@v1.32.0",
+      "type": "library",
+      "name": "symfony/polyfill-intl-normalizer",
+      "version": "v1.32.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:composer/symfony/polyfill-intl-normalizer@v1.32.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "symfony/polyfill-intl-normalizer@v1.32.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "composer"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:composer/symfony/polyfill-mbstring@v1.32.0",
+      "type": "library",
+      "name": "symfony/polyfill-mbstring",
+      "version": "v1.32.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:composer/symfony/polyfill-mbstring@v1.32.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "symfony/polyfill-mbstring@v1.32.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "composer"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:composer/symfony/service-contracts@v3.6.0",
+      "type": "library",
+      "name": "symfony/service-contracts",
+      "version": "v3.6.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:composer/symfony/service-contracts@v3.6.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "symfony/service-contracts@v3.6.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "composer"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:composer/symfony/string@v7.3.0",
+      "type": "library",
+      "name": "symfony/string",
+      "version": "v7.3.0",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:composer/symfony/string@v7.3.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "symfony/string@v7.3.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "composer"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:composer/symfony/yaml@v7.3.1",
+      "type": "library",
+      "name": "symfony/yaml",
+      "version": "v7.3.1",
+      "licenses": [
+        {
+          "license": {
+            "name": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:composer/symfony/yaml@v7.3.1",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "symfony/yaml@v7.3.1"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -156,16 +444,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/client-abtesting@5.20.4",
+      "bom-ref": "pkg:npm/%40algolia/client-abtesting@5.32.0",
       "type": "library",
       "group": "@algolia",
       "name": "client-abtesting",
-      "version": "5.20.4",
-      "purl": "pkg:npm/%40algolia/client-abtesting@5.20.4",
+      "version": "5.32.0",
+      "purl": "pkg:npm/%40algolia/client-abtesting@5.32.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/client-abtesting@5.20.4"
+          "value": "@algolia/client-abtesting@5.32.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -174,16 +462,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/client-analytics@5.20.4",
+      "bom-ref": "pkg:npm/%40algolia/client-analytics@5.32.0",
       "type": "library",
       "group": "@algolia",
       "name": "client-analytics",
-      "version": "5.20.4",
-      "purl": "pkg:npm/%40algolia/client-analytics@5.20.4",
+      "version": "5.32.0",
+      "purl": "pkg:npm/%40algolia/client-analytics@5.32.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/client-analytics@5.20.4"
+          "value": "@algolia/client-analytics@5.32.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -192,16 +480,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/client-common@5.20.4",
+      "bom-ref": "pkg:npm/%40algolia/client-common@5.32.0",
       "type": "library",
       "group": "@algolia",
       "name": "client-common",
-      "version": "5.20.4",
-      "purl": "pkg:npm/%40algolia/client-common@5.20.4",
+      "version": "5.32.0",
+      "purl": "pkg:npm/%40algolia/client-common@5.32.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/client-common@5.20.4"
+          "value": "@algolia/client-common@5.32.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -210,16 +498,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/client-insights@5.20.4",
+      "bom-ref": "pkg:npm/%40algolia/client-insights@5.32.0",
       "type": "library",
       "group": "@algolia",
       "name": "client-insights",
-      "version": "5.20.4",
-      "purl": "pkg:npm/%40algolia/client-insights@5.20.4",
+      "version": "5.32.0",
+      "purl": "pkg:npm/%40algolia/client-insights@5.32.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/client-insights@5.20.4"
+          "value": "@algolia/client-insights@5.32.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -228,16 +516,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/client-personalization@5.20.4",
+      "bom-ref": "pkg:npm/%40algolia/client-personalization@5.32.0",
       "type": "library",
       "group": "@algolia",
       "name": "client-personalization",
-      "version": "5.20.4",
-      "purl": "pkg:npm/%40algolia/client-personalization@5.20.4",
+      "version": "5.32.0",
+      "purl": "pkg:npm/%40algolia/client-personalization@5.32.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/client-personalization@5.20.4"
+          "value": "@algolia/client-personalization@5.32.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -246,16 +534,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/client-query-suggestions@5.20.4",
+      "bom-ref": "pkg:npm/%40algolia/client-query-suggestions@5.32.0",
       "type": "library",
       "group": "@algolia",
       "name": "client-query-suggestions",
-      "version": "5.20.4",
-      "purl": "pkg:npm/%40algolia/client-query-suggestions@5.20.4",
+      "version": "5.32.0",
+      "purl": "pkg:npm/%40algolia/client-query-suggestions@5.32.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/client-query-suggestions@5.20.4"
+          "value": "@algolia/client-query-suggestions@5.32.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -264,16 +552,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/client-search@5.20.4",
+      "bom-ref": "pkg:npm/%40algolia/client-search@5.32.0",
       "type": "library",
       "group": "@algolia",
       "name": "client-search",
-      "version": "5.20.4",
-      "purl": "pkg:npm/%40algolia/client-search@5.20.4",
+      "version": "5.32.0",
+      "purl": "pkg:npm/%40algolia/client-search@5.32.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/client-search@5.20.4"
+          "value": "@algolia/client-search@5.32.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -282,16 +570,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/ingestion@1.20.4",
+      "bom-ref": "pkg:npm/%40algolia/ingestion@1.32.0",
       "type": "library",
       "group": "@algolia",
       "name": "ingestion",
-      "version": "1.20.4",
-      "purl": "pkg:npm/%40algolia/ingestion@1.20.4",
+      "version": "1.32.0",
+      "purl": "pkg:npm/%40algolia/ingestion@1.32.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/ingestion@1.20.4"
+          "value": "@algolia/ingestion@1.32.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -300,16 +588,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/monitoring@1.20.4",
+      "bom-ref": "pkg:npm/%40algolia/monitoring@1.32.0",
       "type": "library",
       "group": "@algolia",
       "name": "monitoring",
-      "version": "1.20.4",
-      "purl": "pkg:npm/%40algolia/monitoring@1.20.4",
+      "version": "1.32.0",
+      "purl": "pkg:npm/%40algolia/monitoring@1.32.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/monitoring@1.20.4"
+          "value": "@algolia/monitoring@1.32.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -318,16 +606,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/recommend@5.20.4",
+      "bom-ref": "pkg:npm/%40algolia/recommend@5.32.0",
       "type": "library",
       "group": "@algolia",
       "name": "recommend",
-      "version": "5.20.4",
-      "purl": "pkg:npm/%40algolia/recommend@5.20.4",
+      "version": "5.32.0",
+      "purl": "pkg:npm/%40algolia/recommend@5.32.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/recommend@5.20.4"
+          "value": "@algolia/recommend@5.32.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -336,16 +624,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
+      "bom-ref": "pkg:npm/%40algolia/requester-browser-xhr@5.32.0",
       "type": "library",
       "group": "@algolia",
       "name": "requester-browser-xhr",
-      "version": "5.20.4",
-      "purl": "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
+      "version": "5.32.0",
+      "purl": "pkg:npm/%40algolia/requester-browser-xhr@5.32.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/requester-browser-xhr@5.20.4"
+          "value": "@algolia/requester-browser-xhr@5.32.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -354,16 +642,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/requester-fetch@5.20.4",
+      "bom-ref": "pkg:npm/%40algolia/requester-fetch@5.32.0",
       "type": "library",
       "group": "@algolia",
       "name": "requester-fetch",
-      "version": "5.20.4",
-      "purl": "pkg:npm/%40algolia/requester-fetch@5.20.4",
+      "version": "5.32.0",
+      "purl": "pkg:npm/%40algolia/requester-fetch@5.32.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/requester-fetch@5.20.4"
+          "value": "@algolia/requester-fetch@5.32.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -372,16 +660,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40algolia/requester-node-http@5.20.4",
+      "bom-ref": "pkg:npm/%40algolia/requester-node-http@5.32.0",
       "type": "library",
       "group": "@algolia",
       "name": "requester-node-http",
-      "version": "5.20.4",
-      "purl": "pkg:npm/%40algolia/requester-node-http@5.20.4",
+      "version": "5.32.0",
+      "purl": "pkg:npm/%40algolia/requester-node-http@5.32.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@algolia/requester-node-http@5.20.4"
+          "value": "@algolia/requester-node-http@5.32.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -390,16 +678,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40babel/helper-string-parser@7.25.9",
+      "bom-ref": "pkg:npm/%40babel/helper-string-parser@7.27.1",
       "type": "library",
       "group": "@babel",
       "name": "helper-string-parser",
-      "version": "7.25.9",
-      "purl": "pkg:npm/%40babel/helper-string-parser@7.25.9",
+      "version": "7.27.1",
+      "purl": "pkg:npm/%40babel/helper-string-parser@7.27.1",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@babel/helper-string-parser@7.25.9"
+          "value": "@babel/helper-string-parser@7.27.1"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -408,16 +696,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40babel/helper-validator-identifier@7.25.9",
+      "bom-ref": "pkg:npm/%40babel/helper-validator-identifier@7.27.1",
       "type": "library",
       "group": "@babel",
       "name": "helper-validator-identifier",
-      "version": "7.25.9",
-      "purl": "pkg:npm/%40babel/helper-validator-identifier@7.25.9",
+      "version": "7.27.1",
+      "purl": "pkg:npm/%40babel/helper-validator-identifier@7.27.1",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@babel/helper-validator-identifier@7.25.9"
+          "value": "@babel/helper-validator-identifier@7.27.1"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -426,16 +714,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40babel/parser@7.26.9",
+      "bom-ref": "pkg:npm/%40babel/parser@7.28.0",
       "type": "library",
       "group": "@babel",
       "name": "parser",
-      "version": "7.26.9",
-      "purl": "pkg:npm/%40babel/parser@7.26.9",
+      "version": "7.28.0",
+      "purl": "pkg:npm/%40babel/parser@7.28.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@babel/parser@7.26.9"
+          "value": "@babel/parser@7.28.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -444,16 +732,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40babel/types@7.26.9",
+      "bom-ref": "pkg:npm/%40babel/types@7.28.1",
       "type": "library",
       "group": "@babel",
       "name": "types",
-      "version": "7.26.9",
-      "purl": "pkg:npm/%40babel/types@7.26.9",
+      "version": "7.28.1",
+      "purl": "pkg:npm/%40babel/types@7.28.1",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@babel/types@7.26.9"
+          "value": "@babel/types@7.28.1"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -516,16 +804,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40iconify-json/simple-icons@1.2.27",
+      "bom-ref": "pkg:npm/%40iconify-json/simple-icons@1.2.42",
       "type": "library",
       "group": "@iconify-json",
       "name": "simple-icons",
-      "version": "1.2.27",
-      "purl": "pkg:npm/%40iconify-json/simple-icons@1.2.27",
+      "version": "1.2.42",
+      "purl": "pkg:npm/%40iconify-json/simple-icons@1.2.42",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@iconify-json/simple-icons@1.2.27"
+          "value": "@iconify-json/simple-icons@1.2.42"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -552,16 +840,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40jridgewell/sourcemap-codec@1.5.0",
+      "bom-ref": "pkg:npm/%40jridgewell/sourcemap-codec@1.5.4",
       "type": "library",
       "group": "@jridgewell",
       "name": "sourcemap-codec",
-      "version": "1.5.0",
-      "purl": "pkg:npm/%40jridgewell/sourcemap-codec@1.5.0",
+      "version": "1.5.4",
+      "purl": "pkg:npm/%40jridgewell/sourcemap-codec@1.5.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@jridgewell/sourcemap-codec@1.5.0"
+          "value": "@jridgewell/sourcemap-codec@1.5.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -714,16 +1002,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40ttskch/prettier-plugin-tailwindcss-anywhere@0.1.0",
+      "bom-ref": "pkg:npm/%40ttskch/prettier-plugin-tailwindcss-anywhere@0.1.1",
       "type": "library",
       "group": "@ttskch",
       "name": "prettier-plugin-tailwindcss-anywhere",
-      "version": "0.1.0",
-      "purl": "pkg:npm/%40ttskch/prettier-plugin-tailwindcss-anywhere@0.1.0",
+      "version": "0.1.1",
+      "purl": "pkg:npm/%40ttskch/prettier-plugin-tailwindcss-anywhere@0.1.1",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@ttskch/prettier-plugin-tailwindcss-anywhere@0.1.0"
+          "value": "@ttskch/prettier-plugin-tailwindcss-anywhere@0.1.1"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -732,16 +1020,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40types/estree@1.0.6",
+      "bom-ref": "pkg:npm/%40types/estree@1.0.8",
       "type": "library",
       "group": "@types",
       "name": "estree",
-      "version": "1.0.6",
-      "purl": "pkg:npm/%40types/estree@1.0.6",
+      "version": "1.0.8",
+      "purl": "pkg:npm/%40types/estree@1.0.8",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@types/estree@1.0.6"
+          "value": "@types/estree@1.0.8"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -894,16 +1182,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vitejs/plugin-vue@5.2.1",
+      "bom-ref": "pkg:npm/%40vitejs/plugin-vue@5.2.4",
       "type": "library",
       "group": "@vitejs",
       "name": "plugin-vue",
-      "version": "5.2.1",
-      "purl": "pkg:npm/%40vitejs/plugin-vue@5.2.1",
+      "version": "5.2.4",
+      "purl": "pkg:npm/%40vitejs/plugin-vue@5.2.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vitejs/plugin-vue@5.2.1"
+          "value": "@vitejs/plugin-vue@5.2.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -912,16 +1200,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/compiler-core@3.5.13",
+      "bom-ref": "pkg:npm/%40vue/compiler-core@3.5.17",
       "type": "library",
       "group": "@vue",
       "name": "compiler-core",
-      "version": "3.5.13",
-      "purl": "pkg:npm/%40vue/compiler-core@3.5.13",
+      "version": "3.5.17",
+      "purl": "pkg:npm/%40vue/compiler-core@3.5.17",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/compiler-core@3.5.13"
+          "value": "@vue/compiler-core@3.5.17"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -930,16 +1218,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/compiler-dom@3.5.13",
+      "bom-ref": "pkg:npm/%40vue/compiler-dom@3.5.17",
       "type": "library",
       "group": "@vue",
       "name": "compiler-dom",
-      "version": "3.5.13",
-      "purl": "pkg:npm/%40vue/compiler-dom@3.5.13",
+      "version": "3.5.17",
+      "purl": "pkg:npm/%40vue/compiler-dom@3.5.17",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/compiler-dom@3.5.13"
+          "value": "@vue/compiler-dom@3.5.17"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -948,16 +1236,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/compiler-sfc@3.5.13",
+      "bom-ref": "pkg:npm/%40vue/compiler-sfc@3.5.17",
       "type": "library",
       "group": "@vue",
       "name": "compiler-sfc",
-      "version": "3.5.13",
-      "purl": "pkg:npm/%40vue/compiler-sfc@3.5.13",
+      "version": "3.5.17",
+      "purl": "pkg:npm/%40vue/compiler-sfc@3.5.17",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/compiler-sfc@3.5.13"
+          "value": "@vue/compiler-sfc@3.5.17"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -966,16 +1254,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/compiler-ssr@3.5.13",
+      "bom-ref": "pkg:npm/%40vue/compiler-ssr@3.5.17",
       "type": "library",
       "group": "@vue",
       "name": "compiler-ssr",
-      "version": "3.5.13",
-      "purl": "pkg:npm/%40vue/compiler-ssr@3.5.13",
+      "version": "3.5.17",
+      "purl": "pkg:npm/%40vue/compiler-ssr@3.5.17",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/compiler-ssr@3.5.13"
+          "value": "@vue/compiler-ssr@3.5.17"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -984,16 +1272,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/devtools-api@7.7.2",
+      "bom-ref": "pkg:npm/%40vue/devtools-api@7.7.7",
       "type": "library",
       "group": "@vue",
       "name": "devtools-api",
-      "version": "7.7.2",
-      "purl": "pkg:npm/%40vue/devtools-api@7.7.2",
+      "version": "7.7.7",
+      "purl": "pkg:npm/%40vue/devtools-api@7.7.7",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/devtools-api@7.7.2"
+          "value": "@vue/devtools-api@7.7.7"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1002,16 +1290,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/devtools-kit@7.7.2",
+      "bom-ref": "pkg:npm/%40vue/devtools-kit@7.7.7",
       "type": "library",
       "group": "@vue",
       "name": "devtools-kit",
-      "version": "7.7.2",
-      "purl": "pkg:npm/%40vue/devtools-kit@7.7.2",
+      "version": "7.7.7",
+      "purl": "pkg:npm/%40vue/devtools-kit@7.7.7",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/devtools-kit@7.7.2"
+          "value": "@vue/devtools-kit@7.7.7"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1020,16 +1308,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/devtools-shared@7.7.2",
+      "bom-ref": "pkg:npm/%40vue/devtools-shared@7.7.7",
       "type": "library",
       "group": "@vue",
       "name": "devtools-shared",
-      "version": "7.7.2",
-      "purl": "pkg:npm/%40vue/devtools-shared@7.7.2",
+      "version": "7.7.7",
+      "purl": "pkg:npm/%40vue/devtools-shared@7.7.7",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/devtools-shared@7.7.2"
+          "value": "@vue/devtools-shared@7.7.7"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1038,16 +1326,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/reactivity@3.5.13",
+      "bom-ref": "pkg:npm/%40vue/reactivity@3.5.17",
       "type": "library",
       "group": "@vue",
       "name": "reactivity",
-      "version": "3.5.13",
-      "purl": "pkg:npm/%40vue/reactivity@3.5.13",
+      "version": "3.5.17",
+      "purl": "pkg:npm/%40vue/reactivity@3.5.17",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/reactivity@3.5.13"
+          "value": "@vue/reactivity@3.5.17"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1056,16 +1344,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/runtime-core@3.5.13",
+      "bom-ref": "pkg:npm/%40vue/runtime-core@3.5.17",
       "type": "library",
       "group": "@vue",
       "name": "runtime-core",
-      "version": "3.5.13",
-      "purl": "pkg:npm/%40vue/runtime-core@3.5.13",
+      "version": "3.5.17",
+      "purl": "pkg:npm/%40vue/runtime-core@3.5.17",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/runtime-core@3.5.13"
+          "value": "@vue/runtime-core@3.5.17"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1074,16 +1362,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/runtime-dom@3.5.13",
+      "bom-ref": "pkg:npm/%40vue/runtime-dom@3.5.17",
       "type": "library",
       "group": "@vue",
       "name": "runtime-dom",
-      "version": "3.5.13",
-      "purl": "pkg:npm/%40vue/runtime-dom@3.5.13",
+      "version": "3.5.17",
+      "purl": "pkg:npm/%40vue/runtime-dom@3.5.17",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/runtime-dom@3.5.13"
+          "value": "@vue/runtime-dom@3.5.17"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1092,16 +1380,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/server-renderer@3.5.13",
+      "bom-ref": "pkg:npm/%40vue/server-renderer@3.5.17",
       "type": "library",
       "group": "@vue",
       "name": "server-renderer",
-      "version": "3.5.13",
-      "purl": "pkg:npm/%40vue/server-renderer@3.5.13",
+      "version": "3.5.17",
+      "purl": "pkg:npm/%40vue/server-renderer@3.5.17",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/server-renderer@3.5.13"
+          "value": "@vue/server-renderer@3.5.17"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1110,16 +1398,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/shared@3.5.13",
+      "bom-ref": "pkg:npm/%40vue/shared@3.5.17",
       "type": "library",
       "group": "@vue",
       "name": "shared",
-      "version": "3.5.13",
-      "purl": "pkg:npm/%40vue/shared@3.5.13",
+      "version": "3.5.17",
+      "purl": "pkg:npm/%40vue/shared@3.5.17",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/shared@3.5.13"
+          "value": "@vue/shared@3.5.17"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1218,15 +1506,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/algoliasearch@5.20.4",
+      "bom-ref": "pkg:npm/algoliasearch@5.32.0",
       "type": "library",
       "name": "algoliasearch",
-      "version": "5.20.4",
-      "purl": "pkg:npm/algoliasearch@5.20.4",
+      "version": "5.32.0",
+      "purl": "pkg:npm/algoliasearch@5.32.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "algoliasearch@5.20.4"
+          "value": "algoliasearch@5.32.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1388,15 +1676,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/birpc@0.2.19",
+      "bom-ref": "pkg:npm/birpc@2.4.0",
       "type": "library",
       "name": "birpc",
-      "version": "0.2.19",
-      "purl": "pkg:npm/birpc@0.2.19",
+      "version": "2.4.0",
+      "purl": "pkg:npm/birpc@2.4.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "birpc@0.2.19"
+          "value": "birpc@2.4.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1694,15 +1982,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/focus-trap@7.6.4",
+      "bom-ref": "pkg:npm/focus-trap@7.6.5",
       "type": "library",
       "name": "focus-trap",
-      "version": "7.6.4",
-      "purl": "pkg:npm/focus-trap@7.6.4",
+      "version": "7.6.5",
+      "purl": "pkg:npm/focus-trap@7.6.5",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "focus-trap@7.6.4"
+          "value": "focus-trap@7.6.5"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2255,15 +2543,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/nanoid@3.3.9",
+      "bom-ref": "pkg:npm/nanoid@3.3.11",
       "type": "library",
       "name": "nanoid",
-      "version": "3.3.9",
-      "purl": "pkg:npm/nanoid@3.3.9",
+      "version": "3.3.11",
+      "purl": "pkg:npm/nanoid@3.3.11",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "nanoid@3.3.9"
+          "value": "nanoid@3.3.11"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2340,15 +2628,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/postcss@8.5.3",
+      "bom-ref": "pkg:npm/postcss@8.5.6",
       "type": "library",
       "name": "postcss",
-      "version": "8.5.3",
-      "purl": "pkg:npm/postcss@8.5.3",
+      "version": "8.5.6",
+      "purl": "pkg:npm/postcss@8.5.6",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "postcss@8.5.3"
+          "value": "postcss@8.5.6"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2357,15 +2645,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/preact@10.26.4",
+      "bom-ref": "pkg:npm/preact@10.26.9",
       "type": "library",
       "name": "preact",
-      "version": "10.26.4",
-      "purl": "pkg:npm/preact@10.26.4",
+      "version": "10.26.9",
+      "purl": "pkg:npm/preact@10.26.9",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "preact@10.26.4"
+          "value": "preact@10.26.9"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2374,15 +2662,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/prettier-plugin-tailwindcss@0.6.11",
+      "bom-ref": "pkg:npm/prettier-plugin-tailwindcss@0.6.14",
       "type": "library",
       "name": "prettier-plugin-tailwindcss",
-      "version": "0.6.11",
-      "purl": "pkg:npm/prettier-plugin-tailwindcss@0.6.11",
+      "version": "0.6.14",
+      "purl": "pkg:npm/prettier-plugin-tailwindcss@0.6.14",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "prettier-plugin-tailwindcss@0.6.11"
+          "value": "prettier-plugin-tailwindcss@0.6.14"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2425,15 +2713,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/prettier@3.5.3",
+      "bom-ref": "pkg:npm/prettier@3.6.2",
       "type": "library",
       "name": "prettier",
-      "version": "3.5.3",
-      "purl": "pkg:npm/prettier@3.5.3",
+      "version": "3.6.2",
+      "purl": "pkg:npm/prettier@3.6.2",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "prettier@3.5.3"
+          "value": "prettier@3.6.2"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2442,15 +2730,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/property-information@7.0.0",
+      "bom-ref": "pkg:npm/property-information@7.1.0",
       "type": "library",
       "name": "property-information",
-      "version": "7.0.0",
-      "purl": "pkg:npm/property-information@7.0.0",
+      "version": "7.1.0",
+      "purl": "pkg:npm/property-information@7.1.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "property-information@7.0.0"
+          "value": "property-information@7.1.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2561,15 +2849,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/rollup@4.35.0",
+      "bom-ref": "pkg:npm/rollup@4.45.0",
       "type": "library",
       "name": "rollup",
-      "version": "4.35.0",
-      "purl": "pkg:npm/rollup@4.35.0",
+      "version": "4.45.0",
+      "purl": "pkg:npm/rollup@4.45.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "rollup@4.35.0"
+          "value": "rollup@4.45.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2935,15 +3223,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/vite@5.4.14",
+      "bom-ref": "pkg:npm/vite@5.4.19",
       "type": "library",
       "name": "vite",
-      "version": "5.4.14",
-      "purl": "pkg:npm/vite@5.4.14",
+      "version": "5.4.19",
+      "purl": "pkg:npm/vite@5.4.19",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "vite@5.4.14"
+          "value": "vite@5.4.19"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2969,15 +3257,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/vue@3.5.13",
+      "bom-ref": "pkg:npm/vue@3.5.17",
       "type": "library",
       "name": "vue",
-      "version": "3.5.13",
-      "purl": "pkg:npm/vue@3.5.13",
+      "version": "3.5.17",
+      "purl": "pkg:npm/vue@3.5.17",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "vue@3.5.13"
+          "value": "vue@3.5.17"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -3005,31 +3293,103 @@
   ],
   "dependencies": [
     {
-      "ref": "8d9ffa67-0214-424b-abf3-b2719e02541f",
+      "ref": "361f638a-9ca1-44da-b300-8686e523520d",
       "dependsOn": [
-        "pkg:composer/revolt/event-loop@v1.0.7"
+        "pkg:composer/mnapoli/silly@1.9.1",
+        "pkg:composer/revolt/event-loop@v1.0.7",
+        "pkg:composer/symfony/yaml@v7.3.1"
       ]
     },
     {
-      "ref": "a3f95c7b-3695-4ac6-aafa-31cd37b1a15d",
+      "ref": "b8a902ff-380f-4e11-b31a-15efe3fd3e4a",
       "dependsOn": [
-        "8d9ffa67-0214-424b-abf3-b2719e02541f",
-        "b53c6c79-e3a7-4a45-90f3-5420c4cbdfca"
-      ]
-    },
-    {
-      "ref": "b53c6c79-e3a7-4a45-90f3-5420c4cbdfca",
-      "dependsOn": [
-        "pkg:npm/%40ttskch/prettier-plugin-tailwindcss-anywhere@0.1.0",
+        "pkg:npm/%40ttskch/prettier-plugin-tailwindcss-anywhere@0.1.1",
         "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
-        "pkg:npm/prettier-plugin-tailwindcss@0.6.11",
+        "pkg:npm/prettier-plugin-tailwindcss@0.6.14",
         "pkg:npm/prettier-plugin-twig@1.0.1",
         "pkg:npm/vitepress@1.6.3"
       ]
     },
     {
+      "ref": "e1fb5798-d770-43fc-8fd4-9461ef0c276c",
+      "dependsOn": [
+        "361f638a-9ca1-44da-b300-8686e523520d",
+        "b8a902ff-380f-4e11-b31a-15efe3fd3e4a"
+      ]
+    },
+    {
+      "ref": "pkg:composer/mnapoli/silly@1.9.1",
+      "dependsOn": [
+        "pkg:composer/php-di/invoker@2.3.6",
+        "pkg:composer/psr/container@2.0.2",
+        "pkg:composer/symfony/console@v7.3.1"
+      ]
+    },
+    {
+      "ref": "pkg:composer/php-di/invoker@2.3.6",
+      "dependsOn": [
+        "pkg:composer/psr/container@2.0.2"
+      ]
+    },
+    {
+      "ref": "pkg:composer/psr/container@2.0.2",
+      "dependsOn": []
+    },
+    {
       "ref": "pkg:composer/revolt/event-loop@v1.0.7",
       "dependsOn": []
+    },
+    {
+      "ref": "pkg:composer/symfony/console@v7.3.1",
+      "dependsOn": [
+        "pkg:composer/symfony/deprecation-contracts@v3.6.0",
+        "pkg:composer/symfony/polyfill-mbstring@v1.32.0",
+        "pkg:composer/symfony/service-contracts@v3.6.0",
+        "pkg:composer/symfony/string@v7.3.0"
+      ]
+    },
+    {
+      "ref": "pkg:composer/symfony/deprecation-contracts@v3.6.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:composer/symfony/polyfill-ctype@v1.32.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:composer/symfony/polyfill-intl-grapheme@v1.32.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:composer/symfony/polyfill-intl-normalizer@v1.32.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:composer/symfony/polyfill-mbstring@v1.32.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:composer/symfony/service-contracts@v3.6.0",
+      "dependsOn": [
+        "pkg:composer/psr/container@2.0.2",
+        "pkg:composer/symfony/deprecation-contracts@v3.6.0"
+      ]
+    },
+    {
+      "ref": "pkg:composer/symfony/string@v7.3.0",
+      "dependsOn": [
+        "pkg:composer/symfony/polyfill-ctype@v1.32.0",
+        "pkg:composer/symfony/polyfill-intl-grapheme@v1.32.0",
+        "pkg:composer/symfony/polyfill-intl-normalizer@v1.32.0",
+        "pkg:composer/symfony/polyfill-mbstring@v1.32.0"
+      ]
+    },
+    {
+      "ref": "pkg:composer/symfony/yaml@v7.3.1",
+      "dependsOn": [
+        "pkg:composer/symfony/deprecation-contracts@v3.6.0",
+        "pkg:composer/symfony/polyfill-ctype@v1.32.0"
+      ]
     },
     {
       "ref": "pkg:npm/%40algolia/autocomplete-core@1.17.7",
@@ -3055,127 +3415,127 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40algolia/client-abtesting@5.20.4",
+      "ref": "pkg:npm/%40algolia/client-abtesting@5.32.0",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.4",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
-        "pkg:npm/%40algolia/requester-fetch@5.20.4",
-        "pkg:npm/%40algolia/requester-node-http@5.20.4"
+        "pkg:npm/%40algolia/client-common@5.32.0",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.32.0",
+        "pkg:npm/%40algolia/requester-fetch@5.32.0",
+        "pkg:npm/%40algolia/requester-node-http@5.32.0"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/client-analytics@5.20.4",
+      "ref": "pkg:npm/%40algolia/client-analytics@5.32.0",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.4",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
-        "pkg:npm/%40algolia/requester-fetch@5.20.4",
-        "pkg:npm/%40algolia/requester-node-http@5.20.4"
+        "pkg:npm/%40algolia/client-common@5.32.0",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.32.0",
+        "pkg:npm/%40algolia/requester-fetch@5.32.0",
+        "pkg:npm/%40algolia/requester-node-http@5.32.0"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/client-common@5.20.4",
+      "ref": "pkg:npm/%40algolia/client-common@5.32.0",
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40algolia/client-insights@5.20.4",
+      "ref": "pkg:npm/%40algolia/client-insights@5.32.0",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.4",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
-        "pkg:npm/%40algolia/requester-fetch@5.20.4",
-        "pkg:npm/%40algolia/requester-node-http@5.20.4"
+        "pkg:npm/%40algolia/client-common@5.32.0",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.32.0",
+        "pkg:npm/%40algolia/requester-fetch@5.32.0",
+        "pkg:npm/%40algolia/requester-node-http@5.32.0"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/client-personalization@5.20.4",
+      "ref": "pkg:npm/%40algolia/client-personalization@5.32.0",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.4",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
-        "pkg:npm/%40algolia/requester-fetch@5.20.4",
-        "pkg:npm/%40algolia/requester-node-http@5.20.4"
+        "pkg:npm/%40algolia/client-common@5.32.0",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.32.0",
+        "pkg:npm/%40algolia/requester-fetch@5.32.0",
+        "pkg:npm/%40algolia/requester-node-http@5.32.0"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/client-query-suggestions@5.20.4",
+      "ref": "pkg:npm/%40algolia/client-query-suggestions@5.32.0",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.4",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
-        "pkg:npm/%40algolia/requester-fetch@5.20.4",
-        "pkg:npm/%40algolia/requester-node-http@5.20.4"
+        "pkg:npm/%40algolia/client-common@5.32.0",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.32.0",
+        "pkg:npm/%40algolia/requester-fetch@5.32.0",
+        "pkg:npm/%40algolia/requester-node-http@5.32.0"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/client-search@5.20.4",
+      "ref": "pkg:npm/%40algolia/client-search@5.32.0",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.4",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
-        "pkg:npm/%40algolia/requester-fetch@5.20.4",
-        "pkg:npm/%40algolia/requester-node-http@5.20.4"
+        "pkg:npm/%40algolia/client-common@5.32.0",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.32.0",
+        "pkg:npm/%40algolia/requester-fetch@5.32.0",
+        "pkg:npm/%40algolia/requester-node-http@5.32.0"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/ingestion@1.20.4",
+      "ref": "pkg:npm/%40algolia/ingestion@1.32.0",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.4",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
-        "pkg:npm/%40algolia/requester-fetch@5.20.4",
-        "pkg:npm/%40algolia/requester-node-http@5.20.4"
+        "pkg:npm/%40algolia/client-common@5.32.0",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.32.0",
+        "pkg:npm/%40algolia/requester-fetch@5.32.0",
+        "pkg:npm/%40algolia/requester-node-http@5.32.0"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/monitoring@1.20.4",
+      "ref": "pkg:npm/%40algolia/monitoring@1.32.0",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.4",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
-        "pkg:npm/%40algolia/requester-fetch@5.20.4",
-        "pkg:npm/%40algolia/requester-node-http@5.20.4"
+        "pkg:npm/%40algolia/client-common@5.32.0",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.32.0",
+        "pkg:npm/%40algolia/requester-fetch@5.32.0",
+        "pkg:npm/%40algolia/requester-node-http@5.32.0"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/recommend@5.20.4",
+      "ref": "pkg:npm/%40algolia/recommend@5.32.0",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.4",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
-        "pkg:npm/%40algolia/requester-fetch@5.20.4",
-        "pkg:npm/%40algolia/requester-node-http@5.20.4"
+        "pkg:npm/%40algolia/client-common@5.32.0",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.32.0",
+        "pkg:npm/%40algolia/requester-fetch@5.32.0",
+        "pkg:npm/%40algolia/requester-node-http@5.32.0"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
+      "ref": "pkg:npm/%40algolia/requester-browser-xhr@5.32.0",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.4"
+        "pkg:npm/%40algolia/client-common@5.32.0"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/requester-fetch@5.20.4",
+      "ref": "pkg:npm/%40algolia/requester-fetch@5.32.0",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.4"
+        "pkg:npm/%40algolia/client-common@5.32.0"
       ]
     },
     {
-      "ref": "pkg:npm/%40algolia/requester-node-http@5.20.4",
+      "ref": "pkg:npm/%40algolia/requester-node-http@5.32.0",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-common@5.20.4"
+        "pkg:npm/%40algolia/client-common@5.32.0"
       ]
     },
     {
-      "ref": "pkg:npm/%40babel/helper-string-parser@7.25.9",
+      "ref": "pkg:npm/%40babel/helper-string-parser@7.27.1",
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40babel/helper-validator-identifier@7.25.9",
+      "ref": "pkg:npm/%40babel/helper-validator-identifier@7.27.1",
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40babel/parser@7.26.9",
+      "ref": "pkg:npm/%40babel/parser@7.28.0",
       "dependsOn": [
-        "pkg:npm/%40babel/types@7.26.9"
+        "pkg:npm/%40babel/types@7.28.1"
       ]
     },
     {
-      "ref": "pkg:npm/%40babel/types@7.26.9",
+      "ref": "pkg:npm/%40babel/types@7.28.1",
       "dependsOn": [
-        "pkg:npm/%40babel/helper-string-parser@7.25.9",
-        "pkg:npm/%40babel/helper-validator-identifier@7.25.9"
+        "pkg:npm/%40babel/helper-string-parser@7.27.1",
+        "pkg:npm/%40babel/helper-validator-identifier@7.27.1"
       ]
     },
     {
@@ -3186,7 +3546,7 @@
       "ref": "pkg:npm/%40docsearch/js@3.8.2",
       "dependsOn": [
         "pkg:npm/%40docsearch/react@3.8.2",
-        "pkg:npm/preact@10.26.4"
+        "pkg:npm/preact@10.26.9"
       ]
     },
     {
@@ -3195,11 +3555,11 @@
         "pkg:npm/%40algolia/autocomplete-core@1.17.7",
         "pkg:npm/%40algolia/autocomplete-preset-algolia@1.17.7",
         "pkg:npm/%40docsearch/css@3.8.2",
-        "pkg:npm/algoliasearch@5.20.4"
+        "pkg:npm/algoliasearch@5.32.0"
       ]
     },
     {
-      "ref": "pkg:npm/%40iconify-json/simple-icons@1.2.27",
+      "ref": "pkg:npm/%40iconify-json/simple-icons@1.2.42",
       "dependsOn": [
         "pkg:npm/%40iconify/types@2.0.0"
       ]
@@ -3209,7 +3569,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40jridgewell/sourcemap-codec@1.5.0",
+      "ref": "pkg:npm/%40jridgewell/sourcemap-codec@1.5.4",
       "dependsOn": []
     },
     {
@@ -3269,13 +3629,13 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40ttskch/prettier-plugin-tailwindcss-anywhere@0.1.0",
+      "ref": "pkg:npm/%40ttskch/prettier-plugin-tailwindcss-anywhere@0.1.1",
       "dependsOn": [
         "pkg:npm/tslib@2.7.0"
       ]
     },
     {
-      "ref": "pkg:npm/%40types/estree@1.0.6",
+      "ref": "pkg:npm/%40types/estree@1.0.8",
       "dependsOn": []
     },
     {
@@ -3318,58 +3678,58 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40vitejs/plugin-vue@5.2.1",
+      "ref": "pkg:npm/%40vitejs/plugin-vue@5.2.4",
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40vue/compiler-core@3.5.13",
+      "ref": "pkg:npm/%40vue/compiler-core@3.5.17",
       "dependsOn": [
-        "pkg:npm/%40babel/parser@7.26.9",
-        "pkg:npm/%40vue/shared@3.5.13",
+        "pkg:npm/%40babel/parser@7.28.0",
+        "pkg:npm/%40vue/shared@3.5.17",
         "pkg:npm/entities@4.5.0",
         "pkg:npm/estree-walker@2.0.2",
         "pkg:npm/source-map-js@1.2.1"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/compiler-dom@3.5.13",
+      "ref": "pkg:npm/%40vue/compiler-dom@3.5.17",
       "dependsOn": [
-        "pkg:npm/%40vue/compiler-core@3.5.13",
-        "pkg:npm/%40vue/shared@3.5.13"
+        "pkg:npm/%40vue/compiler-core@3.5.17",
+        "pkg:npm/%40vue/shared@3.5.17"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/compiler-sfc@3.5.13",
+      "ref": "pkg:npm/%40vue/compiler-sfc@3.5.17",
       "dependsOn": [
-        "pkg:npm/%40babel/parser@7.26.9",
-        "pkg:npm/%40vue/compiler-core@3.5.13",
-        "pkg:npm/%40vue/compiler-dom@3.5.13",
-        "pkg:npm/%40vue/compiler-ssr@3.5.13",
-        "pkg:npm/%40vue/shared@3.5.13",
+        "pkg:npm/%40babel/parser@7.28.0",
+        "pkg:npm/%40vue/compiler-core@3.5.17",
+        "pkg:npm/%40vue/compiler-dom@3.5.17",
+        "pkg:npm/%40vue/compiler-ssr@3.5.17",
+        "pkg:npm/%40vue/shared@3.5.17",
         "pkg:npm/estree-walker@2.0.2",
         "pkg:npm/magic-string@0.30.17",
-        "pkg:npm/postcss@8.5.3",
+        "pkg:npm/postcss@8.5.6",
         "pkg:npm/source-map-js@1.2.1"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/compiler-ssr@3.5.13",
+      "ref": "pkg:npm/%40vue/compiler-ssr@3.5.17",
       "dependsOn": [
-        "pkg:npm/%40vue/compiler-dom@3.5.13",
-        "pkg:npm/%40vue/shared@3.5.13"
+        "pkg:npm/%40vue/compiler-dom@3.5.17",
+        "pkg:npm/%40vue/shared@3.5.17"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/devtools-api@7.7.2",
+      "ref": "pkg:npm/%40vue/devtools-api@7.7.7",
       "dependsOn": [
-        "pkg:npm/%40vue/devtools-kit@7.7.2"
+        "pkg:npm/%40vue/devtools-kit@7.7.7"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/devtools-kit@7.7.2",
+      "ref": "pkg:npm/%40vue/devtools-kit@7.7.7",
       "dependsOn": [
-        "pkg:npm/%40vue/devtools-shared@7.7.2",
-        "pkg:npm/birpc@0.2.19",
+        "pkg:npm/%40vue/devtools-shared@7.7.7",
+        "pkg:npm/birpc@2.4.0",
         "pkg:npm/hookable@5.5.3",
         "pkg:npm/mitt@3.0.1",
         "pkg:npm/perfect-debounce@1.0.0",
@@ -3378,42 +3738,42 @@
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/devtools-shared@7.7.2",
+      "ref": "pkg:npm/%40vue/devtools-shared@7.7.7",
       "dependsOn": [
         "pkg:npm/rfdc@1.4.1"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/reactivity@3.5.13",
+      "ref": "pkg:npm/%40vue/reactivity@3.5.17",
       "dependsOn": [
-        "pkg:npm/%40vue/shared@3.5.13"
+        "pkg:npm/%40vue/shared@3.5.17"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/runtime-core@3.5.13",
+      "ref": "pkg:npm/%40vue/runtime-core@3.5.17",
       "dependsOn": [
-        "pkg:npm/%40vue/reactivity@3.5.13",
-        "pkg:npm/%40vue/shared@3.5.13"
+        "pkg:npm/%40vue/reactivity@3.5.17",
+        "pkg:npm/%40vue/shared@3.5.17"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/runtime-dom@3.5.13",
+      "ref": "pkg:npm/%40vue/runtime-dom@3.5.17",
       "dependsOn": [
-        "pkg:npm/%40vue/reactivity@3.5.13",
-        "pkg:npm/%40vue/runtime-core@3.5.13",
-        "pkg:npm/%40vue/shared@3.5.13",
+        "pkg:npm/%40vue/reactivity@3.5.17",
+        "pkg:npm/%40vue/runtime-core@3.5.17",
+        "pkg:npm/%40vue/shared@3.5.17",
         "pkg:npm/csstype@3.1.3"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/server-renderer@3.5.13",
+      "ref": "pkg:npm/%40vue/server-renderer@3.5.17",
       "dependsOn": [
-        "pkg:npm/%40vue/compiler-ssr@3.5.13",
-        "pkg:npm/%40vue/shared@3.5.13"
+        "pkg:npm/%40vue/compiler-ssr@3.5.17",
+        "pkg:npm/%40vue/shared@3.5.17"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/shared@3.5.13",
+      "ref": "pkg:npm/%40vue/shared@3.5.17",
       "dependsOn": []
     },
     {
@@ -3422,7 +3782,7 @@
         "pkg:npm/%40types/web-bluetooth@0.0.21",
         "pkg:npm/%40vueuse/metadata@12.8.2",
         "pkg:npm/%40vueuse/shared@12.8.2",
-        "pkg:npm/vue@3.5.13"
+        "pkg:npm/vue@3.5.17"
       ]
     },
     {
@@ -3430,7 +3790,7 @@
       "dependsOn": [
         "pkg:npm/%40vueuse/core@12.8.2",
         "pkg:npm/%40vueuse/shared@12.8.2",
-        "pkg:npm/vue@3.5.13"
+        "pkg:npm/vue@3.5.17"
       ]
     },
     {
@@ -3440,7 +3800,7 @@
     {
       "ref": "pkg:npm/%40vueuse/shared@12.8.2",
       "dependsOn": [
-        "pkg:npm/vue@3.5.13"
+        "pkg:npm/vue@3.5.17"
       ]
     },
     {
@@ -3451,26 +3811,26 @@
         "pkg:npm/melody-parser@1.7.5",
         "pkg:npm/melody-traverse@1.7.5",
         "pkg:npm/melody-types@1.7.5",
-        "pkg:npm/prettier@3.5.3",
+        "pkg:npm/prettier@3.6.2",
         "pkg:npm/resolve@1.22.10"
       ]
     },
     {
-      "ref": "pkg:npm/algoliasearch@5.20.4",
+      "ref": "pkg:npm/algoliasearch@5.32.0",
       "dependsOn": [
-        "pkg:npm/%40algolia/client-abtesting@5.20.4",
-        "pkg:npm/%40algolia/client-analytics@5.20.4",
-        "pkg:npm/%40algolia/client-common@5.20.4",
-        "pkg:npm/%40algolia/client-insights@5.20.4",
-        "pkg:npm/%40algolia/client-personalization@5.20.4",
-        "pkg:npm/%40algolia/client-query-suggestions@5.20.4",
-        "pkg:npm/%40algolia/client-search@5.20.4",
-        "pkg:npm/%40algolia/ingestion@1.20.4",
-        "pkg:npm/%40algolia/monitoring@1.20.4",
-        "pkg:npm/%40algolia/recommend@5.20.4",
-        "pkg:npm/%40algolia/requester-browser-xhr@5.20.4",
-        "pkg:npm/%40algolia/requester-fetch@5.20.4",
-        "pkg:npm/%40algolia/requester-node-http@5.20.4"
+        "pkg:npm/%40algolia/client-abtesting@5.32.0",
+        "pkg:npm/%40algolia/client-analytics@5.32.0",
+        "pkg:npm/%40algolia/client-common@5.32.0",
+        "pkg:npm/%40algolia/client-insights@5.32.0",
+        "pkg:npm/%40algolia/client-personalization@5.32.0",
+        "pkg:npm/%40algolia/client-query-suggestions@5.32.0",
+        "pkg:npm/%40algolia/client-search@5.32.0",
+        "pkg:npm/%40algolia/ingestion@1.32.0",
+        "pkg:npm/%40algolia/monitoring@1.32.0",
+        "pkg:npm/%40algolia/recommend@5.32.0",
+        "pkg:npm/%40algolia/requester-browser-xhr@5.32.0",
+        "pkg:npm/%40algolia/requester-fetch@5.32.0",
+        "pkg:npm/%40algolia/requester-node-http@5.32.0"
       ]
     },
     {
@@ -3540,7 +3900,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/birpc@0.2.19",
+      "ref": "pkg:npm/birpc@2.4.0",
       "dependsOn": []
     },
     {
@@ -3624,7 +3984,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/focus-trap@7.6.4",
+      "ref": "pkg:npm/focus-trap@7.6.5",
       "dependsOn": [
         "pkg:npm/tabbable@6.2.0"
       ]
@@ -3659,7 +4019,7 @@
         "pkg:npm/hast-util-whitespace@3.0.0",
         "pkg:npm/html-void-elements@3.0.0",
         "pkg:npm/mdast-util-to-hast@13.2.0",
-        "pkg:npm/property-information@7.0.0",
+        "pkg:npm/property-information@7.1.0",
         "pkg:npm/space-separated-tokens@2.0.2",
         "pkg:npm/stringify-entities@4.0.4",
         "pkg:npm/zwitch@2.0.4"
@@ -3720,7 +4080,7 @@
     {
       "ref": "pkg:npm/magic-string@0.30.17",
       "dependsOn": [
-        "pkg:npm/%40jridgewell/sourcemap-codec@1.5.0"
+        "pkg:npm/%40jridgewell/sourcemap-codec@1.5.4"
       ]
     },
     {
@@ -3814,7 +4174,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/nanoid@3.3.9",
+      "ref": "pkg:npm/nanoid@3.3.11",
       "dependsOn": []
     },
     {
@@ -3838,19 +4198,19 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/postcss@8.5.3",
+      "ref": "pkg:npm/postcss@8.5.6",
       "dependsOn": [
-        "pkg:npm/nanoid@3.3.9",
+        "pkg:npm/nanoid@3.3.11",
         "pkg:npm/picocolors@1.1.1",
         "pkg:npm/source-map-js@1.2.1"
       ]
     },
     {
-      "ref": "pkg:npm/preact@10.26.4",
+      "ref": "pkg:npm/preact@10.26.9",
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/prettier-plugin-tailwindcss@0.6.11",
+      "ref": "pkg:npm/prettier-plugin-tailwindcss@0.6.14",
       "dependsOn": []
     },
     {
@@ -3870,11 +4230,11 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/prettier@3.5.3",
+      "ref": "pkg:npm/prettier@3.6.2",
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/property-information@7.0.0",
+      "ref": "pkg:npm/property-information@7.1.0",
       "dependsOn": []
     },
     {
@@ -3910,9 +4270,9 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/rollup@4.35.0",
+      "ref": "pkg:npm/rollup@4.45.0",
       "dependsOn": [
-        "pkg:npm/%40types/estree@1.0.6"
+        "pkg:npm/%40types/estree@1.0.8"
       ]
     },
     {
@@ -3931,7 +4291,7 @@
     {
       "ref": "pkg:npm/shortid@2.2.17",
       "dependsOn": [
-        "pkg:npm/nanoid@3.3.9"
+        "pkg:npm/nanoid@3.3.11"
       ]
     },
     {
@@ -4037,11 +4397,11 @@
       ]
     },
     {
-      "ref": "pkg:npm/vite@5.4.14",
+      "ref": "pkg:npm/vite@5.4.19",
       "dependsOn": [
         "pkg:npm/esbuild@0.21.5",
-        "pkg:npm/postcss@8.5.3",
-        "pkg:npm/rollup@4.35.0"
+        "pkg:npm/postcss@8.5.6",
+        "pkg:npm/rollup@4.45.0"
       ]
     },
     {
@@ -4049,32 +4409,32 @@
       "dependsOn": [
         "pkg:npm/%40docsearch/css@3.8.2",
         "pkg:npm/%40docsearch/js@3.8.2",
-        "pkg:npm/%40iconify-json/simple-icons@1.2.27",
+        "pkg:npm/%40iconify-json/simple-icons@1.2.42",
         "pkg:npm/%40shikijs/core@2.5.0",
         "pkg:npm/%40shikijs/transformers@2.5.0",
         "pkg:npm/%40shikijs/types@2.5.0",
         "pkg:npm/%40types/markdown-it@14.1.2",
-        "pkg:npm/%40vitejs/plugin-vue@5.2.1",
-        "pkg:npm/%40vue/devtools-api@7.7.2",
-        "pkg:npm/%40vue/shared@3.5.13",
+        "pkg:npm/%40vitejs/plugin-vue@5.2.4",
+        "pkg:npm/%40vue/devtools-api@7.7.7",
+        "pkg:npm/%40vue/shared@3.5.17",
         "pkg:npm/%40vueuse/core@12.8.2",
         "pkg:npm/%40vueuse/integrations@12.8.2",
-        "pkg:npm/focus-trap@7.6.4",
+        "pkg:npm/focus-trap@7.6.5",
         "pkg:npm/mark.js@8.11.1",
         "pkg:npm/minisearch@7.1.2",
         "pkg:npm/shiki@2.5.0",
-        "pkg:npm/vite@5.4.14",
-        "pkg:npm/vue@3.5.13"
+        "pkg:npm/vite@5.4.19",
+        "pkg:npm/vue@3.5.17"
       ]
     },
     {
-      "ref": "pkg:npm/vue@3.5.13",
+      "ref": "pkg:npm/vue@3.5.17",
       "dependsOn": [
-        "pkg:npm/%40vue/compiler-dom@3.5.13",
-        "pkg:npm/%40vue/compiler-sfc@3.5.13",
-        "pkg:npm/%40vue/runtime-dom@3.5.13",
-        "pkg:npm/%40vue/server-renderer@3.5.13",
-        "pkg:npm/%40vue/shared@3.5.13"
+        "pkg:npm/%40vue/compiler-dom@3.5.17",
+        "pkg:npm/%40vue/compiler-sfc@3.5.17",
+        "pkg:npm/%40vue/runtime-dom@3.5.17",
+        "pkg:npm/%40vue/server-renderer@3.5.17",
+        "pkg:npm/%40vue/shared@3.5.17"
       ]
     },
     {
@@ -4173,358 +4533,6 @@
           "versions": [
             {
               "version": "6.26.0",
-              "status": "affected"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "CVE-2025-30208",
-      "source": {
-        "name": "ghsa",
-        "url": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
-      },
-      "ratings": [
-        {
-          "source": {
-            "name": "ghsa"
-          },
-          "score": 5.3,
-          "severity": "medium",
-          "method": "CVSSv31",
-          "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
-        },
-        {
-          "source": {
-            "name": "redhat"
-          },
-          "score": 5.3,
-          "severity": "medium",
-          "method": "CVSSv31",
-          "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
-        }
-      ],
-      "cwes": [
-        200,
-        284
-      ],
-      "description": "Vite, a provider of frontend development tooling, has a vulnerability in versions prior to 6.2.3, 6.1.2, 6.0.12, 5.4.15, and 4.5.10. `@fs` denies access to files outside of Vite serving allow list. Adding `?raw??` or `?import&raw??` to the URL bypasses this limitation and returns the file content if it exists. This bypass exists because trailing separators such as `?` are removed in several places, but are not accounted for in query string regexes. The contents of arbitrary files can be returned to the browser. Only apps explicitly exposing the Vite dev server to the network (using `--host` or `server.host` config option) are affected. Versions 6.2.3, 6.1.2, 6.0.12, 5.4.15, and 4.5.10 fix the issue.",
-      "recommendation": "Upgrade vite to version 6.2.3, 6.1.2, 6.0.12, 5.4.15, 4.5.10",
-      "advisories": [
-        {
-          "url": "https://avd.aquasec.com/nvd/cve-2025-30208"
-        },
-        {
-          "url": "https://access.redhat.com/security/cve/CVE-2025-30208"
-        },
-        {
-          "url": "https://github.com/vitejs/vite"
-        },
-        {
-          "url": "https://github.com/vitejs/vite/commit/315695e9d97cc6cfa7e6d9e0229fb50cdae3d9f4"
-        },
-        {
-          "url": "https://github.com/vitejs/vite/commit/80381c38d6f068b12e6e928cd3c616bd1d64803c"
-        },
-        {
-          "url": "https://github.com/vitejs/vite/commit/807d7f06d33ab49c48a2a3501da3eea1906c0d41"
-        },
-        {
-          "url": "https://github.com/vitejs/vite/commit/92ca12dc79118bf66f2b32ff81ed09e0d0bd07ca"
-        },
-        {
-          "url": "https://github.com/vitejs/vite/commit/f234b5744d8b74c95535a7b82cc88ed2144263c1"
-        },
-        {
-          "url": "https://github.com/vitejs/vite/security/advisories/GHSA-x574-m823-4x7w"
-        },
-        {
-          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-30208"
-        },
-        {
-          "url": "https://www.cve.org/CVERecord?id=CVE-2025-30208"
-        }
-      ],
-      "published": "2025-03-24T17:15:21+00:00",
-      "updated": "2025-03-27T16:45:46+00:00",
-      "affects": [
-        {
-          "ref": "pkg:npm/vite@5.4.14",
-          "versions": [
-            {
-              "version": "5.4.14",
-              "status": "affected"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "CVE-2025-31125",
-      "source": {
-        "name": "ghsa",
-        "url": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
-      },
-      "ratings": [
-        {
-          "source": {
-            "name": "ghsa"
-          },
-          "score": 5.3,
-          "severity": "medium",
-          "method": "CVSSv31",
-          "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
-        },
-        {
-          "source": {
-            "name": "redhat"
-          },
-          "score": 5.3,
-          "severity": "medium",
-          "method": "CVSSv31",
-          "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
-        }
-      ],
-      "cwes": [
-        200,
-        284
-      ],
-      "description": "Vite is a frontend tooling framework for javascript. Vite exposes content of non-allowed files using ?inline&import or ?raw?import. Only apps explicitly exposing the Vite dev server to the network (using --host or server.host config option) are affected. This vulnerability is fixed in 6.2.4, 6.1.3, 6.0.13, 5.4.16, and 4.5.11.",
-      "recommendation": "Upgrade vite to version 6.2.4, 6.1.3, 6.0.13, 5.4.16, 4.5.11",
-      "advisories": [
-        {
-          "url": "https://avd.aquasec.com/nvd/cve-2025-31125"
-        },
-        {
-          "url": "https://access.redhat.com/security/cve/CVE-2025-31125"
-        },
-        {
-          "url": "https://github.com/vitejs/vite"
-        },
-        {
-          "url": "https://github.com/vitejs/vite/commit/59673137c45ac2bcfad1170d954347c1a17ab949"
-        },
-        {
-          "url": "https://github.com/vitejs/vite/security/advisories/GHSA-4r4m-qw57-chr8"
-        },
-        {
-          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-31125"
-        },
-        {
-          "url": "https://www.cve.org/CVERecord?id=CVE-2025-31125"
-        }
-      ],
-      "published": "2025-03-31T17:15:43+00:00",
-      "updated": "2025-04-01T20:26:22+00:00",
-      "affects": [
-        {
-          "ref": "pkg:npm/vite@5.4.14",
-          "versions": [
-            {
-              "version": "5.4.14",
-              "status": "affected"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "CVE-2025-31486",
-      "source": {
-        "name": "ghsa",
-        "url": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
-      },
-      "ratings": [
-        {
-          "source": {
-            "name": "ghsa"
-          },
-          "score": 5.3,
-          "severity": "medium",
-          "method": "CVSSv31",
-          "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
-        },
-        {
-          "source": {
-            "name": "redhat"
-          },
-          "score": 5.3,
-          "severity": "medium",
-          "method": "CVSSv31",
-          "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N"
-        }
-      ],
-      "cwes": [
-        200,
-        284
-      ],
-      "description": "Vite is a frontend tooling framework for javascript. The contents of arbitrary files can be returned to the browser. By adding ?.svg with ?.wasm?init or with sec-fetch-dest: script header, the server.fs.deny restriction was able to bypass. This bypass is only possible if the file is smaller than build.assetsInlineLimit (default: 4kB) and when using Vite 6.0+. Only apps explicitly exposing the Vite dev server to the network (using --host or server.host config option) are affected. This vulnerability is fixed in 4.5.12, 5.4.17, 6.0.14, 6.1.4, and 6.2.5.",
-      "recommendation": "Upgrade vite to version 6.2.5, 6.1.4, 6.0.14, 5.4.17, 4.5.12",
-      "advisories": [
-        {
-          "url": "https://avd.aquasec.com/nvd/cve-2025-31486"
-        },
-        {
-          "url": "https://access.redhat.com/security/cve/CVE-2025-31486"
-        },
-        {
-          "url": "https://github.com/vitejs/vite"
-        },
-        {
-          "url": "https://github.com/vitejs/vite/blob/037f801075ec35bb6e52145d659f71a23813c48f/packages/vite/src/node/plugins/asset.ts#L285-L290"
-        },
-        {
-          "url": "https://github.com/vitejs/vite/commit/62d7e81ee189d65899bb65f3263ddbd85247b647"
-        },
-        {
-          "url": "https://github.com/vitejs/vite/security/advisories/GHSA-xcj6-pq6g-qj4x"
-        },
-        {
-          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-31486"
-        },
-        {
-          "url": "https://www.cve.org/CVERecord?id=CVE-2025-31486"
-        }
-      ],
-      "published": "2025-04-03T19:15:39+00:00",
-      "updated": "2025-04-07T14:18:34+00:00",
-      "affects": [
-        {
-          "ref": "pkg:npm/vite@5.4.14",
-          "versions": [
-            {
-              "version": "5.4.14",
-              "status": "affected"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "CVE-2025-32395",
-      "source": {
-        "name": "ghsa",
-        "url": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
-      },
-      "ratings": [
-        {
-          "source": {
-            "name": "ghsa"
-          },
-          "severity": "medium"
-        },
-        {
-          "source": {
-            "name": "redhat"
-          },
-          "score": 6.5,
-          "severity": "medium",
-          "method": "CVSSv31",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
-        }
-      ],
-      "cwes": [
-        200
-      ],
-      "description": "Vite is a frontend tooling framework for javascript. Prior to 6.2.6, 6.1.5, 6.0.15, 5.4.18, and 4.5.13, the contents of arbitrary files can be returned to the browser if the dev server is running on Node or Bun. HTTP 1.1 spec (RFC 9112) does not allow # in request-target. Although an attacker can send such a request. For those requests with an invalid request-line (it includes request-target), the spec recommends to reject them with 400 or 301. The same can be said for HTTP 2. On Node and Bun, those requests are not rejected internally and is passed to the user land. For those requests, the value of http.IncomingMessage.url contains #. Vite assumed req.url won't contain # when checking server.fs.deny, allowing those kinds of requests to bypass the check. Only apps explicitly exposing the Vite dev server to the network (using --host or server.host config option) and running the Vite dev server on runtimes that are not Deno (e.g. Node, Bun) are affected. This vulnerability is fixed in 6.2.6, 6.1.5, 6.0.15, 5.4.18, and 4.5.13.",
-      "recommendation": "Upgrade vite to version 6.2.6, 6.1.5, 6.0.15, 5.4.18, 4.5.13",
-      "advisories": [
-        {
-          "url": "https://avd.aquasec.com/nvd/cve-2025-32395"
-        },
-        {
-          "url": "https://access.redhat.com/security/cve/CVE-2025-32395"
-        },
-        {
-          "url": "https://github.com/vitejs/vite"
-        },
-        {
-          "url": "https://github.com/vitejs/vite/commit/175a83909f02d3b554452a7bd02b9f340cdfef70"
-        },
-        {
-          "url": "https://github.com/vitejs/vite/security/advisories/GHSA-356w-63v5-8wf4"
-        },
-        {
-          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-32395"
-        },
-        {
-          "url": "https://www.cve.org/CVERecord?id=CVE-2025-32395"
-        }
-      ],
-      "published": "2025-04-10T14:15:29+00:00",
-      "updated": "2025-04-11T15:39:52+00:00",
-      "affects": [
-        {
-          "ref": "pkg:npm/vite@5.4.14",
-          "versions": [
-            {
-              "version": "5.4.14",
-              "status": "affected"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "CVE-2025-46565",
-      "source": {
-        "name": "ghsa",
-        "url": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
-      },
-      "ratings": [
-        {
-          "source": {
-            "name": "ghsa"
-          },
-          "severity": "medium"
-        },
-        {
-          "source": {
-            "name": "redhat"
-          },
-          "score": 6.5,
-          "severity": "medium",
-          "method": "CVSSv31",
-          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
-        }
-      ],
-      "cwes": [
-        22
-      ],
-      "description": "Vite is a frontend tooling framework for javascript. Prior to versions 6.3.4, 6.2.7, 6.1.6, 5.4.19, and 4.5.14, the contents of files in the project root that are denied by a file matching pattern can be returned to the browser. Only apps explicitly exposing the Vite dev server to the network (using --host or server.host config option) are affected. Only files that are under project root and are denied by a file matching pattern can be bypassed. `server.fs.deny` can contain patterns matching against files (by default it includes .env, .env.*, *.{crt,pem} as such patterns). These patterns were able to bypass for files under `root` by using a combination of slash and dot (/.). This issue has been patched in versions 6.3.4, 6.2.7, 6.1.6, 5.4.19, and 4.5.14.",
-      "recommendation": "Upgrade vite to version 6.3.4, 6.2.7, 6.1.6, 5.4.19, 4.5.14",
-      "advisories": [
-        {
-          "url": "https://avd.aquasec.com/nvd/cve-2025-46565"
-        },
-        {
-          "url": "https://access.redhat.com/security/cve/CVE-2025-46565"
-        },
-        {
-          "url": "https://github.com/vitejs/vite"
-        },
-        {
-          "url": "https://github.com/vitejs/vite/commit/c22c43de612eebb6c182dd67850c24e4fab8cacb"
-        },
-        {
-          "url": "https://github.com/vitejs/vite/security/advisories/GHSA-859w-5945-r5v3"
-        },
-        {
-          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-46565"
-        },
-        {
-          "url": "https://www.cve.org/CVERecord?id=CVE-2025-46565"
-        }
-      ],
-      "published": "2025-05-01T18:15:57+00:00",
-      "updated": "2025-05-02T18:15:27+00:00",
-      "affects": [
-        {
-          "ref": "pkg:npm/vite@5.4.14",
-          "versions": [
-            {
-              "version": "5.4.14",
               "status": "affected"
             }
           ]
