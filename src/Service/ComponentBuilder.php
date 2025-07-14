@@ -56,9 +56,10 @@ class ComponentBuilder implements ComponentBuilderInterface
                 }
             }
 
-            // Append to parent or document
+            // Append to parent node if set - or document if root node
             if ($parent === null) {
-                $doc->appendChild($element);
+                $importedNode = $doc->importNode($element->delegated, true);
+                $doc->appendChild($importedNode);
             } else {
                 $parent->appendChild($element);
             }

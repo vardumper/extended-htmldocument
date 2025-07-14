@@ -14,7 +14,7 @@ use Symfony\Component\Yaml\Yaml;
 
 /**
  * @usage make:classes [element]
- * @description Create a new component
+ * @description Creates all or one HTML element class.
  * @tutorial an example element value can be div
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element
  */
