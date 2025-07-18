@@ -61,12 +61,12 @@
     "require-dev": {
         "amphp/file": ">=3.2",
         "brainmaestro/composer-git-hooks": "dev-master",
-        "friendsofphp/php-cs-fixer": "^3.82.2",
+        "friendsofphp/php-cs-fixer": "^3.84.0",
         "pestphp/pest": "^3.8.2",
         "pestphp/pest-plugin-drift": "^3.0",
         "pestphp/pest-plugin-type-coverage": "^3.6",
         "phpmd/phpmd": "^2.15",
-        "phpstan/phpstan": "^2.1.17",
+        "phpstan/phpstan": "^2.1.18",
         "rector/swiss-knife": "^2.3.1",
         "symplify/easy-coding-standard": "^12.5.20"
     },
