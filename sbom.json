@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:4749210e-8025-4575-a28f-4dbad89b686e",
+  "serialNumber": "urn:uuid:736313f5-682d-4c62-8ba6-2ce313bd0268",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-07-14T10:33:07+00:00",
+    "timestamp": "2025-07-18T06:47:24+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "e1fb5798-d770-43fc-8fd4-9461ef0c276c",
+      "bom-ref": "fc2ad4c3-34bd-4e2f-be6f-d3d9a22df370",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,7 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "361f638a-9ca1-44da-b300-8686e523520d",
+      "bom-ref": "0eadc708-9c54-4be9-af05-c5b4296d3e10",
       "type": "application",
       "name": "composer.lock",
       "properties": [
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "bom-ref": "b8a902ff-380f-4e11-b31a-15efe3fd3e4a",
+      "bom-ref": "bfe8ab6e-7a30-43cc-aea8-3e32fd18872e",
       "type": "application",
       "name": "yarn.lock",
       "properties": [
@@ -3293,7 +3293,7 @@
   ],
   "dependencies": [
     {
-      "ref": "361f638a-9ca1-44da-b300-8686e523520d",
+      "ref": "0eadc708-9c54-4be9-af05-c5b4296d3e10",
       "dependsOn": [
         "pkg:composer/mnapoli/silly@1.9.1",
         "pkg:composer/revolt/event-loop@v1.0.7",
@@ -3301,7 +3301,7 @@
       ]
     },
     {
-      "ref": "b8a902ff-380f-4e11-b31a-15efe3fd3e4a",
+      "ref": "bfe8ab6e-7a30-43cc-aea8-3e32fd18872e",
       "dependsOn": [
         "pkg:npm/%40ttskch/prettier-plugin-tailwindcss-anywhere@0.1.1",
         "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
@@ -3311,10 +3311,10 @@
       ]
     },
     {
-      "ref": "e1fb5798-d770-43fc-8fd4-9461ef0c276c",
+      "ref": "fc2ad4c3-34bd-4e2f-be6f-d3d9a22df370",
       "dependsOn": [
-        "361f638a-9ca1-44da-b300-8686e523520d",
-        "b8a902ff-380f-4e11-b31a-15efe3fd3e4a"
+        "0eadc708-9c54-4be9-af05-c5b4296d3e10",
+        "bfe8ab6e-7a30-43cc-aea8-3e32fd18872e"
       ]
     },
     {
