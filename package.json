@@ -1,9 +1,5 @@
 {
   "devDependencies": {
-    "@ttskch/prettier-plugin-tailwindcss-anywhere": "^0.1.0",
-    "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.11",
-    "prettier-plugin-twig": "^1.0.1",
     "vitepress": "^1.6.3"
   },
   "license": "MIT",
