@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:736313f5-682d-4c62-8ba6-2ce313bd0268",
+  "serialNumber": "urn:uuid:ea5ef445-a90c-4484-ad8c-8b7acbf6da5f",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-07-18T06:47:24+00:00",
+    "timestamp": "2025-08-03T22:22:14+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "fc2ad4c3-34bd-4e2f-be6f-d3d9a22df370",
+      "bom-ref": "b6b9d4c3-c65f-4b58-afe1-b095ae6ed8fc",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,22 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "0eadc708-9c54-4be9-af05-c5b4296d3e10",
-      "type": "application",
-      "name": "composer.lock",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:Class",
-          "value": "lang-pkgs"
-        },
-        {
-          "name": "aquasecurity:trivy:Type",
-          "value": "composer"
-        }
-      ]
-    },
-    {
-      "bom-ref": "bfe8ab6e-7a30-43cc-aea8-3e32fd18872e",
+      "bom-ref": "575af4f6-a369-4f20-b059-dc57836b955f",
       "type": "application",
       "name": "yarn.lock",
       "properties": [
@@ -56,6 +41,21 @@
         {
           "name": "aquasecurity:trivy:Type",
           "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "95980127-5470-4cdf-be7a-94ec73331453",
+      "type": "application",
+      "name": "composer.lock",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:Class",
+          "value": "lang-pkgs"
+        },
+        {
+          "name": "aquasecurity:trivy:Type",
+          "value": "composer"
         }
       ]
     },
@@ -156,10 +156,10 @@
       ]
     },
     {
-      "bom-ref": "pkg:composer/symfony/console@v7.3.1",
+      "bom-ref": "pkg:composer/symfony/console@v7.3.2",
       "type": "library",
       "name": "symfony/console",
-      "version": "v7.3.1",
+      "version": "v7.3.2",
       "licenses": [
         {
           "license": {
@@ -167,11 +167,11 @@
           }
         }
       ],
-      "purl": "pkg:composer/symfony/console@v7.3.1",
+      "purl": "pkg:composer/symfony/console@v7.3.2",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "symfony/console@v7.3.1"
+          "value": "symfony/console@v7.3.2"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -324,10 +324,10 @@
       ]
     },
     {
-      "bom-ref": "pkg:composer/symfony/string@v7.3.0",
+      "bom-ref": "pkg:composer/symfony/string@v7.3.2",
       "type": "library",
       "name": "symfony/string",
-      "version": "v7.3.0",
+      "version": "v7.3.2",
       "licenses": [
         {
           "license": {
@@ -335,11 +335,11 @@
           }
         }
       ],
-      "purl": "pkg:composer/symfony/string@v7.3.0",
+      "purl": "pkg:composer/symfony/string@v7.3.2",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "symfony/string@v7.3.0"
+          "value": "symfony/string@v7.3.2"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -348,10 +348,10 @@
       ]
     },
     {
-      "bom-ref": "pkg:composer/symfony/yaml@v7.3.1",
+      "bom-ref": "pkg:composer/symfony/yaml@v7.3.2",
       "type": "library",
       "name": "symfony/yaml",
-      "version": "v7.3.1",
+      "version": "v7.3.2",
       "licenses": [
         {
           "license": {
@@ -359,11 +359,11 @@
           }
         }
       ],
-      "purl": "pkg:composer/symfony/yaml@v7.3.1",
+      "purl": "pkg:composer/symfony/yaml@v7.3.2",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "symfony/yaml@v7.3.1"
+          "value": "symfony/yaml@v7.3.2"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -3293,15 +3293,7 @@
   ],
   "dependencies": [
     {
-      "ref": "0eadc708-9c54-4be9-af05-c5b4296d3e10",
-      "dependsOn": [
-        "pkg:composer/mnapoli/silly@1.9.1",
-        "pkg:composer/revolt/event-loop@v1.0.7",
-        "pkg:composer/symfony/yaml@v7.3.1"
-      ]
-    },
-    {
-      "ref": "bfe8ab6e-7a30-43cc-aea8-3e32fd18872e",
+      "ref": "575af4f6-a369-4f20-b059-dc57836b955f",
       "dependsOn": [
         "pkg:npm/%40ttskch/prettier-plugin-tailwindcss-anywhere@0.1.1",
         "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
@@ -3311,10 +3303,18 @@
       ]
     },
     {
-      "ref": "fc2ad4c3-34bd-4e2f-be6f-d3d9a22df370",
+      "ref": "95980127-5470-4cdf-be7a-94ec73331453",
       "dependsOn": [
-        "0eadc708-9c54-4be9-af05-c5b4296d3e10",
-        "bfe8ab6e-7a30-43cc-aea8-3e32fd18872e"
+        "pkg:composer/mnapoli/silly@1.9.1",
+        "pkg:composer/revolt/event-loop@v1.0.7",
+        "pkg:composer/symfony/yaml@v7.3.2"
+      ]
+    },
+    {
+      "ref": "b6b9d4c3-c65f-4b58-afe1-b095ae6ed8fc",
+      "dependsOn": [
+        "575af4f6-a369-4f20-b059-dc57836b955f",
+        "95980127-5470-4cdf-be7a-94ec73331453"
       ]
     },
     {
@@ -3322,7 +3322,7 @@
       "dependsOn": [
         "pkg:composer/php-di/invoker@2.3.6",
         "pkg:composer/psr/container@2.0.2",
-        "pkg:composer/symfony/console@v7.3.1"
+        "pkg:composer/symfony/console@v7.3.2"
       ]
     },
     {
@@ -3340,12 +3340,12 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:composer/symfony/console@v7.3.1",
+      "ref": "pkg:composer/symfony/console@v7.3.2",
       "dependsOn": [
         "pkg:composer/symfony/deprecation-contracts@v3.6.0",
         "pkg:composer/symfony/polyfill-mbstring@v1.32.0",
         "pkg:composer/symfony/service-contracts@v3.6.0",
-        "pkg:composer/symfony/string@v7.3.0"
+        "pkg:composer/symfony/string@v7.3.2"
       ]
     },
     {
@@ -3376,7 +3376,7 @@
       ]
     },
     {
-      "ref": "pkg:composer/symfony/string@v7.3.0",
+      "ref": "pkg:composer/symfony/string@v7.3.2",
       "dependsOn": [
         "pkg:composer/symfony/polyfill-ctype@v1.32.0",
         "pkg:composer/symfony/polyfill-intl-grapheme@v1.32.0",
@@ -3385,7 +3385,7 @@
       ]
     },
     {
-      "ref": "pkg:composer/symfony/yaml@v7.3.1",
+      "ref": "pkg:composer/symfony/yaml@v7.3.2",
       "dependsOn": [
         "pkg:composer/symfony/deprecation-contracts@v3.6.0",
         "pkg:composer/symfony/polyfill-ctype@v1.32.0"
