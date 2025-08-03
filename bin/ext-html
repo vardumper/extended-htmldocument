@@ -1,5 +1,6 @@
 #!/usr/bin/env php
 <?php
+
 declare(strict_types=1);
 
 use Html\Command\CreateClassCommand;
@@ -31,18 +32,18 @@ $app->command('make:all', function (InputInterface $input, OutputInterface $outp
 })->descriptions('Creates or re-creates all PHP classes for all HTML Elements and backed enums for static HTML attributes');
 
 // generating Templates (.html,.twig,.php) for HTML elements
-$app->command('make:generate [generator] [source] [dest]', function (InputInterface $input, OutputInterface $output) {
+$app->command('generate [generator] [source] [dest]', function (InputInterface $input, OutputInterface $output) {
     $output->writeln('Generates templpates. Uses a given generator. Requires a source path with your component YAMLs and a destination path for the generated templates.');
 })->descriptions('Generates templates for HTML Elements');
 
 $sourceDefault = realpath(__DIR__ . '/../examples/template-generator/source');
 $destDefault = realpath(__DIR__ . '/../examples/template-generator/dest');
 $app
-    ->command('make:watch [generator] [source] [dest] [--overwrite-existing=]', function ($generator, $source, $dest, $overwriteExisting = false, InputInterface $input, OutputInterface $output) {
+    ->command('watch [generator] [source] [dest] [--overwrite-existing=]', function ($generator, $source, $dest, $overwriteExisting = false, InputInterface $input, OutputInterface $output) {
         (new WatchCommand(new ComponentBuilder()))($generator, $source, $dest, $overwriteExisting, $input, $output);
     })
     ->descriptions('Observes a directory or file for changes, and generates templates for HTML Elements', ['generator' => 'name of the generator', 'source' => 'source path', 'dest' => 'destination path'])
-    ->defaults(['generator' => 'html', 'source' =>$sourceDefault, 'dest' => $destDefault, 'overwrite-existing' => false]);
+    ->defaults(['generator' => 'html', 'source' => $sourceDefault, 'dest' => $destDefault, 'overwrite-existing' => false]);
 
 // $app->setDefaultCommand('make:all');
 $app->run();

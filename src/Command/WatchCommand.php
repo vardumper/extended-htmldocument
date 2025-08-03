@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Html\Command;
 
 use DOMDocument;
+use Edent\PrettyPrintHtml\PrettyPrintHtml;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Interface\ComponentBuilderInterface;
 use Html\Interface\TemplateGeneratorInterface;
@@ -172,27 +173,13 @@ class WatchCommand extends Command
                         $templateGenerator->getExtension(),
                     ], $templateGenerator->getNamePattern())
                 );
-                file_put_contents(
-                    $detsinationPath,
-                    (string) $dom
-                ); // this is where a generators __toString method is called
+
                 if ($dom->formatOutput) {
-                    exec(
-                        sprintf('yarn exec prettier %s --write 2>&1 &', $detsinationPath),
-                        $return,
-                        $code
-                    ); // formats the generated files
-                    if ($code != 0) {
-                        $io->error(
-                            sprintf('Dang! Something went wrong during formatting of output files: %s (%s)', join(
-                                '<br />',
-                                $return
-                            ), $code)
-                        );
-                    } else {
-                        $io->success('All components have been created.');
-                    }
+                    $formatter = new PrettyPrintHtml();
+                    $dom = $formatter->serializeHtml($dom->delegated, rawAttributes: false);
                 }
+
+                file_put_contents($detsinationPath, $dom);
             }
         } catch (\Symfony\Component\Yaml\Exception\ParseException $e) {
             $io->error('Failed to parse component description file. ' . $e->getMessage());
