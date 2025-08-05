@@ -5,7 +5,7 @@
  *
  * Picture - The picture element contains zero or more source elements and one img element to offer alternative versions of an image for different display/device scenarios.
  *
- * @generated 2025-07-12 09:31:57
+ * @generated 2025-08-05 06:09:38
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture

@@ -5,7 +5,7 @@
  *
  * Span - The span element doesn't mean anything on its own, but can be useful when used together with the global attributes, e.g. class, lang, or dir. It represents its children.
  *
- * @generated 2025-07-12 09:31:57
+ * @generated 2025-08-05 06:09:38
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span

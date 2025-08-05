@@ -5,7 +5,7 @@
  *
  * Details - The details element represents a disclosure widget from which the user can obtain additional information or controls.
  *
- * @generated 2025-07-12 09:31:57
+ * @generated 2025-08-05 06:09:38
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details

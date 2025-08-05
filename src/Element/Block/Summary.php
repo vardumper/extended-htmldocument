@@ -5,7 +5,7 @@
  *
  * Summary - The summary element represents a summary, caption, or legend for the rest of the contents of the summary element's parent details element, if any.
  *
- * @generated 2025-07-12 09:31:57
+ * @generated 2025-08-05 06:09:38
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary
