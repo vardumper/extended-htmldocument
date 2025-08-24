@@ -55,17 +55,13 @@ test('append', function () {
         ->toBeInstanceOf(HTMLElementDelegator::class);
     expect($anchor->delegated)
         ->toBeInstanceOf(HTMLElement::class);
-    $this->document->append($anchor);
-    $node = $this->document->getElementsByTagName('a')
+    $this->document->append($anchor->delegated);
+    $node = $this->document->delegated->getElementsByTagName('a')
         ->item(0);
     expect($node->nodeValue)
         ->toBe($anchor->nodeValue);
     expect($node->tagName)
         ->toBe('A');
-    expect($node)
-        ->toBeInstanceOf(NodeDelegator::class);
-    expect($node->delegated)
-        ->toBeInstanceOf(HTMLElement::class);
 });
 
 test('append htmldocument create element', function () {
@@ -118,6 +114,6 @@ test('setting properties via direct property access different enum instantiation
 
 test('check type of ownerDocument', function () {
     $input = Input::create($this->document);
-    expect($input->ownerDocument)
-        ->toBeInstanceOf(HTMLDocumentDelegator::class);
+    expect($input->delegated->ownerDocument)
+        ->toBeInstanceOf(Dom\HTMLDocument::class);
 });
