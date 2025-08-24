@@ -161,11 +161,16 @@ class WatchCommand extends Command
                     exit;
                 }
 
-                $dom = HTMLDocumentDelegator::createEmpty();
-                $dom->formatOutput = true;
-                $dom->setRenderer($templateGenerator);
-                $this->componentBuilder->buildComponent($dom, $data);
-                $detsinationPath = sprintf(
+                // Set the component handle if using TwigGenerator
+                if (method_exists($templateGenerator, 'setComponentHandle')) {
+                    $templateGenerator->setComponentHandle($componentHandle);
+                }
+
+                $document = HTMLDocumentDelegator::createEmpty();
+                $document->formatOutput = true;
+                $document->setRenderer($templateGenerator);
+                $this->componentBuilder->buildComponent($document, $data);
+                $destinationPath = sprintf(
                     '%s/%s',
                     $dest,
                     str_replace(['{component}', '{extension}'], [
@@ -174,12 +179,14 @@ class WatchCommand extends Command
                     ], $templateGenerator->getNamePattern())
                 );
 
-                if ($dom->formatOutput) {
+                $output = (string) $document;
+                // Only pretty-print if not templated (HTML output)
+                if ($document->formatOutput && ! $templateGenerator->isTemplated()) {
                     $formatter = new PrettyPrintHtml();
-                    $dom = $formatter->serializeHtml($dom->delegated, rawAttributes: false);
+                    $output = $formatter->serializeHtml($document->delegated, rawAttributes: false);
                 }
 
-                file_put_contents($detsinationPath, $dom);
+                file_put_contents($destinationPath, $output);
             }
         } catch (\Symfony\Component\Yaml\Exception\ParseException $e) {
             $io->error('Failed to parse component description file. ' . $e->getMessage());

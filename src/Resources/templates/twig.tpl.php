@@ -1,4 +1,6 @@
 {# <?= $componentHandle ?> #}
 {% block <?= $componentHandle ?> %}
-    <?= $html ?>
+    {% apply spaceless }
+<?= $html ?>
+    {% endapply %}
 {% endblock %}

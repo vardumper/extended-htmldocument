@@ -5,8 +5,12 @@ teaser-example-two:
     div:
       class: teaser
       children:
-        - h3:
-            text: "{{ entry.title }}"
+        - hgroup:
+            children:
+              - h3:
+                  text: "{{ entry.title }}"
+              - h4:
+                  text: "{{ entry.subtitle }}"
         - p:
             text: "{{ entry.description }}"
         - img:

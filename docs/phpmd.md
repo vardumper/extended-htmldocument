@@ -10,12 +10,12 @@ layout: home
 | -------- | ------ | ------------ | ----- | ------- |
 | <span class="prio3">3</span> | src/Command/CreateClassCommand.php | 291 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$type`. |
 | <span class="prio3">3</span> | src/Command/WatchCommand.php | 35 | [UnusedPrivateField](https://phpmd.org/rules/unusedcode.html#unusedprivatefield) | Avoid unused private fields such as `$data`. |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 215 | [UnusedPrivateMethod](https://phpmd.org/rules/unusedcode.html#unusedprivatemethod) | Avoid unused private methods such as `parseFile`. |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 215 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$generator`. |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 215 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$sourceFile`. |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 215 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$dest`. |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 215 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$io`. |
-| <span class="prio3">3</span> | src/Command/WatchCommand.php | 220 | [UnusedPrivateMethod](https://phpmd.org/rules/unusedcode.html#unusedprivatemethod) | Avoid unused private methods such as `formatHtml`. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 222 | [UnusedPrivateMethod](https://phpmd.org/rules/unusedcode.html#unusedprivatemethod) | Avoid unused private methods such as `parseFile`. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 222 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$generator`. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 222 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$sourceFile`. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 222 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$dest`. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 222 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$io`. |
+| <span class="prio3">3</span> | src/Command/WatchCommand.php | 227 | [UnusedPrivateMethod](https://phpmd.org/rules/unusedcode.html#unusedprivatemethod) | Avoid unused private methods such as `formatHtml`. |
 | <span class="prio3">3</span> | src/Service/ComponentBuilder.php | 50 | [UnusedLocalVariable](https://phpmd.org/rules/unusedcode.html#unusedlocalvariable) | Avoid unused local variables such as `$childElement`. |
 
 Issues detected: 9
@@ -55,9 +55,9 @@ Issues detected: 15
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 113 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Revolt\EventLoop` in method `__invoke`. |
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 117 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Revolt\EventLoop` in method `__invoke`. |
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 122 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Revolt\EventLoop` in method `__invoke`. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 164 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Delegator\HTMLDocumentDelegator` in method `processSingleFile`. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 220 | [ErrorControlOperator](http://phpmd.org/rules/cleancode.html#errorcontroloperator) | Remove error control operator `@` on line 226. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 234 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method createDirectory uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 169 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Delegator\HTMLDocumentDelegator` in method `processSingleFile`. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 227 | [ErrorControlOperator](http://phpmd.org/rules/cleancode.html#errorcontroloperator) | Remove error control operator `@` on line 233. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 241 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method createDirectory uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
 | <span class="prio1">1</span> | src/Delegator/HTMLDocumentDelegator.php | 87 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\DOM\HTMLDocument` in method `createEmpty`. |
 | <span class="prio1">1</span> | src/Delegator/HTMLDocumentDelegator.php | 92 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\DOM\HTMLDocument` in method `createFromString`. |
 | <span class="prio1">1</span> | src/Delegator/HTMLDocumentDelegator.php | 97 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\DOM\HTMLDocument` in method `createFromFile`. |
@@ -105,6 +105,8 @@ Issues detected: 15
 | <span class="prio1">1</span> | src/Element/Void/Track.php | 114 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\KindEnum` in method `setKind`. |
 | <span class="prio1">1</span> | src/Service/ComponentBuilder.php | 54 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method buildDOM uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
 | <span class="prio1">1</span> | src/Service/ComponentBuilder.php | 63 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method buildDOM uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
+| <span class="prio1">1</span> | src/TemplateGenerator/TwigGenerator.php | 64 | [MissingImport](http://phpmd.org/rules/cleancode.html#MissingImport) | Missing class import via use statement (line `64`, column `30`). |
+| <span class="prio1">1</span> | src/TemplateGenerator/TwigGenerator.php | 85 | [MissingImport](http://phpmd.org/rules/cleancode.html#MissingImport) | Missing class import via use statement (line `85`, column `30`). |
 | <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 189 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\AutoCapitalizeEnum` in method `setAutoCapitalize`. |
 | <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 209 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\ContentEditableEnum` in method `setContentEditable`. |
 | <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 216 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\ContentEditableEnum` in method `setContentEditable`. |
@@ -120,7 +122,7 @@ Issues detected: 15
 | <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 456 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\SpellCheckEnum` in method `setSpellCheck`. |
 | <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 459 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\SpellCheckEnum` in method `setSpellCheck`. |
 
-Issues detected: 75
+Issues detected: 77
 ## Design
 
 | Priority | File   | Line         |  Rule | Message |
@@ -132,9 +134,9 @@ Issues detected: 75
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 69 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method __invoke() contains an exit expression. |
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 119 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method __invoke() contains an exit expression. |
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 161 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method processSingleFile() contains an exit expression. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 186 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method processSingleFile() contains an exit expression. |
-| <span class="prio1">1</span> | src/Command/WatchCommand.php | 236 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method createDirectory() contains an exit expression. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 193 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method processSingleFile() contains an exit expression. |
+| <span class="prio1">1</span> | src/Command/WatchCommand.php | 243 | [ExitExpression](https://phpmd.org/rules/design.html#exitexpression) | The method createDirectory() contains an exit expression. |
 
 Issues detected: 9
 
-Sat Aug 23 20:37:33 CEST 2025
+Sun Aug 24 11:16:16 CEST 2025

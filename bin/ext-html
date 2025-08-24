@@ -39,7 +39,7 @@ $app->command('generate [generator] [source] [dest]', function (InputInterface $
 $sourceDefault = realpath(__DIR__ . '/../examples/template-generator/source');
 $destDefault = realpath(__DIR__ . '/../examples/template-generator/dest');
 $app
-    ->command('watch [generator] [source] [dest] [--overwrite-existing=]', function ($generator, $source, $dest, $overwriteExisting = false, InputInterface $input, OutputInterface $output) {
+    ->command('watch [generator] [source] [dest] [--overwrite-existing=]', function ($generator, $source, $dest, InputInterface $input, OutputInterface $output, $overwriteExisting = false) {
         (new WatchCommand(new ComponentBuilder()))($generator, $source, $dest, $overwriteExisting, $input, $output);
     })
     ->descriptions('Observes a directory or file for changes, and generates templates for HTML Elements', ['generator' => 'name of the generator', 'source' => 'source path', 'dest' => 'destination path'])
