@@ -5,7 +5,7 @@
  *
  * Input - The input element represents a typed data field, usually with a form control to allow user input.
  *
- * @generated 2025-10-19 21:39:12
+ * @generated 2025-10-19 21:49:08
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
@@ -28,8 +28,6 @@ use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Enum\AutocompleteEnum;
-use Html\Enum\DataPlacementEnum;
-use Html\Enum\DataThemeEnum;
 use Html\Enum\TypeInputEnum;
 use Html\Mapping\Element;
 use InvalidArgumentException;
@@ -94,6 +92,11 @@ class Input extends InlineElement
      * Specifies alternative text to be displayed when the image cannot be rendered.
      */
     public ?string $alt = null;
+
+    /**
+     * @example on
+     */
+    public ?AutocompleteEnum $autocomplete = null;
 
     /**
      * When present, it indicates that an input element should be pre-selected (checked) when the page loads.
@@ -186,6 +189,12 @@ class Input extends InlineElement
     public ?string $step = null;
 
     /**
+     * Specifies the type of the input. Defaults to text if the attribute is omitted
+     * @example text
+     */
+    public ?TypeInputEnum $type = null;
+
+    /**
      * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
      */
     public ?string $value = null;
@@ -194,31 +203,6 @@ class Input extends InlineElement
      * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
      */
     public ?string $width = null;
-
-    /**
-     * Give extra context and information by adding tooltips.
-     */
-    public ?string $dataTooltip = null;
-
-    /**
-     * @example on
-     */
-    protected ?AutocompleteEnum $autocomplete = null;
-
-    /**
-     * Specifies the type of the input. Defaults to text if the attribute is omitted
-     * @example text
-     */
-    protected ?TypeInputEnum $type = null;
-
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
-    /**
-     * Choose the position of a tooltip. Depends on data-tooltip attribute.
-     * @example top
-     */
-    protected null|string|DataPlacementEnum $dataPlacement = null;
 
     public function setAccept(string $accept): static
     {
@@ -516,63 +500,5 @@ class Input extends InlineElement
     public function getWidth(): ?string
     {
         return $this->width;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $dataTheme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
-    }
-
-    public function setDataTooltip(string $dataTooltip): static
-    {
-        $this->dataTooltip = $dataTooltip;
-        $this->delegated->setAttribute('dataTooltip', (string) $dataTooltip);
-        return $this;
-    }
-
-    public function getDataTooltip(): ?string
-    {
-        return $this->dataTooltip;
-    }
-
-    public function setDataPlacement(string|DataPlacementEnum $dataPlacement): static
-    {
-        $value = $dataPlacement;
-        if (is_string($dataPlacement)) {
-            $resolved = DataPlacementEnum::tryFrom($dataPlacement);
-            if ($resolved !== null) {
-                $dataPlacement = $resolved;
-            }
-        }
-        if ($dataPlacement instanceof DataPlacementEnum) {
-            $value = $dataPlacement->value;
-        }
-        $this->dataPlacement = $dataPlacement;
-        $this->delegated->setAttribute('dataPlacement', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataPlacement(): string|DataPlacementEnum
-    {
-        return $this->dataPlacement;
     }
 }

@@ -440,7 +440,7 @@ final class CreateClassCommand extends Command
             $returnType = sprintf('?%s', $enumName);
         }
 
-        return [$returnType, 'protected'];
+        return [$returnType, 'public'];
     }
 
     private function getOtherTypesFromEnum(string $type): array

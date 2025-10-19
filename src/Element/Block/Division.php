@@ -5,7 +5,7 @@
  *
  * Division - The div element has no special meaning at all. It represents its children. It can be used with the class, lang, and title attributes to mark up semantics common to a group of consecutive elements.
  *
- * @generated 2025-10-19 21:39:12
+ * @generated 2025-10-19 21:49:08
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
@@ -53,8 +53,6 @@ use Html\Element\Void\Parameter;
 use Html\Element\Void\Source;
 use Html\Element\Void\Track;
 use Html\Element\Void\WordBreakOpportunity;
-use Html\Enum\ClassEnum;
-use Html\Enum\RoleEnum;
 use Html\Mapping\Element;
 
 #[Element('div')]
@@ -173,61 +171,4 @@ class Division extends BlockElement
         Video::class,
         WordBreakOpportunity::class,
     ];
-
-    /** The role attribute is used to define the purpose of an element. */
-    protected null|string|RoleEnum $role = null;
-
-    /**
-     * The class attribute is used to define equal styles for multiple elements.
-     * @example
-
-     * @required
-     */
-    protected null|string|ClassEnum $class = null;
-
-    public function setRole(string|RoleEnum $role): static
-    {
-        $value = $role;
-        if (is_string($role)) {
-            $resolved = RoleEnum::tryFrom($role);
-            if ($resolved !== null) {
-                $role = $resolved;
-            }
-        }
-        if ($role instanceof RoleEnum) {
-            $value = $role->value;
-        }
-        $this->role = $role;
-        $this->delegated->setAttribute('role', (string) $value);
-
-        return $this;
-    }
-
-    public function getRole(): string|RoleEnum
-    {
-        return $this->role;
-    }
-
-    public function setClass(string|ClassEnum $class): static
-    {
-        $value = $class;
-        if (is_string($class)) {
-            $resolved = ClassEnum::tryFrom($class);
-            if ($resolved !== null) {
-                $class = $resolved;
-            }
-        }
-        if ($class instanceof ClassEnum) {
-            $value = $class->value;
-        }
-        $this->class = $class;
-        $this->delegated->setAttribute('class', (string) $value);
-
-        return $this;
-    }
-
-    public function getClass(): string|ClassEnum
-    {
-        return $this->class;
-    }
 }

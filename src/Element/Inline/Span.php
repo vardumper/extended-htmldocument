@@ -5,7 +5,7 @@
  *
  * Span - The span element doesn't mean anything on its own, but can be useful when used together with the global attributes, e.g. class, lang, or dir. It represents its children.
  *
- * @generated 2025-10-19 21:39:12
+ * @generated 2025-10-19 21:49:08
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
@@ -24,8 +24,6 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
-use Html\Enum\ClassEnum;
-use Html\Enum\RoleEnum;
 use Html\Mapping\Element;
 
 #[Element('span')]
@@ -69,61 +67,4 @@ class Span extends InlineElement
      * @var array<string>
      */
     public static array $parentOf = [];
-
-    /** The role attribute is used to define the purpose of an element. */
-    protected null|string|RoleEnum $role = null;
-
-    /**
-     * The class attribute is used to define equal styles for multiple elements.
-     * @example
-
-     * @required
-     */
-    protected null|string|ClassEnum $class = null;
-
-    public function setRole(string|RoleEnum $role): static
-    {
-        $value = $role;
-        if (is_string($role)) {
-            $resolved = RoleEnum::tryFrom($role);
-            if ($resolved !== null) {
-                $role = $resolved;
-            }
-        }
-        if ($role instanceof RoleEnum) {
-            $value = $role->value;
-        }
-        $this->role = $role;
-        $this->delegated->setAttribute('role', (string) $value);
-
-        return $this;
-    }
-
-    public function getRole(): string|RoleEnum
-    {
-        return $this->role;
-    }
-
-    public function setClass(string|ClassEnum $class): static
-    {
-        $value = $class;
-        if (is_string($class)) {
-            $resolved = ClassEnum::tryFrom($class);
-            if ($resolved !== null) {
-                $class = $resolved;
-            }
-        }
-        if ($class instanceof ClassEnum) {
-            $value = $class->value;
-        }
-        $this->class = $class;
-        $this->delegated->setAttribute('class', (string) $value);
-
-        return $this;
-    }
-
-    public function getClass(): string|ClassEnum
-    {
-        return $this->class;
-    }
 }
