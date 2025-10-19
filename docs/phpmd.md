@@ -25,9 +25,8 @@ Issues detected: 10
 | Priority | File   | Line         |  Rule | Message |
 | -------- | ------ | ------------ | ----- | ------- |
 | <span class="prio3">3</span> | src/Command/CreateClassCommand.php | 22 | [ExcessiveClassComplexity](https://phpmd.org/rules/codesize.html#excessiveclasscomplexity) | The class CreateClassCommand has an overall complexity of 81 which is very high. The configured complexity threshold is 50. |
-| <span class="prio3">3</span> | src/Command/CreateEnumCommand.php | 28 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method __invoke() has a Cyclomatic Complexity of 23. The configured cyclomatic complexity threshold is 10. |
-| <span class="prio3">3</span> | src/Command/CreateEnumCommand.php | 28 | [NPathComplexity](https://phpmd.org/rules/codesize.html#npathcomplexity) | The method __invoke() has an NPath complexity of 7992. The configured NPath complexity threshold is 200. |
-| <span class="prio3">3</span> | src/Command/CreateEnumCommand.php | 28 | [ExcessiveMethodLength](https://phpmd.org/rules/codesize.html#excessivemethodlength) | The method __invoke() has 128 lines of code. Current threshold is set to 100. Avoid really long methods. |
+| <span class="prio3">3</span> | src/Command/CreateEnumCommand.php | 28 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method __invoke() has a Cyclomatic Complexity of 16. The configured cyclomatic complexity threshold is 10. |
+| <span class="prio3">3</span> | src/Command/CreateEnumCommand.php | 28 | [NPathComplexity](https://phpmd.org/rules/codesize.html#npathcomplexity) | The method __invoke() has an NPath complexity of 472. The configured NPath complexity threshold is 200. |
 | <span class="prio3">3</span> | src/Command/WatchCommand.php | 51 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method __invoke() has a Cyclomatic Complexity of 14. The configured cyclomatic complexity threshold is 10. |
 | <span class="prio3">3</span> | src/Command/WatchCommand.php | 51 | [NPathComplexity](https://phpmd.org/rules/codesize.html#npathcomplexity) | The method __invoke() has an NPath complexity of 768. The configured NPath complexity threshold is 200. |
 | <span class="prio3">3</span> | src/Delegator/HTMLElementDelegator.php | 35 | [ExcessiveClassComplexity](https://phpmd.org/rules/codesize.html#excessiveclasscomplexity) | The class HTMLElementDelegator has an overall complexity of 51 which is very high. The configured complexity threshold is 50. |
@@ -42,7 +41,7 @@ Issues detected: 10
 | <span class="prio3">3</span> | src/Trait/ClassResolverTrait.php | 44 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method getElementByQualifiedName() has a Cyclomatic Complexity of 12. The configured cyclomatic complexity threshold is 10. |
 | <span class="prio3">3</span> | src/Trait/GlobalAttributesTrait.php | 19 | [ExcessivePublicCount](https://phpmd.org/rules/codesize.html#excessivepubliccount) | The trait GlobalAttributesTrait has 48 public methods and attributes. Consider reducing the number of public items to less than 45. |
 
-Issues detected: 17
+Issues detected: 16
 ## Clean Code
 
 | Priority | File   | Line         |  Rule | Message |
@@ -145,4 +144,4 @@ Issues detected: 80
 
 Issues detected: 9
 
-Sun Oct 19 08:55:44 PM CEST 2025
+Sun Oct 19 10:29:32 PM CEST 2025

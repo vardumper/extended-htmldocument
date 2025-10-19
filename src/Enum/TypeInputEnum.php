@@ -5,7 +5,7 @@
  *
  * TypeInputEnum - Specifies the type of the input. Defaults to text if the attribute is omitted
  *
- * @generated 2025-10-19 18:53:35
+ * @generated 2025-10-19 20:28:42
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/type/

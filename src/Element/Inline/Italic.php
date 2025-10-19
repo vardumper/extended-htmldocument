@@ -5,7 +5,7 @@
  *
  * Italic - The i element represents a span of text in an alternate voice or mood, or otherwise offset from the normal prose, such as a taxonomic designation, a technical term, an idiomatic phrase from another language, a thought, or a ship name in Western texts.
  *
- * @generated 2025-10-19 18:53:35
+ * @generated 2025-10-19 20:20:48
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i

@@ -280,7 +280,7 @@ final class CreateClassCommand extends Command
         if (! isset($details['elements']) || ! is_array($details['elements'])) {
             $elementsWithAttribute = [];
             foreach ($this->data as $tmpEl => $tmpData) {
-                if (isset($tmpData['attributes']) && isset($tmpData['attributes']['data-theme'])) {
+                if (isset($tmpData['attributes']) && isset($tmpData['attributes']['data-theme'])) { // @todo dont like data-theme in here
                     $elementsWithAttribute[] = $tmpEl;
                 }
             }

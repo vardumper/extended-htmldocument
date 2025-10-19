@@ -50,105 +50,61 @@ final class CreateEnumCommand extends Command
 
 
         // Aggregate all data-* attributes with type enum and identical choices
-        $dataEnums = [];
-        $dataDescriptions = [];
-        foreach ($this->data as $element => $details) {
-            if (isset($details['attributes'])) {
-                foreach ($details['attributes'] as $attr => $attrDetails) {
-                    if (str_starts_with($attr, 'data-') && isset($attrDetails['type']) && str_contains(
-                        $attrDetails['type'],
-                        'enum'
-                    ) && isset($attrDetails['choices'])) {
-                        $key = $attr . ':' . implode('|', $attrDetails['choices']);
-                        $dataEnums[$attr][$key] = $attrDetails['choices'];
-                        if (isset($attrDetails['description'])) {
-                            $dataDescriptions[$attr] = $attrDetails['description'];
-                        }
-                    }
-                }
-            }
-        }
 
-        // Only generate one enum per data-* attribute with identical choices
-        foreach ($dataEnums as $attr => $choicesSets) {
-            // Use the first set of choices (all should be identical for this attr)
-            $choices = reset($choicesSets);
-            $cases = '';
-            foreach ($choices as $option) {
-                $caseName = $this->getCaseName($option);
-                $cases .= sprintf("    case %s = '%s';", $caseName, $option) . \PHP_EOL;
-            }
-            $className = $this->getClassName(
-                ucfirst(str_replace(' ', '', ucwords(str_replace('-', ' ', $attr)))) . 'Enum'
-            );
-            $parameters = [
-                'namespace' => 'Html\Enum',
-                'class_name' => $className,
-                'cases' => rtrim($cases),
-                'description' => $dataDescriptions[$attr] ?? '',
-                'element_name' => $attr,
-                'defaultValue' => '',
-                'defaultCase' => '',
-                'generatedAt' => date('Y-m-d H:i:s'),
-            ];
-            $path = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Enum' . \DIRECTORY_SEPARATOR . "{$className}.php";
-            $templatePath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'templates' . \DIRECTORY_SEPARATOR . 'Enum.tpl.php';
-            $this->createEnumFile($templatePath, $parameters, $path);
-            $io->success("Enumeration class for '{$attr}' created successfully.");
-        }
-
-
-        // Continue with normal enum generation for other attributes (excluding data-*)
+        // Find all enum attributes (type 'enum' or union containing 'enum')
         $enumAttributes = $this->findEnumAttributes();
 
         $generatedAt = \date('Y-m-d H:i:s');
         foreach ($enumAttributes as $enumAttribute) {
             foreach ($enumAttribute as $element => $attributes) {
-                // Skip data-* attributes, already handled
-                if (str_starts_with($element, 'data-')) {
-                    continue;
-                }
                 $io->info("Creating enumeration class for '{$element}'");
 
                 if (! isset($attributes['choices'])) {
                     throw new Exception('An enum attribute must have choices. Add choices or change type to string.');
                 }
-                if (! isset($attributes['elements'])) {
-                    throw new Exception(
-                        'An enum attribute must have elements. Add elements or change type to string.'
-                    );
+                if (! isset($attributes['elements']) || ! is_array($attributes['elements'])) {
+                    $elementsWithAttribute = [];
+                    foreach ($this->data as $tmpEl => $tmpData) {
+                        if (isset($tmpData['attributes']) && isset($tmpData['attributes'][$element])) { // @todo dont like data-theme in here
+                            $elementsWithAttribute[] = $tmpEl;
+                        }
+                    }
+                    $attributes['elements'] = $elementsWithAttribute;
                 }
-                $cases = '';
-                $className = ucfirst($element);
-
-                if ($this->manyElementsHaveAttribute($element) && count($attributes['elements']) === 1) {
-                    $className .= ucfirst($attributes['elements'][0]);
-                }
-
-                $defaultCase = $this->getCaseName((string) $attributes['defaultValue'] ?? '');
-                foreach ($attributes['choices'] as $option) {
-                    $caseName = $this->getCaseName($option);
-                    $default = $caseName === $defaultCase ? ' // default' : '';
-                    $cases .= sprintf("    case %s = '%s';%s", $caseName, $option, $default) . \PHP_EOL;
-                }
-
-                $className = $this->getClassName($className . 'Enum');
-                $parameters = [
-                    'namespace' => 'Html\Enum',
-                    'class_name' => $className, // fixed missing parenthesis
-                    'cases' => rtrim($cases),
-                    'description' => $attributes['description'] ?? '', // fixed double dollar sign
-                    'element_name' => $element,
-                    'defaultValue' => $attributes['defaultValue'] ?? '',
-                    'defaultCase' => $defaultCase,
-                    'generatedAt' => $generatedAt,
-                ];
-
-                $path = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Enum' . \DIRECTORY_SEPARATOR . "{$className}.php"; // corrected variable syntax
-                $templatePath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'templates' . \DIRECTORY_SEPARATOR . 'Enum.tpl.php';
-                $this->createEnumFile($templatePath, $parameters, $path);
-                $io->success("Enumeration class for '{$element}' created successfully.");
+                // throw new Exception(
+                //     'An enum attribute must have elements. Add elements or change type to string.'
+                // );
             }
+            $cases = '';
+            $className = ucfirst($element);
+
+            if ($this->manyElementsHaveAttribute($element) && count($attributes['elements']) === 1) {
+                $className .= ucfirst($attributes['elements'][0]);
+            }
+
+            $defaultCase = $this->getCaseName((string) $attributes['defaultValue'] ?? '');
+            foreach ($attributes['choices'] as $option) {
+                $caseName = $this->getCaseName($option);
+                $default = $caseName === $defaultCase ? ' // default' : '';
+                $cases .= sprintf("    case %s = '%s';%s", $caseName, $option, $default) . \PHP_EOL;
+            }
+
+            $className = $this->getClassName($className . 'Enum');
+            $parameters = [
+                'namespace' => 'Html\Enum',
+                'class_name' => $className,
+                'cases' => rtrim($cases),
+                'description' => $attributes['description'] ?? '',
+                'element_name' => $element,
+                'defaultValue' => $attributes['defaultValue'] ?? '',
+                'defaultCase' => $defaultCase,
+                'generatedAt' => $generatedAt,
+            ];
+
+            $path = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Enum' . \DIRECTORY_SEPARATOR . "{$className}.php";
+            $templatePath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'templates' . \DIRECTORY_SEPARATOR . 'Enum.tpl.php';
+            $this->createEnumFile($templatePath, $parameters, $path);
+            $io->success("Enumeration class for '{$element}' created successfully.");
         }
 
         return Command::SUCCESS;
@@ -185,8 +141,8 @@ final class CreateEnumCommand extends Command
             $option = $ret;
         }
 
-        // clenaup
-        $option = str_replace(['-', '/'], '_', strtoupper($option));
+        // cleanup: replace spaces, dashes, slashes with underscores, uppercase
+        $option = str_replace([' ', '-', '/'], '_', strtoupper($option));
         $option = trim($option, '_');
 
         return $option;
@@ -216,9 +172,13 @@ final class CreateEnumCommand extends Command
         foreach ($this->data as $details) {
             if (isset($details['attributes'])) {
                 foreach ($details['attributes'] as $attribute => $attributeDetails) {
-                    if (isset($attributeDetails['type']) && $attributeDetails['type'] === 'enum') {
-                        $enumAttributes[$i][$attribute] = $attributeDetails;
-                        $i++;
+                    if (isset($attributeDetails['type'])) {
+                        $type = $attributeDetails['type'];
+                        // Support 'enum', 'enum|string', 'enum|boolean', etc.
+                        if ($type === 'enum' || (is_string($type) && preg_match('/(^|\|)enum($|\|)/', $type))) {
+                            $enumAttributes[$i][$attribute] = $attributeDetails;
+                            $i++;
+                        }
                     }
                 }
             }

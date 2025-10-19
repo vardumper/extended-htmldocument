@@ -3,24 +3,22 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * TypeButtonEnum - Specifies the type of the button.
+ * RoleEnum - The role attribute is used to define the purpose of an element.
  *
- * @generated 2025-10-19 20:28:42
+ * @generated 2025-10-19 20:27:05
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/type/
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/role/
  */
 
 namespace Html\Enum;
 
-enum TypeButtonEnum: string
+enum RoleEnum: string
 {
-    case SUBMIT = 'submit';
-    case RESET = 'reset';
     case BUTTON = 'button';
 
     public static function getQualifiedName(): string
     {
-        return 'type';
+        return 'role';
     }
 }

@@ -5,7 +5,7 @@
  *
  * Navigation - The nav element represents a section of a page whose purpose is to provide navigation links, either within the current document or to other documents.
  *
- * @generated 2025-10-19 18:53:35
+ * @generated 2025-10-19 20:20:48
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
