@@ -102,6 +102,18 @@ a:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
     role:
       description: 'The role attribute is used to define the purpose of an element.'
       type: enum|string
@@ -155,6 +167,18 @@ abbr:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 address:
   name: Address
   description: 'The address element represents the contact information for its nearest article or body ancestor. If that is the body element, then the contact information applies to the document as a whole.'
@@ -170,6 +194,18 @@ address:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 area:
   name: Area
   description: 'The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.'
@@ -273,6 +309,18 @@ area:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 article:
   name: Article
   description: 'The article element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable.'
@@ -340,6 +388,18 @@ article:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 aside:
   name: Aside
   description: 'The aside element represents a section of a page that consists of content that is tangentially related to the content around the aside element, and which could be considered separate from that content.'
@@ -423,6 +483,18 @@ aside:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 audio:
   name: Audio
   description: 'The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.'
@@ -494,6 +566,18 @@ audio:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   text: string
 b:
   name: Bold
@@ -508,6 +592,18 @@ b:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 base:
   name: Base
   description: 'The base element specifies the base URL to use for all relative URLs in a document. There can be at maximum one <base> element in a document, and it must be inside the <head> element.'
@@ -545,6 +641,18 @@ base:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 bdi:
   name: 'Bidirectional Isolation'
   description: 'The bdi element represents a span of text that is to be isolated from its surroundings for the purposes of bidirectional text formatting. (Bidirectional-isolate)'
@@ -558,6 +666,18 @@ bdi:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 bdo:
   name: 'Bidirectional Override'
   description: 'The bdo element represents explicit text directionality formatting control for its children. It allows authors to override the Unicode bidirectional algorithm by explicitly specifying a direction override.'
@@ -571,6 +691,18 @@ bdo:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 blockquote:
   name: Blockquote
   description: 'The blockquote element represents a section that is quoted from another source. Content inside a blockquote must be quoted from another source, whose address, if it has one, may be cited in the cite attribute.'
@@ -591,6 +723,18 @@ blockquote:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   children:
     - article
     - p
@@ -686,6 +830,18 @@ body:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   children:
     - a
     - abbr
@@ -779,6 +935,18 @@ br:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 button:
   name: Button
   description: 'The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.'
@@ -853,6 +1021,18 @@ button:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
     role:
       description: 'The role attribute is used to define the purpose of an element.'
       type: enum|string
@@ -904,6 +1084,18 @@ canvas:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   text: string
 caption:
   name: Caption
@@ -920,6 +1112,18 @@ caption:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 cite:
   name: Citation
   description: 'The cite element represents the title of a work (e.g. a book, a paper, an essay, a poem, a score, a song, a script, a film, a TV show, a game, a sculpture, a painting, a theatre production, a play, an opera, a musical, an exhibition, a legal case report, etc). This can be a work that is being quoted or referenced in detail (i.e. a citation), or it can just be a work that is mentioned in passing.'
@@ -933,6 +1137,18 @@ cite:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 code:
   name: Code
   description: 'The code element represents a fragment of computer code. This could be an XML element name, a filename, a computer program, or any other string that a computer would recognize.'
@@ -946,6 +1162,18 @@ code:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 col:
   name: Column
   description: 'The col element represents a column in a table.'
@@ -976,6 +1204,18 @@ col:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 colgroup:
   name: 'Column Group'
   description: 'The colgroup element represents a group of one or more columns in the table that is its parent, if it has a parent and that is a table element.'
@@ -990,6 +1230,18 @@ colgroup:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 data:
   name: Data
   description: 'The data element represents its contents, along with a machine-readable form of those contents in the value attribute.'
@@ -1015,6 +1267,18 @@ data:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   text: string
 datalist:
   name: 'Data List'
@@ -1030,6 +1294,18 @@ datalist:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 dd:
   name: 'Definition Description'
   description: 'The dd element represents the description, definition, or value, part of a term-description group in a description list (dl element).'
@@ -1107,6 +1383,18 @@ dd:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 del:
   name: 'Deleted Text'
   description: 'The del element represents a deletion from the document.'
@@ -1134,6 +1422,18 @@ del:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   text: string
 details:
   name: Details
@@ -1152,6 +1452,18 @@ details:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   children:
     - div
     - dl
@@ -1176,6 +1488,18 @@ dfn:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 dialog:
   name: Dialog
   description: 'The dialog element represents a part of an application that a user interacts with to perform a task, for example a dialog box, inspector, or window.'
@@ -1193,6 +1517,18 @@ dialog:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   children:
     - button
     - div
@@ -1328,6 +1664,18 @@ dl:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 dt:
   name: 'Definition Term'
   description: 'The dt element represents the term, or name, part of a term-description group in a description list (dl element).'
@@ -1342,6 +1690,18 @@ dt:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 em:
   name: Emphasis
   description: 'The em element represents stress emphasis of its contents.'
@@ -1355,6 +1715,18 @@ em:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 embed:
   name: Embed
   description: 'The embed element provides an integration point for an external (typically non-HTML) application or interactive content.'
@@ -1414,6 +1786,18 @@ embed:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 fieldset:
   name: Fieldset
   description: 'The fieldset element represents a set of form controls optionally grouped under a common name.'
@@ -1437,6 +1821,18 @@ fieldset:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 figcaption:
   name: 'Figure Caption'
   description: 'The figcaption element represents a caption or a legend associated with a figure or an illustration described by the rest of the data of the figure element. The figcaption element can be placed as the first or the last child of a parent figure element.'
@@ -1452,6 +1848,18 @@ figcaption:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 figure:
   name: Figure
   description: 'The figure element represents self-contained content, potentially with an optional caption, which is specified using the (optional) figcaption element.'
@@ -1467,6 +1875,18 @@ figure:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 footer:
   name: Footer
   description: 'The footer element represents a container for the bottom section of a document or a section, typically containing information about the author, copyright information, and links to related documents.'
@@ -1549,6 +1969,18 @@ footer:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 form:
   name: Form
   description: 'The form element represents a section of a document containing interactive controls for submitting information to a web server.'
@@ -1635,6 +2067,18 @@ form:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   children:
     - button
     - canvas
@@ -1668,6 +2112,18 @@ h1:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 h2:
   name: 'Heading 2'
   description: 'The h2 element represents a section heading. It has the second highest rank among the six levels of section headings.'
@@ -1681,6 +2137,18 @@ h2:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 h3:
   name: 'Heading 3'
   description: 'The h3 element represents a section heading. It has the third highest rank among the six levels of section headings.'
@@ -1694,6 +2162,18 @@ h3:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 h4:
   name: 'Heading 4'
   description: 'The h4 element represents a section heading. It has the fourth highest rank among the six levels of section headings.'
@@ -1707,6 +2187,18 @@ h4:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 h5:
   name: 'Heading 5'
   description: 'The h5 element represents a section heading. It has the fifth highest rank among the six levels of section headings.'
@@ -1720,6 +2212,18 @@ h5:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 h6:
   name: 'Heading 6'
   description: 'The h6 element represents a section heading. It has the lowest rank among the six levels of section headings.'
@@ -1733,6 +2237,18 @@ h6:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 head:
   name: Head
   description: 'The head element contains meta-information about the HTML document, including its title and links to its scripts and stylesheets.'
@@ -1754,6 +2270,18 @@ head:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 header:
   name: Header
   description: "The header element represents a container for introductory content or a set of navigational links. It typically contains the section's heading (an h1–h6 element or an hgroup element), but can also contain other content such as a table of contents, a search form, or any relevant logos."
@@ -1837,6 +2365,18 @@ header:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 hgroup:
   name: 'Headings Group'
   description: 'The hgroup element represents a multi-level heading for a section of a document. It groups a set of h1–h6 elements.'
@@ -1856,6 +2396,18 @@ hgroup:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 hr:
   name: 'Horizontal Rule'
   description: 'The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.'
@@ -1914,6 +2466,18 @@ hr:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 html:
   name: HTML
   description: 'The root element of an HTML document. It represents the top-level of the HTML structure.'
@@ -1931,6 +2495,18 @@ html:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   children:
     - body
     - head
@@ -1947,6 +2523,18 @@ i:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 iframe:
   name: 'Inline Frame'
   description: 'The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.'
@@ -2043,6 +2631,18 @@ iframe:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 img:
   name: Image
   description: 'The img element represents an image.'
@@ -2161,6 +2761,18 @@ img:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 input:
   name: Input
   description: 'The input element represents a typed data field, usually with a form control to allow user input.'
@@ -2385,6 +2997,18 @@ input:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 ins:
   name: 'Inserted Text'
   description: 'The ins element represents an addition to the document.'
@@ -2412,6 +3036,18 @@ ins:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   text: string
 kbd:
   name: 'Keyboard Input'
@@ -2426,6 +3062,18 @@ kbd:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 label:
   name: Label
   description: "The label element represents a caption in a user interface. The caption can be associated with a specific form control, known as the label element's labeled control, either using the for attribute, or by putting the form control inside the label element itself."
@@ -2444,6 +3092,18 @@ label:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 legend:
   name: Legend
   description: 'The legend element represents a caption for the content of its parent fieldset.'
@@ -2465,6 +3125,18 @@ legend:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 li:
   name: 'List Item'
   description: "The li element represents a list item. If its parent element is an ol, ul, or menu, then the element is an item of the parent element's list, as defined for those elements. Otherwise, the list item has no defined list-related semantics."
@@ -2491,6 +3163,18 @@ li:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   children:
     - a
     - abbr
@@ -2630,6 +3314,18 @@ link:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 main:
   name: Main
   description: 'The main element represents the dominant content of the body of a document. The main content area consists of content that is directly related to or expands upon the central topic of a document, or the central functionality of an application.'
@@ -2715,6 +3411,18 @@ main:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 map:
   name: Map
   description: 'The map element, in conjunction with an img element and any area element descendants, defines an image map. The element represents a related collection of map areas.'
@@ -2743,6 +3451,18 @@ map:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   children:
     - area
 mark:
@@ -2790,6 +3510,18 @@ mark:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 menu:
   name: Menu
   description: 'The menu element represents a group of commands that a user can perform or activate. It can be used for toolbars, context menus, or listing form controls.'
@@ -2808,6 +3540,18 @@ menu:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 meta:
   name: Meta
   description: 'The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.'
@@ -2864,6 +3608,18 @@ meta:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 meter:
   name: Meter
   description: 'The meter element represents a scalar measurement within a known range, or a fractional value.'
@@ -2920,6 +3676,18 @@ meter:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 nav:
   name: Navigation
   description: 'The nav element represents a section of a page whose purpose is to provide navigation links, either within the current document or to other documents.'
@@ -2940,6 +3708,18 @@ nav:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 noscript:
   name: NoScript
   description: "The noscript element defines an alternate content for users that have disabled scripts in their browser or have a browser that doesn't support script."
@@ -2952,6 +3732,18 @@ noscript:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 object:
   name: Object
   description: 'The object element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.'
@@ -3023,6 +3815,18 @@ object:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 ol:
   name: 'Ordered List'
   description: 'The ol element represents an ordered list of items. The order of the list is meaningful.'
@@ -3057,6 +3861,18 @@ ol:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   children:
     - li
 optgroup:
@@ -3090,6 +3906,18 @@ optgroup:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   children:
     - option
 option:
@@ -3141,6 +3969,18 @@ option:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 output:
   name: Output
   description: 'The output element represents the result of a calculation or user action.'
@@ -3159,6 +3999,18 @@ output:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 p:
   name: Paragraph
   description: 'The p element represents a paragraph.'
@@ -3245,6 +4097,18 @@ p:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 param:
   name: Parameter
   description: 'The param element defines parameters for an object element.'
@@ -3287,6 +4151,18 @@ param:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 picture:
   name: Picture
   description: 'The picture element contains zero or more source elements and one img element to offer alternative versions of an image for different display/device scenarios.'
@@ -3302,6 +4178,18 @@ picture:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 pre:
   name: 'Preformatted Text'
   description: 'The pre element represents preformatted text. Text within this element is typically displayed in a non-proportional font exactly as it is laid out in the file.'
@@ -3315,6 +4203,18 @@ pre:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 progress:
   name: Progress
   description: 'The progress element represents the completion progress of a task.'
@@ -3347,6 +4247,18 @@ progress:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 q:
   name: Quotation
   description: 'The q element represents some phrasing content quoted from another source.'
@@ -3367,6 +4279,18 @@ q:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   text: string
 rp:
   name: 'Ruby Parenthesis'
@@ -3381,6 +4305,18 @@ rp:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 rt:
   name: 'Ruby Text'
   description: 'The rt element marks the ruby text component of a ruby annotation, which is used to provide pronunciation, translation, or transliteration information for East Asian typography. The rt element must be a child of a ruby element.'
@@ -3394,6 +4330,18 @@ rt:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 ruby:
   name: Ruby
   description: 'The ruby element represents a ruby annotation. Ruby annotations are short runs of text presented alongside base text, primarily used for East Asian typography to indicate pronunciation or to provide a short annotation.'
@@ -3409,6 +4357,18 @@ ruby:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 s:
   name: Strikethrough
   description: 'The s element represents contents that are no longer accurate or no longer relevant.'
@@ -3422,6 +4382,18 @@ s:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 samp:
   name: 'Sample Output'
   description: 'The samp element represents sample (or quoted) output from a computer program.'
@@ -3435,6 +4407,18 @@ samp:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 script:
   name: Script
   description: 'The script element is used to embed or reference an executable script within an HTML or XHTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.'
@@ -3528,6 +4512,18 @@ script:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   text: string
 section:
   name: Section
@@ -3613,6 +4609,18 @@ section:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 select:
   name: Select
   description: 'The select element represents a control for selecting amongst a set of options.'
@@ -3682,6 +4690,18 @@ select:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   children:
     - optgroup
     - option
@@ -3713,6 +4733,18 @@ slot:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   children:
     - div
     - dl
@@ -3750,6 +4782,18 @@ small:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 source:
   name: Source
   description: 'The source element allows authors to specify multiple media resources for media elements. It is an empty element. It is commonly used within the picture element.'
@@ -3801,6 +4845,18 @@ source:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 span:
   name: Span
   description: "The span element doesn't mean anything on its own, but can be useful when used together with the global attributes, e.g. class, lang, or dir. It represents its children."
@@ -3837,6 +4893,18 @@ strong:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 style:
   name: Style
   description: 'The style element is used to embed CSS styles directly into an HTML document.'
@@ -3904,6 +4972,18 @@ style:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 sub:
   name: Subscript
   description: 'The sub element represents a subscript.'
@@ -3917,6 +4997,18 @@ sub:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 summary:
   name: Summary
   description: "The summary element represents a summary, caption, or legend for the rest of the contents of the summary element's parent details element, if any."
@@ -3930,6 +5022,18 @@ summary:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 sup:
   name: Superscript
   description: 'The sup element represents a superscript.'
@@ -3943,6 +5047,18 @@ sup:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 table:
   name: Table
   description: 'The table element represents tabular data — that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.'
@@ -3962,6 +5078,18 @@ table:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 tbody:
   name: 'Table Body'
   description: 'The tbody element groups one or more tr elements as the body of a table.'
@@ -3977,6 +5105,18 @@ tbody:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 td:
   name: 'Table Data'
   description: 'The td element represents a data cell in a table.'
@@ -4008,6 +5148,18 @@ td:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 template:
   name: Template
   description: 'The template element is a mechanism for holding client-side content that is not to be rendered when a page is loaded but may subsequently be instantiated during runtime using JavaScript.'
@@ -4044,6 +5196,18 @@ template:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 textarea:
   name: Textarea
   description: "The textarea element represents a multiline plain text edit control for the element's raw value."
@@ -4150,6 +5314,18 @@ textarea:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 tfoot:
   name: 'Table Foot'
   description: 'The tfoot element groups the footer content in a table.'
@@ -4166,6 +5342,18 @@ tfoot:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 th:
   name: 'Table Header'
   description: 'The th element represents a header cell in a table.'
@@ -4202,6 +5390,18 @@ th:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 thead:
   name: 'Table Head'
   description: 'The thead element groups the header content in a table.'
@@ -4218,6 +5418,18 @@ thead:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 time:
   name: Time
   description: 'The time element represents a specific period in time. It may include the datetime attribute to translate dates into machine-readable format, allowing for better search engine results or custom features such as reminders.'
@@ -4237,6 +5449,18 @@ time:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
   text: string
 title:
   name: Title
@@ -4252,6 +5476,18 @@ title:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 tr:
   name: 'Table Row'
   description: 'The tr element represents a row of cells in a table.'
@@ -4323,6 +5559,18 @@ tr:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 track:
   name: Track
   description: 'The track element is used as a child of the media elements—audio and video. It lets you specify timed text tracks (or time-based data), for example to automatically handle subtitles. The tracks are formatted in WebVTT format (.vtt files) — Web Video Text Tracks.'
@@ -4378,6 +5626,18 @@ track:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 u:
   name: Underline
   description: 'The u element represents a span of text with an unarticulated, though explicitly rendered, non-textual annotation, such as labeling the text as being a proper name in Chinese text (a Chinese proper name mark), or labeling the text as being misspelt.'
@@ -4391,6 +5651,18 @@ u:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 ul:
   name: 'Unordered List'
   description: 'The ul element represents an unordered list of items, namely a collection of items that do not have a numerical ordering, and their order in the list is meaningless.'
@@ -4405,6 +5677,18 @@ ul:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 var:
   name: Variable
   description: 'The var element represents the name of a variable in a mathematical expression or a programming context.'
@@ -4418,6 +5702,18 @@ var:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 video:
   name: Video
   description: 'The video element is used to embed video content in a document, such as a movie clip or other video streams.'
@@ -4515,6 +5811,18 @@ video:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top
 wbr:
   name: 'Word Break Opportunity'
   description: 'The wbr element represents a word break opportunity.'
@@ -4528,3 +5836,15 @@ wbr:
       choices:
         - light
         - dark
+    data-tooltip:
+      description: 'Give extra context and information by adding tooltips.'
+      type: string
+    data-placement:
+      description: 'Choose the position of a tooltip. Depends on data-tooltip attribute.'
+      type: enum|string
+      choices:
+        - top
+        - left
+        - right
+        - bottom
+      defaultValue: top

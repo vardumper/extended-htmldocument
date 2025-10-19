@@ -5,7 +5,7 @@
  *
  * TargetEnum - Specifies where to open the linked document.
  *
- * @generated 2025-10-19 20:28:42
+ * @generated 2025-10-19 21:39:12
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/target/
