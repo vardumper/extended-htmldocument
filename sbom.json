@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:3f7e0711-e0a1-43c2-a668-b119c41a5a45",
+  "serialNumber": "urn:uuid:c21a26f5-3884-44b7-8ebe-121afd0b16d7",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-08-23T18:31:39+00:00",
+    "timestamp": "2025-10-19T12:20:40+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "9a0d642f-5924-4585-aa70-353a42937fb6",
+      "bom-ref": "d451576e-2f1d-4442-a5c5-ee54b3cd40da",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,22 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "49981915-8e6d-4793-b008-ae4218c0a300",
-      "type": "application",
-      "name": "yarn.lock",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:Class",
-          "value": "lang-pkgs"
-        },
-        {
-          "name": "aquasecurity:trivy:Type",
-          "value": "yarn"
-        }
-      ]
-    },
-    {
-      "bom-ref": "de2209d9-ab3c-4189-9039-5284a88b396a",
+      "bom-ref": "6c5117d8-b0c2-442b-9732-b19d38f4e8bd",
       "type": "application",
       "name": "composer.lock",
       "properties": [
@@ -56,6 +41,21 @@
         {
           "name": "aquasecurity:trivy:Type",
           "value": "composer"
+        }
+      ]
+    },
+    {
+      "bom-ref": "bb24b120-2a4d-4507-8f46-13a3f1eb5ac8",
+      "type": "application",
+      "name": "yarn.lock",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:Class",
+          "value": "lang-pkgs"
+        },
+        {
+          "name": "aquasecurity:trivy:Type",
+          "value": "yarn"
         }
       ]
     },
@@ -732,16 +732,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40babel/parser@7.28.0",
+      "bom-ref": "pkg:npm/%40babel/parser@7.28.3",
       "type": "library",
       "group": "@babel",
       "name": "parser",
-      "version": "7.28.0",
-      "purl": "pkg:npm/%40babel/parser@7.28.0",
+      "version": "7.28.3",
+      "purl": "pkg:npm/%40babel/parser@7.28.3",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@babel/parser@7.28.0"
+          "value": "@babel/parser@7.28.3"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -822,16 +822,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40iconify-json/simple-icons@1.2.46",
+      "bom-ref": "pkg:npm/%40iconify-json/simple-icons@1.2.48",
       "type": "library",
       "group": "@iconify-json",
       "name": "simple-icons",
-      "version": "1.2.46",
-      "purl": "pkg:npm/%40iconify-json/simple-icons@1.2.46",
+      "version": "1.2.48",
+      "purl": "pkg:npm/%40iconify-json/simple-icons@1.2.48",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@iconify-json/simple-icons@1.2.46"
+          "value": "@iconify-json/simple-icons@1.2.48"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -858,16 +858,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40jridgewell/sourcemap-codec@1.5.4",
+      "bom-ref": "pkg:npm/%40jridgewell/sourcemap-codec@1.5.5",
       "type": "library",
       "group": "@jridgewell",
       "name": "sourcemap-codec",
-      "version": "1.5.4",
-      "purl": "pkg:npm/%40jridgewell/sourcemap-codec@1.5.4",
+      "version": "1.5.5",
+      "purl": "pkg:npm/%40jridgewell/sourcemap-codec@1.5.5",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@jridgewell/sourcemap-codec@1.5.4"
+          "value": "@jridgewell/sourcemap-codec@1.5.5"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1200,16 +1200,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/compiler-core@3.5.18",
+      "bom-ref": "pkg:npm/%40vue/compiler-core@3.5.19",
       "type": "library",
       "group": "@vue",
       "name": "compiler-core",
-      "version": "3.5.18",
-      "purl": "pkg:npm/%40vue/compiler-core@3.5.18",
+      "version": "3.5.19",
+      "purl": "pkg:npm/%40vue/compiler-core@3.5.19",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/compiler-core@3.5.18"
+          "value": "@vue/compiler-core@3.5.19"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1218,16 +1218,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/compiler-dom@3.5.18",
+      "bom-ref": "pkg:npm/%40vue/compiler-dom@3.5.19",
       "type": "library",
       "group": "@vue",
       "name": "compiler-dom",
-      "version": "3.5.18",
-      "purl": "pkg:npm/%40vue/compiler-dom@3.5.18",
+      "version": "3.5.19",
+      "purl": "pkg:npm/%40vue/compiler-dom@3.5.19",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/compiler-dom@3.5.18"
+          "value": "@vue/compiler-dom@3.5.19"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1236,16 +1236,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/compiler-sfc@3.5.18",
+      "bom-ref": "pkg:npm/%40vue/compiler-sfc@3.5.19",
       "type": "library",
       "group": "@vue",
       "name": "compiler-sfc",
-      "version": "3.5.18",
-      "purl": "pkg:npm/%40vue/compiler-sfc@3.5.18",
+      "version": "3.5.19",
+      "purl": "pkg:npm/%40vue/compiler-sfc@3.5.19",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/compiler-sfc@3.5.18"
+          "value": "@vue/compiler-sfc@3.5.19"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1254,16 +1254,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/compiler-ssr@3.5.18",
+      "bom-ref": "pkg:npm/%40vue/compiler-ssr@3.5.19",
       "type": "library",
       "group": "@vue",
       "name": "compiler-ssr",
-      "version": "3.5.18",
-      "purl": "pkg:npm/%40vue/compiler-ssr@3.5.18",
+      "version": "3.5.19",
+      "purl": "pkg:npm/%40vue/compiler-ssr@3.5.19",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/compiler-ssr@3.5.18"
+          "value": "@vue/compiler-ssr@3.5.19"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1326,16 +1326,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/reactivity@3.5.18",
+      "bom-ref": "pkg:npm/%40vue/reactivity@3.5.19",
       "type": "library",
       "group": "@vue",
       "name": "reactivity",
-      "version": "3.5.18",
-      "purl": "pkg:npm/%40vue/reactivity@3.5.18",
+      "version": "3.5.19",
+      "purl": "pkg:npm/%40vue/reactivity@3.5.19",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/reactivity@3.5.18"
+          "value": "@vue/reactivity@3.5.19"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1344,16 +1344,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/runtime-core@3.5.18",
+      "bom-ref": "pkg:npm/%40vue/runtime-core@3.5.19",
       "type": "library",
       "group": "@vue",
       "name": "runtime-core",
-      "version": "3.5.18",
-      "purl": "pkg:npm/%40vue/runtime-core@3.5.18",
+      "version": "3.5.19",
+      "purl": "pkg:npm/%40vue/runtime-core@3.5.19",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/runtime-core@3.5.18"
+          "value": "@vue/runtime-core@3.5.19"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1362,16 +1362,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/runtime-dom@3.5.18",
+      "bom-ref": "pkg:npm/%40vue/runtime-dom@3.5.19",
       "type": "library",
       "group": "@vue",
       "name": "runtime-dom",
-      "version": "3.5.18",
-      "purl": "pkg:npm/%40vue/runtime-dom@3.5.18",
+      "version": "3.5.19",
+      "purl": "pkg:npm/%40vue/runtime-dom@3.5.19",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/runtime-dom@3.5.18"
+          "value": "@vue/runtime-dom@3.5.19"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1380,16 +1380,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/server-renderer@3.5.18",
+      "bom-ref": "pkg:npm/%40vue/server-renderer@3.5.19",
       "type": "library",
       "group": "@vue",
       "name": "server-renderer",
-      "version": "3.5.18",
-      "purl": "pkg:npm/%40vue/server-renderer@3.5.18",
+      "version": "3.5.19",
+      "purl": "pkg:npm/%40vue/server-renderer@3.5.19",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/server-renderer@3.5.18"
+          "value": "@vue/server-renderer@3.5.19"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1398,16 +1398,16 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/%40vue/shared@3.5.18",
+      "bom-ref": "pkg:npm/%40vue/shared@3.5.19",
       "type": "library",
       "group": "@vue",
       "name": "shared",
-      "version": "3.5.18",
-      "purl": "pkg:npm/%40vue/shared@3.5.18",
+      "version": "3.5.19",
+      "purl": "pkg:npm/%40vue/shared@3.5.19",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "@vue/shared@3.5.18"
+          "value": "@vue/shared@3.5.19"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2271,15 +2271,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/magic-string@0.30.17",
+      "bom-ref": "pkg:npm/magic-string@0.30.18",
       "type": "library",
       "name": "magic-string",
-      "version": "0.30.17",
-      "purl": "pkg:npm/magic-string@0.30.17",
+      "version": "0.30.18",
+      "purl": "pkg:npm/magic-string@0.30.18",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "magic-string@0.30.17"
+          "value": "magic-string@0.30.18"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2645,15 +2645,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/preact@10.27.0",
+      "bom-ref": "pkg:npm/preact@10.27.1",
       "type": "library",
       "name": "preact",
-      "version": "10.27.0",
-      "purl": "pkg:npm/preact@10.27.0",
+      "version": "10.27.1",
+      "purl": "pkg:npm/preact@10.27.1",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "preact@10.27.0"
+          "value": "preact@10.27.1"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -2798,15 +2798,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/rollup@4.46.2",
+      "bom-ref": "pkg:npm/rollup@4.48.0",
       "type": "library",
       "name": "rollup",
-      "version": "4.46.2",
-      "purl": "pkg:npm/rollup@4.46.2",
+      "version": "4.48.0",
+      "purl": "pkg:npm/rollup@4.48.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "rollup@4.46.2"
+          "value": "rollup@4.48.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -3172,15 +3172,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/vitepress@1.6.3",
+      "bom-ref": "pkg:npm/vitepress@1.6.4",
       "type": "library",
       "name": "vitepress",
-      "version": "1.6.3",
-      "purl": "pkg:npm/vitepress@1.6.3",
+      "version": "1.6.4",
+      "purl": "pkg:npm/vitepress@1.6.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "vitepress@1.6.3"
+          "value": "vitepress@1.6.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -3189,15 +3189,15 @@
       ]
     },
     {
-      "bom-ref": "pkg:npm/vue@3.5.18",
+      "bom-ref": "pkg:npm/vue@3.5.19",
       "type": "library",
       "name": "vue",
-      "version": "3.5.18",
-      "purl": "pkg:npm/vue@3.5.18",
+      "version": "3.5.19",
+      "purl": "pkg:npm/vue@3.5.19",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "vue@3.5.18"
+          "value": "vue@3.5.19"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -3225,25 +3225,25 @@
   ],
   "dependencies": [
     {
-      "ref": "49981915-8e6d-4793-b008-ae4218c0a300",
-      "dependsOn": [
-        "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
-        "pkg:npm/vitepress@1.6.3"
-      ]
-    },
-    {
-      "ref": "9a0d642f-5924-4585-aa70-353a42937fb6",
-      "dependsOn": [
-        "49981915-8e6d-4793-b008-ae4218c0a300",
-        "de2209d9-ab3c-4189-9039-5284a88b396a"
-      ]
-    },
-    {
-      "ref": "de2209d9-ab3c-4189-9039-5284a88b396a",
+      "ref": "6c5117d8-b0c2-442b-9732-b19d38f4e8bd",
       "dependsOn": [
         "pkg:composer/mnapoli/silly@1.9.1",
         "pkg:composer/revolt/event-loop@v1.0.7",
         "pkg:composer/symfony/yaml@v7.3.2"
+      ]
+    },
+    {
+      "ref": "bb24b120-2a4d-4507-8f46-13a3f1eb5ac8",
+      "dependsOn": [
+        "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
+        "pkg:npm/vitepress@1.6.4"
+      ]
+    },
+    {
+      "ref": "d451576e-2f1d-4442-a5c5-ee54b3cd40da",
+      "dependsOn": [
+        "6c5117d8-b0c2-442b-9732-b19d38f4e8bd",
+        "bb24b120-2a4d-4507-8f46-13a3f1eb5ac8"
       ]
     },
     {
@@ -3464,7 +3464,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40babel/parser@7.28.0",
+      "ref": "pkg:npm/%40babel/parser@7.28.3",
       "dependsOn": [
         "pkg:npm/%40babel/types@7.28.2"
       ]
@@ -3484,7 +3484,7 @@
       "ref": "pkg:npm/%40docsearch/js@3.8.2",
       "dependsOn": [
         "pkg:npm/%40docsearch/react@3.8.2",
-        "pkg:npm/preact@10.27.0"
+        "pkg:npm/preact@10.27.1"
       ]
     },
     {
@@ -3497,7 +3497,7 @@
       ]
     },
     {
-      "ref": "pkg:npm/%40iconify-json/simple-icons@1.2.46",
+      "ref": "pkg:npm/%40iconify-json/simple-icons@1.2.48",
       "dependsOn": [
         "pkg:npm/%40iconify/types@2.0.0"
       ]
@@ -3507,7 +3507,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40jridgewell/sourcemap-codec@1.5.4",
+      "ref": "pkg:npm/%40jridgewell/sourcemap-codec@1.5.5",
       "dependsOn": []
     },
     {
@@ -3614,41 +3614,41 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/%40vue/compiler-core@3.5.18",
+      "ref": "pkg:npm/%40vue/compiler-core@3.5.19",
       "dependsOn": [
-        "pkg:npm/%40babel/parser@7.28.0",
-        "pkg:npm/%40vue/shared@3.5.18",
+        "pkg:npm/%40babel/parser@7.28.3",
+        "pkg:npm/%40vue/shared@3.5.19",
         "pkg:npm/entities@4.5.0",
         "pkg:npm/estree-walker@2.0.2",
         "pkg:npm/source-map-js@1.2.1"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/compiler-dom@3.5.18",
+      "ref": "pkg:npm/%40vue/compiler-dom@3.5.19",
       "dependsOn": [
-        "pkg:npm/%40vue/compiler-core@3.5.18",
-        "pkg:npm/%40vue/shared@3.5.18"
+        "pkg:npm/%40vue/compiler-core@3.5.19",
+        "pkg:npm/%40vue/shared@3.5.19"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/compiler-sfc@3.5.18",
+      "ref": "pkg:npm/%40vue/compiler-sfc@3.5.19",
       "dependsOn": [
-        "pkg:npm/%40babel/parser@7.28.0",
-        "pkg:npm/%40vue/compiler-core@3.5.18",
-        "pkg:npm/%40vue/compiler-dom@3.5.18",
-        "pkg:npm/%40vue/compiler-ssr@3.5.18",
-        "pkg:npm/%40vue/shared@3.5.18",
+        "pkg:npm/%40babel/parser@7.28.3",
+        "pkg:npm/%40vue/compiler-core@3.5.19",
+        "pkg:npm/%40vue/compiler-dom@3.5.19",
+        "pkg:npm/%40vue/compiler-ssr@3.5.19",
+        "pkg:npm/%40vue/shared@3.5.19",
         "pkg:npm/estree-walker@2.0.2",
-        "pkg:npm/magic-string@0.30.17",
+        "pkg:npm/magic-string@0.30.18",
         "pkg:npm/postcss@8.5.6",
         "pkg:npm/source-map-js@1.2.1"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/compiler-ssr@3.5.18",
+      "ref": "pkg:npm/%40vue/compiler-ssr@3.5.19",
       "dependsOn": [
-        "pkg:npm/%40vue/compiler-dom@3.5.18",
-        "pkg:npm/%40vue/shared@3.5.18"
+        "pkg:npm/%40vue/compiler-dom@3.5.19",
+        "pkg:npm/%40vue/shared@3.5.19"
       ]
     },
     {
@@ -3676,36 +3676,36 @@
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/reactivity@3.5.18",
+      "ref": "pkg:npm/%40vue/reactivity@3.5.19",
       "dependsOn": [
-        "pkg:npm/%40vue/shared@3.5.18"
+        "pkg:npm/%40vue/shared@3.5.19"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/runtime-core@3.5.18",
+      "ref": "pkg:npm/%40vue/runtime-core@3.5.19",
       "dependsOn": [
-        "pkg:npm/%40vue/reactivity@3.5.18",
-        "pkg:npm/%40vue/shared@3.5.18"
+        "pkg:npm/%40vue/reactivity@3.5.19",
+        "pkg:npm/%40vue/shared@3.5.19"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/runtime-dom@3.5.18",
+      "ref": "pkg:npm/%40vue/runtime-dom@3.5.19",
       "dependsOn": [
-        "pkg:npm/%40vue/reactivity@3.5.18",
-        "pkg:npm/%40vue/runtime-core@3.5.18",
-        "pkg:npm/%40vue/shared@3.5.18",
+        "pkg:npm/%40vue/reactivity@3.5.19",
+        "pkg:npm/%40vue/runtime-core@3.5.19",
+        "pkg:npm/%40vue/shared@3.5.19",
         "pkg:npm/csstype@3.1.3"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/server-renderer@3.5.18",
+      "ref": "pkg:npm/%40vue/server-renderer@3.5.19",
       "dependsOn": [
-        "pkg:npm/%40vue/compiler-ssr@3.5.18",
-        "pkg:npm/%40vue/shared@3.5.18"
+        "pkg:npm/%40vue/compiler-ssr@3.5.19",
+        "pkg:npm/%40vue/shared@3.5.19"
       ]
     },
     {
-      "ref": "pkg:npm/%40vue/shared@3.5.18",
+      "ref": "pkg:npm/%40vue/shared@3.5.19",
       "dependsOn": []
     },
     {
@@ -3714,7 +3714,7 @@
         "pkg:npm/%40types/web-bluetooth@0.0.21",
         "pkg:npm/%40vueuse/metadata@12.8.2",
         "pkg:npm/%40vueuse/shared@12.8.2",
-        "pkg:npm/vue@3.5.18"
+        "pkg:npm/vue@3.5.19"
       ]
     },
     {
@@ -3722,7 +3722,7 @@
       "dependsOn": [
         "pkg:npm/%40vueuse/core@12.8.2",
         "pkg:npm/%40vueuse/shared@12.8.2",
-        "pkg:npm/vue@3.5.18"
+        "pkg:npm/vue@3.5.19"
       ]
     },
     {
@@ -3732,7 +3732,7 @@
     {
       "ref": "pkg:npm/%40vueuse/shared@12.8.2",
       "dependsOn": [
-        "pkg:npm/vue@3.5.18"
+        "pkg:npm/vue@3.5.19"
       ]
     },
     {
@@ -4011,9 +4011,9 @@
       ]
     },
     {
-      "ref": "pkg:npm/magic-string@0.30.17",
+      "ref": "pkg:npm/magic-string@0.30.18",
       "dependsOn": [
-        "pkg:npm/%40jridgewell/sourcemap-codec@1.5.4"
+        "pkg:npm/%40jridgewell/sourcemap-codec@1.5.5"
       ]
     },
     {
@@ -4139,7 +4139,7 @@
       ]
     },
     {
-      "ref": "pkg:npm/preact@10.27.0",
+      "ref": "pkg:npm/preact@10.27.1",
       "dependsOn": []
     },
     {
@@ -4183,7 +4183,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:npm/rollup@4.46.2",
+      "ref": "pkg:npm/rollup@4.48.0",
       "dependsOn": [
         "pkg:npm/%40types/estree@1.0.8"
       ]
@@ -4310,22 +4310,22 @@
       "dependsOn": [
         "pkg:npm/esbuild@0.21.5",
         "pkg:npm/postcss@8.5.6",
-        "pkg:npm/rollup@4.46.2"
+        "pkg:npm/rollup@4.48.0"
       ]
     },
     {
-      "ref": "pkg:npm/vitepress@1.6.3",
+      "ref": "pkg:npm/vitepress@1.6.4",
       "dependsOn": [
         "pkg:npm/%40docsearch/css@3.8.2",
         "pkg:npm/%40docsearch/js@3.8.2",
-        "pkg:npm/%40iconify-json/simple-icons@1.2.46",
+        "pkg:npm/%40iconify-json/simple-icons@1.2.48",
         "pkg:npm/%40shikijs/core@2.5.0",
         "pkg:npm/%40shikijs/transformers@2.5.0",
         "pkg:npm/%40shikijs/types@2.5.0",
         "pkg:npm/%40types/markdown-it@14.1.2",
         "pkg:npm/%40vitejs/plugin-vue@5.2.4",
         "pkg:npm/%40vue/devtools-api@7.7.7",
-        "pkg:npm/%40vue/shared@3.5.18",
+        "pkg:npm/%40vue/shared@3.5.19",
         "pkg:npm/%40vueuse/core@12.8.2",
         "pkg:npm/%40vueuse/integrations@12.8.2",
         "pkg:npm/focus-trap@7.6.5",
@@ -4333,17 +4333,17 @@
         "pkg:npm/minisearch@7.1.2",
         "pkg:npm/shiki@2.5.0",
         "pkg:npm/vite@5.4.19",
-        "pkg:npm/vue@3.5.18"
+        "pkg:npm/vue@3.5.19"
       ]
     },
     {
-      "ref": "pkg:npm/vue@3.5.18",
+      "ref": "pkg:npm/vue@3.5.19",
       "dependsOn": [
-        "pkg:npm/%40vue/compiler-dom@3.5.18",
-        "pkg:npm/%40vue/compiler-sfc@3.5.18",
-        "pkg:npm/%40vue/runtime-dom@3.5.18",
-        "pkg:npm/%40vue/server-renderer@3.5.18",
-        "pkg:npm/%40vue/shared@3.5.18"
+        "pkg:npm/%40vue/compiler-dom@3.5.19",
+        "pkg:npm/%40vue/compiler-sfc@3.5.19",
+        "pkg:npm/%40vue/runtime-dom@3.5.19",
+        "pkg:npm/%40vue/server-renderer@3.5.19",
+        "pkg:npm/%40vue/shared@3.5.19"
       ]
     },
     {
