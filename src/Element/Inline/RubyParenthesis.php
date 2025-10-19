@@ -5,7 +5,7 @@
  *
  * RubyParenthesis - The rp element is used to provide fallback parentheses for browsers non-supporting ruby annotations. It can be used in complex ruby markup to provide parentheses around the rt element for browsers that do not support ruby elements.
  *
- * @generated 2025-08-05 06:09:38
+ * @generated 2025-10-19 14:41:30
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rp
@@ -21,6 +21,7 @@ use Html\Element\Block\Header;
 use Html\Element\Block\Main;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
+use Html\Enum\DataThemeEnum;
 use Html\Mapping\Element;
 
 #[Element('rp')]
@@ -62,4 +63,30 @@ class RubyParenthesis extends InlineElement
      * @var array<string>
      */
     public static array $parentOf = [];
+
+    /** Choose between light and dark mode. Overrides the OS default if set. */
+    protected null|string|DataThemeEnum $dataTheme = null;
+
+    public function setDataTheme(string|DataThemeEnum $dataTheme): static
+    {
+        $value = $dataTheme;
+        if (is_string($dataTheme)) {
+            $resolved = DataThemeEnum::tryFrom($dataTheme);
+            if ($resolved !== null) {
+                $dataTheme = $resolved;
+            }
+        }
+        if ($dataTheme instanceof DataThemeEnum) {
+            $value = $dataTheme->value;
+        }
+        $this->dataTheme = $data - theme;
+        $this->delegated->setAttribute('dataTheme', (string) $value);
+
+        return $this;
+    }
+
+    public function getDataTheme(): string|DataThemeEnum
+    {
+        return $this->dataTheme;
+    }
 }

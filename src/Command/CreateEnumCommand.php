@@ -10,6 +10,7 @@ namespace Html\Command;
 
 use Exception;
 use Silly\Input\InputArgument;
+use Silly\Input\InputOption;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -28,13 +29,25 @@ final class CreateEnumCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $htmlDefinitionPath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'specifications' . \DIRECTORY_SEPARATOR . 'html5.yaml';
-        if (! is_file($htmlDefinitionPath)) {
-            $io->error('HTML definition file not found.');
-            return Command::FAILURE;
+        $specificationPath = $input->getOption('specification');
+        // load custom html specification if given
+        if ($specificationPath !== null) {
+            if (! is_file($specificationPath)) {
+                $io->error('The provided specification file does not exist.');
+                return Command::FAILURE;
+            }
+            $this->data = Yaml::parseFile($specificationPath);
+        } else {
+            // load default specs
+            $htmlDefinitionPath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'specifications' . \DIRECTORY_SEPARATOR . 'html5.yaml';
+            if (! is_file($htmlDefinitionPath)) {
+                $io->error('HTML definition file not found.');
+                return Command::FAILURE;
+            }
+
+            $this->data = Yaml::parseFile($htmlDefinitionPath);
         }
 
-        $this->data = Yaml::parseFile($htmlDefinitionPath);
         // Get the enum attributes
         $enumAttributes = $this->findEnumAttributes();
 
@@ -92,7 +105,13 @@ final class CreateEnumCommand extends Command
         $this
             ->setName('create:component')
             ->setDescription('Create a new component')
-            ->addArgument('element', InputArgument::OPTIONAL, 'The HTML element name to create a class for');
+            ->addArgument('element', InputArgument::OPTIONAL, 'The HTML element name to create a class for')
+            ->addOption(
+                'specification',
+                's',
+                InputOption::VALUE_REQUIRED,
+                'When set, uses the given specification file instead of the default HTML5 specification.'
+            );
     }
 
     private function getCaseName(string $option): string

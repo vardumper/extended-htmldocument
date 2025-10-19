@@ -5,7 +5,7 @@
  *
  * Underline - The u element represents a span of text with an unarticulated, though explicitly rendered, non-textual annotation, such as labeling the text as being a proper name in Chinese text (a Chinese proper name mark), or labeling the text as being misspelt.
  *
- * @generated 2025-08-05 06:09:38
+ * @generated 2025-10-19 14:41:30
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/u
@@ -25,6 +25,7 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
+use Html\Enum\DataThemeEnum;
 use Html\Mapping\Element;
 
 #[Element('u')]
@@ -68,4 +69,30 @@ class Underline extends InlineElement
      * @var array<string>
      */
     public static array $parentOf = [];
+
+    /** Choose between light and dark mode. Overrides the OS default if set. */
+    protected null|string|DataThemeEnum $dataTheme = null;
+
+    public function setDataTheme(string|DataThemeEnum $dataTheme): static
+    {
+        $value = $dataTheme;
+        if (is_string($dataTheme)) {
+            $resolved = DataThemeEnum::tryFrom($dataTheme);
+            if ($resolved !== null) {
+                $dataTheme = $resolved;
+            }
+        }
+        if ($dataTheme instanceof DataThemeEnum) {
+            $value = $dataTheme->value;
+        }
+        $this->dataTheme = $data - theme;
+        $this->delegated->setAttribute('dataTheme', (string) $value);
+
+        return $this;
+    }
+
+    public function getDataTheme(): string|DataThemeEnum
+    {
+        return $this->dataTheme;
+    }
 }

@@ -5,7 +5,7 @@
  *
  * Slot - The slot element is a placeholder inside a web component that you can fill with your own markup, which lets you create separate DOM trees and present them together.
  *
- * @generated 2025-08-05 06:09:38
+ * @generated 2025-10-19 14:41:30
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
@@ -32,6 +32,7 @@ use Html\Element\Block\Summary;
 use Html\Element\Block\Table;
 use Html\Element\Block\UnorderedList;
 use Html\Element\InlineElement;
+use Html\Enum\DataThemeEnum;
 use Html\Mapping\Element;
 
 #[Element('slot')]
@@ -93,6 +94,9 @@ class Slot extends InlineElement
      */
     public ?string $name = null;
 
+    /** Choose between light and dark mode. Overrides the OS default if set. */
+    protected null|string|DataThemeEnum $dataTheme = null;
+
     public function setName(string $name): static
     {
         $this->name = $name;
@@ -103,5 +107,28 @@ class Slot extends InlineElement
     public function getName(): ?string
     {
         return $this->name;
+    }
+
+    public function setDataTheme(string|DataThemeEnum $dataTheme): static
+    {
+        $value = $dataTheme;
+        if (is_string($dataTheme)) {
+            $resolved = DataThemeEnum::tryFrom($dataTheme);
+            if ($resolved !== null) {
+                $dataTheme = $resolved;
+            }
+        }
+        if ($dataTheme instanceof DataThemeEnum) {
+            $value = $dataTheme->value;
+        }
+        $this->dataTheme = $data - theme;
+        $this->delegated->setAttribute('dataTheme', (string) $value);
+
+        return $this;
+    }
+
+    public function getDataTheme(): string|DataThemeEnum
+    {
+        return $this->dataTheme;
     }
 }

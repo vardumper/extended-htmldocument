@@ -5,7 +5,7 @@
  *
  * Output - The output element represents the result of a calculation or user action.
  *
- * @generated 2025-08-05 06:09:38
+ * @generated 2025-10-19 14:41:30
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
@@ -18,6 +18,7 @@ use Html\Element\Block\Fieldset;
 use Html\Element\Block\Form;
 use Html\Element\Block\Paragraph;
 use Html\Element\InlineElement;
+use Html\Enum\DataThemeEnum;
 use Html\Mapping\Element;
 
 #[Element('output')]
@@ -55,6 +56,9 @@ class Output extends InlineElement
      */
     public ?string $for = null;
 
+    /** Choose between light and dark mode. Overrides the OS default if set. */
+    protected null|string|DataThemeEnum $dataTheme = null;
+
     public function setFor(string $for): static
     {
         $this->for = $for;
@@ -65,5 +69,28 @@ class Output extends InlineElement
     public function getFor(): ?string
     {
         return $this->for;
+    }
+
+    public function setDataTheme(string|DataThemeEnum $dataTheme): static
+    {
+        $value = $dataTheme;
+        if (is_string($dataTheme)) {
+            $resolved = DataThemeEnum::tryFrom($dataTheme);
+            if ($resolved !== null) {
+                $dataTheme = $resolved;
+            }
+        }
+        if ($dataTheme instanceof DataThemeEnum) {
+            $value = $dataTheme->value;
+        }
+        $this->dataTheme = $data - theme;
+        $this->delegated->setAttribute('dataTheme', (string) $value);
+
+        return $this;
+    }
+
+    public function getDataTheme(): string|DataThemeEnum
+    {
+        return $this->dataTheme;
     }
 }

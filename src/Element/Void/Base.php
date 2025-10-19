@@ -5,7 +5,7 @@
  *
  * Base - The base element specifies the base URL to use for all relative URLs in a document. There can be at maximum one <base> element in a document, and it must be inside the <head> element.
  *
- * @generated 2025-08-05 06:09:38
+ * @generated 2025-10-19 14:41:30
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
@@ -14,6 +14,7 @@
 namespace Html\Element\Void;
 
 use Html\Element\VoidElement;
+use Html\Enum\DataThemeEnum;
 use Html\Enum\TargetEnum;
 use Html\Mapping\Element;
 use InvalidArgumentException;
@@ -65,6 +66,9 @@ class Base extends VoidElement
      */
     protected ?TargetEnum $target = null;
 
+    /** Choose between light and dark mode. Overrides the OS default if set. */
+    protected null|string|DataThemeEnum $dataTheme = null;
+
     public function setHref(string $href): static
     {
         $this->href = $href;
@@ -91,5 +95,28 @@ class Base extends VoidElement
     public function getTarget(): ?TargetEnum
     {
         return $this->target;
+    }
+
+    public function setDataTheme(string|DataThemeEnum $dataTheme): static
+    {
+        $value = $dataTheme;
+        if (is_string($dataTheme)) {
+            $resolved = DataThemeEnum::tryFrom($dataTheme);
+            if ($resolved !== null) {
+                $dataTheme = $resolved;
+            }
+        }
+        if ($dataTheme instanceof DataThemeEnum) {
+            $value = $dataTheme->value;
+        }
+        $this->dataTheme = $data - theme;
+        $this->delegated->setAttribute('dataTheme', (string) $value);
+
+        return $this;
+    }
+
+    public function getDataTheme(): string|DataThemeEnum
+    {
+        return $this->dataTheme;
     }
 }

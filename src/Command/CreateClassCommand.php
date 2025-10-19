@@ -6,6 +6,7 @@ namespace Html\Command;
 
 use Html\Helper\Helper;
 use Silly\Input\InputArgument;
+use Silly\Input\InputOption;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -36,7 +37,9 @@ final class CreateClassCommand extends Command
     {
         $this->io = new SymfonyStyle($input, $output);
 
-        if (! $this->loadHtmlDefinitions()) {
+        $specificationPath = $input->getOption('specification');
+
+        if (! $this->loadHtmlDefinitions($specificationPath)) {
             return Command::FAILURE;
         }
 
@@ -78,11 +81,26 @@ final class CreateClassCommand extends Command
         $this
             ->setName('create:component')
             ->setDescription('Create a new component')
-            ->addArgument('element', InputArgument::OPTIONAL, 'The HTML element name to create a class for');
+            ->addArgument('element', InputArgument::OPTIONAL, 'The HTML element name to create a class for')
+            ->addOption(
+                'specification',
+                's',
+                InputOption::VALUE_REQUIRED,
+                'When set, uses the given specification file instead of the default HTML5 specification.'
+            );
     }
 
-    private function loadHtmlDefinitions(): bool
+    private function loadHtmlDefinitions(?string $specificationPath): bool
     {
+        if ($specificationPath !== null) {
+            if (! is_file($specificationPath)) {
+                $this->io->error('Specification file not found at ' . $specificationPath);
+                return false;
+            }
+            $this->data = Yaml::parseFile($specificationPath);
+            return true;
+        }
+
         if (! is_file(self::HTML_DEFINITION_PATH)) {
             $this->io->error('HTML definition file not found.');
             return false;
@@ -125,6 +143,10 @@ final class CreateClassCommand extends Command
 
     private function buildClassData(string $element, array $elementData, string $generatedAt): array
     {
+        if (! isset($elementData['name'])) {
+            var_dump($elementData);
+            exit;
+        }
         $className = $this->getClassName(str_replace(' ', '', ucfirst($elementData['name'])));
         $level = $elementData['level'];
         $namespace = 'Html\\Element\\' . ucfirst($level);
@@ -257,6 +279,18 @@ final class CreateClassCommand extends Command
         string $methodName
     ): string {
         $kebapCase = $this->toKebapCase($attribute);
+
+        // makes sure elements is optional, if not given lets just search the array
+        if (! isset($details['elements']) || ! is_array($details['elements'])) {
+            $elementsWithAttribute = [];
+            foreach ($this->data as $tmpEl => $tmpData) {
+                if (isset($tmpData['attributes']) && isset($tmpData['attributes']['data-theme'])) {
+                    $elementsWithAttribute[] = $tmpEl;
+                }
+            }
+            $details['elements'] = $elementsWithAttribute;
+        }
+
         if ($this->manyElementsHaveAttribute($attribute) && count($details['elements']) === 1) {
             $kebapCase .= ucfirst($element);
         }
@@ -380,6 +414,18 @@ final class CreateClassCommand extends Command
     private function processEnumAttribute(string $attribute, array $details, string $element, string $type): array
     {
         $kebapCase = $this->toKebapCase($attribute);
+
+        // makes sure elements is optional, if not given lets just search the array
+        if (! isset($details['elements']) || ! is_array($details['elements'])) {
+            $elementsWithAttribute = [];
+            foreach ($this->data as $tmpEl => $tmpData) {
+                if (isset($tmpData['attributes']) && isset($tmpData['attributes']['data-theme'])) {
+                    $elementsWithAttribute[] = $tmpEl;
+                }
+            }
+            $details['elements'] = $elementsWithAttribute;
+        }
+
         if ($this->manyElementsHaveAttribute($attribute) && count($details['elements']) === 1) {
             $kebapCase .= ucfirst($element);
         }

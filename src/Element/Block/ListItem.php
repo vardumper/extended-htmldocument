@@ -5,7 +5,7 @@
  *
  * ListItem - The li element represents a list item. If its parent element is an ol, ul, or menu, then the element is an item of the parent element's list, as defined for those elements. Otherwise, the list item has no defined list-related semantics.
  *
- * @generated 2025-08-05 06:09:38
+ * @generated 2025-10-19 14:41:30
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
@@ -34,6 +34,7 @@ use Html\Element\Inline\Superscript;
 use Html\Element\Inline\Time;
 use Html\Element\Inline\Underline;
 use Html\Element\Inline\Variable;
+use Html\Enum\DataThemeEnum;
 use Html\Mapping\Element;
 
 #[Element('li')]
@@ -113,6 +114,9 @@ class ListItem extends BlockElement
      */
     public ?string $value = null;
 
+    /** Choose between light and dark mode. Overrides the OS default if set. */
+    protected null|string|DataThemeEnum $dataTheme = null;
+
     public function setValue(string $value): static
     {
         $this->value = $value;
@@ -123,5 +127,28 @@ class ListItem extends BlockElement
     public function getValue(): ?string
     {
         return $this->value;
+    }
+
+    public function setDataTheme(string|DataThemeEnum $dataTheme): static
+    {
+        $value = $dataTheme;
+        if (is_string($dataTheme)) {
+            $resolved = DataThemeEnum::tryFrom($dataTheme);
+            if ($resolved !== null) {
+                $dataTheme = $resolved;
+            }
+        }
+        if ($dataTheme instanceof DataThemeEnum) {
+            $value = $dataTheme->value;
+        }
+        $this->dataTheme = $data - theme;
+        $this->delegated->setAttribute('dataTheme', (string) $value);
+
+        return $this;
+    }
+
+    public function getDataTheme(): string|DataThemeEnum
+    {
+        return $this->dataTheme;
     }
 }

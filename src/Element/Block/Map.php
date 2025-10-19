@@ -5,7 +5,7 @@
  *
  * Map - The map element, in conjunction with an img element and any area element descendants, defines an image map. The element represents a related collection of map areas.
  *
- * @generated 2025-08-05 06:09:38
+ * @generated 2025-10-19 14:41:30
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map
@@ -16,6 +16,7 @@ namespace Html\Element\Block;
 use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Void\Area;
+use Html\Enum\DataThemeEnum;
 use Html\Mapping\Element;
 
 #[Element('map')]
@@ -65,6 +66,9 @@ class Map extends BlockElement
      */
     public ?string $name = null;
 
+    /** Choose between light and dark mode. Overrides the OS default if set. */
+    protected null|string|DataThemeEnum $dataTheme = null;
+
     public function setName(string $name): static
     {
         $this->name = $name;
@@ -75,5 +79,28 @@ class Map extends BlockElement
     public function getName(): ?string
     {
         return $this->name;
+    }
+
+    public function setDataTheme(string|DataThemeEnum $dataTheme): static
+    {
+        $value = $dataTheme;
+        if (is_string($dataTheme)) {
+            $resolved = DataThemeEnum::tryFrom($dataTheme);
+            if ($resolved !== null) {
+                $dataTheme = $resolved;
+            }
+        }
+        if ($dataTheme instanceof DataThemeEnum) {
+            $value = $dataTheme->value;
+        }
+        $this->dataTheme = $data - theme;
+        $this->delegated->setAttribute('dataTheme', (string) $value);
+
+        return $this;
+    }
+
+    public function getDataTheme(): string|DataThemeEnum
+    {
+        return $this->dataTheme;
     }
 }

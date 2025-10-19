@@ -21,18 +21,18 @@ includeDependencyOrRepositoryVendorAutoloadIfExists($alreadyLoadedAutoloadFiles)
 
 // generating PHP classes for HTML elements
 $app = new Silly\Application('Extended HTMLDocument', '0.2.0 (stable)');
-$app->command('make:classes [element]', function ($element, InputInterface $input, OutputInterface $output) {
+$app->command('make:classes [element] [--specification=]', function ($element, InputInterface $input, OutputInterface $output) {
     return (new CreateClassCommand())($element, $input, $output);
 })->descriptions('Creates a new PHP class for all or for a given HTML Element');
-$app->command('make:enums', new CreateEnumCommand())->descriptions('Creates backed enums for all HTML attributes with a static set of options');
-$app->command('make:json-specs', new CreateJsonCommand())->descriptions('Simply transforms the YAML specs into JSON');
-$app->command('make:all', function (InputInterface $input, OutputInterface $output) {
+$app->command('make:enums [--specification=]', new CreateEnumCommand())->descriptions('Creates backed enums for all HTML attributes with a static set of options');
+$app->command('make:json-specs [--specification=]', new CreateJsonCommand())->descriptions('Simply transforms the YAML specs into JSON');
+$app->command('make:all [--specification=]', function (InputInterface $input, OutputInterface $output) {
     (new CreateEnumCommand())($input, $output);
     (new CreateClassCommand())(null, $input, $output);
 })->descriptions('Creates or re-creates all PHP classes for all HTML Elements and backed enums for static HTML attributes');
 
 // generating Templates (.html,.twig,.php) for HTML elements
-$app->command('generate [generator] [source] [dest]', function (InputInterface $input, OutputInterface $output) {
+$app->command('generate [generator] [source] [dest] [--specification=]', function (InputInterface $input, OutputInterface $output) {
     $output->writeln('Generates templpates. Uses a given generator. Requires a source path with your component YAMLs and a destination path for the generated templates.');
 })->descriptions('Generates templates for HTML Elements');
 

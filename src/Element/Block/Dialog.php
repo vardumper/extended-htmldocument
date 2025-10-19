@@ -5,7 +5,7 @@
  *
  * Dialog - The dialog element represents a part of an application that a user interacts with to perform a task, for example a dialog box, inspector, or window.
  *
- * @generated 2025-08-05 06:09:38
+ * @generated 2025-10-19 14:41:30
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
@@ -19,6 +19,7 @@ use Html\Element\Inline\Button;
 use Html\Element\Inline\Input;
 use Html\Element\Inline\Select;
 use Html\Element\Inline\Textarea;
+use Html\Enum\DataThemeEnum;
 use Html\Mapping\Element;
 
 #[Element('dialog')]
@@ -80,6 +81,9 @@ class Dialog extends BlockElement
      */
     public ?bool $open = null;
 
+    /** Choose between light and dark mode. Overrides the OS default if set. */
+    protected null|string|DataThemeEnum $dataTheme = null;
+
     public function setOpen(bool $open): static
     {
         $this->open = $open;
@@ -90,5 +94,28 @@ class Dialog extends BlockElement
     public function getOpen(): ?bool
     {
         return $this->open;
+    }
+
+    public function setDataTheme(string|DataThemeEnum $dataTheme): static
+    {
+        $value = $dataTheme;
+        if (is_string($dataTheme)) {
+            $resolved = DataThemeEnum::tryFrom($dataTheme);
+            if ($resolved !== null) {
+                $dataTheme = $resolved;
+            }
+        }
+        if ($dataTheme instanceof DataThemeEnum) {
+            $value = $dataTheme->value;
+        }
+        $this->dataTheme = $data - theme;
+        $this->delegated->setAttribute('dataTheme', (string) $value);
+
+        return $this;
+    }
+
+    public function getDataTheme(): string|DataThemeEnum
+    {
+        return $this->dataTheme;
     }
 }

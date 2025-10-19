@@ -5,7 +5,7 @@
  *
  * Meta - The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.
  *
- * @generated 2025-08-05 06:09:38
+ * @generated 2025-10-19 14:41:30
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
@@ -14,6 +14,7 @@
 namespace Html\Element\Void;
 
 use Html\Element\VoidElement;
+use Html\Enum\DataThemeEnum;
 use Html\Enum\HttpEquivEnum;
 use Html\Mapping\Element;
 use InvalidArgumentException;
@@ -77,6 +78,9 @@ class Meta extends VoidElement
      * Provides an HTTP header for the information/value of the content attribute.
      */
     protected ?HttpEquivEnum $httpEquiv = null;
+
+    /** Choose between light and dark mode. Overrides the OS default if set. */
+    protected null|string|DataThemeEnum $dataTheme = null;
 
     public function setCharset(string $charset): static
     {
@@ -142,5 +146,28 @@ class Meta extends VoidElement
     public function getScheme(): ?string
     {
         return $this->scheme;
+    }
+
+    public function setDataTheme(string|DataThemeEnum $dataTheme): static
+    {
+        $value = $dataTheme;
+        if (is_string($dataTheme)) {
+            $resolved = DataThemeEnum::tryFrom($dataTheme);
+            if ($resolved !== null) {
+                $dataTheme = $resolved;
+            }
+        }
+        if ($dataTheme instanceof DataThemeEnum) {
+            $value = $dataTheme->value;
+        }
+        $this->dataTheme = $data - theme;
+        $this->delegated->setAttribute('dataTheme', (string) $value);
+
+        return $this;
+    }
+
+    public function getDataTheme(): string|DataThemeEnum
+    {
+        return $this->dataTheme;
     }
 }
