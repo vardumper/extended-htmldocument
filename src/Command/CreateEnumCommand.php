@@ -59,7 +59,7 @@ final class CreateEnumCommand extends Command
                     $className .= ucfirst($attributes['elements'][0]);
                 }
 
-                $defaultCase = $this->getCaseName($attributes['defaultValue'] ?? '');
+                $defaultCase = $this->getCaseName((string) $attributes['defaultValue'] ?? '');
                 foreach ($attributes['choices'] as $option) {
                     $caseName = $this->getCaseName($option);
                     $default = $caseName === $defaultCase ? ' // default' : '';
