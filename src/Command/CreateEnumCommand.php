@@ -15,7 +15,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Yaml\Yaml;
-use Symplify\EasyCodingStandard\Console\ExitCode;
 
 /**
  * @usage create:enum
@@ -32,7 +31,7 @@ final class CreateEnumCommand extends Command
         $htmlDefinitionPath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'specifications' . \DIRECTORY_SEPARATOR . 'html5.yaml';
         if (! is_file($htmlDefinitionPath)) {
             $io->error('HTML definition file not found.');
-            return ExitCode::FAILURE;
+            return Command::FAILURE;
         }
 
         $this->data = Yaml::parseFile($htmlDefinitionPath);
@@ -85,7 +84,7 @@ final class CreateEnumCommand extends Command
             }
         }
 
-        return ExitCode::SUCCESS;
+        return Command::SUCCESS;
     }
 
     public function configure(): void

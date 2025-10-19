@@ -24,7 +24,7 @@ Issues detected: 9
 | Priority | File   | Line         |  Rule | Message |
 | -------- | ------ | ------------ | ----- | ------- |
 | <span class="prio3">3</span> | src/Command/CreateClassCommand.php | 21 | [ExcessiveClassComplexity](https://phpmd.org/rules/codesize.html#excessiveclasscomplexity) | The class CreateClassCommand has an overall complexity of 69 which is very high. The configured complexity threshold is 50. |
-| <span class="prio3">3</span> | src/Command/CreateEnumCommand.php | 28 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method __invoke() has a Cyclomatic Complexity of 10. The configured cyclomatic complexity threshold is 10. |
+| <span class="prio3">3</span> | src/Command/CreateEnumCommand.php | 27 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method __invoke() has a Cyclomatic Complexity of 10. The configured cyclomatic complexity threshold is 10. |
 | <span class="prio3">3</span> | src/Command/WatchCommand.php | 51 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method __invoke() has a Cyclomatic Complexity of 14. The configured cyclomatic complexity threshold is 10. |
 | <span class="prio3">3</span> | src/Command/WatchCommand.php | 51 | [NPathComplexity](https://phpmd.org/rules/codesize.html#npathcomplexity) | The method __invoke() has an NPath complexity of 768. The configured NPath complexity threshold is 200. |
 | <span class="prio3">3</span> | src/Delegator/HTMLElementDelegator.php | 35 | [ExcessiveClassComplexity](https://phpmd.org/rules/codesize.html#excessiveclasscomplexity) | The class HTMLElementDelegator has an overall complexity of 51 which is very high. The configured complexity threshold is 50. |
@@ -48,7 +48,7 @@ Issues detected: 15
 | <span class="prio1">1</span> | src/Command/CreateClassCommand.php | 397 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method processEnumAttribute uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
 | <span class="prio1">1</span> | src/Command/CreateClassCommand.php | 456 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Helper\Helper` in method `getClassName`. |
 | <span class="prio1">1</span> | src/Command/CreateClassCommand.php | 482 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method getAttributeComment uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
-| <span class="prio1">1</span> | src/Command/CreateEnumCommand.php | 38 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Symfony\Component\Yaml\Yaml` in method `__invoke`. |
+| <span class="prio1">1</span> | src/Command/CreateEnumCommand.php | 37 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Symfony\Component\Yaml\Yaml` in method `__invoke`. |
 | <span class="prio1">1</span> | src/Command/CreateJsonCommand.php | 31 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Symfony\Component\Yaml\Yaml` in method `__invoke`. |
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 55 | [BooleanArgumentFlag](https://phpmd.org/rules/cleancode.html#booleanargumentflag) | The method __invoke has a boolean flag argument $overwriteExisting, which is a certain sign of a Single Responsibility Principle violation. |
 | <span class="prio1">1</span> | src/Command/WatchCommand.php | 63 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method __invoke uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
@@ -139,4 +139,4 @@ Issues detected: 77
 
 Issues detected: 9
 
-Sun Aug 24 11:32:38 CEST 2025
+Sun Oct 19 02:58:29 PM CEST 2025
