@@ -5,7 +5,7 @@
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
@@ -26,7 +26,6 @@ use Html\Element\Inline\Slot;
 use Html\Element\Inline\Textarea;
 use Html\Element\Void\Script;
 use Html\Enum\AutocompleteEnum;
-use Html\Enum\DataThemeEnum;
 use Html\Enum\EnctypeEnum;
 use Html\Enum\MethodEnum;
 use Html\Enum\TargetEnum;
@@ -140,13 +139,10 @@ class Form extends BlockElement
      */
     protected ?TargetEnum $target = null;
 
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
     public function setAcceptCharset(string $acceptCharset): static
     {
         $this->acceptCharset = $acceptCharset;
-        $this->delegated->setAttribute('acceptCharset', $acceptCharset);
+        $this->delegated->setAttribute('acceptCharset', (string) $acceptCharset);
         return $this;
     }
 
@@ -158,7 +154,7 @@ class Form extends BlockElement
     public function setAction(string $action): static
     {
         $this->action = $action;
-        $this->delegated->setAttribute('action', $action);
+        $this->delegated->setAttribute('action', (string) $action);
         return $this;
     }
 
@@ -222,7 +218,7 @@ class Form extends BlockElement
     public function setName(string $name): static
     {
         $this->name = $name;
-        $this->delegated->setAttribute('name', $name);
+        $this->delegated->setAttribute('name', (string) $name);
         return $this;
     }
 
@@ -234,7 +230,7 @@ class Form extends BlockElement
     public function setNovalidate(bool $novalidate): static
     {
         $this->novalidate = $novalidate;
-        $this->delegated->setAttribute('novalidate', $novalidate);
+        $this->delegated->setAttribute('novalidate', (string) $novalidate);
         return $this;
     }
 
@@ -257,28 +253,5 @@ class Form extends BlockElement
     public function getTarget(): ?TargetEnum
     {
         return $this->target;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
     }
 }

@@ -5,7 +5,7 @@
  *
  * Quotation - The q element represents some phrasing content quoted from another source.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
@@ -26,7 +26,6 @@ use Html\Element\Block\Navigation;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
-use Html\Enum\DataThemeEnum;
 use Html\Mapping\Element;
 
 #[Element('q')]
@@ -77,41 +76,15 @@ class Quotation extends InlineElement
      */
     public ?string $cite = null;
 
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
     public function setCite(string $cite): static
     {
         $this->cite = $cite;
-        $this->delegated->setAttribute('cite', $cite);
+        $this->delegated->setAttribute('cite', (string) $cite);
         return $this;
     }
 
     public function getCite(): ?string
     {
         return $this->cite;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
     }
 }

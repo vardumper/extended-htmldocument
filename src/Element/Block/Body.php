@@ -5,7 +5,7 @@
  *
  * Body - The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
@@ -53,7 +53,6 @@ use Html\Element\Void\Area;
 use Html\Element\Void\BreakElement;
 use Html\Element\Void\Script;
 use Html\Element\Void\WordBreakOpportunity;
-use Html\Enum\DataThemeEnum;
 use Html\Mapping\Element;
 
 #[Element('body')]
@@ -246,13 +245,10 @@ class Body extends BlockElement
      */
     public ?string $onunload = null;
 
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
     public function setOnafterprint(string $onafterprint): static
     {
         $this->onafterprint = $onafterprint;
-        $this->delegated->setAttribute('onafterprint', $onafterprint);
+        $this->delegated->setAttribute('onafterprint', (string) $onafterprint);
         return $this;
     }
 
@@ -264,7 +260,7 @@ class Body extends BlockElement
     public function setOnbeforeprint(string $onbeforeprint): static
     {
         $this->onbeforeprint = $onbeforeprint;
-        $this->delegated->setAttribute('onbeforeprint', $onbeforeprint);
+        $this->delegated->setAttribute('onbeforeprint', (string) $onbeforeprint);
         return $this;
     }
 
@@ -276,7 +272,7 @@ class Body extends BlockElement
     public function setOnbeforeunload(string $onbeforeunload): static
     {
         $this->onbeforeunload = $onbeforeunload;
-        $this->delegated->setAttribute('onbeforeunload', $onbeforeunload);
+        $this->delegated->setAttribute('onbeforeunload', (string) $onbeforeunload);
         return $this;
     }
 
@@ -288,7 +284,7 @@ class Body extends BlockElement
     public function setOnhashchange(string $onhashchange): static
     {
         $this->onhashchange = $onhashchange;
-        $this->delegated->setAttribute('onhashchange', $onhashchange);
+        $this->delegated->setAttribute('onhashchange', (string) $onhashchange);
         return $this;
     }
 
@@ -300,7 +296,7 @@ class Body extends BlockElement
     public function setOnlanguagechange(string $onlanguagechange): static
     {
         $this->onlanguagechange = $onlanguagechange;
-        $this->delegated->setAttribute('onlanguagechange', $onlanguagechange);
+        $this->delegated->setAttribute('onlanguagechange', (string) $onlanguagechange);
         return $this;
     }
 
@@ -312,7 +308,7 @@ class Body extends BlockElement
     public function setOnmessage(string $onmessage): static
     {
         $this->onmessage = $onmessage;
-        $this->delegated->setAttribute('onmessage', $onmessage);
+        $this->delegated->setAttribute('onmessage', (string) $onmessage);
         return $this;
     }
 
@@ -324,7 +320,7 @@ class Body extends BlockElement
     public function setOnmessageerror(string $onmessageerror): static
     {
         $this->onmessageerror = $onmessageerror;
-        $this->delegated->setAttribute('onmessageerror', $onmessageerror);
+        $this->delegated->setAttribute('onmessageerror', (string) $onmessageerror);
         return $this;
     }
 
@@ -336,7 +332,7 @@ class Body extends BlockElement
     public function setOnoffline(string $onoffline): static
     {
         $this->onoffline = $onoffline;
-        $this->delegated->setAttribute('onoffline', $onoffline);
+        $this->delegated->setAttribute('onoffline', (string) $onoffline);
         return $this;
     }
 
@@ -348,7 +344,7 @@ class Body extends BlockElement
     public function setOnonline(string $ononline): static
     {
         $this->ononline = $ononline;
-        $this->delegated->setAttribute('ononline', $ononline);
+        $this->delegated->setAttribute('ononline', (string) $ononline);
         return $this;
     }
 
@@ -360,7 +356,7 @@ class Body extends BlockElement
     public function setOnpagehide(string $onpagehide): static
     {
         $this->onpagehide = $onpagehide;
-        $this->delegated->setAttribute('onpagehide', $onpagehide);
+        $this->delegated->setAttribute('onpagehide', (string) $onpagehide);
         return $this;
     }
 
@@ -372,7 +368,7 @@ class Body extends BlockElement
     public function setOnpageshow(string $onpageshow): static
     {
         $this->onpageshow = $onpageshow;
-        $this->delegated->setAttribute('onpageshow', $onpageshow);
+        $this->delegated->setAttribute('onpageshow', (string) $onpageshow);
         return $this;
     }
 
@@ -384,7 +380,7 @@ class Body extends BlockElement
     public function setOnpopstate(string $onpopstate): static
     {
         $this->onpopstate = $onpopstate;
-        $this->delegated->setAttribute('onpopstate', $onpopstate);
+        $this->delegated->setAttribute('onpopstate', (string) $onpopstate);
         return $this;
     }
 
@@ -396,7 +392,7 @@ class Body extends BlockElement
     public function setOnrejectionhandled(string $onrejectionhandled): static
     {
         $this->onrejectionhandled = $onrejectionhandled;
-        $this->delegated->setAttribute('onrejectionhandled', $onrejectionhandled);
+        $this->delegated->setAttribute('onrejectionhandled', (string) $onrejectionhandled);
         return $this;
     }
 
@@ -408,7 +404,7 @@ class Body extends BlockElement
     public function setOnstorage(string $onstorage): static
     {
         $this->onstorage = $onstorage;
-        $this->delegated->setAttribute('onstorage', $onstorage);
+        $this->delegated->setAttribute('onstorage', (string) $onstorage);
         return $this;
     }
 
@@ -420,7 +416,7 @@ class Body extends BlockElement
     public function setOnunhandledrejection(string $onunhandledrejection): static
     {
         $this->onunhandledrejection = $onunhandledrejection;
-        $this->delegated->setAttribute('onunhandledrejection', $onunhandledrejection);
+        $this->delegated->setAttribute('onunhandledrejection', (string) $onunhandledrejection);
         return $this;
     }
 
@@ -432,35 +428,12 @@ class Body extends BlockElement
     public function setOnunload(string $onunload): static
     {
         $this->onunload = $onunload;
-        $this->delegated->setAttribute('onunload', $onunload);
+        $this->delegated->setAttribute('onunload', (string) $onunload);
         return $this;
     }
 
     public function getOnunload(): ?string
     {
         return $this->onunload;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
     }
 }

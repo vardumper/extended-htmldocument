@@ -5,7 +5,7 @@
  *
  * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
@@ -28,9 +28,6 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
-use Html\Enum\ClassEnum;
-use Html\Enum\DataThemeEnum;
-use Html\Enum\RoleEnum;
 use Html\Enum\TypeButtonEnum;
 use Html\Mapping\Element;
 use InvalidArgumentException;
@@ -107,24 +104,10 @@ class Button extends InlineElement
      */
     protected ?TypeButtonEnum $type = null;
 
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
-    /** The role attribute is used to define the purpose of an element. */
-    protected null|string|RoleEnum $role = null;
-
-    /**
-     * The class attribute is used to define equal styles for multiple elements.
-     * @example
-
-     * @required
-     */
-    protected null|string|ClassEnum $class = null;
-
     public function setAutofocus(bool $autofocus): static
     {
         $this->autofocus = $autofocus;
-        $this->delegated->setAttribute('autofocus', $autofocus);
+        $this->delegated->setAttribute('autofocus', (string) $autofocus);
         return $this;
     }
 
@@ -136,7 +119,7 @@ class Button extends InlineElement
     public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
-        $this->delegated->setAttribute('disabled', $disabled);
+        $this->delegated->setAttribute('disabled', (string) $disabled);
         return $this;
     }
 
@@ -148,7 +131,7 @@ class Button extends InlineElement
     public function setName(string $name): static
     {
         $this->name = $name;
-        $this->delegated->setAttribute('name', $name);
+        $this->delegated->setAttribute('name', (string) $name);
         return $this;
     }
 
@@ -176,81 +159,12 @@ class Button extends InlineElement
     public function setValue(string $value): static
     {
         $this->value = $value;
-        $this->delegated->setAttribute('value', $value);
+        $this->delegated->setAttribute('value', (string) $value);
         return $this;
     }
 
     public function getValue(): ?string
     {
         return $this->value;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
-    }
-
-    public function setRole(string|RoleEnum $role): static
-    {
-        $value = $role;
-        if (is_string($role)) {
-            $resolved = RoleEnum::tryFrom($role);
-            if ($resolved !== null) {
-                $role = $resolved;
-            }
-        }
-        if ($role instanceof RoleEnum) {
-            $value = $role->value;
-        }
-        $this->role = $role;
-        $this->delegated->setAttribute('role', (string) $value);
-
-        return $this;
-    }
-
-    public function getRole(): string|RoleEnum
-    {
-        return $this->role;
-    }
-
-    public function setClass(string|ClassEnum $class): static
-    {
-        $value = $class;
-        if (is_string($class)) {
-            $resolved = ClassEnum::tryFrom($class);
-            if ($resolved !== null) {
-                $class = $resolved;
-            }
-        }
-        if ($class instanceof ClassEnum) {
-            $value = $class->value;
-        }
-        $this->class = $class;
-        $this->delegated->setAttribute('class', (string) $value);
-
-        return $this;
-    }
-
-    public function getClass(): string|ClassEnum
-    {
-        return $this->class;
     }
 }

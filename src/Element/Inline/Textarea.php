@@ -5,7 +5,7 @@
  *
  * Textarea - The textarea element represents a multiline plain text edit control for the element's raw value.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
@@ -28,7 +28,6 @@ use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Enum\AutocompleteEnum;
-use Html\Enum\DataThemeEnum;
 use Html\Enum\WrapEnum;
 use Html\Mapping\Element;
 use InvalidArgumentException;
@@ -139,9 +138,6 @@ class Textarea extends InlineElement
      */
     protected ?WrapEnum $wrap = null;
 
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
     public function setAutocomplete(string|AutocompleteEnum $autocomplete): static
     {
         if (is_string($autocomplete)) {
@@ -163,7 +159,7 @@ class Textarea extends InlineElement
     public function setCols(int $cols): static
     {
         $this->cols = $cols;
-        $this->delegated->setAttribute('cols', $cols);
+        $this->delegated->setAttribute('cols', (string) $cols);
         return $this;
     }
 
@@ -175,7 +171,7 @@ class Textarea extends InlineElement
     public function setDirname(string $dirname): static
     {
         $this->dirname = $dirname;
-        $this->delegated->setAttribute('dirname', $dirname);
+        $this->delegated->setAttribute('dirname', (string) $dirname);
         return $this;
     }
 
@@ -187,7 +183,7 @@ class Textarea extends InlineElement
     public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
-        $this->delegated->setAttribute('disabled', $disabled);
+        $this->delegated->setAttribute('disabled', (string) $disabled);
         return $this;
     }
 
@@ -199,7 +195,7 @@ class Textarea extends InlineElement
     public function setMaxlength(int $maxlength): static
     {
         $this->maxlength = $maxlength;
-        $this->delegated->setAttribute('maxlength', $maxlength);
+        $this->delegated->setAttribute('maxlength', (string) $maxlength);
         return $this;
     }
 
@@ -211,7 +207,7 @@ class Textarea extends InlineElement
     public function setMinlength(int $minlength): static
     {
         $this->minlength = $minlength;
-        $this->delegated->setAttribute('minlength', $minlength);
+        $this->delegated->setAttribute('minlength', (string) $minlength);
         return $this;
     }
 
@@ -223,7 +219,7 @@ class Textarea extends InlineElement
     public function setName(string $name): static
     {
         $this->name = $name;
-        $this->delegated->setAttribute('name', $name);
+        $this->delegated->setAttribute('name', (string) $name);
         return $this;
     }
 
@@ -235,7 +231,7 @@ class Textarea extends InlineElement
     public function setPlaceholder(string $placeholder): static
     {
         $this->placeholder = $placeholder;
-        $this->delegated->setAttribute('placeholder', $placeholder);
+        $this->delegated->setAttribute('placeholder', (string) $placeholder);
         return $this;
     }
 
@@ -247,7 +243,7 @@ class Textarea extends InlineElement
     public function setReadonly(bool $readonly): static
     {
         $this->readonly = $readonly;
-        $this->delegated->setAttribute('readonly', $readonly);
+        $this->delegated->setAttribute('readonly', (string) $readonly);
         return $this;
     }
 
@@ -259,7 +255,7 @@ class Textarea extends InlineElement
     public function setRequired(bool $required): static
     {
         $this->required = $required;
-        $this->delegated->setAttribute('required', $required);
+        $this->delegated->setAttribute('required', (string) $required);
         return $this;
     }
 
@@ -271,7 +267,7 @@ class Textarea extends InlineElement
     public function setRows(int $rows): static
     {
         $this->rows = $rows;
-        $this->delegated->setAttribute('rows', $rows);
+        $this->delegated->setAttribute('rows', (string) $rows);
         return $this;
     }
 
@@ -294,28 +290,5 @@ class Textarea extends InlineElement
     public function getWrap(): ?WrapEnum
     {
         return $this->wrap;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
     }
 }

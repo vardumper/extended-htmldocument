@@ -5,7 +5,7 @@
  *
  * TableRow - The tr element represents a row of cells in a table.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
@@ -15,7 +15,6 @@ namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
 use Html\Enum\AlignEnum;
-use Html\Enum\DataThemeEnum;
 use Html\Enum\ValignEnum;
 use Html\Mapping\Element;
 use InvalidArgumentException;
@@ -80,9 +79,6 @@ class TableRow extends BlockElement
      */
     protected ?ValignEnum $valign = null;
 
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
     public function setAlign(string|AlignEnum $align): static
     {
         if (is_string($align)) {
@@ -102,7 +98,7 @@ class TableRow extends BlockElement
     public function setBgcolor(string $bgcolor): static
     {
         $this->bgcolor = $bgcolor;
-        $this->delegated->setAttribute('bgcolor', $bgcolor);
+        $this->delegated->setAttribute('bgcolor', (string) $bgcolor);
         return $this;
     }
 
@@ -114,7 +110,7 @@ class TableRow extends BlockElement
     public function setChar(string $char): static
     {
         $this->char = $char;
-        $this->delegated->setAttribute('char', $char);
+        $this->delegated->setAttribute('char', (string) $char);
         return $this;
     }
 
@@ -126,7 +122,7 @@ class TableRow extends BlockElement
     public function setCharoff(string $charoff): static
     {
         $this->charoff = $charoff;
-        $this->delegated->setAttribute('charoff', $charoff);
+        $this->delegated->setAttribute('charoff', (string) $charoff);
         return $this;
     }
 
@@ -149,28 +145,5 @@ class TableRow extends BlockElement
     public function getValign(): ?ValignEnum
     {
         return $this->valign;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
     }
 }

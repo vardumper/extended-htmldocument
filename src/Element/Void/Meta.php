@@ -5,7 +5,7 @@
  *
  * Meta - The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
@@ -14,7 +14,6 @@
 namespace Html\Element\Void;
 
 use Html\Element\VoidElement;
-use Html\Enum\DataThemeEnum;
 use Html\Enum\HttpEquivEnum;
 use Html\Mapping\Element;
 use InvalidArgumentException;
@@ -79,13 +78,10 @@ class Meta extends VoidElement
      */
     protected ?HttpEquivEnum $httpEquiv = null;
 
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
     public function setCharset(string $charset): static
     {
         $this->charset = $charset;
-        $this->delegated->setAttribute('charset', $charset);
+        $this->delegated->setAttribute('charset', (string) $charset);
         return $this;
     }
 
@@ -97,7 +93,7 @@ class Meta extends VoidElement
     public function setContent(string $content): static
     {
         $this->content = $content;
-        $this->delegated->setAttribute('content', $content);
+        $this->delegated->setAttribute('content', (string) $content);
         return $this;
     }
 
@@ -127,7 +123,7 @@ class Meta extends VoidElement
     public function setName(string $name): static
     {
         $this->name = $name;
-        $this->delegated->setAttribute('name', $name);
+        $this->delegated->setAttribute('name', (string) $name);
         return $this;
     }
 
@@ -139,35 +135,12 @@ class Meta extends VoidElement
     public function setScheme(string $scheme): static
     {
         $this->scheme = $scheme;
-        $this->delegated->setAttribute('scheme', $scheme);
+        $this->delegated->setAttribute('scheme', (string) $scheme);
         return $this;
     }
 
     public function getScheme(): ?string
     {
         return $this->scheme;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
     }
 }

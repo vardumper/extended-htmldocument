@@ -143,10 +143,6 @@ final class CreateClassCommand extends Command
 
     private function buildClassData(string $element, array $elementData, string $generatedAt): array
     {
-        if (! isset($elementData['name'])) {
-            var_dump($elementData);
-            exit;
-        }
         $className = $this->getClassName(str_replace(' ', '', ucfirst($elementData['name'])));
         $level = $elementData['level'];
         $namespace = 'Html\\Element\\' . ucfirst($level);
@@ -379,7 +375,7 @@ final class CreateClassCommand extends Command
             $enumName,
             $variableName,
             $variableName,
-            $attribute,
+            $variableName,
             $variableName,
             $methodName,
             $returnType,
@@ -567,7 +563,7 @@ final class CreateClassCommand extends Command
         return "    public function set%s(%s \$%s): static
     {
         \$this->%s = \$%s;
-        \$this->delegated->setAttribute('%s', \$%s);
+        \$this->delegated->setAttribute('%s', (string) \$%s);
         return \$this;
     }
 

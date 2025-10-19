@@ -5,7 +5,7 @@
  *
  * Image - The img element represents an image.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
@@ -27,7 +27,6 @@ use Html\Element\Block\Picture;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
 use Html\Enum\CrossoriginEnum;
-use Html\Enum\DataThemeEnum;
 use Html\Enum\DecodingEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Mapping\Element;
@@ -136,13 +135,10 @@ class Image extends InlineElement
      */
     protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
     public function setAlt(string $alt): static
     {
         $this->alt = $alt;
-        $this->delegated->setAttribute('alt', $alt);
+        $this->delegated->setAttribute('alt', (string) $alt);
         return $this;
     }
 
@@ -190,7 +186,7 @@ class Image extends InlineElement
     public function setHeight(string $height): static
     {
         $this->height = $height;
-        $this->delegated->setAttribute('height', $height);
+        $this->delegated->setAttribute('height', (string) $height);
         return $this;
     }
 
@@ -202,7 +198,7 @@ class Image extends InlineElement
     public function setIsmap(bool $ismap): static
     {
         $this->ismap = $ismap;
-        $this->delegated->setAttribute('ismap', $ismap);
+        $this->delegated->setAttribute('ismap', (string) $ismap);
         return $this;
     }
 
@@ -232,7 +228,7 @@ class Image extends InlineElement
     public function setSizes(string $sizes): static
     {
         $this->sizes = $sizes;
-        $this->delegated->setAttribute('sizes', $sizes);
+        $this->delegated->setAttribute('sizes', (string) $sizes);
         return $this;
     }
 
@@ -244,7 +240,7 @@ class Image extends InlineElement
     public function setSrc(string $src): static
     {
         $this->src = $src;
-        $this->delegated->setAttribute('src', $src);
+        $this->delegated->setAttribute('src', (string) $src);
         return $this;
     }
 
@@ -256,7 +252,7 @@ class Image extends InlineElement
     public function setSrcset(string $srcset): static
     {
         $this->srcset = $srcset;
-        $this->delegated->setAttribute('srcset', $srcset);
+        $this->delegated->setAttribute('srcset', (string) $srcset);
         return $this;
     }
 
@@ -268,7 +264,7 @@ class Image extends InlineElement
     public function setUsemap(string $usemap): static
     {
         $this->usemap = $usemap;
-        $this->delegated->setAttribute('usemap', $usemap);
+        $this->delegated->setAttribute('usemap', (string) $usemap);
         return $this;
     }
 
@@ -280,35 +276,12 @@ class Image extends InlineElement
     public function setWidth(string $width): static
     {
         $this->width = $width;
-        $this->delegated->setAttribute('width', $width);
+        $this->delegated->setAttribute('width', (string) $width);
         return $this;
     }
 
     public function getWidth(): ?string
     {
         return $this->width;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
     }
 }

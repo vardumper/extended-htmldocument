@@ -5,7 +5,7 @@
  *
  * Audio - The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
@@ -16,7 +16,6 @@ namespace Html\Element\Block;
 use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
 use Html\Enum\CrossoriginEnum;
-use Html\Enum\DataThemeEnum;
 use Html\Enum\PreloadEnum;
 use Html\Mapping\Element;
 use InvalidArgumentException;
@@ -96,13 +95,10 @@ class Audio extends BlockElement
 
     protected ?PreloadEnum $preload = null;
 
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
     public function setAutoplay(bool $autoplay): static
     {
         $this->autoplay = $autoplay;
-        $this->delegated->setAttribute('autoplay', $autoplay);
+        $this->delegated->setAttribute('autoplay', (string) $autoplay);
         return $this;
     }
 
@@ -114,7 +110,7 @@ class Audio extends BlockElement
     public function setControls(bool $controls): static
     {
         $this->controls = $controls;
-        $this->delegated->setAttribute('controls', $controls);
+        $this->delegated->setAttribute('controls', (string) $controls);
         return $this;
     }
 
@@ -144,7 +140,7 @@ class Audio extends BlockElement
     public function setLoop(bool $loop): static
     {
         $this->loop = $loop;
-        $this->delegated->setAttribute('loop', $loop);
+        $this->delegated->setAttribute('loop', (string) $loop);
         return $this;
     }
 
@@ -156,7 +152,7 @@ class Audio extends BlockElement
     public function setMuted(bool $muted): static
     {
         $this->muted = $muted;
-        $this->delegated->setAttribute('muted', $muted);
+        $this->delegated->setAttribute('muted', (string) $muted);
         return $this;
     }
 
@@ -186,35 +182,12 @@ class Audio extends BlockElement
     public function setSrc(string $src): static
     {
         $this->src = $src;
-        $this->delegated->setAttribute('src', $src);
+        $this->delegated->setAttribute('src', (string) $src);
         return $this;
     }
 
     public function getSrc(): ?string
     {
         return $this->src;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
     }
 }

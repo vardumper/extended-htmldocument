@@ -5,7 +5,7 @@
  *
  * Link - The link element defines a link between a document and an external resource. It is used to link to external stylesheets.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
@@ -15,7 +15,6 @@ namespace Html\Element\Void;
 
 use Html\Element\VoidElement;
 use Html\Enum\CrossoriginEnum;
-use Html\Enum\DataThemeEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\RelEnum;
 use Html\Mapping\Element;
@@ -99,9 +98,6 @@ class Link extends VoidElement
      */
     protected ?RelEnum $rel = null;
 
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
     public function setCrossorigin(string|CrossoriginEnum $crossorigin): static
     {
         if (is_string($crossorigin)) {
@@ -123,7 +119,7 @@ class Link extends VoidElement
     public function setHref(string $href): static
     {
         $this->href = $href;
-        $this->delegated->setAttribute('href', $href);
+        $this->delegated->setAttribute('href', (string) $href);
         return $this;
     }
 
@@ -135,7 +131,7 @@ class Link extends VoidElement
     public function setHreflang(string $hreflang): static
     {
         $this->hreflang = $hreflang;
-        $this->delegated->setAttribute('hreflang', $hreflang);
+        $this->delegated->setAttribute('hreflang', (string) $hreflang);
         return $this;
     }
 
@@ -147,7 +143,7 @@ class Link extends VoidElement
     public function setIntegrity(string $integrity): static
     {
         $this->integrity = $integrity;
-        $this->delegated->setAttribute('integrity', $integrity);
+        $this->delegated->setAttribute('integrity', (string) $integrity);
         return $this;
     }
 
@@ -159,7 +155,7 @@ class Link extends VoidElement
     public function setMedia(string $media): static
     {
         $this->media = $media;
-        $this->delegated->setAttribute('media', $media);
+        $this->delegated->setAttribute('media', (string) $media);
         return $this;
     }
 
@@ -205,7 +201,7 @@ class Link extends VoidElement
     public function setSizes(string $sizes): static
     {
         $this->sizes = $sizes;
-        $this->delegated->setAttribute('sizes', $sizes);
+        $this->delegated->setAttribute('sizes', (string) $sizes);
         return $this;
     }
 
@@ -217,35 +213,12 @@ class Link extends VoidElement
     public function setType(string $type): static
     {
         $this->type = $type;
-        $this->delegated->setAttribute('type', $type);
+        $this->delegated->setAttribute('type', (string) $type);
         return $this;
     }
 
     public function getType(): ?string
     {
         return $this->type;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
     }
 }

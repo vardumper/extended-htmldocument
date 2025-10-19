@@ -5,7 +5,7 @@
  *
  * Source - The source element allows authors to specify multiple media resources for media elements. It is an empty element. It is commonly used within the picture element.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source
@@ -23,7 +23,6 @@ use Html\Element\Block\Picture;
 use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
-use Html\Enum\DataThemeEnum;
 use Html\Mapping\Element;
 
 #[Element('source')]
@@ -92,13 +91,10 @@ class Source extends VoidElement
      */
     public ?string $type = null;
 
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
     public function setMedia(string $media): static
     {
         $this->media = $media;
-        $this->delegated->setAttribute('media', $media);
+        $this->delegated->setAttribute('media', (string) $media);
         return $this;
     }
 
@@ -110,7 +106,7 @@ class Source extends VoidElement
     public function setSizes(string $sizes): static
     {
         $this->sizes = $sizes;
-        $this->delegated->setAttribute('sizes', $sizes);
+        $this->delegated->setAttribute('sizes', (string) $sizes);
         return $this;
     }
 
@@ -122,7 +118,7 @@ class Source extends VoidElement
     public function setSrc(string $src): static
     {
         $this->src = $src;
-        $this->delegated->setAttribute('src', $src);
+        $this->delegated->setAttribute('src', (string) $src);
         return $this;
     }
 
@@ -134,35 +130,12 @@ class Source extends VoidElement
     public function setType(string $type): static
     {
         $this->type = $type;
-        $this->delegated->setAttribute('type', $type);
+        $this->delegated->setAttribute('type', (string) $type);
         return $this;
     }
 
     public function getType(): ?string
     {
         return $this->type;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
     }
 }

@@ -5,7 +5,7 @@
  *
  * Main - The main element represents the dominant content of the body of a document. The main content area consists of content that is directly related to or expands upon the central topic of a document, or the central functionality of an application.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main
@@ -52,7 +52,6 @@ use Html\Element\Void\Parameter;
 use Html\Element\Void\Source;
 use Html\Element\Void\Track;
 use Html\Element\Void\WordBreakOpportunity;
-use Html\Enum\DataThemeEnum;
 use Html\Mapping\Element;
 
 #[Element('main')]
@@ -155,30 +154,4 @@ class Main extends BlockElement
         Video::class,
         WordBreakOpportunity::class,
     ];
-
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
-    }
 }

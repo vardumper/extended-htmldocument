@@ -5,7 +5,7 @@
  *
  * InlineFrame - The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
@@ -16,7 +16,6 @@ namespace Html\Element\Block;
 use Html\Element\BlockElement;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
-use Html\Enum\DataThemeEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Mapping\Element;
 use InvalidArgumentException;
@@ -106,13 +105,10 @@ class InlineFrame extends BlockElement
      */
     protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
     public function setAllowfullscreen(bool $allowfullscreen): static
     {
         $this->allowfullscreen = $allowfullscreen;
-        $this->delegated->setAttribute('allowfullscreen', $allowfullscreen);
+        $this->delegated->setAttribute('allowfullscreen', (string) $allowfullscreen);
         return $this;
     }
 
@@ -124,7 +120,7 @@ class InlineFrame extends BlockElement
     public function setHeight(string $height): static
     {
         $this->height = $height;
-        $this->delegated->setAttribute('height', $height);
+        $this->delegated->setAttribute('height', (string) $height);
         return $this;
     }
 
@@ -136,7 +132,7 @@ class InlineFrame extends BlockElement
     public function setName(string $name): static
     {
         $this->name = $name;
-        $this->delegated->setAttribute('name', $name);
+        $this->delegated->setAttribute('name', (string) $name);
         return $this;
     }
 
@@ -166,7 +162,7 @@ class InlineFrame extends BlockElement
     public function setSandbox(string $sandbox): static
     {
         $this->sandbox = $sandbox;
-        $this->delegated->setAttribute('sandbox', $sandbox);
+        $this->delegated->setAttribute('sandbox', (string) $sandbox);
         return $this;
     }
 
@@ -178,7 +174,7 @@ class InlineFrame extends BlockElement
     public function setSeamless(bool $seamless): static
     {
         $this->seamless = $seamless;
-        $this->delegated->setAttribute('seamless', $seamless);
+        $this->delegated->setAttribute('seamless', (string) $seamless);
         return $this;
     }
 
@@ -190,7 +186,7 @@ class InlineFrame extends BlockElement
     public function setSrc(string $src): static
     {
         $this->src = $src;
-        $this->delegated->setAttribute('src', $src);
+        $this->delegated->setAttribute('src', (string) $src);
         return $this;
     }
 
@@ -202,7 +198,7 @@ class InlineFrame extends BlockElement
     public function setSrcdoc(string $srcdoc): static
     {
         $this->srcdoc = $srcdoc;
-        $this->delegated->setAttribute('srcdoc', $srcdoc);
+        $this->delegated->setAttribute('srcdoc', (string) $srcdoc);
         return $this;
     }
 
@@ -214,35 +210,12 @@ class InlineFrame extends BlockElement
     public function setWidth(string $width): static
     {
         $this->width = $width;
-        $this->delegated->setAttribute('width', $width);
+        $this->delegated->setAttribute('width', (string) $width);
         return $this;
     }
 
     public function getWidth(): ?string
     {
         return $this->width;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
     }
 }

@@ -48,12 +48,66 @@ final class CreateEnumCommand extends Command
             $this->data = Yaml::parseFile($htmlDefinitionPath);
         }
 
-        // Get the enum attributes
+
+        // Aggregate all data-* attributes with type enum and identical choices
+        $dataEnums = [];
+        $dataDescriptions = [];
+        foreach ($this->data as $element => $details) {
+            if (isset($details['attributes'])) {
+                foreach ($details['attributes'] as $attr => $attrDetails) {
+                    if (str_starts_with($attr, 'data-') && isset($attrDetails['type']) && str_contains(
+                        $attrDetails['type'],
+                        'enum'
+                    ) && isset($attrDetails['choices'])) {
+                        $key = $attr . ':' . implode('|', $attrDetails['choices']);
+                        $dataEnums[$attr][$key] = $attrDetails['choices'];
+                        if (isset($attrDetails['description'])) {
+                            $dataDescriptions[$attr] = $attrDetails['description'];
+                        }
+                    }
+                }
+            }
+        }
+
+        // Only generate one enum per data-* attribute with identical choices
+        foreach ($dataEnums as $attr => $choicesSets) {
+            // Use the first set of choices (all should be identical for this attr)
+            $choices = reset($choicesSets);
+            $cases = '';
+            foreach ($choices as $option) {
+                $caseName = $this->getCaseName($option);
+                $cases .= sprintf("    case %s = '%s';", $caseName, $option) . \PHP_EOL;
+            }
+            $className = $this->getClassName(
+                ucfirst(str_replace(' ', '', ucwords(str_replace('-', ' ', $attr)))) . 'Enum'
+            );
+            $parameters = [
+                'namespace' => 'Html\Enum',
+                'class_name' => $className,
+                'cases' => rtrim($cases),
+                'description' => $dataDescriptions[$attr] ?? '',
+                'element_name' => $attr,
+                'defaultValue' => '',
+                'defaultCase' => '',
+                'generatedAt' => date('Y-m-d H:i:s'),
+            ];
+            $path = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Enum' . \DIRECTORY_SEPARATOR . "{$className}.php";
+            $templatePath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'templates' . \DIRECTORY_SEPARATOR . 'Enum.tpl.php';
+            $this->createEnumFile($templatePath, $parameters, $path);
+            $io->success("Enumeration class for '{$attr}' created successfully.");
+        }
+
+
+        // Continue with normal enum generation for other attributes (excluding data-*)
         $enumAttributes = $this->findEnumAttributes();
 
         $generatedAt = \date('Y-m-d H:i:s');
         foreach ($enumAttributes as $enumAttribute) {
             foreach ($enumAttribute as $element => $attributes) {
+                // Skip data-* attributes, already handled
+                if (str_starts_with($element, 'data-')) {
+                    continue;
+                }
                 $io->info("Creating enumeration class for '{$element}'");
 
                 if (! isset($attributes['choices'])) {

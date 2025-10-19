@@ -5,7 +5,7 @@
  *
  * Style - The style element is used to embed CSS styles directly into an HTML document.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
@@ -14,7 +14,6 @@
 namespace Html\Element\Void;
 
 use Html\Element\VoidElement;
-use Html\Enum\DataThemeEnum;
 use Html\Enum\TypeStyleEnum;
 use Html\Mapping\Element;
 use InvalidArgumentException;
@@ -75,13 +74,10 @@ class Style extends VoidElement
      */
     protected ?TypeStyleEnum $type = null;
 
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
     public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
-        $this->delegated->setAttribute('disabled', $disabled);
+        $this->delegated->setAttribute('disabled', (string) $disabled);
         return $this;
     }
 
@@ -93,7 +89,7 @@ class Style extends VoidElement
     public function setMedia(string $media): static
     {
         $this->media = $media;
-        $this->delegated->setAttribute('media', $media);
+        $this->delegated->setAttribute('media', (string) $media);
         return $this;
     }
 
@@ -105,7 +101,7 @@ class Style extends VoidElement
     public function setNonce(string $nonce): static
     {
         $this->nonce = $nonce;
-        $this->delegated->setAttribute('nonce', $nonce);
+        $this->delegated->setAttribute('nonce', (string) $nonce);
         return $this;
     }
 
@@ -117,7 +113,7 @@ class Style extends VoidElement
     public function setTitle(string $title): static
     {
         $this->title = $title;
-        $this->delegated->setAttribute('title', $title);
+        $this->delegated->setAttribute('title', (string) $title);
         return $this;
     }
 
@@ -140,28 +136,5 @@ class Style extends VoidElement
     public function getType(): ?TypeStyleEnum
     {
         return $this->type;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
     }
 }

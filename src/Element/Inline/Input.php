@@ -5,7 +5,7 @@
  *
  * Input - The input element represents a typed data field, usually with a form control to allow user input.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
@@ -28,7 +28,6 @@ use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Enum\AutocompleteEnum;
-use Html\Enum\DataThemeEnum;
 use Html\Enum\TypeInputEnum;
 use Html\Mapping\Element;
 use InvalidArgumentException;
@@ -205,13 +204,10 @@ class Input extends InlineElement
      */
     protected ?TypeInputEnum $type = null;
 
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
     public function setAccept(string $accept): static
     {
         $this->accept = $accept;
-        $this->delegated->setAttribute('accept', $accept);
+        $this->delegated->setAttribute('accept', (string) $accept);
         return $this;
     }
 
@@ -223,7 +219,7 @@ class Input extends InlineElement
     public function setAlt(string $alt): static
     {
         $this->alt = $alt;
-        $this->delegated->setAttribute('alt', $alt);
+        $this->delegated->setAttribute('alt', (string) $alt);
         return $this;
     }
 
@@ -253,7 +249,7 @@ class Input extends InlineElement
     public function setChecked(bool $checked): static
     {
         $this->checked = $checked;
-        $this->delegated->setAttribute('checked', $checked);
+        $this->delegated->setAttribute('checked', (string) $checked);
         return $this;
     }
 
@@ -265,7 +261,7 @@ class Input extends InlineElement
     public function setDirname(string $dirname): static
     {
         $this->dirname = $dirname;
-        $this->delegated->setAttribute('dirname', $dirname);
+        $this->delegated->setAttribute('dirname', (string) $dirname);
         return $this;
     }
 
@@ -277,7 +273,7 @@ class Input extends InlineElement
     public function setDisabled(bool $disabled): static
     {
         $this->disabled = $disabled;
-        $this->delegated->setAttribute('disabled', $disabled);
+        $this->delegated->setAttribute('disabled', (string) $disabled);
         return $this;
     }
 
@@ -289,7 +285,7 @@ class Input extends InlineElement
     public function setHeight(string $height): static
     {
         $this->height = $height;
-        $this->delegated->setAttribute('height', $height);
+        $this->delegated->setAttribute('height', (string) $height);
         return $this;
     }
 
@@ -301,7 +297,7 @@ class Input extends InlineElement
     public function setList(string $list): static
     {
         $this->list = $list;
-        $this->delegated->setAttribute('list', $list);
+        $this->delegated->setAttribute('list', (string) $list);
         return $this;
     }
 
@@ -313,7 +309,7 @@ class Input extends InlineElement
     public function setMax(int $max): static
     {
         $this->max = $max;
-        $this->delegated->setAttribute('max', $max);
+        $this->delegated->setAttribute('max', (string) $max);
         return $this;
     }
 
@@ -325,7 +321,7 @@ class Input extends InlineElement
     public function setMaxlength(int $maxlength): static
     {
         $this->maxlength = $maxlength;
-        $this->delegated->setAttribute('maxlength', $maxlength);
+        $this->delegated->setAttribute('maxlength', (string) $maxlength);
         return $this;
     }
 
@@ -337,7 +333,7 @@ class Input extends InlineElement
     public function setMin(string $min): static
     {
         $this->min = $min;
-        $this->delegated->setAttribute('min', $min);
+        $this->delegated->setAttribute('min', (string) $min);
         return $this;
     }
 
@@ -349,7 +345,7 @@ class Input extends InlineElement
     public function setMinlength(int $minlength): static
     {
         $this->minlength = $minlength;
-        $this->delegated->setAttribute('minlength', $minlength);
+        $this->delegated->setAttribute('minlength', (string) $minlength);
         return $this;
     }
 
@@ -361,7 +357,7 @@ class Input extends InlineElement
     public function setMultiple(bool $multiple): static
     {
         $this->multiple = $multiple;
-        $this->delegated->setAttribute('multiple', $multiple);
+        $this->delegated->setAttribute('multiple', (string) $multiple);
         return $this;
     }
 
@@ -373,7 +369,7 @@ class Input extends InlineElement
     public function setName(string $name): static
     {
         $this->name = $name;
-        $this->delegated->setAttribute('name', $name);
+        $this->delegated->setAttribute('name', (string) $name);
         return $this;
     }
 
@@ -385,7 +381,7 @@ class Input extends InlineElement
     public function setPattern(string $pattern): static
     {
         $this->pattern = $pattern;
-        $this->delegated->setAttribute('pattern', $pattern);
+        $this->delegated->setAttribute('pattern', (string) $pattern);
         return $this;
     }
 
@@ -397,7 +393,7 @@ class Input extends InlineElement
     public function setPlaceholder(string $placeholder): static
     {
         $this->placeholder = $placeholder;
-        $this->delegated->setAttribute('placeholder', $placeholder);
+        $this->delegated->setAttribute('placeholder', (string) $placeholder);
         return $this;
     }
 
@@ -409,7 +405,7 @@ class Input extends InlineElement
     public function setReadonly(bool $readonly): static
     {
         $this->readonly = $readonly;
-        $this->delegated->setAttribute('readonly', $readonly);
+        $this->delegated->setAttribute('readonly', (string) $readonly);
         return $this;
     }
 
@@ -421,7 +417,7 @@ class Input extends InlineElement
     public function setRequired(bool $required): static
     {
         $this->required = $required;
-        $this->delegated->setAttribute('required', $required);
+        $this->delegated->setAttribute('required', (string) $required);
         return $this;
     }
 
@@ -433,7 +429,7 @@ class Input extends InlineElement
     public function setSize(int $size): static
     {
         $this->size = $size;
-        $this->delegated->setAttribute('size', $size);
+        $this->delegated->setAttribute('size', (string) $size);
         return $this;
     }
 
@@ -445,7 +441,7 @@ class Input extends InlineElement
     public function setSrc(string $src): static
     {
         $this->src = $src;
-        $this->delegated->setAttribute('src', $src);
+        $this->delegated->setAttribute('src', (string) $src);
         return $this;
     }
 
@@ -457,7 +453,7 @@ class Input extends InlineElement
     public function setStep(string $step): static
     {
         $this->step = $step;
-        $this->delegated->setAttribute('step', $step);
+        $this->delegated->setAttribute('step', (string) $step);
         return $this;
     }
 
@@ -485,7 +481,7 @@ class Input extends InlineElement
     public function setValue(string $value): static
     {
         $this->value = $value;
-        $this->delegated->setAttribute('value', $value);
+        $this->delegated->setAttribute('value', (string) $value);
         return $this;
     }
 
@@ -497,35 +493,12 @@ class Input extends InlineElement
     public function setWidth(string $width): static
     {
         $this->width = $width;
-        $this->delegated->setAttribute('width', $width);
+        $this->delegated->setAttribute('width', (string) $width);
         return $this;
     }
 
     public function getWidth(): ?string
     {
         return $this->width;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
     }
 }

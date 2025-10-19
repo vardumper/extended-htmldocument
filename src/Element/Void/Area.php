@@ -5,7 +5,7 @@
  *
  * Area - The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.
  *
- * @generated 2025-10-19 14:41:30
+ * @generated 2025-10-19 18:53:35
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area
@@ -26,7 +26,6 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
-use Html\Enum\DataThemeEnum;
 use Html\Enum\RelEnum;
 use Html\Enum\ShapeEnum;
 use Html\Enum\TargetEnum;
@@ -126,13 +125,10 @@ class Area extends VoidElement
      */
     protected ?TargetEnum $target = null;
 
-    /** Choose between light and dark mode. Overrides the OS default if set. */
-    protected null|string|DataThemeEnum $dataTheme = null;
-
     public function setAlt(string $alt): static
     {
         $this->alt = $alt;
-        $this->delegated->setAttribute('alt', $alt);
+        $this->delegated->setAttribute('alt', (string) $alt);
         return $this;
     }
 
@@ -144,7 +140,7 @@ class Area extends VoidElement
     public function setCoords(string $coords): static
     {
         $this->coords = $coords;
-        $this->delegated->setAttribute('coords', $coords);
+        $this->delegated->setAttribute('coords', (string) $coords);
         return $this;
     }
 
@@ -156,7 +152,7 @@ class Area extends VoidElement
     public function setDownload(string $download): static
     {
         $this->download = $download;
-        $this->delegated->setAttribute('download', $download);
+        $this->delegated->setAttribute('download', (string) $download);
         return $this;
     }
 
@@ -168,7 +164,7 @@ class Area extends VoidElement
     public function setHref(string $href): static
     {
         $this->href = $href;
-        $this->delegated->setAttribute('href', $href);
+        $this->delegated->setAttribute('href', (string) $href);
         return $this;
     }
 
@@ -180,7 +176,7 @@ class Area extends VoidElement
     public function setHreflang(string $hreflang): static
     {
         $this->hreflang = $hreflang;
-        $this->delegated->setAttribute('hreflang', $hreflang);
+        $this->delegated->setAttribute('hreflang', (string) $hreflang);
         return $this;
     }
 
@@ -240,35 +236,12 @@ class Area extends VoidElement
     public function setType(string $type): static
     {
         $this->type = $type;
-        $this->delegated->setAttribute('type', $type);
+        $this->delegated->setAttribute('type', (string) $type);
         return $this;
     }
 
     public function getType(): ?string
     {
         return $this->type;
-    }
-
-    public function setDataTheme(string|DataThemeEnum $dataTheme): static
-    {
-        $value = $dataTheme;
-        if (is_string($dataTheme)) {
-            $resolved = DataThemeEnum::tryFrom($dataTheme);
-            if ($resolved !== null) {
-                $dataTheme = $resolved;
-            }
-        }
-        if ($dataTheme instanceof DataThemeEnum) {
-            $value = $dataTheme->value;
-        }
-        $this->dataTheme = $data - theme;
-        $this->delegated->setAttribute('dataTheme', (string) $value);
-
-        return $this;
-    }
-
-    public function getDataTheme(): string|DataThemeEnum
-    {
-        return $this->dataTheme;
     }
 }
