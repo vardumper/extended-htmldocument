@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:b1371da7-013b-40ca-9dc7-864428fe19d2",
+  "serialNumber": "urn:uuid:b8bb58fa-c9c5-4277-8a4a-b4d5e148977b",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-10-19T14:43:31+00:00",
+    "timestamp": "2025-10-23T23:11:11+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "ee23bd5e-fab0-423f-ad9d-81469660b61e",
+      "bom-ref": "d4ec7b17-0180-40d0-a879-1a398cd8322a",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,22 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "22b54fd5-1483-458c-98d3-a7b153e83d8a",
-      "type": "application",
-      "name": "composer.lock",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:Class",
-          "value": "lang-pkgs"
-        },
-        {
-          "name": "aquasecurity:trivy:Type",
-          "value": "composer"
-        }
-      ]
-    },
-    {
-      "bom-ref": "f7c57792-3993-446c-9240-d2aa46491aa8",
+      "bom-ref": "546b6fed-0efb-4f19-9ea2-f5de7018c86b",
       "type": "application",
       "name": "yarn.lock",
       "properties": [
@@ -56,6 +41,21 @@
         {
           "name": "aquasecurity:trivy:Type",
           "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "be711598-c3ec-4574-8289-ac44006659b6",
+      "type": "application",
+      "name": "composer.lock",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:Class",
+          "value": "lang-pkgs"
+        },
+        {
+          "name": "aquasecurity:trivy:Type",
+          "value": "composer"
         }
       ]
     },
@@ -3225,7 +3225,14 @@
   ],
   "dependencies": [
     {
-      "ref": "22b54fd5-1483-458c-98d3-a7b153e83d8a",
+      "ref": "546b6fed-0efb-4f19-9ea2-f5de7018c86b",
+      "dependsOn": [
+        "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
+        "pkg:npm/vitepress@1.6.4"
+      ]
+    },
+    {
+      "ref": "be711598-c3ec-4574-8289-ac44006659b6",
       "dependsOn": [
         "pkg:composer/mnapoli/silly@1.9.1",
         "pkg:composer/revolt/event-loop@v1.0.7",
@@ -3233,17 +3240,10 @@
       ]
     },
     {
-      "ref": "ee23bd5e-fab0-423f-ad9d-81469660b61e",
+      "ref": "d4ec7b17-0180-40d0-a879-1a398cd8322a",
       "dependsOn": [
-        "22b54fd5-1483-458c-98d3-a7b153e83d8a",
-        "f7c57792-3993-446c-9240-d2aa46491aa8"
-      ]
-    },
-    {
-      "ref": "f7c57792-3993-446c-9240-d2aa46491aa8",
-      "dependsOn": [
-        "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
-        "pkg:npm/vitepress@1.6.4"
+        "546b6fed-0efb-4f19-9ea2-f5de7018c86b",
+        "be711598-c3ec-4574-8289-ac44006659b6"
       ]
     },
     {
@@ -4442,6 +4442,71 @@
           "versions": [
             {
               "version": "6.26.0",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2025-62522",
+      "source": {
+        "name": "ghsa",
+        "url": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+      },
+      "ratings": [
+        {
+          "source": {
+            "name": "ghsa"
+          },
+          "severity": "medium"
+        },
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 6.5,
+          "severity": "medium",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "cwes": [
+        22
+      ],
+      "description": "Vite is a frontend tooling framework for JavaScript. In versions from 2.9.18 to before 3.0.0, 3.2.9 to before 4.0.0, 4.5.3 to before 5.0.0, 5.2.6 to before 5.4.21, 6.0.0 to before 6.4.1, 7.0.0 to before 7.0.8, and 7.1.0 to before 7.1.11, files denied by server.fs.deny were sent if the URL ended with \\ when the dev server is running on Windows. Only apps explicitly exposing the Vite dev server to the network and running the dev server on Windows were affected. This issue has been patched in versions 5.4.21, 6.4.1, 7.0.8, and 7.1.11.",
+      "recommendation": "Upgrade vite to version 7.1.11, 7.0.8, 6.4.1, 5.4.21",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2025-62522"
+        },
+        {
+          "url": "https://access.redhat.com/security/cve/CVE-2025-62522"
+        },
+        {
+          "url": "https://github.com/vitejs/vite"
+        },
+        {
+          "url": "https://github.com/vitejs/vite/commit/f479cc57c425ed41ceb434fecebd63931b1ed4ed"
+        },
+        {
+          "url": "https://github.com/vitejs/vite/security/advisories/GHSA-93m4-6634-74q7"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-62522"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-62522"
+        }
+      ],
+      "published": "2025-10-20T20:15:37+00:00",
+      "updated": "2025-10-21T19:31:25+00:00",
+      "affects": [
+        {
+          "ref": "pkg:npm/vite@5.4.19",
+          "versions": [
+            {
+              "version": "5.4.19",
               "status": "affected"
             }
           ]
