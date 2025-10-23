@@ -5,7 +5,7 @@
  *
  * Style - The style element is used to embed CSS styles directly into an HTML document.
  *
- * @generated 2025-10-19 21:49:08
+ * @generated 2025-10-23 23:06:19
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
@@ -13,6 +13,7 @@
 
 namespace Html\Element\Void;
 
+use Html\Element\Inline\ScalableVectorGraphics;
 use Html\Element\VoidElement;
 use Html\Enum\TypeStyleEnum;
 use Html\Mapping\Element;
@@ -40,7 +41,7 @@ class Style extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Head::class];
+    public static array $childOf = [Head::class, ScalableVectorGraphics::class];
 
     /**
      * The list of allowed direct children. Any if empty.

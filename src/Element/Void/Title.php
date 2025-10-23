@@ -5,7 +5,7 @@
  *
  * Title - The title element defines the title of the document, shown in a browser's title bar or a page's tab. It is only text, not meant to be displayed.
  *
- * @generated 2025-10-19 21:49:08
+ * @generated 2025-10-23 23:06:19
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
@@ -13,6 +13,7 @@
 
 namespace Html\Element\Void;
 
+use Html\Element\Inline\ScalableVectorGraphics;
 use Html\Element\VoidElement;
 use Html\Mapping\Element;
 
@@ -38,7 +39,7 @@ class Title extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Head::class];
+    public static array $childOf = [Head::class, ScalableVectorGraphics::class];
 
     /**
      * The list of allowed direct children. Any if empty.

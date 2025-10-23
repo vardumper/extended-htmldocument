@@ -5,7 +5,7 @@
  *
  * HTML - The root element of an HTML document. It represents the top-level of the HTML structure.
  *
- * @generated 2025-10-19 21:49:08
+ * @generated 2025-10-23 23:06:19
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html

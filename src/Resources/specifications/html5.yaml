@@ -3268,6 +3268,125 @@ sup:
   level: inline
   unique: false
   text: string
+svg:
+  name: Scalable Vector Graphics
+  description: 'The svg element is a container for embedded SVG graphics.'
+  level: inline
+  unique: false
+  attributes:
+    xmlns:
+      description: 'Specifies the XML namespace for the SVG element.'
+      type: uri
+      elements:
+        - svg
+      defaultValue: 'http://www.w3.org/2000/svg'
+    viewBox:
+      description: 'Defines the position and dimension, in user space, of an SVG viewport.'
+      type: string
+      elements:
+        - svg
+    stroke:
+      description: 'Specifies the color of the stroke (outline) of shapes.'
+      type: string
+      elements:
+        - svg
+    fill:
+      description: 'Specifies the color of the interior of shapes.'
+      type: string
+      elements:
+        - svg
+    width:
+      description: 'Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).'
+      type: string
+      elements:
+        - canvas
+        - embed
+        - iframe
+        - img
+        - input
+        - object
+        - video
+        - svg
+    height:
+      description: 'Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).'
+      type: string
+      elements:
+        - canvas
+        - embed
+        - iframe
+        - img
+        - input
+        - object
+        - video
+        - svg
+  children:
+    - a
+    - animate
+    - animateMotion
+    - animateTransform
+    - circle
+    - clipPath
+    - color-profile
+    - defs
+    - desc
+    - discard
+    - ellipse
+    - feBlend
+    - feColorMatrix
+    - feComponentTransfer
+    - feComposite
+    - feConvolveMatrix
+    - feDiffuseLighting
+    - feDisplacementMap
+    - feDistantLight
+    - feDropShadow
+    - feFlood
+    - feFuncA
+    - feFuncB
+    - feFuncG
+    - feFuncR
+    - feGaussianBlur
+    - feImage
+    - feMerge
+    - feMergeNode
+    - feMorphology
+    - feOffset
+    - fePointLight
+    - feSpecularLighting
+    - feSpotLight
+    - feTile
+    - feTurbulence
+    - filter
+    - foreignObject
+    - g
+    - image
+    - line
+    - linearGradient
+    - marker
+    - mask
+    - metadata
+    - mpath
+    - path
+    - pattern
+    - polygon
+    - polyline
+    - radialGradient
+    - rect
+    - script
+    - set
+    - stop
+    - style
+    - svg
+    - switch
+    - symbol
+    - text
+    - textPath
+    - title
+    - tspan
+    - unknown
+    - use
+    - view
+
 table:
   name: Table
   description: 'The table element represents tabular data — that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.'
