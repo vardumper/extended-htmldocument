@@ -16,7 +16,7 @@ interface TemplateGeneratorInterface
 
     public function render(HTMLElementDelegatorInterface|HTMLDocumentDelegatorInterface $elementOrDocument): ?string;
 
-    public function renderElement(HTMLElementDelegatorInterface $element): string;
+    // public function renderElement(HTMLElementDelegatorInterface $element): string;
 
-    public function renderDocument(HTMLDocumentDelegatorInterface $document): string;
+    // public function renderDocument(HTMLDocumentDelegatorInterface $document): string;
 }

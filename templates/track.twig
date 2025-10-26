@@ -1,0 +1,33 @@
+{# track.twig #}
+{% set contenteditable_choices = ['true', 'false', 'inherit'] %}
+{% set kind_choices = ['captions', 'chapters', 'descriptions', 'metadata', 'subtitles'] %}
+{% set spellcheck_choices = ['true', 'false'] %}
+
+<track
+  {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
+  {% if class is defined and class|length > 0 %}class='{{ class }}'{% endif %}
+  {% if contenteditable is defined and contenteditable|length > 0 and contenteditable in contenteditable_choices %}contenteditable='{{ contenteditable }}'{% endif %}
+  {% if default is defined and default|length > 0 %}default='{{ default }}'{% endif %}
+  {% if draggable is defined and draggable|length > 0 %}draggable='{{ draggable }}'{% endif %}
+  {% if hidden is defined and hidden|length > 0 %}hidden='{{ hidden }}'{% endif %}
+  {% if id is defined and id|length > 0 %}id='{{ id }}'{% endif %}
+  {% if inert is defined and inert|length > 0 %}inert='{{ inert }}'{% endif %}
+  {% if attribute(_context, 'is') is defined and attribute(_context, 'is')|length > 0 %}is='{{ attribute(_context, 'is') }}'{% endif %}
+  {% if kind is defined and kind|length > 0 and kind in kind_choices %}kind='{{ kind }}'{% endif %}
+  {% if label is defined and label|length > 0 %}label='{{ label }}'{% endif %}
+  {% if lang is defined and lang|length > 0 %}lang='{{ lang }}'{% endif %}
+  {% if nonce is defined and nonce|length > 0 %}nonce='{{ nonce }}'{% endif %}
+  {% if part is defined and part|length > 0 %}part='{{ part }}'{% endif %}
+  {% if popover is defined and popover|length > 0 %}popover='{{ popover }}'{% endif %}
+  {% if role is defined and role|length > 0 %}role='{{ role }}'{% endif %}
+  {% if slot is defined and slot|length > 0 %}slot='{{ slot }}'{% endif %}
+  {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck='{{ spellcheck }}'{% endif %}
+  {% if src is defined and src|length > 0 %}src='{{ src }}'{% endif %}
+  {% if srclang is defined and srclang|length > 0 %}srclang='{{ srclang }}'{% endif %}
+  {% if style is defined and style|length > 0 %}style='{{ style }}'{% endif %}
+  {% if tabindex is defined and tabindex|length > 0 %}tabindex='{{ tabindex }}'{% endif %}
+  {% if title is defined and title|length > 0 %}title='{{ title }}'{% endif %}
+  {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
+>
+  {{ content|raw }}
+</track>

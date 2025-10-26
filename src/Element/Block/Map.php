@@ -5,7 +5,7 @@
  *
  * Map - The map element, in conjunction with an img element and any area element descendants, defines an image map. The element represents a related collection of map areas.
  *
- * @generated 2025-10-23 23:06:19
+ * @generated 2025-10-26 20:40:54
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/map

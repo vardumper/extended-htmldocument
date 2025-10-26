@@ -5,7 +5,7 @@
  *
  * BidirectionalOverride - The bdo element represents explicit text directionality formatting control for its children. It allows authors to override the Unicode bidirectional algorithm by explicitly specifying a direction override.
  *
- * @generated 2025-10-23 23:06:19
+ * @generated 2025-10-26 20:40:54
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo

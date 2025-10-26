@@ -5,7 +5,7 @@
  *
  * ValignEnum - Specifies the vertical alignment of each row cell. The possible enumerated values are baseline, bottom, middle, and top. Use the vertical-align CSS property instead, as this attribute is deprecated.
  *
- * @generated 2025-10-23 23:06:19
+ * @generated 2025-10-26 20:40:54
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/valign/

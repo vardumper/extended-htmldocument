@@ -5,7 +5,7 @@
  *
  * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
  *
- * @generated 2025-10-23 23:06:19
+ * @generated 2025-10-26 20:40:54
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button

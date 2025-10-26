@@ -5,7 +5,7 @@
  *
  * Heading5 - The h5 element represents a section heading. It has the fifth highest rank among the six levels of section headings.
  *
- * @generated 2025-10-23 23:06:19
+ * @generated 2025-10-26 20:40:54
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h5

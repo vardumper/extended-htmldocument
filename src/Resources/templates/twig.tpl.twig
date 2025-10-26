@@ -1,0 +1,20 @@
+{# {{ elementName }}.twig #}
+{% for enum in enums %}
+{% set {{ enum.name }}_choices = [{{ enum.choices|join(', ') }}] %}
+{% endfor %}
+
+<{{ elementName }}
+    {% for attr in attributes %}
+    {% if attribute(attr) is defined
+        and (not attribute(attr ~ '_choices') is defined or attribute(attr) in attribute(attr ~ '_choices')) %}
+    {{ attr }}="{{ attribute(attr) }}"
+    {% endif %}
+    {% endfor %}>
+    {{ content|raw }}
+<{{ elementName }}
+{% for attr in attributes %}
+    {% if attribute(_context, attr) is defined and attribute(_context, attr)|length > 0 %}{{ attr }}='{{ attribute(_context, attr) }}'{% endif %}
+{% endfor %}
+>
+    {{ content|raw }}
+</{{ elementName }}>

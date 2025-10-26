@@ -2,15 +2,55 @@
 
 namespace Html\TemplateGenerator;
 
-use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
+use ReflectionClass;
+use ReflectionNamedType;
+use ReflectionUnionType;
 
 #[TemplateGenerator('twig')]
 class TwigGenerator implements TemplateGeneratorInterface
 {
-    public const TEMPLATE = 'src/Resources/templates/twig.tpl.php';
+    public const TEMPLATE = 'src/Resources/templates/twig.tpl.twig';
+
+    private const TWIG_RESERVED_WORDS = [
+        'is',
+        'in',
+        'for',
+        'if',
+        'true',
+        'false',
+        'none',
+        'and',
+        'or',
+        'not',
+        'loop',
+        'else',
+        'as',
+        'empty',
+        'with',
+        'block',
+        'endblock',
+        'set',
+        'extends',
+        'include',
+        'import',
+        'from',
+        'macro',
+        'filter',
+        'autoescape',
+        'endautoescape',
+        'embed',
+        'endembed',
+        'use',
+        'verbatim',
+        'endverbatim',
+        'do',
+        'flush',
+        'sandbox',
+        'endsandbox',
+    ];
 
     private string $componentHandle = 'component';
 
@@ -31,20 +71,17 @@ class TwigGenerator implements TemplateGeneratorInterface
 
     public function canRenderDocuments(): bool
     {
-        return true;
+        return false;
     }
 
     public function isTemplated(): bool
     {
-        return true;
+        return false;
     }
 
     public function render($elementOrDocument): ?string
     {
-        if ($elementOrDocument instanceof HTMLDocumentDelegatorInterface) {
-            return $this->renderDocument($elementOrDocument);
-        }
-        if ($elementOrDocument instanceof HTMLElementDelegatorInterface) {
+        if ($elementOrDocument instanceof HTMLElementDelegatorInterface && $this->canRenderElements()) {
             return $this->renderElement($elementOrDocument);
         }
 
@@ -58,43 +95,76 @@ class TwigGenerator implements TemplateGeneratorInterface
 
     public function renderElement(HTMLElementDelegatorInterface $element): string
     {
-        $html = (string) $element->delegated->ownerDocument->saveHTML($element->delegated);
-        // Pretty print the HTML before injecting into the template
-        if (class_exists('Edent\\PrettyPrintHtml\\PrettyPrintHtml')) {
-            $formatter = new \Edent\PrettyPrintHtml\PrettyPrintHtml();
-            $html = $formatter->serializeHtml($element->delegated, rawAttributes: false);
-            // Convert tabs to 4 spaces for indentation
-            $html = str_replace("\t", '    ', $html);
-            // Add 4 spaces to the beginning of every line
-            $html = preg_replace('/^/m', '    ', $html);
-        }
-        $template = file_get_contents(self::TEMPLATE);
-        $output = str_replace(
-            ['<?= $componentHandle ?>', '<?= $html ?>'],
-            [$this->componentHandle, $html],
-            $template
+        $ref = new ReflectionClass($element);
+        $elementName = $ref->hasConstant('QUALIFIED_NAME') ? $ref->getConstant('QUALIFIED_NAME') : strtolower(
+            $ref->getShortName()
         );
-        return $output;
-    }
+        $props = [];
+        $enums = [];
+        // Collect all properties with getter and setter
+        foreach ($ref->getProperties() as $prop) {
+            $name = $prop->getName();
+            $getter = 'get' . ucfirst($name);
+            $setter = 'set' . ucfirst($name);
+            if ($ref->hasMethod($getter) && $ref->hasMethod($setter)) {
+                $type = $prop->getType();
+                if ($type instanceof ReflectionUnionType) {
+                    foreach ($type->getTypes() as $unionType) {
+                        if ($unionType instanceof ReflectionNamedType && enum_exists($unionType->getName())) {
+                            $choices = array_map(fn ($case) => "'{$case->value}'", $unionType->getName()::cases());
+                            $enums[] = [
+                                'name' => $name,
+                                'choices' => $choices,
+                            ];
+                        }
+                    }
+                } elseif ($type && $type instanceof ReflectionNamedType && enum_exists($type->getName())) {
+                    $choices = array_map(fn ($case) => "'{$case->value}'", $type->getName()::cases());
+                    $enums[] = [
+                        'name' => $name,
+                        'choices' => $choices,
+                    ];
+                }
+                $props[] = $name;
+            }
+        }
+        // Add global attributes from HTMLElementDelegatorInterface
+        $globalAttrs = ['id', 'class'];
+        foreach ($globalAttrs as $gAttr) {
+            $getter = 'get' . ucfirst($gAttr);
+            if (method_exists($element, $getter)) {
+                $props[] = $gAttr;
+            }
+        }
+        // Sort attributes and enums alphabetically
+        sort($props, \SORT_NATURAL | \SORT_FLAG_CASE);
+        usort($enums, fn ($a, $b) => strcmp($a['name'], $b['name']));
+        $content = '{{ content|raw }}';
+        // Twig reserved words list
 
-    public function renderDocument(HTMLDocumentDelegatorInterface $document): string
-    {
-        $html = (string) $document->delegated->saveHTML($document->delegated);
-        // Pretty print the HTML before injecting into the template
-        if (class_exists('Edent\\PrettyPrintHtml\\PrettyPrintHtml')) {
-            $formatter = new \Edent\PrettyPrintHtml\PrettyPrintHtml();
-            $html = $formatter->serializeHtml($document->delegated, rawAttributes: false);
-            // Convert tabs to 4 spaces for indentation
-            $html = str_replace("\t", '    ', $html);
-            // Add 4 spaces to the beginning of every line
-            $html = preg_replace('/^/m', '    ', $html);
+        // Build Twig template string
+        $twig = "{# {$elementName}.twig #}\n";
+        foreach ($enums as $enum) {
+            $twig .= "{% set {$enum['name']}_choices = [" . implode(', ', $enum['choices']) . "] %}\n";
         }
-        $template = file_get_contents(self::TEMPLATE);
-        $output = str_replace(
-            ['<?= $componentHandle ?>', '<?= $html ?>'],
-            [$this->componentHandle, $html],
-            $template
-        );
-        return $output;
+        $twig .= "\n<{$elementName}\n";
+        foreach ($props as $attr) {
+            $isEnum = false;
+            foreach ($enums as $enum) {
+                if ($enum['name'] === $attr) {
+                    $isEnum = true;
+                    break;
+                }
+            }
+            $isReserved = in_array($attr, self::TWIG_RESERVED_WORDS, true);
+            $cond = $isReserved ? "attribute(_context, '{$attr}') is defined and attribute(_context, '{$attr}')|length > 0" : "{$attr} is defined and {$attr}|length > 0";
+            $val = $isReserved ? "attribute(_context, '{$attr}')" : $attr;
+            if ($isEnum) {
+                $cond .= $isReserved ? " and attribute(_context, '{$attr}') in {$attr}_choices" : " and {$attr} in {$attr}_choices";
+            }
+            $twig .= "  {% if {$cond} %}{$attr}='{{ {$val} }}'{% endif %}\n";
+        }
+        $twig .= ">\n  {$content}\n</{$elementName}>\n";
+        return $twig;
     }
 }

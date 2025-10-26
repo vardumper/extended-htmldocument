@@ -13,6 +13,31 @@ use RuntimeException;
 trait ClassResolverTrait
 {
     /**
+     * Get all classes that extend a specific base class.
+     *
+     * @param string $baseClass The base class to check for subclasses.
+     * @return array An array of class names extending the specified base class.
+     */
+    public function getClassesExtendingClass(string $baseClass): array
+    {
+        $this->loadAllRelevantPhpFiles();
+
+        $classes = get_declared_classes();
+        $extendingClasses = [];
+
+        foreach ($classes as $class) {
+            if ($class === $baseClass) {
+                continue;
+            }
+            if (is_subclass_of($class, $baseClass)) {
+                $extendingClasses[] = $class;
+            }
+        }
+
+        return $extendingClasses;
+    }
+
+    /**
      * Get all classes implementing a specific interface.
      *
      * @param string $interface The interface to check for implementations.

@@ -13,10 +13,8 @@ use DOMDocument;
 use Edent\PrettyPrintHtml\PrettyPrintHtml;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Interface\ComponentBuilderInterface;
-use Html\Interface\TemplateGeneratorInterface;
-use Html\Mapping\TemplateGenerator;
 use Html\Trait\ClassResolverTrait;
-use ReflectionClass;
+use Html\Trait\GeneratorResolverTrait;
 use Revolt\EventLoop;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -27,6 +25,7 @@ use Symfony\Component\Yaml\Yaml;
 class WatchCommand extends Command
 {
     use ClassResolverTrait;
+    use GeneratorResolverTrait;
 
     private const int INTERVAL = 2;
 
@@ -154,10 +153,11 @@ class WatchCommand extends Command
         try {
             $data = $yaml->parseFile($sourceFile);
             $componentHandle = array_key_first($data);
-            foreach ($generators as $generator) {
-                $templateGenerator = $this->getGenerator($generator);
+            $templateGenerators = $this->getGenerators($generators);
+            $templateGenerators = $this->getGenerators($generators);
+            foreach ($templateGenerators as $name => $templateGenerator) {
                 if ($templateGenerator === null) {
-                    $io->error(sprintf('Failed to find generator for %s.', $generator));
+                    $io->error(sprintf('Failed to find generator for %s.', $name));
                     exit;
                 }
 
@@ -194,30 +194,7 @@ class WatchCommand extends Command
         }
     }
 
-    private function getGenerator(string $generator): ?TemplateGeneratorInterface
-    {
-        $generators = [];
-        // check all php files in src/ for TemplateGeneratorInterfaces
-        $interface = TemplateGeneratorInterface::class;
-        $generators = $this->getClassesImplementingInterface($interface);
-
-        if (empty($generators)) {
-            return null;
-        }
-
-        foreach ($generators as $className) {
-            $reflectionClass = new ReflectionClass($className);
-            foreach ($reflectionClass->getAttributes(TemplateGenerator::class) as $attribute) {
-                $args = $attribute->getArguments();
-                $name = $args[0] ?? null; // first argument
-                if ($name === $generator) {
-                    return new $className();
-                }
-            }
-        }
-
-        return null;
-    }
+    // getGenerators now provided by GeneratorResolverTrait
 
     private function parseFile(string $generator, string $sourceFile, string $dest, SymfonyStyle $io): void
     {

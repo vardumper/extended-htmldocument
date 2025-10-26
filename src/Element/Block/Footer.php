@@ -5,7 +5,7 @@
  *
  * Footer - The footer element represents a container for the bottom section of a document or a section, typically containing information about the author, copyright information, and links to related documents.
  *
- * @generated 2025-10-23 23:06:19
+ * @generated 2025-10-26 20:40:54
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer

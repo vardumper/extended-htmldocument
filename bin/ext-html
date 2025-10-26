@@ -3,6 +3,7 @@
 
 declare(strict_types=1);
 
+use Html\Command\BatchGeneratorCommand;
 use Html\Command\CreateClassCommand;
 use Html\Command\CreateEnumCommand;
 use Html\Command\CreateJsonCommand;
@@ -32,9 +33,9 @@ $app->command('make:all [--specification=]', function (InputInterface $input, Ou
 })->descriptions('Creates or re-creates all PHP classes for all HTML Elements and backed enums for static HTML attributes');
 
 // generating Templates (.html,.twig,.php) for HTML elements
-$app->command('generate [generator] [source] [dest] [--specification=]', function (InputInterface $input, OutputInterface $output) {
-    $output->writeln('Generates templpates. Uses a given generator. Requires a source path with your component YAMLs and a destination path for the generated templates.');
-})->descriptions('Generates templates for HTML Elements');
+$app->command('generate:all [generator] [dest] [--overwrite-existing=]', function ($generator, $dest, InputInterface $input, OutputInterface $output, $overwriteExisting = false) {
+    (new BatchGeneratorCommand())($generator, $dest, $input, $output, (bool) $overwriteExisting);
+})->descriptions('Generates templates. Uses a given generator. Requires a Generator Name (eg. html, twig) and a destination path for the generated templates. You can also provide a list of generators separated by comma.', ['generator' => 'name of the generator(s)', 'dest' => 'destination path']);
 
 $sourceDefault = realpath(__DIR__ . '/../examples/template-generator/source');
 $destDefault = realpath(__DIR__ . '/../examples/template-generator/dest');
