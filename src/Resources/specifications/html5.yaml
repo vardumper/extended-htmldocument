@@ -2,6 +2,27 @@ a:
   name: Anchor
   description: 'The a element represents a hyperlink, linking to another resource.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - href
+    - hreflang
+    - id
+    - lang
+    - referrerpolicy
+    - rel
+    - spellcheck
+    - style
+    - tabindex
+    - target
+    - title
+    - translate
   unique: false
   attributes:
     download:
@@ -101,6 +122,22 @@ abbr:
   name: Abbreviation
   description: 'The abbr element represents an abbreviation or acronym, optionally with its expansion. The title attribute can be used to provide an expansion of the abbreviation. The attribute, if specified, must contain an expansion of the abbreviation, and nothing else.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
   attributes:
@@ -131,6 +168,21 @@ address:
   name: Address
   description: 'The address element represents the contact information for its nearest article or body ancestor. If that is the body element, then the contact information applies to the document as a whole.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - translate
   unique: false
   parent: article
   unique_per_parent: true
@@ -139,6 +191,30 @@ area:
   name: Area
   description: 'The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.'
   level: void
+  allowed_attributes:
+    - alt
+    - coords
+    - download
+    - href
+    - hreflang
+    - rel
+    - shape
+    - target
+    - type
+    - accesskey
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   self_closing: true
   attributes:
@@ -236,6 +312,22 @@ article:
   name: Article
   description: 'The article element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - a
@@ -296,6 +388,22 @@ aside:
   name: Aside
   description: 'The aside element represents a section of a page that consists of content that is tangentially related to the content around the aside element, and which could be considered separate from that content.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - a
@@ -372,6 +480,29 @@ audio:
   name: Audio
   description: 'The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.'
   level: block
+  allowed_attributes:
+    - autoplay
+    - controls
+    - crossorigin
+    - loop
+    - muted
+    - preload
+    - src
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     autoplay:
@@ -438,12 +569,46 @@ b:
   name: Bold
   description: 'The b element represents a span of text to which attention is being drawn for utilitarian purposes without conveying any extra importance and with no implication of an alternate voice or mood, such as key words in a document abstract, product names in a review, actionable words in interactive text-driven software, or an article lede.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 base:
   name: Base
   description: 'The base element specifies the base URL to use for all relative URLs in a document. There can be at maximum one <base> element in a document, and it must be inside the <head> element.'
   level: void
+  allowed_attributes:
+    - href
+    - target
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique_per_parent: true
   parent: head
   self_closing: true
@@ -475,18 +640,67 @@ bdi:
   name: 'Bidirectional Isolation'
   description: 'The bdi element represents a span of text that is to be isolated from its surroundings for the purposes of bidirectional text formatting. (Bidirectional-isolate)'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 bdo:
   name: 'Bidirectional Override'
   description: 'The bdo element represents explicit text directionality formatting control for its children. It allows authors to override the Unicode bidirectional algorithm by explicitly specifying a direction override.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 blockquote:
   name: Blockquote
   description: 'The blockquote element represents a section that is quoted from another source. Content inside a blockquote must be quoted from another source, whose address, if it has one, may be cited in the cite attribute.'
   level: block
+  allowed_attributes:
+    - cite
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     cite:
@@ -504,6 +718,38 @@ body:
   name: Body
   description: 'The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.'
   level: block
+  allowed_attributes:
+    - onafterprint
+    - onbeforeprint
+    - onbeforeunload
+    - onhashchange
+    - onlanguagechange
+    - onmessage
+    - onmessageerror
+    - onoffline
+    - ononline
+    - onpagehide
+    - onpageshow
+    - onpopstate
+    - onrejectionhandled
+    - onstorage
+    - onunhandledrejection
+    - onunload
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: true
   attributes:
     onafterprint:
@@ -670,12 +916,49 @@ br:
   name: Break
   description: 'The br element represents a line break.'
   level: void
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   self_closing: true
 button:
   name: Button
   description: 'The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.'
   level: inline
+  allowed_attributes:
+    - autofocus
+    - disabled
+    - name
+    - type
+    - value
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     autofocus:
@@ -745,6 +1028,24 @@ canvas:
   name: Canvas
   description: 'The canvas element is used to draw graphics, on the fly, via scripting (usually JavaScript).'
   level: block
+  allowed_attributes:
+    - height
+    - width
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     height:
@@ -774,6 +1075,22 @@ caption:
   name: Caption
   description: 'The caption element represents the title of the table that is its parent, if it has a parent and that is a table element.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
   unique_per_parent: true
@@ -782,18 +1099,68 @@ cite:
   name: Citation
   description: 'The cite element represents the title of a work (e.g. a book, a paper, an essay, a poem, a score, a song, a script, a film, a TV show, a game, a sculpture, a painting, a theatre production, a play, an opera, a musical, an exhibition, a legal case report, etc). This can be a work that is being quoted or referenced in detail (i.e. a citation), or it can just be a work that is mentioned in passing.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 code:
   name: Code
   description: 'The code element represents a fragment of computer code. This could be an XML element name, a filename, a computer program, or any other string that a computer would recognize.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 col:
   name: Column
   description: 'The col element represents a column in a table.'
   level: void
+  allowed_attributes:
+    - span
+    - width
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   parent: colgroup
   self_closing: true
@@ -818,6 +1185,13 @@ colgroup:
   name: 'Column Group'
   description: 'The colgroup element represents a group of one or more columns in the table that is its parent, if it has a parent and that is a table element.'
   level: block
+  allowed_attributes:
+    - id
+    - class
+    - hidden
+    - lang
+    - style
+    - title
   unique: false
   children:
     - col
@@ -825,6 +1199,23 @@ data:
   name: Data
   description: 'The data element represents its contents, along with a machine-readable form of those contents in the value attribute.'
   level: inline
+  allowed_attributes:
+    - value
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     value:
@@ -845,6 +1236,22 @@ datalist:
   name: 'Data List'
   description: 'The datalist element contains a set of option elements that represent the permissible or recommended options available to users.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - option
@@ -852,6 +1259,22 @@ dd:
   name: 'Definition Description'
   description: 'The dd element represents the description, definition, or value, part of a term-description group in a description list (dl element).'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique_per_parent: true
   parent: dl
   children:
@@ -922,6 +1345,24 @@ del:
   name: 'Deleted Text'
   description: 'The del element represents a deletion from the document.'
   level: block
+  allowed_attributes:
+    - cite
+    - datetime
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     cite:
@@ -944,6 +1385,23 @@ details:
   name: Details
   description: 'The details element represents a disclosure widget from which the user can obtain additional information or controls.'
   level: block
+  allowed_attributes:
+    - open
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     open:
@@ -966,12 +1424,45 @@ dfn:
   name: Definition
   description: 'The dfn element represents the defining instance of a term.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 dialog:
   name: Dialog
   description: 'The dialog element represents a part of an application that a user interacts with to perform a task, for example a dialog box, inspector, or window.'
   level: block
+  allowed_attributes:
+    - open
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     open:
@@ -1008,6 +1499,22 @@ div:
   name: Division
   description: 'The div element has no special meaning at all. It represents its children. It can be used with the class, lang, and title attributes to mark up semantics common to a group of consecutive elements.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - a
@@ -1086,6 +1593,22 @@ dl:
   name: 'Definition List'
   description: 'The dl element represents an association list consisting of zero or more name-value groups (a description list). Each group must consist of one or more names (dt elements) followed by one or more values (dd elements). Within a single dl element, there should not be more than one dt element for each name.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - dd
@@ -1094,6 +1617,22 @@ dt:
   name: 'Definition Term'
   description: 'The dt element represents the term, or name, part of a term-description group in a description list (dl element).'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique_per_parent: true
   parent: dl
   text: string
@@ -1101,12 +1640,48 @@ em:
   name: Emphasis
   description: 'The em element represents stress emphasis of its contents.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 embed:
   name: Embed
   description: 'The embed element provides an integration point for an external (typically non-HTML) application or interactive content.'
   level: block
+  allowed_attributes:
+    - height
+    - src
+    - type
+    - width
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   self_closing: true
   attributes:
@@ -1160,6 +1735,22 @@ fieldset:
   name: Fieldset
   description: 'The fieldset element represents a set of form controls optionally grouped under a common name.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - button
@@ -1176,6 +1767,22 @@ figcaption:
   name: 'Figure Caption'
   description: 'The figcaption element represents a caption or a legend associated with a figure or an illustration described by the rest of the data of the figure element. The figcaption element can be placed as the first or the last child of a parent figure element.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   unique_per_parent: true
   parent: figure
@@ -1184,6 +1791,22 @@ figure:
   name: Figure
   description: 'The figure element represents self-contained content, potentially with an optional caption, which is specified using the (optional) figcaption element.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - figcaption
@@ -1192,6 +1815,22 @@ footer:
   name: Footer
   description: 'The footer element represents a container for the bottom section of a document or a section, typically containing information about the author, copyright information, and links to related documents.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - a
@@ -1267,6 +1906,30 @@ form:
   name: Form
   description: 'The form element represents a section of a document containing interactive controls for submitting information to a web server.'
   level: block
+  allowed_attributes:
+    - accept-charset
+    - action
+    - autocomplete
+    - enctype
+    - method
+    - name
+    - novalidate
+    - target
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     accept-charset:
@@ -1367,42 +2030,154 @@ h1:
   name: 'Heading 1'
   description: 'The h1 element represents a section heading. It has the highest rank among the six levels of section headings.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   text: string
   unique: false
 h2:
   name: 'Heading 2'
   description: 'The h2 element represents a section heading. It has the second highest rank among the six levels of section headings.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   text: string
   unique: false
 h3:
   name: 'Heading 3'
   description: 'The h3 element represents a section heading. It has the third highest rank among the six levels of section headings.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   text: string
   unique: false
 h4:
   name: 'Heading 4'
   description: 'The h4 element represents a section heading. It has the fourth highest rank among the six levels of section headings.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   text: string
   unique: false
 h5:
   name: 'Heading 5'
   description: 'The h5 element represents a section heading. It has the fifth highest rank among the six levels of section headings.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   text: string
   unique: false
 h6:
   name: 'Heading 6'
   description: 'The h6 element represents a section heading. It has the lowest rank among the six levels of section headings.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   text: string
   unique: false
 head:
   name: Head
   description: 'The head element contains meta-information about the HTML document, including its title and links to its scripts and stylesheets.'
   level: void
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique_per_parent: true
   parent: html
   children:
@@ -1417,6 +2192,22 @@ header:
   name: Header
   description: "The header element represents a container for introductory content or a set of navigational links. It typically contains the section's heading (an h1–h6 element or an hgroup element), but can also contain other content such as a table of contents, a search form, or any relevant logos."
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - a
@@ -1493,6 +2284,22 @@ hgroup:
   name: 'Headings Group'
   description: 'The hgroup element represents a multi-level heading for a section of a document. It groups a set of h1–h6 elements.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - h1
@@ -1505,6 +2312,27 @@ hr:
   name: 'Horizontal Rule'
   description: 'The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.'
   level: block
+  allowed_attributes:
+    - align
+    - color
+    - noshade
+    - size
+    - width
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   self_closing: true
   attributes:
     align:
@@ -1557,6 +2385,23 @@ html:
   name: HTML
   description: 'The root element of an HTML document. It represents the top-level of the HTML structure.'
   level: block
+  allowed_attributes:
+    - manifest
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: true
   attributes:
     manifest:
@@ -1571,12 +2416,53 @@ i:
   name: Italic
   description: 'The i element represents a span of text in an alternate voice or mood, or otherwise offset from the normal prose, such as a taxonomic designation, a technical term, an idiomatic phrase from another language, a thought, or a ship name in Western texts.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 iframe:
   name: 'Inline Frame'
   description: 'The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.'
   level: block
+  allowed_attributes:
+    - allowfullscreen
+    - height
+    - name
+    - referrerpolicy
+    - sandbox
+    - seamless
+    - src
+    - srcdoc
+    - width
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     allowfullscreen:
@@ -1667,6 +2553,33 @@ img:
   name: Image
   description: 'The img element represents an image.'
   level: inline
+  allowed_attributes:
+    - alt
+    - crossorigin
+    - decoding
+    - height
+    - ismap
+    - referrerpolicy
+    - sizes
+    - src
+    - srcset
+    - usemap
+    - width
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   self_closing: true
   attributes:
@@ -1779,6 +2692,46 @@ input:
   name: Input
   description: 'The input element represents a typed data field, usually with a form control to allow user input.'
   level: inline
+  allowed_attributes:
+    - accept
+    - alt
+    - autocomplete
+    - checked
+    - dirname
+    - disabled
+    - height
+    - list
+    - max
+    - maxlength
+    - min
+    - minlength
+    - multiple
+    - name
+    - pattern
+    - placeholder
+    - readonly
+    - required
+    - size
+    - src
+    - step
+    - type
+    - value
+    - width
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   self_closing: true
   attributes:
@@ -1997,6 +2950,24 @@ ins:
   name: 'Inserted Text'
   description: 'The ins element represents an addition to the document.'
   level: block
+  allowed_attributes:
+    - cite
+    - datetime
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     cite:
@@ -2019,12 +2990,45 @@ kbd:
   name: 'Keyboard Input'
   description: 'The kbd element represents user input (typically keyboard input, although it may also be used to represent other input methods, such as voice commands).'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 label:
   name: Label
   description: "The label element represents a caption in a user interface. The caption can be associated with a specific form control, known as the label element's labeled control, either using the for attribute, or by putting the form control inside the label element itself."
   level: inline
+  allowed_attributes:
+    - for
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     for:
@@ -2037,6 +3041,22 @@ legend:
   name: Legend
   description: 'The legend element represents a caption for the content of its parent fieldset.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   unique_per_parent: true
   parent: fieldset
@@ -2052,6 +3072,23 @@ li:
   name: 'List Item'
   description: "The li element represents a list item. If its parent element is an ol, ul, or menu, then the element is an item of the parent element's list, as defined for those elements. Otherwise, the list item has no defined list-related semantics."
   level: block
+  allowed_attributes:
+    - value
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique_per_parent: false
   parent: 'ol | ul'
   attributes:
@@ -2099,6 +3136,31 @@ link:
   name: Link
   description: 'The link element defines a link between a document and an external resource. It is used to link to external stylesheets.'
   level: void
+  allowed_attributes:
+    - crossorigin
+    - href
+    - hreflang
+    - integrity
+    - media
+    - referrerpolicy
+    - rel
+    - sizes
+    - type
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   self_closing: true
   attributes:
@@ -2205,6 +3267,22 @@ main:
   name: Main
   description: 'The main element represents the dominant content of the body of a document. The main content area consists of content that is directly related to or expands upon the central topic of a document, or the central functionality of an application.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: true
   children:
     - a
@@ -2283,6 +3361,23 @@ map:
   name: Map
   description: 'The map element, in conjunction with an img element and any area element descendants, defines an image map. The element represents a related collection of map areas.'
   level: block
+  allowed_attributes:
+    - name
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     name:
@@ -2307,6 +3402,22 @@ mark:
   name: 'Marked Text'
   description: "The mark element represents a run of text in one document marked or highlighted for reference or notation purposes, due to the marked passage's relevance or importance in the enclosing context."
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - area
@@ -2345,6 +3456,22 @@ menu:
   name: Menu
   description: 'The menu element represents a group of commands that a user can perform or activate. It can be used for toolbars, context menus, or listing form controls.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - button
@@ -2356,6 +3483,23 @@ meta:
   name: Meta
   description: 'The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.'
   level: void
+  allowed_attributes:
+    - charset
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   self_closing: true
   attributes:
@@ -2456,6 +3600,22 @@ nav:
   name: Navigation
   description: 'The nav element represents a section of a page whose purpose is to provide navigation links, either within the current document or to other documents.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   children:
     - a
     - article
@@ -2469,11 +3629,43 @@ noscript:
   name: NoScript
   description: "The noscript element defines an alternate content for users that have disabled scripts in their browser or have a browser that doesn't support script."
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
 object:
   name: Object
   description: 'The object element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     data:
@@ -2539,6 +3731,22 @@ ol:
   name: 'Ordered List'
   description: 'The ol element represents an ordered list of items. The order of the list is meaningful.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     reversed:
@@ -2569,6 +3777,24 @@ optgroup:
   name: 'Option Group'
   description: 'The optgroup element represents a group of option elements with a common label.'
   level: block
+  allowed_attributes:
+    - disabled
+    - label
+    - id
+    - class
+    - title
+    - lang
+    - style
+    - hidden
+    - tabindex
+    - accesskey
+    - autocapitalize
+    - contenteditable
+    - dir
+    - draggable
+    - spellcheck
+    - translate
+    - data-*
   unique: false
   parent: select
   attributes:
@@ -2596,6 +3822,26 @@ option:
   name: Option
   description: 'The option element represents an item in a select dropdown list.'
   level: block
+  allowed_attributes:
+    - disabled
+    - label
+    - selected
+    - value
+    - id
+    - class
+    - title
+    - lang
+    - style
+    - hidden
+    - tabindex
+    - accesskey
+    - autocapitalize
+    - contenteditable
+    - dir
+    - draggable
+    - spellcheck
+    - translate
+    - data-*
   unique: false
   parent: 'select | optgroup'
   attributes:
@@ -2639,6 +3885,23 @@ output:
   name: Output
   description: 'The output element represents the result of a calculation or user action.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - for
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     for:
@@ -2651,6 +3914,22 @@ p:
   name: Paragraph
   description: 'The p element represents a paragraph.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - a
@@ -2730,6 +4009,24 @@ param:
   name: Parameter
   description: 'The param element defines parameters for an object element.'
   level: void
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - name
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
+    - value
   unique: false
   self_closing: true
   attributes:
@@ -2766,6 +4063,22 @@ picture:
   name: Picture
   description: 'The picture element contains zero or more source elements and one img element to offer alternative versions of an image for different display/device scenarios.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - img
@@ -2774,12 +4087,46 @@ pre:
   name: 'Preformatted Text'
   description: 'The pre element represents preformatted text. Text within this element is typically displayed in a non-proportional font exactly as it is laid out in the file.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 progress:
   name: Progress
   description: 'The progress element represents the completion progress of a task.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - max
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
+    - value
   unique: false
   attributes:
     max:
@@ -2806,6 +4153,23 @@ q:
   name: Quotation
   description: 'The q element represents some phrasing content quoted from another source.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - cite
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     cite:
@@ -2821,18 +4185,66 @@ rp:
   name: 'Ruby Parenthesis'
   description: 'The rp element is used to provide fallback parentheses for browsers non-supporting ruby annotations. It can be used in complex ruby markup to provide parentheses around the rt element for browsers that do not support ruby elements.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 rt:
   name: 'Ruby Text'
   description: 'The rt element marks the ruby text component of a ruby annotation, which is used to provide pronunciation, translation, or transliteration information for East Asian typography. The rt element must be a child of a ruby element.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 ruby:
   name: Ruby
   description: 'The ruby element represents a ruby annotation. Ruby annotations are short runs of text presented alongside base text, primarily used for East Asian typography to indicate pronunciation or to provide a short annotation.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - rp
@@ -2841,18 +4253,75 @@ s:
   name: Strikethrough
   description: 'The s element represents contents that are no longer accurate or no longer relevant.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 samp:
   name: 'Sample Output'
   description: 'The samp element represents sample (or quoted) output from a computer program.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 script:
   name: Script
   description: 'The script element is used to embed or reference an executable script within an HTML or XHTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.'
   level: void
+  allowed_attributes:
+    - accesskey
+    - async
+    - autocapitalize
+    - charset
+    - class
+    - contenteditable
+    - crossorigin
+    - data-*
+    - defer
+    - dir
+    - draggable
+    - hidden
+    - id
+    - integrity
+    - lang
+    - nonce
+    - referrerpolicy
+    - spellcheck
+    - src
+    - style
+    - tabindex
+    - title
+    - translate
+    - type
   unique: false
   attributes:
     async:
@@ -3136,6 +4605,25 @@ source:
   name: Source
   description: 'The source element allows authors to specify multiple media resources for media elements. It is an empty element. It is commonly used within the picture element.'
   level: void
+  allowed_attributes:
+    - accesskey
+    - class
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - media
+    - sizes
+    - spellcheck
+    - src
+    - srcset
+    - style
+    - tabindex
+    - title
+    - translate
+    - type
   unique: false
   self_closing: true
   attributes:
@@ -3167,6 +4655,13 @@ source:
         - source
         - track
         - video
+      srcset:
+        description: 'Specifies a list of possible image sources for the browser to use.'
+        type: string
+        required: false
+        elements:
+          - img
+          - source
     type:
       description: 'Specifies the media type of the linked resource.'
       type: string
@@ -3181,31 +4676,57 @@ span:
   name: Span
   description: "The span element doesn't mean anything on its own, but can be useful when used together with the global attributes, e.g. class, lang, or dir. It represents its children."
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 strong:
   name: Strong
   description: 'The strong element represents strong importance, seriousness, or urgency for its contents.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 style:
   name: Style
   description: 'The style element is used to embed CSS styles directly into an HTML document.'
   level: void
+  allowed_attributes:
+    - media
+    - nonce
+    - title
+    - type
   unique: false
   attributes:
-    disabled:
-      description: 'When present, it specifies that an input element should be disabled.'
-      type: boolean
-      elements:
-        - button
-        - fieldset
-        - input
-        - optgroup
-        - option
-        - select
-        - textarea
     media:
       description: 'Specifies the media type for which the linked resource or style sheet is intended.'
       type: string
@@ -3254,24 +4775,94 @@ sub:
   name: Subscript
   description: 'The sub element represents a subscript.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 summary:
   name: Summary
   description: "The summary element represents a summary, caption, or legend for the rest of the contents of the summary element's parent details element, if any."
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique_per_parent: true
   parent: details
 sup:
   name: Superscript
   description: 'The sup element represents a superscript.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 svg:
   name: Scalable Vector Graphics
   description: 'The svg element is a container for embedded SVG graphics.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
+    - xmlns
+    - viewBox
+    - width
+    - height
+    - fill
+    - stroke
   unique: false
   attributes:
     xmlns:
@@ -3391,6 +4982,22 @@ table:
   name: Table
   description: 'The table element represents tabular data — that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - caption
@@ -3403,6 +5010,22 @@ tbody:
   name: 'Table Body'
   description: 'The tbody element groups one or more tr elements as the body of a table.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   parent: table
   children:
@@ -3411,6 +5034,25 @@ td:
   name: 'Table Data'
   description: 'The td element represents a data cell in a table.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - colspan
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - headers
+    - hidden
+    - id
+    - lang
+    - rowspan
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   parent: tr
   attributes:
@@ -3436,6 +5078,22 @@ template:
   name: Template
   description: 'The template element is a mechanism for holding client-side content that is not to be rendered when a page is loaded but may subsequently be instantiated during runtime using JavaScript.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - div
@@ -3465,6 +5123,35 @@ textarea:
   name: Textarea
   description: "The textarea element represents a multiline plain text edit control for the element's raw value."
   level: inline
+  allowed_attributes:
+    - autocomplete
+    - cols
+    - dirname
+    - disabled
+    - form
+    - maxlength
+    - minlength
+    - name
+    - placeholder
+    - readonly
+    - required
+    - rows
+    - wrap
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     autocomplete:
@@ -3484,7 +5171,7 @@ textarea:
       elements:
         - textarea
     dirname:
-      description: 'Specifies the direction of the text.'
+      description: 'Specifies the name of the field that will contain the text direction (ltr or rtl) of the input or textarea when the form is submitted'
       type: string
       elements:
         - input
@@ -3565,6 +5252,22 @@ tfoot:
   name: 'Table Foot'
   description: 'The tfoot element groups the footer content in a table.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   unique_per_parent: true
   parent: table
@@ -3574,6 +5277,26 @@ th:
   name: 'Table Header'
   description: 'The th element represents a header cell in a table.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - colspan
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - headers
+    - hidden
+    - id
+    - lang
+    - rowspan
+    - scope
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   parent: tr
   attributes:
@@ -3604,6 +5327,22 @@ thead:
   name: 'Table Head'
   description: 'The thead element groups the header content in a table.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   unique_per_parent: true
   parent: table
@@ -3613,6 +5352,23 @@ time:
   name: Time
   description: 'The time element represents a specific period in time. It may include the datetime attribute to translate dates into machine-readable format, allowing for better search engine results or custom features such as reminders.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - datetime
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     datetime:
@@ -3627,6 +5383,7 @@ title:
   name: Title
   description: "The title element defines the title of the document, shown in a browser's title bar or a page's tab. It is only text, not meant to be displayed."
   level: void
+  allowed_attributes: []
   unique_per_parent: true
   parent: head
   text: string
@@ -3634,6 +5391,22 @@ tr:
   name: 'Table Row'
   description: 'The tr element represents a row of cells in a table.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   parent: 'table | thead | tbody | tfoot'
   children:
@@ -3663,7 +5436,6 @@ tr:
         - th
         - thead
         - tr
-
       deprecated: true
     bgcolor:
       description: 'Defines the background color of each row cell. The value is an HTML color; either a 6-digit hexadecimal RGB code, prefixed by a #, or a color keyword. Other CSS <color> values are not supported. Use the background-color CSS property instead, as this attribute is deprecated.'
@@ -3700,6 +5472,25 @@ track:
   name: Track
   description: 'The track element is used as a child of the media elements—audio and video. It lets you specify timed text tracks (or time-based data), for example to automatically handle subtitles. The tracks are formatted in WebVTT format (.vtt files) — Web Video Text Tracks.'
   level: void
+  allowed_attributes:
+    - default
+    - kind
+    - label
+    - src
+    - srclang
+    - accesskey
+    - class
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   self_closing: true
   attributes:
@@ -3749,12 +5540,44 @@ u:
   name: Underline
   description: 'The u element represents a span of text with an unarticulated, though explicitly rendered, non-textual annotation, such as labeling the text as being a proper name in Chinese text (a Chinese proper name mark), or labeling the text as being misspelt.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 ul:
   name: 'Unordered List'
   description: 'The ul element represents an unordered list of items, namely a collection of items that do not have a numerical ordering, and their order in the list is meaningless.'
   level: block
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - li
@@ -3762,12 +5585,54 @@ var:
   name: Variable
   description: 'The var element represents the name of a variable in a mathematical expression or a programming context.'
   level: inline
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 video:
   name: Video
   description: 'The video element is used to embed video content in a document, such as a movie clip or other video streams.'
   level: block
+  allowed_attributes:
+    - autoplay
+    - controls
+    - crossorigin
+    - height
+    - loop
+    - muted
+    - poster
+    - preload
+    - src
+    - width
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     autoplay:
@@ -3859,5 +5724,21 @@ wbr:
   name: 'Word Break Opportunity'
   description: 'The wbr element represents a word break opportunity.'
   level: void
+  allowed_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   self_closing: true
