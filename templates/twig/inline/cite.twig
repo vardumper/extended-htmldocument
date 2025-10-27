@@ -1,26 +1,34 @@
-{# cite.twig #}
+{#
+  This file is auto-generated.
+
+  Citation - The cite element represents the title of a work (e.g. a book, a paper, an essay, a poem, a score, a song, a script, a film, a TV show, a game, a sculpture, a painting, a theatre production, a play, an opera, a musical, an exhibition, a legal case report, etc). This can be a work that is being quoted or referenced in detail (i.e. a citation), or it can just be a work that is mentioned in passing.
+
+  @author vardumper <info@erikpoehler.com>
+  @package vardumper/extended-htmldocument
+  @see src/TemplateGenerator/TwigGenerator.php
+#}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 <cite
-  {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
-  {% if class is defined and class|length > 0 %}class='{{ class }}'{% endif %}
-  {% if contenteditable is defined and contenteditable|length > 0 and contenteditable in contenteditable_choices %}contenteditable='{{ contenteditable }}'{% endif %}
-  {% if draggable is defined and draggable|length > 0 %}draggable='{{ draggable }}'{% endif %}
-  {% if hidden is defined and hidden|length > 0 %}hidden='{{ hidden }}'{% endif %}
-  {% if id is defined and id|length > 0 %}id='{{ id }}'{% endif %}
-  {% if inert is defined and inert|length > 0 %}inert='{{ inert }}'{% endif %}
-  {% if attribute(_context, 'is') is defined and attribute(_context, 'is')|length > 0 %}is='{{ attribute(_context, 'is') }}'{% endif %}
-  {% if lang is defined and lang|length > 0 %}lang='{{ lang }}'{% endif %}
-  {% if nonce is defined and nonce|length > 0 %}nonce='{{ nonce }}'{% endif %}
-  {% if part is defined and part|length > 0 %}part='{{ part }}'{% endif %}
-  {% if popover is defined and popover|length > 0 %}popover='{{ popover }}'{% endif %}
-  {% if role is defined and role|length > 0 %}role='{{ role }}'{% endif %}
-  {% if slot is defined and slot|length > 0 %}slot='{{ slot }}'{% endif %}
-  {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck='{{ spellcheck }}'{% endif %}
-  {% if style is defined and style|length > 0 %}style='{{ style }}'{% endif %}
-  {% if tabindex is defined and tabindex|length > 0 %}tabindex='{{ tabindex }}'{% endif %}
-  {% if title is defined and title|length > 0 %}title='{{ title }}'{% endif %}
-  {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
+  {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
+  {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
+  {% if contenteditable is defined and contenteditable|length > 0 and contenteditable in contenteditable_choices %}contenteditable="{{ contenteditable }}"{% endif %}
+  {% if draggable is defined and draggable|length > 0 %}draggable="{{ draggable }}"{% endif %}
+  {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
+  {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
+  {% if inert is defined and inert|length > 0 %}inert="{{ inert }}"{% endif %}
+  {% if attribute(_context, 'is') is defined and attribute(_context, 'is')|length > 0 %}is="{{ attribute(_context, 'is') }}"{% endif %}
+  {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
+  {% if nonce is defined and nonce|length > 0 %}nonce="{{ nonce }}"{% endif %}
+  {% if part is defined and part|length > 0 %}part="{{ part }}"{% endif %}
+  {% if popover is defined and popover|length > 0 %}popover="{{ popover }}"{% endif %}
+  {% if role is defined and role|length > 0 %}role="{{ role }}"{% endif %}
+  {% if slot is defined and slot|length > 0 %}slot="{{ slot }}"{% endif %}
+  {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck="{{ spellcheck }}"{% endif %}
+  {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
+  {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}
+  {% if title is defined and title|length > 0 %}title="{{ title }}"{% endif %}
+  {% if translate is defined and translate|length > 0 %}translate="{{ translate }}"{% endif %}
 >
-  {{- content|raw -}}
+  {% block content %}{{- content|raw -}}{% endblock %}
 </cite>

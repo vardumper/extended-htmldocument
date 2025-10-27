@@ -1,40 +1,48 @@
-{# textarea.twig #}
+{#
+  This file is auto-generated.
+
+  Textarea - The textarea element represents a multiline plain text edit control for the element's raw value.
+
+  @author vardumper <info@erikpoehler.com>
+  @package vardumper/extended-htmldocument
+  @see src/TemplateGenerator/TwigGenerator.php
+#}
 {% set autocomplete_choices = ['off', 'on'] %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 {% set wrap_choices = ['hard', 'off', 'soft'] %}
 <textarea
-  {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
-  {% if autocomplete is defined and autocomplete|length > 0 and autocomplete in autocomplete_choices %}autocomplete='{{ autocomplete }}'{% endif %}
-  {% if class is defined and class|length > 0 %}class='{{ class }}'{% endif %}
-  {% if cols is defined and cols|length > 0 %}cols='{{ cols }}'{% endif %}
-  {% if contenteditable is defined and contenteditable|length > 0 and contenteditable in contenteditable_choices %}contenteditable='{{ contenteditable }}'{% endif %}
-  {% if dirname is defined and dirname|length > 0 %}dirname='{{ dirname }}'{% endif %}
-  {% if disabled is defined and disabled|length > 0 %}disabled='{{ disabled }}'{% endif %}
-  {% if draggable is defined and draggable|length > 0 %}draggable='{{ draggable }}'{% endif %}
-  {% if hidden is defined and hidden|length > 0 %}hidden='{{ hidden }}'{% endif %}
-  {% if id is defined and id|length > 0 %}id='{{ id }}'{% endif %}
-  {% if inert is defined and inert|length > 0 %}inert='{{ inert }}'{% endif %}
-  {% if attribute(_context, 'is') is defined and attribute(_context, 'is')|length > 0 %}is='{{ attribute(_context, 'is') }}'{% endif %}
-  {% if lang is defined and lang|length > 0 %}lang='{{ lang }}'{% endif %}
-  {% if maxlength is defined and maxlength|length > 0 %}maxlength='{{ maxlength }}'{% endif %}
-  {% if minlength is defined and minlength|length > 0 %}minlength='{{ minlength }}'{% endif %}
-  {% if name is defined and name|length > 0 %}name='{{ name }}'{% endif %}
-  {% if nonce is defined and nonce|length > 0 %}nonce='{{ nonce }}'{% endif %}
-  {% if part is defined and part|length > 0 %}part='{{ part }}'{% endif %}
-  {% if placeholder is defined and placeholder|length > 0 %}placeholder='{{ placeholder }}'{% endif %}
-  {% if popover is defined and popover|length > 0 %}popover='{{ popover }}'{% endif %}
-  {% if readonly is defined and readonly|length > 0 %}readonly='{{ readonly }}'{% endif %}
-  {% if required is defined and required|length > 0 %}required='{{ required }}'{% endif %}
-  {% if role is defined and role|length > 0 %}role='{{ role }}'{% endif %}
-  {% if rows is defined and rows|length > 0 %}rows='{{ rows }}'{% endif %}
-  {% if slot is defined and slot|length > 0 %}slot='{{ slot }}'{% endif %}
-  {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck='{{ spellcheck }}'{% endif %}
-  {% if style is defined and style|length > 0 %}style='{{ style }}'{% endif %}
-  {% if tabindex is defined and tabindex|length > 0 %}tabindex='{{ tabindex }}'{% endif %}
-  {% if title is defined and title|length > 0 %}title='{{ title }}'{% endif %}
-  {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
-  {% if wrap is defined and wrap|length > 0 and wrap in wrap_choices %}wrap='{{ wrap }}'{% endif %}
+  {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
+  {% if autocomplete is defined and autocomplete|length > 0 and autocomplete in autocomplete_choices %}autocomplete="{{ autocomplete }}"{% endif %}
+  {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
+  {% if cols is defined and cols|length > 0 %}cols="{{ cols }}"{% endif %}
+  {% if contenteditable is defined and contenteditable|length > 0 and contenteditable in contenteditable_choices %}contenteditable="{{ contenteditable }}"{% endif %}
+  {% if dirname is defined and dirname|length > 0 %}dirname="{{ dirname }}"{% endif %}
+  {% if disabled is defined and disabled|length > 0 %}disabled="{{ disabled }}"{% endif %}
+  {% if draggable is defined and draggable|length > 0 %}draggable="{{ draggable }}"{% endif %}
+  {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
+  {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
+  {% if inert is defined and inert|length > 0 %}inert="{{ inert }}"{% endif %}
+  {% if attribute(_context, 'is') is defined and attribute(_context, 'is')|length > 0 %}is="{{ attribute(_context, 'is') }}"{% endif %}
+  {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
+  {% if maxlength is defined and maxlength|length > 0 %}maxlength="{{ maxlength }}"{% endif %}
+  {% if minlength is defined and minlength|length > 0 %}minlength="{{ minlength }}"{% endif %}
+  {% if name is defined and name|length > 0 %}name="{{ name }}"{% endif %}
+  {% if nonce is defined and nonce|length > 0 %}nonce="{{ nonce }}"{% endif %}
+  {% if part is defined and part|length > 0 %}part="{{ part }}"{% endif %}
+  {% if placeholder is defined and placeholder|length > 0 %}placeholder="{{ placeholder }}"{% endif %}
+  {% if popover is defined and popover|length > 0 %}popover="{{ popover }}"{% endif %}
+  {% if readonly is defined and readonly|length > 0 %}readonly="{{ readonly }}"{% endif %}
+  {% if required is defined and required|length > 0 %}required="{{ required }}"{% endif %}
+  {% if role is defined and role|length > 0 %}role="{{ role }}"{% endif %}
+  {% if rows is defined and rows|length > 0 %}rows="{{ rows }}"{% endif %}
+  {% if slot is defined and slot|length > 0 %}slot="{{ slot }}"{% endif %}
+  {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck="{{ spellcheck }}"{% endif %}
+  {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
+  {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}
+  {% if title is defined and title|length > 0 %}title="{{ title }}"{% endif %}
+  {% if translate is defined and translate|length > 0 %}translate="{{ translate }}"{% endif %}
+  {% if wrap is defined and wrap|length > 0 and wrap in wrap_choices %}wrap="{{ wrap }}"{% endif %}
 >
-  {{- content|raw -}}
+  {% block content %}{{- content|raw -}}{% endblock %}
 </textarea>

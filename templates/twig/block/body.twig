@@ -1,42 +1,50 @@
-{# body.twig #}
+{#
+  This file is auto-generated.
+
+  Body - The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
+
+  @author vardumper <info@erikpoehler.com>
+  @package vardumper/extended-htmldocument
+  @see src/TemplateGenerator/TwigGenerator.php
+#}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 <body
-  {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
-  {% if class is defined and class|length > 0 %}class='{{ class }}'{% endif %}
-  {% if contenteditable is defined and contenteditable|length > 0 and contenteditable in contenteditable_choices %}contenteditable='{{ contenteditable }}'{% endif %}
-  {% if draggable is defined and draggable|length > 0 %}draggable='{{ draggable }}'{% endif %}
-  {% if hidden is defined and hidden|length > 0 %}hidden='{{ hidden }}'{% endif %}
-  {% if id is defined and id|length > 0 %}id='{{ id }}'{% endif %}
-  {% if inert is defined and inert|length > 0 %}inert='{{ inert }}'{% endif %}
-  {% if attribute(_context, 'is') is defined and attribute(_context, 'is')|length > 0 %}is='{{ attribute(_context, 'is') }}'{% endif %}
-  {% if lang is defined and lang|length > 0 %}lang='{{ lang }}'{% endif %}
-  {% if nonce is defined and nonce|length > 0 %}nonce='{{ nonce }}'{% endif %}
-  {% if onafterprint is defined and onafterprint|length > 0 %}onafterprint='{{ onafterprint }}'{% endif %}
-  {% if onbeforeprint is defined and onbeforeprint|length > 0 %}onbeforeprint='{{ onbeforeprint }}'{% endif %}
-  {% if onbeforeunload is defined and onbeforeunload|length > 0 %}onbeforeunload='{{ onbeforeunload }}'{% endif %}
-  {% if onhashchange is defined and onhashchange|length > 0 %}onhashchange='{{ onhashchange }}'{% endif %}
-  {% if onlanguagechange is defined and onlanguagechange|length > 0 %}onlanguagechange='{{ onlanguagechange }}'{% endif %}
-  {% if onmessage is defined and onmessage|length > 0 %}onmessage='{{ onmessage }}'{% endif %}
-  {% if onmessageerror is defined and onmessageerror|length > 0 %}onmessageerror='{{ onmessageerror }}'{% endif %}
-  {% if onoffline is defined and onoffline|length > 0 %}onoffline='{{ onoffline }}'{% endif %}
-  {% if ononline is defined and ononline|length > 0 %}ononline='{{ ononline }}'{% endif %}
-  {% if onpagehide is defined and onpagehide|length > 0 %}onpagehide='{{ onpagehide }}'{% endif %}
-  {% if onpageshow is defined and onpageshow|length > 0 %}onpageshow='{{ onpageshow }}'{% endif %}
-  {% if onpopstate is defined and onpopstate|length > 0 %}onpopstate='{{ onpopstate }}'{% endif %}
-  {% if onrejectionhandled is defined and onrejectionhandled|length > 0 %}onrejectionhandled='{{ onrejectionhandled }}'{% endif %}
-  {% if onstorage is defined and onstorage|length > 0 %}onstorage='{{ onstorage }}'{% endif %}
-  {% if onunhandledrejection is defined and onunhandledrejection|length > 0 %}onunhandledrejection='{{ onunhandledrejection }}'{% endif %}
-  {% if onunload is defined and onunload|length > 0 %}onunload='{{ onunload }}'{% endif %}
-  {% if part is defined and part|length > 0 %}part='{{ part }}'{% endif %}
-  {% if popover is defined and popover|length > 0 %}popover='{{ popover }}'{% endif %}
-  {% if role is defined and role|length > 0 %}role='{{ role }}'{% endif %}
-  {% if slot is defined and slot|length > 0 %}slot='{{ slot }}'{% endif %}
-  {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck='{{ spellcheck }}'{% endif %}
-  {% if style is defined and style|length > 0 %}style='{{ style }}'{% endif %}
-  {% if tabindex is defined and tabindex|length > 0 %}tabindex='{{ tabindex }}'{% endif %}
-  {% if title is defined and title|length > 0 %}title='{{ title }}'{% endif %}
-  {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
+  {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
+  {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
+  {% if contenteditable is defined and contenteditable|length > 0 and contenteditable in contenteditable_choices %}contenteditable="{{ contenteditable }}"{% endif %}
+  {% if draggable is defined and draggable|length > 0 %}draggable="{{ draggable }}"{% endif %}
+  {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
+  {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
+  {% if inert is defined and inert|length > 0 %}inert="{{ inert }}"{% endif %}
+  {% if attribute(_context, 'is') is defined and attribute(_context, 'is')|length > 0 %}is="{{ attribute(_context, 'is') }}"{% endif %}
+  {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
+  {% if nonce is defined and nonce|length > 0 %}nonce="{{ nonce }}"{% endif %}
+  {% if onafterprint is defined and onafterprint|length > 0 %}onafterprint="{{ onafterprint }}"{% endif %}
+  {% if onbeforeprint is defined and onbeforeprint|length > 0 %}onbeforeprint="{{ onbeforeprint }}"{% endif %}
+  {% if onbeforeunload is defined and onbeforeunload|length > 0 %}onbeforeunload="{{ onbeforeunload }}"{% endif %}
+  {% if onhashchange is defined and onhashchange|length > 0 %}onhashchange="{{ onhashchange }}"{% endif %}
+  {% if onlanguagechange is defined and onlanguagechange|length > 0 %}onlanguagechange="{{ onlanguagechange }}"{% endif %}
+  {% if onmessage is defined and onmessage|length > 0 %}onmessage="{{ onmessage }}"{% endif %}
+  {% if onmessageerror is defined and onmessageerror|length > 0 %}onmessageerror="{{ onmessageerror }}"{% endif %}
+  {% if onoffline is defined and onoffline|length > 0 %}onoffline="{{ onoffline }}"{% endif %}
+  {% if ononline is defined and ononline|length > 0 %}ononline="{{ ononline }}"{% endif %}
+  {% if onpagehide is defined and onpagehide|length > 0 %}onpagehide="{{ onpagehide }}"{% endif %}
+  {% if onpageshow is defined and onpageshow|length > 0 %}onpageshow="{{ onpageshow }}"{% endif %}
+  {% if onpopstate is defined and onpopstate|length > 0 %}onpopstate="{{ onpopstate }}"{% endif %}
+  {% if onrejectionhandled is defined and onrejectionhandled|length > 0 %}onrejectionhandled="{{ onrejectionhandled }}"{% endif %}
+  {% if onstorage is defined and onstorage|length > 0 %}onstorage="{{ onstorage }}"{% endif %}
+  {% if onunhandledrejection is defined and onunhandledrejection|length > 0 %}onunhandledrejection="{{ onunhandledrejection }}"{% endif %}
+  {% if onunload is defined and onunload|length > 0 %}onunload="{{ onunload }}"{% endif %}
+  {% if part is defined and part|length > 0 %}part="{{ part }}"{% endif %}
+  {% if popover is defined and popover|length > 0 %}popover="{{ popover }}"{% endif %}
+  {% if role is defined and role|length > 0 %}role="{{ role }}"{% endif %}
+  {% if slot is defined and slot|length > 0 %}slot="{{ slot }}"{% endif %}
+  {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck="{{ spellcheck }}"{% endif %}
+  {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
+  {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}
+  {% if title is defined and title|length > 0 %}title="{{ title }}"{% endif %}
+  {% if translate is defined and translate|length > 0 %}translate="{{ translate }}"{% endif %}
 >
-  {{- content|raw -}}
+  {% block content %}{{- content|raw -}}{% endblock %}
 </body>

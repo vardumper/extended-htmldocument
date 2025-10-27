@@ -1,30 +1,38 @@
-{# meta.twig #}
+{#
+  This file is auto-generated.
+
+  Meta - The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.
+
+  @author vardumper <info@erikpoehler.com>
+  @package vardumper/extended-htmldocument
+  @see src/TemplateGenerator/TwigGenerator.php
+#}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set httpEquiv_choices = ['content-language', 'content-type', 'default-style', 'refresh'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 <meta
-  {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
-  {% if charset is defined and charset|length > 0 %}charset='{{ charset }}'{% endif %}
-  {% if class is defined and class|length > 0 %}class='{{ class }}'{% endif %}
-  {% if content is defined and content|length > 0 %}content='{{ content }}'{% endif %}
-  {% if contenteditable is defined and contenteditable|length > 0 and contenteditable in contenteditable_choices %}contenteditable='{{ contenteditable }}'{% endif %}
-  {% if draggable is defined and draggable|length > 0 %}draggable='{{ draggable }}'{% endif %}
-  {% if hidden is defined and hidden|length > 0 %}hidden='{{ hidden }}'{% endif %}
-  {% if httpEquiv is defined and httpEquiv|length > 0 and httpEquiv in httpEquiv_choices %}httpEquiv='{{ httpEquiv }}'{% endif %}
-  {% if id is defined and id|length > 0 %}id='{{ id }}'{% endif %}
-  {% if inert is defined and inert|length > 0 %}inert='{{ inert }}'{% endif %}
-  {% if attribute(_context, 'is') is defined and attribute(_context, 'is')|length > 0 %}is='{{ attribute(_context, 'is') }}'{% endif %}
-  {% if lang is defined and lang|length > 0 %}lang='{{ lang }}'{% endif %}
-  {% if name is defined and name|length > 0 %}name='{{ name }}'{% endif %}
-  {% if nonce is defined and nonce|length > 0 %}nonce='{{ nonce }}'{% endif %}
-  {% if part is defined and part|length > 0 %}part='{{ part }}'{% endif %}
-  {% if popover is defined and popover|length > 0 %}popover='{{ popover }}'{% endif %}
-  {% if role is defined and role|length > 0 %}role='{{ role }}'{% endif %}
-  {% if scheme is defined and scheme|length > 0 %}scheme='{{ scheme }}'{% endif %}
-  {% if slot is defined and slot|length > 0 %}slot='{{ slot }}'{% endif %}
-  {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck='{{ spellcheck }}'{% endif %}
-  {% if style is defined and style|length > 0 %}style='{{ style }}'{% endif %}
-  {% if tabindex is defined and tabindex|length > 0 %}tabindex='{{ tabindex }}'{% endif %}
-  {% if title is defined and title|length > 0 %}title='{{ title }}'{% endif %}
-  {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
+  {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
+  {% if charset is defined and charset|length > 0 %}charset="{{ charset }}"{% endif %}
+  {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
+  {% if content is defined and content|length > 0 %}content="{{ content }}"{% endif %}
+  {% if contenteditable is defined and contenteditable|length > 0 and contenteditable in contenteditable_choices %}contenteditable="{{ contenteditable }}"{% endif %}
+  {% if draggable is defined and draggable|length > 0 %}draggable="{{ draggable }}"{% endif %}
+  {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
+  {% if httpEquiv is defined and httpEquiv|length > 0 and httpEquiv in httpEquiv_choices %}httpEquiv="{{ httpEquiv }}"{% endif %}
+  {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
+  {% if inert is defined and inert|length > 0 %}inert="{{ inert }}"{% endif %}
+  {% if attribute(_context, 'is') is defined and attribute(_context, 'is')|length > 0 %}is="{{ attribute(_context, 'is') }}"{% endif %}
+  {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
+  {% if name is defined and name|length > 0 %}name="{{ name }}"{% endif %}
+  {% if nonce is defined and nonce|length > 0 %}nonce="{{ nonce }}"{% endif %}
+  {% if part is defined and part|length > 0 %}part="{{ part }}"{% endif %}
+  {% if popover is defined and popover|length > 0 %}popover="{{ popover }}"{% endif %}
+  {% if role is defined and role|length > 0 %}role="{{ role }}"{% endif %}
+  {% if scheme is defined and scheme|length > 0 %}scheme="{{ scheme }}"{% endif %}
+  {% if slot is defined and slot|length > 0 %}slot="{{ slot }}"{% endif %}
+  {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck="{{ spellcheck }}"{% endif %}
+  {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
+  {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}
+  {% if title is defined and title|length > 0 %}title="{{ title }}"{% endif %}
+  {% if translate is defined and translate|length > 0 %}translate="{{ translate }}"{% endif %}
 />

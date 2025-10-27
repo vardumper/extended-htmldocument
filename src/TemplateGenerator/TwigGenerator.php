@@ -8,6 +8,7 @@ use Html\Mapping\TemplateGenerator;
 use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionUnionType;
+use Symfony\Component\Yaml\Yaml;
 
 #[TemplateGenerator('twig')]
 class TwigGenerator implements TemplateGeneratorInterface
@@ -111,7 +112,7 @@ class TwigGenerator implements TemplateGeneratorInterface
                 if ($type instanceof ReflectionUnionType) {
                     foreach ($type->getTypes() as $unionType) {
                         if ($unionType instanceof ReflectionNamedType && enum_exists($unionType->getName())) {
-                            $choices = array_map(fn($case) => "'{$case->value}'", $unionType->getName()::cases());
+                            $choices = array_map(fn ($case) => "'{$case->value}'", $unionType->getName()::cases());
                             $enums[] = [
                                 'name' => $name,
                                 'choices' => $choices,
@@ -119,7 +120,7 @@ class TwigGenerator implements TemplateGeneratorInterface
                         }
                     }
                 } elseif ($type && $type instanceof ReflectionNamedType && enum_exists($type->getName())) {
-                    $choices = array_map(fn($case) => "'{$case->value}'", $type->getName()::cases());
+                    $choices = array_map(fn ($case) => "'{$case->value}'", $type->getName()::cases());
                     $enums[] = [
                         'name' => $name,
                         'choices' => $choices,
@@ -138,10 +139,17 @@ class TwigGenerator implements TemplateGeneratorInterface
         }
         // Sort attributes and enums alphabetically
         sort($props, \SORT_NATURAL | \SORT_FLAG_CASE);
-        usort($enums, fn($a, $b) => strcmp($a['name'], $b['name']));
+        usort($enums, fn ($a, $b) => strcmp($a['name'], $b['name']));
         $isSelfClosing = $ref->hasConstant('SELF_CLOSING') && $ref->getConstant('SELF_CLOSING');
+        // Read element metadata from YAML
+        $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
+        $yaml = is_readable($yamlPath) ? Yaml::parseFile($yamlPath) : [];
+        $meta = $yaml[strtolower($elementName)] ?? [];
+        $name = $meta['name'] ?? $elementName;
+        $desc = $meta['description'] ?? '';
+        $level = $meta['level'] ?? '';
         // Build Twig template string
-        $twig = "{# {$elementName}.twig #}\n";
+        $twig = "{#\n  This file is auto-generated.\n\n  {$name} - {$desc}\n\n  @author vardumper <info@erikpoehler.com>\n  @package vardumper/extended-htmldocument\n  @see src/TemplateGenerator/TwigGenerator.php\n#}\n";
         foreach ($enums as $enum) {
             $twig .= "{% set {$enum['name']}_choices = [" . implode(', ', $enum['choices']) . "] %}\n";
         }
@@ -160,12 +168,12 @@ class TwigGenerator implements TemplateGeneratorInterface
             if ($isEnum) {
                 $cond .= $isReserved ? " and attribute(_context, '{$attr}') in {$attr}_choices" : " and {$attr} in {$attr}_choices";
             }
-            $twig .= "  {% if {$cond} %}{$attr}='{{ {$val} }}'{% endif %}\n";
+            $twig .= "  {% if {$cond} %}{$attr}=\"{{ {$val} }}\"{% endif %}\n";
         }
         if ($isSelfClosing) {
             $twig .= "/>\n";
         } else {
-            $twig .= ">\n  {{- content|raw -}}\n</{$elementName}>\n";
+            $twig .= ">\n  {% block content %}{{- content|raw -}}{% endblock %}\n</{$elementName}>\n";
         }
         return $twig;
     }

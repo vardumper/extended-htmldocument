@@ -19,8 +19,9 @@ layout: home
 | <span class="prio3">3</span> | src/Command/WatchCommand.php | 199 | [UnusedFormalParameter](https://phpmd.org/rules/unusedcode.html#unusedformalparameter) | Avoid unused parameters such as `$io`. |
 | <span class="prio3">3</span> | src/Command/WatchCommand.php | 204 | [UnusedPrivateMethod](https://phpmd.org/rules/unusedcode.html#unusedprivatemethod) | Avoid unused private methods such as `formatHtml`. |
 | <span class="prio3">3</span> | src/Service/ComponentBuilder.php | 50 | [UnusedLocalVariable](https://phpmd.org/rules/unusedcode.html#unusedlocalvariable) | Avoid unused local variables such as `$childElement`. |
+| <span class="prio3">3</span> | src/TemplateGenerator/TwigGenerator.php | 150 | [UnusedLocalVariable](https://phpmd.org/rules/unusedcode.html#unusedlocalvariable) | Avoid unused local variables such as `$level`. |
 
-Issues detected: 11
+Issues detected: 12
 ## Code Size
 
 | Priority | File   | Line         |  Rule | Message |
@@ -40,8 +41,8 @@ Issues detected: 11
 | <span class="prio3">3</span> | src/Element/Inline/Input.php | 37 | [TooManyFields](https://phpmd.org/rules/codesize.html#toomanyfields) | The class Input has 28 fields. Consider redesigning Input to keep the number of fields under 15. |
 | <span class="prio3">3</span> | src/Element/Inline/Input.php | 37 | [ExcessiveClassComplexity](https://phpmd.org/rules/codesize.html#excessiveclasscomplexity) | The class Input has an overall complexity of 50 which is very high. The configured complexity threshold is 50. |
 | <span class="prio3">3</span> | src/Element/Inline/Textarea.php | 37 | [TooManyFields](https://phpmd.org/rules/codesize.html#toomanyfields) | The class Textarea has 16 fields. Consider redesigning Textarea to keep the number of fields under 15. |
-| <span class="prio3">3</span> | src/TemplateGenerator/TwigGenerator.php | 96 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method renderElement() has a Cyclomatic Complexity of 24. The configured cyclomatic complexity threshold is 10. |
-| <span class="prio3">3</span> | src/TemplateGenerator/TwigGenerator.php | 96 | [NPathComplexity](https://phpmd.org/rules/codesize.html#npathcomplexity) | The method renderElement() has an NPath complexity of 9768. The configured NPath complexity threshold is 200. |
+| <span class="prio3">3</span> | src/TemplateGenerator/TwigGenerator.php | 97 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method renderElement() has a Cyclomatic Complexity of 25. The configured cyclomatic complexity threshold is 10. |
+| <span class="prio3">3</span> | src/TemplateGenerator/TwigGenerator.php | 97 | [NPathComplexity](https://phpmd.org/rules/codesize.html#npathcomplexity) | The method renderElement() has an NPath complexity of 19536. The configured NPath complexity threshold is 200. |
 | <span class="prio3">3</span> | src/Trait/ClassResolverTrait.php | 69 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method getElementByQualifiedName() has a Cyclomatic Complexity of 12. The configured cyclomatic complexity threshold is 10. |
 | <span class="prio3">3</span> | src/Trait/GlobalAttributesTrait.php | 19 | [ExcessivePublicCount](https://phpmd.org/rules/codesize.html#excessivepubliccount) | The trait GlobalAttributesTrait has 48 public methods and attributes. Consider reducing the number of public items to less than 45. |
 
@@ -153,7 +154,8 @@ Issues detected: 19
 | <span class="prio1">1</span> | src/Element/Void/Track.php | 113 | [MissingImport](http://phpmd.org/rules/cleancode.html#MissingImport) | Missing class import via use statement (line `113`, column `59`). |
 | <span class="prio1">1</span> | src/Service/ComponentBuilder.php | 54 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method buildDOM uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
 | <span class="prio1">1</span> | src/Service/ComponentBuilder.php | 63 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method buildDOM uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
-| <span class="prio1">1</span> | src/TemplateGenerator/TwigGenerator.php | 167 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method renderElement uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
+| <span class="prio1">1</span> | src/TemplateGenerator/TwigGenerator.php | 146 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Symfony\Component\Yaml\Yaml` in method `renderElement`. |
+| <span class="prio1">1</span> | src/TemplateGenerator/TwigGenerator.php | 175 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method renderElement uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
 | <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 189 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\AutoCapitalizeEnum` in method `setAutoCapitalize`. |
 | <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 209 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\ContentEditableEnum` in method `setContentEditable`. |
 | <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 216 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\ContentEditableEnum` in method `setContentEditable`. |
@@ -169,7 +171,7 @@ Issues detected: 19
 | <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 456 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\SpellCheckEnum` in method `setSpellCheck`. |
 | <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 459 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\SpellCheckEnum` in method `setSpellCheck`. |
 
-Issues detected: 118
+Issues detected: 119
 ## Design
 
 | Priority | File   | Line         |  Rule | Message |
@@ -185,4 +187,4 @@ Issues detected: 118
 
 Issues detected: 8
 
-Mon Oct 27 10:15:30 AM CET 2025
+Mon Oct 27 11:05:59 AM CET 2025

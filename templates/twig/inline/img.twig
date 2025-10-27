@@ -1,38 +1,46 @@
-{# img.twig #}
+{#
+  This file is auto-generated.
+
+  Image - The img element represents an image.
+
+  @author vardumper <info@erikpoehler.com>
+  @package vardumper/extended-htmldocument
+  @see src/TemplateGenerator/TwigGenerator.php
+#}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set crossorigin_choices = ['anonymous', 'use-credentials'] %}
 {% set decoding_choices = ['async', 'auto', 'sync'] %}
 {% set referrerpolicy_choices = ['no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', 'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 <img
-  {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
-  {% if alt is defined and alt|length > 0 %}alt='{{ alt }}'{% endif %}
-  {% if class is defined and class|length > 0 %}class='{{ class }}'{% endif %}
-  {% if contenteditable is defined and contenteditable|length > 0 and contenteditable in contenteditable_choices %}contenteditable='{{ contenteditable }}'{% endif %}
-  {% if crossorigin is defined and crossorigin|length > 0 and crossorigin in crossorigin_choices %}crossorigin='{{ crossorigin }}'{% endif %}
-  {% if decoding is defined and decoding|length > 0 and decoding in decoding_choices %}decoding='{{ decoding }}'{% endif %}
-  {% if draggable is defined and draggable|length > 0 %}draggable='{{ draggable }}'{% endif %}
-  {% if height is defined and height|length > 0 %}height='{{ height }}'{% endif %}
-  {% if hidden is defined and hidden|length > 0 %}hidden='{{ hidden }}'{% endif %}
-  {% if id is defined and id|length > 0 %}id='{{ id }}'{% endif %}
-  {% if inert is defined and inert|length > 0 %}inert='{{ inert }}'{% endif %}
-  {% if attribute(_context, 'is') is defined and attribute(_context, 'is')|length > 0 %}is='{{ attribute(_context, 'is') }}'{% endif %}
-  {% if ismap is defined and ismap|length > 0 %}ismap='{{ ismap }}'{% endif %}
-  {% if lang is defined and lang|length > 0 %}lang='{{ lang }}'{% endif %}
-  {% if nonce is defined and nonce|length > 0 %}nonce='{{ nonce }}'{% endif %}
-  {% if part is defined and part|length > 0 %}part='{{ part }}'{% endif %}
-  {% if popover is defined and popover|length > 0 %}popover='{{ popover }}'{% endif %}
-  {% if referrerpolicy is defined and referrerpolicy|length > 0 and referrerpolicy in referrerpolicy_choices %}referrerpolicy='{{ referrerpolicy }}'{% endif %}
-  {% if role is defined and role|length > 0 %}role='{{ role }}'{% endif %}
-  {% if sizes is defined and sizes|length > 0 %}sizes='{{ sizes }}'{% endif %}
-  {% if slot is defined and slot|length > 0 %}slot='{{ slot }}'{% endif %}
-  {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck='{{ spellcheck }}'{% endif %}
-  {% if src is defined and src|length > 0 %}src='{{ src }}'{% endif %}
-  {% if srcset is defined and srcset|length > 0 %}srcset='{{ srcset }}'{% endif %}
-  {% if style is defined and style|length > 0 %}style='{{ style }}'{% endif %}
-  {% if tabindex is defined and tabindex|length > 0 %}tabindex='{{ tabindex }}'{% endif %}
-  {% if title is defined and title|length > 0 %}title='{{ title }}'{% endif %}
-  {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
-  {% if usemap is defined and usemap|length > 0 %}usemap='{{ usemap }}'{% endif %}
-  {% if width is defined and width|length > 0 %}width='{{ width }}'{% endif %}
+  {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
+  {% if alt is defined and alt|length > 0 %}alt="{{ alt }}"{% endif %}
+  {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
+  {% if contenteditable is defined and contenteditable|length > 0 and contenteditable in contenteditable_choices %}contenteditable="{{ contenteditable }}"{% endif %}
+  {% if crossorigin is defined and crossorigin|length > 0 and crossorigin in crossorigin_choices %}crossorigin="{{ crossorigin }}"{% endif %}
+  {% if decoding is defined and decoding|length > 0 and decoding in decoding_choices %}decoding="{{ decoding }}"{% endif %}
+  {% if draggable is defined and draggable|length > 0 %}draggable="{{ draggable }}"{% endif %}
+  {% if height is defined and height|length > 0 %}height="{{ height }}"{% endif %}
+  {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
+  {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
+  {% if inert is defined and inert|length > 0 %}inert="{{ inert }}"{% endif %}
+  {% if attribute(_context, 'is') is defined and attribute(_context, 'is')|length > 0 %}is="{{ attribute(_context, 'is') }}"{% endif %}
+  {% if ismap is defined and ismap|length > 0 %}ismap="{{ ismap }}"{% endif %}
+  {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
+  {% if nonce is defined and nonce|length > 0 %}nonce="{{ nonce }}"{% endif %}
+  {% if part is defined and part|length > 0 %}part="{{ part }}"{% endif %}
+  {% if popover is defined and popover|length > 0 %}popover="{{ popover }}"{% endif %}
+  {% if referrerpolicy is defined and referrerpolicy|length > 0 and referrerpolicy in referrerpolicy_choices %}referrerpolicy="{{ referrerpolicy }}"{% endif %}
+  {% if role is defined and role|length > 0 %}role="{{ role }}"{% endif %}
+  {% if sizes is defined and sizes|length > 0 %}sizes="{{ sizes }}"{% endif %}
+  {% if slot is defined and slot|length > 0 %}slot="{{ slot }}"{% endif %}
+  {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck="{{ spellcheck }}"{% endif %}
+  {% if src is defined and src|length > 0 %}src="{{ src }}"{% endif %}
+  {% if srcset is defined and srcset|length > 0 %}srcset="{{ srcset }}"{% endif %}
+  {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
+  {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}
+  {% if title is defined and title|length > 0 %}title="{{ title }}"{% endif %}
+  {% if translate is defined and translate|length > 0 %}translate="{{ translate }}"{% endif %}
+  {% if usemap is defined and usemap|length > 0 %}usemap="{{ usemap }}"{% endif %}
+  {% if width is defined and width|length > 0 %}width="{{ width }}"{% endif %}
 />
