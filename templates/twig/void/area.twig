@@ -7,6 +7,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigGenerator.php
 #}
+{% block area %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set rel_choices = ['alternate', 'author', 'bookmark', 'canonical', 'help', 'icon', 'license', 'manifest', 'next', 'nofollow', 'noreferrer', 'prefetch', 'prev', 'search', 'stylesheet', 'tag'] %}
 {% set shape_choices = ['circle', 'default', 'poly', 'rect'] %}
@@ -42,3 +43,4 @@
   {% if translate is defined and translate|length > 0 %}translate="{{ translate }}"{% endif %}
   {% if type is defined and type|length > 0 %}type="{{ type }}"{% endif %}
 />
+{% endblock %}

@@ -7,6 +7,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigGenerator.php
 #}
+{% block embed_block %}{# Note: Block name 'embed' is a reserved word, using 'embed_block' instead. #}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 <embed
@@ -34,3 +35,4 @@
   {% if type is defined and type|length > 0 %}type="{{ type }}"{% endif %}
   {% if width is defined and width|length > 0 %}width="{{ width }}"{% endif %}
 />
+{% endblock %}

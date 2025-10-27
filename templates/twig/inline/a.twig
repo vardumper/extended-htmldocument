@@ -7,6 +7,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigGenerator.php
 #}
+{% block a %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set rel_choices = ['alternate', 'author', 'bookmark', 'canonical', 'help', 'icon', 'license', 'manifest', 'next', 'nofollow', 'noreferrer', 'prefetch', 'prev', 'search', 'stylesheet', 'tag'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
@@ -40,3 +41,4 @@
 >
   {% block content %}{{- content|raw -}}{% endblock %}
 </a>
+{% endblock %}

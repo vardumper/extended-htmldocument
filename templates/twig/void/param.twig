@@ -7,6 +7,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigGenerator.php
 #}
+{% block param %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 <param
@@ -32,3 +33,4 @@
   {% if translate is defined and translate|length > 0 %}translate="{{ translate }}"{% endif %}
   {% if value is defined and value|length > 0 %}value="{{ value }}"{% endif %}
 />
+{% endblock %}

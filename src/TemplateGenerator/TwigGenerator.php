@@ -13,8 +13,6 @@ use Symfony\Component\Yaml\Yaml;
 #[TemplateGenerator('twig')]
 class TwigGenerator implements TemplateGeneratorInterface
 {
-    public const TEMPLATE = 'src/Resources/templates/twig.tpl.twig';
-
     private const TWIG_RESERVED_WORDS = [
         'is',
         'in',
@@ -147,9 +145,14 @@ class TwigGenerator implements TemplateGeneratorInterface
         $meta = $yaml[strtolower($elementName)] ?? [];
         $name = $meta['name'] ?? $elementName;
         $desc = $meta['description'] ?? '';
-        $level = $meta['level'] ?? '';
+
+        // Avoid reserved words for block names
+        $blockName = in_array($elementName, self::TWIG_RESERVED_WORDS, true) ? $elementName . '_block' : $elementName;
+
         // Build Twig template string
         $twig = "{#\n  This file is auto-generated.\n\n  {$name} - {$desc}\n\n  @author vardumper <info@erikpoehler.com>\n  @package vardumper/extended-htmldocument\n  @see src/TemplateGenerator/TwigGenerator.php\n#}\n";
+        $note = ($blockName !== $elementName) ? "{# Note: Block name '{$elementName}' is a reserved word, using '{$blockName}' instead. #}" : '';
+        $twig .= "{% block {$blockName} %}{$note}\n";
         foreach ($enums as $enum) {
             $twig .= "{% set {$enum['name']}_choices = [" . implode(', ', $enum['choices']) . "] %}\n";
         }
@@ -175,6 +178,7 @@ class TwigGenerator implements TemplateGeneratorInterface
         } else {
             $twig .= ">\n  {% block content %}{{- content|raw -}}{% endblock %}\n</{$elementName}>\n";
         }
+        $twig .= "{% endblock %}\n";
         return $twig;
     }
 }

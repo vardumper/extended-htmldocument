@@ -7,6 +7,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigGenerator.php
 #}
+{% block tr %}
 {% set align_choices = ['left', 'center', 'right', 'justify', 'char'] %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
@@ -39,3 +40,4 @@
 >
   {% block content %}{{- content|raw -}}{% endblock %}
 </tr>
+{% endblock %}

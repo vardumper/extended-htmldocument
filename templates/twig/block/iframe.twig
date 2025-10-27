@@ -7,6 +7,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigGenerator.php
 #}
+{% block iframe %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set referrerpolicy_choices = ['no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', 'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
@@ -42,3 +43,4 @@
 >
   {% block content %}{{- content|raw -}}{% endblock %}
 </iframe>
+{% endblock %}

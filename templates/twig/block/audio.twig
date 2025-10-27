@@ -7,6 +7,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigGenerator.php
 #}
+{% block audio %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set crossorigin_choices = ['anonymous', 'use-credentials'] %}
 {% set preload_choices = ['auto', 'metadata', 'none'] %}
@@ -41,3 +42,4 @@
 >
   {% block content %}{{- content|raw -}}{% endblock %}
 </audio>
+{% endblock %}

@@ -7,6 +7,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigGenerator.php
 #}
+{% block svg %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 <svg
@@ -38,3 +39,4 @@
 >
   {% block content %}{{- content|raw -}}{% endblock %}
 </svg>
+{% endblock %}

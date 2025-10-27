@@ -7,6 +7,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigGenerator.php
 #}
+{% block input %}
 {% set autocomplete_choices = ['off', 'on'] %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
@@ -56,3 +57,4 @@
   {% if value is defined and value|length > 0 %}value="{{ value }}"{% endif %}
   {% if width is defined and width|length > 0 %}width="{{ width }}"{% endif %}
 />
+{% endblock %}

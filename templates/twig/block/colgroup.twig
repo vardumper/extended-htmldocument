@@ -7,6 +7,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigGenerator.php
 #}
+{% block colgroup %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 <colgroup
@@ -32,3 +33,4 @@
 >
   {% block content %}{{- content|raw -}}{% endblock %}
 </colgroup>
+{% endblock %}

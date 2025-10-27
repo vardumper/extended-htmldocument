@@ -7,6 +7,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigGenerator.php
 #}
+{% block link %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set crossorigin_choices = ['anonymous', 'use-credentials'] %}
 {% set referrerpolicy_choices = ['no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', 'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'] %}
@@ -42,3 +43,4 @@
   {% if translate is defined and translate|length > 0 %}translate="{{ translate }}"{% endif %}
   {% if type is defined and type|length > 0 %}type="{{ type }}"{% endif %}
 />
+{% endblock %}
