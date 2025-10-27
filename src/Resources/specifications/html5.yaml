@@ -1186,12 +1186,23 @@ colgroup:
   description: 'The colgroup element represents a group of one or more columns in the table that is its parent, if it has a parent and that is a table element.'
   level: block
   allowed_attributes:
-    - id
+    - span
+    - accesskey
+    - autocapitalize
     - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
     - hidden
+    - id
     - lang
+    - span
+    - spellcheck
     - style
+    - tabindex
     - title
+    - translate
   unique: false
   children:
     - col
