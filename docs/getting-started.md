@@ -55,7 +55,7 @@ While the include and embed snippets below aren't shorter than just writing HTML
   title: 'Some info about the link'
   rel: 'nofollow',
   role: 'button',
-  content: 'Click here'
+  content: '<strong>Click here</strong>'
 } %}
 ```
 ```twig [Twig embed]
@@ -67,7 +67,7 @@ While the include and embed snippets below aren't shorter than just writing HTML
 } %}
   {% block content %}
     {% include 'inline/strong.twig' with {
-      content: 'Click here'
+      content: 'Overriding content here'
     } %}
   {% endblock %}
 {% endblock %}
@@ -81,7 +81,11 @@ While the include and embed snippets below aren't shorter than just writing HTML
   {% set title = 'Some info about the link' %}
   {% set rel = 'nofollow' %}
   {% set role = 'button' %}
-  {% set content = 'Click here' %}
+  {% block content %}
+    {% include 'inline/strong.twig' with {
+      content: 'Overriding content here'
+    } %}
+  {% endblock %}
   {{ parent() }}
 {% endblock %}
 ```
