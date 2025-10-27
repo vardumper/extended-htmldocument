@@ -69,7 +69,23 @@ class BatchGeneratorCommand extends Command
                 }
                 $elementShortName = (new ReflectionClass($className))->getShortName();
                 $fileName = $elementInstance::QUALIFIED_NAME . '.' . $generatorInstance->getExtension();
-                $outFile = rtrim($dest, \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR . $fileName;
+                $level = $this->determineLevel($className);
+                if (! is_dir(
+                    rtrim($dest, \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level
+                )) {
+                    mkdir(
+                        rtrim(
+                            $dest,
+                            \DIRECTORY_SEPARATOR
+                        ) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level,
+                        0755,
+                        true
+                    );
+                }
+                $outFile = rtrim(
+                    $dest,
+                    \DIRECTORY_SEPARATOR
+                ) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level . \DIRECTORY_SEPARATOR . $fileName;
                 if (file_exists($outFile) && ! $overwriteExisting) {
                     $io->warning("File '{$outFile}' already exists. Skipping generation.");
                     continue;
@@ -79,5 +95,12 @@ class BatchGeneratorCommand extends Command
             }
         }
         return Command::SUCCESS;
+    }
+
+    private function determineLevel(string $className): string
+    {
+        $level = (new ReflectionClass($className))->getParentClass();
+        $parts = explode('\\', $level->getName());
+        return strtolower(str_replace('Element', '', end($parts)));
     }
 }
