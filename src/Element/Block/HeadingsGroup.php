@@ -1,19 +1,25 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * HeadingsGroup - The hgroup element represents a multi-level heading for a section of a document. It groups a set of h1–h6 elements.
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Heading1;
+use Html\Element\Block\Heading2;
+use Html\Element\Block\Heading3;
+use Html\Element\Block\Heading4;
+use Html\Element\Block\Heading5;
+use Html\Element\Block\Heading6;
 use Html\Mapping\Element;
 
 #[Element('hgroup')]
@@ -23,6 +29,11 @@ class HeadingsGroup extends BlockElement
      * The HTML element name
      */
     public const string QUALIFIED_NAME = 'hgroup';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = false;
 
     /**
      * If an element is unique per HTML document
@@ -38,7 +49,8 @@ class HeadingsGroup extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [];
+    public static array $childOf = [
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -52,4 +64,8 @@ class HeadingsGroup extends BlockElement
         Heading5::class,
         Heading6::class,
     ];
+
+
+
+
 }

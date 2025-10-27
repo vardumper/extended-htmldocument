@@ -3,7 +3,6 @@
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 {% set type_choices = ['button', 'checkbox', 'color', 'date', 'datetime-local', 'email', 'file', 'hidden', 'image', 'month', 'number', 'password', 'radio', 'range', 'reset', 'search', 'submit', 'tel', 'text', 'time', 'url', 'week'] %}
-
 <input
   {% if accept is defined and accept|length > 0 %}accept='{{ accept }}'{% endif %}
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
@@ -48,6 +47,4 @@
   {% if type is defined and type|length > 0 and type in type_choices %}type='{{ type }}'{% endif %}
   {% if value is defined and value|length > 0 %}value='{{ value }}'{% endif %}
   {% if width is defined and width|length > 0 %}width='{{ width }}'{% endif %}
->
-  {{ content|raw }}
-</input>
+/>

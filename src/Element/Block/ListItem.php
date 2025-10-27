@@ -1,19 +1,36 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * ListItem - The li element represents a list item. If its parent element is an ol, ul, or menu, then the element is an item of the parent element's list, as defined for those elements. Otherwise, the list item has no defined list-related semantics.
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Aside;
+use Html\Element\Block\DefinitionDescription;
+use Html\Element\Block\DefinitionList;
+use Html\Element\Block\Details;
+use Html\Element\Block\Dialog;
+use Html\Element\Block\Division;
+use Html\Element\Block\Figure;
+use Html\Element\Block\Footer;
+use Html\Element\Block\Header;
+use Html\Element\Block\Main;
+use Html\Element\Block\Menu;
+use Html\Element\Block\OrderedList;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\PreformattedText;
+use Html\Element\Block\Section;
+use Html\Element\Block\Template;
+use Html\Element\Block\UnorderedList;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\Citation;
@@ -43,6 +60,11 @@ class ListItem extends BlockElement
      * The HTML element name
      */
     public const string QUALIFIED_NAME = 'li';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = false;
 
     /**
      * If an element is unique per HTML document
@@ -108,10 +130,10 @@ class ListItem extends BlockElement
         Variable::class,
     ];
 
-    /**
-     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
-     */
+
+    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value = null;
+
 
     public function setValue(string $value): static
     {
@@ -124,4 +146,6 @@ class ListItem extends BlockElement
     {
         return $this->value;
     }
+
+
 }

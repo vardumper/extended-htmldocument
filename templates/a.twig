@@ -3,7 +3,6 @@
 {% set rel_choices = ['alternate', 'author', 'bookmark', 'canonical', 'help', 'icon', 'license', 'manifest', 'next', 'nofollow', 'noreferrer', 'prefetch', 'prev', 'search', 'stylesheet', 'tag'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 {% set target_choices = ['_blank', '_parent', '_self', '_top'] %}
-
 <a
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if class is defined and class|length > 0 %}class='{{ class }}'{% endif %}
@@ -31,5 +30,5 @@
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
   {% if type is defined and type|length > 0 %}type='{{ type }}'{% endif %}
 >
-  {{ content|raw }}
+  {{- content|raw -}}
 </a>

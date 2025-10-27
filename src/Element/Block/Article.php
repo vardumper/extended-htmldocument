@@ -1,19 +1,49 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Article - The article element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable.
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Aside;
+use Html\Element\Block\Audio;
+use Html\Element\Block\Blockquote;
+use Html\Element\Block\Body;
+use Html\Element\Block\DefinitionList;
+use Html\Element\Block\DeletedText;
+use Html\Element\Block\Division;
+use Html\Element\Block\Embed;
+use Html\Element\Block\Figure;
+use Html\Element\Block\Form;
+use Html\Element\Block\Heading1;
+use Html\Element\Block\Heading2;
+use Html\Element\Block\Heading3;
+use Html\Element\Block\Heading4;
+use Html\Element\Block\Heading5;
+use Html\Element\Block\Heading6;
+use Html\Element\Block\InlineFrame;
+use Html\Element\Block\InsertedText;
+use Html\Element\Block\Main;
+use Html\Element\Block\Map;
+use Html\Element\Block\Navigation;
+use Html\Element\Block\ObjectElement;
+use Html\Element\Block\OrderedList;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\Picture;
+use Html\Element\Block\PreformattedText;
+use Html\Element\Block\Section;
+use Html\Element\Block\Table;
+use Html\Element\Block\UnorderedList;
+use Html\Element\Block\Video;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\BidirectionalIsolation;
@@ -54,6 +84,11 @@ class Article extends BlockElement
     public const string QUALIFIED_NAME = 'article';
 
     /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = false;
+
+    /**
      * If an element is unique per HTML document
      */
     public static bool $unique = false;
@@ -68,7 +103,7 @@ class Article extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
-        self::class,
+        Article::class,
         Aside::class,
         Blockquote::class,
         Body::class,
@@ -87,7 +122,7 @@ class Article extends BlockElement
         Anchor::class,
         Abbreviation::class,
         Area::class,
-        self::class,
+        Article::class,
         Audio::class,
         Bold::class,
         BidirectionalIsolation::class,
@@ -139,4 +174,8 @@ class Article extends BlockElement
         Video::class,
         WordBreakOpportunity::class,
     ];
+
+
+
+
 }

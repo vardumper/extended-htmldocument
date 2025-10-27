@@ -2,7 +2,6 @@
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set httpEquiv_choices = ['content-language', 'content-type', 'default-style', 'refresh'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
-
 <meta
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if charset is defined and charset|length > 0 %}charset='{{ charset }}'{% endif %}
@@ -28,6 +27,4 @@
   {% if tabindex is defined and tabindex|length > 0 %}tabindex='{{ tabindex }}'{% endif %}
   {% if title is defined and title|length > 0 %}title='{{ title }}'{% endif %}
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
->
-  {{ content|raw }}
-</meta>
+/>

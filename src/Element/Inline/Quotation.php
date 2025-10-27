@@ -1,16 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Quotation - The q element represents some phrasing content quoted from another source.
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -35,6 +35,11 @@ class Quotation extends InlineElement
      * The HTML element name
      */
     public const string QUALIFIED_NAME = 'q';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = false;
 
     /**
      * If an element is unique per HTML document
@@ -69,12 +74,13 @@ class Quotation extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies the URL of the cited work or the name of the cited creative work.
-     */
+
+    /** Specifies the URL of the cited work or the name of the cited creative work. */
     public ?string $cite = null;
+
 
     public function setCite(string $cite): static
     {
@@ -87,4 +93,5 @@ class Quotation extends InlineElement
     {
         return $this->cite;
     }
+
 }

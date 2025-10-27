@@ -1,7 +1,6 @@
 {# svg.twig #}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
-
 <svg
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if class is defined and class|length > 0 %}class='{{ class }}'{% endif %}
@@ -29,5 +28,5 @@
   {% if width is defined and width|length > 0 %}width='{{ width }}'{% endif %}
   {% if xmlns is defined and xmlns|length > 0 %}xmlns='{{ xmlns }}'{% endif %}
 >
-  {{ content|raw }}
+  {{- content|raw -}}
 </svg>

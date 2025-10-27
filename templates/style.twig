@@ -2,7 +2,6 @@
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 {% set type_choices = ['text/css'] %}
-
 <style
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if class is defined and class|length > 0 %}class='{{ class }}'{% endif %}
@@ -27,5 +26,5 @@
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
   {% if type is defined and type|length > 0 and type in type_choices %}type='{{ type }}'{% endif %}
 >
-  {{ content|raw }}
+  {{- content|raw -}}
 </style>

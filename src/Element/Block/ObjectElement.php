@@ -1,19 +1,29 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * ObjectElement - The object element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Article;
+use Html\Element\Block\Aside;
+use Html\Element\Block\Body;
+use Html\Element\Block\DefinitionDescription;
+use Html\Element\Block\Division;
+use Html\Element\Block\Footer;
+use Html\Element\Block\Header;
+use Html\Element\Block\Main;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
 use Html\Mapping\Element;
 
@@ -24,6 +34,11 @@ class ObjectElement extends BlockElement
      * The HTML element name
      */
     public const string QUALIFIED_NAME = 'object';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = false;
 
     /**
      * If an element is unique per HTML document
@@ -57,37 +72,28 @@ class ObjectElement extends BlockElement
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies the address of the external data that the object requires.
-     */
+
+    /** Specifies the address of the external data that the object requires. */
     public ?string $data = null;
 
-    /**
-     * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
-     */
+    /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $height = null;
 
-    /**
-     * Specifies the name associated with the element. The meaning may vary depending on the context.
-     */
+    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
     public ?string $name = null;
 
-    /**
-     * Specifies the media type of the linked resource.
-     */
+    /** Specifies the media type of the linked resource. */
     public ?string $type = null;
 
-    /**
-     * Specifies a client-side image map to be used with the element.
-     */
+    /** Specifies a client-side image map to be used with the element. */
     public ?string $usemap = null;
 
-    /**
-     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
-     */
+    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width = null;
+
 
     public function setData(string $data): static
     {
@@ -160,4 +166,6 @@ class ObjectElement extends BlockElement
     {
         return $this->width;
     }
+
+
 }

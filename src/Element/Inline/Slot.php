@@ -1,16 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Slot - The slot element is a placeholder inside a web component that you can fill with your own markup, which lets you create separate DOM trees and present them together.
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\Block\DefinitionList;
@@ -32,6 +32,11 @@ use Html\Element\Block\Summary;
 use Html\Element\Block\Table;
 use Html\Element\Block\UnorderedList;
 use Html\Element\InlineElement;
+use Html\Element\Inline\Anchor;
+use Html\Element\Inline\Button;
+use Html\Element\Inline\Input;
+use Html\Element\Inline\Select;
+use Html\Element\Inline\Textarea;
 use Html\Mapping\Element;
 
 #[Element('slot')]
@@ -41,6 +46,11 @@ class Slot extends InlineElement
      * The HTML element name
      */
     public const string QUALIFIED_NAME = 'slot';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = false;
 
     /**
      * If an element is unique per HTML document
@@ -56,7 +66,9 @@ class Slot extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Form::class];
+    public static array $childOf = [
+        Form::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
@@ -88,10 +100,10 @@ class Slot extends InlineElement
         UnorderedList::class,
     ];
 
-    /**
-     * Specifies the name associated with the element. The meaning may vary depending on the context.
-     */
+
+    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
     public ?string $name = null;
+
 
     public function setName(string $name): static
     {
@@ -104,4 +116,5 @@ class Slot extends InlineElement
     {
         return $this->name;
     }
+
 }

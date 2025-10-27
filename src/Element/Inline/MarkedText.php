@@ -1,16 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * MarkedText - The mark element represents a run of text in one document marked or highlighted for reference or notation purposes, due to the marked passage's relevance or importance in the enclosing context.
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -37,6 +37,18 @@ use Html\Element\Block\Summary;
 use Html\Element\Block\Table;
 use Html\Element\Block\Video;
 use Html\Element\InlineElement;
+use Html\Element\Inline\Anchor;
+use Html\Element\Inline\BidirectionalIsolation;
+use Html\Element\Inline\BidirectionalOverride;
+use Html\Element\Inline\Button;
+use Html\Element\Inline\Image;
+use Html\Element\Inline\Input;
+use Html\Element\Inline\Ruby;
+use Html\Element\Inline\RubyParenthesis;
+use Html\Element\Inline\RubyText;
+use Html\Element\Inline\Select;
+use Html\Element\Inline\Span;
+use Html\Element\Inline\Textarea;
 use Html\Element\Void\Area;
 use Html\Element\Void\BreakElement;
 use Html\Element\Void\Parameter;
@@ -52,6 +64,11 @@ class MarkedText extends InlineElement
      * The HTML element name
      */
     public const string QUALIFIED_NAME = 'mark';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = false;
 
     /**
      * If an element is unique per HTML document
@@ -117,4 +134,7 @@ class MarkedText extends InlineElement
         Video::class,
         WordBreakOpportunity::class,
     ];
+
+
+
 }

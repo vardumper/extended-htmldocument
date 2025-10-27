@@ -2,7 +2,6 @@
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set kind_choices = ['captions', 'chapters', 'descriptions', 'metadata', 'subtitles'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
-
 <track
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if class is defined and class|length > 0 %}class='{{ class }}'{% endif %}
@@ -28,6 +27,4 @@
   {% if tabindex is defined and tabindex|length > 0 %}tabindex='{{ tabindex }}'{% endif %}
   {% if title is defined and title|length > 0 %}title='{{ title }}'{% endif %}
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
->
-  {{ content|raw }}
-</track>
+/>

@@ -2,7 +2,6 @@
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set referrerpolicy_choices = ['no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', 'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
-
 <iframe
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if allowfullscreen is defined and allowfullscreen|length > 0 %}allowfullscreen='{{ allowfullscreen }}'{% endif %}
@@ -33,5 +32,5 @@
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
   {% if width is defined and width|length > 0 %}width='{{ width }}'{% endif %}
 >
-  {{ content|raw }}
+  {{- content|raw -}}
 </iframe>

@@ -4,7 +4,6 @@
 {% set referrerpolicy_choices = ['no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', 'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 {% set type_choices = ['text/javascript', 'module'] %}
-
 <script
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if async is defined and async|length > 0 %}async='{{ async }}'{% endif %}
@@ -34,5 +33,5 @@
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
   {% if type is defined and type|length > 0 and type in type_choices %}type='{{ type }}'{% endif %}
 >
-  {{ content|raw }}
+  {{- content|raw -}}
 </script>

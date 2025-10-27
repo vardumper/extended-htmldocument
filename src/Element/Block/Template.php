@@ -1,19 +1,39 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Template - The template element is a mechanism for holding client-side content that is not to be rendered when a page is loaded but may subsequently be instantiated during runtime using JavaScript.
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Body;
+use Html\Element\Block\DefinitionList;
+use Html\Element\Block\Details;
+use Html\Element\Block\Division;
+use Html\Element\Block\Form;
+use Html\Element\Block\Heading1;
+use Html\Element\Block\Heading2;
+use Html\Element\Block\Heading3;
+use Html\Element\Block\Heading4;
+use Html\Element\Block\Heading5;
+use Html\Element\Block\Heading6;
+use Html\Element\Block\InlineFrame;
+use Html\Element\Block\ListItem;
+use Html\Element\Block\Menu;
+use Html\Element\Block\OrderedList;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\PreformattedText;
+use Html\Element\Block\Summary;
+use Html\Element\Block\Table;
+use Html\Element\Block\UnorderedList;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\Button;
 use Html\Element\Inline\Input;
@@ -30,6 +50,11 @@ class Template extends BlockElement
     public const string QUALIFIED_NAME = 'template';
 
     /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = false;
+
+    /**
      * If an element is unique per HTML document
      */
     public static bool $unique = false;
@@ -43,7 +68,11 @@ class Template extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Body::class, Form::class, Menu::class];
+    public static array $childOf = [
+        Body::class,
+        Form::class,
+        Menu::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -74,4 +103,8 @@ class Template extends BlockElement
         Table::class,
         UnorderedList::class,
     ];
+
+
+
+
 }

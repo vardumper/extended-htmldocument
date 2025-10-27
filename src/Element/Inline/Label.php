@@ -1,16 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Label - The label element represents a caption in a user interface. The caption can be associated with a specific form control, known as the label element's labeled control, either using the for attribute, or by putting the form control inside the label element itself.
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Body;
@@ -29,6 +29,11 @@ class Label extends InlineElement
     public const string QUALIFIED_NAME = 'label';
 
     /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = false;
+
+    /**
      * If an element is unique per HTML document
      */
     public static bool $unique = false;
@@ -42,18 +47,24 @@ class Label extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Body::class, Fieldset::class, Form::class, Paragraph::class];
+    public static array $childOf = [
+        Body::class,
+        Fieldset::class,
+        Form::class,
+        Paragraph::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Refers to the <datalist> element that contains the options for an input element.
-     */
+
+    /** Refers to the <datalist> element that contains the options for an input element. */
     public ?string $for = null;
+
 
     public function setFor(string $for): static
     {
@@ -66,4 +77,5 @@ class Label extends InlineElement
     {
         return $this->for;
     }
+
 }

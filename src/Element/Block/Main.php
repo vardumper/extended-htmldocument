@@ -1,19 +1,52 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Main - The main element represents the dominant content of the body of a document. The main content area consists of content that is directly related to or expands upon the central topic of a document, or the central functionality of an application.
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Article;
+use Html\Element\Block\Aside;
+use Html\Element\Block\Audio;
+use Html\Element\Block\Body;
+use Html\Element\Block\DefinitionDescription;
+use Html\Element\Block\DefinitionList;
+use Html\Element\Block\DefinitionTerm;
+use Html\Element\Block\DeletedText;
+use Html\Element\Block\Details;
+use Html\Element\Block\Division;
+use Html\Element\Block\Embed;
+use Html\Element\Block\Figure;
+use Html\Element\Block\Form;
+use Html\Element\Block\Heading1;
+use Html\Element\Block\Heading2;
+use Html\Element\Block\Heading3;
+use Html\Element\Block\Heading4;
+use Html\Element\Block\Heading5;
+use Html\Element\Block\Heading6;
+use Html\Element\Block\InlineFrame;
+use Html\Element\Block\InsertedText;
+use Html\Element\Block\ListItem;
+use Html\Element\Block\Map;
+use Html\Element\Block\ObjectElement;
+use Html\Element\Block\OrderedList;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\Picture;
+use Html\Element\Block\PreformattedText;
+use Html\Element\Block\Section;
+use Html\Element\Block\Summary;
+use Html\Element\Block\Table;
+use Html\Element\Block\UnorderedList;
+use Html\Element\Block\Video;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\BidirectionalIsolation;
@@ -63,6 +96,11 @@ class Main extends BlockElement
     public const string QUALIFIED_NAME = 'main';
 
     /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = false;
+
+    /**
      * If an element is unique per HTML document
      */
     public static bool $unique = true;
@@ -76,7 +114,9 @@ class Main extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Body::class];
+    public static array $childOf = [
+        Body::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -154,4 +194,8 @@ class Main extends BlockElement
         Video::class,
         WordBreakOpportunity::class,
     ];
+
+
+
+
 }

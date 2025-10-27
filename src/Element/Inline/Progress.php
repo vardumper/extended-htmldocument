@@ -1,16 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Progress - The progress element represents the completion progress of a task.
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Body;
@@ -29,6 +29,11 @@ class Progress extends InlineElement
     public const string QUALIFIED_NAME = 'progress';
 
     /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = false;
+
+    /**
      * If an element is unique per HTML document
      */
     public static bool $unique = false;
@@ -42,23 +47,27 @@ class Progress extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Body::class, Fieldset::class, Form::class, Paragraph::class];
+    public static array $childOf = [
+        Body::class,
+        Fieldset::class,
+        Form::class,
+        Paragraph::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies the maximum value for an input element, meter, or progress element.
-     */
+
+    /** Specifies the maximum value for an input element, meter, or progress element. */
     public ?int $max = null;
 
-    /**
-     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
-     */
+    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value = null;
+
 
     public function setMax(int $max): static
     {
@@ -83,4 +92,5 @@ class Progress extends InlineElement
     {
         return $this->value;
     }
+
 }

@@ -1,16 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Aside;
@@ -28,9 +28,10 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
+use Html\Element\Inline\MarkedText;
+use Html\Element\Inline\Slot;
 use Html\Enum\TypeButtonEnum;
 use Html\Mapping\Element;
-use InvalidArgumentException;
 
 #[Element('button')]
 class Button extends InlineElement
@@ -39,6 +40,11 @@ class Button extends InlineElement
      * The HTML element name
      */
     public const string QUALIFIED_NAME = 'button';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = false;
 
     /**
      * If an element is unique per HTML document
@@ -77,32 +83,25 @@ class Button extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * When present, it specifies that an element should automatically get focus when the page loads.
-     */
+
+    /** When present, it specifies that an element should automatically get focus when the page loads. */
     public ?bool $autofocus = null;
 
-    /**
-     * When present, it specifies that an input element should be disabled.
-     */
+    /** When present, it specifies that an input element should be disabled. */
     public ?bool $disabled = null;
 
-    /**
-     * Specifies the name associated with the element. The meaning may vary depending on the context.
-     */
+    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
     public ?string $name = null;
 
-    /**
-     * Specifies the type of the button.
-     */
+    /** Specifies the type of the button. */
     public ?TypeButtonEnum $type = null;
 
-    /**
-     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
-     */
+    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value = null;
+
 
     public function setAutofocus(bool $autofocus): static
     {
@@ -143,7 +142,7 @@ class Button extends InlineElement
     public function setType(string|TypeButtonEnum $type): static
     {
         if (is_string($type)) {
-            $type = TypeButtonEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
+            $type = TypeButtonEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
         }
         $this->type = $type;
         $this->delegated->setAttribute('type', (string) $type->value);
@@ -167,4 +166,5 @@ class Button extends InlineElement
     {
         return $this->value;
     }
+
 }

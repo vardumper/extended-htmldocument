@@ -4,7 +4,6 @@
 {% set decoding_choices = ['async', 'auto', 'sync'] %}
 {% set referrerpolicy_choices = ['no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', 'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
-
 <img
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if alt is defined and alt|length > 0 %}alt='{{ alt }}'{% endif %}
@@ -36,6 +35,4 @@
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
   {% if usemap is defined and usemap|length > 0 %}usemap='{{ usemap }}'{% endif %}
   {% if width is defined and width|length > 0 %}width='{{ width }}'{% endif %}
->
-  {{ content|raw }}
-</img>
+/>

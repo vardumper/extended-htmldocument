@@ -4,7 +4,6 @@
 {% set referrerpolicy_choices = ['no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', 'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'] %}
 {% set rel_choices = ['alternate', 'author', 'bookmark', 'canonical', 'help', 'icon', 'license', 'manifest', 'next', 'nofollow', 'noreferrer', 'prefetch', 'prev', 'search', 'stylesheet', 'tag'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
-
 <link
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if class is defined and class|length > 0 %}class='{{ class }}'{% endif %}
@@ -34,6 +33,4 @@
   {% if title is defined and title|length > 0 %}title='{{ title }}'{% endif %}
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
   {% if type is defined and type|length > 0 %}type='{{ type }}'{% endif %}
->
-  {{ content|raw }}
-</link>
+/>

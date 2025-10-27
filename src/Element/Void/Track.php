@@ -1,16 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Track - The track element is used as a child of the media elements—audio and video. It lets you specify timed text tracks (or time-based data), for example to automatically handle subtitles. The tracks are formatted in WebVTT format (.vtt files) — Web Video Text Tracks.
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track
  */
-
 namespace Html\Element\Void;
 
 use Html\Element\Block\Aside;
@@ -24,7 +24,6 @@ use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
 use Html\Enum\KindEnum;
 use Html\Mapping\Element;
-use InvalidArgumentException;
 
 #[Element('track')]
 class Track extends VoidElement
@@ -66,35 +65,35 @@ class Track extends VoidElement
 
     /**
      * The list of allowed direct children. Any if empty.
+     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies that the track should be enabled by default when the page loads.
-     */
+    /** Specifies that the track should be enabled by default when the page loads. */
     public ?bool $default = null;
 
-    /**
+    /** 
+     * 
+     * @category HTML attribute
      * @example subtitles
      */
     public ?KindEnum $kind = null;
 
-    /**
-     * Specifies a label for the associated form control, option group, or option.
-     */
+    /** Specifies a label for the associated form control, option group, or option. */
     public ?string $label = null;
 
-    /**
+    /** 
      * Specifies the URL of the external resource to be embedded or referenced.
+     * @category HTML attribute
      * @required
      */
     public ?string $src = null;
 
-    /**
-     * Specifies the language of the track text data.
-     */
+    /** Specifies the language of the track text data. */
     public ?string $srclang = null;
+
 
     public function setDefault(bool $default): static
     {
@@ -111,7 +110,7 @@ class Track extends VoidElement
     public function setKind(string|KindEnum $kind): static
     {
         if (is_string($kind)) {
-            $kind = KindEnum::tryFrom($kind) ?? throw new InvalidArgumentException('Invalid value for $kind.');
+            $kind = KindEnum::tryFrom($kind) ?? throw new \InvalidArgumentException("Invalid value for \$kind.");
         }
         $this->kind = $kind;
         $this->delegated->setAttribute('kind', (string) $kind->value);
@@ -159,4 +158,5 @@ class Track extends VoidElement
     {
         return $this->srclang;
     }
+
 }

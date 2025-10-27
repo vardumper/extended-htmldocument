@@ -3,7 +3,6 @@
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 {% set wrap_choices = ['hard', 'off', 'soft'] %}
-
 <textarea
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if autocomplete is defined and autocomplete|length > 0 and autocomplete in autocomplete_choices %}autocomplete='{{ autocomplete }}'{% endif %}
@@ -37,5 +36,5 @@
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
   {% if wrap is defined and wrap|length > 0 and wrap in wrap_choices %}wrap='{{ wrap }}'{% endif %}
 >
-  {{ content|raw }}
+  {{- content|raw -}}
 </textarea>

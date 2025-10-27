@@ -3,7 +3,6 @@
 {% set crossorigin_choices = ['anonymous', 'use-credentials'] %}
 {% set preload_choices = ['auto', 'metadata', 'none'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
-
 <audio
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if autoplay is defined and autoplay|length > 0 %}autoplay='{{ autoplay }}'{% endif %}
@@ -32,5 +31,5 @@
   {% if title is defined and title|length > 0 %}title='{{ title }}'{% endif %}
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
 >
-  {{ content|raw }}
+  {{- content|raw -}}
 </audio>

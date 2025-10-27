@@ -1,19 +1,32 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Heading2 - The h2 element represents a section heading. It has the second highest rank among the six levels of section headings.
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h2
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Article;
+use Html\Element\Block\Aside;
+use Html\Element\Block\Body;
+use Html\Element\Block\Dialog;
+use Html\Element\Block\Division;
+use Html\Element\Block\Footer;
+use Html\Element\Block\Header;
+use Html\Element\Block\HeadingsGroup;
+use Html\Element\Block\Legend;
+use Html\Element\Block\Main;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\Section;
+use Html\Element\Block\Template;
 use Html\Element\Inline\Slot;
 use Html\Mapping\Element;
 
@@ -24,6 +37,11 @@ class Heading2 extends BlockElement
      * The HTML element name
      */
     public const string QUALIFIED_NAME = 'h2';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = false;
 
     /**
      * If an element is unique per HTML document
@@ -60,5 +78,10 @@ class Heading2 extends BlockElement
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
+
+
+
+
 }

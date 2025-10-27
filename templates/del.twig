@@ -1,7 +1,6 @@
 {# del.twig #}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
-
 <del
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if cite is defined and cite|length > 0 %}cite='{{ cite }}'{% endif %}
@@ -25,5 +24,5 @@
   {% if title is defined and title|length > 0 %}title='{{ title }}'{% endif %}
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
 >
-  {{ content|raw }}
+  {{- content|raw -}}
 </del>

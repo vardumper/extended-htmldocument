@@ -2,7 +2,6 @@
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 {% set type_choices = ['submit', 'reset', 'button'] %}
-
 <button
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if autofocus is defined and autofocus|length > 0 %}autofocus='{{ autofocus }}'{% endif %}
@@ -29,5 +28,5 @@
   {% if type is defined and type|length > 0 and type in type_choices %}type='{{ type }}'{% endif %}
   {% if value is defined and value|length > 0 %}value='{{ value }}'{% endif %}
 >
-  {{ content|raw }}
+  {{- content|raw -}}
 </button>

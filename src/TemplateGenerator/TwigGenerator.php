@@ -111,7 +111,7 @@ class TwigGenerator implements TemplateGeneratorInterface
                 if ($type instanceof ReflectionUnionType) {
                     foreach ($type->getTypes() as $unionType) {
                         if ($unionType instanceof ReflectionNamedType && enum_exists($unionType->getName())) {
-                            $choices = array_map(fn ($case) => "'{$case->value}'", $unionType->getName()::cases());
+                            $choices = array_map(fn($case) => "'{$case->value}'", $unionType->getName()::cases());
                             $enums[] = [
                                 'name' => $name,
                                 'choices' => $choices,
@@ -119,7 +119,7 @@ class TwigGenerator implements TemplateGeneratorInterface
                         }
                     }
                 } elseif ($type && $type instanceof ReflectionNamedType && enum_exists($type->getName())) {
-                    $choices = array_map(fn ($case) => "'{$case->value}'", $type->getName()::cases());
+                    $choices = array_map(fn($case) => "'{$case->value}'", $type->getName()::cases());
                     $enums[] = [
                         'name' => $name,
                         'choices' => $choices,
@@ -138,16 +138,14 @@ class TwigGenerator implements TemplateGeneratorInterface
         }
         // Sort attributes and enums alphabetically
         sort($props, \SORT_NATURAL | \SORT_FLAG_CASE);
-        usort($enums, fn ($a, $b) => strcmp($a['name'], $b['name']));
-        $content = '{{ content|raw }}';
-        // Twig reserved words list
-
+        usort($enums, fn($a, $b) => strcmp($a['name'], $b['name']));
+        $isSelfClosing = $ref->hasConstant('SELF_CLOSING') && $ref->getConstant('SELF_CLOSING');
         // Build Twig template string
         $twig = "{# {$elementName}.twig #}\n";
         foreach ($enums as $enum) {
             $twig .= "{% set {$enum['name']}_choices = [" . implode(', ', $enum['choices']) . "] %}\n";
         }
-        $twig .= "\n<{$elementName}\n";
+        $twig .= "<{$elementName}\n";
         foreach ($props as $attr) {
             $isEnum = false;
             foreach ($enums as $enum) {
@@ -164,7 +162,11 @@ class TwigGenerator implements TemplateGeneratorInterface
             }
             $twig .= "  {% if {$cond} %}{$attr}='{{ {$val} }}'{% endif %}\n";
         }
-        $twig .= ">\n  {$content}\n</{$elementName}>\n";
+        if ($isSelfClosing) {
+            $twig .= "/>\n";
+        } else {
+            $twig .= ">\n  {{- content|raw -}}\n</{$elementName}>\n";
+        }
         return $twig;
     }
 }

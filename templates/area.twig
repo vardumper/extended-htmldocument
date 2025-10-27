@@ -4,7 +4,6 @@
 {% set shape_choices = ['circle', 'default', 'poly', 'rect'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 {% set target_choices = ['_blank', '_parent', '_self', '_top'] %}
-
 <area
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if alt is defined and alt|length > 0 %}alt='{{ alt }}'{% endif %}
@@ -34,6 +33,4 @@
   {% if title is defined and title|length > 0 %}title='{{ title }}'{% endif %}
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
   {% if type is defined and type|length > 0 %}type='{{ type }}'{% endif %}
->
-  {{ content|raw }}
-</area>
+/>

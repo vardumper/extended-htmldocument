@@ -2,7 +2,6 @@
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 {% set target_choices = ['_blank', '_parent', '_self', '_top'] %}
-
 <base
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if class is defined and class|length > 0 %}class='{{ class }}'{% endif %}
@@ -25,6 +24,4 @@
   {% if target is defined and target|length > 0 and target in target_choices %}target='{{ target }}'{% endif %}
   {% if title is defined and title|length > 0 %}title='{{ title }}'{% endif %}
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
->
-  {{ content|raw }}
-</base>
+/>

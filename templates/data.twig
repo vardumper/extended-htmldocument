@@ -1,7 +1,6 @@
 {# data.twig #}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
-
 <data
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if class is defined and class|length > 0 %}class='{{ class }}'{% endif %}
@@ -24,5 +23,5 @@
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
   {% if value is defined and value|length > 0 %}value='{{ value }}'{% endif %}
 >
-  {{ content|raw }}
+  {{- content|raw -}}
 </data>

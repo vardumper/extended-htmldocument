@@ -1,19 +1,46 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * DefinitionDescription - The dd element represents the description, definition, or value, part of a term-description group in a description list (dl element).
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dd
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Aside;
+use Html\Element\Block\Audio;
+use Html\Element\Block\DefinitionList;
+use Html\Element\Block\DefinitionTerm;
+use Html\Element\Block\DeletedText;
+use Html\Element\Block\Details;
+use Html\Element\Block\Division;
+use Html\Element\Block\Embed;
+use Html\Element\Block\Figure;
+use Html\Element\Block\Footer;
+use Html\Element\Block\Form;
+use Html\Element\Block\Header;
+use Html\Element\Block\InlineFrame;
+use Html\Element\Block\InsertedText;
+use Html\Element\Block\ListItem;
+use Html\Element\Block\Main;
+use Html\Element\Block\Map;
+use Html\Element\Block\ObjectElement;
+use Html\Element\Block\OrderedList;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\Picture;
+use Html\Element\Block\PreformattedText;
+use Html\Element\Block\Section;
+use Html\Element\Block\Summary;
+use Html\Element\Block\Table;
+use Html\Element\Block\UnorderedList;
+use Html\Element\Block\Video;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\BidirectionalIsolation;
@@ -63,6 +90,11 @@ class DefinitionDescription extends BlockElement
     public const string QUALIFIED_NAME = 'dd';
 
     /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = false;
+
+    /**
      * If an element is unique per HTML document
      */
     public static bool $unique = false;
@@ -79,7 +111,7 @@ class DefinitionDescription extends BlockElement
     public static array $childOf = [
         DefinitionList::class,
         Aside::class,
-        self::class,
+        DefinitionDescription::class,
         Division::class,
         Footer::class,
         Header::class,
@@ -103,7 +135,7 @@ class DefinitionDescription extends BlockElement
         Citation::class,
         Code::class,
         Data::class,
-        self::class,
+        DefinitionDescription::class,
         DeletedText::class,
         Definition::class,
         Division::class,
@@ -154,4 +186,8 @@ class DefinitionDescription extends BlockElement
         Video::class,
         WordBreakOpportunity::class,
     ];
+
+
+
+
 }

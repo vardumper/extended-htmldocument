@@ -1,19 +1,20 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * ScalableVectorGraphics - The svg element is a container for embedded SVG graphics.
- *
- * @generated 2025-10-26 20:40:54
+ * 
+ * @generated 2025-10-26 23:58:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/svg
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\InlineElement;
+use Html\Element\Inline\Anchor;
 use Html\Element\Void\Script;
 use Html\Element\Void\Style;
 use Html\Element\Void\Title;
@@ -26,6 +27,11 @@ class ScalableVectorGraphics extends InlineElement
      * The HTML element name
      */
     public const string QUALIFIED_NAME = 'svg';
+
+    /**
+     * If an element is self closing
+     */
+    public const bool SELF_CLOSING = false;
 
     /**
      * If an element is unique per HTML document
@@ -41,7 +47,9 @@ class ScalableVectorGraphics extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [self::class];
+    public static array $childOf = [
+        ScalableVectorGraphics::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
@@ -51,40 +59,33 @@ class ScalableVectorGraphics extends InlineElement
         Anchor::class,
         Script::class,
         Style::class,
-        self::class,
+        ScalableVectorGraphics::class,
         Title::class,
     ];
 
-    /**
+
+    /** 
      * Specifies the XML namespace for the SVG element.
+     * @category HTML attribute
      * @example http://www.w3.org/2000/svg
      */
     public ?string $xmlns = null;
 
-    /**
-     * Defines the position and dimension, in user space, of an SVG viewport.
-     */
+    /** Defines the position and dimension, in user space, of an SVG viewport. */
     public ?string $viewBox = null;
 
-    /**
-     * Specifies the color of the stroke (outline) of shapes.
-     */
+    /** Specifies the color of the stroke (outline) of shapes. */
     public ?string $stroke = null;
 
-    /**
-     * Specifies the color of the interior of shapes.
-     */
+    /** Specifies the color of the interior of shapes. */
     public ?string $fill = null;
 
-    /**
-     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
-     */
+    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width = null;
 
-    /**
-     * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
-     */
+    /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $height = null;
+
 
     public function setXmlns(string $xmlns): static
     {
@@ -157,4 +158,5 @@ class ScalableVectorGraphics extends InlineElement
     {
         return $this->height;
     }
+
 }

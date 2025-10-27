@@ -3,7 +3,6 @@
 {% set crossorigin_choices = ['anonymous', 'use-credentials'] %}
 {% set preload_choices = ['auto', 'metadata', 'none'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
-
 <video
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if autoplay is defined and autoplay|length > 0 %}autoplay='{{ autoplay }}'{% endif %}
@@ -35,5 +34,5 @@
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
   {% if width is defined and width|length > 0 %}width='{{ width }}'{% endif %}
 >
-  {{ content|raw }}
+  {{- content|raw -}}
 </video>

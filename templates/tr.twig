@@ -3,7 +3,6 @@
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 {% set valign_choices = ['baseline', 'bottom', 'middle', 'top'] %}
-
 <tr
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if align is defined and align|length > 0 and align in align_choices %}align='{{ align }}'{% endif %}
@@ -30,5 +29,5 @@
   {% if translate is defined and translate|length > 0 %}translate='{{ translate }}'{% endif %}
   {% if valign is defined and valign|length > 0 and valign in valign_choices %}valign='{{ valign }}'{% endif %}
 >
-  {{ content|raw }}
+  {{- content|raw -}}
 </tr>

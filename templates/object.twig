@@ -1,7 +1,6 @@
 {# object.twig #}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
-
 <object
   {% if accesskey is defined and accesskey|length > 0 %}accesskey='{{ accesskey }}'{% endif %}
   {% if class is defined and class|length > 0 %}class='{{ class }}'{% endif %}
@@ -29,5 +28,5 @@
   {% if usemap is defined and usemap|length > 0 %}usemap='{{ usemap }}'{% endif %}
   {% if width is defined and width|length > 0 %}width='{{ width }}'{% endif %}
 >
-  {{ content|raw }}
+  {{- content|raw -}}
 </object>
