@@ -594,21 +594,6 @@ base:
   allowed_attributes:
     - href
     - target
-    - accesskey
-    - autocapitalize
-    - class
-    - contenteditable
-    - data-*
-    - dir
-    - draggable
-    - hidden
-    - id
-    - lang
-    - spellcheck
-    - style
-    - tabindex
-    - title
-    - translate
   unique_per_parent: true
   parent: head
   self_closing: true
@@ -917,21 +902,12 @@ br:
   description: 'The br element represents a line break.'
   level: void
   allowed_attributes:
-    - accesskey
-    - autocapitalize
     - class
-    - contenteditable
     - data-*
     - dir
-    - draggable
     - hidden
     - id
-    - lang
-    - spellcheck
     - style
-    - tabindex
-    - title
-    - translate
   unique: false
   self_closing: true
 button:
@@ -1145,22 +1121,10 @@ col:
   level: void
   allowed_attributes:
     - span
-    - width
-    - accesskey
-    - autocapitalize
     - class
-    - contenteditable
     - data-*
-    - dir
-    - draggable
-    - hidden
     - id
-    - lang
-    - spellcheck
     - style
-    - tabindex
-    - title
-    - translate
   unique: false
   parent: colgroup
   self_closing: true
@@ -2173,22 +2137,7 @@ head:
   name: Head
   description: 'The head element contains meta-information about the HTML document, including its title and links to its scripts and stylesheets.'
   level: void
-  allowed_attributes:
-    - accesskey
-    - autocapitalize
-    - class
-    - contenteditable
-    - data-*
-    - dir
-    - draggable
-    - hidden
-    - id
-    - lang
-    - spellcheck
-    - style
-    - tabindex
-    - title
-    - translate
+  allowed_attributes: []
   unique_per_parent: true
   parent: html
   children:
@@ -3496,21 +3445,15 @@ meta:
   level: void
   allowed_attributes:
     - charset
-    - accesskey
-    - autocapitalize
+    - content
+    - http-equiv
+    - name
     - class
-    - contenteditable
     - data-*
-    - dir
-    - draggable
     - hidden
     - id
     - lang
-    - spellcheck
-    - style
-    - tabindex
     - title
-    - translate
   unique: false
   self_closing: true
   attributes:
@@ -4021,23 +3964,13 @@ param:
   description: 'The param element defines parameters for an object element.'
   level: void
   allowed_attributes:
-    - accesskey
-    - autocapitalize
-    - class
-    - contenteditable
-    - data-*
-    - dir
-    - draggable
-    - hidden
-    - id
-    - lang
     - name
-    - spellcheck
-    - style
-    - tabindex
-    - title
-    - translate
     - value
+    - id
+    - class
+    - style
+    - hidden
+    - data-*
   unique: false
   self_closing: true
   attributes:
@@ -4309,29 +4242,18 @@ script:
   description: 'The script element is used to embed or reference an executable script within an HTML or XHTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.'
   level: void
   allowed_attributes:
-    - accesskey
     - async
-    - autocapitalize
     - charset
     - class
-    - contenteditable
     - crossorigin
     - data-*
     - defer
-    - dir
-    - draggable
     - hidden
     - id
     - integrity
-    - lang
     - nonce
     - referrerpolicy
-    - spellcheck
     - src
-    - style
-    - tabindex
-    - title
-    - translate
     - type
   unique: false
   attributes:
@@ -4617,23 +4539,14 @@ source:
   description: 'The source element allows authors to specify multiple media resources for media elements. It is an empty element. It is commonly used within the picture element.'
   level: void
   allowed_attributes:
-    - accesskey
     - class
     - data-*
-    - dir
-    - draggable
     - hidden
     - id
-    - lang
     - media
     - sizes
-    - spellcheck
     - src
     - srcset
-    - style
-    - tabindex
-    - title
-    - translate
     - type
   unique: false
   self_closing: true
@@ -5489,19 +5402,12 @@ track:
     - label
     - src
     - srclang
-    - accesskey
     - class
     - data-*
-    - dir
-    - draggable
     - hidden
     - id
     - lang
-    - spellcheck
     - style
-    - tabindex
-    - title
-    - translate
   unique: false
   self_closing: true
   attributes:
@@ -5736,20 +5642,10 @@ wbr:
   description: 'The wbr element represents a word break opportunity.'
   level: void
   allowed_attributes:
-    - accesskey
-    - autocapitalize
     - class
-    - contenteditable
     - data-*
     - dir
-    - draggable
     - hidden
     - id
-    - lang
-    - spellcheck
-    - style
-    - tabindex
-    - title
-    - translate
   unique: false
   self_closing: true
