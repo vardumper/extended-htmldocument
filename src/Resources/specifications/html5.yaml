@@ -4694,12 +4694,6 @@ svg:
     - tabindex
     - title
     - translate
-    - xmlns
-    - viewBox
-    - width
-    - height
-    - fill
-    - stroke
   unique: false
   attributes:
     xmlns:
@@ -4875,16 +4869,13 @@ td:
     - accesskey
     - autocapitalize
     - class
-    - colspan
     - contenteditable
     - data-*
     - dir
     - draggable
-    - headers
     - hidden
     - id
     - lang
-    - rowspan
     - spellcheck
     - style
     - tabindex
@@ -4961,19 +4952,6 @@ textarea:
   description: "The textarea element represents a multiline plain text edit control for the element's raw value."
   level: inline
   allowed_global_attributes:
-    - autocomplete
-    - cols
-    - dirname
-    - disabled
-    - form
-    - maxlength
-    - minlength
-    - name
-    - placeholder
-    - readonly
-    - required
-    - rows
-    - wrap
     - accesskey
     - autocapitalize
     - class
@@ -5118,17 +5096,13 @@ th:
     - accesskey
     - autocapitalize
     - class
-    - colspan
     - contenteditable
     - data-*
     - dir
     - draggable
-    - headers
     - hidden
     - id
     - lang
-    - rowspan
-    - scope
     - spellcheck
     - style
     - tabindex
@@ -5195,7 +5169,6 @@ time:
     - class
     - contenteditable
     - data-*
-    - datetime
     - dir
     - draggable
     - hidden
@@ -5220,7 +5193,6 @@ title:
   name: Title
   description: "The title element defines the title of the document, shown in a browser's title bar or a page's tab. It is only text, not meant to be displayed."
   level: void
-
   unique_per_parent: true
   parent: head
   text: string
@@ -5310,11 +5282,6 @@ track:
   description: 'The track element is used as a child of the media elements—audio and video. It lets you specify timed text tracks (or time-based data), for example to automatically handle subtitles. The tracks are formatted in WebVTT format (.vtt files) — Web Video Text Tracks.'
   level: void
   allowed_global_attributes:
-    - default
-    - kind
-    - label
-    - src
-    - srclang
     - class
     - data-*
     - hidden
@@ -5438,16 +5405,6 @@ video:
   description: 'The video element is used to embed video content in a document, such as a movie clip or other video streams.'
   level: block
   allowed_global_attributes:
-    - autoplay
-    - controls
-    - crossorigin
-    - height
-    - loop
-    - muted
-    - poster
-    - preload
-    - src
-    - width
     - accesskey
     - autocapitalize
     - class
