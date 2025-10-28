@@ -147,8 +147,8 @@ Issues detected: 19
 | <span class="prio1">1</span> | src/Element/Void/Script.php | 180 | [MissingImport](http://phpmd.org/rules/cleancode.html#MissingImport) | Missing class import via use statement (line `180`, column `89`). |
 | <span class="prio1">1</span> | src/Element/Void/Script.php | 208 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\TypeScriptEnum` in method `setType`. |
 | <span class="prio1">1</span> | src/Element/Void/Script.php | 208 | [MissingImport](http://phpmd.org/rules/cleancode.html#MissingImport) | Missing class import via use statement (line `208`, column `65`). |
-| <span class="prio1">1</span> | src/Element/Void/Style.php | 128 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\TypeStyleEnum` in method `setType`. |
-| <span class="prio1">1</span> | src/Element/Void/Style.php | 128 | [MissingImport](http://phpmd.org/rules/cleancode.html#MissingImport) | Missing class import via use statement (line `128`, column `64`). |
+| <span class="prio1">1</span> | src/Element/Void/Style.php | 113 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\TypeStyleEnum` in method `setType`. |
+| <span class="prio1">1</span> | src/Element/Void/Style.php | 113 | [MissingImport](http://phpmd.org/rules/cleancode.html#MissingImport) | Missing class import via use statement (line `113`, column `64`). |
 | <span class="prio1">1</span> | src/Element/Void/Track.php | 113 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\KindEnum` in method `setKind`. |
 | <span class="prio1">1</span> | src/Element/Void/Track.php | 113 | [MissingImport](http://phpmd.org/rules/cleancode.html#MissingImport) | Missing class import via use statement (line `113`, column `59`). |
 | <span class="prio1">1</span> | src/Service/ComponentBuilder.php | 54 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method buildDOM uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
@@ -186,4 +186,4 @@ Issues detected: 119
 
 Issues detected: 8
 
-Tue Oct 28 12:27:38 AM CET 2025
+Tue Oct 28 01:42:58 PM CET 2025

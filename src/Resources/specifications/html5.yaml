@@ -2405,7 +2405,6 @@ iframe:
     src:
       description: 'Specifies the URL of the external resource to be embedded or referenced.'
       type: uri
-      required: true
       elements:
         - audio
         - embed
@@ -2417,7 +2416,10 @@ iframe:
         - track
         - video
     srcdoc:
+      description: 'The value of srcdoc is a string containing HTML markup, which the browser will display as the content of the iframe.'
       type: string
+      elements:
+        - iframe
     width:
       description: 'Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).'
       type: string
@@ -2434,32 +2436,16 @@ img:
   description: 'The img element represents an image.'
   level: inline
   allowed_global_attributes:
-    - alt
-    - crossorigin
-    - decoding
-    - height
-    - ismap
-    - referrerpolicy
-    - sizes
-    - src
-    - srcset
-    - usemap
-    - width
-    - accesskey
-    - autocapitalize
     - class
-    - contenteditable
     - data-*
     - dir
     - draggable
     - hidden
     - id
     - lang
-    - spellcheck
     - style
     - tabindex
     - title
-    - translate
   unique: false
   self_closing: true
   attributes:
@@ -2573,30 +2559,6 @@ input:
   description: 'The input element represents a typed data field, usually with a form control to allow user input.'
   level: inline
   allowed_global_attributes:
-    - accept
-    - alt
-    - autocomplete
-    - checked
-    - dirname
-    - disabled
-    - height
-    - list
-    - max
-    - maxlength
-    - min
-    - minlength
-    - multiple
-    - name
-    - pattern
-    - placeholder
-    - readonly
-    - required
-    - size
-    - src
-    - step
-    - type
-    - value
-    - width
     - accesskey
     - autocapitalize
     - class
@@ -2831,8 +2793,6 @@ ins:
   description: 'The ins element represents an addition to the document.'
   level: block
   allowed_global_attributes:
-    - cite
-    - datetime
     - accesskey
     - autocapitalize
     - class
@@ -2893,7 +2853,6 @@ label:
   description: "The label element represents a caption in a user interface. The caption can be associated with a specific form control, known as the label element's labeled control, either using the for attribute, or by putting the form control inside the label element itself."
   level: inline
   allowed_global_attributes:
-    - for
     - accesskey
     - autocapitalize
     - class
@@ -2953,7 +2912,6 @@ li:
   description: "The li element represents a list item. If its parent element is an ol, ul, or menu, then the element is an item of the parent element's list, as defined for those elements. Otherwise, the list item has no defined list-related semantics."
   level: block
   allowed_global_attributes:
-    - value
     - accesskey
     - autocapitalize
     - class
@@ -2970,7 +2928,7 @@ li:
     - title
     - translate
   unique_per_parent: false
-  parent: 'ol | ul'
+  parent: 'ol|ul'
   attributes:
     value:
       description: 'Specifies the value associated with the element. The meaning and usage may vary depending on the element type.'
@@ -3017,30 +2975,14 @@ link:
   description: 'The link element defines a link between a document and an external resource. It is used to link to external stylesheets.'
   level: void
   allowed_global_attributes:
-    - crossorigin
-    - href
-    - hreflang
-    - integrity
-    - media
-    - referrerpolicy
-    - rel
-    - sizes
-    - type
-    - accesskey
-    - autocapitalize
     - class
-    - contenteditable
     - data-*
     - dir
-    - draggable
     - hidden
     - id
     - lang
-    - spellcheck
     - style
-    - tabindex
     - title
-    - translate
   unique: false
   self_closing: true
   attributes:
@@ -3242,7 +3184,6 @@ map:
   description: 'The map element, in conjunction with an img element and any area element descendants, defines an image map. The element represents a related collection of map areas.'
   level: block
   allowed_global_attributes:
-    - name
     - accesskey
     - autocapitalize
     - class
@@ -3364,10 +3305,6 @@ meta:
   description: 'The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.'
   level: void
   allowed_global_attributes:
-    - charset
-    - content
-    - http-equiv
-    - name
     - class
     - data-*
     - hidden
@@ -3424,6 +3361,22 @@ meter:
   name: Meter
   description: 'The meter element represents a scalar measurement within a known range, or a fractional value.'
   level: inline
+  allowed_global_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     high:
@@ -3652,8 +3605,6 @@ optgroup:
   description: 'The optgroup element represents a group of option elements with a common label.'
   level: block
   allowed_global_attributes:
-    - disabled
-    - label
     - id
     - class
     - title
@@ -3697,10 +3648,6 @@ option:
   description: 'The option element represents an item in a select dropdown list.'
   level: block
   allowed_global_attributes:
-    - disabled
-    - label
-    - selected
-    - value
     - id
     - class
     - title
@@ -3767,7 +3714,6 @@ output:
     - data-*
     - dir
     - draggable
-    - for
     - hidden
     - id
     - lang
@@ -3884,8 +3830,6 @@ param:
   description: 'The param element defines parameters for an object element.'
   level: void
   allowed_global_attributes:
-    - name
-    - value
     - id
     - class
     - style
@@ -3984,13 +3928,11 @@ progress:
     - hidden
     - id
     - lang
-    - max
     - spellcheck
     - style
     - tabindex
     - title
     - translate
-    - value
   unique: false
   attributes:
     max:
@@ -4020,7 +3962,6 @@ q:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
-    - cite
     - class
     - contenteditable
     - data-*
@@ -4159,22 +4100,15 @@ samp:
   text: string
 script:
   name: Script
-  description: 'The script element is used to embed or reference an executable script within an HTML or XHTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.'
+  description: 'The script element is used to embed or reference an executable script within an HTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.'
   level: void
   allowed_global_attributes:
-    - async
-    - charset
     - class
-    - crossorigin
     - data-*
-    - defer
     - hidden
     - id
-    - integrity
-    - nonce
-    - referrerpolicy
-    - src
-    - type
+    - title
+    - lang
   unique: false
   attributes:
     async:
@@ -4263,6 +4197,22 @@ section:
   name: Section
   description: 'The section element helps in structuring the content of a webpage by grouping related information together.'
   level: block
+  allowed_global_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   children:
     - a
@@ -4340,6 +4290,22 @@ select:
   name: Select
   description: 'The select element represents a control for selecting amongst a set of options.'
   level: inline
+  allowed_global_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     autocomplete:
@@ -4406,6 +4372,22 @@ slot:
   name: Slot
   description: 'The slot element is a placeholder inside a web component that you can fill with your own markup, which lets you create separate DOM trees and present them together.'
   level: inline
+  allowed_global_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   attributes:
     name:
@@ -4452,6 +4434,22 @@ small:
   name: Small
   description: 'The small element represents side comments such as small print.'
   level: inline
+  allowed_global_attributes:
+    - accesskey
+    - autocapitalize
+    - class
+    - contenteditable
+    - data-*
+    - dir
+    - draggable
+    - hidden
+    - id
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
   unique: false
   text: string
 source:
@@ -4463,11 +4461,6 @@ source:
     - data-*
     - hidden
     - id
-    - media
-    - sizes
-    - src
-    - srcset
-    - type
   unique: false
   self_closing: true
   attributes:
@@ -4499,13 +4492,13 @@ source:
         - source
         - track
         - video
-      srcset:
-        description: 'Specifies a list of possible image sources for the browser to use.'
-        type: string
-        required: false
-        elements:
-          - img
-          - source
+    srcset:
+      description: 'Specifies a list of possible image sources for the browser to use.'
+      type: string
+      required: false
+      elements:
+        - img
+        - source
     type:
       description: 'Specifies the media type of the linked resource.'
       type: string
