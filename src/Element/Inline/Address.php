@@ -4,7 +4,7 @@
  *
  * Address - The address element represents the contact information for its nearest article or body ancestor. If that is the body element, then the contact information applies to the document as a whole.
  * 
- * @generated 2025-10-26 23:58:50
+ * @generated 2025-10-28 11:32:29
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline

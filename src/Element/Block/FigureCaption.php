@@ -4,7 +4,7 @@
  *
  * FigureCaption - The figcaption element represents a caption or a legend associated with a figure or an illustration described by the rest of the data of the figure element. The figcaption element can be placed as the first or the last child of a parent figure element.
  * 
- * @generated 2025-10-26 23:58:50
+ * @generated 2025-10-28 11:32:29
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

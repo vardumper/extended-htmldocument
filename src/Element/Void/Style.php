@@ -4,7 +4,7 @@
  *
  * Style - The style element is used to embed CSS styles directly into an HTML document.
  * 
- * @generated 2025-10-26 23:58:50
+ * @generated 2025-10-28 11:32:29
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -54,9 +54,6 @@ class Style extends VoidElement
     public static array $parentOf = [
     ];
 
-    /** When present, it specifies that an input element should be disabled. */
-    public ?bool $disabled = null;
-
     /** Specifies the media type for which the linked resource or style sheet is intended. */
     public ?string $media = null;
 
@@ -73,18 +70,6 @@ class Style extends VoidElement
      */
     public ?TypeStyleEnum $type = null;
 
-
-    public function setDisabled(bool $disabled): static
-    {
-        $this->disabled = $disabled;
-        $this->delegated->setAttribute('disabled', (string) $disabled);
-        return $this;
-    }
-
-    public function getDisabled(): ?bool
-    {
-        return $this->disabled;
-    }
 
     public function setMedia(string $media): static
     {

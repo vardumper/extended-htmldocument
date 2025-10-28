@@ -15,7 +15,6 @@
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if contenteditable is defined and contenteditable|length > 0 and contenteditable in contenteditable_choices %}contenteditable="{{ contenteditable }}"{% endif %}
-  {% if disabled is defined and disabled|length > 0 %}disabled="{{ disabled }}"{% endif %}
   {% if draggable is defined and draggable|length > 0 %}draggable="{{ draggable }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}

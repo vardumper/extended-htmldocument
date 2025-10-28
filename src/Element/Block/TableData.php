@@ -4,7 +4,7 @@
  *
  * TableData - The td element represents a data cell in a table.
  * 
- * @generated 2025-10-26 23:58:50
+ * @generated 2025-10-28 11:32:29
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

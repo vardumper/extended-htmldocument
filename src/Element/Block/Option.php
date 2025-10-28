@@ -4,7 +4,7 @@
  *
  * Option - The option element represents an item in a select dropdown list.
  * 
- * @generated 2025-10-26 23:58:50
+ * @generated 2025-10-28 11:32:29
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

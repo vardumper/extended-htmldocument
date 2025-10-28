@@ -4,7 +4,7 @@
  *
  * Textarea - The textarea element represents a multiline plain text edit control for the element's raw value.
  * 
- * @generated 2025-10-26 23:58:50
+ * @generated 2025-10-28 11:32:29
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -96,7 +96,7 @@ class Textarea extends InlineElement
     /** Specifies the visible width of a text area, in average character widths. */
     public ?int $cols = null;
 
-    /** Specifies the direction of the text. */
+    /** Specifies the name of the field that will contain the text direction (ltr or rtl) of the input or textarea when the form is submitted */
     public ?string $dirname = null;
 
     /** When present, it specifies that an input element should be disabled. */

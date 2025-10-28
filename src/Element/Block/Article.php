@@ -4,7 +4,7 @@
  *
  * Article - The article element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable.
  * 
- * @generated 2025-10-26 23:58:50
+ * @generated 2025-10-28 11:32:29
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
