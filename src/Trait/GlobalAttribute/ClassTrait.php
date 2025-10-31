@@ -9,33 +9,50 @@ namespace Html\Trait\GlobalAttribute;
  */
 trait ClassTrait
 {
-   /**
-    * @description Assigns CSS class names to an element.
-    */
-   public function setClass(string $className): static
-   {
-      $this->className = $className;
-      return $this;
-   }
+    /**
+     * @description Assigns CSS class names to an element.
+     */
+    public function setClass(string|array $className): static
+    {
+        // cast to string
+        if (is_array($className)) {
+            /** @todo be more permissive here? or stricter (as is) for max css compatbility */
+            $className = array_filter($className, 'strlen'); // remove empty values
+            foreach ($className as &$name) {
+                $name = preg_replace('/[^a-zA-Z0-9_-]+/', '', $name);
+                $className = preg_replace('/[^a-zA-Z0-9_-]+/', ' ', $className);
+                $className = preg_replace('/\s+/', ' ', $className);
+                $className = trim($className);
+            }
+            $className = implode(' ', $className);
+        }
 
-   public function getClass(): ?string
-   {
-      return $this->className;
-   }
+        // not empty? set it
+        if (is_string($className) && ! empty($className)) {
+            $this->className = $className;
+            $this->delegated->className = $className;
+        }
+        return $this;
+    }
 
-   /**
-    * alias
-    */
-   public function getClassName(): ?string
-   {
-      return $this->className;
-   }
+    public function getClass(): ?string
+    {
+        return $this->className;
+    }
 
-   /**
-    * alias
-    */
-   public function setClassName(string $className): static
-   {
-      return $this->setClass($className);
-   }
+    /**
+     * alias
+     */
+    public function getClassName(): ?string
+    {
+        return $this->className;
+    }
+
+    /**
+     * alias
+     */
+    public function setClassName(string|array $className): static
+    {
+        return $this->setClass($className);
+    }
 }
