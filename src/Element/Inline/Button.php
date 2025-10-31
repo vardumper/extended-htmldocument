@@ -4,7 +4,7 @@
  *
  * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -30,12 +30,65 @@ use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
+use Html\Enum\AutocorrectEnum;
 use Html\Enum\TypeButtonEnum;
+use Html\Trait\GlobalAttribute\AccesskeyTrait;
+use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
+use Html\Trait\GlobalAttribute\AutofocusTrait;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\ContenteditableTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\DirTrait;
+use Html\Trait\GlobalAttribute\DraggableTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\InputmodeTrait;
+use Html\Trait\GlobalAttribute\LangTrait;
+use Html\Trait\GlobalAttribute\SpellcheckTrait;
+use Html\Trait\GlobalAttribute\StyleTrait;
+use Html\Trait\GlobalAttribute\TabindexTrait;
+use Html\Trait\GlobalAttribute\TitleTrait;
+use Html\Trait\GlobalAttribute\TranslateTrait;
 use Html\Mapping\Element;
 
 #[Element('button')]
 class Button extends InlineElement
 {
+        use AutofocusTrait;
+
+    use AccesskeyTrait;
+
+    use AutocapitalizeTrait;
+
+    use AutofocusTrait;
+
+    use ClassTrait;
+
+    use ContenteditableTrait;
+
+    use DataTrait;
+
+    use DirTrait;
+
+    use DraggableTrait;
+
+    use HiddenTrait;
+
+    use IdTrait;
+
+    use InputmodeTrait;
+
+    use LangTrait;
+
+    use SpellcheckTrait;
+
+    use StyleTrait;
+
+    use TabindexTrait;
+
+    use TitleTrait;
+
+    use TranslateTrait;
     /**
      * The HTML element name
      */
@@ -90,6 +143,13 @@ class Button extends InlineElement
     /** When present, it specifies that an element should automatically get focus when the page loads. */
     public ?bool $autofocus = null;
 
+    /** 
+     * Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.
+     * @category HTML attribute
+     * @example on
+     */
+    public ?AutocorrectEnum $autocorrect = null;
+
     /** When present, it specifies that an input element should be disabled. */
     public ?bool $disabled = null;
 
@@ -113,6 +173,22 @@ class Button extends InlineElement
     public function getAutofocus(): ?bool
     {
         return $this->autofocus;
+    }
+
+    public function setAutocorrect(string|AutocorrectEnum $autocorrect): static
+    {
+        if (is_string($autocorrect)) {
+            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new \InvalidArgumentException("Invalid value for \$autocorrect.");
+        }
+        $this->autocorrect = $autocorrect;
+        $this->delegated->setAttribute('autocorrect', (string) $autocorrect->value);
+
+        return $this;
+    }
+
+    public function getAutocorrect(): ?AutocorrectEnum
+    {
+        return $this->autocorrect;
     }
 
     public function setDisabled(bool $disabled): static

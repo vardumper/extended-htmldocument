@@ -4,7 +4,7 @@
  *
  * ColumnGroup - The colgroup element represents a group of one or more columns in the table that is its parent, if it has a parent and that is a table element.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -16,11 +16,31 @@ namespace Html\Element\Block;
 use Html\Element\BlockElement;
 use Html\Element\Block\Table;
 use Html\Element\Void\Column;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\DirTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\LangTrait;
+use Html\Trait\GlobalAttribute\StyleTrait;
 use Html\Mapping\Element;
 
 #[Element('colgroup')]
 class ColumnGroup extends BlockElement
 {
+        use ClassTrait;
+
+    use DataTrait;
+
+    use DirTrait;
+
+    use HiddenTrait;
+
+    use IdTrait;
+
+    use LangTrait;
+
+    use StyleTrait;
     /**
      * The HTML element name
      */
@@ -58,6 +78,21 @@ class ColumnGroup extends BlockElement
     ];
 
 
+    /** Specifies the number of columns the <col> element should span in a table. */
+    public ?int $span = null;
+
+
+    public function setSpan(int $span): static
+    {
+        $this->span = $span;
+        $this->delegated->setAttribute('span', (string) $span);
+        return $this;
+    }
+
+    public function getSpan(): ?int
+    {
+        return $this->span;
+    }
 
 
 }

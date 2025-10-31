@@ -4,7 +4,7 @@
  *
  * Body - The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -94,11 +94,46 @@ use Html\Element\Void\Area;
 use Html\Element\Void\BreakElement;
 use Html\Element\Void\Script;
 use Html\Element\Void\WordBreakOpportunity;
+use Html\Trait\GlobalAttribute\AccesskeyTrait;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\DirTrait;
+use Html\Trait\GlobalAttribute\DraggableTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\LangTrait;
+use Html\Trait\GlobalAttribute\StyleTrait;
+use Html\Trait\GlobalAttribute\TabindexTrait;
+use Html\Trait\GlobalAttribute\TitleTrait;
+use Html\Trait\GlobalAttribute\TranslateTrait;
 use Html\Mapping\Element;
 
 #[Element('body')]
 class Body extends BlockElement
 {
+        use AccesskeyTrait;
+
+    use ClassTrait;
+
+    use DataTrait;
+
+    use DirTrait;
+
+    use DraggableTrait;
+
+    use HiddenTrait;
+
+    use IdTrait;
+
+    use LangTrait;
+
+    use StyleTrait;
+
+    use TabindexTrait;
+
+    use TitleTrait;
+
+    use TranslateTrait;
     /**
      * The HTML element name
      */

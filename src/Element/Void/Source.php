@@ -4,7 +4,7 @@
  *
  * Source - The source element allows authors to specify multiple media resources for media elements. It is an empty element. It is commonly used within the picture element.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -23,11 +23,22 @@ use Html\Element\Block\Picture;
 use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
 use Html\Mapping\Element;
 
 #[Element('source')]
 class Source extends VoidElement
 {
+        use ClassTrait;
+
+    use DataTrait;
+
+    use HiddenTrait;
+
+    use IdTrait;
     /**
      * The HTML element name
      */
@@ -85,6 +96,9 @@ class Source extends VoidElement
      */
     public ?string $src = null;
 
+    /** Specifies a list of possible image sources for the browser to use. */
+    public ?string $srcset = null;
+
     /** Specifies the media type of the linked resource. */
     public ?string $type = null;
 
@@ -123,6 +137,18 @@ class Source extends VoidElement
     public function getSrc(): ?string
     {
         return $this->src;
+    }
+
+    public function setSrcset(string $srcset): static
+    {
+        $this->srcset = $srcset;
+        $this->delegated->setAttribute('srcset', (string) $srcset);
+        return $this;
+    }
+
+    public function getSrcset(): ?string
+    {
+        return $this->srcset;
     }
 
     public function setType(string $type): static

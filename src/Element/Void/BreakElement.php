@@ -4,7 +4,7 @@
  *
  * BreakElement - The br element represents a line break.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -25,11 +25,28 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\DirTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\StyleTrait;
 use Html\Mapping\Element;
 
 #[Element('br')]
 class BreakElement extends VoidElement
 {
+        use ClassTrait;
+
+    use DataTrait;
+
+    use DirTrait;
+
+    use HiddenTrait;
+
+    use IdTrait;
+
+    use StyleTrait;
     /**
      * The HTML element name
      */

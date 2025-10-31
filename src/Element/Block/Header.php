@@ -4,7 +4,7 @@
  *
  * Header - The header element represents a container for introductory content or a set of navigational links. It typically contains the section's heading (an h1–h6 element or an hgroup element), but can also contain other content such as a table of contents, a search form, or any relevant logos.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -83,11 +83,61 @@ use Html\Element\Void\Parameter;
 use Html\Element\Void\Source;
 use Html\Element\Void\Track;
 use Html\Element\Void\WordBreakOpportunity;
+use Html\Trait\GlobalAttribute\AccesskeyTrait;
+use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
+use Html\Trait\GlobalAttribute\AutofocusTrait;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\ContenteditableTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\DirTrait;
+use Html\Trait\GlobalAttribute\DraggableTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\InputmodeTrait;
+use Html\Trait\GlobalAttribute\LangTrait;
+use Html\Trait\GlobalAttribute\SpellcheckTrait;
+use Html\Trait\GlobalAttribute\StyleTrait;
+use Html\Trait\GlobalAttribute\TabindexTrait;
+use Html\Trait\GlobalAttribute\TitleTrait;
+use Html\Trait\GlobalAttribute\TranslateTrait;
 use Html\Mapping\Element;
 
 #[Element('header')]
 class Header extends BlockElement
 {
+        use AccesskeyTrait;
+
+    use AutocapitalizeTrait;
+
+    use AutofocusTrait;
+
+    use ClassTrait;
+
+    use ContenteditableTrait;
+
+    use DataTrait;
+
+    use DirTrait;
+
+    use DraggableTrait;
+
+    use HiddenTrait;
+
+    use IdTrait;
+
+    use InputmodeTrait;
+
+    use LangTrait;
+
+    use SpellcheckTrait;
+
+    use StyleTrait;
+
+    use TabindexTrait;
+
+    use TitleTrait;
+
+    use TranslateTrait;
     /**
      * The HTML element name
      */

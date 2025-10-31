@@ -4,7 +4,7 @@
  *
  * Main - The main element represents the dominant content of the body of a document. The main content area consists of content that is directly related to or expands upon the central topic of a document, or the central functionality of an application.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -85,11 +85,61 @@ use Html\Element\Void\Parameter;
 use Html\Element\Void\Source;
 use Html\Element\Void\Track;
 use Html\Element\Void\WordBreakOpportunity;
+use Html\Trait\GlobalAttribute\AccesskeyTrait;
+use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
+use Html\Trait\GlobalAttribute\AutofocusTrait;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\ContenteditableTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\DirTrait;
+use Html\Trait\GlobalAttribute\DraggableTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\InputmodeTrait;
+use Html\Trait\GlobalAttribute\LangTrait;
+use Html\Trait\GlobalAttribute\SpellcheckTrait;
+use Html\Trait\GlobalAttribute\StyleTrait;
+use Html\Trait\GlobalAttribute\TabindexTrait;
+use Html\Trait\GlobalAttribute\TitleTrait;
+use Html\Trait\GlobalAttribute\TranslateTrait;
 use Html\Mapping\Element;
 
 #[Element('main')]
 class Main extends BlockElement
 {
+        use AccesskeyTrait;
+
+    use AutocapitalizeTrait;
+
+    use AutofocusTrait;
+
+    use ClassTrait;
+
+    use ContenteditableTrait;
+
+    use DataTrait;
+
+    use DirTrait;
+
+    use DraggableTrait;
+
+    use HiddenTrait;
+
+    use IdTrait;
+
+    use InputmodeTrait;
+
+    use LangTrait;
+
+    use SpellcheckTrait;
+
+    use StyleTrait;
+
+    use TabindexTrait;
+
+    use TitleTrait;
+
+    use TranslateTrait;
     /**
      * The HTML element name
      */

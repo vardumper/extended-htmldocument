@@ -4,7 +4,7 @@
  *
  * Base - The base element specifies the base URL to use for all relative URLs in a document. There can be at maximum one <base> element in a document, and it must be inside the <head> element.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -21,7 +21,7 @@ use Html\Mapping\Element;
 #[Element('base')]
 class Base extends VoidElement
 {
-    /**
+        /**
      * The HTML element name
      */
     public const string QUALIFIED_NAME = 'base';

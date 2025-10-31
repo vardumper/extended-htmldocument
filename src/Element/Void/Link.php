@@ -4,7 +4,7 @@
  *
  * Link - The link element defines a link between a document and an external resource. It is used to link to external stylesheets.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -18,11 +18,34 @@ use Html\Element\Void\Head;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\RelEnum;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\DirTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\LangTrait;
+use Html\Trait\GlobalAttribute\StyleTrait;
+use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Mapping\Element;
 
 #[Element('link')]
 class Link extends VoidElement
 {
+        use ClassTrait;
+
+    use DataTrait;
+
+    use DirTrait;
+
+    use HiddenTrait;
+
+    use IdTrait;
+
+    use LangTrait;
+
+    use StyleTrait;
+
+    use TitleTrait;
     /**
      * The HTML element name
      */

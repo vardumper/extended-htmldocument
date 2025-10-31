@@ -23,6 +23,7 @@ class <?= /** @phpstan-ignore variable.undefined */ $class_name ?> extends <?= u
     $level
 ) ?>Element
 {
+    <?= $global_attribute_traits ?>
     /**
      * The HTML element name
      */

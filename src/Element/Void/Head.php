@@ -4,7 +4,7 @@
  *
  * Head - The head element contains meta-information about the HTML document, including its title and links to its scripts and stylesheets.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -27,7 +27,7 @@ use Html\Mapping\Element;
 #[Element('head')]
 class Head extends VoidElement
 {
-    /**
+        /**
      * The HTML element name
      */
     public const string QUALIFIED_NAME = 'head';

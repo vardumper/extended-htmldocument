@@ -4,7 +4,7 @@
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -44,14 +44,50 @@ use Html\Element\Inline\Slot;
 use Html\Element\Inline\Textarea;
 use Html\Element\Void\Script;
 use Html\Enum\AutocompleteEnum;
+use Html\Enum\AutocorrectEnum;
 use Html\Enum\EnctypeEnum;
 use Html\Enum\MethodEnum;
 use Html\Enum\TargetEnum;
+use Html\Trait\GlobalAttribute\AccesskeyTrait;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\DirTrait;
+use Html\Trait\GlobalAttribute\DraggableTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\LangTrait;
+use Html\Trait\GlobalAttribute\StyleTrait;
+use Html\Trait\GlobalAttribute\TabindexTrait;
+use Html\Trait\GlobalAttribute\TitleTrait;
+use Html\Trait\GlobalAttribute\TranslateTrait;
 use Html\Mapping\Element;
 
 #[Element('form')]
 class Form extends BlockElement
 {
+        use AccesskeyTrait;
+
+    use ClassTrait;
+
+    use DataTrait;
+
+    use DirTrait;
+
+    use DraggableTrait;
+
+    use HiddenTrait;
+
+    use IdTrait;
+
+    use LangTrait;
+
+    use StyleTrait;
+
+    use TabindexTrait;
+
+    use TitleTrait;
+
+    use TranslateTrait;
     /**
      * The HTML element name
      */
@@ -133,6 +169,13 @@ class Form extends BlockElement
      */
     public ?AutocompleteEnum $autocomplete = null;
 
+    /** 
+     * Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.
+     * @category HTML attribute
+     * @example on
+     */
+    public ?AutocorrectEnum $autocorrect = null;
+
     /** Specifies how form data should be encoded before sending it to a server. Only used if the method attribute is set to post. Default is application/x-www-form-urlencoded. */
     public ?EnctypeEnum $enctype = null;
 
@@ -195,6 +238,22 @@ class Form extends BlockElement
     public function getAutocomplete(): ?AutocompleteEnum
     {
         return $this->autocomplete;
+    }
+
+    public function setAutocorrect(string|AutocorrectEnum $autocorrect): static
+    {
+        if (is_string($autocorrect)) {
+            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new \InvalidArgumentException("Invalid value for \$autocorrect.");
+        }
+        $this->autocorrect = $autocorrect;
+        $this->delegated->setAttribute('autocorrect', (string) $autocorrect->value);
+
+        return $this;
+    }
+
+    public function getAutocorrect(): ?AutocorrectEnum
+    {
+        return $this->autocorrect;
     }
 
     public function setEnctype(string|EnctypeEnum $enctype): static

@@ -2,9 +2,9 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * Script - The script element is used to embed or reference an executable script within an HTML or XHTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.
+ * Script - The script element is used to embed or reference an executable script within an HTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -22,11 +22,28 @@ use Html\Element\Void\Head;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\TypeScriptEnum;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\LangTrait;
+use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Mapping\Element;
 
 #[Element('script')]
 class Script extends VoidElement
 {
+        use ClassTrait;
+
+    use DataTrait;
+
+    use HiddenTrait;
+
+    use IdTrait;
+
+    use TitleTrait;
+
+    use LangTrait;
     /**
      * The HTML element name
      */

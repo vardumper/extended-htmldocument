@@ -4,7 +4,7 @@
  *
  * Column - The col element represents a column in a table.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -15,11 +15,22 @@ namespace Html\Element\Void;
 
 use Html\Element\Block\ColumnGroup;
 use Html\Element\VoidElement;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\StyleTrait;
 use Html\Mapping\Element;
 
 #[Element('col')]
 class Column extends VoidElement
 {
+        use ClassTrait;
+
+    use DataTrait;
+
+    use IdTrait;
+
+    use StyleTrait;
     /**
      * The HTML element name
      */

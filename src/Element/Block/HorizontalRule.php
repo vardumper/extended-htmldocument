@@ -4,7 +4,7 @@
  *
  * HorizontalRule - The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -17,11 +17,34 @@ use Html\Element\BlockElement;
 use Html\Element\Block\Body;
 use Html\Element\Block\Paragraph;
 use Html\Enum\AlignEnum;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\DirTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\LangTrait;
+use Html\Trait\GlobalAttribute\StyleTrait;
+use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Mapping\Element;
 
 #[Element('hr')]
 class HorizontalRule extends BlockElement
 {
+        use ClassTrait;
+
+    use DataTrait;
+
+    use DirTrait;
+
+    use HiddenTrait;
+
+    use IdTrait;
+
+    use LangTrait;
+
+    use StyleTrait;
+
+    use TitleTrait;
     /**
      * The HTML element name
      */

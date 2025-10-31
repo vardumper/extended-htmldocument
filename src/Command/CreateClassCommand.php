@@ -155,6 +155,7 @@ final class CreateClassCommand extends Command
         $processedAttributes = $this->getAttributes($attributes, $element);
         $parents = $this->resolveParents($element, explode(' | ', $elementData['parent'] ?? ''));
         $children = $this->resolveChildren($elementData['children'] ?? []);
+        $global_attribute_traits = $this->getGlobalAttributes($elementData['allowed_global_attributes'] ?? []);
 
         return [
             'class_name' => $className,
@@ -162,6 +163,7 @@ final class CreateClassCommand extends Command
             'namespace' => $namespace,
             'use_statements' => $this->getUseStatements($children, $parents, $namespace . '\\' . $className),
             'level' => $level,
+            'global_attribute_traits' => $global_attribute_traits,
             'description' => $elementData['description'] ?? '',
             'unique' => $elementData['unique'] ?? false,
             'parents' => $parents,
@@ -174,6 +176,19 @@ final class CreateClassCommand extends Command
             'methods' => $methods,
             'generatedAt' => $generatedAt,
         ];
+    }
+
+    private function getGlobalAttributes(array $allowedGlobalAttributes): string
+    {
+        $traits = [];
+        foreach ($allowedGlobalAttributes as $attribute) {
+            $traitName = \ucwords(\str_replace(['-', '*'], '', $attribute)) . 'Trait';
+            if ($traitName !== null) {
+                $this->uses[] = sprintf("Html\Trait\GlobalAttribute\%s", $traitName);
+                $traits[] = sprintf("    use %s;\n", $traitName);
+            }
+        }
+        return implode("\n", $traits);
     }
 
     private function getUniquePerParent(array $elementData): bool

@@ -4,7 +4,7 @@
  *
  * Input - The input element represents a typed data field, usually with a form control to allow user input.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -30,12 +30,63 @@ use Html\Element\InlineElement;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
 use Html\Enum\AutocompleteEnum;
+use Html\Enum\AutocorrectEnum;
 use Html\Enum\TypeInputEnum;
+use Html\Trait\GlobalAttribute\AccesskeyTrait;
+use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
+use Html\Trait\GlobalAttribute\AutofocusTrait;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\ContenteditableTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\DirTrait;
+use Html\Trait\GlobalAttribute\DraggableTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\InputmodeTrait;
+use Html\Trait\GlobalAttribute\LangTrait;
+use Html\Trait\GlobalAttribute\SpellcheckTrait;
+use Html\Trait\GlobalAttribute\StyleTrait;
+use Html\Trait\GlobalAttribute\TabindexTrait;
+use Html\Trait\GlobalAttribute\TitleTrait;
+use Html\Trait\GlobalAttribute\TranslateTrait;
 use Html\Mapping\Element;
 
 #[Element('input')]
 class Input extends InlineElement
 {
+        use AccesskeyTrait;
+
+    use AutocapitalizeTrait;
+
+    use AutofocusTrait;
+
+    use ClassTrait;
+
+    use ContenteditableTrait;
+
+    use DataTrait;
+
+    use DirTrait;
+
+    use DraggableTrait;
+
+    use HiddenTrait;
+
+    use IdTrait;
+
+    use InputmodeTrait;
+
+    use LangTrait;
+
+    use SpellcheckTrait;
+
+    use StyleTrait;
+
+    use TabindexTrait;
+
+    use TitleTrait;
+
+    use TranslateTrait;
     /**
      * The HTML element name
      */
@@ -88,6 +139,13 @@ class Input extends InlineElement
 
     /** Specifies a comma-separated list of file types that the server accepts. */
     public ?string $accept = null;
+
+    /** 
+     * Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.
+     * @category HTML attribute
+     * @example on
+     */
+    public ?AutocorrectEnum $autocorrect = null;
 
     /** Specifies alternative text to be displayed when the image cannot be rendered. */
     public ?string $alt = null;
@@ -177,6 +235,22 @@ class Input extends InlineElement
     public function getAccept(): ?string
     {
         return $this->accept;
+    }
+
+    public function setAutocorrect(string|AutocorrectEnum $autocorrect): static
+    {
+        if (is_string($autocorrect)) {
+            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new \InvalidArgumentException("Invalid value for \$autocorrect.");
+        }
+        $this->autocorrect = $autocorrect;
+        $this->delegated->setAttribute('autocorrect', (string) $autocorrect->value);
+
+        return $this;
+    }
+
+    public function getAutocorrect(): ?AutocorrectEnum
+    {
+        return $this->autocorrect;
     }
 
     public function setAlt(string $alt): static

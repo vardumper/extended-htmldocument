@@ -4,7 +4,7 @@
  *
  * Parameter - The param element defines parameters for an object element.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -22,11 +22,25 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\StyleTrait;
 use Html\Mapping\Element;
 
 #[Element('param')]
 class Parameter extends VoidElement
 {
+        use IdTrait;
+
+    use ClassTrait;
+
+    use StyleTrait;
+
+    use HiddenTrait;
+
+    use DataTrait;
     /**
      * The HTML element name
      */

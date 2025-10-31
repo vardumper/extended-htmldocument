@@ -4,7 +4,7 @@
  *
  * Option - The option element represents an item in a select dropdown list.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -17,11 +17,58 @@ use Html\Element\BlockElement;
 use Html\Element\Block\DataList;
 use Html\Element\Block\OptionGroup;
 use Html\Element\Inline\Select;
+use Html\Trait\GlobalAttribute\AccesskeyTrait;
+use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\ContenteditableTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\DirTrait;
+use Html\Trait\GlobalAttribute\DraggableTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\InputmodeTrait;
+use Html\Trait\GlobalAttribute\LangTrait;
+use Html\Trait\GlobalAttribute\SpellcheckTrait;
+use Html\Trait\GlobalAttribute\StyleTrait;
+use Html\Trait\GlobalAttribute\TabindexTrait;
+use Html\Trait\GlobalAttribute\TitleTrait;
+use Html\Trait\GlobalAttribute\TranslateTrait;
 use Html\Mapping\Element;
 
 #[Element('option')]
 class Option extends BlockElement
 {
+        use IdTrait;
+
+    use ClassTrait;
+
+    use TitleTrait;
+
+    use LangTrait;
+
+    use StyleTrait;
+
+    use HiddenTrait;
+
+    use TabindexTrait;
+
+    use AccesskeyTrait;
+
+    use AutocapitalizeTrait;
+
+    use ContenteditableTrait;
+
+    use InputmodeTrait;
+
+    use DirTrait;
+
+    use DraggableTrait;
+
+    use SpellcheckTrait;
+
+    use TranslateTrait;
+
+    use DataTrait;
     /**
      * The HTML element name
      */

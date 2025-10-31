@@ -891,10 +891,6 @@ button:
   level: inline
   allowed_global_attributes:
     - autofocus
-    - disabled
-    - name
-    - type
-    - value
     - accesskey
     - autocapitalize
     - autofocus

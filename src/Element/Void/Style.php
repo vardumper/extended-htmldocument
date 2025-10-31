@@ -4,7 +4,7 @@
  *
  * Style - The style element is used to embed CSS styles directly into an HTML document.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -17,11 +17,28 @@ use Html\Element\Inline\ScalableVectorGraphics;
 use Html\Element\VoidElement;
 use Html\Element\Void\Head;
 use Html\Enum\TypeStyleEnum;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\DirTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\LangTrait;
+use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Mapping\Element;
 
 #[Element('style')]
 class Style extends VoidElement
 {
+        use IdTrait;
+
+    use ClassTrait;
+
+    use TitleTrait;
+
+    use DataTrait;
+
+    use LangTrait;
+
+    use DirTrait;
     /**
      * The HTML element name
      */
@@ -66,6 +83,8 @@ class Style extends VoidElement
     /** 
      * Specifies the media type of the inline styles.
      * @category HTML attribute
+     * @deprecated
+    
      * @example text/css
      */
     public ?TypeStyleEnum $type = null;

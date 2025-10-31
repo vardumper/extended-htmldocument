@@ -8,37 +8,27 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block audio %}
-{% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set crossorigin_choices = ['anonymous', 'use-credentials'] %}
 {% set preload_choices = ['auto', 'metadata', 'none'] %}
-{% set spellcheck_choices = ['true', 'false'] %}
+{% set translate_choices = ['yes', 'no'] %}
 <audio
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
   {% if autoplay is defined and autoplay|length > 0 %}autoplay="{{ autoplay }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
-  {% if contenteditable is defined and contenteditable|length > 0 and contenteditable in contenteditable_choices %}contenteditable="{{ contenteditable }}"{% endif %}
   {% if controls is defined and controls|length > 0 %}controls="{{ controls }}"{% endif %}
   {% if crossorigin is defined and crossorigin|length > 0 and crossorigin in crossorigin_choices %}crossorigin="{{ crossorigin }}"{% endif %}
   {% if draggable is defined and draggable|length > 0 %}draggable="{{ draggable }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
-  {% if inert is defined and inert|length > 0 %}inert="{{ inert }}"{% endif %}
-  {% if attribute(_context, 'is') is defined and attribute(_context, 'is')|length > 0 %}is="{{ attribute(_context, 'is') }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
   {% if attribute(_context, 'loop') is defined and attribute(_context, 'loop')|length > 0 %}loop="{{ attribute(_context, 'loop') }}"{% endif %}
   {% if muted is defined and muted|length > 0 %}muted="{{ muted }}"{% endif %}
-  {% if nonce is defined and nonce|length > 0 %}nonce="{{ nonce }}"{% endif %}
-  {% if part is defined and part|length > 0 %}part="{{ part }}"{% endif %}
-  {% if popover is defined and popover|length > 0 %}popover="{{ popover }}"{% endif %}
   {% if preload is defined and preload|length > 0 and preload in preload_choices %}preload="{{ preload }}"{% endif %}
-  {% if role is defined and role|length > 0 %}role="{{ role }}"{% endif %}
-  {% if slot is defined and slot|length > 0 %}slot="{{ slot }}"{% endif %}
-  {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck="{{ spellcheck }}"{% endif %}
   {% if src is defined and src|length > 0 %}src="{{ src }}"{% endif %}
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
   {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}
   {% if title is defined and title|length > 0 %}title="{{ title }}"{% endif %}
-  {% if translate is defined and translate|length > 0 %}translate="{{ translate }}"{% endif %}
+  {% if translate is defined and translate|length > 0 and translate in translate_choices %}translate="{{ translate }}"{% endif %}
 >
   {% block content %}{{- content|raw -}}{% endblock %}
 </audio>

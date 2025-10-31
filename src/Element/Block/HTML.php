@@ -4,7 +4,7 @@
  *
  * HTML - The root element of an HTML document. It represents the top-level of the HTML structure.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -16,11 +16,19 @@ namespace Html\Element\Block;
 use Html\Element\BlockElement;
 use Html\Element\Block\Body;
 use Html\Element\Void\Head;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\DirTrait;
+use Html\Trait\GlobalAttribute\LangTrait;
 use Html\Mapping\Element;
 
 #[Element('html')]
 class HTML extends BlockElement
 {
+        use LangTrait;
+
+    use DirTrait;
+
+    use DataTrait;
     /**
      * The HTML element name
      */

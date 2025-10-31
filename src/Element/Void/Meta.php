@@ -4,7 +4,7 @@
  *
  * Meta - The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -16,11 +16,28 @@ namespace Html\Element\Void;
 use Html\Element\VoidElement;
 use Html\Element\Void\Head;
 use Html\Enum\HttpEquivEnum;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\LangTrait;
+use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Mapping\Element;
 
 #[Element('meta')]
 class Meta extends VoidElement
 {
+        use ClassTrait;
+
+    use DataTrait;
+
+    use HiddenTrait;
+
+    use IdTrait;
+
+    use LangTrait;
+
+    use TitleTrait;
     /**
      * The HTML element name
      */

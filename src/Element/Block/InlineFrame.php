@@ -4,7 +4,7 @@
  *
  * InlineFrame - The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.
  * 
- * @generated 2025-10-28 11:32:29
+ * @generated 2025-10-31 21:58:00
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -29,11 +29,37 @@ use Html\Element\Block\Template;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
 use Html\Enum\ReferrerpolicyEnum;
+use Html\Trait\GlobalAttribute\ClassTrait;
+use Html\Trait\GlobalAttribute\DataTrait;
+use Html\Trait\GlobalAttribute\DirTrait;
+use Html\Trait\GlobalAttribute\HiddenTrait;
+use Html\Trait\GlobalAttribute\IdTrait;
+use Html\Trait\GlobalAttribute\LangTrait;
+use Html\Trait\GlobalAttribute\StyleTrait;
+use Html\Trait\GlobalAttribute\TabindexTrait;
+use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Mapping\Element;
 
 #[Element('iframe')]
 class InlineFrame extends BlockElement
 {
+        use ClassTrait;
+
+    use DataTrait;
+
+    use DirTrait;
+
+    use HiddenTrait;
+
+    use IdTrait;
+
+    use LangTrait;
+
+    use StyleTrait;
+
+    use TabindexTrait;
+
+    use TitleTrait;
     /**
      * The HTML element name
      */
@@ -101,14 +127,10 @@ class InlineFrame extends BlockElement
     /** When present, it specifies that the iframe should look like it is a part of the containing document (no borders or scrollbars). */
     public ?bool $seamless = null;
 
-    /** 
-     * Specifies the URL of the external resource to be embedded or referenced.
-     * @category HTML attribute
-     * @required
-     */
+    /** Specifies the URL of the external resource to be embedded or referenced. */
     public ?string $src = null;
 
-    /**  */
+    /** The value of srcdoc is a string containing HTML markup, which the browser will display as the content of the iframe. */
     public ?string $srcdoc = null;
 
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
