@@ -24,18 +24,6 @@ interface HTMLElementDelegatorInterface
 
     public function __toString(): string;
 
-    public function setId(string $id): static;
-
-    public function setClass(string $className): static;
-
-    public function setClassName(string $className): static;
-
-    public function getId(): ?string;
-
-    public function getClass(): ?string;
-
-    public function getClassName(): ?string;
-
     public function setAttributes(array $attributes): static;
 
     public function setAttribute(string $name, mixed $value): static;

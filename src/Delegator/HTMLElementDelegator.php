@@ -13,7 +13,7 @@ use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\TemplateGenerator\HTMLGenerator;
 use Html\Trait\DelegatorTrait;
-use Html\Trait\GlobalAttributesTrait;
+// use Html\Trait\GlobalAttributesTrait;
 use Html\Trait\NativePropertiesTrait;
 use InvalidArgumentException;
 use ReflectionClass;
@@ -34,7 +34,7 @@ use TypeError;
 #[AllowDynamicProperties]
 class HTMLElementDelegator implements HTMLElementDelegatorInterface
 {
-    use GlobalAttributesTrait;
+    // use GlobalAttributesTrait;
     use NativePropertiesTrait;
     use DelegatorTrait;
 

@@ -55,4 +55,20 @@ trait ClassTrait
     {
         return $this->setClass($className);
     }
+
+    /**
+     * alias
+     */
+    public function getClasses(): ?string
+    {
+        return $this->className;
+    }
+
+    /**
+     * alias
+     */
+    public function setClasses(string|array $className): static
+    {
+        return $this->setClass($className);
+    }
 }
