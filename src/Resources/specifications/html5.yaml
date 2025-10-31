@@ -1890,6 +1890,21 @@ form:
         - select
         - textarea
       defaultValue: 'on'
+    autocorrect:
+      type: enum
+      description: 'Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.'
+      choices:
+        - 'off'
+        - 'on'
+      elements:
+        - form
+        - fieldset
+        - button
+        - output
+        - input
+        - select
+        - textarea
+      defaultValue: 'on'
     enctype:
       type: enum
       description: 'Specifies how form data should be encoded before sending it to a server. Only used if the method attribute is set to post. Default is application/x-www-form-urlencoded.'

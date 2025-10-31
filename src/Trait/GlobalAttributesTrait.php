@@ -2,9 +2,7 @@
 
 namespace Html\Trait;
 
-use Html\Enum\AutoCapitalizeEnum;
 use Html\Enum\ContentEditableEnum;
-use Html\Enum\DirectionEnum;
 use Html\Enum\InputModeEnum;
 use Html\Enum\SpellCheckEnum;
 use InvalidArgumentException;
@@ -18,85 +16,6 @@ use InvalidArgumentException;
  */
 trait GlobalAttributesTrait
 {
-    /**
-     * specifies a shortcut key (or keys) to activate or focus an element
-     */
-    public ?string $accesskey = null;
-
-    /**
-     * Indicates whether the element is draggable
-     */
-    public ?bool $draggable = null;
-
-    /**
-     * Represents custom data attributes on the element
-     */
-    public ?array $dataAttributes = null;
-
-    /**
-     * Indicates whether the element is hidden
-     */
-    public ?bool $hidden = null;
-
-    /**
-     * Indicates whether the element is inert
-     */
-    public ?bool $inert = null;
-
-    /**
-     * allows you to specify a particular custom element that extends a built-in element
-     */
-    public ?string $is = null;
-
-    /**
-     * Specifies the primary language for the element's content
-     */
-    public ?string $lang = null;
-
-    /**
-     * Represents a unique cryptographic nonce used to verify requests
-     */
-    public ?string $nonce = null;
-
-    /**
-     * Represents a specific purpose or role for the element, typically for styling or functionality
-     */
-    public ?string $part = null;
-
-    /**
-     * Represents a contextual popover for additional information related to the element
-     */
-    public ?string $popover = null;
-
-    /**
-     * Represents the role of the element
-     */
-    public ?string $role = null;
-
-    /**
-     * Represents a slot in a shadow DOM
-     */
-    public ?string $slot = null;
-
-    /**
-     * Represents the CSS inline style of the element
-     */
-    public ?string $style = null;
-
-    /**
-     * Represents a tab order of the element
-     */
-    public ?int $tabindex = null;
-
-    /**
-     * Represents a title or tooltip for the element
-     */
-    public ?string $title = null;
-
-    /**
-     *  used to tell user agents (browsers or translation tools) whether the content should be translated.
-     */
-    public ?string $translate = null;
 
     /**
      * Indicates whether the element can be edited in place
@@ -107,16 +26,6 @@ trait GlobalAttributesTrait
      * Represents the spellchecking behavior of the element
      */
     protected ?SpellCheckEnum $spellcheck = null;
-
-    /**
-     * Represents the autocapitalize behavior of the element
-     */
-    private ?AutoCapitalizeEnum $autocapitalize = null;
-
-    /**
-     * Represents the text direction of the element
-     */
-    private ?DirectionEnum $dir = null;
 
     /**
      * used to specify the data entry mode for an input. It helps guide on-screen keyboards (especially on mobile devices)
@@ -166,39 +75,6 @@ trait GlobalAttributesTrait
     }
 
     /**
-     * @description Specifies a keyboard shortcut to focus or activate an element.
-     */
-    public function setAccessKey(string $accesskey): static
-    {
-        $this->accesskey = $accesskey;
-        $this->delegated->setAttribute('accesskey', $accesskey);
-        return $this;
-    }
-
-    public function getAccessKey(): ?string
-    {
-        return $this->accesskey;
-    }
-
-    /**
-     * @description Controls automatic capitalization for text input (none, sentences, words, characters).
-     */
-    public function setAutoCapitalize(string|AutoCapitalizeEnum $autoCapitalize): static
-    {
-        if (is_string($autoCapitalize)) {
-            $autoCapitalize = AutoCapitalizeEnum::from($autoCapitalize);
-        }
-        $this->autocapitalize = $autoCapitalize;
-        $this->delegated->setAttribute('autocapitalize', $autoCapitalize->value);
-        return $this;
-    }
-
-    public function getAutoCapitalize(): ?AutoCapitalizeEnum
-    {
-        return $this->autocapitalize;
-    }
-
-    /**
      * @description Defines whether the content is editable by the user.
      */
     public function setContentEditable(
@@ -225,100 +101,6 @@ trait GlobalAttributesTrait
     }
 
     /**
-     * @description Sets a custom data attribute.
-     */
-    public function setDataAttribute(array $data): static
-    {
-        $this->dataAttributes = $data;
-        foreach ($data as $name => $value) {
-            $this->delegated->setAttribute('data-' . $name, $value);
-        }
-        return $this;
-    }
-
-    public function getDataAttribute(?string $name = null): null|string|array
-    {
-        if ($name === null) {
-            return $this->dataAttributes;
-        }
-
-        if (! isset($this->dataAttributes[$name])) {
-            return null;
-        }
-
-        return $this->dataAttributes[$name];
-    }
-
-    /**
-     * @todo sounds like enum
-     * @description Specifies text direction (ltr, rtl, auto).
-     */
-    public function setDir(string|DirectionEnum $dir): static
-    {
-        if (is_string($dir) && ! in_array($dir, array_map(fn ($e) => $e->value, DirectionEnum::cases()))) {
-            throw new InvalidArgumentException('Invalid value for dir');
-        }
-
-        $this->dir = is_string($dir) ? DirectionEnum::from($dir) : $dir;
-        $this->delegated->setAttribute(DirectionEnum::getQualifiedName(), $this->dir->value);
-        return $this;
-    }
-
-    public function getDir(): ?DirectionEnum
-    {
-        return $this->dir;
-    }
-
-    /**
-     * @description Specifies whether an element is draggable (true, false).
-     */
-    public function setDraggable(bool|string $draggable = true): static
-    {
-        if (is_string($draggable) && in_array($draggable, ['true', 'false'])) {
-            $draggable = $draggable === 'true' ? true : false;
-        }
-        $this->draggable = $draggable;
-        $this->setAttribute('draggable', $draggable);
-        // $this->delegated->setAttribute('draggable', $draggable);
-        return $this;
-    }
-
-    public function getDraggable(): ?bool
-    {
-        return $this->draggable;
-    }
-
-    /**
-     * @description Hides the element from rendering.
-     */
-    public function setHidden(bool|string $hidden = true): static
-    {
-        $this->hidden = $hidden;
-        $this->delegated->setAttribute('hidden', $hidden ? 'true' : 'false');
-        return $this;
-    }
-
-    public function getHidden(): bool
-    {
-        return $this->hidden;
-    }
-
-    /**
-     * @description Makes an element non-interactive (removes it from focus, clicks, etc.).
-     */
-    public function setInert(bool $inert): static
-    {
-        $this->inert = $inert;
-        $this->delegated->setAttribute('inert', $inert ? 'true' : 'false');
-        return $this;
-    }
-
-    public function getInert(): bool
-    {
-        return $this->inert;
-    }
-
-    /**
      * @description Suggests an input mode (e.g., numeric, email, tel).
      */
     public function setInputMode(string|InputModeEnum $inputMode = InputModeEnum::NUMERIC): static
@@ -334,111 +116,6 @@ trait GlobalAttributesTrait
     public function getInputMode(): ?InputModeEnum
     {
         return $this->inputmode;
-    }
-
-    /**
-     * @description Allows an element to be a custom built-in element (Web Components).
-     */
-    public function setIs(string $is): static
-    {
-        $this->is = $is;
-        // $this->delegated->setAttribute('is', $is);
-        return $this;
-    }
-
-    public function getIs(): ?string
-    {
-        return $this->is;
-    }
-
-    /**
-     * @description Defines the language of the content (e.g., en, fr).
-     */
-    public function setLang(string $lang): static
-    {
-        $this->lang = $lang;
-        // $this->delegated->setAttribute('lang', $lang);
-        return $this;
-    }
-
-    public function getLang(): ?string
-    {
-        return $this->lang;
-    }
-
-    /**
-     * @description Defines the language of the content (e.g., en, fr).
-     */
-    public function setNonce(string $nonce): static
-    {
-        $this->nonce = $nonce;
-        // $this->delegated->setAttribute('nonce', $nonce);
-        return $this;
-    }
-
-    public function getNonce(): ?string
-    {
-        return $this->nonce;
-    }
-
-    /**
-     * @description Identifies the element as a part of a shadow DOM.
-     */
-    public function setPart(string $part): static
-    {
-        $this->part = $part;
-        // $this->delegated->setAttribute('part', $part);
-        return $this;
-    }
-
-    public function getPart(): ?string
-    {
-        return $this->part;
-    }
-
-    /**
-     * @description Marks the element as a popover that can be triggered via JavaScript.
-     */
-    public function setPopover(string $popover): static
-    {
-        $this->popover = $popover;
-        // $this->delegated->setAttribute('popover', $popover);
-        return $this;
-    }
-
-    public function getPopover(): ?string
-    {
-        return $this->popover;
-    }
-
-    /**
-     * @description Defines the ARIA role for accessibility.
-     */
-    public function setRole(string $role): static
-    {
-        $this->role = $role;
-        // $this->delegated->setAttribute('role', $role);
-        return $this;
-    }
-
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    /**
-     * @description Assigns the element to a named slot in a shadow DOM.
-     */
-    public function setSlot(string $slot): static
-    {
-        $this->slot = $slot;
-        // $this->delegated->setAttribute('slot', $slot);
-        return $this;
-    }
-
-    public function getSlot(): ?string
-    {
-        return $this->slot;
     }
 
     /**
@@ -463,64 +140,5 @@ trait GlobalAttributesTrait
     public function getSpellCheck(): ?SpellCheckEnum
     {
         return $this->spellcheck;
-    }
-
-    /**
-     * @description Adds inline CSS styles to the element.
-     */
-    public function setStyle(string $style): static
-    {
-        $this->style = $style;
-        // $this->delegated->setAttribute('style', $style);
-        return $this;
-    }
-
-    public function getStyle(): ?string
-    {
-        return $this->style;
-    }
-
-    /**
-     * @description Sets the tab order for keyboard navigation.
-     */
-    public function setTabIndex(int $tabIndex): static
-    {
-        $this->tabindex = $tabIndex;
-        // $this->delegated->setAttribute('tabindex', (string)$tabIndex);
-        return $this;
-    }
-
-    public function getTabIndex(): ?int
-    {
-        return $this->tabindex;
-    }
-
-    /**
-     * @description Provides tooltip text when hovered.
-     */
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-        return $this;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    /**
-     * @description Specifies whether the content should be translated (yes, no).
-     */
-    public function setTranslate(string $translate): static
-    {
-        $this->translate = $translate;
-        // $this->delegated->setAttribute('translate', $translate);
-        return $this;
-    }
-
-    public function getTranslate(): ?string
-    {
-        return $this->translate;
     }
 }
