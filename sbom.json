@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:2d300fb0-4f63-44c4-a985-0979f6f6c8d7",
+  "serialNumber": "urn:uuid:0eb70f80-86cd-4a74-bb17-881798c79b91",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-10-31T20:44:51+00:00",
+    "timestamp": "2025-10-31T22:49:06+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "1a229a53-bb81-4210-b848-d90d2399eb04",
+      "bom-ref": "8598e8f4-70f2-4fd4-9ba0-6133da868066",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,22 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "714a4f5d-bfb3-4206-9baa-c8527639bfb4",
-      "type": "application",
-      "name": "composer.lock",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:Class",
-          "value": "lang-pkgs"
-        },
-        {
-          "name": "aquasecurity:trivy:Type",
-          "value": "composer"
-        }
-      ]
-    },
-    {
-      "bom-ref": "dfc92aa3-c0a9-4294-b0a0-2187be8e4463",
+      "bom-ref": "34f6a998-6a1e-4472-9464-ceaf201282c5",
       "type": "application",
       "name": "yarn.lock",
       "properties": [
@@ -56,6 +41,21 @@
         {
           "name": "aquasecurity:trivy:Type",
           "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "540db95e-2dcd-4f1c-82e1-716bfa297581",
+      "type": "application",
+      "name": "composer.lock",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:Class",
+          "value": "lang-pkgs"
+        },
+        {
+          "name": "aquasecurity:trivy:Type",
+          "value": "composer"
         }
       ]
     },
@@ -3225,14 +3225,14 @@
   ],
   "dependencies": [
     {
-      "ref": "1a229a53-bb81-4210-b848-d90d2399eb04",
+      "ref": "34f6a998-6a1e-4472-9464-ceaf201282c5",
       "dependsOn": [
-        "714a4f5d-bfb3-4206-9baa-c8527639bfb4",
-        "dfc92aa3-c0a9-4294-b0a0-2187be8e4463"
+        "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
+        "pkg:npm/vitepress@1.6.4"
       ]
     },
     {
-      "ref": "714a4f5d-bfb3-4206-9baa-c8527639bfb4",
+      "ref": "540db95e-2dcd-4f1c-82e1-716bfa297581",
       "dependsOn": [
         "pkg:composer/mnapoli/silly@1.9.1",
         "pkg:composer/revolt/event-loop@v1.0.7",
@@ -3240,10 +3240,10 @@
       ]
     },
     {
-      "ref": "dfc92aa3-c0a9-4294-b0a0-2187be8e4463",
+      "ref": "8598e8f4-70f2-4fd4-9ba0-6133da868066",
       "dependsOn": [
-        "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
-        "pkg:npm/vitepress@1.6.4"
+        "34f6a998-6a1e-4472-9464-ceaf201282c5",
+        "540db95e-2dcd-4f1c-82e1-716bfa297581"
       ]
     },
     {
