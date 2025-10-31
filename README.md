@@ -27,6 +27,17 @@ echo (string) Anchor::create($dom)
 // output is:
 // <a class="secondary" href="https://google.com" rel="nofollow" title="Google it"></a>
 ```
+## Twig Templates
+There's now a Twig Template for every HTML element included. These allow for better consistency in your design system, have basic validations for enums. 
+```twig
+{% include 'inline/a.twig' with {
+  href: 'https://example.com',
+  title: 'Some info about the link'
+  rel: 'nofollow',
+  role: 'button',
+  content: '<strong>Click here</strong>'
+} %}
+```
 
 ## Documentation
 See the [Documentation](https://vardumper.github.io/extended-htmldocument/) for more.
