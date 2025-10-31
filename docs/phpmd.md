@@ -43,9 +43,8 @@ Issues detected: 11
 | <span class="prio3">3</span> | src/TemplateGenerator/TwigGenerator.php | 95 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method renderElement() has a Cyclomatic Complexity of 27. The configured cyclomatic complexity threshold is 10. |
 | <span class="prio3">3</span> | src/TemplateGenerator/TwigGenerator.php | 95 | [NPathComplexity](https://phpmd.org/rules/codesize.html#npathcomplexity) | The method renderElement() has an NPath complexity of 78144. The configured NPath complexity threshold is 200. |
 | <span class="prio3">3</span> | src/Trait/ClassResolverTrait.php | 69 | [CyclomaticComplexity](https://phpmd.org/rules/codesize.html#cyclomaticcomplexity) | The method getElementByQualifiedName() has a Cyclomatic Complexity of 12. The configured cyclomatic complexity threshold is 10. |
-| <span class="prio3">3</span> | src/Trait/GlobalAttributesTrait.php | 19 | [ExcessivePublicCount](https://phpmd.org/rules/codesize.html#excessivepubliccount) | The trait GlobalAttributesTrait has 48 public methods and attributes. Consider reducing the number of public items to less than 45. |
 
-Issues detected: 19
+Issues detected: 18
 ## Clean Code
 
 | Priority | File   | Line         |  Rule | Message |
@@ -155,22 +154,25 @@ Issues detected: 19
 | <span class="prio1">1</span> | src/Service/ComponentBuilder.php | 63 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method buildDOM uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
 | <span class="prio1">1</span> | src/TemplateGenerator/TwigGenerator.php | 144 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Symfony\Component\Yaml\Yaml` in method `renderElement`. |
 | <span class="prio1">1</span> | src/TemplateGenerator/TwigGenerator.php | 178 | [ElseExpression](https://phpmd.org/rules/cleancode.html#elseexpression) | The method renderElement uses an else expression. Else clauses are basically not necessary and you can simplify the code by not using them. |
-| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 189 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\AutoCapitalizeEnum` in method `setAutoCapitalize`. |
-| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 209 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\ContentEditableEnum` in method `setContentEditable`. |
-| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 216 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\ContentEditableEnum` in method `setContentEditable`. |
-| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 218 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\ContentEditableEnum` in method `setContentEditable`. |
-| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 258 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\DirectionEnum` in method `setDir`. |
-| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 262 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\DirectionEnum` in method `setDir`. |
-| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 263 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\DirectionEnum` in method `setDir`. |
-| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 275 | [BooleanArgumentFlag](https://phpmd.org/rules/cleancode.html#booleanargumentflag) | The method setDraggable has a boolean flag argument $draggable, which is a certain sign of a Single Responsibility Principle violation. |
-| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 294 | [BooleanArgumentFlag](https://phpmd.org/rules/cleancode.html#booleanargumentflag) | The method setHidden has a boolean flag argument $hidden, which is a certain sign of a Single Responsibility Principle violation. |
-| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 326 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\InputModeEnum` in method `setInputMode`. |
-| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 329 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\InputModeEnum` in method `setInputMode`. |
-| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 453 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\SpellCheckEnum` in method `setSpellCheck`. |
-| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 456 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\SpellCheckEnum` in method `setSpellCheck`. |
-| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 459 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\SpellCheckEnum` in method `setSpellCheck`. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttribute/AutocapitalizeTrait.php | 22 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\AutoCapitalizeEnum` in method `setAutoCapitalize`. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttribute/DirTrait.php | 23 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\DirectionEnum` in method `setDir`. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttribute/DirTrait.php | 27 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\DirectionEnum` in method `setDir`. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttribute/DirTrait.php | 28 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\DirectionEnum` in method `setDir`. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttribute/DraggableTrait.php | 17 | [BooleanArgumentFlag](https://phpmd.org/rules/cleancode.html#booleanargumentflag) | The method setDraggable has a boolean flag argument $draggable, which is a certain sign of a Single Responsibility Principle violation. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttribute/HiddenTrait.php | 18 | [BooleanArgumentFlag](https://phpmd.org/rules/cleancode.html#booleanargumentflag) | The method setHidden has a boolean flag argument $hidden, which is a certain sign of a Single Responsibility Principle violation. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttribute/PopoverTrait.php | 14 | [BooleanArgumentFlag](https://phpmd.org/rules/cleancode.html#booleanargumentflag) | The method setPopover has a boolean flag argument $popover, which is a certain sign of a Single Responsibility Principle violation. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttribute/TranslateTrait.php | 26 | [MissingImport](http://phpmd.org/rules/cleancode.html#MissingImport) | Missing class import via use statement (line `26`, column `23`). |
+| <span class="prio1">1</span> | src/Trait/GlobalAttribute/TranslateTrait.php | 28 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\TranslateEnum` in method `setTranslate`. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 85 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\ContentEditableEnum` in method `setContentEditable`. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 92 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\ContentEditableEnum` in method `setContentEditable`. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 94 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\ContentEditableEnum` in method `setContentEditable`. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 108 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\InputModeEnum` in method `setInputMode`. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 111 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\InputModeEnum` in method `setInputMode`. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 130 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\SpellCheckEnum` in method `setSpellCheck`. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 133 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\SpellCheckEnum` in method `setSpellCheck`. |
+| <span class="prio1">1</span> | src/Trait/GlobalAttributesTrait.php | 136 | [StaticAccess](https://phpmd.org/rules/cleancode.html#staticaccess) | Avoid using static access to class `\Html\Enum\SpellCheckEnum` in method `setSpellCheck`. |
 
-Issues detected: 119
+Issues detected: 122
 ## Design
 
 | Priority | File   | Line         |  Rule | Message |
@@ -186,4 +188,4 @@ Issues detected: 119
 
 Issues detected: 8
 
-Tue Oct 28 01:42:58 PM CET 2025
+Fri Oct 31 02:17:12 PM CET 2025
