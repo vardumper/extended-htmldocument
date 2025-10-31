@@ -13,6 +13,7 @@ a:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -129,6 +130,7 @@ abbr:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -176,6 +178,7 @@ address:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -200,6 +203,7 @@ area:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -314,6 +318,7 @@ article:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -391,6 +396,7 @@ aside:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -562,6 +568,7 @@ b:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -611,11 +618,13 @@ bdi:
     - autofocus
     - class
     - contenteditable
+    - inputmode
     - data-*
     - dir
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -634,11 +643,13 @@ bdo:
     - autofocus
     - class
     - contenteditable
+    - inputmode
     - data-*
     - dir
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -662,6 +673,7 @@ blockquote:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -686,34 +698,14 @@ body:
   description: 'The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.'
   level: block
   allowed_global_attributes:
-    - onafterprint
-    - onbeforeprint
-    - onbeforeunload
-    - onhashchange
-    - onlanguagechange
-    - onmessage
-    - onmessageerror
-    - onoffline
-    - ononline
-    - onpagehide
-    - onpageshow
-    - onpopstate
-    - onrejectionhandled
-    - onstorage
-    - onunhandledrejection
-    - onunload
     - accesskey
-    - autocapitalize
-    - autofocus
     - class
-    - contenteditable
     - data-*
     - dir
     - draggable
     - hidden
     - id
     - lang
-    - spellcheck
     - style
     - tabindex
     - title
@@ -913,6 +905,7 @@ button:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1014,6 +1007,7 @@ canvas:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1060,6 +1054,7 @@ caption:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1085,6 +1080,7 @@ cite:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1108,6 +1104,7 @@ code:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1183,6 +1180,7 @@ data:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1220,6 +1218,7 @@ datalist:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1244,6 +1243,7 @@ dd:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1331,6 +1331,7 @@ del:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1370,6 +1371,7 @@ details:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1409,6 +1411,7 @@ dfn:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1432,6 +1435,7 @@ dialog:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1485,6 +1489,7 @@ div:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1580,6 +1585,7 @@ dl:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1605,6 +1611,7 @@ dt:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1629,6 +1636,7 @@ em:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1652,6 +1660,7 @@ embed:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1722,6 +1731,7 @@ fieldset:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1771,6 +1781,7 @@ figcaption:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1796,6 +1807,7 @@ figure:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -1821,6 +1833,7 @@ footer:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -2041,6 +2054,7 @@ h1:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -2064,6 +2078,7 @@ h2:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -2087,6 +2102,7 @@ h3:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -2110,6 +2126,7 @@ h4:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -2133,6 +2150,7 @@ h5:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -2156,6 +2174,7 @@ h6:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -2193,6 +2212,7 @@ header:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -2286,6 +2306,7 @@ hgroup:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -2394,6 +2415,7 @@ i:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -2642,6 +2664,7 @@ input:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -2892,6 +2915,7 @@ ins:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -2931,6 +2955,7 @@ kbd:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -2954,6 +2979,7 @@ label:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -2983,6 +3009,7 @@ legend:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -3015,6 +3042,7 @@ li:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -3194,6 +3222,7 @@ main:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -3289,6 +3318,7 @@ map:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -3330,6 +3360,7 @@ mark:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -3385,6 +3416,7 @@ menu:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -3470,6 +3502,7 @@ meter:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -3537,6 +3570,7 @@ nav:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -3567,6 +3601,7 @@ noscript:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -3589,6 +3624,7 @@ object:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -3671,6 +3707,7 @@ ol:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -3718,6 +3755,7 @@ optgroup:
     - accesskey
     - autocapitalize
     - contenteditable
+    - inputmode
     - dir
     - draggable
     - spellcheck
@@ -3761,6 +3799,7 @@ option:
     - accesskey
     - autocapitalize
     - contenteditable
+    - inputmode
     - dir
     - draggable
     - spellcheck
@@ -3820,6 +3859,7 @@ output:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -3864,6 +3904,7 @@ p:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4002,6 +4043,7 @@ picture:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4027,6 +4069,7 @@ pre:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4050,6 +4093,7 @@ progress:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4093,6 +4137,7 @@ q:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4125,6 +4170,7 @@ rp:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4148,6 +4194,7 @@ rt:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4171,6 +4218,7 @@ ruby:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4196,6 +4244,7 @@ s:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4219,6 +4268,7 @@ samp:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4337,6 +4387,7 @@ section:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4431,6 +4482,7 @@ select:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4529,6 +4581,7 @@ slot:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4592,6 +4645,7 @@ small:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4672,6 +4726,7 @@ span:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4695,6 +4750,7 @@ strong:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4708,10 +4764,12 @@ style:
   description: 'The style element is used to embed CSS styles directly into an HTML document.'
   level: void
   allowed_global_attributes:
-    - media
-    - nonce
+    - id
+    - class
     - title
-    - type
+    - data-*
+    - lang
+    - dir
   unique: false
   attributes:
     media:
@@ -4753,6 +4811,7 @@ style:
     type:
       description: 'Specifies the media type of the inline styles.'
       type: enum
+      deprecated: true
       elements:
         - style
       choices:
@@ -4773,6 +4832,7 @@ sub:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4796,6 +4856,7 @@ summary:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4819,6 +4880,7 @@ sup:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4842,6 +4904,7 @@ svg:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -4978,6 +5041,7 @@ table:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -5007,6 +5071,7 @@ tbody:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -5032,6 +5097,7 @@ td:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -5074,6 +5140,7 @@ template:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -5120,6 +5187,7 @@ textarea:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -5252,6 +5320,7 @@ tfoot:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -5278,6 +5347,7 @@ th:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -5325,6 +5395,7 @@ thead:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -5351,6 +5422,7 @@ time:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -5389,6 +5461,7 @@ tr:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -5527,6 +5600,7 @@ u:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -5550,6 +5624,7 @@ ul:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -5574,6 +5649,7 @@ var:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
@@ -5597,6 +5673,7 @@ video:
     - draggable
     - hidden
     - id
+    - inputmode
     - lang
     - spellcheck
     - style
