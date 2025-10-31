@@ -17,8 +17,19 @@ trait HiddenTrait
     */
    public function setHidden(bool|string $hidden = true): static
    {
-      $this->hidden = $hidden;
-      $this->delegated->setAttribute('hidden', $hidden ? 'true' : 'false');
+      // cast string to bool
+      if (is_string($hidden)) {
+         $hidden = match (strtolower($hidden)) {
+            'true' => true,
+            'false' => false,
+            default => throw new \InvalidArgumentException('Hidden attribute can only be "true" or "false".'),
+         };
+      }
+      if ($hidden) {
+         $this->hidden = $hidden;
+         $this->setAttribute('hidden', $hidden);
+         $this->delegated->setAttribute('hidden', $hidden ? 'true' : 'false');
+      }
       return $this;
    }
 

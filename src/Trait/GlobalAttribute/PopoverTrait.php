@@ -13,8 +13,18 @@ trait PopoverTrait
 
    public function setPopover(bool|string $popover = true): static
    {
-      $this->popover = $popover;
-      $this->delegated->setAttribute('popover', $popover ? 'true' : 'false');
+      if (is_string($popover)) {
+         $popover = match (strtolower($popover)) {
+            'true' => true,
+            'false' => false,
+            default => throw new \InvalidArgumentException('Popover attribute can only be "true" or "false".'),
+         };
+      }
+      if ($popover) {
+         $this->popover = $popover;
+         $this->setAttribute('popover', $popover);
+         $this->delegated->setAttribute('popover', $popover ? 'true' : 'false');
+      }
       return $this;
    }
 

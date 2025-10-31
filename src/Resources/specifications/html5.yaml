@@ -5,6 +5,7 @@ a:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -120,6 +121,7 @@ abbr:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -166,6 +168,7 @@ address:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -189,6 +192,7 @@ area:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -302,6 +306,7 @@ article:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -378,6 +383,7 @@ aside:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -468,24 +474,13 @@ audio:
   description: 'The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.'
   level: block
   allowed_global_attributes:
-    - autoplay
-    - controls
-    - crossorigin
-    - loop
-    - muted
-    - preload
-    - src
     - accesskey
-    - autocapitalize
     - class
-    - contenteditable
     - data-*
-    - dir
     - draggable
     - hidden
     - id
     - lang
-    - spellcheck
     - style
     - tabindex
     - title
@@ -559,6 +554,7 @@ b:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -612,6 +608,7 @@ bdi:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -634,6 +631,7 @@ bdo:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -656,6 +654,7 @@ blockquote:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -705,6 +704,7 @@ body:
     - onunload
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -905,6 +905,7 @@ button:
     - value
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -931,6 +932,21 @@ button:
         - iframe
         - input
         - object
+        - select
+        - textarea
+    autocorrect:
+      type: enum
+      description: 'Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.'
+      choices:
+        - 'off'
+        - 'on'
+      defaultValue: 'on'
+      elements:
+        - form
+        - fieldset
+        - button
+        - output
+        - input
         - select
         - textarea
     disabled:
@@ -990,6 +1006,7 @@ canvas:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1035,6 +1052,7 @@ caption:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1059,6 +1077,7 @@ cite:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1081,6 +1100,7 @@ code:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1155,6 +1175,7 @@ data:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1191,6 +1212,7 @@ datalist:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1214,6 +1236,7 @@ dd:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1300,6 +1323,7 @@ del:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1338,6 +1362,7 @@ details:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1376,6 +1401,7 @@ dfn:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1398,6 +1424,7 @@ dialog:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1450,6 +1477,7 @@ div:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1544,6 +1572,7 @@ dl:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1568,6 +1597,7 @@ dt:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1591,6 +1621,7 @@ em:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1613,6 +1644,7 @@ embed:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1682,6 +1714,7 @@ fieldset:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1696,6 +1729,22 @@ fieldset:
     - title
     - translate
   unique: false
+  attributes:
+    autocorrect:
+      type: enum
+      description: 'Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.'
+      choices:
+        - 'off'
+        - 'on'
+      defaultValue: 'on'
+      elements:
+        - form
+        - fieldset
+        - button
+        - output
+        - input
+        - select
+        - textarea
   children:
     - button
     - datalist
@@ -1714,6 +1763,7 @@ figcaption:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1738,6 +1788,7 @@ figure:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1762,6 +1813,7 @@ footer:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -1852,16 +1904,13 @@ form:
   level: block
   allowed_global_attributes:
     - accesskey
-    - autocapitalize
     - class
-    - contenteditable
     - data-*
     - dir
     - draggable
     - hidden
     - id
     - lang
-    - spellcheck
     - style
     - tabindex
     - title
@@ -1984,6 +2033,7 @@ h1:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -2006,6 +2056,7 @@ h2:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -2028,6 +2079,7 @@ h3:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -2050,6 +2102,7 @@ h4:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -2072,6 +2125,7 @@ h5:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -2094,6 +2148,7 @@ h6:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -2130,6 +2185,7 @@ header:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -2222,6 +2278,7 @@ hgroup:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -2329,6 +2386,7 @@ i:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -2576,6 +2634,7 @@ input:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -2598,6 +2657,21 @@ input:
       elements:
         - form
         - input
+    autocorrect:
+      type: enum
+      description: 'Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.'
+      choices:
+        - 'off'
+        - 'on'
+      defaultValue: 'on'
+      elements:
+        - form
+        - fieldset
+        - button
+        - output
+        - input
+        - select
+        - textarea
     alt:
       description: 'Specifies alternative text to be displayed when the image cannot be rendered.'
       type: string
@@ -2810,6 +2884,7 @@ ins:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -2848,6 +2923,7 @@ kbd:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -2870,6 +2946,7 @@ label:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -2898,6 +2975,7 @@ legend:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -2929,6 +3007,7 @@ li:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -3107,6 +3186,7 @@ main:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -3201,6 +3281,7 @@ map:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -3241,6 +3322,7 @@ mark:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -3295,6 +3377,7 @@ menu:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -3379,6 +3462,7 @@ meter:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -3445,6 +3529,7 @@ nav:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -3474,6 +3559,7 @@ noscript:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -3495,6 +3581,7 @@ object:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -3576,6 +3663,7 @@ ol:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -3724,6 +3812,7 @@ output:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -3739,6 +3828,21 @@ output:
     - translate
   unique: false
   attributes:
+    autocorrect:
+      type: enum
+      description: 'Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.'
+      choices:
+        - 'off'
+        - 'on'
+      defaultValue: 'on'
+      elements:
+        - form
+        - fieldset
+        - button
+        - output
+        - input
+        - select
+        - textarea
     for:
       description: 'Refers to the <datalist> element that contains the options for an input element.'
       type: string
@@ -3752,6 +3856,7 @@ p:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -3889,6 +3994,7 @@ picture:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -3913,6 +4019,7 @@ pre:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -3935,6 +4042,7 @@ progress:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -3977,6 +4085,7 @@ q:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4008,6 +4117,7 @@ rp:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4030,6 +4140,7 @@ rt:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4052,6 +4163,7 @@ ruby:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4076,6 +4188,7 @@ s:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4098,6 +4211,7 @@ samp:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4215,6 +4329,7 @@ section:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4308,6 +4423,7 @@ select:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4334,6 +4450,21 @@ select:
         - select
         - textarea
       defaultValue: 'on'
+    autocorrect:
+      type: enum
+      description: 'Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.'
+      choices:
+        - 'off'
+        - 'on'
+      defaultValue: 'on'
+      elements:
+        - form
+        - fieldset
+        - button
+        - output
+        - input
+        - select
+        - textarea
     disabled:
       description: 'When present, it specifies that an input element should be disabled.'
       type: boolean
@@ -4390,6 +4521,7 @@ slot:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4452,6 +4584,7 @@ small:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4531,6 +4664,7 @@ span:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4553,6 +4687,7 @@ strong:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4630,6 +4765,7 @@ sub:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4652,6 +4788,7 @@ summary:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4674,6 +4811,7 @@ sup:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4696,6 +4834,7 @@ svg:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4831,6 +4970,7 @@ table:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4859,6 +4999,7 @@ tbody:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4883,6 +5024,7 @@ td:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4924,6 +5066,7 @@ template:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4969,6 +5112,7 @@ textarea:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -4995,6 +5139,21 @@ textarea:
         - select
         - textarea
       defaultValue: 'on'
+    autocorrect:
+      type: enum
+      description: 'Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.'
+      choices:
+        - 'off'
+        - 'on'
+      defaultValue: 'on'
+      elements:
+        - form
+        - fieldset
+        - button
+        - output
+        - input
+        - select
+        - textarea
     cols:
       description: 'Specifies the visible width of a text area, in average character widths.'
       type: integer
@@ -5085,6 +5244,7 @@ tfoot:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -5110,6 +5270,7 @@ th:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -5156,6 +5317,7 @@ thead:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -5181,6 +5343,7 @@ time:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -5218,6 +5381,7 @@ tr:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -5355,6 +5519,7 @@ u:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -5377,6 +5542,7 @@ ul:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -5400,6 +5566,7 @@ var:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
@@ -5422,6 +5589,7 @@ video:
   allowed_global_attributes:
     - accesskey
     - autocapitalize
+    - autofocus
     - class
     - contenteditable
     - data-*
