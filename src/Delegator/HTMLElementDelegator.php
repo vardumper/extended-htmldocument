@@ -30,6 +30,8 @@ use TypeError;
  * @property string $id
  * @property string $className
  * @property HTMLElement|Element $delegated
+ * @property-read bool SELF_CLOSING
+ * @property-read string QUALIFIED_NAME
  */
 #[AllowDynamicProperties]
 class HTMLElementDelegator implements HTMLElementDelegatorInterface
@@ -267,6 +269,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
      */
     public static function isSelfClosing(): bool
     {
+        /* @phpstan-ignore-next-line */
         return static::SELF_CLOSING;
     }
 
@@ -275,6 +278,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
      */
     public static function getQualifiedName(): string
     {
+        /* @phpstan-ignore-next-line */
         return static::QUALIFIED_NAME;
     }
 
