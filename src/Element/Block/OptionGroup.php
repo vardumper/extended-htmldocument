@@ -1,73 +1,43 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * OptionGroup - The optgroup element represents a group of option elements with a common label.
- *
- * @generated 2025-10-31 21:58:00
+ * 
+ * @generated 2025-10-31 22:22:33
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/optgroup
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Option;
 use Html\Element\Inline\Select;
+use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
-use Html\Trait\GlobalAttribute\AccesskeyTrait;
-use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
-use Html\Trait\GlobalAttribute\ClassTrait;
-use Html\Trait\GlobalAttribute\ContenteditableTrait;
-use Html\Trait\GlobalAttribute\DataTrait;
-use Html\Trait\GlobalAttribute\DirTrait;
-use Html\Trait\GlobalAttribute\DraggableTrait;
-use Html\Trait\GlobalAttribute\HiddenTrait;
-use Html\Trait\GlobalAttribute\IdTrait;
-use Html\Trait\GlobalAttribute\InputmodeTrait;
-use Html\Trait\GlobalAttribute\LangTrait;
-use Html\Trait\GlobalAttribute\SpellcheckTrait;
-use Html\Trait\GlobalAttribute\StyleTrait;
-use Html\Trait\GlobalAttribute\TabindexTrait;
-use Html\Trait\GlobalAttribute\TitleTrait;
-use Html\Trait\GlobalAttribute\TranslateTrait;
 
 #[Element('optgroup')]
 class OptionGroup extends BlockElement
 {
-    use IdTrait;
-
-    use ClassTrait;
-
-    use TitleTrait;
-
-    use LangTrait;
-
-    use StyleTrait;
-
-    use HiddenTrait;
-
-    use TabindexTrait;
-
-    use AccesskeyTrait;
-
-    use AutocapitalizeTrait;
-
-    use ContenteditableTrait;
-
-    use InputmodeTrait;
-
-    use DirTrait;
-
-    use DraggableTrait;
-
-    use SpellcheckTrait;
-
-    use TranslateTrait;
-
-    use DataTrait;
-
+    use GlobalAttribute\IdTrait;
+    use GlobalAttribute\ClassTrait;
+    use GlobalAttribute\TitleTrait;
+    use GlobalAttribute\LangTrait;
+    use GlobalAttribute\StyleTrait;
+    use GlobalAttribute\HiddenTrait;
+    use GlobalAttribute\TabindexTrait;
+    use GlobalAttribute\AccesskeyTrait;
+    use GlobalAttribute\AutocapitalizeTrait;
+    use GlobalAttribute\ContenteditableTrait;
+    use GlobalAttribute\InputmodeTrait;
+    use GlobalAttribute\DirTrait;
+    use GlobalAttribute\DraggableTrait;
+    use GlobalAttribute\SpellcheckTrait;
+    use GlobalAttribute\TranslateTrait;
+    use GlobalAttribute\DataTrait;
     /**
      * The HTML element name
      */
@@ -92,23 +62,25 @@ class OptionGroup extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Select::class];
+    public static array $childOf = [
+        Select::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [Option::class];
+    public static array $parentOf = [
+        Option::class,
+    ];
 
-    /**
-     * When present, it specifies that an input element should be disabled.
-     */
+
+    /** When present, it specifies that an input element should be disabled. */
     public ?bool $disabled = null;
 
-    /**
-     * Specifies a label for the associated form control, option group, or option.
-     */
+    /** Specifies a label for the associated form control, option group, or option. */
     public ?string $label = null;
+
 
     public function setDisabled(bool $disabled): static
     {
@@ -133,4 +105,6 @@ class OptionGroup extends BlockElement
     {
         return $this->label;
     }
+
+
 }

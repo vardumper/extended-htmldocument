@@ -1,19 +1,49 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Article - The article element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable.
- *
- * @generated 2025-10-31 21:58:00
+ * 
+ * @generated 2025-10-31 22:22:33
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Aside;
+use Html\Element\Block\Audio;
+use Html\Element\Block\Blockquote;
+use Html\Element\Block\Body;
+use Html\Element\Block\DefinitionList;
+use Html\Element\Block\DeletedText;
+use Html\Element\Block\Division;
+use Html\Element\Block\Embed;
+use Html\Element\Block\Figure;
+use Html\Element\Block\Form;
+use Html\Element\Block\Heading1;
+use Html\Element\Block\Heading2;
+use Html\Element\Block\Heading3;
+use Html\Element\Block\Heading4;
+use Html\Element\Block\Heading5;
+use Html\Element\Block\Heading6;
+use Html\Element\Block\InlineFrame;
+use Html\Element\Block\InsertedText;
+use Html\Element\Block\Main;
+use Html\Element\Block\Map;
+use Html\Element\Block\Navigation;
+use Html\Element\Block\ObjectElement;
+use Html\Element\Block\OrderedList;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\Picture;
+use Html\Element\Block\PreformattedText;
+use Html\Element\Block\Section;
+use Html\Element\Block\Table;
+use Html\Element\Block\UnorderedList;
+use Html\Element\Block\Video;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\BidirectionalIsolation;
@@ -43,62 +73,29 @@ use Html\Element\Inline\Variable;
 use Html\Element\Void\Area;
 use Html\Element\Void\BreakElement;
 use Html\Element\Void\WordBreakOpportunity;
+use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
-use Html\Trait\GlobalAttribute\AccesskeyTrait;
-use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
-use Html\Trait\GlobalAttribute\AutofocusTrait;
-use Html\Trait\GlobalAttribute\ClassTrait;
-use Html\Trait\GlobalAttribute\ContenteditableTrait;
-use Html\Trait\GlobalAttribute\DataTrait;
-use Html\Trait\GlobalAttribute\DirTrait;
-use Html\Trait\GlobalAttribute\DraggableTrait;
-use Html\Trait\GlobalAttribute\HiddenTrait;
-use Html\Trait\GlobalAttribute\IdTrait;
-use Html\Trait\GlobalAttribute\InputmodeTrait;
-use Html\Trait\GlobalAttribute\LangTrait;
-use Html\Trait\GlobalAttribute\SpellcheckTrait;
-use Html\Trait\GlobalAttribute\StyleTrait;
-use Html\Trait\GlobalAttribute\TabindexTrait;
-use Html\Trait\GlobalAttribute\TitleTrait;
-use Html\Trait\GlobalAttribute\TranslateTrait;
 
 #[Element('article')]
 class Article extends BlockElement
 {
-    use AccesskeyTrait;
-
-    use AutocapitalizeTrait;
-
-    use AutofocusTrait;
-
-    use ClassTrait;
-
-    use ContenteditableTrait;
-
-    use DataTrait;
-
-    use DirTrait;
-
-    use DraggableTrait;
-
-    use HiddenTrait;
-
-    use IdTrait;
-
-    use InputmodeTrait;
-
-    use LangTrait;
-
-    use SpellcheckTrait;
-
-    use StyleTrait;
-
-    use TabindexTrait;
-
-    use TitleTrait;
-
-    use TranslateTrait;
-
+    use GlobalAttribute\AccesskeyTrait;
+    use GlobalAttribute\AutocapitalizeTrait;
+    use GlobalAttribute\AutofocusTrait;
+    use GlobalAttribute\ClassTrait;
+    use GlobalAttribute\ContenteditableTrait;
+    use GlobalAttribute\DataTrait;
+    use GlobalAttribute\DirTrait;
+    use GlobalAttribute\DraggableTrait;
+    use GlobalAttribute\HiddenTrait;
+    use GlobalAttribute\IdTrait;
+    use GlobalAttribute\InputmodeTrait;
+    use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SpellcheckTrait;
+    use GlobalAttribute\StyleTrait;
+    use GlobalAttribute\TabindexTrait;
+    use GlobalAttribute\TitleTrait;
+    use GlobalAttribute\TranslateTrait;
     /**
      * The HTML element name
      */
@@ -124,7 +121,7 @@ class Article extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
-        self::class,
+        Article::class,
         Aside::class,
         Blockquote::class,
         Body::class,
@@ -143,7 +140,7 @@ class Article extends BlockElement
         Anchor::class,
         Abbreviation::class,
         Area::class,
-        self::class,
+        Article::class,
         Audio::class,
         Bold::class,
         BidirectionalIsolation::class,
@@ -195,4 +192,8 @@ class Article extends BlockElement
         Video::class,
         WordBreakOpportunity::class,
     ];
+
+
+
+
 }

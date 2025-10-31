@@ -1,16 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * BreakElement - The br element represents a line break.
- *
- * @generated 2025-10-31 21:58:00
+ * 
+ * @generated 2025-10-31 22:22:33
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/br
  */
-
 namespace Html\Element\Void;
 
 use Html\Element\Block\Article;
@@ -25,29 +25,18 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
+use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
-use Html\Trait\GlobalAttribute\ClassTrait;
-use Html\Trait\GlobalAttribute\DataTrait;
-use Html\Trait\GlobalAttribute\DirTrait;
-use Html\Trait\GlobalAttribute\HiddenTrait;
-use Html\Trait\GlobalAttribute\IdTrait;
-use Html\Trait\GlobalAttribute\StyleTrait;
 
 #[Element('br')]
 class BreakElement extends VoidElement
 {
-    use ClassTrait;
-
-    use DataTrait;
-
-    use DirTrait;
-
-    use HiddenTrait;
-
-    use IdTrait;
-
-    use StyleTrait;
-
+    use GlobalAttribute\ClassTrait;
+    use GlobalAttribute\DataTrait;
+    use GlobalAttribute\DirTrait;
+    use GlobalAttribute\HiddenTrait;
+    use GlobalAttribute\IdTrait;
+    use GlobalAttribute\StyleTrait;
     /**
      * The HTML element name
      */
@@ -88,7 +77,11 @@ class BreakElement extends VoidElement
 
     /**
      * The list of allowed direct children. Any if empty.
+     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
+
+
 }

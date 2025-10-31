@@ -1,16 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Progress - The progress element represents the completion progress of a task.
- *
- * @generated 2025-10-31 21:58:00
+ * 
+ * @generated 2025-10-31 22:22:33
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Body;
@@ -18,62 +18,29 @@ use Html\Element\Block\Fieldset;
 use Html\Element\Block\Form;
 use Html\Element\Block\Paragraph;
 use Html\Element\InlineElement;
+use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
-use Html\Trait\GlobalAttribute\AccesskeyTrait;
-use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
-use Html\Trait\GlobalAttribute\AutofocusTrait;
-use Html\Trait\GlobalAttribute\ClassTrait;
-use Html\Trait\GlobalAttribute\ContenteditableTrait;
-use Html\Trait\GlobalAttribute\DataTrait;
-use Html\Trait\GlobalAttribute\DirTrait;
-use Html\Trait\GlobalAttribute\DraggableTrait;
-use Html\Trait\GlobalAttribute\HiddenTrait;
-use Html\Trait\GlobalAttribute\IdTrait;
-use Html\Trait\GlobalAttribute\InputmodeTrait;
-use Html\Trait\GlobalAttribute\LangTrait;
-use Html\Trait\GlobalAttribute\SpellcheckTrait;
-use Html\Trait\GlobalAttribute\StyleTrait;
-use Html\Trait\GlobalAttribute\TabindexTrait;
-use Html\Trait\GlobalAttribute\TitleTrait;
-use Html\Trait\GlobalAttribute\TranslateTrait;
 
 #[Element('progress')]
 class Progress extends InlineElement
 {
-    use AccesskeyTrait;
-
-    use AutocapitalizeTrait;
-
-    use AutofocusTrait;
-
-    use ClassTrait;
-
-    use ContenteditableTrait;
-
-    use DataTrait;
-
-    use DirTrait;
-
-    use DraggableTrait;
-
-    use HiddenTrait;
-
-    use IdTrait;
-
-    use InputmodeTrait;
-
-    use LangTrait;
-
-    use SpellcheckTrait;
-
-    use StyleTrait;
-
-    use TabindexTrait;
-
-    use TitleTrait;
-
-    use TranslateTrait;
-
+    use GlobalAttribute\AccesskeyTrait;
+    use GlobalAttribute\AutocapitalizeTrait;
+    use GlobalAttribute\AutofocusTrait;
+    use GlobalAttribute\ClassTrait;
+    use GlobalAttribute\ContenteditableTrait;
+    use GlobalAttribute\DataTrait;
+    use GlobalAttribute\DirTrait;
+    use GlobalAttribute\DraggableTrait;
+    use GlobalAttribute\HiddenTrait;
+    use GlobalAttribute\IdTrait;
+    use GlobalAttribute\InputmodeTrait;
+    use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SpellcheckTrait;
+    use GlobalAttribute\StyleTrait;
+    use GlobalAttribute\TabindexTrait;
+    use GlobalAttribute\TitleTrait;
+    use GlobalAttribute\TranslateTrait;
     /**
      * The HTML element name
      */
@@ -98,23 +65,27 @@ class Progress extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Body::class, Fieldset::class, Form::class, Paragraph::class];
+    public static array $childOf = [
+        Body::class,
+        Fieldset::class,
+        Form::class,
+        Paragraph::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies the maximum value for an input element, meter, or progress element.
-     */
+
+    /** Specifies the maximum value for an input element, meter, or progress element. */
     public ?int $max = null;
 
-    /**
-     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
-     */
+    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value = null;
+
 
     public function setMax(int $max): static
     {
@@ -139,4 +110,5 @@ class Progress extends InlineElement
     {
         return $this->value;
     }
+
 }

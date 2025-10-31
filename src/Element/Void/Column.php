@@ -1,37 +1,30 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Column - The col element represents a column in a table.
- *
- * @generated 2025-10-31 21:58:00
+ * 
+ * @generated 2025-10-31 22:22:33
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col
  */
-
 namespace Html\Element\Void;
 
 use Html\Element\Block\ColumnGroup;
 use Html\Element\VoidElement;
+use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
-use Html\Trait\GlobalAttribute\ClassTrait;
-use Html\Trait\GlobalAttribute\DataTrait;
-use Html\Trait\GlobalAttribute\IdTrait;
-use Html\Trait\GlobalAttribute\StyleTrait;
 
 #[Element('col')]
 class Column extends VoidElement
 {
-    use ClassTrait;
-
-    use DataTrait;
-
-    use IdTrait;
-
-    use StyleTrait;
-
+    use GlobalAttribute\ClassTrait;
+    use GlobalAttribute\DataTrait;
+    use GlobalAttribute\IdTrait;
+    use GlobalAttribute\StyleTrait;
     /**
      * The HTML element name
      */
@@ -56,23 +49,24 @@ class Column extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [ColumnGroup::class];
+    public static array $childOf = [
+        ColumnGroup::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
+     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies the number of columns the <col> element should span in a table.
-     */
+    /** Specifies the number of columns the <col> element should span in a table. */
     public ?int $span = null;
 
-    /**
-     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
-     */
+    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width = null;
+
 
     public function setSpan(int $span): static
     {
@@ -97,4 +91,5 @@ class Column extends VoidElement
     {
         return $this->width;
     }
+
 }

@@ -1,16 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Ruby - The ruby element represents a ruby annotation. Ruby annotations are short runs of text presented alongside base text, primarily used for East Asian typography to indicate pronunciation or to provide a short annotation.
- *
- * @generated 2025-10-31 21:58:00
+ * 
+ * @generated 2025-10-31 22:22:33
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -24,62 +24,32 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
+use Html\Element\Inline\MarkedText;
+use Html\Element\Inline\RubyParenthesis;
+use Html\Element\Inline\RubyText;
+use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
-use Html\Trait\GlobalAttribute\AccesskeyTrait;
-use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
-use Html\Trait\GlobalAttribute\AutofocusTrait;
-use Html\Trait\GlobalAttribute\ClassTrait;
-use Html\Trait\GlobalAttribute\ContenteditableTrait;
-use Html\Trait\GlobalAttribute\DataTrait;
-use Html\Trait\GlobalAttribute\DirTrait;
-use Html\Trait\GlobalAttribute\DraggableTrait;
-use Html\Trait\GlobalAttribute\HiddenTrait;
-use Html\Trait\GlobalAttribute\IdTrait;
-use Html\Trait\GlobalAttribute\InputmodeTrait;
-use Html\Trait\GlobalAttribute\LangTrait;
-use Html\Trait\GlobalAttribute\SpellcheckTrait;
-use Html\Trait\GlobalAttribute\StyleTrait;
-use Html\Trait\GlobalAttribute\TabindexTrait;
-use Html\Trait\GlobalAttribute\TitleTrait;
-use Html\Trait\GlobalAttribute\TranslateTrait;
 
 #[Element('ruby')]
 class Ruby extends InlineElement
 {
-    use AccesskeyTrait;
-
-    use AutocapitalizeTrait;
-
-    use AutofocusTrait;
-
-    use ClassTrait;
-
-    use ContenteditableTrait;
-
-    use DataTrait;
-
-    use DirTrait;
-
-    use DraggableTrait;
-
-    use HiddenTrait;
-
-    use IdTrait;
-
-    use InputmodeTrait;
-
-    use LangTrait;
-
-    use SpellcheckTrait;
-
-    use StyleTrait;
-
-    use TabindexTrait;
-
-    use TitleTrait;
-
-    use TranslateTrait;
-
+    use GlobalAttribute\AccesskeyTrait;
+    use GlobalAttribute\AutocapitalizeTrait;
+    use GlobalAttribute\AutofocusTrait;
+    use GlobalAttribute\ClassTrait;
+    use GlobalAttribute\ContenteditableTrait;
+    use GlobalAttribute\DataTrait;
+    use GlobalAttribute\DirTrait;
+    use GlobalAttribute\DraggableTrait;
+    use GlobalAttribute\HiddenTrait;
+    use GlobalAttribute\IdTrait;
+    use GlobalAttribute\InputmodeTrait;
+    use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SpellcheckTrait;
+    use GlobalAttribute\StyleTrait;
+    use GlobalAttribute\TabindexTrait;
+    use GlobalAttribute\TitleTrait;
+    use GlobalAttribute\TranslateTrait;
     /**
      * The HTML element name
      */
@@ -122,5 +92,11 @@ class Ruby extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [RubyParenthesis::class, RubyText::class];
+    public static array $parentOf = [
+        RubyParenthesis::class,
+        RubyText::class,
+    ];
+
+
+
 }

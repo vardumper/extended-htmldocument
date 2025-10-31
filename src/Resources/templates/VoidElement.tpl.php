@@ -20,7 +20,7 @@ use Html\Mapping\Element;
 #[Element('<?= $element_name ?>')]
 class <?= $class_name ?> extends <?= ucfirst($level) ?>Element
 {
-    <?= $global_attribute_traits ?>
+<?= $global_attribute_traits ?>
     /**
      * The HTML element name
      */

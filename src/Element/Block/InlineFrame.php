@@ -1,55 +1,49 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * InlineFrame - The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.
- *
- * @generated 2025-10-31 21:58:00
+ * 
+ * @generated 2025-10-31 22:22:33
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Article;
+use Html\Element\Block\Aside;
+use Html\Element\Block\Body;
+use Html\Element\Block\DefinitionDescription;
+use Html\Element\Block\Dialog;
+use Html\Element\Block\Division;
+use Html\Element\Block\Footer;
+use Html\Element\Block\Header;
+use Html\Element\Block\Main;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\Section;
+use Html\Element\Block\Template;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
 use Html\Enum\ReferrerpolicyEnum;
+use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
-use Html\Trait\GlobalAttribute\ClassTrait;
-use Html\Trait\GlobalAttribute\DataTrait;
-use Html\Trait\GlobalAttribute\DirTrait;
-use Html\Trait\GlobalAttribute\HiddenTrait;
-use Html\Trait\GlobalAttribute\IdTrait;
-use Html\Trait\GlobalAttribute\LangTrait;
-use Html\Trait\GlobalAttribute\StyleTrait;
-use Html\Trait\GlobalAttribute\TabindexTrait;
-use Html\Trait\GlobalAttribute\TitleTrait;
-use InvalidArgumentException;
 
 #[Element('iframe')]
 class InlineFrame extends BlockElement
 {
-    use ClassTrait;
-
-    use DataTrait;
-
-    use DirTrait;
-
-    use HiddenTrait;
-
-    use IdTrait;
-
-    use LangTrait;
-
-    use StyleTrait;
-
-    use TabindexTrait;
-
-    use TitleTrait;
-
+    use GlobalAttribute\ClassTrait;
+    use GlobalAttribute\DataTrait;
+    use GlobalAttribute\DirTrait;
+    use GlobalAttribute\HiddenTrait;
+    use GlobalAttribute\IdTrait;
+    use GlobalAttribute\LangTrait;
+    use GlobalAttribute\StyleTrait;
+    use GlobalAttribute\TabindexTrait;
+    use GlobalAttribute\TitleTrait;
     /**
      * The HTML element name
      */
@@ -95,49 +89,37 @@ class InlineFrame extends BlockElement
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Enables the iframe to be displayed in fullscreen mode.
-     */
+
+    /** Enables the iframe to be displayed in fullscreen mode. */
     public ?bool $allowfullscreen = null;
 
-    /**
-     * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
-     */
+    /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $height = null;
 
-    /**
-     * Specifies the name associated with the element. The meaning may vary depending on the context.
-     */
+    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
     public ?string $name = null;
 
-    /**
-     * Specifies the referrer policy for fetches initiated by the element.
-     */
+    /** Specifies the referrer policy for fetches initiated by the element. */
     public ?ReferrerpolicyEnum $referrerpolicy = null;
 
+    /**  */
     public ?string $sandbox = null;
 
-    /**
-     * When present, it specifies that the iframe should look like it is a part of the containing document (no borders or scrollbars).
-     */
+    /** When present, it specifies that the iframe should look like it is a part of the containing document (no borders or scrollbars). */
     public ?bool $seamless = null;
 
-    /**
-     * Specifies the URL of the external resource to be embedded or referenced.
-     */
+    /** Specifies the URL of the external resource to be embedded or referenced. */
     public ?string $src = null;
 
-    /**
-     * The value of srcdoc is a string containing HTML markup, which the browser will display as the content of the iframe.
-     */
+    /** The value of srcdoc is a string containing HTML markup, which the browser will display as the content of the iframe. */
     public ?string $srcdoc = null;
 
-    /**
-     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
-     */
+    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width = null;
+
 
     public function setAllowfullscreen(bool $allowfullscreen): static
     {
@@ -178,9 +160,7 @@ class InlineFrame extends BlockElement
     public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): static
     {
         if (is_string($referrerpolicy)) {
-            $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new InvalidArgumentException(
-                'Invalid value for $referrerpolicy.'
-            );
+            $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new \InvalidArgumentException("Invalid value for \$referrerpolicy.");
         }
         $this->referrerpolicy = $referrerpolicy;
         $this->delegated->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
@@ -252,4 +232,6 @@ class InlineFrame extends BlockElement
     {
         return $this->width;
     }
+
+
 }

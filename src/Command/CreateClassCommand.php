@@ -184,11 +184,13 @@ final class CreateClassCommand extends Command
         foreach ($allowedGlobalAttributes as $attribute) {
             $traitName = \ucwords(\str_replace(['-', '*'], '', $attribute)) . 'Trait';
             if ($traitName !== null) {
-                $this->uses[] = sprintf("Html\Trait\GlobalAttribute\%s", $traitName);
-                $traits[] = sprintf("    use %s;\n", $traitName);
+                if (!in_array("Html\Trait\GlobalAttribute", $this->uses, true)) {
+                    $this->uses[] = "Html\Trait\GlobalAttribute";
+                }
+                $traits[] = sprintf("    use GlobalAttribute\%s;\n", $traitName);
             }
         }
-        return implode("\n", $traits);
+        return implode("", $traits);
     }
 
     private function getUniquePerParent(array $elementData): bool
