@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:b1371da7-013b-40ca-9dc7-864428fe19d2",
+  "serialNumber": "urn:uuid:2d300fb0-4f63-44c4-a985-0979f6f6c8d7",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-10-19T14:43:31+00:00",
+    "timestamp": "2025-10-31T20:44:51+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "ee23bd5e-fab0-423f-ad9d-81469660b61e",
+      "bom-ref": "1a229a53-bb81-4210-b848-d90d2399eb04",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,7 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "22b54fd5-1483-458c-98d3-a7b153e83d8a",
+      "bom-ref": "714a4f5d-bfb3-4206-9baa-c8527639bfb4",
       "type": "application",
       "name": "composer.lock",
       "properties": [
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "bom-ref": "f7c57792-3993-446c-9240-d2aa46491aa8",
+      "bom-ref": "dfc92aa3-c0a9-4294-b0a0-2187be8e4463",
       "type": "application",
       "name": "yarn.lock",
       "properties": [
@@ -156,10 +156,10 @@
       ]
     },
     {
-      "bom-ref": "pkg:composer/symfony/console@v7.3.4",
+      "bom-ref": "pkg:composer/symfony/console@v7.3.5",
       "type": "library",
       "name": "symfony/console",
-      "version": "v7.3.4",
+      "version": "v7.3.5",
       "licenses": [
         {
           "license": {
@@ -167,11 +167,11 @@
           }
         }
       ],
-      "purl": "pkg:composer/symfony/console@v7.3.4",
+      "purl": "pkg:composer/symfony/console@v7.3.5",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "symfony/console@v7.3.4"
+          "value": "symfony/console@v7.3.5"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -348,10 +348,10 @@
       ]
     },
     {
-      "bom-ref": "pkg:composer/symfony/yaml@v7.3.3",
+      "bom-ref": "pkg:composer/symfony/yaml@v7.3.5",
       "type": "library",
       "name": "symfony/yaml",
-      "version": "v7.3.3",
+      "version": "v7.3.5",
       "licenses": [
         {
           "license": {
@@ -359,11 +359,11 @@
           }
         }
       ],
-      "purl": "pkg:composer/symfony/yaml@v7.3.3",
+      "purl": "pkg:composer/symfony/yaml@v7.3.5",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "symfony/yaml@v7.3.3"
+          "value": "symfony/yaml@v7.3.5"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -3225,22 +3225,22 @@
   ],
   "dependencies": [
     {
-      "ref": "22b54fd5-1483-458c-98d3-a7b153e83d8a",
+      "ref": "1a229a53-bb81-4210-b848-d90d2399eb04",
+      "dependsOn": [
+        "714a4f5d-bfb3-4206-9baa-c8527639bfb4",
+        "dfc92aa3-c0a9-4294-b0a0-2187be8e4463"
+      ]
+    },
+    {
+      "ref": "714a4f5d-bfb3-4206-9baa-c8527639bfb4",
       "dependsOn": [
         "pkg:composer/mnapoli/silly@1.9.1",
         "pkg:composer/revolt/event-loop@v1.0.7",
-        "pkg:composer/symfony/yaml@v7.3.3"
+        "pkg:composer/symfony/yaml@v7.3.5"
       ]
     },
     {
-      "ref": "ee23bd5e-fab0-423f-ad9d-81469660b61e",
-      "dependsOn": [
-        "22b54fd5-1483-458c-98d3-a7b153e83d8a",
-        "f7c57792-3993-446c-9240-d2aa46491aa8"
-      ]
-    },
-    {
-      "ref": "f7c57792-3993-446c-9240-d2aa46491aa8",
+      "ref": "dfc92aa3-c0a9-4294-b0a0-2187be8e4463",
       "dependsOn": [
         "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
         "pkg:npm/vitepress@1.6.4"
@@ -3251,7 +3251,7 @@
       "dependsOn": [
         "pkg:composer/php-di/invoker@2.3.7",
         "pkg:composer/psr/container@2.0.2",
-        "pkg:composer/symfony/console@v7.3.4"
+        "pkg:composer/symfony/console@v7.3.5"
       ]
     },
     {
@@ -3269,7 +3269,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pkg:composer/symfony/console@v7.3.4",
+      "ref": "pkg:composer/symfony/console@v7.3.5",
       "dependsOn": [
         "pkg:composer/symfony/deprecation-contracts@v3.6.0",
         "pkg:composer/symfony/polyfill-mbstring@v1.33.0",
@@ -3314,7 +3314,7 @@
       ]
     },
     {
-      "ref": "pkg:composer/symfony/yaml@v7.3.3",
+      "ref": "pkg:composer/symfony/yaml@v7.3.5",
       "dependsOn": [
         "pkg:composer/symfony/deprecation-contracts@v3.6.0",
         "pkg:composer/symfony/polyfill-ctype@v1.33.0"
@@ -4442,6 +4442,71 @@
           "versions": [
             {
               "version": "6.26.0",
+              "status": "affected"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "CVE-2025-62522",
+      "source": {
+        "name": "ghsa",
+        "url": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Anpm"
+      },
+      "ratings": [
+        {
+          "source": {
+            "name": "ghsa"
+          },
+          "severity": "medium"
+        },
+        {
+          "source": {
+            "name": "redhat"
+          },
+          "score": 6.5,
+          "severity": "medium",
+          "method": "CVSSv31",
+          "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "cwes": [
+        22
+      ],
+      "description": "Vite is a frontend tooling framework for JavaScript. In versions from 2.9.18 to before 3.0.0, 3.2.9 to before 4.0.0, 4.5.3 to before 5.0.0, 5.2.6 to before 5.4.21, 6.0.0 to before 6.4.1, 7.0.0 to before 7.0.8, and 7.1.0 to before 7.1.11, files denied by server.fs.deny were sent if the URL ended with \\ when the dev server is running on Windows. Only apps explicitly exposing the Vite dev server to the network and running the dev server on Windows were affected. This issue has been patched in versions 5.4.21, 6.4.1, 7.0.8, and 7.1.11.",
+      "recommendation": "Upgrade vite to version 7.1.11, 7.0.8, 6.4.1, 5.4.21",
+      "advisories": [
+        {
+          "url": "https://avd.aquasec.com/nvd/cve-2025-62522"
+        },
+        {
+          "url": "https://access.redhat.com/security/cve/CVE-2025-62522"
+        },
+        {
+          "url": "https://github.com/vitejs/vite"
+        },
+        {
+          "url": "https://github.com/vitejs/vite/commit/f479cc57c425ed41ceb434fecebd63931b1ed4ed"
+        },
+        {
+          "url": "https://github.com/vitejs/vite/security/advisories/GHSA-93m4-6634-74q7"
+        },
+        {
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-62522"
+        },
+        {
+          "url": "https://www.cve.org/CVERecord?id=CVE-2025-62522"
+        }
+      ],
+      "published": "2025-10-20T20:15:37+00:00",
+      "updated": "2025-10-21T19:31:25+00:00",
+      "affects": [
+        {
+          "ref": "pkg:npm/vite@5.4.19",
+          "versions": [
+            {
+              "version": "5.4.19",
               "status": "affected"
             }
           ]
