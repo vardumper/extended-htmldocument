@@ -28,7 +28,7 @@ echo (string) Anchor::create($dom)
 // <a class="secondary" href="https://google.com" rel="nofollow" title="Google it"></a>
 ```
 ## Twig Templates
-There's now a Twig Template for every HTML element included. These allow for better consistency in your design system, have basic validations for enums. 
+There's now a Twig Template for every HTML element included. These allow for better consistency in your design system, have basic validations for enums. They are optimized to work with Twigs `include`, `embed` and `use`.
 ```twig
 {% include 'inline/a.twig' with {
   href: 'https://example.com',
