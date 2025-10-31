@@ -1,6 +1,6 @@
 <?php
 
-namespace Html\Trait;
+namespace Html\Trait\GlobalAttribute;
 
 use Html\Enum\SpellCheckEnum;
 use InvalidArgumentException;

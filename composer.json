@@ -42,7 +42,7 @@
         "php": "^8.4",
         "revolt/event-loop": "^1.0.7",
         "mnapoli/silly": "^1.9.1",
-        "symfony/yaml": "^7.3.3"
+        "symfony/yaml": "^7.3.5"
     },
     "config": {
         "sort-packages": true,
@@ -62,14 +62,14 @@
         "amphp/file": ">=3.2",
         "brainmaestro/composer-git-hooks": "dev-master",
         "edent/pretty-print-html": "2025-04-18",
-        "friendsofphp/php-cs-fixer": "^3.89.0",
+        "friendsofphp/php-cs-fixer": "^3.89.1",
         "pestphp/pest": "^3.8.4",
         "pestphp/pest-plugin-drift": "^3.0",
         "pestphp/pest-plugin-type-coverage": "^3.6.1",
         "phpmd/phpmd": "^2.15",
         "phpstan/phpstan": "^2.1.31",
         "rector/swiss-knife": "^2.3.3",
-        "symplify/easy-coding-standard": "^12.6.0"
+        "symplify/easy-coding-standard": "^12.6.2"
     },
     "extra": {
         "hooks": {
