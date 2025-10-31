@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Script - The script element is used to embed or reference an executable script within an HTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.
- * 
+ *
  * @generated 2025-10-31 21:58:00
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
  */
+
 namespace Html\Element\Void;
 
 use Html\Element\Block\Body;
@@ -18,22 +18,22 @@ use Html\Element\Block\Form;
 use Html\Element\Block\Menu;
 use Html\Element\Inline\ScalableVectorGraphics;
 use Html\Element\VoidElement;
-use Html\Element\Void\Head;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\ReferrerpolicyEnum;
 use Html\Enum\TypeScriptEnum;
+use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute\ClassTrait;
 use Html\Trait\GlobalAttribute\DataTrait;
 use Html\Trait\GlobalAttribute\HiddenTrait;
 use Html\Trait\GlobalAttribute\IdTrait;
 use Html\Trait\GlobalAttribute\LangTrait;
 use Html\Trait\GlobalAttribute\TitleTrait;
-use Html\Mapping\Element;
+use InvalidArgumentException;
 
 #[Element('script')]
 class Script extends VoidElement
 {
-        use ClassTrait;
+    use ClassTrait;
 
     use DataTrait;
 
@@ -44,6 +44,7 @@ class Script extends VoidElement
     use TitleTrait;
 
     use LangTrait;
+
     /**
      * The HTML element name
      */
@@ -73,47 +74,53 @@ class Script extends VoidElement
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-    /** When present, it specifies that the script will be executed asynchronously as soon as it is available. */
+    /**
+     * When present, it specifies that the script will be executed asynchronously as soon as it is available.
+     */
     public ?bool $async = null;
 
-    /** Specifies the character encoding for the resource. */
+    /**
+     * Specifies the character encoding for the resource.
+     */
     public ?string $charset = null;
 
-    /**  */
     public ?CrossoriginEnum $crossorigin = null;
 
-    /** When present, it specifies that the script should be executed after the page has been parsed. */
+    /**
+     * When present, it specifies that the script should be executed after the page has been parsed.
+     */
     public ?bool $defer = null;
 
-    /** Specifies the integrity value of a resource. */
+    /**
+     * Specifies the integrity value of a resource.
+     */
     public ?string $integrity = null;
 
-    /** Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks. */
+    /**
+     * Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks.
+     */
     public ?string $nonce = null;
 
-    /** Specifies the referrer policy for fetches initiated by the element. */
+    /**
+     * Specifies the referrer policy for fetches initiated by the element.
+     */
     public ?ReferrerpolicyEnum $referrerpolicy = null;
 
-    /** 
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
-     * @category HTML attribute
      * @required
      */
     public ?string $src = null;
 
-    /** 
+    /**
      * Specifies the media type of the linked resource.
-     * @category HTML attribute
      * @example text/javascript
      */
     public ?TypeScriptEnum $type = null;
-
 
     public function setAsync(bool $async): static
     {
@@ -142,7 +149,9 @@ class Script extends VoidElement
     public function setCrossorigin(string|CrossoriginEnum $crossorigin): static
     {
         if (is_string($crossorigin)) {
-            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new \InvalidArgumentException("Invalid value for \$crossorigin.");
+            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
+                'Invalid value for $crossorigin.'
+            );
         }
         $this->crossorigin = $crossorigin;
         $this->delegated->setAttribute('crossorigin', (string) $crossorigin->value);
@@ -194,7 +203,9 @@ class Script extends VoidElement
     public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): static
     {
         if (is_string($referrerpolicy)) {
-            $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new \InvalidArgumentException("Invalid value for \$referrerpolicy.");
+            $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new InvalidArgumentException(
+                'Invalid value for $referrerpolicy.'
+            );
         }
         $this->referrerpolicy = $referrerpolicy;
         $this->delegated->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
@@ -222,7 +233,7 @@ class Script extends VoidElement
     public function setType(string|TypeScriptEnum $type): static
     {
         if (is_string($type)) {
-            $type = TypeScriptEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
+            $type = TypeScriptEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
         }
         $this->type = $type;
         $this->delegated->setAttribute('type', (string) $type->value);
@@ -234,5 +245,4 @@ class Script extends VoidElement
     {
         return $this->type;
     }
-
 }

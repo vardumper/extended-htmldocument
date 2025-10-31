@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Slot - The slot element is a placeholder inside a web component that you can fill with your own markup, which lets you create separate DOM trees and present them together.
- * 
+ *
  * @generated 2025-10-31 21:58:00
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\DefinitionList;
@@ -32,11 +32,7 @@ use Html\Element\Block\Summary;
 use Html\Element\Block\Table;
 use Html\Element\Block\UnorderedList;
 use Html\Element\InlineElement;
-use Html\Element\Inline\Anchor;
-use Html\Element\Inline\Button;
-use Html\Element\Inline\Input;
-use Html\Element\Inline\Select;
-use Html\Element\Inline\Textarea;
+use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute\AccesskeyTrait;
 use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
 use Html\Trait\GlobalAttribute\AutofocusTrait;
@@ -54,12 +50,11 @@ use Html\Trait\GlobalAttribute\StyleTrait;
 use Html\Trait\GlobalAttribute\TabindexTrait;
 use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Trait\GlobalAttribute\TranslateTrait;
-use Html\Mapping\Element;
 
 #[Element('slot')]
 class Slot extends InlineElement
 {
-        use AccesskeyTrait;
+    use AccesskeyTrait;
 
     use AutocapitalizeTrait;
 
@@ -92,6 +87,7 @@ class Slot extends InlineElement
     use TitleTrait;
 
     use TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -116,9 +112,7 @@ class Slot extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        Form::class,
-    ];
+    public static array $childOf = [Form::class];
 
     /**
      * The list of allowed direct children. Any if empty.
@@ -150,10 +144,10 @@ class Slot extends InlineElement
         UnorderedList::class,
     ];
 
-
-    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /**
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     */
     public ?string $name = null;
-
 
     public function setName(string $name): static
     {
@@ -166,5 +160,4 @@ class Slot extends InlineElement
     {
         return $this->name;
     }
-
 }

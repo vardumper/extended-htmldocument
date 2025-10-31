@@ -1,40 +1,22 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Table - The table element represents tabular data — that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.
- * 
+ *
  * @generated 2025-10-31 21:58:00
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Body;
-use Html\Element\Block\Caption;
-use Html\Element\Block\ColumnGroup;
-use Html\Element\Block\DefinitionDescription;
-use Html\Element\Block\Details;
-use Html\Element\Block\Dialog;
-use Html\Element\Block\Division;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Header;
-use Html\Element\Block\Main;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Section;
-use Html\Element\Block\TableBody;
-use Html\Element\Block\TableFoot;
-use Html\Element\Block\TableHead;
-use Html\Element\Block\TableRow;
-use Html\Element\Block\Template;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
+use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute\AccesskeyTrait;
 use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
 use Html\Trait\GlobalAttribute\AutofocusTrait;
@@ -52,12 +34,11 @@ use Html\Trait\GlobalAttribute\StyleTrait;
 use Html\Trait\GlobalAttribute\TabindexTrait;
 use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Trait\GlobalAttribute\TranslateTrait;
-use Html\Mapping\Element;
 
 #[Element('table')]
 class Table extends BlockElement
 {
-        use AccesskeyTrait;
+    use AccesskeyTrait;
 
     use AutocapitalizeTrait;
 
@@ -90,6 +71,7 @@ class Table extends BlockElement
     use TitleTrait;
 
     use TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -144,8 +126,4 @@ class Table extends BlockElement
         TableHead::class,
         TableRow::class,
     ];
-
-
-
-
 }

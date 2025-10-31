@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * BidirectionalIsolation - The bdi element represents a span of text that is to be isolated from its surroundings for the purposes of bidirectional text formatting. (Bidirectional-isolate)
- * 
+ *
  * @generated 2025-10-31 21:58:00
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -24,7 +24,7 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
-use Html\Element\Inline\MarkedText;
+use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute\AccesskeyTrait;
 use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
 use Html\Trait\GlobalAttribute\AutofocusTrait;
@@ -42,12 +42,11 @@ use Html\Trait\GlobalAttribute\StyleTrait;
 use Html\Trait\GlobalAttribute\TabindexTrait;
 use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Trait\GlobalAttribute\TranslateTrait;
-use Html\Mapping\Element;
 
 #[Element('bdi')]
 class BidirectionalIsolation extends InlineElement
 {
-        use AccesskeyTrait;
+    use AccesskeyTrait;
 
     use AutocapitalizeTrait;
 
@@ -82,6 +81,7 @@ class BidirectionalIsolation extends InlineElement
     use TitleTrait;
 
     use TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -124,9 +124,5 @@ class BidirectionalIsolation extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
-
-
-
+    public static array $parentOf = [];
 }

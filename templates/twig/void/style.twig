@@ -18,8 +18,7 @@
   {% if media is defined and media|length > 0 %}media="{{ media }}"{% endif %}
   {% if nonce is defined and nonce|length > 0 %}nonce="{{ nonce }}"{% endif %}
   {% if title is defined and title|length > 0 %}title="{{ title }}"{% endif %}
-  {% if type is defined and type|length > 0 and type in type_choices %}type="{{ type }}"{% endif %}
->
+  {% if type is defined and type|length > 0 and type in type_choices %}type="{{ type }}"{% endif %}>
   {% block content %}{{- content|raw -}}{% endblock %}
 </style>
 {% endblock %}

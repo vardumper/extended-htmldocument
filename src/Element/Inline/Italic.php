@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Italic - The i element represents a span of text in an alternate voice or mood, or otherwise offset from the normal prose, such as a taxonomic designation, a technical term, an idiomatic phrase from another language, a thought, or a ship name in Western texts.
- * 
+ *
  * @generated 2025-10-31 21:58:00
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -25,6 +25,7 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
+use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute\AccesskeyTrait;
 use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
 use Html\Trait\GlobalAttribute\AutofocusTrait;
@@ -42,12 +43,11 @@ use Html\Trait\GlobalAttribute\StyleTrait;
 use Html\Trait\GlobalAttribute\TabindexTrait;
 use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Trait\GlobalAttribute\TranslateTrait;
-use Html\Mapping\Element;
 
 #[Element('i')]
 class Italic extends InlineElement
 {
-        use AccesskeyTrait;
+    use AccesskeyTrait;
 
     use AutocapitalizeTrait;
 
@@ -80,6 +80,7 @@ class Italic extends InlineElement
     use TitleTrait;
 
     use TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -122,9 +123,5 @@ class Italic extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
-
-
-
+    public static array $parentOf = [];
 }

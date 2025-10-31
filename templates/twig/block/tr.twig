@@ -37,8 +37,7 @@
   {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}
   {% if title is defined and title|length > 0 %}title="{{ title }}"{% endif %}
   {% if translate is defined and translate|length > 0 and translate in translate_choices %}translate="{{ translate }}"{% endif %}
-  {% if valign is defined and valign|length > 0 and valign in valign_choices %}valign="{{ valign }}"{% endif %}
->
+  {% if valign is defined and valign|length > 0 and valign in valign_choices %}valign="{{ valign }}"{% endif %}>
   {% block content %}{{- content|raw -}}{% endblock %}
 </tr>
 {% endblock %}

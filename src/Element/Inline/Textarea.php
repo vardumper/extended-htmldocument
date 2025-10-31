@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Textarea - The textarea element represents a multiline plain text edit control for the element's raw value.
- * 
+ *
  * @generated 2025-10-31 21:58:00
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Aside;
@@ -27,11 +27,10 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
-use Html\Element\Inline\MarkedText;
-use Html\Element\Inline\Slot;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\AutocorrectEnum;
 use Html\Enum\WrapEnum;
+use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute\AccesskeyTrait;
 use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
 use Html\Trait\GlobalAttribute\AutofocusTrait;
@@ -49,12 +48,12 @@ use Html\Trait\GlobalAttribute\StyleTrait;
 use Html\Trait\GlobalAttribute\TabindexTrait;
 use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Trait\GlobalAttribute\TranslateTrait;
-use Html\Mapping\Element;
+use InvalidArgumentException;
 
 #[Element('textarea')]
 class Textarea extends InlineElement
 {
-        use AccesskeyTrait;
+    use AccesskeyTrait;
 
     use AutocapitalizeTrait;
 
@@ -87,6 +86,7 @@ class Textarea extends InlineElement
     use TitleTrait;
 
     use TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -133,66 +133,80 @@ class Textarea extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** 
-     * 
-     * @category HTML attribute
+    /**
      * @example on
      */
     public ?AutocompleteEnum $autocomplete = null;
 
-    /** 
+    /**
      * Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.
-     * @category HTML attribute
      * @example on
      */
     public ?AutocorrectEnum $autocorrect = null;
 
-    /** Specifies the visible width of a text area, in average character widths. */
+    /**
+     * Specifies the visible width of a text area, in average character widths.
+     */
     public ?int $cols = null;
 
-    /** Specifies the name of the field that will contain the text direction (ltr or rtl) of the input or textarea when the form is submitted */
+    /**
+     * Specifies the name of the field that will contain the text direction (ltr or rtl) of the input or textarea when the form is submitted
+     */
     public ?string $dirname = null;
 
-    /** When present, it specifies that an input element should be disabled. */
+    /**
+     * When present, it specifies that an input element should be disabled.
+     */
     public ?bool $disabled = null;
 
-    /** Specifies the maximum number of characters allowed in an input field. */
+    /**
+     * Specifies the maximum number of characters allowed in an input field.
+     */
     public ?int $maxlength = null;
 
-    /** Specifies the minimum number of characters required in an input field. */
+    /**
+     * Specifies the minimum number of characters required in an input field.
+     */
     public ?int $minlength = null;
 
-    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /**
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     */
     public ?string $name = null;
 
-    /** Specifies a short hint that describes the expected value of an input field. */
+    /**
+     * Specifies a short hint that describes the expected value of an input field.
+     */
     public ?string $placeholder = null;
 
-    /** When present, it specifies that an input element is read-only. */
+    /**
+     * When present, it specifies that an input element is read-only.
+     */
     public ?bool $readonly = null;
 
-    /** When present, it specifies that an input field must be filled out before submitting the form. */
+    /**
+     * When present, it specifies that an input field must be filled out before submitting the form.
+     */
     public ?bool $required = null;
 
-    /** Specifies the visible number of lines in a text area. */
+    /**
+     * Specifies the visible number of lines in a text area.
+     */
     public ?int $rows = null;
 
-    /** 
-     * 
-     * @category HTML attribute
+    /**
      * @example soft
      */
     public ?WrapEnum $wrap = null;
 
-
     public function setAutocomplete(string|AutocompleteEnum $autocomplete): static
     {
         if (is_string($autocomplete)) {
-            $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new \InvalidArgumentException("Invalid value for \$autocomplete.");
+            $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new InvalidArgumentException(
+                'Invalid value for $autocomplete.'
+            );
         }
         $this->autocomplete = $autocomplete;
         $this->delegated->setAttribute('autocomplete', (string) $autocomplete->value);
@@ -208,7 +222,9 @@ class Textarea extends InlineElement
     public function setAutocorrect(string|AutocorrectEnum $autocorrect): static
     {
         if (is_string($autocorrect)) {
-            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new \InvalidArgumentException("Invalid value for \$autocorrect.");
+            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new InvalidArgumentException(
+                'Invalid value for $autocorrect.'
+            );
         }
         $this->autocorrect = $autocorrect;
         $this->delegated->setAttribute('autocorrect', (string) $autocorrect->value);
@@ -344,7 +360,7 @@ class Textarea extends InlineElement
     public function setWrap(string|WrapEnum $wrap): static
     {
         if (is_string($wrap)) {
-            $wrap = WrapEnum::tryFrom($wrap) ?? throw new \InvalidArgumentException("Invalid value for \$wrap.");
+            $wrap = WrapEnum::tryFrom($wrap) ?? throw new InvalidArgumentException('Invalid value for $wrap.');
         }
         $this->wrap = $wrap;
         $this->delegated->setAttribute('wrap', (string) $wrap->value);
@@ -356,5 +372,4 @@ class Textarea extends InlineElement
     {
         return $this->wrap;
     }
-
 }

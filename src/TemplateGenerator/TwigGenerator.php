@@ -156,7 +156,7 @@ class TwigGenerator implements TemplateGeneratorInterface
         foreach ($enums as $enum) {
             $twig .= "{% set {$enum['name']}_choices = [" . implode(', ', $enum['choices']) . "] %}\n";
         }
-        $twig .= "<{$elementName}\n";
+        $twig .= "<{$elementName}";
         foreach ($props as $attr) {
             $isEnum = false;
             foreach ($enums as $enum) {
@@ -171,7 +171,7 @@ class TwigGenerator implements TemplateGeneratorInterface
             if ($isEnum) {
                 $cond .= $isReserved ? " and attribute(_context, '{$attr}') in {$attr}_choices" : " and {$attr} in {$attr}_choices";
             }
-            $twig .= "  {% if {$cond} %}{$attr}=\"{{ {$val} }}\"{% endif %}\n";
+            $twig .= "\n  {% if {$cond} %}{$attr}=\"{{ {$val} }}\"{% endif %}";
         }
         if ($isSelfClosing) {
             $twig .= "/>\n";

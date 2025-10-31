@@ -1,34 +1,34 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Style - The style element is used to embed CSS styles directly into an HTML document.
- * 
+ *
  * @generated 2025-10-31 21:58:00
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
  */
+
 namespace Html\Element\Void;
 
 use Html\Element\Inline\ScalableVectorGraphics;
 use Html\Element\VoidElement;
-use Html\Element\Void\Head;
 use Html\Enum\TypeStyleEnum;
+use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute\ClassTrait;
 use Html\Trait\GlobalAttribute\DataTrait;
 use Html\Trait\GlobalAttribute\DirTrait;
 use Html\Trait\GlobalAttribute\IdTrait;
 use Html\Trait\GlobalAttribute\LangTrait;
 use Html\Trait\GlobalAttribute\TitleTrait;
-use Html\Mapping\Element;
+use InvalidArgumentException;
 
 #[Element('style')]
 class Style extends VoidElement
 {
-        use IdTrait;
+    use IdTrait;
 
     use ClassTrait;
 
@@ -39,6 +39,7 @@ class Style extends VoidElement
     use LangTrait;
 
     use DirTrait;
+
     /**
      * The HTML element name
      */
@@ -58,37 +59,35 @@ class Style extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        Head::class,
-        ScalableVectorGraphics::class,
-    ];
+    public static array $childOf = [Head::class, ScalableVectorGraphics::class];
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-    /** Specifies the media type for which the linked resource or style sheet is intended. */
+    /**
+     * Specifies the media type for which the linked resource or style sheet is intended.
+     */
     public ?string $media = null;
 
-    /** Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks. */
+    /**
+     * Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks.
+     */
     public ?string $nonce = null;
 
-    /** Specifies additional information about the element, typically displayed as a tooltip. */
+    /**
+     * Specifies additional information about the element, typically displayed as a tooltip.
+     */
     public ?string $title = null;
 
-    /** 
+    /**
      * Specifies the media type of the inline styles.
-     * @category HTML attribute
      * @deprecated
-    
      * @example text/css
      */
     public ?TypeStyleEnum $type = null;
-
 
     public function setMedia(string $media): static
     {
@@ -129,7 +128,7 @@ class Style extends VoidElement
     public function setType(string|TypeStyleEnum $type): static
     {
         if (is_string($type)) {
-            $type = TypeStyleEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
+            $type = TypeStyleEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
         }
         $this->type = $type;
         $this->delegated->setAttribute('type', (string) $type->value);
@@ -141,5 +140,4 @@ class Style extends VoidElement
     {
         return $this->type;
     }
-
 }

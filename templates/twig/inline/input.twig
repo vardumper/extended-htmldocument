@@ -58,6 +58,5 @@
   {% if translate is defined and translate|length > 0 and translate in translate_choices %}translate="{{ translate }}"{% endif %}
   {% if type is defined and type|length > 0 and type in type_choices %}type="{{ type }}"{% endif %}
   {% if value is defined and value|length > 0 %}value="{{ value }}"{% endif %}
-  {% if width is defined and width|length > 0 %}width="{{ width }}"{% endif %}
-/>
+  {% if width is defined and width|length > 0 %}width="{{ width }}"{% endif %}/>
 {% endblock %}

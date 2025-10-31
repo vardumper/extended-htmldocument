@@ -1,27 +1,20 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Legend - The legend element represents a caption for the content of its parent fieldset.
- * 
+ *
  * @generated 2025-10-31 21:58:00
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Fieldset;
-use Html\Element\Block\Form;
-use Html\Element\Block\Heading1;
-use Html\Element\Block\Heading2;
-use Html\Element\Block\Heading3;
-use Html\Element\Block\Heading4;
-use Html\Element\Block\Heading5;
-use Html\Element\Block\Heading6;
+use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute\AccesskeyTrait;
 use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
 use Html\Trait\GlobalAttribute\AutofocusTrait;
@@ -39,12 +32,11 @@ use Html\Trait\GlobalAttribute\StyleTrait;
 use Html\Trait\GlobalAttribute\TabindexTrait;
 use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Trait\GlobalAttribute\TranslateTrait;
-use Html\Mapping\Element;
 
 #[Element('legend')]
 class Legend extends BlockElement
 {
-        use AccesskeyTrait;
+    use AccesskeyTrait;
 
     use AutocapitalizeTrait;
 
@@ -77,6 +69,7 @@ class Legend extends BlockElement
     use TitleTrait;
 
     use TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -101,10 +94,7 @@ class Legend extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        Fieldset::class,
-        Form::class,
-    ];
+    public static array $childOf = [Fieldset::class, Form::class];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -118,8 +108,4 @@ class Legend extends BlockElement
         Heading5::class,
         Heading6::class,
     ];
-
-
-
-
 }

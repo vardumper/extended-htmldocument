@@ -1,46 +1,19 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * DefinitionDescription - The dd element represents the description, definition, or value, part of a term-description group in a description list (dl element).
- * 
+ *
  * @generated 2025-10-31 21:58:00
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dd
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Audio;
-use Html\Element\Block\DefinitionList;
-use Html\Element\Block\DefinitionTerm;
-use Html\Element\Block\DeletedText;
-use Html\Element\Block\Details;
-use Html\Element\Block\Division;
-use Html\Element\Block\Embed;
-use Html\Element\Block\Figure;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Form;
-use Html\Element\Block\Header;
-use Html\Element\Block\InlineFrame;
-use Html\Element\Block\InsertedText;
-use Html\Element\Block\ListItem;
-use Html\Element\Block\Main;
-use Html\Element\Block\Map;
-use Html\Element\Block\ObjectElement;
-use Html\Element\Block\OrderedList;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Picture;
-use Html\Element\Block\PreformattedText;
-use Html\Element\Block\Section;
-use Html\Element\Block\Summary;
-use Html\Element\Block\Table;
-use Html\Element\Block\UnorderedList;
-use Html\Element\Block\Video;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\BidirectionalIsolation;
@@ -79,6 +52,7 @@ use Html\Element\Void\Parameter;
 use Html\Element\Void\Source;
 use Html\Element\Void\Track;
 use Html\Element\Void\WordBreakOpportunity;
+use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute\AccesskeyTrait;
 use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
 use Html\Trait\GlobalAttribute\AutofocusTrait;
@@ -96,12 +70,11 @@ use Html\Trait\GlobalAttribute\StyleTrait;
 use Html\Trait\GlobalAttribute\TabindexTrait;
 use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Trait\GlobalAttribute\TranslateTrait;
-use Html\Mapping\Element;
 
 #[Element('dd')]
 class DefinitionDescription extends BlockElement
 {
-        use AccesskeyTrait;
+    use AccesskeyTrait;
 
     use AutocapitalizeTrait;
 
@@ -134,6 +107,7 @@ class DefinitionDescription extends BlockElement
     use TitleTrait;
 
     use TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -161,7 +135,7 @@ class DefinitionDescription extends BlockElement
     public static array $childOf = [
         DefinitionList::class,
         Aside::class,
-        DefinitionDescription::class,
+        self::class,
         Division::class,
         Footer::class,
         Header::class,
@@ -185,7 +159,7 @@ class DefinitionDescription extends BlockElement
         Citation::class,
         Code::class,
         Data::class,
-        DefinitionDescription::class,
+        self::class,
         DeletedText::class,
         Definition::class,
         Division::class,
@@ -236,8 +210,4 @@ class DefinitionDescription extends BlockElement
         Video::class,
         WordBreakOpportunity::class,
     ];
-
-
-
-
 }

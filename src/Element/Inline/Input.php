@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Input - The input element represents a typed data field, usually with a form control to allow user input.
- * 
+ *
  * @generated 2025-10-31 21:58:00
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Aside;
@@ -27,11 +27,10 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
-use Html\Element\Inline\MarkedText;
-use Html\Element\Inline\Slot;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\AutocorrectEnum;
 use Html\Enum\TypeInputEnum;
+use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute\AccesskeyTrait;
 use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
 use Html\Trait\GlobalAttribute\AutofocusTrait;
@@ -49,12 +48,12 @@ use Html\Trait\GlobalAttribute\StyleTrait;
 use Html\Trait\GlobalAttribute\TabindexTrait;
 use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Trait\GlobalAttribute\TranslateTrait;
-use Html\Mapping\Element;
+use InvalidArgumentException;
 
 #[Element('input')]
 class Input extends InlineElement
 {
-        use AccesskeyTrait;
+    use AccesskeyTrait;
 
     use AutocapitalizeTrait;
 
@@ -87,6 +86,7 @@ class Input extends InlineElement
     use TitleTrait;
 
     use TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -133,97 +133,134 @@ class Input extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** Specifies a comma-separated list of file types that the server accepts. */
+    /**
+     * Specifies a comma-separated list of file types that the server accepts.
+     */
     public ?string $accept = null;
 
-    /** 
+    /**
      * Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.
-     * @category HTML attribute
      * @example on
      */
     public ?AutocorrectEnum $autocorrect = null;
 
-    /** Specifies alternative text to be displayed when the image cannot be rendered. */
+    /**
+     * Specifies alternative text to be displayed when the image cannot be rendered.
+     */
     public ?string $alt = null;
 
-    /** 
-     * 
-     * @category HTML attribute
+    /**
      * @example on
      */
     public ?AutocompleteEnum $autocomplete = null;
 
-    /** When present, it indicates that an input element should be pre-selected (checked) when the page loads. */
+    /**
+     * When present, it indicates that an input element should be pre-selected (checked) when the page loads.
+     */
     public ?bool $checked = null;
 
-    /** Specifies the direction of the text. */
+    /**
+     * Specifies the direction of the text.
+     */
     public ?string $dirname = null;
 
-    /** When present, it specifies that an input element should be disabled. */
+    /**
+     * When present, it specifies that an input element should be disabled.
+     */
     public ?bool $disabled = null;
 
-    /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     public ?string $height = null;
 
-    /** Refers to a <datalist> element that contains pre-defined options for an input element. */
+    /**
+     * Refers to a <datalist> element that contains pre-defined options for an input element.
+     */
     public ?string $list = null;
 
-    /** Specifies the maximum value for an input element, meter, or progress element. */
+    /**
+     * Specifies the maximum value for an input element, meter, or progress element.
+     */
     public ?int $max = null;
 
-    /** Specifies the maximum number of characters allowed in an input field. */
+    /**
+     * Specifies the maximum number of characters allowed in an input field.
+     */
     public ?int $maxlength = null;
 
-    /** Specifies the minimum value for an input element or a meter element. */
+    /**
+     * Specifies the minimum value for an input element or a meter element.
+     */
     public ?string $min = null;
 
-    /** Specifies the minimum number of characters required in an input field. */
+    /**
+     * Specifies the minimum number of characters required in an input field.
+     */
     public ?int $minlength = null;
 
-    /** When present, it specifies that the user is allowed to enter more than one value in an input element. */
+    /**
+     * When present, it specifies that the user is allowed to enter more than one value in an input element.
+     */
     public ?bool $multiple = null;
 
-    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /**
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     */
     public ?string $name = null;
 
-    /** Specifies a regular expression that the <input> element's value is checked against. */
+    /**
+     * Specifies a regular expression that the <input> element's value is checked against.
+     */
     public ?string $pattern = null;
 
-    /** Specifies a short hint that describes the expected value of an input field. */
+    /**
+     * Specifies a short hint that describes the expected value of an input field.
+     */
     public ?string $placeholder = null;
 
-    /** When present, it specifies that an input element is read-only. */
+    /**
+     * When present, it specifies that an input element is read-only.
+     */
     public ?bool $readonly = null;
 
-    /** When present, it specifies that an input field must be filled out before submitting the form. */
+    /**
+     * When present, it specifies that an input field must be filled out before submitting the form.
+     */
     public ?bool $required = null;
 
-    /** Specifies the height of a hr element in pixels. */
+    /**
+     * Specifies the height of a hr element in pixels.
+     */
     public ?int $size = null;
 
-    /** Specifies the URL of the external resource to be embedded or referenced. Required if input type is image */
+    /**
+     * Specifies the URL of the external resource to be embedded or referenced. Required if input type is image
+     */
     public ?string $src = null;
 
-    /** Specifies the legal number intervals for an input element. */
+    /**
+     * Specifies the legal number intervals for an input element.
+     */
     public ?string $step = null;
 
-    /** 
+    /**
      * Specifies the type of the input. Defaults to text if the attribute is omitted
-     * @category HTML attribute
      * @example text
      */
     public ?TypeInputEnum $type = null;
 
-    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
+    /**
+     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
+     */
     public ?string $value = null;
 
-    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     public ?string $width = null;
-
 
     public function setAccept(string $accept): static
     {
@@ -240,7 +277,9 @@ class Input extends InlineElement
     public function setAutocorrect(string|AutocorrectEnum $autocorrect): static
     {
         if (is_string($autocorrect)) {
-            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new \InvalidArgumentException("Invalid value for \$autocorrect.");
+            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new InvalidArgumentException(
+                'Invalid value for $autocorrect.'
+            );
         }
         $this->autocorrect = $autocorrect;
         $this->delegated->setAttribute('autocorrect', (string) $autocorrect->value);
@@ -268,7 +307,9 @@ class Input extends InlineElement
     public function setAutocomplete(string|AutocompleteEnum $autocomplete): static
     {
         if (is_string($autocomplete)) {
-            $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new \InvalidArgumentException("Invalid value for \$autocomplete.");
+            $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new InvalidArgumentException(
+                'Invalid value for $autocomplete.'
+            );
         }
         $this->autocomplete = $autocomplete;
         $this->delegated->setAttribute('autocomplete', (string) $autocomplete->value);
@@ -500,7 +541,7 @@ class Input extends InlineElement
     public function setType(string|TypeInputEnum $type): static
     {
         if (is_string($type)) {
-            $type = TypeInputEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
+            $type = TypeInputEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
         }
         $this->type = $type;
         $this->delegated->setAttribute('type', (string) $type->value);
@@ -536,5 +577,4 @@ class Input extends InlineElement
     {
         return $this->width;
     }
-
 }

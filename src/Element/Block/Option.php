@@ -1,22 +1,21 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Option - The option element represents an item in a select dropdown list.
- * 
+ *
  * @generated 2025-10-31 21:58:00
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\DataList;
-use Html\Element\Block\OptionGroup;
 use Html\Element\Inline\Select;
+use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute\AccesskeyTrait;
 use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
 use Html\Trait\GlobalAttribute\ClassTrait;
@@ -33,12 +32,11 @@ use Html\Trait\GlobalAttribute\StyleTrait;
 use Html\Trait\GlobalAttribute\TabindexTrait;
 use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Trait\GlobalAttribute\TranslateTrait;
-use Html\Mapping\Element;
 
 #[Element('option')]
 class Option extends BlockElement
 {
-        use IdTrait;
+    use IdTrait;
 
     use ClassTrait;
 
@@ -69,6 +67,7 @@ class Option extends BlockElement
     use TranslateTrait;
 
     use DataTrait;
+
     /**
      * The HTML element name
      */
@@ -93,32 +92,33 @@ class Option extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        Select::class,
-        OptionGroup::class,
-        DataList::class,
-    ];
+    public static array $childOf = [Select::class, OptionGroup::class, DataList::class];
 
     /**
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** When present, it specifies that an input element should be disabled. */
+    /**
+     * When present, it specifies that an input element should be disabled.
+     */
     public ?bool $disabled = null;
 
-    /** Specifies a label for the associated form control, option group, or option. */
+    /**
+     * Specifies a label for the associated form control, option group, or option.
+     */
     public ?string $label = null;
 
-    /** When present, it specifies that an option should be pre-selected when the page loads. */
+    /**
+     * When present, it specifies that an option should be pre-selected when the page loads.
+     */
     public ?bool $selected = null;
 
-    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
+    /**
+     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
+     */
     public ?string $value = null;
-
 
     public function setDisabled(bool $disabled): static
     {
@@ -167,6 +167,4 @@ class Option extends BlockElement
     {
         return $this->value;
     }
-
-
 }

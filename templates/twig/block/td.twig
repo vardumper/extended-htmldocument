@@ -33,8 +33,7 @@
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
   {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}
   {% if title is defined and title|length > 0 %}title="{{ title }}"{% endif %}
-  {% if translate is defined and translate|length > 0 and translate in translate_choices %}translate="{{ translate }}"{% endif %}
->
+  {% if translate is defined and translate|length > 0 and translate in translate_choices %}translate="{{ translate }}"{% endif %}>
   {% block content %}{{- content|raw -}}{% endblock %}
 </td>
 {% endblock %}

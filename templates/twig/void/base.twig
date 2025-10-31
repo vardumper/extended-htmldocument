@@ -11,6 +11,5 @@
 {% set target_choices = ['_blank', '_parent', '_self', '_top'] %}
 <base
   {% if href is defined and href|length > 0 %}href="{{ href }}"{% endif %}
-  {% if target is defined and target|length > 0 and target in target_choices %}target="{{ target }}"{% endif %}
-/>
+  {% if target is defined and target|length > 0 and target in target_choices %}target="{{ target }}"{% endif %}/>
 {% endblock %}

@@ -16,8 +16,7 @@
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
   {% if span is defined and span|length > 0 %}span="{{ span }}"{% endif %}
-  {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
->
+  {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}>
   {% block content %}{{- content|raw -}}{% endblock %}
 </colgroup>
 {% endblock %}

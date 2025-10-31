@@ -36,8 +36,7 @@
   {% if translate is defined and translate|length > 0 and translate in translate_choices %}translate="{{ translate }}"{% endif %}
   {% if viewBox is defined and viewBox|length > 0 %}viewBox="{{ viewBox }}"{% endif %}
   {% if width is defined and width|length > 0 %}width="{{ width }}"{% endif %}
-  {% if xmlns is defined and xmlns|length > 0 %}xmlns="{{ xmlns }}"{% endif %}
->
+  {% if xmlns is defined and xmlns|length > 0 %}xmlns="{{ xmlns }}"{% endif %}>
   {% block content %}{{- content|raw -}}{% endblock %}
 </svg>
 {% endblock %}

@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Meter - The meter element represents a scalar measurement within a known range, or a fractional value.
- * 
+ *
  * @generated 2025-10-31 21:58:00
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Body;
@@ -18,6 +18,7 @@ use Html\Element\Block\Fieldset;
 use Html\Element\Block\Form;
 use Html\Element\Block\Paragraph;
 use Html\Element\InlineElement;
+use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute\AccesskeyTrait;
 use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
 use Html\Trait\GlobalAttribute\AutofocusTrait;
@@ -35,12 +36,11 @@ use Html\Trait\GlobalAttribute\StyleTrait;
 use Html\Trait\GlobalAttribute\TabindexTrait;
 use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Trait\GlobalAttribute\TranslateTrait;
-use Html\Mapping\Element;
 
 #[Element('meter')]
 class Meter extends InlineElement
 {
-        use AccesskeyTrait;
+    use AccesskeyTrait;
 
     use AutocapitalizeTrait;
 
@@ -73,6 +73,7 @@ class Meter extends InlineElement
     use TitleTrait;
 
     use TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -97,39 +98,43 @@ class Meter extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        Body::class,
-        Fieldset::class,
-        Form::class,
-        Paragraph::class,
-    ];
+    public static array $childOf = [Body::class, Fieldset::class, Form::class, Paragraph::class];
 
     /**
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** Specifies the high value for a range input or a meter element. */
+    /**
+     * Specifies the high value for a range input or a meter element.
+     */
     public ?string $high = null;
 
-    /** Specifies the low value for a range input. */
+    /**
+     * Specifies the low value for a range input.
+     */
     public ?string $low = null;
 
-    /** Specifies the maximum value for an input element, meter, or progress element. */
+    /**
+     * Specifies the maximum value for an input element, meter, or progress element.
+     */
     public ?int $max = null;
 
-    /** Specifies the minimum value for an input element or a meter element. */
+    /**
+     * Specifies the minimum value for an input element or a meter element.
+     */
     public ?string $min = null;
 
-    /** Specifies the optimal value for a gauge or progress element. */
+    /**
+     * Specifies the optimal value for a gauge or progress element.
+     */
     public ?string $optimum = null;
 
-    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
+    /**
+     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
+     */
     public ?string $value = null;
-
 
     public function setHigh(string $high): static
     {
@@ -202,5 +207,4 @@ class Meter extends InlineElement
     {
         return $this->value;
     }
-
 }

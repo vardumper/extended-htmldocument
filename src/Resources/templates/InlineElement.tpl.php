@@ -33,7 +33,7 @@ class <?= $class_name ?> extends <?= ucfirst($level) ?>Element
     public const bool SELF_CLOSING = true;
 
 <?php endif; ?>
-<?php if (!$self_closing): ?>
+<?php if (! $self_closing): ?>
     /**
      * If an element is self closing
      */

@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * MarkedText - The mark element represents a run of text in one document marked or highlighted for reference or notation purposes, due to the marked passage's relevance or importance in the enclosing context.
- * 
+ *
  * @generated 2025-10-31 21:58:00
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -37,24 +37,13 @@ use Html\Element\Block\Summary;
 use Html\Element\Block\Table;
 use Html\Element\Block\Video;
 use Html\Element\InlineElement;
-use Html\Element\Inline\Anchor;
-use Html\Element\Inline\BidirectionalIsolation;
-use Html\Element\Inline\BidirectionalOverride;
-use Html\Element\Inline\Button;
-use Html\Element\Inline\Image;
-use Html\Element\Inline\Input;
-use Html\Element\Inline\Ruby;
-use Html\Element\Inline\RubyParenthesis;
-use Html\Element\Inline\RubyText;
-use Html\Element\Inline\Select;
-use Html\Element\Inline\Span;
-use Html\Element\Inline\Textarea;
 use Html\Element\Void\Area;
 use Html\Element\Void\BreakElement;
 use Html\Element\Void\Parameter;
 use Html\Element\Void\Source;
 use Html\Element\Void\Track;
 use Html\Element\Void\WordBreakOpportunity;
+use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute\AccesskeyTrait;
 use Html\Trait\GlobalAttribute\AutocapitalizeTrait;
 use Html\Trait\GlobalAttribute\AutofocusTrait;
@@ -72,12 +61,11 @@ use Html\Trait\GlobalAttribute\StyleTrait;
 use Html\Trait\GlobalAttribute\TabindexTrait;
 use Html\Trait\GlobalAttribute\TitleTrait;
 use Html\Trait\GlobalAttribute\TranslateTrait;
-use Html\Mapping\Element;
 
 #[Element('mark')]
 class MarkedText extends InlineElement
 {
-        use AccesskeyTrait;
+    use AccesskeyTrait;
 
     use AutocapitalizeTrait;
 
@@ -110,6 +98,7 @@ class MarkedText extends InlineElement
     use TitleTrait;
 
     use TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -184,7 +173,4 @@ class MarkedText extends InlineElement
         Video::class,
         WordBreakOpportunity::class,
     ];
-
-
-
 }
