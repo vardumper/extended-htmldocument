@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Abbreviation - The abbr element represents an abbreviation or acronym, optionally with its expansion. The title attribute can be used to provide an expansion of the abbreviation. The attribute, if specified, must contain an expansion of the abbreviation, and nothing else.
- * 
+ *
  * @generated 2025-11-01 15:04:49
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -25,8 +25,8 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 #[Element('abbr')]
 class Abbreviation extends InlineElement
@@ -48,6 +48,7 @@ class Abbreviation extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -90,13 +91,12 @@ class Abbreviation extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** Specifies additional information about the element, typically displayed as a tooltip. */
+    /**
+     * Specifies additional information about the element, typically displayed as a tooltip.
+     */
     public ?string $title = null;
-
 
     public function setTitle(string $title): static
     {
@@ -109,5 +109,4 @@ class Abbreviation extends InlineElement
     {
         return $this->title;
     }
-
 }

@@ -1,56 +1,19 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Division - The div element has no special meaning at all. It represents its children. It can be used with the class, lang, and title attributes to mark up semantics common to a group of consecutive elements.
- * 
+ *
  * @generated 2025-11-01 15:04:49
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Audio;
-use Html\Element\Block\Body;
-use Html\Element\Block\DefinitionDescription;
-use Html\Element\Block\DefinitionList;
-use Html\Element\Block\DefinitionTerm;
-use Html\Element\Block\DeletedText;
-use Html\Element\Block\Details;
-use Html\Element\Block\Dialog;
-use Html\Element\Block\Embed;
-use Html\Element\Block\Figure;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Form;
-use Html\Element\Block\Header;
-use Html\Element\Block\Heading1;
-use Html\Element\Block\Heading2;
-use Html\Element\Block\Heading3;
-use Html\Element\Block\Heading4;
-use Html\Element\Block\Heading5;
-use Html\Element\Block\Heading6;
-use Html\Element\Block\InlineFrame;
-use Html\Element\Block\InsertedText;
-use Html\Element\Block\ListItem;
-use Html\Element\Block\Main;
-use Html\Element\Block\Map;
-use Html\Element\Block\ObjectElement;
-use Html\Element\Block\OrderedList;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Picture;
-use Html\Element\Block\PreformattedText;
-use Html\Element\Block\Section;
-use Html\Element\Block\Summary;
-use Html\Element\Block\Table;
-use Html\Element\Block\Template;
-use Html\Element\Block\UnorderedList;
-use Html\Element\Block\Video;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\BidirectionalIsolation;
@@ -90,8 +53,8 @@ use Html\Element\Void\Parameter;
 use Html\Element\Void\Source;
 use Html\Element\Void\Track;
 use Html\Element\Void\WordBreakOpportunity;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 #[Element('div')]
 class Division extends BlockElement
@@ -113,6 +76,7 @@ class Division extends BlockElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -144,7 +108,7 @@ class Division extends BlockElement
         DefinitionDescription::class,
         Details::class,
         Dialog::class,
-        Division::class,
+        self::class,
         Footer::class,
         Header::class,
         ListItem::class,
@@ -176,7 +140,7 @@ class Division extends BlockElement
         DefinitionDescription::class,
         DeletedText::class,
         Definition::class,
-        Division::class,
+        self::class,
         DefinitionList::class,
         DefinitionTerm::class,
         Emphasis::class,
@@ -231,8 +195,4 @@ class Division extends BlockElement
         Video::class,
         WordBreakOpportunity::class,
     ];
-
-
-
-
 }

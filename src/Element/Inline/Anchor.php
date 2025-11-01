@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Anchor - The a element represents a hyperlink, linking to another resource.
- * 
+ *
  * @generated 2025-11-01 15:04:49
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -28,13 +28,11 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
-use Html\Element\Inline\MarkedText;
-use Html\Element\Inline\ScalableVectorGraphics;
-use Html\Element\Inline\Slot;
 use Html\Enum\RelEnum;
 use Html\Enum\TargetEnum;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 #[Element('a')]
 class Anchor extends InlineElement
@@ -56,6 +54,7 @@ class Anchor extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -104,39 +103,44 @@ class Anchor extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** Indicates that the linked content should be downloaded rather than displayed. */
+    /**
+     * Indicates that the linked content should be downloaded rather than displayed.
+     */
     public ?string $download = null;
 
-    /** 
+    /**
      * Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.
-     * @category HTML attribute
      * @required
      */
     public ?string $href = null;
 
-    /** Specifies the language of the linked resource. */
+    /**
+     * Specifies the language of the linked resource.
+     */
     public ?string $hreflang = null;
 
-    /** Specifies the relationship between the current document and the linked document. */
+    /**
+     * Specifies the relationship between the current document and the linked document.
+     */
     public ?RelEnum $rel = null;
 
-    /** 
+    /**
      * Specifies where to open the linked document.
-     * @category HTML attribute
      * @example _self
      */
     public null|string|TargetEnum $target = null;
 
-    /** Specifies additional information about the element, typically displayed as a tooltip. */
+    /**
+     * Specifies additional information about the element, typically displayed as a tooltip.
+     */
     public ?string $title = null;
 
-    /** Specifies the media type of the linked resource. */
+    /**
+     * Specifies the media type of the linked resource.
+     */
     public ?string $type = null;
-
 
     public function setDownload(string $download): static
     {
@@ -177,7 +181,7 @@ class Anchor extends InlineElement
     public function setRel(string|RelEnum $rel): static
     {
         if (is_string($rel)) {
-            $rel = RelEnum::tryFrom($rel) ?? throw new \InvalidArgumentException("Invalid value for \$rel.");
+            $rel = RelEnum::tryFrom($rel) ?? throw new InvalidArgumentException('Invalid value for $rel.');
         }
         $this->rel = $rel;
         $this->delegated->setAttribute('rel', (string) $rel->value);
@@ -195,7 +199,7 @@ class Anchor extends InlineElement
         $value = $target;
         if (is_string($target)) {
             $resolved = TargetEnum::tryFrom($target);
-            if (!is_null($resolved)) {
+            if ($resolved !== null) {
                 $target = $resolved;
             }
         }
@@ -236,5 +240,4 @@ class Anchor extends InlineElement
     {
         return $this->type;
     }
-
 }

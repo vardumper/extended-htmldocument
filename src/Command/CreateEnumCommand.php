@@ -185,12 +185,12 @@ final class CreateEnumCommand extends Command
                         $type = $attributeDetails['type'];
                         // Support 'enum', 'enum|string', 'enum|boolean', etc.
                         if ($type === 'enum' || (is_string($type) && preg_match('/(^|\|)enum($|\|)/', $type))) {
-                            if (!isset($attributesByName[$attribute])) {
+                            if (! isset($attributesByName[$attribute])) {
                                 $attributesByName[$attribute] = [];
                             }
                             $attributesByName[$attribute][] = [
                                 'element' => $elementName,
-                                'details' => $attributeDetails
+                                'details' => $attributeDetails,
                             ];
                         }
                     }
@@ -210,11 +210,11 @@ final class CreateEnumCommand extends Command
                 sort($choices); // Sort for consistent comparison
                 $choiceKey = implode('|', $choices);
 
-                if (!isset($choiceSets[$choiceKey])) {
+                if (! isset($choiceSets[$choiceKey])) {
                     $choiceSets[$choiceKey] = [
                         'choices' => $choices,
                         'elements' => [],
-                        'details' => $occurrence['details']
+                        'details' => $occurrence['details'],
                     ];
                 }
                 $choiceSets[$choiceKey]['elements'][] = $occurrence['element'];

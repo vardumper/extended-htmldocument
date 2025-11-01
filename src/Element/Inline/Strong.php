@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Strong - The strong element represents strong importance, seriousness, or urgency for its contents.
- * 
+ *
  * @generated 2025-11-01 15:04:49
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -26,8 +26,8 @@ use Html\Element\Block\Navigation;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 #[Element('strong')]
 class Strong extends InlineElement
@@ -49,6 +49,7 @@ class Strong extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -92,9 +93,5 @@ class Strong extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
-
-
-
+    public static array $parentOf = [];
 }

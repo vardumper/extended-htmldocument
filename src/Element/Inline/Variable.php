@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Variable - The var element represents the name of a variable in a mathematical expression or a programming context.
- * 
+ *
  * @generated 2025-11-01 15:04:49
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/var
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -25,8 +25,8 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 #[Element('var')]
 class Variable extends InlineElement
@@ -48,6 +48,7 @@ class Variable extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -90,9 +91,5 @@ class Variable extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
-
-
-
+    public static array $parentOf = [];
 }

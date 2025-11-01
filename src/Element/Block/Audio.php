@@ -1,34 +1,25 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Audio - The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.
- * 
+ *
  * @generated 2025-11-01 15:04:49
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Body;
-use Html\Element\Block\DefinitionDescription;
-use Html\Element\Block\Division;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Header;
-use Html\Element\Block\Main;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\PreloadEnum;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 #[Element('audio')]
 class Audio extends BlockElement
@@ -44,6 +35,7 @@ class Audio extends BlockElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -86,35 +78,40 @@ class Audio extends BlockElement
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** When present, it specifies that the audio or video will automatically start playing as soon as it can do so without stopping. */
+    /**
+     * When present, it specifies that the audio or video will automatically start playing as soon as it can do so without stopping.
+     */
     public ?bool $autoplay = null;
 
-    /** When present, it specifies that audio or video controls should be displayed (such as play, pause, and volume). */
+    /**
+     * When present, it specifies that audio or video controls should be displayed (such as play, pause, and volume).
+     */
     public ?bool $controls = null;
 
-    /** Specifies how the element handles cross-origin requests. */
+    /**
+     * Specifies how the element handles cross-origin requests.
+     */
     public ?CrossoriginEnum $crossorigin = null;
 
-    /** When present, it specifies that the audio or video will start over again every time it is finished. */
+    /**
+     * When present, it specifies that the audio or video will start over again every time it is finished.
+     */
     public ?bool $loop = null;
 
-    /** When present, it specifies that the audio output of the video should be muted. */
+    /**
+     * When present, it specifies that the audio output of the video should be muted.
+     */
     public ?bool $muted = null;
 
-    /**  */
     public ?PreloadEnum $preload = null;
 
-    /** 
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
-     * @category HTML attribute
      * @required
      */
     public ?string $src = null;
-
 
     public function setAutoplay(bool $autoplay): static
     {
@@ -143,7 +140,9 @@ class Audio extends BlockElement
     public function setCrossorigin(string|CrossoriginEnum $crossorigin): static
     {
         if (is_string($crossorigin)) {
-            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new \InvalidArgumentException("Invalid value for \$crossorigin.");
+            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
+                'Invalid value for $crossorigin.'
+            );
         }
         $this->crossorigin = $crossorigin;
         $this->delegated->setAttribute('crossorigin', (string) $crossorigin->value);
@@ -183,7 +182,9 @@ class Audio extends BlockElement
     public function setPreload(string|PreloadEnum $preload): static
     {
         if (is_string($preload)) {
-            $preload = PreloadEnum::tryFrom($preload) ?? throw new \InvalidArgumentException("Invalid value for \$preload.");
+            $preload = PreloadEnum::tryFrom($preload) ?? throw new InvalidArgumentException(
+                'Invalid value for $preload.'
+            );
         }
         $this->preload = $preload;
         $this->delegated->setAttribute('preload', (string) $preload->value);
@@ -207,6 +208,4 @@ class Audio extends BlockElement
     {
         return $this->src;
     }
-
-
 }

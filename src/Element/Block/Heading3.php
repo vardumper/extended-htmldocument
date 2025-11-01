@@ -1,35 +1,22 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Heading3 - The h3 element represents a section heading. It has the third highest rank among the six levels of section headings.
- * 
+ *
  * @generated 2025-11-01 15:04:49
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h3
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Body;
-use Html\Element\Block\Dialog;
-use Html\Element\Block\Division;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Header;
-use Html\Element\Block\HeadingsGroup;
-use Html\Element\Block\Legend;
-use Html\Element\Block\Main;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Section;
-use Html\Element\Block\Template;
 use Html\Element\Inline\Slot;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 #[Element('h3')]
 class Heading3 extends BlockElement
@@ -51,6 +38,7 @@ class Heading3 extends BlockElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -96,10 +84,5 @@ class Heading3 extends BlockElement
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
-
-
-
-
+    public static array $parentOf = [];
 }

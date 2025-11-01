@@ -184,13 +184,13 @@ final class CreateClassCommand extends Command
         foreach ($allowedGlobalAttributes as $attribute) {
             $traitName = \ucwords(\str_replace(['-', '*'], '', $attribute)) . 'Trait';
             if ($traitName !== null) {
-                if (!in_array("Html\Trait\GlobalAttribute", $this->uses, true)) {
+                if (! in_array("Html\Trait\GlobalAttribute", $this->uses, true)) {
                     $this->uses[] = "Html\Trait\GlobalAttribute";
                 }
                 $traits[] = sprintf("    use GlobalAttribute\%s;\n", $traitName);
             }
         }
-        return implode("", $traits);
+        return implode('', $traits);
     }
 
     private function getUniquePerParent(array $elementData): bool
@@ -308,7 +308,7 @@ final class CreateClassCommand extends Command
         // then fall back to generic enum (e.g., RoleEnum)
         $elementSpecificEnumName = ucfirst($element) . $kebapCase . 'Enum';
         $genericEnumName = $kebapCase . 'Enum';
-        
+
         // Check if element-specific enum file exists
         $elementSpecificPath = __DIR__ . '/../Enum/' . $elementSpecificEnumName . '.php';
         if (file_exists($elementSpecificPath)) {
@@ -331,8 +331,12 @@ final class CreateClassCommand extends Command
         return $this->generatePureEnumMethod($type, $variableName, $methodName, $enumName, $attribute);
     }
 
-    private function generateSimpleMethod(string $attribute, string $type, string $variableName, string $methodName): string
-    {
+    private function generateSimpleMethod(
+        string $attribute,
+        string $type,
+        string $variableName,
+        string $methodName
+    ): string {
         return vsprintf($this->getSignatureSimple(), [
             $methodName,
             $type,
@@ -456,7 +460,7 @@ final class CreateClassCommand extends Command
         // then fall back to generic enum (e.g., RoleEnum)
         $elementSpecificEnumName = ucfirst($element) . $kebapCase . 'Enum';
         $genericEnumName = $kebapCase . 'Enum';
-        
+
         // Check if element-specific enum file exists
         $elementSpecificPath = __DIR__ . '/../Enum/' . $elementSpecificEnumName . '.php';
         if (file_exists($elementSpecificPath)) {

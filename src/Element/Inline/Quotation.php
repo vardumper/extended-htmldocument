@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Quotation - The q element represents some phrasing content quoted from another source.
- * 
+ *
  * @generated 2025-11-01 15:04:49
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -26,8 +26,8 @@ use Html\Element\Block\Navigation;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 #[Element('q')]
 class Quotation extends InlineElement
@@ -49,6 +49,7 @@ class Quotation extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -92,13 +93,12 @@ class Quotation extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** Specifies the URL of the cited work or the name of the cited creative work. */
+    /**
+     * Specifies the URL of the cited work or the name of the cited creative work.
+     */
     public ?string $cite = null;
-
 
     public function setCite(string $cite): static
     {
@@ -111,5 +111,4 @@ class Quotation extends InlineElement
     {
         return $this->cite;
     }
-
 }

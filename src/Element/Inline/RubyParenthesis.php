@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * RubyParenthesis - The rp element is used to provide fallback parentheses for browsers non-supporting ruby annotations. It can be used in complex ruby markup to provide parentheses around the rt element for browsers that do not support ruby elements.
- * 
+ *
  * @generated 2025-11-01 15:04:49
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/rp
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Aside;
@@ -21,10 +21,8 @@ use Html\Element\Block\Header;
 use Html\Element\Block\Main;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
-use Html\Element\Inline\MarkedText;
-use Html\Element\Inline\Ruby;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 #[Element('rp')]
 class RubyParenthesis extends InlineElement
@@ -46,6 +44,7 @@ class RubyParenthesis extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -86,9 +85,5 @@ class RubyParenthesis extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
-
-
-
+    public static array $parentOf = [];
 }

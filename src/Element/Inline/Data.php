@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Data - The data element represents its contents, along with a machine-readable form of those contents in the value attribute.
- * 
+ *
  * @generated 2025-11-01 15:04:49
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -25,8 +25,8 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 #[Element('data')]
 class Data extends InlineElement
@@ -48,6 +48,7 @@ class Data extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -90,13 +91,12 @@ class Data extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
+    /**
+     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
+     */
     public ?string $value = null;
-
 
     public function setValue(string $value): static
     {
@@ -109,5 +109,4 @@ class Data extends InlineElement
     {
         return $this->value;
     }
-
 }
