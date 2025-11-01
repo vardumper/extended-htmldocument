@@ -1,11 +1,12 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * TypeOlEnum - Specifies the numbering type of the ordered list.
- *
- * @generated 2025-10-31 13:14:52
+ * 
+ * @generated 2025-11-01 14:18:41
+ * @category HTML Attribute
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/type/
@@ -14,8 +15,7 @@
 
 namespace Html\Enum;
 
-enum TypeOlEnum: string
-{
+enum TypeOlEnum: string {
     case LA = 'a';
     case UA = 'A';
     case LI = 'i';

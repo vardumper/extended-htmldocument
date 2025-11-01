@@ -4,7 +4,7 @@
  *
  * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -31,7 +31,7 @@ use Html\Element\InlineElement;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
 use Html\Enum\AutocorrectEnum;
-use Html\Enum\TypeButtonEnum;
+use Html\Enum\ButtonTypeEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
 
@@ -124,7 +124,7 @@ class Button extends InlineElement
     public ?string $name = null;
 
     /** Specifies the type of the button. */
-    public ?TypeButtonEnum $type = null;
+    public ?ButtonTypeEnum $type = null;
 
     /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value = null;
@@ -182,10 +182,10 @@ class Button extends InlineElement
         return $this->name;
     }
 
-    public function setType(string|TypeButtonEnum $type): static
+    public function setType(string|ButtonTypeEnum $type): static
     {
         if (is_string($type)) {
-            $type = TypeButtonEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
+            $type = ButtonTypeEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
         }
         $this->type = $type;
         $this->delegated->setAttribute('type', (string) $type->value);
@@ -193,7 +193,7 @@ class Button extends InlineElement
         return $this;
     }
 
-    public function getType(): ?TypeButtonEnum
+    public function getType(): ?ButtonTypeEnum
     {
         return $this->type;
     }

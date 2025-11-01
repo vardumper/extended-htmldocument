@@ -4,7 +4,7 @@
  *
  * OrderedList - The ol element represents an ordered list of items. The order of the list is meaningful.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -29,7 +29,7 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\Inline\Slot;
-use Html\Enum\TypeOlEnum;
+use Html\Enum\OlTypeEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
 
@@ -115,7 +115,7 @@ class OrderedList extends BlockElement
      * @category HTML attribute
      * @example 1
      */
-    public ?TypeOlEnum $type = null;
+    public ?OlTypeEnum $type = null;
 
 
     public function setReversed(bool $reversed): static
@@ -142,10 +142,10 @@ class OrderedList extends BlockElement
         return $this->start;
     }
 
-    public function setType(string|TypeOlEnum $type): static
+    public function setType(string|OlTypeEnum $type): static
     {
         if (is_string($type)) {
-            $type = TypeOlEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
+            $type = OlTypeEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
         }
         $this->type = $type;
         $this->delegated->setAttribute('type', (string) $type->value);
@@ -153,7 +153,7 @@ class OrderedList extends BlockElement
         return $this;
     }
 
-    public function getType(): ?TypeOlEnum
+    public function getType(): ?OlTypeEnum
     {
         return $this->type;
     }

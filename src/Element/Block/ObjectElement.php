@@ -4,7 +4,7 @@
  *
  * ObjectElement - The object element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

@@ -4,7 +4,7 @@
  *
  * Title - The title element defines the title of the document, shown in a browser's title bar or a page's tab. It is only text, not meant to be displayed.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void

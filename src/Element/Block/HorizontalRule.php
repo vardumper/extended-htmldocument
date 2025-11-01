@@ -4,7 +4,7 @@
  *
  * HorizontalRule - The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -16,7 +16,7 @@ namespace Html\Element\Block;
 use Html\Element\BlockElement;
 use Html\Element\Block\Body;
 use Html\Element\Block\Paragraph;
-use Html\Enum\AlignEnum;
+use Html\Enum\HrAlignEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
 
@@ -73,7 +73,7 @@ class HorizontalRule extends BlockElement
      * @category HTML attribute
      * @deprecated
      */
-    public ?AlignEnum $align = null;
+    public ?HrAlignEnum $align = null;
 
     /** 
      * 
@@ -100,10 +100,10 @@ class HorizontalRule extends BlockElement
     public ?string $width = null;
 
 
-    public function setAlign(string|AlignEnum $align): static
+    public function setAlign(string|HrAlignEnum $align): static
     {
         if (is_string($align)) {
-            $align = AlignEnum::tryFrom($align) ?? throw new \InvalidArgumentException("Invalid value for \$align.");
+            $align = HrAlignEnum::tryFrom($align) ?? throw new \InvalidArgumentException("Invalid value for \$align.");
         }
         $this->align = $align;
         $this->delegated->setAttribute('align', (string) $align->value);
@@ -111,7 +111,7 @@ class HorizontalRule extends BlockElement
         return $this;
     }
 
-    public function getAlign(): ?AlignEnum
+    public function getAlign(): ?HrAlignEnum
     {
         return $this->align;
     }

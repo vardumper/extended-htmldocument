@@ -4,7 +4,7 @@
  *
  * PreformattedText - The pre element represents preformatted text. Text within this element is typically displayed in a non-proportional font exactly as it is laid out in the file.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

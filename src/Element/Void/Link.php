@@ -4,7 +4,7 @@
  *
  * Link - The link element defines a link between a document and an external resource. It is used to link to external stylesheets.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -16,8 +16,8 @@ namespace Html\Element\Void;
 use Html\Element\VoidElement;
 use Html\Element\Void\Head;
 use Html\Enum\CrossoriginEnum;
+use Html\Enum\LinkRelEnum;
 use Html\Enum\ReferrerpolicyEnum;
-use Html\Enum\RelEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
 
@@ -91,7 +91,7 @@ class Link extends VoidElement
     public ?ReferrerpolicyEnum $referrerpolicy = null;
 
     /** Specifies the relationship between the current document and the linked document. */
-    public ?RelEnum $rel = null;
+    public ?LinkRelEnum $rel = null;
 
     /** Specifies the sizes of the images or icons for different display/window sizes. */
     public ?string $sizes = null;
@@ -180,10 +180,10 @@ class Link extends VoidElement
         return $this->referrerpolicy;
     }
 
-    public function setRel(string|RelEnum $rel): static
+    public function setRel(string|LinkRelEnum $rel): static
     {
         if (is_string($rel)) {
-            $rel = RelEnum::tryFrom($rel) ?? throw new \InvalidArgumentException("Invalid value for \$rel.");
+            $rel = LinkRelEnum::tryFrom($rel) ?? throw new \InvalidArgumentException("Invalid value for \$rel.");
         }
         $this->rel = $rel;
         $this->delegated->setAttribute('rel', (string) $rel->value);
@@ -191,7 +191,7 @@ class Link extends VoidElement
         return $this;
     }
 
-    public function getRel(): ?RelEnum
+    public function getRel(): ?LinkRelEnum
     {
         return $this->rel;
     }

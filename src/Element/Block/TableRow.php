@@ -4,7 +4,7 @@
  *
  * TableRow - The tr element represents a row of cells in a table.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -20,7 +20,7 @@ use Html\Element\Block\TableData;
 use Html\Element\Block\TableFoot;
 use Html\Element\Block\TableHead;
 use Html\Element\Block\TableHeader;
-use Html\Enum\AlignEnum;
+use Html\Enum\TrAlignEnum;
 use Html\Enum\ValignEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
@@ -91,7 +91,7 @@ class TableRow extends BlockElement
      * @category HTML attribute
      * @deprecated
      */
-    public ?AlignEnum $align = null;
+    public ?TrAlignEnum $align = null;
 
     /** 
      * Defines the background color of each row cell. The value is an HTML color; either a 6-digit hexadecimal RGB code, prefixed by a #, or a color keyword. Other CSS <color> values are not supported. Use the background-color CSS property instead, as this attribute is deprecated.
@@ -122,10 +122,10 @@ class TableRow extends BlockElement
     public ?ValignEnum $valign = null;
 
 
-    public function setAlign(string|AlignEnum $align): static
+    public function setAlign(string|TrAlignEnum $align): static
     {
         if (is_string($align)) {
-            $align = AlignEnum::tryFrom($align) ?? throw new \InvalidArgumentException("Invalid value for \$align.");
+            $align = TrAlignEnum::tryFrom($align) ?? throw new \InvalidArgumentException("Invalid value for \$align.");
         }
         $this->align = $align;
         $this->delegated->setAttribute('align', (string) $align->value);
@@ -133,7 +133,7 @@ class TableRow extends BlockElement
         return $this;
     }
 
-    public function getAlign(): ?AlignEnum
+    public function getAlign(): ?TrAlignEnum
     {
         return $this->align;
     }

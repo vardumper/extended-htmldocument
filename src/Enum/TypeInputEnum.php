@@ -1,11 +1,12 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * TypeInputEnum - Specifies the type of the input. Defaults to text if the attribute is omitted
- *
- * @generated 2025-10-31 13:14:52
+ * 
+ * @generated 2025-11-01 14:18:41
+ * @category HTML Attribute
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/type/
@@ -14,8 +15,7 @@
 
 namespace Html\Enum;
 
-enum TypeInputEnum: string
-{
+enum TypeInputEnum: string {
     case BUTTON = 'button';
     case CHECKBOX = 'checkbox';
     case COLOR = 'color';

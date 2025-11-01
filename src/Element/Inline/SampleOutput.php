@@ -4,7 +4,7 @@
  *
  * SampleOutput - The samp element represents sample (or quoted) output from a computer program.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline

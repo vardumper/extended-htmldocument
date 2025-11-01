@@ -4,7 +4,7 @@
  *
  * Script - The script element is used to embed or reference an executable script within an HTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -21,7 +21,7 @@ use Html\Element\VoidElement;
 use Html\Element\Void\Head;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\ReferrerpolicyEnum;
-use Html\Enum\TypeScriptEnum;
+use Html\Enum\ScriptTypeEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
 
@@ -102,7 +102,7 @@ class Script extends VoidElement
      * @category HTML attribute
      * @example text/javascript
      */
-    public ?TypeScriptEnum $type = null;
+    public ?ScriptTypeEnum $type = null;
 
 
     public function setAsync(bool $async): static
@@ -209,10 +209,10 @@ class Script extends VoidElement
         return $this->src;
     }
 
-    public function setType(string|TypeScriptEnum $type): static
+    public function setType(string|ScriptTypeEnum $type): static
     {
         if (is_string($type)) {
-            $type = TypeScriptEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
+            $type = ScriptTypeEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
         }
         $this->type = $type;
         $this->delegated->setAttribute('type', (string) $type->value);
@@ -220,7 +220,7 @@ class Script extends VoidElement
         return $this;
     }
 
-    public function getType(): ?TypeScriptEnum
+    public function getType(): ?ScriptTypeEnum
     {
         return $this->type;
     }

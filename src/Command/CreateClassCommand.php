@@ -304,11 +304,24 @@ final class CreateClassCommand extends Command
             $details['elements'] = $elementsWithAttribute;
         }
 
-        if ($this->manyElementsHaveAttribute($attribute) && count($details['elements']) === 1) {
-            $kebapCase .= ucfirst($element);
+        // Check for element-specific enum first (e.g., ARoleEnum for anchor)
+        // then fall back to generic enum (e.g., RoleEnum)
+        $elementSpecificEnumName = ucfirst($element) . $kebapCase . 'Enum';
+        $genericEnumName = $kebapCase . 'Enum';
+        
+        // Check if element-specific enum file exists
+        $elementSpecificPath = __DIR__ . '/../Enum/' . $elementSpecificEnumName . '.php';
+        if (file_exists($elementSpecificPath)) {
+            $enumName = $elementSpecificEnumName;
+        } else {
+            // Fall back to generic enum or old logic for single-element attributes
+            if ($this->manyElementsHaveAttribute($attribute) && count($details['elements']) === 1) {
+                $enumName = $kebapCase . ucfirst($element) . 'Enum';
+            } else {
+                $enumName = $genericEnumName;
+            }
         }
 
-        $enumName = $kebapCase . 'Enum';
         $isUnionType = str_replace('enum', '', $type) !== '';
 
         if ($isUnionType) {
@@ -439,14 +452,27 @@ final class CreateClassCommand extends Command
             $details['elements'] = $elementsWithAttribute;
         }
 
-        if ($this->manyElementsHaveAttribute($attribute) && count($details['elements']) === 1) {
-            $kebapCase .= ucfirst($element);
+        // Check for element-specific enum first (e.g., ARoleEnum for anchor)
+        // then fall back to generic enum (e.g., RoleEnum)
+        $elementSpecificEnumName = ucfirst($element) . $kebapCase . 'Enum';
+        $genericEnumName = $kebapCase . 'Enum';
+        
+        // Check if element-specific enum file exists
+        $elementSpecificPath = __DIR__ . '/../Enum/' . $elementSpecificEnumName . '.php';
+        if (file_exists($elementSpecificPath)) {
+            $enumName = $elementSpecificEnumName;
+        } else {
+            // Fall back to generic enum or old logic for single-element attributes
+            if ($this->manyElementsHaveAttribute($attribute) && count($details['elements']) === 1) {
+                $enumName = $kebapCase . ucfirst($element) . 'Enum';
+            } else {
+                $enumName = $genericEnumName;
+            }
         }
 
-        $this->uses[] = sprintf("Html\Enum\%sEnum", $kebapCase);
+        $this->uses[] = sprintf("Html\Enum\%s", $enumName);
 
         $isUnionType = str_replace('enum', '', $type) !== '';
-        $enumName = $kebapCase . 'Enum';
 
         if ($isUnionType) {
             $otherTypes = $this->getOtherTypesFromEnum($type);

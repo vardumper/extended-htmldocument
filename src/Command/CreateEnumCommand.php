@@ -78,7 +78,14 @@ final class CreateEnumCommand extends Command
             $cases = '';
             $className = ucfirst($element);
 
-            if ($this->manyElementsHaveAttribute($element) && count($attributes['elements']) === 1) {
+            // If this is a generic enum (most common, >50% usage), don't prefix with element name
+            if (isset($attributes['_is_generic']) && $attributes['_is_generic']) {
+                // Keep generic name like "RoleEnum"
+                $className = ucfirst($element);
+            } elseif (isset($attributes['_element_specific']) && $attributes['_element_specific']) {
+                // Element-specific enum for less common cases, prefix with element name
+                $className = ucfirst($attributes['elements'][0]) . $className;
+            } elseif ($this->manyElementsHaveAttribute($element) && count($attributes['elements']) === 1) {
                 $className .= ucfirst($attributes['elements'][0]);
             }
 
@@ -168,21 +175,95 @@ final class CreateEnumCommand extends Command
     private function findEnumAttributes(): array
     {
         $enumAttributes = [];
-        $i = 0;
-        foreach ($this->data as $details) {
+        $attributesByName = []; // Track all enum attributes by name
+
+        // First pass: collect all enum attributes grouped by attribute name
+        foreach ($this->data as $elementName => $details) {
             if (isset($details['attributes'])) {
                 foreach ($details['attributes'] as $attribute => $attributeDetails) {
                     if (isset($attributeDetails['type'])) {
                         $type = $attributeDetails['type'];
                         // Support 'enum', 'enum|string', 'enum|boolean', etc.
                         if ($type === 'enum' || (is_string($type) && preg_match('/(^|\|)enum($|\|)/', $type))) {
-                            $enumAttributes[$i][$attribute] = $attributeDetails;
+                            if (!isset($attributesByName[$attribute])) {
+                                $attributesByName[$attribute] = [];
+                            }
+                            $attributesByName[$attribute][] = [
+                                'element' => $elementName,
+                                'details' => $attributeDetails
+                            ];
+                        }
+                    }
+                }
+            }
+        }
+
+        // Second pass: determine if we need element-specific enums
+        $i = 0;
+        foreach ($attributesByName as $attributeName => $occurrences) {
+            $choiceSets = [];
+            $totalElements = count($occurrences);
+
+            // Group occurrences by their choice sets
+            foreach ($occurrences as $occurrence) {
+                $choices = $occurrence['details']['choices'] ?? [];
+                sort($choices); // Sort for consistent comparison
+                $choiceKey = implode('|', $choices);
+
+                if (!isset($choiceSets[$choiceKey])) {
+                    $choiceSets[$choiceKey] = [
+                        'choices' => $choices,
+                        'elements' => [],
+                        'details' => $occurrence['details']
+                    ];
+                }
+                $choiceSets[$choiceKey]['elements'][] = $occurrence['element'];
+            }
+
+            // If there's only one unique choice set, create a single shared enum
+            if (count($choiceSets) === 1) {
+                $choiceSet = reset($choiceSets);
+                $enumAttributes[$i][$attributeName] = $choiceSet['details'];
+                $enumAttributes[$i][$attributeName]['elements'] = $choiceSet['elements'];
+                $i++;
+            } else {
+                // Multiple choice sets - find the most common one (>50% usage)
+                $mostCommonChoiceSet = null;
+                $mostCommonCount = 0;
+
+                foreach ($choiceSets as $choiceKey => $choiceSet) {
+                    $count = count($choiceSet['elements']);
+                    if ($count > $mostCommonCount) {
+                        $mostCommonCount = $count;
+                        $mostCommonChoiceSet = $choiceKey;
+                    }
+                }
+
+                $threshold = $totalElements / 2;
+
+                // Create enums based on usage threshold
+                foreach ($choiceSets as $choiceKey => $choiceSet) {
+                    $elementCount = count($choiceSet['elements']);
+
+                    if ($choiceKey === $mostCommonChoiceSet && $elementCount > $threshold) {
+                        // This is the most common choice set and used by >50% - create generic enum
+                        $enumAttributes[$i][$attributeName] = $choiceSet['details'];
+                        $enumAttributes[$i][$attributeName]['elements'] = $choiceSet['elements'];
+                        $enumAttributes[$i][$attributeName]['_is_generic'] = true;
+                        $i++;
+                    } else {
+                        // Less common choice set - create element-specific enums
+                        foreach ($choiceSet['elements'] as $elementName) {
+                            $enumAttributes[$i][$attributeName] = $choiceSet['details'];
+                            $enumAttributes[$i][$attributeName]['elements'] = [$elementName];
+                            $enumAttributes[$i][$attributeName]['_element_specific'] = true;
                             $i++;
                         }
                     }
                 }
             }
         }
+
         return $enumAttributes;
     }
 

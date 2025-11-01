@@ -4,7 +4,7 @@
  *
  * Header - The header element represents a container for introductory content or a set of navigational links. It typically contains the section's heading (an h1–h6 element or an hgroup element), but can also contain other content such as a table of contents, a search form, or any relevant logos.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

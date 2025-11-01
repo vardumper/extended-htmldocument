@@ -4,7 +4,7 @@
  *
  * Figure - The figure element represents self-contained content, potentially with an optional caption, which is specified using the (optional) figcaption element.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

@@ -4,7 +4,7 @@
  *
  * BidirectionalIsolation - The bdi element represents a span of text that is to be isolated from its surroundings for the purposes of bidirectional text formatting. (Bidirectional-isolate)
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline

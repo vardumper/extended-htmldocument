@@ -4,7 +4,7 @@
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -181,7 +181,7 @@ class Form extends BlockElement
     public function setAcceptCharset(string $acceptCharset): static
     {
         $this->acceptCharset = $acceptCharset;
-        $this->delegated->setAttribute('acceptCharset', (string) $acceptCharset);
+        $this->delegated->setAttribute('accept-charset', (string) $acceptCharset);
         return $this;
     }
 

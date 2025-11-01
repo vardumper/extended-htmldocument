@@ -4,7 +4,7 @@
  *
  * Input - The input element represents a typed data field, usually with a form control to allow user input.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -31,7 +31,7 @@ use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\AutocorrectEnum;
-use Html\Enum\TypeInputEnum;
+use Html\Enum\InputTypeEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
 
@@ -184,7 +184,7 @@ class Input extends InlineElement
      * @category HTML attribute
      * @example text
      */
-    public ?TypeInputEnum $type = null;
+    public ?InputTypeEnum $type = null;
 
     /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value = null;
@@ -465,10 +465,10 @@ class Input extends InlineElement
         return $this->step;
     }
 
-    public function setType(string|TypeInputEnum $type): static
+    public function setType(string|InputTypeEnum $type): static
     {
         if (is_string($type)) {
-            $type = TypeInputEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
+            $type = InputTypeEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
         }
         $this->type = $type;
         $this->delegated->setAttribute('type', (string) $type->value);
@@ -476,7 +476,7 @@ class Input extends InlineElement
         return $this;
     }
 
-    public function getType(): ?TypeInputEnum
+    public function getType(): ?InputTypeEnum
     {
         return $this->type;
     }

@@ -4,7 +4,7 @@
  *
  * Anchor - The a element represents a hyperlink, linking to another resource.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -208,7 +208,7 @@ class Anchor extends InlineElement
         return $this;
     }
 
-    public function getTarget(): string|TargetEnum
+    public function getTarget(): null|string|TargetEnum
     {
         return $this->target;
     }

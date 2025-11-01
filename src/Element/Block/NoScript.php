@@ -4,7 +4,7 @@
  *
  * NoScript - The noscript element defines an alternate content for users that have disabled scripts in their browser or have a browser that doesn't support script.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

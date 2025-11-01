@@ -4,7 +4,7 @@
  *
  * Head - The head element contains meta-information about the HTML document, including its title and links to its scripts and stylesheets.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void

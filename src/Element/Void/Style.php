@@ -4,7 +4,7 @@
  *
  * Style - The style element is used to embed CSS styles directly into an HTML document.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -16,7 +16,7 @@ namespace Html\Element\Void;
 use Html\Element\Inline\ScalableVectorGraphics;
 use Html\Element\VoidElement;
 use Html\Element\Void\Head;
-use Html\Enum\TypeStyleEnum;
+use Html\Enum\StyleTypeEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
 
@@ -77,7 +77,7 @@ class Style extends VoidElement
     
      * @example text/css
      */
-    public ?TypeStyleEnum $type = null;
+    public ?StyleTypeEnum $type = null;
 
 
     public function setMedia(string $media): static
@@ -116,10 +116,10 @@ class Style extends VoidElement
         return $this->title;
     }
 
-    public function setType(string|TypeStyleEnum $type): static
+    public function setType(string|StyleTypeEnum $type): static
     {
         if (is_string($type)) {
-            $type = TypeStyleEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
+            $type = StyleTypeEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
         }
         $this->type = $type;
         $this->delegated->setAttribute('type', (string) $type->value);
@@ -127,7 +127,7 @@ class Style extends VoidElement
         return $this;
     }
 
-    public function getType(): ?TypeStyleEnum
+    public function getType(): ?StyleTypeEnum
     {
         return $this->type;
     }

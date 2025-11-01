@@ -1,0 +1,41 @@
+'/^(?!area|base|body|br|col|embed|head|hr|img|link|meta|meter|noscript|output|param|progress|script|source|track|wbr|script|style|title|html|form$)[a-z][a-z0-9]*$/':
+  attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum|string
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip

@@ -7,6 +7,7 @@ use Html\Command\BatchGeneratorCommand;
 use Html\Command\CreateClassCommand;
 use Html\Command\CreateEnumCommand;
 use Html\Command\CreateJsonCommand;
+use Html\Command\MergeSpecifications;
 use Html\Command\WatchCommand;
 use Html\Service\ComponentBuilder;
 use Symfony\Component\Console\Input\InputInterface;
@@ -36,6 +37,10 @@ $app->command('make:all [--specification=]', function (InputInterface $input, Ou
 $app->command('generate:all [generator] [dest] [--overwrite-existing=]', function ($generator, $dest, InputInterface $input, OutputInterface $output, $overwriteExisting = false) {
     (new BatchGeneratorCommand())($generator, $dest, $input, $output, (bool) $overwriteExisting);
 })->descriptions('Generates templates. Uses a given generator. Requires a Generator Name (eg. html, twig) and a destination path for the generated templates. You can also provide a list of generators separated by comma.', ['generator' => 'name of the generator(s)', 'dest' => 'destination path']);
+
+$app->command('merge:specs [import] [dest]', function ($import, $dest, InputInterface $input, OutputInterface $output) {
+   return (new MergeSpecifications())($import, $dest, $input, $output);
+})->descriptions('Merges custom framework or feature specifications into the HTML5 specifications and saves the result to a given destination file.', ['import' => 'path to the custom specifications file', 'dest' => 'path to the destination file']);
 
 $sourceDefault = realpath(__DIR__ . '/../examples/template-generator/source');
 $destDefault = realpath(__DIR__ . '/../examples/template-generator/dest');

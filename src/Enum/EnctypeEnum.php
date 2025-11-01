@@ -1,11 +1,12 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * EnctypeEnum - Specifies how form data should be encoded before sending it to a server. Only used if the method attribute is set to post. Default is application/x-www-form-urlencoded.
- *
- * @generated 2025-10-31 13:14:52
+ * 
+ * @generated 2025-11-01 15:04:46
+ * @category HTML Attribute
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/enctype/
@@ -13,8 +14,7 @@
 
 namespace Html\Enum;
 
-enum EnctypeEnum: string
-{
+enum EnctypeEnum: string {
     case APPLICATION_X_WWW_FORM_URLENCODED = 'application/x-www-form-urlencoded';
     case MULTIPART_FORM_DATA = 'multipart/form-data';
     case TEXT_PLAIN = 'text/plain';

@@ -4,7 +4,7 @@
  *
  * Area - The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.
  * 
- * @generated 2025-10-31 22:22:33
+ * @generated 2025-11-01 15:04:49
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
