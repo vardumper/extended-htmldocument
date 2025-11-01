@@ -393,7 +393,7 @@ final class CreateClassCommand extends Command
             $variableName,
             $variableName,
             $variableName,
-            $variableName,
+            $attribute,
             $methodName,
             $returnType,
             $variableName,
