@@ -10,6 +10,7 @@
 {% block iframe %}
 {% set dir_choices = ['ltr', 'rtl', 'auto'] %}
 {% set referrerpolicy_choices = ['no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', 'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'] %}
+{% set role_choices = ['alert', 'application', 'article', 'banner', 'button', 'checkbox', 'complementary', 'contentinfo', 'dialog', 'form', 'grid', 'group', 'heading', 'img', 'link', 'list', 'listbox', 'listitem', 'main', 'menu', 'menubar', 'menuitem', 'navigation', 'none', 'presentation', 'radio', 'region', 'search', 'status', 'tab', 'tablist', 'tabpanel', 'textbox', 'toolbar', 'tooltip'] %}
 <iframe
   {% if allowfullscreen is defined and allowfullscreen|length > 0 %}allowfullscreen="{{ allowfullscreen }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
@@ -20,6 +21,7 @@
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
   {% if name is defined and name|length > 0 %}name="{{ name }}"{% endif %}
   {% if referrerpolicy is defined and referrerpolicy|length > 0 and referrerpolicy in referrerpolicy_choices %}referrerpolicy="{{ referrerpolicy }}"{% endif %}
+  {% if role is defined and role|length > 0 and role in role_choices %}role="{{ role }}"{% endif %}
   {% if attribute(_context, 'sandbox') is defined and attribute(_context, 'sandbox')|length > 0 %}sandbox="{{ attribute(_context, 'sandbox') }}"{% endif %}
   {% if seamless is defined and seamless|length > 0 %}seamless="{{ seamless }}"{% endif %}
   {% if src is defined and src|length > 0 %}src="{{ src }}"{% endif %}

@@ -21,7 +21,7 @@ use Symfony\Component\Yaml\Yaml;
  */
 final class CreateClassCommand extends Command
 {
-    private const HTML_DEFINITION_PATH = __DIR__ . '/../Resources/specifications/html5.yaml';
+    private const HTML_DEFINITION_PATH = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
 
     private const TEMPLATE_PATH = __DIR__ . '/../Resources/templates/';
 

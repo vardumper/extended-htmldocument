@@ -1,24 +1,29 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * ScalableVectorGraphics - The svg element is a container for embedded SVG graphics.
- *
- * @generated 2025-11-01 15:04:49
+ * 
+ * @generated 2025-11-01 20:20:24
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/svg
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\InlineElement;
+use Html\Element\Inline\Anchor;
 use Html\Element\Void\Script;
 use Html\Element\Void\Style;
 use Html\Element\Void\Title;
-use Html\Mapping\Element;
+use Html\Enum\AriaBusyEnum;
+use Html\Enum\AriaHiddenEnum;
+use Html\Enum\AriaLabelEnum;
+use Html\Enum\RoleEnum;
 use Html\Trait\GlobalAttribute;
+use Html\Mapping\Element;
 
 #[Element('svg')]
 class ScalableVectorGraphics extends InlineElement
@@ -40,7 +45,6 @@ class ScalableVectorGraphics extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
-
     /**
      * The HTML element name
      */
@@ -65,44 +69,74 @@ class ScalableVectorGraphics extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [self::class];
+    public static array $childOf = [
+        ScalableVectorGraphics::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [Anchor::class, Script::class, Style::class, self::class, Title::class];
+    public static array $parentOf = [
+        Anchor::class,
+        Script::class,
+        Style::class,
+        ScalableVectorGraphics::class,
+        Title::class,
+    ];
 
-    /**
+
+    /** 
      * Specifies the XML namespace for the SVG element.
+     * @category HTML attribute
      * @example http://www.w3.org/2000/svg
      */
     public ?string $xmlns = null;
 
-    /**
-     * Defines the position and dimension, in user space, of an SVG viewport.
-     */
+    /** Defines the position and dimension, in user space, of an SVG viewport. */
     public ?string $viewBox = null;
 
-    /**
-     * Specifies the color of the stroke (outline) of shapes.
-     */
+    /** Specifies the color of the stroke (outline) of shapes. */
     public ?string $stroke = null;
 
-    /**
-     * Specifies the color of the interior of shapes.
-     */
+    /** Specifies the color of the interior of shapes. */
     public ?string $fill = null;
 
-    /**
-     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
-     */
+    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width = null;
 
-    /**
-     * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
-     */
+    /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $height = null;
+
+    /** Defines the semantic purpose of an element for assistive technologies. */
+    public null|string|RoleEnum $role = null;
+
+    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    public ?string $ariaControls = null;
+
+    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    public ?string $ariaDescribedby = null;
+
+    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    public ?string $ariaLabelledby = null;
+
+    /** 
+     * The aria-busy attribute is used to indicate whether an element is currently busy or not.
+     * @category HTML attribute
+     * @example false
+     */
+    public null|string|AriaBusyEnum $ariaBusy = null;
+
+    /** 
+     * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaHiddenEnum $ariaHidden = null;
+
+    /** Defines a string value that labels the current element for assistive technologies. */
+    public null|string|AriaLabelEnum $ariaLabel = null;
+
 
     public function setXmlns(string $xmlns): static
     {
@@ -175,4 +209,126 @@ class ScalableVectorGraphics extends InlineElement
     {
         return $this->height;
     }
+
+    public function setRole(string|RoleEnum $role): static
+    {
+        $value = $role;
+        if (is_string($role)) {
+            $resolved = RoleEnum::tryFrom($role);
+            if (!is_null($resolved)) {
+                $role = $resolved;
+            }
+        }
+        if ($role instanceof RoleEnum) {
+            $value = $role->value;
+        }
+        $this->role = $role;
+        $this->delegated->setAttribute('role', (string) $value);
+
+        return $this;
+    }
+
+    public function getRole(): null|string|RoleEnum
+    {
+        return $this->role;
+    }
+
+    public function setAriaControls(string $ariaControls): static
+    {
+        $this->ariaControls = $ariaControls;
+        $this->delegated->setAttribute('aria-controls', (string) $ariaControls);
+        return $this;
+    }
+
+    public function getAriaControls(): ?string
+    {
+        return $this->ariaControls;
+    }
+
+    public function setAriaDescribedby(string $ariaDescribedby): static
+    {
+        $this->ariaDescribedby = $ariaDescribedby;
+        $this->delegated->setAttribute('aria-describedby', (string) $ariaDescribedby);
+        return $this;
+    }
+
+    public function getAriaDescribedby(): ?string
+    {
+        return $this->ariaDescribedby;
+    }
+
+    public function setAriaLabelledby(string $ariaLabelledby): static
+    {
+        $this->ariaLabelledby = $ariaLabelledby;
+        $this->delegated->setAttribute('aria-labelledby', (string) $ariaLabelledby);
+        return $this;
+    }
+
+    public function getAriaLabelledby(): ?string
+    {
+        return $this->ariaLabelledby;
+    }
+
+    public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
+    {
+        $value = $ariaBusy;
+        if (is_string($ariaBusy)) {
+            $resolved = AriaBusyEnum::tryFrom($ariaBusy);
+            if (!is_null($resolved)) {
+                $ariaBusy = $resolved;
+            }
+        }
+        if ($ariaBusy instanceof AriaBusyEnum) {
+            $value = $ariaBusy->value;
+        }
+        $this->ariaBusy = $ariaBusy;
+        $this->delegated->setAttribute('aria-busy', (string) $value);
+
+        return $this;
+    }
+
+    public function getAriaBusy(): null|string|AriaBusyEnum
+    {
+        return $this->ariaBusy;
+    }
+
+    public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
+    {
+        if (is_string($ariaHidden)) {
+            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
+        }
+        $this->ariaHidden = $ariaHidden;
+        $this->delegated->setAttribute('aria-hidden', (string) $ariaHidden->value);
+
+        return $this;
+    }
+
+    public function getAriaHidden(): ?AriaHiddenEnum
+    {
+        return $this->ariaHidden;
+    }
+
+    public function setAriaLabel(string|AriaLabelEnum $ariaLabel): static
+    {
+        $value = $ariaLabel;
+        if (is_string($ariaLabel)) {
+            $resolved = AriaLabelEnum::tryFrom($ariaLabel);
+            if (!is_null($resolved)) {
+                $ariaLabel = $resolved;
+            }
+        }
+        if ($ariaLabel instanceof AriaLabelEnum) {
+            $value = $ariaLabel->value;
+        }
+        $this->ariaLabel = $ariaLabel;
+        $this->delegated->setAttribute('aria-label', (string) $value);
+
+        return $this;
+    }
+
+    public function getAriaLabel(): null|string|AriaLabelEnum
+    {
+        return $this->ariaLabel;
+    }
+
 }

@@ -1,16 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Italic - The i element represents a span of text in an alternate voice or mood, or otherwise offset from the normal prose, such as a taxonomic designation, a technical term, an idiomatic phrase from another language, a thought, or a ship name in Western texts.
- *
- * @generated 2025-11-01 15:04:49
+ * 
+ * @generated 2025-11-01 20:20:24
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -25,8 +25,9 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
-use Html\Mapping\Element;
+use Html\Enum\AriaHiddenEnum;
 use Html\Trait\GlobalAttribute;
+use Html\Mapping\Element;
 
 #[Element('i')]
 class Italic extends InlineElement
@@ -48,7 +49,6 @@ class Italic extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
-
     /**
      * The HTML element name
      */
@@ -91,5 +91,32 @@ class Italic extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
+
+
+    /** 
+     * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaHiddenEnum $ariaHidden = null;
+
+
+    public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
+    {
+        if (is_string($ariaHidden)) {
+            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
+        }
+        $this->ariaHidden = $ariaHidden;
+        $this->delegated->setAttribute('aria-hidden', (string) $ariaHidden->value);
+
+        return $this;
+    }
+
+    public function getAriaHidden(): ?AriaHiddenEnum
+    {
+        return $this->ariaHidden;
+    }
+
 }

@@ -34,8 +34,8 @@ $app->command('make:all [--specification=]', function (InputInterface $input, Ou
 })->descriptions('Creates or re-creates all PHP classes for all HTML Elements and backed enums for static HTML attributes');
 
 // generating Templates (.html,.twig,.php) for HTML elements
-$app->command('generate:all [generator] [dest] [--overwrite-existing=]', function ($generator, $dest, InputInterface $input, OutputInterface $output, $overwriteExisting = false) {
-    (new BatchGeneratorCommand())($generator, $dest, $input, $output, (bool) $overwriteExisting);
+$app->command('generate:all [generator] [dest] [--overwrite-existing=] [--specification=]', function ($generator, $dest, InputInterface $input, OutputInterface $output, $overwriteExisting = false, $specification = null) {
+    (new BatchGeneratorCommand())($generator, $dest, $input, $output, (bool) $overwriteExisting, $specification);
 })->descriptions('Generates templates. Uses a given generator. Requires a Generator Name (eg. html, twig) and a destination path for the generated templates. You can also provide a list of generators separated by comma.', ['generator' => 'name of the generator(s)', 'dest' => 'destination path']);
 
 $app->command('merge:specs [import] [dest]', function ($import, $dest, InputInterface $input, OutputInterface $output) {

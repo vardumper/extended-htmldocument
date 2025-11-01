@@ -1,19 +1,50 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Header - The header element represents a container for introductory content or a set of navigational links. It typically contains the section's heading (an h1–h6 element or an hgroup element), but can also contain other content such as a table of contents, a search form, or any relevant logos.
- *
- * @generated 2025-11-01 15:04:49
+ * 
+ * @generated 2025-11-01 20:20:24
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Audio;
+use Html\Element\Block\Body;
+use Html\Element\Block\DefinitionDescription;
+use Html\Element\Block\DefinitionList;
+use Html\Element\Block\DefinitionTerm;
+use Html\Element\Block\DeletedText;
+use Html\Element\Block\Details;
+use Html\Element\Block\Division;
+use Html\Element\Block\Embed;
+use Html\Element\Block\Figure;
+use Html\Element\Block\FigureCaption;
+use Html\Element\Block\Form;
+use Html\Element\Block\Heading1;
+use Html\Element\Block\Heading2;
+use Html\Element\Block\Heading3;
+use Html\Element\Block\Heading4;
+use Html\Element\Block\Heading5;
+use Html\Element\Block\Heading6;
+use Html\Element\Block\InlineFrame;
+use Html\Element\Block\InsertedText;
+use Html\Element\Block\ListItem;
+use Html\Element\Block\Map;
+use Html\Element\Block\ObjectElement;
+use Html\Element\Block\OrderedList;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\Picture;
+use Html\Element\Block\PreformattedText;
+use Html\Element\Block\Summary;
+use Html\Element\Block\Table;
+use Html\Element\Block\UnorderedList;
+use Html\Element\Block\Video;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\BidirectionalIsolation;
@@ -52,8 +83,9 @@ use Html\Element\Void\Parameter;
 use Html\Element\Void\Source;
 use Html\Element\Void\Track;
 use Html\Element\Void\WordBreakOpportunity;
-use Html\Mapping\Element;
+use Html\Enum\AriaLabelEnum;
 use Html\Trait\GlobalAttribute;
+use Html\Mapping\Element;
 
 #[Element('header')]
 class Header extends BlockElement
@@ -75,7 +107,6 @@ class Header extends BlockElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
-
     /**
      * The HTML element name
      */
@@ -100,7 +131,10 @@ class Header extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Body::class, Paragraph::class];
+    public static array $childOf = [
+        Body::class,
+        Paragraph::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -176,4 +210,34 @@ class Header extends BlockElement
         Video::class,
         WordBreakOpportunity::class,
     ];
+
+
+    /** Defines a string value that labels the current element for assistive technologies. */
+    public null|string|AriaLabelEnum $ariaLabel = null;
+
+
+    public function setAriaLabel(string|AriaLabelEnum $ariaLabel): static
+    {
+        $value = $ariaLabel;
+        if (is_string($ariaLabel)) {
+            $resolved = AriaLabelEnum::tryFrom($ariaLabel);
+            if (!is_null($resolved)) {
+                $ariaLabel = $resolved;
+            }
+        }
+        if ($ariaLabel instanceof AriaLabelEnum) {
+            $value = $ariaLabel->value;
+        }
+        $this->ariaLabel = $ariaLabel;
+        $this->delegated->setAttribute('aria-label', (string) $value);
+
+        return $this;
+    }
+
+    public function getAriaLabel(): null|string|AriaLabelEnum
+    {
+        return $this->ariaLabel;
+    }
+
+
 }

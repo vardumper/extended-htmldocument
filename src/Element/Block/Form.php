@@ -1,19 +1,37 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
- *
- * @generated 2025-11-01 15:04:49
+ * 
+ * @generated 2025-11-01 20:20:24
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Article;
+use Html\Element\Block\Body;
+use Html\Element\Block\Canvas;
+use Html\Element\Block\DataList;
+use Html\Element\Block\DefinitionDescription;
+use Html\Element\Block\Details;
+use Html\Element\Block\Dialog;
+use Html\Element\Block\Division;
+use Html\Element\Block\Fieldset;
+use Html\Element\Block\Header;
+use Html\Element\Block\Legend;
+use Html\Element\Block\Main;
+use Html\Element\Block\Menu;
+use Html\Element\Block\NoScript;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\Section;
+use Html\Element\Block\Summary;
+use Html\Element\Block\Template;
 use Html\Element\Inline\Button;
 use Html\Element\Inline\Input;
 use Html\Element\Inline\Label;
@@ -25,14 +43,15 @@ use Html\Element\Inline\Select;
 use Html\Element\Inline\Slot;
 use Html\Element\Inline\Textarea;
 use Html\Element\Void\Script;
+use Html\Enum\AriaInvalidEnum;
+use Html\Enum\AriaLabelEnum;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\AutocorrectEnum;
 use Html\Enum\EnctypeEnum;
 use Html\Enum\MethodEnum;
 use Html\Enum\TargetEnum;
-use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute;
-use InvalidArgumentException;
+use Html\Mapping\Element;
 
 #[Element('form')]
 class Form extends BlockElement
@@ -49,7 +68,6 @@ class Form extends BlockElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
-
     /**
      * The HTML element name
      */
@@ -117,53 +135,60 @@ class Form extends BlockElement
         Textarea::class,
     ];
 
-    /**
-     * Specifies the character encodings that are to be used for form submission.
-     */
+
+    /** Specifies the character encodings that are to be used for form submission. */
     public ?string $acceptCharset = null;
 
-    /**
-     * Specifies the URL where the form data should be submitted when the form is submitted.
-     */
+    /** Specifies the URL where the form data should be submitted when the form is submitted. */
     public ?string $action = null;
 
-    /**
+    /** 
      * Specifies whether a form or input field should have autocomplete enabled. Default is on.
+     * @category HTML attribute
      * @example on
      */
     public ?AutocompleteEnum $autocomplete = null;
 
-    /**
+    /** 
      * Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.
+     * @category HTML attribute
      * @example on
      */
     public ?AutocorrectEnum $autocorrect = null;
 
-    /**
-     * Specifies how form data should be encoded before sending it to a server. Only used if the method attribute is set to post. Default is application/x-www-form-urlencoded.
-     */
+    /** Specifies how form data should be encoded before sending it to a server. Only used if the method attribute is set to post. Default is application/x-www-form-urlencoded. */
     public ?EnctypeEnum $enctype = null;
 
-    /**
+    /** 
+     * 
+     * @category HTML attribute
      * @example get
      */
     public ?MethodEnum $method = null;
 
-    /**
-     * Specifies the name associated with the element. The meaning may vary depending on the context.
-     */
+    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
     public ?string $name = null;
 
-    /**
-     * When present, it specifies that a form should not be validated when submitted.
-     */
+    /** When present, it specifies that a form should not be validated when submitted. */
     public ?bool $novalidate = null;
 
-    /**
+    /** 
      * Specifies where to open the linked document.
+     * @category HTML attribute
      * @example _self
      */
     public ?TargetEnum $target = null;
+
+    /** 
+     * Indicates that the value entered does not conform to the expected format.
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaInvalidEnum $ariaInvalid = null;
+
+    /** Defines a string value that labels the current element for assistive technologies. */
+    public null|string|AriaLabelEnum $ariaLabel = null;
+
 
     public function setAcceptCharset(string $acceptCharset): static
     {
@@ -192,9 +217,7 @@ class Form extends BlockElement
     public function setAutocomplete(string|AutocompleteEnum $autocomplete): static
     {
         if (is_string($autocomplete)) {
-            $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new InvalidArgumentException(
-                'Invalid value for $autocomplete.'
-            );
+            $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new \InvalidArgumentException("Invalid value for \$autocomplete.");
         }
         $this->autocomplete = $autocomplete;
         $this->delegated->setAttribute('autocomplete', (string) $autocomplete->value);
@@ -210,9 +233,7 @@ class Form extends BlockElement
     public function setAutocorrect(string|AutocorrectEnum $autocorrect): static
     {
         if (is_string($autocorrect)) {
-            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new InvalidArgumentException(
-                'Invalid value for $autocorrect.'
-            );
+            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new \InvalidArgumentException("Invalid value for \$autocorrect.");
         }
         $this->autocorrect = $autocorrect;
         $this->delegated->setAttribute('autocorrect', (string) $autocorrect->value);
@@ -228,9 +249,7 @@ class Form extends BlockElement
     public function setEnctype(string|EnctypeEnum $enctype): static
     {
         if (is_string($enctype)) {
-            $enctype = EnctypeEnum::tryFrom($enctype) ?? throw new InvalidArgumentException(
-                'Invalid value for $enctype.'
-            );
+            $enctype = EnctypeEnum::tryFrom($enctype) ?? throw new \InvalidArgumentException("Invalid value for \$enctype.");
         }
         $this->enctype = $enctype;
         $this->delegated->setAttribute('enctype', (string) $enctype->value);
@@ -246,7 +265,7 @@ class Form extends BlockElement
     public function setMethod(string|MethodEnum $method): static
     {
         if (is_string($method)) {
-            $method = MethodEnum::tryFrom($method) ?? throw new InvalidArgumentException('Invalid value for $method.');
+            $method = MethodEnum::tryFrom($method) ?? throw new \InvalidArgumentException("Invalid value for \$method.");
         }
         $this->method = $method;
         $this->delegated->setAttribute('method', (string) $method->value);
@@ -286,7 +305,7 @@ class Form extends BlockElement
     public function setTarget(string|TargetEnum $target): static
     {
         if (is_string($target)) {
-            $target = TargetEnum::tryFrom($target) ?? throw new InvalidArgumentException('Invalid value for $target.');
+            $target = TargetEnum::tryFrom($target) ?? throw new \InvalidArgumentException("Invalid value for \$target.");
         }
         $this->target = $target;
         $this->delegated->setAttribute('target', (string) $target->value);
@@ -298,4 +317,45 @@ class Form extends BlockElement
     {
         return $this->target;
     }
+
+    public function setAriaInvalid(string|AriaInvalidEnum $ariaInvalid): static
+    {
+        if (is_string($ariaInvalid)) {
+            $ariaInvalid = AriaInvalidEnum::tryFrom($ariaInvalid) ?? throw new \InvalidArgumentException("Invalid value for \$ariaInvalid.");
+        }
+        $this->ariaInvalid = $ariaInvalid;
+        $this->delegated->setAttribute('aria-invalid', (string) $ariaInvalid->value);
+
+        return $this;
+    }
+
+    public function getAriaInvalid(): ?AriaInvalidEnum
+    {
+        return $this->ariaInvalid;
+    }
+
+    public function setAriaLabel(string|AriaLabelEnum $ariaLabel): static
+    {
+        $value = $ariaLabel;
+        if (is_string($ariaLabel)) {
+            $resolved = AriaLabelEnum::tryFrom($ariaLabel);
+            if (!is_null($resolved)) {
+                $ariaLabel = $resolved;
+            }
+        }
+        if ($ariaLabel instanceof AriaLabelEnum) {
+            $value = $ariaLabel->value;
+        }
+        $this->ariaLabel = $ariaLabel;
+        $this->delegated->setAttribute('aria-label', (string) $value);
+
+        return $this;
+    }
+
+    public function getAriaLabel(): null|string|AriaLabelEnum
+    {
+        return $this->ariaLabel;
+    }
+
+
 }

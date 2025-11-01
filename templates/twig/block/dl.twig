@@ -12,6 +12,7 @@
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set dir_choices = ['ltr', 'rtl', 'auto'] %}
 {% set inputmode_choices = ['none', 'text', 'decimal', 'numeric', 'email', 'tel', 'url', 'search'] %}
+{% set role_choices = ['alert', 'application', 'article', 'banner', 'button', 'checkbox', 'complementary', 'contentinfo', 'dialog', 'form', 'grid', 'group', 'heading', 'img', 'link', 'list', 'listbox', 'listitem', 'main', 'menu', 'menubar', 'menuitem', 'navigation', 'none', 'presentation', 'radio', 'region', 'search', 'status', 'tab', 'tablist', 'tabpanel', 'textbox', 'toolbar', 'tooltip'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 {% set translate_choices = ['yes', 'no'] %}
 <dl
@@ -26,6 +27,7 @@
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
   {% if inputmode is defined and inputmode|length > 0 and inputmode in inputmode_choices %}inputmode="{{ inputmode }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
+  {% if role is defined and role|length > 0 and role in role_choices %}role="{{ role }}"{% endif %}
   {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck="{{ spellcheck }}"{% endif %}
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
   {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}

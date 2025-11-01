@@ -10,6 +10,7 @@
 {% block audio %}
 {% set crossorigin_choices = ['anonymous', 'use-credentials'] %}
 {% set preload_choices = ['auto', 'metadata', 'none'] %}
+{% set role_choices = ['alert', 'application', 'article', 'banner', 'button', 'checkbox', 'complementary', 'contentinfo', 'dialog', 'form', 'grid', 'group', 'heading', 'img', 'link', 'list', 'listbox', 'listitem', 'main', 'menu', 'menubar', 'menuitem', 'navigation', 'none', 'presentation', 'radio', 'region', 'search', 'status', 'tab', 'tablist', 'tabpanel', 'textbox', 'toolbar', 'tooltip'] %}
 {% set translate_choices = ['yes', 'no'] %}
 <audio
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
@@ -24,6 +25,7 @@
   {% if attribute(_context, 'loop') is defined and attribute(_context, 'loop')|length > 0 %}loop="{{ attribute(_context, 'loop') }}"{% endif %}
   {% if muted is defined and muted|length > 0 %}muted="{{ muted }}"{% endif %}
   {% if preload is defined and preload|length > 0 and preload in preload_choices %}preload="{{ preload }}"{% endif %}
+  {% if role is defined and role|length > 0 and role in role_choices %}role="{{ role }}"{% endif %}
   {% if src is defined and src|length > 0 %}src="{{ src }}"{% endif %}
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
   {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}

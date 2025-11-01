@@ -39,7 +39,7 @@ final class CreateEnumCommand extends Command
             $this->data = Yaml::parseFile($specificationPath);
         } else {
             // load default specs
-            $htmlDefinitionPath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'specifications' . \DIRECTORY_SEPARATOR . 'html5.yaml';
+            $htmlDefinitionPath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'specifications' . \DIRECTORY_SEPARATOR . 'html5-with-aria.yaml';
             if (! is_file($htmlDefinitionPath)) {
                 $io->error('HTML definition file not found.');
                 return Command::FAILURE;

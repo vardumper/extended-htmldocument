@@ -1,23 +1,36 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Summary - The summary element represents a summary, caption, or legend for the rest of the contents of the summary element's parent details element, if any.
- *
- * @generated 2025-11-01 15:04:49
+ * 
+ * @generated 2025-11-01 20:20:24
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Aside;
+use Html\Element\Block\DefinitionDescription;
+use Html\Element\Block\Details;
+use Html\Element\Block\Dialog;
+use Html\Element\Block\Division;
+use Html\Element\Block\Footer;
+use Html\Element\Block\Form;
+use Html\Element\Block\Header;
+use Html\Element\Block\Main;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\Section;
+use Html\Element\Block\Template;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
-use Html\Mapping\Element;
+use Html\Enum\AriaLabelEnum;
 use Html\Trait\GlobalAttribute;
+use Html\Mapping\Element;
 
 #[Element('summary')]
 class Summary extends BlockElement
@@ -39,7 +52,6 @@ class Summary extends BlockElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
-
     /**
      * The HTML element name
      */
@@ -85,5 +97,36 @@ class Summary extends BlockElement
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
+
+
+    /** Defines a string value that labels the current element for assistive technologies. */
+    public null|string|AriaLabelEnum $ariaLabel = null;
+
+
+    public function setAriaLabel(string|AriaLabelEnum $ariaLabel): static
+    {
+        $value = $ariaLabel;
+        if (is_string($ariaLabel)) {
+            $resolved = AriaLabelEnum::tryFrom($ariaLabel);
+            if (!is_null($resolved)) {
+                $ariaLabel = $resolved;
+            }
+        }
+        if ($ariaLabel instanceof AriaLabelEnum) {
+            $value = $ariaLabel->value;
+        }
+        $this->ariaLabel = $ariaLabel;
+        $this->delegated->setAttribute('aria-label', (string) $value);
+
+        return $this;
+    }
+
+    public function getAriaLabel(): null|string|AriaLabelEnum
+    {
+        return $this->ariaLabel;
+    }
+
+
 }

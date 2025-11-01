@@ -14,6 +14,7 @@
 {% set dir_choices = ['ltr', 'rtl', 'auto'] %}
 {% set inputmode_choices = ['none', 'text', 'decimal', 'numeric', 'email', 'tel', 'url', 'search'] %}
 {% set preload_choices = ['auto', 'metadata', 'none'] %}
+{% set role_choices = ['alert', 'application', 'article', 'banner', 'button', 'checkbox', 'complementary', 'contentinfo', 'dialog', 'form', 'grid', 'group', 'heading', 'img', 'link', 'list', 'listbox', 'listitem', 'main', 'menu', 'menubar', 'menuitem', 'navigation', 'none', 'presentation', 'radio', 'region', 'search', 'status', 'tab', 'tablist', 'tabpanel', 'textbox', 'toolbar', 'tooltip'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 {% set translate_choices = ['yes', 'no'] %}
 <video
@@ -36,6 +37,7 @@
   {% if muted is defined and muted|length > 0 %}muted="{{ muted }}"{% endif %}
   {% if poster is defined and poster|length > 0 %}poster="{{ poster }}"{% endif %}
   {% if preload is defined and preload|length > 0 and preload in preload_choices %}preload="{{ preload }}"{% endif %}
+  {% if role is defined and role|length > 0 and role in role_choices %}role="{{ role }}"{% endif %}
   {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck="{{ spellcheck }}"{% endif %}
   {% if src is defined and src|length > 0 %}src="{{ src }}"{% endif %}
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}

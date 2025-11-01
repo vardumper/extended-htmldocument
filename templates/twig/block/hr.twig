@@ -8,7 +8,7 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block hr %}
-{% set align_choices = ['left', 'center', 'right', 'justify', 'char'] %}
+{% set align_choices = ['center', 'justify', 'left', 'right'] %}
 {% set dir_choices = ['ltr', 'rtl', 'auto'] %}
 <hr
   {% if align is defined and align|length > 0 and align in align_choices %}align="{{ align }}"{% endif %}

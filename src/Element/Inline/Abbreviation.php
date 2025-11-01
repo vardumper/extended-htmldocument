@@ -1,16 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Abbreviation - The abbr element represents an abbreviation or acronym, optionally with its expansion. The title attribute can be used to provide an expansion of the abbreviation. The attribute, if specified, must contain an expansion of the abbreviation, and nothing else.
- *
- * @generated 2025-11-01 15:04:49
+ * 
+ * @generated 2025-11-01 20:20:24
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -25,8 +25,10 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
-use Html\Mapping\Element;
+use Html\Enum\AriaBusyEnum;
+use Html\Enum\RoleEnum;
 use Html\Trait\GlobalAttribute;
+use Html\Mapping\Element;
 
 #[Element('abbr')]
 class Abbreviation extends InlineElement
@@ -48,7 +50,6 @@ class Abbreviation extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
-
     /**
      * The HTML element name
      */
@@ -91,12 +92,32 @@ class Abbreviation extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies additional information about the element, typically displayed as a tooltip.
-     */
+
+    /** Specifies additional information about the element, typically displayed as a tooltip. */
     public ?string $title = null;
+
+    /** Defines the semantic purpose of an element for assistive technologies. */
+    public null|string|RoleEnum $role = null;
+
+    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    public ?string $ariaControls = null;
+
+    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    public ?string $ariaDescribedby = null;
+
+    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    public ?string $ariaLabelledby = null;
+
+    /** 
+     * The aria-busy attribute is used to indicate whether an element is currently busy or not.
+     * @category HTML attribute
+     * @example false
+     */
+    public null|string|AriaBusyEnum $ariaBusy = null;
+
 
     public function setTitle(string $title): static
     {
@@ -109,4 +130,87 @@ class Abbreviation extends InlineElement
     {
         return $this->title;
     }
+
+    public function setRole(string|RoleEnum $role): static
+    {
+        $value = $role;
+        if (is_string($role)) {
+            $resolved = RoleEnum::tryFrom($role);
+            if (!is_null($resolved)) {
+                $role = $resolved;
+            }
+        }
+        if ($role instanceof RoleEnum) {
+            $value = $role->value;
+        }
+        $this->role = $role;
+        $this->delegated->setAttribute('role', (string) $value);
+
+        return $this;
+    }
+
+    public function getRole(): null|string|RoleEnum
+    {
+        return $this->role;
+    }
+
+    public function setAriaControls(string $ariaControls): static
+    {
+        $this->ariaControls = $ariaControls;
+        $this->delegated->setAttribute('aria-controls', (string) $ariaControls);
+        return $this;
+    }
+
+    public function getAriaControls(): ?string
+    {
+        return $this->ariaControls;
+    }
+
+    public function setAriaDescribedby(string $ariaDescribedby): static
+    {
+        $this->ariaDescribedby = $ariaDescribedby;
+        $this->delegated->setAttribute('aria-describedby', (string) $ariaDescribedby);
+        return $this;
+    }
+
+    public function getAriaDescribedby(): ?string
+    {
+        return $this->ariaDescribedby;
+    }
+
+    public function setAriaLabelledby(string $ariaLabelledby): static
+    {
+        $this->ariaLabelledby = $ariaLabelledby;
+        $this->delegated->setAttribute('aria-labelledby', (string) $ariaLabelledby);
+        return $this;
+    }
+
+    public function getAriaLabelledby(): ?string
+    {
+        return $this->ariaLabelledby;
+    }
+
+    public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
+    {
+        $value = $ariaBusy;
+        if (is_string($ariaBusy)) {
+            $resolved = AriaBusyEnum::tryFrom($ariaBusy);
+            if (!is_null($resolved)) {
+                $ariaBusy = $resolved;
+            }
+        }
+        if ($ariaBusy instanceof AriaBusyEnum) {
+            $value = $ariaBusy->value;
+        }
+        $this->ariaBusy = $ariaBusy;
+        $this->delegated->setAttribute('aria-busy', (string) $value);
+
+        return $this;
+    }
+
+    public function getAriaBusy(): null|string|AriaBusyEnum
+    {
+        return $this->ariaBusy;
+    }
+
 }

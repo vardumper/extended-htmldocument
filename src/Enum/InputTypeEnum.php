@@ -4,7 +4,7 @@
  *
  * InputTypeEnum - Specifies the type of the input. Defaults to text if the attribute is omitted
  * 
- * @generated 2025-11-01 15:51:27
+ * @generated 2025-11-01 20:12:04
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

@@ -20,11 +20,17 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Yaml\Yaml;
 
 class BatchGeneratorCommand extends Command
 {
     use ClassResolverTrait;
     use GeneratorResolverTrait;
+
+    private const HTML_DEFINITION_PATH = __DIR__ . '/../Resources/specifications/html5.yaml';
+
+    private ?array $data = null;
+    private SymfonyStyle $io;
 
     /**
      * @param string $generator The generator(s) to use
@@ -35,9 +41,10 @@ class BatchGeneratorCommand extends Command
         string $dest,
         InputInterface $input,
         OutputInterface $output,
-        bool $overwriteExisting = false
+        bool $overwriteExisting = false,
+        string $specification = null
     ): int {
-        $io = new SymfonyStyle($input, $output);
+        $this->io = new SymfonyStyle($input, $output);
 
         if (! \str_contains($generator, ',')) {
             $generators = [$generator];
@@ -46,7 +53,12 @@ class BatchGeneratorCommand extends Command
         }
 
         if (! is_dir($dest)) {
-            $io->error("The destination path '{$dest}' is not a valid directory.");
+            $this->io->error("The destination path '{$dest}' is not a valid directory.");
+            return Command::FAILURE;
+        }
+
+        $specificationPath = $input->getOption('specification');
+        if (! $this->loadHtmlDefinitions($specificationPath)) {
             return Command::FAILURE;
         }
 
@@ -64,7 +76,7 @@ class BatchGeneratorCommand extends Command
                 $elementInstance = $className::create($dom);
                 $output = $generatorInstance->render($elementInstance);
                 if ($output === null) {
-                    $io->warning("Generator '{$name}' returned no output for element '{$className}'.");
+                    $this->io->warning("Generator '{$name}' returned no output for element '{$className}'.");
                     continue;
                 }
                 $elementShortName = (new ReflectionClass($className))->getShortName();
@@ -87,11 +99,11 @@ class BatchGeneratorCommand extends Command
                     \DIRECTORY_SEPARATOR
                 ) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level . \DIRECTORY_SEPARATOR . $fileName;
                 if (file_exists($outFile) && ! $overwriteExisting) {
-                    $io->warning("File '{$outFile}' already exists. Skipping generation.");
+                    $this->io->warning("File '{$outFile}' already exists. Skipping generation.");
                     continue;
                 }
                 file_put_contents($outFile, $output);
-                $io->success("Generated: {$outFile}");
+                $this->io->success("Generated: {$outFile}");
             }
         }
         return Command::SUCCESS;
@@ -102,5 +114,25 @@ class BatchGeneratorCommand extends Command
         $level = (new ReflectionClass($className))->getParentClass();
         $parts = explode('\\', $level->getName());
         return strtolower(str_replace('Element', '', end($parts)));
+    }
+
+    private function loadHtmlDefinitions(?string $specificationPath): bool
+    {
+        if ($specificationPath !== null) {
+            if (! is_file($specificationPath)) {
+                $this->io->error('Specification file not found at ' . $specificationPath);
+                return false;
+            }
+            $this->data = Yaml::parseFile($specificationPath);
+            return true;
+        }
+
+        if (! is_file(self::HTML_DEFINITION_PATH)) {
+            $this->io->error('HTML definition file not found.');
+            return false;
+        }
+
+        $this->data = Yaml::parseFile(self::HTML_DEFINITION_PATH);
+        return true;
     }
 }

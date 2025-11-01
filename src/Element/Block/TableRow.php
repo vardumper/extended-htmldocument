@@ -1,24 +1,32 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * TableRow - The tr element represents a row of cells in a table.
- *
- * @generated 2025-11-01 15:04:49
+ * 
+ * @generated 2025-11-01 20:20:24
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tr
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Table;
+use Html\Element\Block\TableBody;
+use Html\Element\Block\TableData;
+use Html\Element\Block\TableFoot;
+use Html\Element\Block\TableHead;
+use Html\Element\Block\TableHeader;
+use Html\Enum\AriaBusyEnum;
+use Html\Enum\AriaHiddenEnum;
+use Html\Enum\RoleEnum;
 use Html\Enum\TrAlignEnum;
 use Html\Enum\ValignEnum;
-use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute;
-use InvalidArgumentException;
+use Html\Mapping\Element;
 
 #[Element('tr')]
 class TableRow extends BlockElement
@@ -40,7 +48,6 @@ class TableRow extends BlockElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
-
     /**
      * The HTML element name
      */
@@ -65,48 +72,89 @@ class TableRow extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Table::class, TableHead::class, TableBody::class, TableFoot::class];
+    public static array $childOf = [
+        Table::class,
+        TableHead::class,
+        TableBody::class,
+        TableFoot::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [TableData::class, TableHeader::class];
+    public static array $parentOf = [
+        TableData::class,
+        TableHeader::class,
+    ];
 
-    /**
+
+    /** 
      * Specifies the horizontal alignment of each row cell. The possible enumerated values are left, center, right, justify, and char. When supported, the char value aligns the textual content on the character defined in the char attribute and on offset defined by the charoff attribute. Use the text-align CSS property instead, as this attribute is deprecated.
+     * @category HTML attribute
      * @deprecated
      */
     public ?TrAlignEnum $align = null;
 
-    /**
+    /** 
      * Defines the background color of each row cell. The value is an HTML color; either a 6-digit hexadecimal RGB code, prefixed by a #, or a color keyword. Other CSS <color> values are not supported. Use the background-color CSS property instead, as this attribute is deprecated.
+     * @category HTML attribute
      * @deprecated
      */
     public ?string $bgcolor = null;
 
-    /**
+    /** 
      * Specifies the alignment of the content to a character of each row cell. Typical values for this include a period (.) when attempting to align numbers or monetary values. If align is not set to char, this attribute is ignored.
+     * @category HTML attribute
      * @deprecated
      */
     public ?string $char = null;
 
-    /**
+    /** 
      * Specifies the number of characters to offset the row cell content from the alignment character specified by the char attribute.
+     * @category HTML attribute
      * @deprecated
      */
     public ?string $charoff = null;
 
-    /**
+    /** 
      * Specifies the vertical alignment of each row cell. The possible enumerated values are baseline, bottom, middle, and top. Use the vertical-align CSS property instead, as this attribute is deprecated.
+     * @category HTML attribute
      * @deprecated
      */
     public ?ValignEnum $valign = null;
 
+    /** Defines the semantic purpose of an element for assistive technologies. */
+    public null|string|RoleEnum $role = null;
+
+    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    public ?string $ariaControls = null;
+
+    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    public ?string $ariaDescribedby = null;
+
+    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    public ?string $ariaLabelledby = null;
+
+    /** 
+     * The aria-busy attribute is used to indicate whether an element is currently busy or not.
+     * @category HTML attribute
+     * @example false
+     */
+    public null|string|AriaBusyEnum $ariaBusy = null;
+
+    /** 
+     * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaHiddenEnum $ariaHidden = null;
+
+
     public function setAlign(string|TrAlignEnum $align): static
     {
         if (is_string($align)) {
-            $align = TrAlignEnum::tryFrom($align) ?? throw new InvalidArgumentException('Invalid value for $align.');
+            $align = TrAlignEnum::tryFrom($align) ?? throw new \InvalidArgumentException("Invalid value for \$align.");
         }
         $this->align = $align;
         $this->delegated->setAttribute('align', (string) $align->value);
@@ -158,7 +206,7 @@ class TableRow extends BlockElement
     public function setValign(string|ValignEnum $valign): static
     {
         if (is_string($valign)) {
-            $valign = ValignEnum::tryFrom($valign) ?? throw new InvalidArgumentException('Invalid value for $valign.');
+            $valign = ValignEnum::tryFrom($valign) ?? throw new \InvalidArgumentException("Invalid value for \$valign.");
         }
         $this->valign = $valign;
         $this->delegated->setAttribute('valign', (string) $valign->value);
@@ -170,4 +218,104 @@ class TableRow extends BlockElement
     {
         return $this->valign;
     }
+
+    public function setRole(string|RoleEnum $role): static
+    {
+        $value = $role;
+        if (is_string($role)) {
+            $resolved = RoleEnum::tryFrom($role);
+            if (!is_null($resolved)) {
+                $role = $resolved;
+            }
+        }
+        if ($role instanceof RoleEnum) {
+            $value = $role->value;
+        }
+        $this->role = $role;
+        $this->delegated->setAttribute('role', (string) $value);
+
+        return $this;
+    }
+
+    public function getRole(): null|string|RoleEnum
+    {
+        return $this->role;
+    }
+
+    public function setAriaControls(string $ariaControls): static
+    {
+        $this->ariaControls = $ariaControls;
+        $this->delegated->setAttribute('aria-controls', (string) $ariaControls);
+        return $this;
+    }
+
+    public function getAriaControls(): ?string
+    {
+        return $this->ariaControls;
+    }
+
+    public function setAriaDescribedby(string $ariaDescribedby): static
+    {
+        $this->ariaDescribedby = $ariaDescribedby;
+        $this->delegated->setAttribute('aria-describedby', (string) $ariaDescribedby);
+        return $this;
+    }
+
+    public function getAriaDescribedby(): ?string
+    {
+        return $this->ariaDescribedby;
+    }
+
+    public function setAriaLabelledby(string $ariaLabelledby): static
+    {
+        $this->ariaLabelledby = $ariaLabelledby;
+        $this->delegated->setAttribute('aria-labelledby', (string) $ariaLabelledby);
+        return $this;
+    }
+
+    public function getAriaLabelledby(): ?string
+    {
+        return $this->ariaLabelledby;
+    }
+
+    public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
+    {
+        $value = $ariaBusy;
+        if (is_string($ariaBusy)) {
+            $resolved = AriaBusyEnum::tryFrom($ariaBusy);
+            if (!is_null($resolved)) {
+                $ariaBusy = $resolved;
+            }
+        }
+        if ($ariaBusy instanceof AriaBusyEnum) {
+            $value = $ariaBusy->value;
+        }
+        $this->ariaBusy = $ariaBusy;
+        $this->delegated->setAttribute('aria-busy', (string) $value);
+
+        return $this;
+    }
+
+    public function getAriaBusy(): null|string|AriaBusyEnum
+    {
+        return $this->ariaBusy;
+    }
+
+    public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
+    {
+        if (is_string($ariaHidden)) {
+            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
+        }
+        $this->ariaHidden = $ariaHidden;
+        $this->delegated->setAttribute('aria-hidden', (string) $ariaHidden->value);
+
+        return $this;
+    }
+
+    public function getAriaHidden(): ?AriaHiddenEnum
+    {
+        return $this->ariaHidden;
+    }
+
+
 }

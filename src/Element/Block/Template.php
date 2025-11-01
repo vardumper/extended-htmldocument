@@ -1,26 +1,47 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Template - The template element is a mechanism for holding client-side content that is not to be rendered when a page is loaded but may subsequently be instantiated during runtime using JavaScript.
- *
- * @generated 2025-11-01 15:04:49
+ * 
+ * @generated 2025-11-01 20:20:24
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Body;
+use Html\Element\Block\DefinitionList;
+use Html\Element\Block\Details;
+use Html\Element\Block\Division;
+use Html\Element\Block\Form;
+use Html\Element\Block\Heading1;
+use Html\Element\Block\Heading2;
+use Html\Element\Block\Heading3;
+use Html\Element\Block\Heading4;
+use Html\Element\Block\Heading5;
+use Html\Element\Block\Heading6;
+use Html\Element\Block\InlineFrame;
+use Html\Element\Block\ListItem;
+use Html\Element\Block\Menu;
+use Html\Element\Block\OrderedList;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\PreformattedText;
+use Html\Element\Block\Summary;
+use Html\Element\Block\Table;
+use Html\Element\Block\UnorderedList;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\Button;
 use Html\Element\Inline\Input;
 use Html\Element\Inline\Select;
 use Html\Element\Inline\Textarea;
-use Html\Mapping\Element;
+use Html\Enum\AriaHiddenEnum;
 use Html\Trait\GlobalAttribute;
+use Html\Mapping\Element;
 
 #[Element('template')]
 class Template extends BlockElement
@@ -42,7 +63,6 @@ class Template extends BlockElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
-
     /**
      * The HTML element name
      */
@@ -67,7 +87,11 @@ class Template extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Body::class, Form::class, Menu::class];
+    public static array $childOf = [
+        Body::class,
+        Form::class,
+        Menu::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -98,4 +122,31 @@ class Template extends BlockElement
         Table::class,
         UnorderedList::class,
     ];
+
+
+    /** 
+     * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaHiddenEnum $ariaHidden = null;
+
+
+    public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
+    {
+        if (is_string($ariaHidden)) {
+            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
+        }
+        $this->ariaHidden = $ariaHidden;
+        $this->delegated->setAttribute('aria-hidden', (string) $ariaHidden->value);
+
+        return $this;
+    }
+
+    public function getAriaHidden(): ?AriaHiddenEnum
+    {
+        return $this->ariaHidden;
+    }
+
+
 }
