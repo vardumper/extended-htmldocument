@@ -629,7 +629,7 @@ final class CreateClassCommand extends Command
         return \$this;
     }
 
-    public function get%s(): %s
+    public function get%s(): null|%s
     {
         return \$this->%s;
     }\n\n";
