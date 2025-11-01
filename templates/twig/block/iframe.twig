@@ -8,11 +8,20 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block iframe %}
+{% set ariaBusy_choices = ['true', 'false'] %}
+{% set ariaHidden_choices = ['false', 'true'] %}
+{% set ariaLabel_choices = ['breadcrumb'] %}
 {% set dir_choices = ['ltr', 'rtl', 'auto'] %}
 {% set referrerpolicy_choices = ['no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', 'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'] %}
 {% set role_choices = ['alert', 'application', 'article', 'banner', 'button', 'checkbox', 'complementary', 'contentinfo', 'dialog', 'form', 'grid', 'group', 'heading', 'img', 'link', 'list', 'listbox', 'listitem', 'main', 'menu', 'menubar', 'menuitem', 'navigation', 'none', 'presentation', 'radio', 'region', 'search', 'status', 'tab', 'tablist', 'tabpanel', 'textbox', 'toolbar', 'tooltip'] %}
 <iframe
   {% if allowfullscreen is defined and allowfullscreen|length > 0 %}allowfullscreen="{{ allowfullscreen }}"{% endif %}
+  {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy in ariaBusy_choices %}aria-busy="{{ ariaBusy }}"{% endif %}
+  {% if ariaControls is defined and ariaControls|length > 0 %}aria-controls="{{ ariaControls }}"{% endif %}
+  {% if ariaDescribedby is defined and ariaDescribedby|length > 0 %}aria-describedby="{{ ariaDescribedby }}"{% endif %}
+  {% if ariaHidden is defined and ariaHidden|length > 0 and ariaHidden in ariaHidden_choices %}aria-hidden="{{ ariaHidden }}"{% endif %}
+  {% if ariaLabel is defined and ariaLabel|length > 0 and ariaLabel in ariaLabel_choices %}aria-label="{{ ariaLabel }}"{% endif %}
+  {% if ariaLabelledby is defined and ariaLabelledby|length > 0 %}aria-labelledby="{{ ariaLabelledby }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if dir is defined and dir|length > 0 and dir in dir_choices %}dir="{{ dir }}"{% endif %}
   {% if height is defined and height|length > 0 %}height="{{ height }}"{% endif %}

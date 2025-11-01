@@ -8,6 +8,9 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block select %}
+{% set ariaDisabled_choices = ['false', 'true'] %}
+{% set ariaInvalid_choices = ['false', 'true', 'grammar', 'spelling'] %}
+{% set ariaLabel_choices = ['breadcrumb'] %}
 {% set autocapitalize_choices = ['none', 'sentences', 'words', 'characters'] %}
 {% set autocomplete_choices = ['off', 'on'] %}
 {% set autocorrect_choices = ['off', 'on'] %}
@@ -19,6 +22,12 @@
 {% set translate_choices = ['yes', 'no'] %}
 <select
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
+  {% if ariaControls is defined and ariaControls|length > 0 %}aria-controls="{{ ariaControls }}"{% endif %}
+  {% if ariaDescribedby is defined and ariaDescribedby|length > 0 %}aria-describedby="{{ ariaDescribedby }}"{% endif %}
+  {% if ariaDisabled is defined and ariaDisabled|length > 0 and ariaDisabled in ariaDisabled_choices %}aria-disabled="{{ ariaDisabled }}"{% endif %}
+  {% if ariaInvalid is defined and ariaInvalid|length > 0 and ariaInvalid in ariaInvalid_choices %}aria-invalid="{{ ariaInvalid }}"{% endif %}
+  {% if ariaLabel is defined and ariaLabel|length > 0 and ariaLabel in ariaLabel_choices %}aria-label="{{ ariaLabel }}"{% endif %}
+  {% if ariaLabelledby is defined and ariaLabelledby|length > 0 %}aria-labelledby="{{ ariaLabelledby }}"{% endif %}
   {% if autocapitalize is defined and autocapitalize|length > 0 and autocapitalize in autocapitalize_choices %}autocapitalize="{{ autocapitalize }}"{% endif %}
   {% if autocomplete is defined and autocomplete|length > 0 and autocomplete in autocomplete_choices %}autocomplete="{{ autocomplete }}"{% endif %}
   {% if autocorrect is defined and autocorrect|length > 0 and autocorrect in autocorrect_choices %}autocorrect="{{ autocorrect }}"{% endif %}

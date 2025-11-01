@@ -14,7 +14,7 @@
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if content is defined and content|length > 0 %}content="{{ content }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
-  {% if httpEquiv is defined and httpEquiv|length > 0 and httpEquiv in httpEquiv_choices %}httpEquiv="{{ httpEquiv }}"{% endif %}
+  {% if httpEquiv is defined and httpEquiv|length > 0 and httpEquiv in httpEquiv_choices %}http-equiv="{{ httpEquiv }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
   {% if name is defined and name|length > 0 %}name="{{ name }}"{% endif %}

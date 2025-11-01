@@ -92,6 +92,11 @@ class TwigGenerator implements TemplateGeneratorInterface
         $this->componentHandle = $handle;
     }
 
+    private function camelToKebab(string $string): string
+    {
+        return strtolower(preg_replace('/([a-z])([A-Z])/', '$1-$2', $string));
+    }
+
     public function renderElement(HTMLElementDelegatorInterface $element): string
     {
         $ref = new ReflectionClass($element);
@@ -171,7 +176,9 @@ class TwigGenerator implements TemplateGeneratorInterface
             if ($isEnum) {
                 $cond .= $isReserved ? " and attribute(_context, '{$attr}') in {$attr}_choices" : " and {$attr} in {$attr}_choices";
             }
-            $twig .= "\n  {% if {$cond} %}{$attr}=\"{{ {$val} }}\"{% endif %}";
+            // Convert property name to kebab-case for HTML attribute name
+            $htmlAttr = $this->camelToKebab($attr);
+            $twig .= "\n  {% if {$cond} %}{$htmlAttr}=\"{{ {$val} }}\"{% endif %}";
         }
         if ($isSelfClosing) {
             $twig .= "/>\n";

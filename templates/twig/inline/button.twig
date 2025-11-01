@@ -8,6 +8,10 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block button %}
+{% set ariaBusy_choices = ['true', 'false'] %}
+{% set ariaCurrent_choices = ['false', 'page', 'step', 'location', 'date', 'time', 'true'] %}
+{% set ariaDisabled_choices = ['false', 'true'] %}
+{% set ariaLabel_choices = ['breadcrumb'] %}
 {% set autocapitalize_choices = ['none', 'sentences', 'words', 'characters'] %}
 {% set autocorrect_choices = ['off', 'on'] %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
@@ -19,6 +23,13 @@
 {% set type_choices = ['submit', 'reset', 'button'] %}
 <button
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
+  {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy in ariaBusy_choices %}aria-busy="{{ ariaBusy }}"{% endif %}
+  {% if ariaControls is defined and ariaControls|length > 0 %}aria-controls="{{ ariaControls }}"{% endif %}
+  {% if ariaCurrent is defined and ariaCurrent|length > 0 and ariaCurrent in ariaCurrent_choices %}aria-current="{{ ariaCurrent }}"{% endif %}
+  {% if ariaDescribedby is defined and ariaDescribedby|length > 0 %}aria-describedby="{{ ariaDescribedby }}"{% endif %}
+  {% if ariaDisabled is defined and ariaDisabled|length > 0 and ariaDisabled in ariaDisabled_choices %}aria-disabled="{{ ariaDisabled }}"{% endif %}
+  {% if ariaLabel is defined and ariaLabel|length > 0 and ariaLabel in ariaLabel_choices %}aria-label="{{ ariaLabel }}"{% endif %}
+  {% if ariaLabelledby is defined and ariaLabelledby|length > 0 %}aria-labelledby="{{ ariaLabelledby }}"{% endif %}
   {% if autocapitalize is defined and autocapitalize|length > 0 and autocapitalize in autocapitalize_choices %}autocapitalize="{{ autocapitalize }}"{% endif %}
   {% if autocorrect is defined and autocorrect|length > 0 and autocorrect in autocorrect_choices %}autocorrect="{{ autocorrect }}"{% endif %}
   {% if autofocus is defined and autofocus|length > 0 %}autofocus="{{ autofocus }}"{% endif %}

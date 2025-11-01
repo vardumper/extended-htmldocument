@@ -9,6 +9,8 @@
 #}
 {% block tr %}
 {% set align_choices = ['left', 'center', 'right', 'justify', 'char'] %}
+{% set ariaBusy_choices = ['true', 'false'] %}
+{% set ariaHidden_choices = ['false', 'true'] %}
 {% set autocapitalize_choices = ['none', 'sentences', 'words', 'characters'] %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set dir_choices = ['ltr', 'rtl', 'auto'] %}
@@ -20,6 +22,11 @@
 <tr
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
   {% if align is defined and align|length > 0 and align in align_choices %}align="{{ align }}"{% endif %}
+  {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy in ariaBusy_choices %}aria-busy="{{ ariaBusy }}"{% endif %}
+  {% if ariaControls is defined and ariaControls|length > 0 %}aria-controls="{{ ariaControls }}"{% endif %}
+  {% if ariaDescribedby is defined and ariaDescribedby|length > 0 %}aria-describedby="{{ ariaDescribedby }}"{% endif %}
+  {% if ariaHidden is defined and ariaHidden|length > 0 and ariaHidden in ariaHidden_choices %}aria-hidden="{{ ariaHidden }}"{% endif %}
+  {% if ariaLabelledby is defined and ariaLabelledby|length > 0 %}aria-labelledby="{{ ariaLabelledby }}"{% endif %}
   {% if autocapitalize is defined and autocapitalize|length > 0 and autocapitalize in autocapitalize_choices %}autocapitalize="{{ autocapitalize }}"{% endif %}
   {% if autofocus is defined and autofocus|length > 0 %}autofocus="{{ autofocus }}"{% endif %}
   {% if bgcolor is defined and bgcolor|length > 0 %}bgcolor="{{ bgcolor }}"{% endif %}
