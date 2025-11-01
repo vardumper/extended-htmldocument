@@ -280,7 +280,7 @@ final class CreateClassCommand extends Command
             return $this->generateEnumMethod($attribute, $details, $element, $type, $variableName, $methodName);
         }
 
-        return $this->generateSimpleMethod($type, $variableName, $methodName);
+        return $this->generateSimpleMethod($attribute, $type, $variableName, $methodName);
     }
 
     private function generateEnumMethod(
@@ -318,7 +318,7 @@ final class CreateClassCommand extends Command
         return $this->generatePureEnumMethod($type, $variableName, $methodName, $enumName, $attribute);
     }
 
-    private function generateSimpleMethod(string $type, string $variableName, string $methodName): string
+    private function generateSimpleMethod(string $attribute, string $type, string $variableName, string $methodName): string
     {
         return vsprintf($this->getSignatureSimple(), [
             $methodName,
@@ -326,7 +326,7 @@ final class CreateClassCommand extends Command
             $variableName,
             $variableName,
             $variableName,
-            $variableName,
+            $attribute,
             $variableName,
             $methodName,
             $type,
