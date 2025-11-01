@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:2d300fb0-4f63-44c4-a985-0979f6f6c8d7",
+  "serialNumber": "urn:uuid:701a7ee0-f7af-44b3-a716-8e2577f84bd6",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-10-31T20:44:51+00:00",
+    "timestamp": "2025-11-01T20:30:31+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "1a229a53-bb81-4210-b848-d90d2399eb04",
+      "bom-ref": "6cfa2e30-9fad-45e4-85d5-815c0c774593",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,7 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "714a4f5d-bfb3-4206-9baa-c8527639bfb4",
+      "bom-ref": "6a341fbe-1f8d-4de3-828a-acec8b1133b1",
       "type": "application",
       "name": "composer.lock",
       "properties": [
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "bom-ref": "dfc92aa3-c0a9-4294-b0a0-2187be8e4463",
+      "bom-ref": "7b47d057-8614-47de-a2fc-88172fb2ced2",
       "type": "application",
       "name": "yarn.lock",
       "properties": [
@@ -3225,14 +3225,7 @@
   ],
   "dependencies": [
     {
-      "ref": "1a229a53-bb81-4210-b848-d90d2399eb04",
-      "dependsOn": [
-        "714a4f5d-bfb3-4206-9baa-c8527639bfb4",
-        "dfc92aa3-c0a9-4294-b0a0-2187be8e4463"
-      ]
-    },
-    {
-      "ref": "714a4f5d-bfb3-4206-9baa-c8527639bfb4",
+      "ref": "6a341fbe-1f8d-4de3-828a-acec8b1133b1",
       "dependsOn": [
         "pkg:composer/mnapoli/silly@1.9.1",
         "pkg:composer/revolt/event-loop@v1.0.7",
@@ -3240,7 +3233,14 @@
       ]
     },
     {
-      "ref": "dfc92aa3-c0a9-4294-b0a0-2187be8e4463",
+      "ref": "6cfa2e30-9fad-45e4-85d5-815c0c774593",
+      "dependsOn": [
+        "6a341fbe-1f8d-4de3-828a-acec8b1133b1",
+        "7b47d057-8614-47de-a2fc-88172fb2ced2"
+      ]
+    },
+    {
+      "ref": "7b47d057-8614-47de-a2fc-88172fb2ced2",
       "dependsOn": [
         "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
         "pkg:npm/vitepress@1.6.4"
