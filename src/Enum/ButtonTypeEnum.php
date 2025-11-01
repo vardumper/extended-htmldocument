@@ -1,11 +1,12 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * ButtonTypeEnum - Specifies the type of the button.
- *
- * @generated 2025-11-01 15:04:46
+ * 
+ * @generated 2025-11-01 15:51:27
+ * @category HTML Attribute
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/type/
@@ -13,8 +14,7 @@
 
 namespace Html\Enum;
 
-enum ButtonTypeEnum: string
-{
+enum ButtonTypeEnum: string {
     case SUBMIT = 'submit';
     case RESET = 'reset';
     case BUTTON = 'button';

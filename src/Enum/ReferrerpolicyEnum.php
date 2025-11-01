@@ -1,11 +1,12 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * ReferrerpolicyEnum - Specifies the referrer policy for fetches initiated by the element.
- *
- * @generated 2025-11-01 15:04:46
+ * 
+ * @generated 2025-11-01 15:51:27
+ * @category HTML Attribute
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/referrerpolicy/
@@ -13,8 +14,7 @@
 
 namespace Html\Enum;
 
-enum ReferrerpolicyEnum: string
-{
+enum ReferrerpolicyEnum: string {
     case NO_REFERRER = 'no-referrer';
     case NO_REFERRER_WHEN_DOWNGRADE = 'no-referrer-when-downgrade';
     case ORIGIN = 'origin';

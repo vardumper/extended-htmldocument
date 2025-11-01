@@ -1,11 +1,12 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * CrossoriginEnum - Specifies how the element handles cross-origin requests.
- *
- * @generated 2025-11-01 15:04:46
+ * 
+ * @generated 2025-11-01 15:51:27
+ * @category HTML Attribute
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin/
@@ -13,8 +14,7 @@
 
 namespace Html\Enum;
 
-enum CrossoriginEnum: string
-{
+enum CrossoriginEnum: string {
     case ANONYMOUS = 'anonymous';
     case USE_CREDENTIALS = 'use-credentials';
 
