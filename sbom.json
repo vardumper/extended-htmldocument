@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:2d300fb0-4f63-44c4-a985-0979f6f6c8d7",
+  "serialNumber": "urn:uuid:43c2cf03-ab04-42c1-9996-c983977f8930",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-10-31T20:44:51+00:00",
+    "timestamp": "2025-11-01T10:38:57+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "1a229a53-bb81-4210-b848-d90d2399eb04",
+      "bom-ref": "af3496b2-3685-423a-a863-0e4b1c41cab0",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,7 +30,7 @@
   },
   "components": [
     {
-      "bom-ref": "714a4f5d-bfb3-4206-9baa-c8527639bfb4",
+      "bom-ref": "b4153302-9d9d-4f91-9184-0deedc78c192",
       "type": "application",
       "name": "composer.lock",
       "properties": [
@@ -45,7 +45,7 @@
       ]
     },
     {
-      "bom-ref": "dfc92aa3-c0a9-4294-b0a0-2187be8e4463",
+      "bom-ref": "f1465ffc-7ae3-43f2-bfe6-09f324406a92",
       "type": "application",
       "name": "yarn.lock",
       "properties": [
@@ -3225,14 +3225,14 @@
   ],
   "dependencies": [
     {
-      "ref": "1a229a53-bb81-4210-b848-d90d2399eb04",
+      "ref": "af3496b2-3685-423a-a863-0e4b1c41cab0",
       "dependsOn": [
-        "714a4f5d-bfb3-4206-9baa-c8527639bfb4",
-        "dfc92aa3-c0a9-4294-b0a0-2187be8e4463"
+        "b4153302-9d9d-4f91-9184-0deedc78c192",
+        "f1465ffc-7ae3-43f2-bfe6-09f324406a92"
       ]
     },
     {
-      "ref": "714a4f5d-bfb3-4206-9baa-c8527639bfb4",
+      "ref": "b4153302-9d9d-4f91-9184-0deedc78c192",
       "dependsOn": [
         "pkg:composer/mnapoli/silly@1.9.1",
         "pkg:composer/revolt/event-loop@v1.0.7",
@@ -3240,7 +3240,7 @@
       ]
     },
     {
-      "ref": "dfc92aa3-c0a9-4294-b0a0-2187be8e4463",
+      "ref": "f1465ffc-7ae3-43f2-bfe6-09f324406a92",
       "dependsOn": [
         "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
         "pkg:npm/vitepress@1.6.4"
