@@ -4,7 +4,7 @@
  *
  * Image - The img element represents an image.
  * 
- * @generated 2025-11-01 20:20:24
+ * @generated 2025-11-02 15:51:50
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -28,7 +28,6 @@ use Html\Element\Block\Section;
 use Html\Element\InlineElement;
 use Html\Element\Inline\MarkedText;
 use Html\Enum\AriaHiddenEnum;
-use Html\Enum\AriaLabelEnum;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\DecodingEnum;
 use Html\Enum\ReferrerpolicyEnum;
@@ -145,7 +144,7 @@ class Image extends InlineElement
     public ?AriaHiddenEnum $ariaHidden = null;
 
     /** Defines a string value that labels the current element for assistive technologies. */
-    public null|string|AriaLabelEnum $ariaLabel = null;
+    public ?string $ariaLabel = null;
 
 
     public function setAlt(string $alt): static
@@ -308,25 +307,14 @@ class Image extends InlineElement
         return $this->ariaHidden;
     }
 
-    public function setAriaLabel(string|AriaLabelEnum $ariaLabel): static
+    public function setAriaLabel(string $ariaLabel): static
     {
-        $value = $ariaLabel;
-        if (is_string($ariaLabel)) {
-            $resolved = AriaLabelEnum::tryFrom($ariaLabel);
-            if (!is_null($resolved)) {
-                $ariaLabel = $resolved;
-            }
-        }
-        if ($ariaLabel instanceof AriaLabelEnum) {
-            $value = $ariaLabel->value;
-        }
         $this->ariaLabel = $ariaLabel;
-        $this->delegated->setAttribute('aria-label', (string) $value);
-
+        $this->delegated->setAttribute('aria-label', (string) $ariaLabel);
         return $this;
     }
 
-    public function getAriaLabel(): null|string|AriaLabelEnum
+    public function getAriaLabel(): ?string
     {
         return $this->ariaLabel;
     }

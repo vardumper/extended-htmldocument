@@ -4,7 +4,7 @@
  *
  * HorizontalRule - The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.
  * 
- * @generated 2025-11-01 20:20:24
+ * @generated 2025-11-02 15:51:50
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

@@ -4,7 +4,7 @@
  *
  * Input - The input element represents a typed data field, usually with a form control to allow user input.
  * 
- * @generated 2025-11-01 20:20:24
+ * @generated 2025-11-02 15:51:50
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -32,11 +32,14 @@ use Html\Element\Inline\Slot;
 use Html\Enum\AriaCurrentEnum;
 use Html\Enum\AriaDisabledEnum;
 use Html\Enum\AriaInvalidEnum;
-use Html\Enum\AriaLabelEnum;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\AutocorrectEnum;
+use Html\Enum\FormenctypeEnum;
+use Html\Enum\FormmethodEnum;
+use Html\Enum\FormtargetEnum;
+use Html\Enum\InputRoleEnum;
 use Html\Enum\InputTypeEnum;
-use Html\Enum\RoleEnum;
+use Html\Enum\PopovertargetactionEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
 
@@ -197,8 +200,44 @@ class Input extends InlineElement
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
     public ?string $width = null;
 
-    /** Array */
-    public ?RoleEnum $role = null;
+    /** Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset. */
+    public ?string $form = null;
+
+    /** The URL that processes the form submission. Overrides the action attribute of the button's form owner. Only applies to submit buttons. Element-specific to button and input elements with type submit or image. */
+    public ?string $formaction = null;
+
+    /** 
+     * Specifies how form data should be encoded when submitting to the server. Only for submit buttons. Overrides the form's enctype attribute. Element-specific to button and input elements with type submit or image.
+     * @category HTML attribute
+     * @example application/x-www-form-urlencoded
+     */
+    public ?FormenctypeEnum $formenctype = null;
+
+    /** 
+     * Specifies the HTTP method to use when submitting the form. Only for submit buttons. Overrides the form's method attribute. Use "post" for sensitive data, "get" for idempotent operations, "dialog" to close dialog without submission. Element-specific to button and input elements with type submit or image.
+     * @category HTML attribute
+     * @example get
+     */
+    public ?FormmethodEnum $formmethod = null;
+
+    /** When present, specifies that the form should not be validated when submitted. Only applies to submit buttons. Overrides the form's novalidate attribute. Element-specific to button and input elements with type submit or image. */
+    public ?bool $formnovalidate = null;
+
+    /** Specifies where to display the response after form submission. Can be a browsing context name or keyword (_self, _blank, _parent, _top). Only for submit buttons. Overrides the form's target attribute. Element-specific to button and input elements with type submit or image. */
+    public null|string|FormtargetEnum $formtarget = null;
+
+    /** Turns the button into a popover control by specifying the ID of the popover element to control. Creates implicit aria-details and aria-expanded relationships, establishes anchor positioning reference, and improves accessibility. Part of the Popover API. Element-specific to button and input elements. */
+    public ?string $popovertarget = null;
+
+    /** 
+     * Specifies the action to perform on the popover element controlled by popovertarget. "show" displays a hidden popover, "hide" hides a visible popover, "toggle" (default) switches between states. Part of the Popover API. Element-specific to button and input elements.
+     * @category HTML attribute
+     * @example toggle
+     */
+    public ?PopovertargetactionEnum $popovertargetaction = null;
+
+    /** The role attribute is used to define the purpose of an element. */
+    public ?InputRoleEnum $role = null;
 
     /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
     public ?string $ariaControls = null;
@@ -224,7 +263,7 @@ class Input extends InlineElement
     public ?AriaInvalidEnum $ariaInvalid = null;
 
     /** Defines a string value that labels the current element for assistive technologies. */
-    public null|string|AriaLabelEnum $ariaLabel = null;
+    public ?string $ariaLabel = null;
 
     /** 
      * Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
@@ -546,10 +585,129 @@ class Input extends InlineElement
         return $this->width;
     }
 
-    public function setRole(string|RoleEnum $role): static
+    public function setForm(string $form): static
+    {
+        $this->form = $form;
+        $this->delegated->setAttribute('form', (string) $form);
+        return $this;
+    }
+
+    public function getForm(): ?string
+    {
+        return $this->form;
+    }
+
+    public function setFormaction(string $formaction): static
+    {
+        $this->formaction = $formaction;
+        $this->delegated->setAttribute('formaction', (string) $formaction);
+        return $this;
+    }
+
+    public function getFormaction(): ?string
+    {
+        return $this->formaction;
+    }
+
+    public function setFormenctype(string|FormenctypeEnum $formenctype): static
+    {
+        if (is_string($formenctype)) {
+            $formenctype = FormenctypeEnum::tryFrom($formenctype) ?? throw new \InvalidArgumentException("Invalid value for \$formenctype.");
+        }
+        $this->formenctype = $formenctype;
+        $this->delegated->setAttribute('formenctype', (string) $formenctype->value);
+
+        return $this;
+    }
+
+    public function getFormenctype(): ?FormenctypeEnum
+    {
+        return $this->formenctype;
+    }
+
+    public function setFormmethod(string|FormmethodEnum $formmethod): static
+    {
+        if (is_string($formmethod)) {
+            $formmethod = FormmethodEnum::tryFrom($formmethod) ?? throw new \InvalidArgumentException("Invalid value for \$formmethod.");
+        }
+        $this->formmethod = $formmethod;
+        $this->delegated->setAttribute('formmethod', (string) $formmethod->value);
+
+        return $this;
+    }
+
+    public function getFormmethod(): ?FormmethodEnum
+    {
+        return $this->formmethod;
+    }
+
+    public function setFormnovalidate(bool $formnovalidate): static
+    {
+        $this->formnovalidate = $formnovalidate;
+        $this->delegated->setAttribute('formnovalidate', (string) $formnovalidate);
+        return $this;
+    }
+
+    public function getFormnovalidate(): ?bool
+    {
+        return $this->formnovalidate;
+    }
+
+    public function setFormtarget(string|FormtargetEnum $formtarget): static
+    {
+        $value = $formtarget;
+        if (is_string($formtarget)) {
+            $resolved = FormtargetEnum::tryFrom($formtarget);
+            if (!is_null($resolved)) {
+                $formtarget = $resolved;
+            }
+        }
+        if ($formtarget instanceof FormtargetEnum) {
+            $value = $formtarget->value;
+        }
+        $this->formtarget = $formtarget;
+        $this->delegated->setAttribute('formtarget', (string) $value);
+
+        return $this;
+    }
+
+    public function getFormtarget(): null|string|FormtargetEnum
+    {
+        return $this->formtarget;
+    }
+
+    public function setPopovertarget(string $popovertarget): static
+    {
+        $this->popovertarget = $popovertarget;
+        $this->delegated->setAttribute('popovertarget', (string) $popovertarget);
+        return $this;
+    }
+
+    public function getPopovertarget(): ?string
+    {
+        return $this->popovertarget;
+    }
+
+    public function setPopovertargetaction(string|PopovertargetactionEnum $popovertargetaction): static
+    {
+        if (is_string($popovertargetaction)) {
+            $popovertargetaction = PopovertargetactionEnum::tryFrom($popovertargetaction) ?? throw new \InvalidArgumentException("Invalid value for \$popovertargetaction.");
+        }
+        $this->popovertargetaction = $popovertargetaction;
+        $this->delegated->setAttribute('popovertargetaction', (string) $popovertargetaction->value);
+
+        return $this;
+    }
+
+    public function getPopovertargetaction(): ?PopovertargetactionEnum
+    {
+        return $this->popovertargetaction;
+    }
+
+    public function setRole(string|InputRoleEnum $role): static
     {
         if (is_string($role)) {
-            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
+            $role = InputRoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -557,7 +715,7 @@ class Input extends InlineElement
         return $this;
     }
 
-    public function getRole(): ?RoleEnum
+    public function getRole(): ?InputRoleEnum
     {
         return $this->role;
     }
@@ -630,25 +788,14 @@ class Input extends InlineElement
         return $this->ariaInvalid;
     }
 
-    public function setAriaLabel(string|AriaLabelEnum $ariaLabel): static
+    public function setAriaLabel(string $ariaLabel): static
     {
-        $value = $ariaLabel;
-        if (is_string($ariaLabel)) {
-            $resolved = AriaLabelEnum::tryFrom($ariaLabel);
-            if (!is_null($resolved)) {
-                $ariaLabel = $resolved;
-            }
-        }
-        if ($ariaLabel instanceof AriaLabelEnum) {
-            $value = $ariaLabel->value;
-        }
         $this->ariaLabel = $ariaLabel;
-        $this->delegated->setAttribute('aria-label', (string) $value);
-
+        $this->delegated->setAttribute('aria-label', (string) $ariaLabel);
         return $this;
     }
 
-    public function getAriaLabel(): null|string|AriaLabelEnum
+    public function getAriaLabel(): ?string
     {
         return $this->ariaLabel;
     }

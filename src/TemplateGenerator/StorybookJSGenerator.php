@@ -83,7 +83,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         $props = [];
         $argTypes = [];
         $defaultArgs = [];
-        $renderAssignments = [];
+        $renderAssignmentsMap = []; // Map prop name to render assignment
 
         // Add text/content for non-self-closing elements
         if (! $isSelfClosing) {
@@ -95,6 +95,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                 'defaultValue' => 'Sample text',
             ]);
             $defaultArgs['text'] = '"Sample text"';
+            // No render assignment for text - it's handled with el.innerHTML
         }
 
         // Create an example instance of the element to resolve global attributes
@@ -137,7 +138,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                         ]);
                         $defaultArgs[$jsVarName] = '{}';
                         // Special render assignment for data attributes
-                        $renderAssignments[] = $this->generateDataAttributesAssignment();
+                        $renderAssignmentsMap[$jsVarName] = $this->generateDataAttributesAssignment();
                     }
                     continue;
                 }
@@ -169,7 +170,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                 } catch (Throwable $e) {
                     $value = null;
                 }
-                $phpType = is_bool($value) ? 'boolean' : 'string';
+                $phpType = is_bool($value) ? 'boolean' : (is_int($value) ? 'integer' : 'string');
                 $choices = null;
 
                 // If the property is an enum-backed property, try to read the property type via reflection
@@ -185,10 +186,17 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                                     $choices = array_map(fn ($c) => $c->value, $t->getName()::cases());
                                     break;
                                 }
+                                if ($t->getName() === 'int') {
+                                    $phpType = 'integer';
+                                }
                             }
-                        } elseif ($type && $type instanceof ReflectionNamedType && enum_exists($type->getName())) {
-                            $phpType = 'enum';
-                            $choices = array_map(fn ($c) => $c->value, $type->getName()::cases());
+                        } elseif ($type && $type instanceof ReflectionNamedType) {
+                            if (enum_exists($type->getName())) {
+                                $phpType = 'enum';
+                                $choices = array_map(fn ($c) => $c->value, $type->getName()::cases());
+                            } elseif ($type->getName() === 'int') {
+                                $phpType = 'integer';
+                            }
                         }
                     }
                 } catch (Throwable $e) {
@@ -205,7 +213,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                 ]);
 
                 $defaultArgs[$jsVarName] = $this->getDefaultValueJs($phpType, $choices);
-                $renderAssignments[] = $this->generateRenderAssignment(
+                $renderAssignmentsMap[$jsVarName] = $this->generateRenderAssignment(
                     $jsVarName,
                     $this->camelToKebab($propName),
                     $phpType
@@ -213,7 +221,9 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
             }
         }
 
-        // Collect all properties with getter and setter
+        // Collect all properties with getter and setter (element-specific attributes)
+        // These take precedence over global attributes, so we track them and remove duplicates later
+        $elementSpecificProps = [];
         foreach ($ref->getProperties() as $prop) {
             $propName = $prop->getName();
             $getter = 'get' . ucfirst($propName);
@@ -240,6 +250,8 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                         $choices = array_map(fn ($case) => $case->value, $enumClass::cases());
                     } elseif ($type->getName() === 'bool') {
                         $phpType = 'boolean';
+                    } elseif ($type->getName() === 'int') {
+                        $phpType = 'integer';
                     }
                 }
 
@@ -249,6 +261,9 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
 
                 // Handle JS reserved words by appending 'Prop'
                 $jsVarName = in_array($propName, self::JS_RESERVED_WORDS, true) ? $propName . 'Prop' : $propName;
+
+                // Track this as element-specific so we can remove global duplicates
+                $elementSpecificProps[] = $jsVarName;
 
                 $props[] = $jsVarName;
                 $argTypes[] = $this->generateArgType($jsVarName, [
@@ -260,11 +275,59 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                 ]);
 
                 $defaultArgs[$jsVarName] = $this->getDefaultValueJs($phpType, $choices);
-                $renderAssignments[] = $this->generateRenderAssignment(
+                $renderAssignmentsMap[$jsVarName] = $this->generateRenderAssignment(
                     $jsVarName,
                     $this->camelToKebab($propName),
                     $phpType
                 );
+            }
+        }
+
+        // Remove duplicates - element-specific attributes take precedence over global attributes
+        // Build a map to track unique properties and their data (last occurrence wins)
+        $propsMap = [];
+
+        // Build map with all data for each prop
+        for ($i = 0; $i < count($props); $i++) {
+            $prop = $props[$i];
+            $propsMap[$prop] = [
+                'prop' => $prop,
+                'argType' => $argTypes[$i] ?? null,
+                'defaultArg' => $defaultArgs[$prop] ?? null,
+                'renderAssignment' => $renderAssignmentsMap[$prop] ?? null,
+            ];
+        }
+
+        // Rebuild arrays from the map, maintaining order
+        $props = [];
+        $argTypes = [];
+        $defaultArgs = [];
+        $renderAssignments = []; // Back to indexed array for building JS
+
+        // Sort alphabetically by prop name (text should stay first if present)
+        $sortedProps = array_keys($propsMap);
+        usort($sortedProps, function ($a, $b) {
+            // Keep 'text' at the beginning
+            if ($a === 'text') {
+                return -1;
+            }
+            if ($b === 'text') {
+                return 1;
+            }
+            return strcasecmp($a, $b);
+        });
+
+        foreach ($sortedProps as $prop) {
+            $propData = $propsMap[$prop];
+            $props[] = $propData['prop'];
+            if ($propData['argType'] !== null) {
+                $argTypes[] = $propData['argType'];
+            }
+            if ($propData['defaultArg'] !== null) {
+                $defaultArgs[$propData['prop']] = $propData['defaultArg'];
+            }
+            if ($propData['renderAssignment'] !== null) {
+                $renderAssignments[] = $propData['renderAssignment'];
             }
         }
 
@@ -303,6 +366,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         return match ($type) {
             'enum' => 'select',
             'boolean' => 'boolean',
+            'integer' => 'number',
             default => 'text',
         };
     }
@@ -310,10 +374,17 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
     private function generateArgType(string $propName, array $details): string
     {
         $type = $details['type'];
+        // Map internal types to Storybook types
+        if ($type === 'integer') {
+            $type = 'number';
+        } elseif ($type === 'enum') {
+            $type = 'string'; // Enums are strings with select control
+        }
+        
         $description = $this->escapeJsString($details['description']);
         $required = $details['required'] ? 'true' : 'false';
         $defaultValue = $details['defaultValue'];
-        $control = $this->getControlType($type);
+        $control = $this->getControlType($details['type']); // Use original type for control
 
         $argType = "    {$propName}: {\n";
         $argType .= "      type: {\n";
@@ -334,7 +405,10 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
             $argType .= '      defaultValue: ';
             if ($type === 'boolean') {
                 $argType .= $defaultValue ? 'true' : 'false';
-            } elseif ($type === 'enum') {
+            } elseif ($type === 'number') {
+                $argType .= is_numeric($defaultValue) ? $defaultValue : '0';
+            } elseif ($details['type'] === 'enum') {
+                // For enums (which have select control), use empty string default
                 $argType .= '""';
             } else {
                 $argType .= "\"{$this->escapeJsString($defaultValue)}\"";
@@ -345,7 +419,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
             $argType .= "        type: \"{$control}\"\n";
             $argType .= "      },\n";
 
-            if ($type === 'enum' && ! empty($details['choices'])) {
+            if ($details['type'] === 'enum' && ! empty($details['choices'])) {
                 $options = array_map(fn ($c) => "\"{$this->escapeJsString($c)}\"", $details['choices']);
                 $argType .= '      options: ["", ' . implode(', ', $options) . "],\n";
             }
@@ -360,6 +434,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
     {
         return match ($type) {
             'boolean' => 'false',
+            'integer' => '0',
             'enum' => ! empty($choices) ? $choices[0] : '',
             default => 'Sample value',
         };
@@ -369,6 +444,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
     {
         return match ($type) {
             'boolean' => 'false',
+            'integer' => '0',
             'enum' => '""',
             default => '"Sample value"',
         };

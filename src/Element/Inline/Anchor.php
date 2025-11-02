@@ -4,7 +4,7 @@
  *
  * Anchor - The a element represents a hyperlink, linking to another resource.
  * 
- * @generated 2025-11-01 20:20:24
+ * @generated 2025-11-02 15:51:50
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -35,7 +35,6 @@ use Html\Enum\ARoleEnum;
 use Html\Enum\AriaBusyEnum;
 use Html\Enum\AriaCurrentEnum;
 use Html\Enum\AriaDisabledEnum;
-use Html\Enum\AriaLabelEnum;
 use Html\Enum\RelEnum;
 use Html\Enum\TargetEnum;
 use Html\Trait\GlobalAttribute;
@@ -61,6 +60,7 @@ class Anchor extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+    use GlobalAttribute\PopoverTrait;
     /**
      * The HTML element name
      */
@@ -143,7 +143,7 @@ class Anchor extends InlineElement
     public ?string $type = null;
 
     /** Defines the semantic purpose of an element for assistive technologies. */
-    public null|string|ARoleEnum $role = null;
+    public ?ARoleEnum $role = null;
 
     /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
     public ?string $ariaControls = null;
@@ -159,17 +159,17 @@ class Anchor extends InlineElement
      * @category HTML attribute
      * @example false
      */
-    public null|string|AriaCurrentEnum $ariaCurrent = null;
+    public ?AriaCurrentEnum $ariaCurrent = null;
 
     /** 
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
      * @category HTML attribute
      * @example false
      */
-    public null|string|AriaBusyEnum $ariaBusy = null;
+    public ?AriaBusyEnum $ariaBusy = null;
 
     /** Defines a string value that labels the current element for assistive technologies. */
-    public null|string|AriaLabelEnum $ariaLabel = null;
+    public ?string $ariaLabel = null;
 
     /** 
      * Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
@@ -280,23 +280,16 @@ class Anchor extends InlineElement
 
     public function setRole(string|ARoleEnum $role): static
     {
-        $value = $role;
         if (is_string($role)) {
-            $resolved = ARoleEnum::tryFrom($role);
-            if (!is_null($resolved)) {
-                $role = $resolved;
-            }
-        }
-        if ($role instanceof ARoleEnum) {
-            $value = $role->value;
+            $role = ARoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
-        $this->delegated->setAttribute('role', (string) $value);
+        $this->delegated->setAttribute('role', (string) $role->value);
 
         return $this;
     }
 
-    public function getRole(): null|string|ARoleEnum
+    public function getRole(): ?ARoleEnum
     {
         return $this->role;
     }
@@ -339,69 +332,44 @@ class Anchor extends InlineElement
 
     public function setAriaCurrent(string|AriaCurrentEnum $ariaCurrent): static
     {
-        $value = $ariaCurrent;
         if (is_string($ariaCurrent)) {
-            $resolved = AriaCurrentEnum::tryFrom($ariaCurrent);
-            if (!is_null($resolved)) {
-                $ariaCurrent = $resolved;
-            }
-        }
-        if ($ariaCurrent instanceof AriaCurrentEnum) {
-            $value = $ariaCurrent->value;
+            $ariaCurrent = AriaCurrentEnum::tryFrom($ariaCurrent) ?? throw new \InvalidArgumentException("Invalid value for \$ariaCurrent.");
         }
         $this->ariaCurrent = $ariaCurrent;
-        $this->delegated->setAttribute('aria-current', (string) $value);
+        $this->delegated->setAttribute('aria-current', (string) $ariaCurrent->value);
 
         return $this;
     }
 
-    public function getAriaCurrent(): null|string|AriaCurrentEnum
+    public function getAriaCurrent(): ?AriaCurrentEnum
     {
         return $this->ariaCurrent;
     }
 
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
-        $value = $ariaBusy;
         if (is_string($ariaBusy)) {
-            $resolved = AriaBusyEnum::tryFrom($ariaBusy);
-            if (!is_null($resolved)) {
-                $ariaBusy = $resolved;
-            }
-        }
-        if ($ariaBusy instanceof AriaBusyEnum) {
-            $value = $ariaBusy->value;
+            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
         }
         $this->ariaBusy = $ariaBusy;
-        $this->delegated->setAttribute('aria-busy', (string) $value);
+        $this->delegated->setAttribute('aria-busy', (string) $ariaBusy->value);
 
         return $this;
     }
 
-    public function getAriaBusy(): null|string|AriaBusyEnum
+    public function getAriaBusy(): ?AriaBusyEnum
     {
         return $this->ariaBusy;
     }
 
-    public function setAriaLabel(string|AriaLabelEnum $ariaLabel): static
+    public function setAriaLabel(string $ariaLabel): static
     {
-        $value = $ariaLabel;
-        if (is_string($ariaLabel)) {
-            $resolved = AriaLabelEnum::tryFrom($ariaLabel);
-            if (!is_null($resolved)) {
-                $ariaLabel = $resolved;
-            }
-        }
-        if ($ariaLabel instanceof AriaLabelEnum) {
-            $value = $ariaLabel->value;
-        }
         $this->ariaLabel = $ariaLabel;
-        $this->delegated->setAttribute('aria-label', (string) $value);
-
+        $this->delegated->setAttribute('aria-label', (string) $ariaLabel);
         return $this;
     }
 
-    public function getAriaLabel(): null|string|AriaLabelEnum
+    public function getAriaLabel(): ?string
     {
         return $this->ariaLabel;
     }

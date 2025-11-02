@@ -4,7 +4,7 @@
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
  * 
- * @generated 2025-11-01 20:20:24
+ * @generated 2025-11-02 15:51:50
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -44,7 +44,6 @@ use Html\Element\Inline\Slot;
 use Html\Element\Inline\Textarea;
 use Html\Element\Void\Script;
 use Html\Enum\AriaInvalidEnum;
-use Html\Enum\AriaLabelEnum;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\AutocorrectEnum;
 use Html\Enum\EnctypeEnum;
@@ -187,7 +186,7 @@ class Form extends BlockElement
     public ?AriaInvalidEnum $ariaInvalid = null;
 
     /** Defines a string value that labels the current element for assistive technologies. */
-    public null|string|AriaLabelEnum $ariaLabel = null;
+    public ?string $ariaLabel = null;
 
 
     public function setAcceptCharset(string $acceptCharset): static
@@ -334,25 +333,14 @@ class Form extends BlockElement
         return $this->ariaInvalid;
     }
 
-    public function setAriaLabel(string|AriaLabelEnum $ariaLabel): static
+    public function setAriaLabel(string $ariaLabel): static
     {
-        $value = $ariaLabel;
-        if (is_string($ariaLabel)) {
-            $resolved = AriaLabelEnum::tryFrom($ariaLabel);
-            if (!is_null($resolved)) {
-                $ariaLabel = $resolved;
-            }
-        }
-        if ($ariaLabel instanceof AriaLabelEnum) {
-            $value = $ariaLabel->value;
-        }
         $this->ariaLabel = $ariaLabel;
-        $this->delegated->setAttribute('aria-label', (string) $value);
-
+        $this->delegated->setAttribute('aria-label', (string) $ariaLabel);
         return $this;
     }
 
-    public function getAriaLabel(): null|string|AriaLabelEnum
+    public function getAriaLabel(): ?string
     {
         return $this->ariaLabel;
     }

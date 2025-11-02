@@ -13,6 +13,28 @@ final class MergeSpecifications extends Command
 {
     private const HTML_DEFINITION_PATH = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'specifications' . \DIRECTORY_SEPARATOR . 'html5.yaml';
 
+    /**
+     * Deep merge arrays without converting scalar values to arrays
+     */
+    private function deepMerge(array $base, array $override): array
+    {
+        foreach ($override as $key => $value) {
+            if (isset($base[$key]) && \is_array($base[$key]) && \is_array($value)) {
+                // Special handling for 'choices' arrays - merge and deduplicate
+                if ($key === 'choices') {
+                    $base[$key] = \array_values(\array_unique(\array_merge($base[$key], $value)));
+                } else {
+                    // Both are arrays, merge recursively
+                    $base[$key] = $this->deepMerge($base[$key], $value);
+                }
+            } else {
+                // Override takes precedence (no array conversion)
+                $base[$key] = $value;
+            }
+        }
+        return $base;
+    }
+
     public function __invoke(string $import, string $dest, InputInterface $input, OutputInterface $output): int
     {
         $customSpecs = Yaml::parseFile($import);
@@ -27,7 +49,7 @@ final class MergeSpecifications extends Command
 
                     continue;
                 }
-                $output[$element]['attributes'] = \array_merge_recursive(
+                $output[$element]['attributes'] = $this->deepMerge(
                     $output[$element]['attributes'],
                     $customSpecs['*']['attributes']
                 );
@@ -41,15 +63,29 @@ final class MergeSpecifications extends Command
                 $result = preg_grep($pattern, $keys);
 
                 foreach ($result as $key) {
-                    if (! isset($htmlSpecs[$key]['attributes'])) {
-                        $output[$key]['attributes'] = $customSpecs[$pattern]['attributes'];
-
-                        continue;
+                    // Merge attributes if present
+                    if (isset($customSpecs[$pattern]['attributes'])) {
+                        if (! isset($output[$key]['attributes'])) {
+                            $output[$key]['attributes'] = $customSpecs[$pattern]['attributes'];
+                        } else {
+                            $output[$key]['attributes'] = $this->deepMerge(
+                                $output[$key]['attributes'],
+                                $customSpecs[$pattern]['attributes']
+                            );
+                        }
                     }
-                    $output[$key]['attributes'] = \array_merge_recursive(
-                        $output[$key]['attributes'],
-                        $customSpecs[$pattern]['attributes']
-                    );
+
+                    // Merge allowed_global_attributes if present
+                    if (isset($customSpecs[$pattern]['allowed_global_attributes'])) {
+                        if (! isset($output[$key]['allowed_global_attributes'])) {
+                            $output[$key]['allowed_global_attributes'] = $customSpecs[$pattern]['allowed_global_attributes'];
+                        } else {
+                            $output[$key]['allowed_global_attributes'] = \array_unique(\array_merge(
+                                $output[$key]['allowed_global_attributes'],
+                                $customSpecs[$pattern]['allowed_global_attributes']
+                            ));
+                        }
+                    }
                 }
 
                 unset($customSpecs[$pattern]); // Remove regex key from framework specs after processing (so we can deep merge all non-regex keys later)
@@ -57,7 +93,7 @@ final class MergeSpecifications extends Command
         }
 
         // Deep merge everything else
-        $output = \array_merge_recursive($output, $customSpecs);
+        $output = $this->deepMerge($output, $customSpecs);
         if (isset($output['*'])) {
             unset($output['*']); // Remove global wildcard key from output
         }

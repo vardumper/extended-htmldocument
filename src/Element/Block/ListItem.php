@@ -4,7 +4,7 @@
  *
  * ListItem - The li element represents a list item. If its parent element is an ol, ul, or menu, then the element is an item of the parent element's list, as defined for those elements. Otherwise, the list item has no defined list-related semantics.
  * 
- * @generated 2025-11-01 20:20:24
+ * @generated 2025-11-02 15:51:50
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -78,6 +78,7 @@ class ListItem extends BlockElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+    use GlobalAttribute\PopoverTrait;
     /**
      * The HTML element name
      */
@@ -157,7 +158,7 @@ class ListItem extends BlockElement
     public ?string $value = null;
 
     /** Defines the semantic purpose of an element for assistive technologies. */
-    public null|string|RoleEnum $role = null;
+    public ?RoleEnum $role = null;
 
     /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
     public ?string $ariaControls = null;
@@ -173,14 +174,14 @@ class ListItem extends BlockElement
      * @category HTML attribute
      * @example false
      */
-    public null|string|AriaCurrentEnum $ariaCurrent = null;
+    public ?AriaCurrentEnum $ariaCurrent = null;
 
     /** 
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
      * @category HTML attribute
      * @example false
      */
-    public null|string|AriaBusyEnum $ariaBusy = null;
+    public ?AriaBusyEnum $ariaBusy = null;
 
     /** 
      * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
@@ -204,23 +205,16 @@ class ListItem extends BlockElement
 
     public function setRole(string|RoleEnum $role): static
     {
-        $value = $role;
         if (is_string($role)) {
-            $resolved = RoleEnum::tryFrom($role);
-            if (!is_null($resolved)) {
-                $role = $resolved;
-            }
-        }
-        if ($role instanceof RoleEnum) {
-            $value = $role->value;
+            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
-        $this->delegated->setAttribute('role', (string) $value);
+        $this->delegated->setAttribute('role', (string) $role->value);
 
         return $this;
     }
 
-    public function getRole(): null|string|RoleEnum
+    public function getRole(): ?RoleEnum
     {
         return $this->role;
     }
@@ -263,46 +257,32 @@ class ListItem extends BlockElement
 
     public function setAriaCurrent(string|AriaCurrentEnum $ariaCurrent): static
     {
-        $value = $ariaCurrent;
         if (is_string($ariaCurrent)) {
-            $resolved = AriaCurrentEnum::tryFrom($ariaCurrent);
-            if (!is_null($resolved)) {
-                $ariaCurrent = $resolved;
-            }
-        }
-        if ($ariaCurrent instanceof AriaCurrentEnum) {
-            $value = $ariaCurrent->value;
+            $ariaCurrent = AriaCurrentEnum::tryFrom($ariaCurrent) ?? throw new \InvalidArgumentException("Invalid value for \$ariaCurrent.");
         }
         $this->ariaCurrent = $ariaCurrent;
-        $this->delegated->setAttribute('aria-current', (string) $value);
+        $this->delegated->setAttribute('aria-current', (string) $ariaCurrent->value);
 
         return $this;
     }
 
-    public function getAriaCurrent(): null|string|AriaCurrentEnum
+    public function getAriaCurrent(): ?AriaCurrentEnum
     {
         return $this->ariaCurrent;
     }
 
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
-        $value = $ariaBusy;
         if (is_string($ariaBusy)) {
-            $resolved = AriaBusyEnum::tryFrom($ariaBusy);
-            if (!is_null($resolved)) {
-                $ariaBusy = $resolved;
-            }
-        }
-        if ($ariaBusy instanceof AriaBusyEnum) {
-            $value = $ariaBusy->value;
+            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
         }
         $this->ariaBusy = $ariaBusy;
-        $this->delegated->setAttribute('aria-busy', (string) $value);
+        $this->delegated->setAttribute('aria-busy', (string) $ariaBusy->value);
 
         return $this;
     }
 
-    public function getAriaBusy(): null|string|AriaBusyEnum
+    public function getAriaBusy(): ?AriaBusyEnum
     {
         return $this->ariaBusy;
     }

@@ -4,7 +4,7 @@
  *
  * Fieldset - The fieldset element represents a set of form controls optionally grouped under a common name.
  * 
- * @generated 2025-11-01 20:20:24
+ * @generated 2025-11-02 15:51:50
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -32,7 +32,7 @@ use Html\Enum\AriaDisabledEnum;
 use Html\Enum\AriaHiddenEnum;
 use Html\Enum\AriaInvalidEnum;
 use Html\Enum\AutocorrectEnum;
-use Html\Enum\RoleEnum;
+use Html\Enum\FieldsetRoleEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
 
@@ -56,6 +56,7 @@ class Fieldset extends BlockElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+    use GlobalAttribute\PopoverTrait;
     /**
      * The HTML element name
      */
@@ -111,8 +112,11 @@ class Fieldset extends BlockElement
      */
     public ?AutocorrectEnum $autocorrect = null;
 
-    /** Array */
-    public ?RoleEnum $role = null;
+    /** Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset. */
+    public ?string $form = null;
+
+    /** The role attribute is used to define the purpose of an element. */
+    public ?FieldsetRoleEnum $role = null;
 
     /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
     public ?string $ariaControls = null;
@@ -168,10 +172,22 @@ class Fieldset extends BlockElement
         return $this->autocorrect;
     }
 
-    public function setRole(string|RoleEnum $role): static
+    public function setForm(string $form): static
+    {
+        $this->form = $form;
+        $this->delegated->setAttribute('form', (string) $form);
+        return $this;
+    }
+
+    public function getForm(): ?string
+    {
+        return $this->form;
+    }
+
+    public function setRole(string|FieldsetRoleEnum $role): static
     {
         if (is_string($role)) {
-            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
+            $role = FieldsetRoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -179,7 +195,7 @@ class Fieldset extends BlockElement
         return $this;
     }
 
-    public function getRole(): ?RoleEnum
+    public function getRole(): ?FieldsetRoleEnum
     {
         return $this->role;
     }

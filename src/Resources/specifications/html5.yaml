@@ -987,6 +987,88 @@ button:
         - progress
         - select
         - textarea
+    form:
+      description: 'Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.'
+      type: string
+      elements:
+        - button
+        - fieldset
+        - input
+        - object
+        - select
+        - textarea
+    formaction:
+      description: 'The URL that processes the form submission. Overrides the action attribute of the button''s form owner. Only applies to submit buttons. Element-specific to button and input elements with type submit or image.'
+      type: string
+      elements:
+        - button
+        - input
+    formenctype:
+      description: 'Specifies how form data should be encoded when submitting to the server. Only for submit buttons. Overrides the form''s enctype attribute. Element-specific to button and input elements with type submit or image.'
+      type: enum
+      elements:
+        - button
+        - input
+      choices:
+        - application/x-www-form-urlencoded
+        - multipart/form-data
+        - text/plain
+      defaultValue: application/x-www-form-urlencoded
+    formmethod:
+      description: 'Specifies the HTTP method to use when submitting the form. Only for submit buttons. Overrides the form''s method attribute. Use "post" for sensitive data, "get" for idempotent operations, "dialog" to close dialog without submission. Element-specific to button and input elements with type submit or image.'
+      type: enum
+      elements:
+        - button
+        - input
+      choices:
+        - get
+        - post
+        - dialog
+      defaultValue: get
+    formnovalidate:
+      description: 'When present, specifies that the form should not be validated when submitted. Only applies to submit buttons. Overrides the form''s novalidate attribute. Element-specific to button and input elements with type submit or image.'
+      type: boolean
+      elements:
+        - button
+        - input
+    formtarget:
+      description: 'Specifies where to display the response after form submission. Can be a browsing context name or keyword (_self, _blank, _parent, _top). Only for submit buttons. Overrides the form''s target attribute. Element-specific to button and input elements with type submit or image.'
+      type: string|enum
+      elements:
+        - button
+        - input
+      choices:
+        - _self
+        - _blank
+        - _parent
+        - _top
+    popovertarget:
+      description: 'Turns the button into a popover control by specifying the ID of the popover element to control. Creates implicit aria-details and aria-expanded relationships, establishes anchor positioning reference, and improves accessibility. Part of the Popover API. Element-specific to button and input elements.'
+      type: string
+      elements:
+        - button
+        - input
+    popovertargetaction:
+      description: 'Specifies the action to perform on the popover element controlled by popovertarget. "show" displays a hidden popover, "hide" hides a visible popover, "toggle" (default) switches between states. Part of the Popover API. Element-specific to button and input elements.'
+      type: enum
+      elements:
+        - button
+        - input
+      choices:
+        - show
+        - hide
+        - toggle
+      defaultValue: toggle
+    command:
+      description: 'Specifies the action to be performed on an element controlled via commandfor attribute. Supports dialog operations (show-modal, close, request-close), popover operations (show-popover, hide-popover, toggle-popover), and custom commands prefixed with "--". Provides declarative element control without JavaScript. Element-specific to button element.'
+      type: string
+      elements:
+        - button
+    commandfor:
+      description: 'Turns the button into a command button by specifying the ID of the element to control. Works with the command attribute to define the action. A more general version of popovertarget. Enables declarative control of interactive elements. Element-specific to button element.'
+      type: string
+      elements:
+        - button
   text: string
 canvas:
   name: Canvas
@@ -1749,6 +1831,16 @@ fieldset:
         - button
         - output
         - input
+        - select
+        - textarea
+    form:
+      description: 'Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.'
+      type: string
+      elements:
+        - button
+        - fieldset
+        - input
+        - object
         - select
         - textarea
   children:
@@ -2896,6 +2988,78 @@ input:
         - input
         - object
         - video
+    form:
+      description: 'Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.'
+      type: string
+      elements:
+        - button
+        - fieldset
+        - input
+        - object
+        - select
+        - textarea
+    formaction:
+      description: 'The URL that processes the form submission. Overrides the action attribute of the button''s form owner. Only applies to submit buttons. Element-specific to button and input elements with type submit or image.'
+      type: string
+      elements:
+        - button
+        - input
+    formenctype:
+      description: 'Specifies how form data should be encoded when submitting to the server. Only for submit buttons. Overrides the form''s enctype attribute. Element-specific to button and input elements with type submit or image.'
+      type: enum
+      elements:
+        - button
+        - input
+      choices:
+        - application/x-www-form-urlencoded
+        - multipart/form-data
+        - text/plain
+      defaultValue: application/x-www-form-urlencoded
+    formmethod:
+      description: 'Specifies the HTTP method to use when submitting the form. Only for submit buttons. Overrides the form''s method attribute. Use "post" for sensitive data, "get" for idempotent operations, "dialog" to close dialog without submission. Element-specific to button and input elements with type submit or image.'
+      type: enum
+      elements:
+        - button
+        - input
+      choices:
+        - get
+        - post
+        - dialog
+      defaultValue: get
+    formnovalidate:
+      description: 'When present, specifies that the form should not be validated when submitted. Only applies to submit buttons. Overrides the form''s novalidate attribute. Element-specific to button and input elements with type submit or image.'
+      type: boolean
+      elements:
+        - button
+        - input
+    formtarget:
+      description: 'Specifies where to display the response after form submission. Can be a browsing context name or keyword (_self, _blank, _parent, _top). Only for submit buttons. Overrides the form''s target attribute. Element-specific to button and input elements with type submit or image.'
+      type: string|enum
+      elements:
+        - button
+        - input
+      choices:
+        - _self
+        - _blank
+        - _parent
+        - _top
+    popovertarget:
+      description: 'Turns the button into a popover control by specifying the ID of the popover element to control. Creates implicit aria-details and aria-expanded relationships, establishes anchor positioning reference, and improves accessibility. Part of the Popover API. Element-specific to button and input elements.'
+      type: string
+      elements:
+        - button
+        - input
+    popovertargetaction:
+      description: 'Specifies the action to perform on the popover element controlled by popovertarget. "show" displays a hidden popover, "hide" hides a visible popover, "toggle" (default) switches between states. Part of the Popover API. Element-specific to button and input elements.'
+      type: enum
+      elements:
+        - button
+        - input
+      choices:
+        - show
+        - hide
+        - toggle
+      defaultValue: toggle
 ins:
   name: 'Inserted Text'
   description: 'The ins element represents an addition to the document.'
@@ -3688,6 +3852,16 @@ object:
         - input
         - object
         - video
+    form:
+      description: 'Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.'
+      type: string
+      elements:
+        - button
+        - fieldset
+        - input
+        - object
+        - select
+        - textarea
 ol:
   name: 'Ordered List'
   description: 'The ol element represents an ordered list of items. The order of the list is meaningful.'
@@ -4559,6 +4733,17 @@ select:
       type: integer
       elements:
         - hr
+        - select
+    form:
+      description: 'Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.'
+      type: string
+      elements:
+        - button
+        - fieldset
+        - input
+        - object
+        - select
+        - textarea
   children:
     - optgroup
     - option
@@ -5238,6 +5423,16 @@ textarea:
         - input
         - optgroup
         - option
+        - select
+        - textarea
+    form:
+      description: 'Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.'
+      type: string
+      elements:
+        - button
+        - fieldset
+        - input
+        - object
         - select
         - textarea
     maxlength:

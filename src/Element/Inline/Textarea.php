@@ -4,7 +4,7 @@
  *
  * Textarea - The textarea element represents a multiline plain text edit control for the element's raw value.
  * 
- * @generated 2025-11-01 20:20:24
+ * @generated 2025-11-02 15:51:50
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -31,7 +31,6 @@ use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
 use Html\Enum\AriaDisabledEnum;
 use Html\Enum\AriaInvalidEnum;
-use Html\Enum\AriaLabelEnum;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\AutocorrectEnum;
 use Html\Enum\RoleEnum;
@@ -59,6 +58,7 @@ class Textarea extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+    use GlobalAttribute\PopoverTrait;
     /**
      * The HTML element name
      */
@@ -132,6 +132,9 @@ class Textarea extends InlineElement
     /** When present, it specifies that an input element should be disabled. */
     public ?bool $disabled = null;
 
+    /** Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset. */
+    public ?string $form = null;
+
     /** Specifies the maximum number of characters allowed in an input field. */
     public ?int $maxlength = null;
 
@@ -161,7 +164,7 @@ class Textarea extends InlineElement
     public ?WrapEnum $wrap = null;
 
     /** Defines the semantic purpose of an element for assistive technologies. */
-    public null|string|RoleEnum $role = null;
+    public ?RoleEnum $role = null;
 
     /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
     public ?string $ariaControls = null;
@@ -180,7 +183,7 @@ class Textarea extends InlineElement
     public ?AriaInvalidEnum $ariaInvalid = null;
 
     /** Defines a string value that labels the current element for assistive technologies. */
-    public null|string|AriaLabelEnum $ariaLabel = null;
+    public ?string $ariaLabel = null;
 
     /** 
      * Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
@@ -256,6 +259,18 @@ class Textarea extends InlineElement
     public function getDisabled(): ?bool
     {
         return $this->disabled;
+    }
+
+    public function setForm(string $form): static
+    {
+        $this->form = $form;
+        $this->delegated->setAttribute('form', (string) $form);
+        return $this;
+    }
+
+    public function getForm(): ?string
+    {
+        return $this->form;
     }
 
     public function setMaxlength(int $maxlength): static
@@ -360,23 +375,16 @@ class Textarea extends InlineElement
 
     public function setRole(string|RoleEnum $role): static
     {
-        $value = $role;
         if (is_string($role)) {
-            $resolved = RoleEnum::tryFrom($role);
-            if (!is_null($resolved)) {
-                $role = $resolved;
-            }
-        }
-        if ($role instanceof RoleEnum) {
-            $value = $role->value;
+            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
-        $this->delegated->setAttribute('role', (string) $value);
+        $this->delegated->setAttribute('role', (string) $role->value);
 
         return $this;
     }
 
-    public function getRole(): null|string|RoleEnum
+    public function getRole(): ?RoleEnum
     {
         return $this->role;
     }
@@ -433,25 +441,14 @@ class Textarea extends InlineElement
         return $this->ariaInvalid;
     }
 
-    public function setAriaLabel(string|AriaLabelEnum $ariaLabel): static
+    public function setAriaLabel(string $ariaLabel): static
     {
-        $value = $ariaLabel;
-        if (is_string($ariaLabel)) {
-            $resolved = AriaLabelEnum::tryFrom($ariaLabel);
-            if (!is_null($resolved)) {
-                $ariaLabel = $resolved;
-            }
-        }
-        if ($ariaLabel instanceof AriaLabelEnum) {
-            $value = $ariaLabel->value;
-        }
         $this->ariaLabel = $ariaLabel;
-        $this->delegated->setAttribute('aria-label', (string) $value);
-
+        $this->delegated->setAttribute('aria-label', (string) $ariaLabel);
         return $this;
     }
 
-    public function getAriaLabel(): null|string|AriaLabelEnum
+    public function getAriaLabel(): ?string
     {
         return $this->ariaLabel;
     }

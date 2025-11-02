@@ -4,7 +4,7 @@
  *
  * AriaCurrentEnum - Indicates the current item within a container or set of related elements.
  * 
- * @generated 2025-11-01 20:12:04
+ * @generated 2025-11-02 15:57:23
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

@@ -4,7 +4,7 @@
  *
  * Meter - The meter element represents a scalar measurement within a known range, or a fractional value.
  * 
- * @generated 2025-11-01 20:20:24
+ * @generated 2025-11-02 15:51:50
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline

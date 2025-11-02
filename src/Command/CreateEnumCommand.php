@@ -75,6 +75,7 @@ final class CreateEnumCommand extends Command
                 //     'An enum attribute must have elements. Add elements or change type to string.'
                 // );
             }
+            // Reset cases for each enum
             $cases = '';
             $className = ucfirst($element);
 
@@ -90,7 +91,9 @@ final class CreateEnumCommand extends Command
             }
 
             $defaultCase = $this->getCaseName((string) $attributes['defaultValue'] ?? '');
-            foreach ($attributes['choices'] as $option) {
+            // Deduplicate choices to avoid duplicate enum cases
+            $uniqueChoices = array_unique($attributes['choices']);
+            foreach ($uniqueChoices as $option) {
                 $caseName = $this->getCaseName($option);
                 $default = $caseName === $defaultCase ? ' // default' : '';
                 $cases .= sprintf("    case %s = '%s';%s", $caseName, $option, $default) . \PHP_EOL;

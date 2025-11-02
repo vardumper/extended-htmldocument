@@ -20,6 +20,7 @@ a:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   attributes:
     download:
@@ -116,7 +117,7 @@ a:
         - source
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -164,7 +165,7 @@ a:
       type: string
     aria-current:
       description: 'Indicates the current item within a container or set of related elements.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'false'
@@ -176,16 +177,14 @@ a:
         - 'true'
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
         - 'false'
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
     aria-disabled:
       description: 'Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.'
       type: enum
@@ -216,6 +215,7 @@ abbr:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
@@ -244,7 +244,7 @@ abbr:
         - video
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -292,7 +292,7 @@ abbr:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -318,14 +318,63 @@ address:
     - style
     - tabindex
     - translate
+    - popover
   unique: false
   parent: article
   unique_per_parent: true
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -467,6 +516,7 @@ article:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - a
@@ -524,9 +574,57 @@ article:
     - video
     - wbr
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -553,6 +651,7 @@ aside:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - a
@@ -626,11 +725,64 @@ aside:
     - video
     - wbr
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
 audio:
   name: Audio
   description: 'The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.'
@@ -647,6 +799,7 @@ audio:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   attributes:
     autoplay:
@@ -710,7 +863,7 @@ audio:
         - video
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -758,7 +911,7 @@ audio:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -786,9 +939,65 @@ b:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -832,102 +1041,30 @@ bdi:
   description: 'The bdi element represents a span of text that is to be isolated from its surroundings for the purposes of bidirectional text formatting. (Bidirectional-isolate)'
   level: inline
   allowed_global_attributes:
-    - accesskey
-    - autocapitalize
-    - autofocus
-    - class
-    - contenteditable
-    - inputmode
-    - 'data-*'
-    - dir
-    - draggable
-    - hidden
-    - id
-    - inputmode
-    - lang
-    - spellcheck
-    - style
-    - tabindex
-    - title
-    - translate
+    0: accesskey
+    1: autocapitalize
+    2: autofocus
+    3: class
+    4: contenteditable
+    5: inputmode
+    6: 'data-*'
+    7: dir
+    8: draggable
+    9: hidden
+    10: id
+    12: lang
+    13: spellcheck
+    14: style
+    15: tabindex
+    16: title
+    17: translate
+    18: popover
   unique: false
   text: string
   attributes:
-    aria-hidden:
-      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
-      type: enum
-      defaultValue: 'false'
-      choices:
-        - 'false'
-        - 'true'
-bdo:
-  name: 'Bidirectional Override'
-  description: 'The bdo element represents explicit text directionality formatting control for its children. It allows authors to override the Unicode bidirectional algorithm by explicitly specifying a direction override.'
-  level: inline
-  allowed_global_attributes:
-    - accesskey
-    - autocapitalize
-    - autofocus
-    - class
-    - contenteditable
-    - inputmode
-    - 'data-*'
-    - dir
-    - draggable
-    - hidden
-    - id
-    - inputmode
-    - lang
-    - spellcheck
-    - style
-    - tabindex
-    - title
-    - translate
-  unique: false
-  text: string
-  attributes:
-    aria-hidden:
-      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
-      type: enum
-      defaultValue: 'false'
-      choices:
-        - 'false'
-        - 'true'
-blockquote:
-  name: Blockquote
-  description: 'The blockquote element represents a section that is quoted from another source. Content inside a blockquote must be quoted from another source, whose address, if it has one, may be cited in the cite attribute.'
-  level: block
-  allowed_global_attributes:
-    - accesskey
-    - autocapitalize
-    - autofocus
-    - class
-    - contenteditable
-    - 'data-*'
-    - dir
-    - draggable
-    - hidden
-    - id
-    - inputmode
-    - lang
-    - spellcheck
-    - style
-    - tabindex
-    - title
-    - translate
-  unique: false
-  attributes:
-    cite:
-      description: 'Specifies the URL of the cited work or the name of the cited creative work.'
-      type: uri
-      elements:
-        - blockquote
-        - del
-        - ins
-        - q
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -975,7 +1112,190 @@ blockquote:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
+    aria-hidden:
+      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+bdo:
+  name: 'Bidirectional Override'
+  description: 'The bdo element represents explicit text directionality formatting control for its children. It allows authors to override the Unicode bidirectional algorithm by explicitly specifying a direction override.'
+  level: inline
+  allowed_global_attributes:
+    0: accesskey
+    1: autocapitalize
+    2: autofocus
+    3: class
+    4: contenteditable
+    5: inputmode
+    6: 'data-*'
+    7: dir
+    8: draggable
+    9: hidden
+    10: id
+    12: lang
+    13: spellcheck
+    14: style
+    15: tabindex
+    16: title
+    17: translate
+    18: popover
+  unique: false
+  text: string
+  attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
+    aria-hidden:
+      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+blockquote:
+  name: Blockquote
+  description: 'The blockquote element represents a section that is quoted from another source. Content inside a blockquote must be quoted from another source, whose address, if it has one, may be cited in the cite attribute.'
+  level: block
+  allowed_global_attributes:
+    - accesskey
+    - autocapitalize
+    - autofocus
+    - class
+    - contenteditable
+    - 'data-*'
+    - dir
+    - draggable
+    - hidden
+    - id
+    - inputmode
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
+    - popover
+  unique: false
+  attributes:
+    cite:
+      description: 'Specifies the URL of the cited work or the name of the cited creative work.'
+      type: uri
+      elements:
+        - blockquote
+        - del
+        - ins
+        - q
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -1284,9 +1604,91 @@ button:
         - progress
         - select
         - textarea
+    form:
+      description: 'Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.'
+      type: string
+      elements:
+        - button
+        - fieldset
+        - input
+        - object
+        - select
+        - textarea
+    formaction:
+      description: "The URL that processes the form submission. Overrides the action attribute of the button's form owner. Only applies to submit buttons. Element-specific to button and input elements with type submit or image."
+      type: string
+      elements:
+        - button
+        - input
+    formenctype:
+      description: "Specifies how form data should be encoded when submitting to the server. Only for submit buttons. Overrides the form's enctype attribute. Element-specific to button and input elements with type submit or image."
+      type: enum
+      elements:
+        - button
+        - input
+      choices:
+        - application/x-www-form-urlencoded
+        - multipart/form-data
+        - text/plain
+      defaultValue: application/x-www-form-urlencoded
+    formmethod:
+      description: 'Specifies the HTTP method to use when submitting the form. Only for submit buttons. Overrides the form''s method attribute. Use "post" for sensitive data, "get" for idempotent operations, "dialog" to close dialog without submission. Element-specific to button and input elements with type submit or image.'
+      type: enum
+      elements:
+        - button
+        - input
+      choices:
+        - get
+        - post
+        - dialog
+      defaultValue: get
+    formnovalidate:
+      description: "When present, specifies that the form should not be validated when submitted. Only applies to submit buttons. Overrides the form's novalidate attribute. Element-specific to button and input elements with type submit or image."
+      type: boolean
+      elements:
+        - button
+        - input
+    formtarget:
+      description: "Specifies where to display the response after form submission. Can be a browsing context name or keyword (_self, _blank, _parent, _top). Only for submit buttons. Overrides the form's target attribute. Element-specific to button and input elements with type submit or image."
+      type: string|enum
+      elements:
+        - button
+        - input
+      choices:
+        - _self
+        - _blank
+        - _parent
+        - _top
+    popovertarget:
+      description: 'Turns the button into a popover control by specifying the ID of the popover element to control. Creates implicit aria-details and aria-expanded relationships, establishes anchor positioning reference, and improves accessibility. Part of the Popover API. Element-specific to button and input elements.'
+      type: string
+      elements:
+        - button
+        - input
+    popovertargetaction:
+      description: 'Specifies the action to perform on the popover element controlled by popovertarget. "show" displays a hidden popover, "hide" hides a visible popover, "toggle" (default) switches between states. Part of the Popover API. Element-specific to button and input elements.'
+      type: enum
+      elements:
+        - button
+        - input
+      choices:
+        - show
+        - hide
+        - toggle
+      defaultValue: toggle
+    command:
+      description: 'Specifies the action to be performed on an element controlled via commandfor attribute. Supports dialog operations (show-modal, close, request-close), popover operations (show-popover, hide-popover, toggle-popover), and custom commands prefixed with "--". Provides declarative element control without JavaScript. Element-specific to button element.'
+      type: string
+      elements:
+        - button
+    commandfor:
+      description: 'Turns the button into a command button by specifying the ID of the element to control. Works with the command attribute to define the action. A more general version of popovertarget. Enables declarative control of interactive elements. Element-specific to button element.'
+      type: string
+      elements:
+        - button
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -1334,7 +1736,7 @@ button:
       type: string
     aria-current:
       description: 'Indicates the current item within a container or set of related elements.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'false'
@@ -1346,16 +1748,14 @@ button:
         - 'true'
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
         - 'false'
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
     aria-disabled:
       description: 'Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.'
       type: enum
@@ -1386,6 +1786,7 @@ canvas:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   attributes:
     height:
@@ -1412,7 +1813,7 @@ canvas:
         - video
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -1460,7 +1861,7 @@ canvas:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -1495,11 +1896,67 @@ caption:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   unique_per_parent: true
   parent: table
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -1529,9 +1986,65 @@ cite:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -1561,9 +2074,65 @@ code:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -1645,6 +2214,7 @@ data:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   attributes:
     value:
@@ -1662,7 +2232,7 @@ data:
         - textarea
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -1710,7 +2280,7 @@ data:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -1745,10 +2315,66 @@ datalist:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - option
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -1778,6 +2404,7 @@ dd:
     - tabindex
     - title
     - translate
+    - popover
   unique_per_parent: true
   parent: dl
   children:
@@ -1845,55 +2472,9 @@ dd:
     - video
     - wbr
   attributes:
-    aria-hidden:
-      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
-      type: enum
-      defaultValue: 'false'
-      choices:
-        - 'false'
-        - 'true'
-del:
-  name: 'Deleted Text'
-  description: 'The del element represents a deletion from the document.'
-  level: block
-  allowed_global_attributes:
-    - accesskey
-    - autocapitalize
-    - autofocus
-    - class
-    - contenteditable
-    - 'data-*'
-    - dir
-    - draggable
-    - hidden
-    - id
-    - inputmode
-    - lang
-    - spellcheck
-    - style
-    - tabindex
-    - title
-    - translate
-  unique: false
-  attributes:
-    cite:
-      description: 'Specifies the URL of the cited work or the name of the cited creative work.'
-      type: uri
-      elements:
-        - blockquote
-        - del
-        - ins
-        - q
-    datetime:
-      description: "Specifies the date and time of the change in the format 'YYYY-MM-DDThh:mm:ss' or a subset of it."
-      type: datetime
-      elements:
-        - del
-        - ins
-        - time
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -1941,7 +2522,109 @@ del:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
+    aria-hidden:
+      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+del:
+  name: 'Deleted Text'
+  description: 'The del element represents a deletion from the document.'
+  level: block
+  allowed_global_attributes:
+    - accesskey
+    - autocapitalize
+    - autofocus
+    - class
+    - contenteditable
+    - 'data-*'
+    - dir
+    - draggable
+    - hidden
+    - id
+    - inputmode
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
+    - popover
+  unique: false
+  attributes:
+    cite:
+      description: 'Specifies the URL of the cited work or the name of the cited creative work.'
+      type: uri
+      elements:
+        - blockquote
+        - del
+        - ins
+        - q
+    datetime:
+      description: "Specifies the date and time of the change in the format 'YYYY-MM-DDThh:mm:ss' or a subset of it."
+      type: datetime
+      elements:
+        - del
+        - ins
+        - time
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -1976,6 +2659,7 @@ details:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   attributes:
     open:
@@ -1985,7 +2669,7 @@ details:
         - details
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -2033,7 +2717,7 @@ details:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -2047,9 +2731,7 @@ details:
         - 'true'
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
   children:
     - div
     - dl
@@ -2083,48 +2765,13 @@ dfn:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
-    aria-hidden:
-      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
-      type: enum
-      defaultValue: 'false'
-      choices:
-        - 'false'
-        - 'true'
-dialog:
-  name: Dialog
-  description: 'The dialog element represents a part of an application that a user interacts with to perform a task, for example a dialog box, inspector, or window.'
-  level: block
-  allowed_global_attributes:
-    - accesskey
-    - autocapitalize
-    - autofocus
-    - class
-    - contenteditable
-    - 'data-*'
-    - dir
-    - draggable
-    - hidden
-    - id
-    - inputmode
-    - lang
-    - spellcheck
-    - style
-    - tabindex
-    - title
-    - translate
-  unique: false
-  attributes:
-    open:
-      description: 'When present, it specifies that the details should be visible (open) to the user.'
-      type: boolean
-      elements:
-        - details
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -2172,7 +2819,99 @@ dialog:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
+    aria-hidden:
+      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+dialog:
+  name: Dialog
+  description: 'The dialog element represents a part of an application that a user interacts with to perform a task, for example a dialog box, inspector, or window.'
+  level: block
+  allowed_global_attributes:
+    - accesskey
+    - autocapitalize
+    - autofocus
+    - class
+    - contenteditable
+    - 'data-*'
+    - dir
+    - draggable
+    - hidden
+    - id
+    - inputmode
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
+    - popover
+  unique: false
+  attributes:
+    open:
+      description: 'When present, it specifies that the details should be visible (open) to the user.'
+      type: boolean
+      elements:
+        - details
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -2231,6 +2970,7 @@ div:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - a
@@ -2306,11 +3046,71 @@ div:
     - video
     - wbr
   attributes:
+    role:
+      description: 'The role attribute is used to define the purpose of an element.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
+    aria-hidden:
+      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
 dl:
   name: 'Definition List'
   description: 'The dl element represents an association list consisting of zero or more name-value groups (a description list). Each group must consist of one or more names (dt elements) followed by one or more values (dd elements). Within a single dl element, there should not be more than one dt element for each name.'
@@ -2333,11 +3133,67 @@ dl:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - dd
     - dt
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -2367,10 +3223,66 @@ dt:
     - tabindex
     - title
     - translate
+    - popover
   unique_per_parent: true
   parent: dl
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -2400,9 +3312,65 @@ em:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -2503,6 +3471,7 @@ fieldset:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   attributes:
     autocorrect:
@@ -2520,8 +3489,18 @@ fieldset:
         - input
         - select
         - textarea
+    form:
+      description: 'Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.'
+      type: string
+      elements:
+        - button
+        - fieldset
+        - input
+        - object
+        - select
+        - textarea
     role:
-      description: 'The role attribute is used to define the semantic purpose of an element.'
+      description: 'The role attribute is used to define the purpose of an element.'
       type: enum
       choices:
         - alert
@@ -2559,7 +3538,6 @@ fieldset:
         - textbox
         - toolbar
         - tooltip
-        - group
     aria-controls:
       description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
       type: string
@@ -2632,11 +3610,67 @@ figcaption:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   unique_per_parent: true
   parent: figure
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -2666,11 +3700,67 @@ figure:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - figcaption
     - img
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -2700,6 +3790,7 @@ footer:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - a
@@ -2772,11 +3863,71 @@ footer:
     - video
     - wbr
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
+    aria-hidden:
+      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
 form:
   name: Form
   description: 'The form element represents a section of a document containing interactive controls for submitting information to a web server.'
@@ -2896,9 +4047,7 @@ form:
         - spelling
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
   children:
     - button
     - canvas
@@ -2941,9 +4090,65 @@ h1:
     - tabindex
     - title
     - translate
+    - popover
   text: string
   unique: false
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -2973,9 +4178,65 @@ h2:
     - tabindex
     - title
     - translate
+    - popover
   text: string
   unique: false
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -3005,9 +4266,65 @@ h3:
     - tabindex
     - title
     - translate
+    - popover
   text: string
   unique: false
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -3037,9 +4354,65 @@ h4:
     - tabindex
     - title
     - translate
+    - popover
   text: string
   unique: false
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -3069,9 +4442,65 @@ h5:
     - tabindex
     - title
     - translate
+    - popover
   text: string
   unique: false
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -3101,9 +4530,65 @@ h6:
     - tabindex
     - title
     - translate
+    - popover
   text: string
   unique: false
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -3222,9 +4707,7 @@ header:
   attributes:
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
 hgroup:
   name: 'Headings Group'
   description: 'The hgroup element represents a multi-level heading for a section of a document. It groups a set of h1–h6 elements.'
@@ -3247,6 +4730,7 @@ hgroup:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - h1
@@ -3256,6 +4740,61 @@ hgroup:
     - h5
     - h6
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -3364,9 +4903,65 @@ i:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -3388,6 +4983,7 @@ iframe:
     - style
     - tabindex
     - title
+    - popover
   unique: false
   attributes:
     allowfullscreen:
@@ -3478,7 +5074,7 @@ iframe:
         - video
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -3526,7 +5122,7 @@ iframe:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -3540,9 +5136,7 @@ iframe:
         - 'true'
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
 img:
   name: Image
   description: 'The img element represents an image.'
@@ -3675,9 +5269,7 @@ img:
         - 'true'
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
 input:
   name: Input
   description: 'The input element represents a typed data field, usually with a form control to allow user input.'
@@ -3929,6 +5521,78 @@ input:
         - input
         - object
         - video
+    form:
+      description: 'Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.'
+      type: string
+      elements:
+        - button
+        - fieldset
+        - input
+        - object
+        - select
+        - textarea
+    formaction:
+      description: "The URL that processes the form submission. Overrides the action attribute of the button's form owner. Only applies to submit buttons. Element-specific to button and input elements with type submit or image."
+      type: string
+      elements:
+        - button
+        - input
+    formenctype:
+      description: "Specifies how form data should be encoded when submitting to the server. Only for submit buttons. Overrides the form's enctype attribute. Element-specific to button and input elements with type submit or image."
+      type: enum
+      elements:
+        - button
+        - input
+      choices:
+        - application/x-www-form-urlencoded
+        - multipart/form-data
+        - text/plain
+      defaultValue: application/x-www-form-urlencoded
+    formmethod:
+      description: 'Specifies the HTTP method to use when submitting the form. Only for submit buttons. Overrides the form''s method attribute. Use "post" for sensitive data, "get" for idempotent operations, "dialog" to close dialog without submission. Element-specific to button and input elements with type submit or image.'
+      type: enum
+      elements:
+        - button
+        - input
+      choices:
+        - get
+        - post
+        - dialog
+      defaultValue: get
+    formnovalidate:
+      description: "When present, specifies that the form should not be validated when submitted. Only applies to submit buttons. Overrides the form's novalidate attribute. Element-specific to button and input elements with type submit or image."
+      type: boolean
+      elements:
+        - button
+        - input
+    formtarget:
+      description: "Specifies where to display the response after form submission. Can be a browsing context name or keyword (_self, _blank, _parent, _top). Only for submit buttons. Overrides the form's target attribute. Element-specific to button and input elements with type submit or image."
+      type: string|enum
+      elements:
+        - button
+        - input
+      choices:
+        - _self
+        - _blank
+        - _parent
+        - _top
+    popovertarget:
+      description: 'Turns the button into a popover control by specifying the ID of the popover element to control. Creates implicit aria-details and aria-expanded relationships, establishes anchor positioning reference, and improves accessibility. Part of the Popover API. Element-specific to button and input elements.'
+      type: string
+      elements:
+        - button
+        - input
+    popovertargetaction:
+      description: 'Specifies the action to perform on the popover element controlled by popovertarget. "show" displays a hidden popover, "hide" hides a visible popover, "toggle" (default) switches between states. Part of the Popover API. Element-specific to button and input elements.'
+      type: enum
+      elements:
+        - button
+        - input
+      choices:
+        - show
+        - hide
+        - toggle
+      defaultValue: toggle
     role:
       description: 'The role attribute is used to define the purpose of an element.'
       type: enum
@@ -3968,7 +5632,6 @@ input:
         - textbox
         - toolbar
         - tooltip
-        - search
     aria-controls:
       description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
       type: string
@@ -4001,9 +5664,7 @@ input:
         - spelling
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
     aria-disabled:
       description: 'Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.'
       type: enum
@@ -4033,6 +5694,7 @@ ins:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   attributes:
     cite:
@@ -4052,7 +5714,7 @@ ins:
         - time
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -4100,7 +5762,7 @@ ins:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -4135,49 +5797,13 @@ kbd:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
-    aria-hidden:
-      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
-      type: enum
-      defaultValue: 'false'
-      choices:
-        - 'false'
-        - 'true'
-label:
-  name: Label
-  description: "The label element represents a caption in a user interface. The caption can be associated with a specific form control, known as the label element's labeled control, either using the for attribute, or by putting the form control inside the label element itself."
-  level: inline
-  allowed_global_attributes:
-    - accesskey
-    - autocapitalize
-    - autofocus
-    - class
-    - contenteditable
-    - 'data-*'
-    - dir
-    - draggable
-    - hidden
-    - id
-    - inputmode
-    - lang
-    - spellcheck
-    - style
-    - tabindex
-    - title
-    - translate
-  unique: false
-  attributes:
-    for:
-      description: 'Refers to the <datalist> element that contains the options for an input element.'
-      type: string
-      elements:
-        - label
-        - output
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -4225,7 +5851,100 @@ label:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
+    aria-hidden:
+      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+label:
+  name: Label
+  description: "The label element represents a caption in a user interface. The caption can be associated with a specific form control, known as the label element's labeled control, either using the for attribute, or by putting the form control inside the label element itself."
+  level: inline
+  allowed_global_attributes:
+    - accesskey
+    - autocapitalize
+    - autofocus
+    - class
+    - contenteditable
+    - 'data-*'
+    - dir
+    - draggable
+    - hidden
+    - id
+    - inputmode
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
+    - popover
+  unique: false
+  attributes:
+    for:
+      description: 'Refers to the <datalist> element that contains the options for an input element.'
+      type: string
+      elements:
+        - label
+        - output
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -4266,6 +5985,7 @@ legend:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   unique_per_parent: true
   parent: fieldset
@@ -4277,6 +5997,61 @@ legend:
     - h5
     - h6
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -4306,6 +6081,7 @@ li:
     - tabindex
     - title
     - translate
+    - popover
   unique_per_parent: false
   parent: ol|ul
   attributes:
@@ -4324,7 +6100,7 @@ li:
         - textarea
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -4372,7 +6148,7 @@ li:
       type: string
     aria-current:
       description: 'Indicates the current item within a container or set of related elements.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'false'
@@ -4384,7 +6160,7 @@ li:
         - 'true'
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -4560,6 +6336,7 @@ main:
     - tabindex
     - title
     - translate
+    - popover
   unique: true
   children:
     - a
@@ -4635,54 +6412,9 @@ main:
     - video
     - wbr
   attributes:
-    aria-label:
-      description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
-map:
-  name: Map
-  description: 'The map element, in conjunction with an img element and any area element descendants, defines an image map. The element represents a related collection of map areas.'
-  level: block
-  allowed_global_attributes:
-    - accesskey
-    - autocapitalize
-    - autofocus
-    - class
-    - contenteditable
-    - 'data-*'
-    - dir
-    - draggable
-    - hidden
-    - id
-    - inputmode
-    - lang
-    - spellcheck
-    - style
-    - tabindex
-    - title
-    - translate
-  unique: false
-  attributes:
-    name:
-      description: 'Specifies the name associated with the element. The meaning may vary depending on the context.'
-      type: string
-      elements:
-        - a
-        - button
-        - fieldset
-        - form
-        - iframe
-        - input
-        - map
-        - meta
-        - object
-        - param
-        - select
-        - textarea
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -4730,7 +6462,113 @@ map:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
+    aria-hidden:
+      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+    aria-label:
+      description: 'Defines a string value that labels the current element for assistive technologies.'
+      type: string
+map:
+  name: Map
+  description: 'The map element, in conjunction with an img element and any area element descendants, defines an image map. The element represents a related collection of map areas.'
+  level: block
+  allowed_global_attributes:
+    - accesskey
+    - autocapitalize
+    - autofocus
+    - class
+    - contenteditable
+    - 'data-*'
+    - dir
+    - draggable
+    - hidden
+    - id
+    - inputmode
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
+    - popover
+  unique: false
+  attributes:
+    name:
+      description: 'Specifies the name associated with the element. The meaning may vary depending on the context.'
+      type: string
+      elements:
+        - a
+        - button
+        - fieldset
+        - form
+        - iframe
+        - input
+        - map
+        - meta
+        - object
+        - param
+        - select
+        - textarea
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -4766,6 +6604,7 @@ mark:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - area
@@ -4801,6 +6640,61 @@ mark:
     - video
     - wbr
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -4830,6 +6724,7 @@ menu:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - button
@@ -4838,6 +6733,61 @@ menu:
     - script
     - template
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -4992,6 +6942,7 @@ nav:
     - tabindex
     - title
     - translate
+    - popover
   children:
     - a
     - article
@@ -5002,11 +6953,83 @@ nav:
     - small
     - strong
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-current:
+      description: 'Indicates the current item within a container or set of related elements.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - page
+        - step
+        - location
+        - date
+        - time
+        - 'true'
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
+    aria-hidden:
+      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
 noscript:
   name: NoScript
   description: "The noscript element defines an alternate content for users that have disabled scripts in their browser or have a browser that doesn't support script."
@@ -5052,6 +7075,7 @@ object:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   attributes:
     data:
@@ -5113,9 +7137,19 @@ object:
         - input
         - object
         - video
+    form:
+      description: 'Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.'
+      type: string
+      elements:
+        - button
+        - fieldset
+        - input
+        - object
+        - select
+        - textarea
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -5163,7 +7197,7 @@ object:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -5197,6 +7231,7 @@ ol:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   attributes:
     reversed:
@@ -5223,7 +7258,7 @@ ol:
       defaultValue: '1'
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -5271,7 +7306,7 @@ ol:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -5306,6 +7341,7 @@ optgroup:
     - spellcheck
     - translate
     - 'data-*'
+    - popover
   unique: false
   parent: select
   attributes:
@@ -5329,7 +7365,7 @@ optgroup:
         - option
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -5377,7 +7413,7 @@ optgroup:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -5412,6 +7448,7 @@ option:
     - spellcheck
     - translate
     - 'data-*'
+    - popover
   unique: false
   parent: 'select | optgroup'
   attributes:
@@ -5453,7 +7490,7 @@ option:
         - textarea
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -5501,7 +7538,7 @@ option:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -5580,6 +7617,7 @@ p:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - a
@@ -5656,6 +7694,61 @@ p:
     - wbr
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -5727,11 +7820,67 @@ picture:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - img
     - source
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -5761,9 +7910,65 @@ pre:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -5837,6 +8042,7 @@ q:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   attributes:
     cite:
@@ -5849,7 +8055,7 @@ q:
         - q
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -5897,7 +8103,7 @@ q:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -5932,9 +8138,65 @@ rp:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -5964,9 +8226,65 @@ rt:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -5996,11 +8314,67 @@ ruby:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - rp
     - rt
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -6030,9 +8404,65 @@ s:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -6062,9 +8492,65 @@ samp:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -6189,6 +8675,7 @@ section:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - a
@@ -6263,11 +8750,71 @@ section:
     - video
     - wbr
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
+    aria-hidden:
+      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
 select:
   name: Select
   description: 'The select element represents a control for selecting amongst a set of options.'
@@ -6290,6 +8837,7 @@ select:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   attributes:
     autocomplete:
@@ -6364,9 +8912,20 @@ select:
       type: integer
       elements:
         - hr
+        - select
+    form:
+      description: 'Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.'
+      type: string
+      elements:
+        - button
+        - fieldset
+        - input
+        - object
+        - select
+        - textarea
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -6423,9 +8982,7 @@ select:
         - spelling
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
     aria-disabled:
       description: 'Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.'
       type: enum
@@ -6458,6 +9015,7 @@ slot:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   attributes:
     name:
@@ -6478,7 +9036,7 @@ slot:
         - textarea
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -6526,7 +9084,7 @@ slot:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -6584,9 +9142,65 @@ small:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -6673,9 +9287,65 @@ span:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -6705,9 +9375,65 @@ strong:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -6795,9 +9521,65 @@ sub:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -6827,14 +9609,75 @@ summary:
     - tabindex
     - title
     - translate
+    - popover
   unique_per_parent: true
   parent: details
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
+    aria-hidden:
+      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
 sup:
   name: Superscript
   description: 'The sup element represents a superscript.'
@@ -6857,9 +9700,65 @@ sup:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -6889,6 +9788,7 @@ svg:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   attributes:
     xmlns:
@@ -6938,7 +9838,7 @@ svg:
         - svg
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -6986,7 +9886,7 @@ svg:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -7000,9 +9900,7 @@ svg:
         - 'true'
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
   children:
     - a
     - animate
@@ -7092,6 +9990,7 @@ table:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - caption
@@ -7101,93 +10000,9 @@ table:
     - thead
     - tr
   attributes:
-    aria-hidden:
-      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
-      type: enum
-      defaultValue: 'false'
-      choices:
-        - 'false'
-        - 'true'
-tbody:
-  name: 'Table Body'
-  description: 'The tbody element groups one or more tr elements as the body of a table.'
-  level: block
-  allowed_global_attributes:
-    - accesskey
-    - autocapitalize
-    - autofocus
-    - class
-    - contenteditable
-    - 'data-*'
-    - dir
-    - draggable
-    - hidden
-    - id
-    - inputmode
-    - lang
-    - spellcheck
-    - style
-    - tabindex
-    - title
-    - translate
-  unique: false
-  parent: table
-  children:
-    - tr
-  attributes:
-    aria-hidden:
-      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
-      type: enum
-      defaultValue: 'false'
-      choices:
-        - 'false'
-        - 'true'
-td:
-  name: 'Table Data'
-  description: 'The td element represents a data cell in a table.'
-  level: block
-  allowed_global_attributes:
-    - accesskey
-    - autocapitalize
-    - autofocus
-    - class
-    - contenteditable
-    - 'data-*'
-    - dir
-    - draggable
-    - hidden
-    - id
-    - inputmode
-    - lang
-    - spellcheck
-    - style
-    - tabindex
-    - title
-    - translate
-  unique: false
-  parent: tr
-  attributes:
-    colspan:
-      description: 'Specifies the number of columns a table cell should span.'
-      type: integer
-      elements:
-        - td
-        - th
-    headers:
-      description: 'Specifies a list of header cells that represent the header for the cell.'
-      type: string
-      elements:
-        - td
-        - th
-    rowspan:
-      description: 'Specifies the number of rows a table cell should span.'
-      type: integer
-      elements:
-        - td
-        - th
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -7235,7 +10050,203 @@ td:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
+    aria-hidden:
+      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+tbody:
+  name: 'Table Body'
+  description: 'The tbody element groups one or more tr elements as the body of a table.'
+  level: block
+  allowed_global_attributes:
+    - accesskey
+    - autocapitalize
+    - autofocus
+    - class
+    - contenteditable
+    - 'data-*'
+    - dir
+    - draggable
+    - hidden
+    - id
+    - inputmode
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
+    - popover
+  unique: false
+  parent: table
+  children:
+    - tr
+  attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
+    aria-hidden:
+      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+td:
+  name: 'Table Data'
+  description: 'The td element represents a data cell in a table.'
+  level: block
+  allowed_global_attributes:
+    - accesskey
+    - autocapitalize
+    - autofocus
+    - class
+    - contenteditable
+    - 'data-*'
+    - dir
+    - draggable
+    - hidden
+    - id
+    - inputmode
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
+    - popover
+  unique: false
+  parent: tr
+  attributes:
+    colspan:
+      description: 'Specifies the number of columns a table cell should span.'
+      type: integer
+      elements:
+        - td
+        - th
+    headers:
+      description: 'Specifies a list of header cells that represent the header for the cell.'
+      type: string
+      elements:
+        - td
+        - th
+    rowspan:
+      description: 'Specifies the number of rows a table cell should span.'
+      type: integer
+      elements:
+        - td
+        - th
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -7269,6 +10280,7 @@ template:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - div
@@ -7295,6 +10307,61 @@ template:
     - table
     - ul
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -7324,6 +10391,7 @@ textarea:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   attributes:
     autocomplete:
@@ -7372,6 +10440,16 @@ textarea:
         - input
         - optgroup
         - option
+        - select
+        - textarea
+    form:
+      description: 'Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.'
+      type: string
+      elements:
+        - button
+        - fieldset
+        - input
+        - object
         - select
         - textarea
     maxlength:
@@ -7437,7 +10515,7 @@ textarea:
       defaultValue: soft
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -7494,9 +10572,7 @@ textarea:
         - spelling
     aria-label:
       description: 'Defines a string value that labels the current element for assistive technologies.'
-      type: enum|string
-      choices:
-        - breadcrumb
+      type: string
     aria-disabled:
       description: 'Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.'
       type: enum
@@ -7526,70 +10602,16 @@ tfoot:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   unique_per_parent: true
   parent: table
   children:
     - tr
   attributes:
-    aria-hidden:
-      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
-      type: enum
-      defaultValue: 'false'
-      choices:
-        - 'false'
-        - 'true'
-th:
-  name: 'Table Header'
-  description: 'The th element represents a header cell in a table.'
-  level: block
-  allowed_global_attributes:
-    - accesskey
-    - autocapitalize
-    - autofocus
-    - class
-    - contenteditable
-    - 'data-*'
-    - dir
-    - draggable
-    - hidden
-    - id
-    - inputmode
-    - lang
-    - spellcheck
-    - style
-    - tabindex
-    - title
-    - translate
-  unique: false
-  parent: tr
-  attributes:
-    colspan:
-      description: 'Specifies the number of columns a table cell should span.'
-      type: integer
-      elements:
-        - td
-        - th
-    headers:
-      description: 'Specifies a list of header cells that represent the header for the cell.'
-      type: string
-      elements:
-        - td
-        - th
-    rowspan:
-      description: 'Specifies the number of rows a table cell should span.'
-      type: integer
-      elements:
-        - td
-        - th
-    scope:
-      description: 'Specifies the set of header cells a data cell belongs to.'
-      type: string
-      elements:
-        - td
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -7637,7 +10659,118 @@ th:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
+    aria-hidden:
+      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+th:
+  name: 'Table Header'
+  description: 'The th element represents a header cell in a table.'
+  level: block
+  allowed_global_attributes:
+    - accesskey
+    - autocapitalize
+    - autofocus
+    - class
+    - contenteditable
+    - 'data-*'
+    - dir
+    - draggable
+    - hidden
+    - id
+    - inputmode
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
+    - popover
+  unique: false
+  parent: tr
+  attributes:
+    colspan:
+      description: 'Specifies the number of columns a table cell should span.'
+      type: integer
+      elements:
+        - td
+        - th
+    headers:
+      description: 'Specifies a list of header cells that represent the header for the cell.'
+      type: string
+      elements:
+        - td
+        - th
+    rowspan:
+      description: 'Specifies the number of rows a table cell should span.'
+      type: integer
+      elements:
+        - td
+        - th
+    scope:
+      description: 'Specifies the set of header cells a data cell belongs to.'
+      type: string
+      elements:
+        - td
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -7671,53 +10804,16 @@ thead:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   unique_per_parent: true
   parent: table
   children:
     - tr
   attributes:
-    aria-hidden:
-      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
-      type: enum
-      defaultValue: 'false'
-      choices:
-        - 'false'
-        - 'true'
-time:
-  name: Time
-  description: 'The time element represents a specific period in time. It may include the datetime attribute to translate dates into machine-readable format, allowing for better search engine results or custom features such as reminders.'
-  level: inline
-  allowed_global_attributes:
-    - accesskey
-    - autocapitalize
-    - autofocus
-    - class
-    - contenteditable
-    - 'data-*'
-    - dir
-    - draggable
-    - hidden
-    - id
-    - inputmode
-    - lang
-    - spellcheck
-    - style
-    - tabindex
-    - title
-    - translate
-  unique: false
-  attributes:
-    datetime:
-      description: "Specifies the date and time of the change in the format 'YYYY-MM-DDThh:mm:ss' or a subset of it."
-      type: datetime
-      elements:
-        - del
-        - ins
-        - time
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -7765,7 +10861,101 @@ time:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
+    aria-hidden:
+      description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+time:
+  name: Time
+  description: 'The time element represents a specific period in time. It may include the datetime attribute to translate dates into machine-readable format, allowing for better search engine results or custom features such as reminders.'
+  level: inline
+  allowed_global_attributes:
+    - accesskey
+    - autocapitalize
+    - autofocus
+    - class
+    - contenteditable
+    - 'data-*'
+    - dir
+    - draggable
+    - hidden
+    - id
+    - inputmode
+    - lang
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
+    - popover
+  unique: false
+  attributes:
+    datetime:
+      description: "Specifies the date and time of the change in the format 'YYYY-MM-DDThh:mm:ss' or a subset of it."
+      type: datetime
+      elements:
+        - del
+        - ins
+        - time
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -7807,6 +10997,7 @@ tr:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   parent: 'table | thead | tbody | tfoot'
   children:
@@ -7870,7 +11061,7 @@ tr:
       deprecated: true
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -7918,7 +11109,7 @@ tr:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'
@@ -8008,9 +11199,65 @@ u:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -8040,10 +11287,66 @@ ul:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   children:
     - li
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -8073,9 +11376,65 @@ var:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   text: string
   attributes:
+    role:
+      description: 'Defines the semantic purpose of an element for assistive technologies.'
+      type: enum
+      choices:
+        - alert
+        - application
+        - article
+        - banner
+        - button
+        - checkbox
+        - complementary
+        - contentinfo
+        - dialog
+        - form
+        - grid
+        - group
+        - heading
+        - img
+        - link
+        - list
+        - listbox
+        - listitem
+        - main
+        - menu
+        - menubar
+        - menuitem
+        - navigation
+        - none
+        - presentation
+        - radio
+        - region
+        - search
+        - status
+        - tab
+        - tablist
+        - tabpanel
+        - textbox
+        - toolbar
+        - tooltip
+    aria-controls:
+      description: 'Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space'
+      type: string
+    aria-describedby:
+      description: 'Identifies the element(s) that describes the object. Value is a list of IDs separated by a space'
+      type: string
+    aria-labelledby:
+      description: 'Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space'
+      type: string
+    aria-busy:
+      description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'true'
+        - 'false'
     aria-hidden:
       description: 'Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible'
       type: enum
@@ -8105,6 +11464,7 @@ video:
     - tabindex
     - title
     - translate
+    - popover
   unique: false
   attributes:
     autoplay:
@@ -8194,7 +11554,7 @@ video:
         - video
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
-      type: enum|string
+      type: enum
       choices:
         - alert
         - application
@@ -8242,7 +11602,7 @@ video:
       type: string
     aria-busy:
       description: 'The aria-busy attribute is used to indicate whether an element is currently busy or not.'
-      type: enum|string
+      type: enum
       defaultValue: 'false'
       choices:
         - 'true'

@@ -134,3 +134,8 @@ input:
       choices:
         - 'false'
         - 'true'
+
+# popover for most elements except void, embedded, form controls, and structural elements
+'/^(?!area|base|body|button|br|col|embed|head|hr|img|input|link|meta|meter|noscript|output|param|progress|script|source|track|wbr|script|style|title|html|form$)[a-z][a-z0-9]*$/':
+  allowed_global_attributes:
+    - popover

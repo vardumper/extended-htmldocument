@@ -3,7 +3,7 @@
  * This file is auto-generated. Do not edit manually.
  *
  * ARoleEnum - Defines the semantic purpose of an element for assistive technologies.
- * 
+ *
  * @generated 2025-11-01 18:45:00
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument

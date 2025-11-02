@@ -4,7 +4,7 @@
  *
  * Abbreviation - The abbr element represents an abbreviation or acronym, optionally with its expansion. The title attribute can be used to provide an expansion of the abbreviation. The attribute, if specified, must contain an expansion of the abbreviation, and nothing else.
  * 
- * @generated 2025-11-01 20:20:24
+ * @generated 2025-11-02 15:51:50
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -50,6 +50,7 @@ class Abbreviation extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+    use GlobalAttribute\PopoverTrait;
     /**
      * The HTML element name
      */
@@ -100,7 +101,7 @@ class Abbreviation extends InlineElement
     public ?string $title = null;
 
     /** Defines the semantic purpose of an element for assistive technologies. */
-    public null|string|RoleEnum $role = null;
+    public ?RoleEnum $role = null;
 
     /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
     public ?string $ariaControls = null;
@@ -116,7 +117,7 @@ class Abbreviation extends InlineElement
      * @category HTML attribute
      * @example false
      */
-    public null|string|AriaBusyEnum $ariaBusy = null;
+    public ?AriaBusyEnum $ariaBusy = null;
 
 
     public function setTitle(string $title): static
@@ -133,23 +134,16 @@ class Abbreviation extends InlineElement
 
     public function setRole(string|RoleEnum $role): static
     {
-        $value = $role;
         if (is_string($role)) {
-            $resolved = RoleEnum::tryFrom($role);
-            if (!is_null($resolved)) {
-                $role = $resolved;
-            }
-        }
-        if ($role instanceof RoleEnum) {
-            $value = $role->value;
+            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
-        $this->delegated->setAttribute('role', (string) $value);
+        $this->delegated->setAttribute('role', (string) $role->value);
 
         return $this;
     }
 
-    public function getRole(): null|string|RoleEnum
+    public function getRole(): ?RoleEnum
     {
         return $this->role;
     }
@@ -192,23 +186,16 @@ class Abbreviation extends InlineElement
 
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
-        $value = $ariaBusy;
         if (is_string($ariaBusy)) {
-            $resolved = AriaBusyEnum::tryFrom($ariaBusy);
-            if (!is_null($resolved)) {
-                $ariaBusy = $resolved;
-            }
-        }
-        if ($ariaBusy instanceof AriaBusyEnum) {
-            $value = $ariaBusy->value;
+            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
         }
         $this->ariaBusy = $ariaBusy;
-        $this->delegated->setAttribute('aria-busy', (string) $value);
+        $this->delegated->setAttribute('aria-busy', (string) $ariaBusy->value);
 
         return $this;
     }
 
-    public function getAriaBusy(): null|string|AriaBusyEnum
+    public function getAriaBusy(): ?AriaBusyEnum
     {
         return $this->ariaBusy;
     }

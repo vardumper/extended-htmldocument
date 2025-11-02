@@ -4,7 +4,7 @@
  *
  * Address - The address element represents the contact information for its nearest article or body ancestor. If that is the body element, then the contact information applies to the document as a whole.
  * 
- * @generated 2025-11-01 20:20:24
+ * @generated 2025-11-02 15:51:50
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -17,6 +17,7 @@ use Html\Element\Block\Article;
 use Html\Element\Block\Body;
 use Html\Element\InlineElement;
 use Html\Enum\AriaBusyEnum;
+use Html\Enum\RoleEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
 
@@ -39,6 +40,7 @@ class Address extends InlineElement
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TranslateTrait;
+    use GlobalAttribute\PopoverTrait;
     /**
      * The HTML element name
      */
@@ -76,33 +78,90 @@ class Address extends InlineElement
     ];
 
 
+    /** Defines the semantic purpose of an element for assistive technologies. */
+    public ?RoleEnum $role = null;
+
+    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    public ?string $ariaControls = null;
+
+    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    public ?string $ariaDescribedby = null;
+
+    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    public ?string $ariaLabelledby = null;
+
     /** 
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
      * @category HTML attribute
      * @example false
      */
-    public null|string|AriaBusyEnum $ariaBusy = null;
+    public ?AriaBusyEnum $ariaBusy = null;
 
 
-    public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
+    public function setRole(string|RoleEnum $role): static
     {
-        $value = $ariaBusy;
-        if (is_string($ariaBusy)) {
-            $resolved = AriaBusyEnum::tryFrom($ariaBusy);
-            if (!is_null($resolved)) {
-                $ariaBusy = $resolved;
-            }
+        if (is_string($role)) {
+            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
-        if ($ariaBusy instanceof AriaBusyEnum) {
-            $value = $ariaBusy->value;
-        }
-        $this->ariaBusy = $ariaBusy;
-        $this->delegated->setAttribute('aria-busy', (string) $value);
+        $this->role = $role;
+        $this->delegated->setAttribute('role', (string) $role->value);
 
         return $this;
     }
 
-    public function getAriaBusy(): null|string|AriaBusyEnum
+    public function getRole(): ?RoleEnum
+    {
+        return $this->role;
+    }
+
+    public function setAriaControls(string $ariaControls): static
+    {
+        $this->ariaControls = $ariaControls;
+        $this->delegated->setAttribute('aria-controls', (string) $ariaControls);
+        return $this;
+    }
+
+    public function getAriaControls(): ?string
+    {
+        return $this->ariaControls;
+    }
+
+    public function setAriaDescribedby(string $ariaDescribedby): static
+    {
+        $this->ariaDescribedby = $ariaDescribedby;
+        $this->delegated->setAttribute('aria-describedby', (string) $ariaDescribedby);
+        return $this;
+    }
+
+    public function getAriaDescribedby(): ?string
+    {
+        return $this->ariaDescribedby;
+    }
+
+    public function setAriaLabelledby(string $ariaLabelledby): static
+    {
+        $this->ariaLabelledby = $ariaLabelledby;
+        $this->delegated->setAttribute('aria-labelledby', (string) $ariaLabelledby);
+        return $this;
+    }
+
+    public function getAriaLabelledby(): ?string
+    {
+        return $this->ariaLabelledby;
+    }
+
+    public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
+    {
+        if (is_string($ariaBusy)) {
+            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
+        }
+        $this->ariaBusy = $ariaBusy;
+        $this->delegated->setAttribute('aria-busy', (string) $ariaBusy->value);
+
+        return $this;
+    }
+
+    public function getAriaBusy(): ?AriaBusyEnum
     {
         return $this->ariaBusy;
     }
