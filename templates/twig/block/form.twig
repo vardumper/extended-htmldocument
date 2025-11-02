@@ -9,7 +9,6 @@
 #}
 {% block form %}
 {% set ariaInvalid_choices = ['false', 'true', 'grammar', 'spelling'] %}
-{% set ariaLabel_choices = ['breadcrumb'] %}
 {% set autocomplete_choices = ['off', 'on'] %}
 {% set autocorrect_choices = ['off', 'on'] %}
 {% set dir_choices = ['ltr', 'rtl', 'auto'] %}
@@ -22,7 +21,7 @@
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
   {% if action is defined and action|length > 0 %}action="{{ action }}"{% endif %}
   {% if ariaInvalid is defined and ariaInvalid|length > 0 and ariaInvalid in ariaInvalid_choices %}aria-invalid="{{ ariaInvalid }}"{% endif %}
-  {% if ariaLabel is defined and ariaLabel|length > 0 and ariaLabel in ariaLabel_choices %}aria-label="{{ ariaLabel }}"{% endif %}
+  {% if ariaLabel is defined and ariaLabel|length > 0 %}aria-label="{{ ariaLabel }}"{% endif %}
   {% if autocomplete is defined and autocomplete|length > 0 and autocomplete in autocomplete_choices %}autocomplete="{{ autocomplete }}"{% endif %}
   {% if autocorrect is defined and autocorrect|length > 0 and autocorrect in autocorrect_choices %}autocorrect="{{ autocorrect }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}

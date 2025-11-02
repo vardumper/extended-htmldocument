@@ -4,7 +4,7 @@
  *
  * Data - The data element represents its contents, along with a machine-readable form of those contents in the value attribute.
  * 
- * @generated 2025-11-02 15:51:50
+ * @generated 2025-11-02 17:52:56
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline

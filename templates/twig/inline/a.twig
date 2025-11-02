@@ -11,11 +11,11 @@
 {% set ariaBusy_choices = ['true', 'false'] %}
 {% set ariaCurrent_choices = ['false', 'page', 'step', 'location', 'date', 'time', 'true'] %}
 {% set ariaDisabled_choices = ['false', 'true'] %}
-{% set ariaLabel_choices = ['breadcrumb'] %}
 {% set autocapitalize_choices = ['none', 'sentences', 'words', 'characters'] %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set dir_choices = ['ltr', 'rtl', 'auto'] %}
 {% set inputmode_choices = ['none', 'text', 'decimal', 'numeric', 'email', 'tel', 'url', 'search'] %}
+{% set popover_choices = ['auto', 'hint', 'manual'] %}
 {% set rel_choices = ['alternate', 'author', 'bookmark', 'canonical', 'help', 'icon', 'license', 'next', 'nofollow', 'noreferrer', 'prefetch', 'prev', 'search', 'stylesheet', 'tag'] %}
 {% set role_choices = ['button', 'dialog', 'link', 'listitem', 'menuitem', 'none', 'tooltip'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
@@ -28,7 +28,7 @@
   {% if ariaCurrent is defined and ariaCurrent|length > 0 and ariaCurrent in ariaCurrent_choices %}aria-current="{{ ariaCurrent }}"{% endif %}
   {% if ariaDescribedby is defined and ariaDescribedby|length > 0 %}aria-describedby="{{ ariaDescribedby }}"{% endif %}
   {% if ariaDisabled is defined and ariaDisabled|length > 0 and ariaDisabled in ariaDisabled_choices %}aria-disabled="{{ ariaDisabled }}"{% endif %}
-  {% if ariaLabel is defined and ariaLabel|length > 0 and ariaLabel in ariaLabel_choices %}aria-label="{{ ariaLabel }}"{% endif %}
+  {% if ariaLabel is defined and ariaLabel|length > 0 %}aria-label="{{ ariaLabel }}"{% endif %}
   {% if ariaLabelledby is defined and ariaLabelledby|length > 0 %}aria-labelledby="{{ ariaLabelledby }}"{% endif %}
   {% if autocapitalize is defined and autocapitalize|length > 0 and autocapitalize in autocapitalize_choices %}autocapitalize="{{ autocapitalize }}"{% endif %}
   {% if autofocus is defined and autofocus|length > 0 %}autofocus="{{ autofocus }}"{% endif %}
@@ -43,6 +43,7 @@
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
   {% if inputmode is defined and inputmode|length > 0 and inputmode in inputmode_choices %}inputmode="{{ inputmode }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
+  {% if popover is defined and popover|length > 0 and popover in popover_choices %}popover="{{ popover }}"{% endif %}
   {% if rel is defined and rel|length > 0 and rel in rel_choices %}rel="{{ rel }}"{% endif %}
   {% if role is defined and role|length > 0 and role in role_choices %}role="{{ role }}"{% endif %}
   {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck="{{ spellcheck }}"{% endif %}

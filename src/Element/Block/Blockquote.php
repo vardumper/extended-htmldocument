@@ -4,7 +4,7 @@
  *
  * Blockquote - The blockquote element represents a section that is quoted from another source. Content inside a blockquote must be quoted from another source, whose address, if it has one, may be cited in the cite attribute.
  * 
- * @generated 2025-11-02 15:51:50
+ * @generated 2025-11-02 17:52:56
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

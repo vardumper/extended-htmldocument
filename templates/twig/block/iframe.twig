@@ -10,8 +10,8 @@
 {% block iframe %}
 {% set ariaBusy_choices = ['true', 'false'] %}
 {% set ariaHidden_choices = ['false', 'true'] %}
-{% set ariaLabel_choices = ['breadcrumb'] %}
 {% set dir_choices = ['ltr', 'rtl', 'auto'] %}
+{% set popover_choices = ['auto', 'hint', 'manual'] %}
 {% set referrerpolicy_choices = ['no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', 'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'] %}
 {% set role_choices = ['alert', 'application', 'article', 'banner', 'button', 'checkbox', 'complementary', 'contentinfo', 'dialog', 'form', 'grid', 'group', 'heading', 'img', 'link', 'list', 'listbox', 'listitem', 'main', 'menu', 'menubar', 'menuitem', 'navigation', 'none', 'presentation', 'radio', 'region', 'search', 'status', 'tab', 'tablist', 'tabpanel', 'textbox', 'toolbar', 'tooltip'] %}
 <iframe
@@ -20,7 +20,7 @@
   {% if ariaControls is defined and ariaControls|length > 0 %}aria-controls="{{ ariaControls }}"{% endif %}
   {% if ariaDescribedby is defined and ariaDescribedby|length > 0 %}aria-describedby="{{ ariaDescribedby }}"{% endif %}
   {% if ariaHidden is defined and ariaHidden|length > 0 and ariaHidden in ariaHidden_choices %}aria-hidden="{{ ariaHidden }}"{% endif %}
-  {% if ariaLabel is defined and ariaLabel|length > 0 and ariaLabel in ariaLabel_choices %}aria-label="{{ ariaLabel }}"{% endif %}
+  {% if ariaLabel is defined and ariaLabel|length > 0 %}aria-label="{{ ariaLabel }}"{% endif %}
   {% if ariaLabelledby is defined and ariaLabelledby|length > 0 %}aria-labelledby="{{ ariaLabelledby }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if dir is defined and dir|length > 0 and dir in dir_choices %}dir="{{ dir }}"{% endif %}
@@ -29,6 +29,7 @@
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
   {% if name is defined and name|length > 0 %}name="{{ name }}"{% endif %}
+  {% if popover is defined and popover|length > 0 and popover in popover_choices %}popover="{{ popover }}"{% endif %}
   {% if referrerpolicy is defined and referrerpolicy|length > 0 and referrerpolicy in referrerpolicy_choices %}referrerpolicy="{{ referrerpolicy }}"{% endif %}
   {% if role is defined and role|length > 0 and role in role_choices %}role="{{ role }}"{% endif %}
   {% if attribute(_context, 'sandbox') is defined and attribute(_context, 'sandbox')|length > 0 %}sandbox="{{ attribute(_context, 'sandbox') }}"{% endif %}

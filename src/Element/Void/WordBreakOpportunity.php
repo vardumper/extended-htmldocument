@@ -4,7 +4,7 @@
  *
  * WordBreakOpportunity - The wbr element represents a word break opportunity.
  * 
- * @generated 2025-11-02 15:51:50
+ * @generated 2025-11-02 17:52:56
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void

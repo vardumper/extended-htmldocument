@@ -4,7 +4,7 @@
  *
  * TableBody - The tbody element groups one or more tr elements as the body of a table.
  * 
- * @generated 2025-11-02 15:51:50
+ * @generated 2025-11-02 17:52:56
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

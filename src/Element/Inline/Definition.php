@@ -4,7 +4,7 @@
  *
  * Definition - The dfn element represents the defining instance of a term.
  * 
- * @generated 2025-11-02 15:51:50
+ * @generated 2025-11-02 17:52:56
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline

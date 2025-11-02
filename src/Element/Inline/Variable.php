@@ -4,7 +4,7 @@
  *
  * Variable - The var element represents the name of a variable in a mathematical expression or a programming context.
  * 
- * @generated 2025-11-02 15:51:50
+ * @generated 2025-11-02 17:52:56
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline

@@ -4,7 +4,7 @@
  *
  * Input - The input element represents a typed data field, usually with a form control to allow user input.
  * 
- * @generated 2025-11-02 15:51:50
+ * @generated 2025-11-02 17:52:56
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -37,9 +37,9 @@ use Html\Enum\AutocorrectEnum;
 use Html\Enum\FormenctypeEnum;
 use Html\Enum\FormmethodEnum;
 use Html\Enum\FormtargetEnum;
-use Html\Enum\InputRoleEnum;
 use Html\Enum\InputTypeEnum;
 use Html\Enum\PopovertargetactionEnum;
+use Html\Enum\RoleEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
 
@@ -237,7 +237,7 @@ class Input extends InlineElement
     public ?PopovertargetactionEnum $popovertargetaction = null;
 
     /** The role attribute is used to define the purpose of an element. */
-    public ?InputRoleEnum $role = null;
+    public ?RoleEnum $role = null;
 
     /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
     public ?string $ariaControls = null;
@@ -704,10 +704,10 @@ class Input extends InlineElement
         return $this->popovertargetaction;
     }
 
-    public function setRole(string|InputRoleEnum $role): static
+    public function setRole(string|RoleEnum $role): static
     {
         if (is_string($role)) {
-            $role = InputRoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
+            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -715,7 +715,7 @@ class Input extends InlineElement
         return $this;
     }
 
-    public function getRole(): ?InputRoleEnum
+    public function getRole(): ?RoleEnum
     {
         return $this->role;
     }

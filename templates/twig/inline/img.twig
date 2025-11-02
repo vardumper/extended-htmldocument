@@ -9,7 +9,6 @@
 #}
 {% block img %}
 {% set ariaHidden_choices = ['false', 'true'] %}
-{% set ariaLabel_choices = ['breadcrumb'] %}
 {% set crossorigin_choices = ['anonymous', 'use-credentials'] %}
 {% set decoding_choices = ['async', 'auto', 'sync'] %}
 {% set dir_choices = ['ltr', 'rtl', 'auto'] %}
@@ -17,7 +16,7 @@
 <img
   {% if alt is defined and alt|length > 0 %}alt="{{ alt }}"{% endif %}
   {% if ariaHidden is defined and ariaHidden|length > 0 and ariaHidden in ariaHidden_choices %}aria-hidden="{{ ariaHidden }}"{% endif %}
-  {% if ariaLabel is defined and ariaLabel|length > 0 and ariaLabel in ariaLabel_choices %}aria-label="{{ ariaLabel }}"{% endif %}
+  {% if ariaLabel is defined and ariaLabel|length > 0 %}aria-label="{{ ariaLabel }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if crossorigin is defined and crossorigin|length > 0 and crossorigin in crossorigin_choices %}crossorigin="{{ crossorigin }}"{% endif %}
   {% if decoding is defined and decoding|length > 0 and decoding in decoding_choices %}decoding="{{ decoding }}"{% endif %}

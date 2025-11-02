@@ -8,16 +8,23 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block h4 %}
+{% set ariaBusy_choices = ['true', 'false'] %}
 {% set ariaHidden_choices = ['false', 'true'] %}
 {% set autocapitalize_choices = ['none', 'sentences', 'words', 'characters'] %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set dir_choices = ['ltr', 'rtl', 'auto'] %}
 {% set inputmode_choices = ['none', 'text', 'decimal', 'numeric', 'email', 'tel', 'url', 'search'] %}
+{% set popover_choices = ['auto', 'hint', 'manual'] %}
+{% set role_choices = ['alert', 'application', 'article', 'banner', 'button', 'checkbox', 'complementary', 'contentinfo', 'dialog', 'form', 'grid', 'group', 'heading', 'img', 'link', 'list', 'listbox', 'listitem', 'main', 'menu', 'menubar', 'menuitem', 'navigation', 'none', 'presentation', 'radio', 'region', 'search', 'status', 'tab', 'tablist', 'tabpanel', 'textbox', 'toolbar', 'tooltip'] %}
 {% set spellcheck_choices = ['true', 'false'] %}
 {% set translate_choices = ['yes', 'no'] %}
 <h4
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
+  {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy in ariaBusy_choices %}aria-busy="{{ ariaBusy }}"{% endif %}
+  {% if ariaControls is defined and ariaControls|length > 0 %}aria-controls="{{ ariaControls }}"{% endif %}
+  {% if ariaDescribedby is defined and ariaDescribedby|length > 0 %}aria-describedby="{{ ariaDescribedby }}"{% endif %}
   {% if ariaHidden is defined and ariaHidden|length > 0 and ariaHidden in ariaHidden_choices %}aria-hidden="{{ ariaHidden }}"{% endif %}
+  {% if ariaLabelledby is defined and ariaLabelledby|length > 0 %}aria-labelledby="{{ ariaLabelledby }}"{% endif %}
   {% if autocapitalize is defined and autocapitalize|length > 0 and autocapitalize in autocapitalize_choices %}autocapitalize="{{ autocapitalize }}"{% endif %}
   {% if autofocus is defined and autofocus|length > 0 %}autofocus="{{ autofocus }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
@@ -28,6 +35,8 @@
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
   {% if inputmode is defined and inputmode|length > 0 and inputmode in inputmode_choices %}inputmode="{{ inputmode }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
+  {% if popover is defined and popover|length > 0 and popover in popover_choices %}popover="{{ popover }}"{% endif %}
+  {% if role is defined and role|length > 0 and role in role_choices %}role="{{ role }}"{% endif %}
   {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck="{{ spellcheck }}"{% endif %}
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
   {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}

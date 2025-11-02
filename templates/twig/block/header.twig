@@ -8,7 +8,6 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block header %}
-{% set ariaLabel_choices = ['breadcrumb'] %}
 {% set autocapitalize_choices = ['none', 'sentences', 'words', 'characters'] %}
 {% set contenteditable_choices = ['true', 'false', 'inherit'] %}
 {% set dir_choices = ['ltr', 'rtl', 'auto'] %}
@@ -17,7 +16,7 @@
 {% set translate_choices = ['yes', 'no'] %}
 <header
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
-  {% if ariaLabel is defined and ariaLabel|length > 0 and ariaLabel in ariaLabel_choices %}aria-label="{{ ariaLabel }}"{% endif %}
+  {% if ariaLabel is defined and ariaLabel|length > 0 %}aria-label="{{ ariaLabel }}"{% endif %}
   {% if autocapitalize is defined and autocapitalize|length > 0 and autocapitalize in autocapitalize_choices %}autocapitalize="{{ autocapitalize }}"{% endif %}
   {% if autofocus is defined and autofocus|length > 0 %}autofocus="{{ autofocus }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}

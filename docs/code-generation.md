@@ -20,9 +20,13 @@ There are more parameters available for code generation.
 
 ::: details
 ```bash
-php vendor/bin/ext-html make:enums # only generates enums used in the YAML specification
-php vendor/bin/ext-html make:classes a # only generates the class for the Anchor element, no enums
+php vendor/bin/ext-html make:enums # only generates enums as specified in the HTML5 schema
+php vendor/bin/ext-html make:classes a # only generates the Html\Element\Anchor class, no enums
 php vendor/bin/ext-html make:classes # generates all classes, no enums
+php vendor/bin/ext-html make:all # generates both enums and classes
+php vendor/bin/ext-html generate:all twig,storybook templates # generates all twig templates and storybook stories, and saved them into templates folder
+php vendor/bin/ext-html merge:specs custom/schema.yaml destination/path.yaml # merges a custom regex or element-based specification into the html5.yaml file
+php vendor/bin/ext-html watch source/path dest/path # component builder. watches for component yaml changes, and generates templates on the fly
 ```
 :::
 
@@ -32,11 +36,11 @@ Parameter isn't implemented yet.
 :::
 
 ::: info
-@todo allow parameter or config file...
+@todo allow parameter or config file (for when in symfony/laravel/other frameworks)...
 :::
 If you want to use your own HTML5 specification file, you can use the `--specification` option.
 ```bash
-php vendor/bin/ext-html --specification path/to/my-html5-specification.yaml
+php vendor/bin/ext-html make:all --specification path/to/my-custom-html5-specification.yaml
 ```
 This especially interesting if you:
 - want to merge your own CSS framework specifications into the PHP classes.

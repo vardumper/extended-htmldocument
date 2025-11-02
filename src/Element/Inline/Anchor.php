@@ -4,7 +4,7 @@
  *
  * Anchor - The a element represents a hyperlink, linking to another resource.
  * 
- * @generated 2025-11-02 15:51:50
+ * @generated 2025-11-02 17:52:56
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline

@@ -4,7 +4,7 @@
  *
  * KeyboardInput - The kbd element represents user input (typically keyboard input, although it may also be used to represent other input methods, such as voice commands).
  * 
- * @generated 2025-11-02 15:51:50
+ * @generated 2025-11-02 17:52:56
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline

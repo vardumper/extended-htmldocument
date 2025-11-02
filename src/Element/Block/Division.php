@@ -4,7 +4,7 @@
  *
  * Division - The div element has no special meaning at all. It represents its children. It can be used with the class, lang, and title attributes to mark up semantics common to a group of consecutive elements.
  * 
- * @generated 2025-11-02 15:51:50
+ * @generated 2025-11-02 17:52:56
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -92,7 +92,7 @@ use Html\Element\Void\Track;
 use Html\Element\Void\WordBreakOpportunity;
 use Html\Enum\AriaBusyEnum;
 use Html\Enum\AriaHiddenEnum;
-use Html\Enum\DivRoleEnum;
+use Html\Enum\RoleEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
 
@@ -238,7 +238,7 @@ class Division extends BlockElement
 
 
     /** The role attribute is used to define the purpose of an element. */
-    public ?DivRoleEnum $role = null;
+    public ?RoleEnum $role = null;
 
     /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
     public ?string $ariaControls = null;
@@ -267,10 +267,10 @@ class Division extends BlockElement
     public ?string $ariaLabel = null;
 
 
-    public function setRole(string|DivRoleEnum $role): static
+    public function setRole(string|RoleEnum $role): static
     {
         if (is_string($role)) {
-            $role = DivRoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
+            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -278,7 +278,7 @@ class Division extends BlockElement
         return $this;
     }
 
-    public function getRole(): ?DivRoleEnum
+    public function getRole(): ?RoleEnum
     {
         return $this->role;
     }
