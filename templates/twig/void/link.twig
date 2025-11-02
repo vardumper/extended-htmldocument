@@ -8,14 +8,14 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block link %}
-{% set crossorigin_choices = ['anonymous', 'use-credentials'] %}
-{% set dir_choices = ['ltr', 'rtl', 'auto'] %}
-{% set referrerpolicy_choices = ['no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', 'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'] %}
-{% set rel_choices = ['alternate', 'author', 'bookmark', 'canonical', 'help', 'icon', 'license', 'manifest', 'next', 'nofollow', 'noreferrer', 'prefetch', 'prev', 'search', 'stylesheet', 'tag'] %}
+{% set crossorigin_choices = {'anonymous': true, 'use-credentials': true} %}
+{% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
+{% set referrerpolicy_choices = {'no-referrer': true, 'no-referrer-when-downgrade': true, 'origin': true, 'origin-when-cross-origin': true, 'same-origin': true, 'strict-origin': true, 'strict-origin-when-cross-origin': true, 'unsafe-url': true} %}
+{% set rel_choices = {'alternate': true, 'author': true, 'bookmark': true, 'canonical': true, 'help': true, 'icon': true, 'license': true, 'manifest': true, 'next': true, 'nofollow': true, 'noreferrer': true, 'prefetch': true, 'prev': true, 'search': true, 'stylesheet': true, 'tag': true} %}
 <link
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
-  {% if crossorigin is defined and crossorigin|length > 0 and crossorigin in crossorigin_choices %}crossorigin="{{ crossorigin }}"{% endif %}
-  {% if dir is defined and dir|length > 0 and dir in dir_choices %}dir="{{ dir }}"{% endif %}
+  {% if crossorigin is defined and crossorigin|length > 0 and crossorigin_choices[crossorigin] is defined %}crossorigin="{{ crossorigin }}"{% endif %}
+  {% if dir is defined and dir|length > 0 and dir_choices[dir] is defined %}dir="{{ dir }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
   {% if href is defined and href|length > 0 %}href="{{ href }}"{% endif %}
   {% if hreflang is defined and hreflang|length > 0 %}hreflang="{{ hreflang }}"{% endif %}
@@ -23,8 +23,8 @@
   {% if integrity is defined and integrity|length > 0 %}integrity="{{ integrity }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
   {% if media is defined and media|length > 0 %}media="{{ media }}"{% endif %}
-  {% if referrerpolicy is defined and referrerpolicy|length > 0 and referrerpolicy in referrerpolicy_choices %}referrerpolicy="{{ referrerpolicy }}"{% endif %}
-  {% if rel is defined and rel|length > 0 and rel in rel_choices %}rel="{{ rel }}"{% endif %}
+  {% if referrerpolicy is defined and referrerpolicy|length > 0 and referrerpolicy_choices[referrerpolicy] is defined %}referrerpolicy="{{ referrerpolicy }}"{% endif %}
+  {% if rel is defined and rel|length > 0 and rel_choices[rel] is defined %}rel="{{ rel }}"{% endif %}
   {% if sizes is defined and sizes|length > 0 %}sizes="{{ sizes }}"{% endif %}
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
   {% if title is defined and title|length > 0 %}title="{{ title }}"{% endif %}

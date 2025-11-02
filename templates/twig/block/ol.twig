@@ -8,44 +8,44 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block ol %}
-{% set ariaBusy_choices = ['true', 'false'] %}
-{% set ariaHidden_choices = ['false', 'true'] %}
-{% set autocapitalize_choices = ['none', 'sentences', 'words', 'characters'] %}
-{% set contenteditable_choices = ['true', 'false', 'inherit'] %}
-{% set dir_choices = ['ltr', 'rtl', 'auto'] %}
-{% set inputmode_choices = ['none', 'text', 'decimal', 'numeric', 'email', 'tel', 'url', 'search'] %}
-{% set popover_choices = ['auto', 'hint', 'manual'] %}
-{% set role_choices = ['alert', 'application', 'article', 'banner', 'button', 'checkbox', 'complementary', 'contentinfo', 'dialog', 'form', 'grid', 'group', 'heading', 'img', 'link', 'list', 'listbox', 'listitem', 'main', 'menu', 'menubar', 'menuitem', 'navigation', 'none', 'presentation', 'radio', 'region', 'search', 'status', 'tab', 'tablist', 'tabpanel', 'textbox', 'toolbar', 'tooltip'] %}
-{% set spellcheck_choices = ['true', 'false'] %}
-{% set translate_choices = ['yes', 'no'] %}
-{% set type_choices = ['a', 'A', 'i', 'I', '1'] %}
+{% set ariaBusy_choices = {'true': true, 'false': true} %}
+{% set ariaHidden_choices = {'false': true, 'true': true} %}
+{% set autocapitalize_choices = {'none': true, 'sentences': true, 'words': true, 'characters': true} %}
+{% set contenteditable_choices = {'true': true, 'false': true, 'inherit': true} %}
+{% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
+{% set inputmode_choices = {'none': true, 'text': true, 'decimal': true, 'numeric': true, 'email': true, 'tel': true, 'url': true, 'search': true} %}
+{% set popover_choices = {'auto': true, 'hint': true, 'manual': true} %}
+{% set role_choices = {'alert': true, 'application': true, 'article': true, 'banner': true, 'button': true, 'checkbox': true, 'complementary': true, 'contentinfo': true, 'dialog': true, 'form': true, 'grid': true, 'group': true, 'heading': true, 'img': true, 'link': true, 'list': true, 'listbox': true, 'listitem': true, 'main': true, 'menu': true, 'menubar': true, 'menuitem': true, 'navigation': true, 'none': true, 'presentation': true, 'radio': true, 'region': true, 'search': true, 'status': true, 'tab': true, 'tablist': true, 'tabpanel': true, 'textbox': true, 'toolbar': true, 'tooltip': true} %}
+{% set spellcheck_choices = {'true': true, 'false': true} %}
+{% set translate_choices = {'yes': true, 'no': true} %}
+{% set type_choices = {'a': true, 'A': true, 'i': true, 'I': true, '1': true} %}
 <ol
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
-  {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy in ariaBusy_choices %}aria-busy="{{ ariaBusy }}"{% endif %}
+  {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy_choices[ariaBusy] is defined %}aria-busy="{{ ariaBusy }}"{% endif %}
   {% if ariaControls is defined and ariaControls|length > 0 %}aria-controls="{{ ariaControls }}"{% endif %}
   {% if ariaDescribedby is defined and ariaDescribedby|length > 0 %}aria-describedby="{{ ariaDescribedby }}"{% endif %}
-  {% if ariaHidden is defined and ariaHidden|length > 0 and ariaHidden in ariaHidden_choices %}aria-hidden="{{ ariaHidden }}"{% endif %}
+  {% if ariaHidden is defined and ariaHidden|length > 0 and ariaHidden_choices[ariaHidden] is defined %}aria-hidden="{{ ariaHidden }}"{% endif %}
   {% if ariaLabelledby is defined and ariaLabelledby|length > 0 %}aria-labelledby="{{ ariaLabelledby }}"{% endif %}
-  {% if autocapitalize is defined and autocapitalize|length > 0 and autocapitalize in autocapitalize_choices %}autocapitalize="{{ autocapitalize }}"{% endif %}
+  {% if autocapitalize is defined and autocapitalize|length > 0 and autocapitalize_choices[autocapitalize] is defined %}autocapitalize="{{ autocapitalize }}"{% endif %}
   {% if autofocus is defined and autofocus|length > 0 %}autofocus="{{ autofocus }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
-  {% if contenteditable is defined and contenteditable|length > 0 and contenteditable in contenteditable_choices %}contenteditable="{{ contenteditable }}"{% endif %}
-  {% if dir is defined and dir|length > 0 and dir in dir_choices %}dir="{{ dir }}"{% endif %}
+  {% if contenteditable is defined and contenteditable|length > 0 and contenteditable_choices[contenteditable] is defined %}contenteditable="{{ contenteditable }}"{% endif %}
+  {% if dir is defined and dir|length > 0 and dir_choices[dir] is defined %}dir="{{ dir }}"{% endif %}
   {% if draggable is defined and draggable|length > 0 %}draggable="{{ draggable }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
-  {% if inputmode is defined and inputmode|length > 0 and inputmode in inputmode_choices %}inputmode="{{ inputmode }}"{% endif %}
+  {% if inputmode is defined and inputmode|length > 0 and inputmode_choices[inputmode] is defined %}inputmode="{{ inputmode }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
-  {% if popover is defined and popover|length > 0 and popover in popover_choices %}popover="{{ popover }}"{% endif %}
+  {% if popover is defined and popover|length > 0 and popover_choices[popover] is defined %}popover="{{ popover }}"{% endif %}
   {% if reversed is defined and reversed|length > 0 %}reversed="{{ reversed }}"{% endif %}
-  {% if role is defined and role|length > 0 and role in role_choices %}role="{{ role }}"{% endif %}
-  {% if spellcheck is defined and spellcheck|length > 0 and spellcheck in spellcheck_choices %}spellcheck="{{ spellcheck }}"{% endif %}
+  {% if role is defined and role|length > 0 and role_choices[role] is defined %}role="{{ role }}"{% endif %}
+  {% if spellcheck is defined and spellcheck|length > 0 and spellcheck_choices[spellcheck] is defined %}spellcheck="{{ spellcheck }}"{% endif %}
   {% if start is defined and start|length > 0 %}start="{{ start }}"{% endif %}
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
   {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}
   {% if title is defined and title|length > 0 %}title="{{ title }}"{% endif %}
-  {% if translate is defined and translate|length > 0 and translate in translate_choices %}translate="{{ translate }}"{% endif %}
-  {% if type is defined and type|length > 0 and type in type_choices %}type="{{ type }}"{% endif %}>
+  {% if translate is defined and translate|length > 0 and translate_choices[translate] is defined %}translate="{{ translate }}"{% endif %}
+  {% if type is defined and type|length > 0 and type_choices[type] is defined %}type="{{ type }}"{% endif %}>
   {% block content %}{{- content|raw -}}{% endblock %}
 </ol>
 {% endblock %}

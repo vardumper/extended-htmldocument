@@ -8,9 +8,9 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block html %}
-{% set dir_choices = ['ltr', 'rtl', 'auto'] %}
+{% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
 <html
-  {% if dir is defined and dir|length > 0 and dir in dir_choices %}dir="{{ dir }}"{% endif %}
+  {% if dir is defined and dir|length > 0 and dir_choices[dir] is defined %}dir="{{ dir }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
   {% if manifest is defined and manifest|length > 0 %}manifest="{{ manifest }}"{% endif %}>
   {% block content %}{{- content|raw -}}{% endblock %}

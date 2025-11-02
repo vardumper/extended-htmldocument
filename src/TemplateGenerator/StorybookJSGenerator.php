@@ -380,7 +380,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         } elseif ($type === 'enum') {
             $type = 'string'; // Enums are strings with select control
         }
-        
+
         $description = $this->escapeJsString($details['description']);
         $required = $details['required'] ? 'true' : 'false';
         $defaultValue = $details['defaultValue'];

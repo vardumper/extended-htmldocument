@@ -158,9 +158,18 @@ class TwigGenerator implements TemplateGeneratorInterface
         $twig = "{#\n  This file is auto-generated.\n\n  {$name} - {$desc}\n\n  @author vardumper <info@erikpoehler.com>\n  @package vardumper/extended-htmldocument\n  @see src/TemplateGenerator/TwigGenerator.php\n#}\n";
         $note = ($blockName !== $elementName) ? "{# Note: Block name '{$elementName}' is a reserved word, using '{$blockName}' instead. #}" : '';
         $twig .= "{% block {$blockName} %}{$note}\n";
+
+        // Generate associative arrays (hashmaps) for enum choices for better performance
         foreach ($enums as $enum) {
-            $twig .= "{% set {$enum['name']}_choices = [" . implode(', ', $enum['choices']) . "] %}\n";
+            $hashmap = [];
+            foreach ($enum['choices'] as $choice) {
+                // Convert 'value' to value: true
+                $key = trim($choice, "'");
+                $hashmap[] = "{$choice}: true";
+            }
+            $twig .= "{% set {$enum['name']}_choices = {" . implode(', ', $hashmap) . "} %}\n";
         }
+
         $twig .= "<{$elementName}";
         foreach ($props as $attr) {
             $isEnum = false;
@@ -174,7 +183,8 @@ class TwigGenerator implements TemplateGeneratorInterface
             $cond = $isReserved ? "attribute(_context, '{$attr}') is defined and attribute(_context, '{$attr}')|length > 0" : "{$attr} is defined and {$attr}|length > 0";
             $val = $isReserved ? "attribute(_context, '{$attr}')" : $attr;
             if ($isEnum) {
-                $cond .= $isReserved ? " and attribute(_context, '{$attr}') in {$attr}_choices" : " and {$attr} in {$attr}_choices";
+                // Use hashmap lookup instead of 'in' operator for better performance
+                $cond .= $isReserved ? " and {$attr}_choices[attribute(_context, '{$attr}')] is defined" : " and {$attr}_choices[{$attr}] is defined";
             }
             // Convert property name to kebab-case for HTML attribute name
             $htmlAttr = $this->camelToKebab($attr);

@@ -8,13 +8,13 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block track %}
-{% set kind_choices = ['captions', 'chapters', 'descriptions', 'metadata', 'subtitles'] %}
+{% set kind_choices = {'captions': true, 'chapters': true, 'descriptions': true, 'metadata': true, 'subtitles': true} %}
 <track
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if default is defined and default|length > 0 %}default="{{ default }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
-  {% if kind is defined and kind|length > 0 and kind in kind_choices %}kind="{{ kind }}"{% endif %}
+  {% if kind is defined and kind|length > 0 and kind_choices[kind] is defined %}kind="{{ kind }}"{% endif %}
   {% if label is defined and label|length > 0 %}label="{{ label }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
   {% if src is defined and src|length > 0 %}src="{{ src }}"{% endif %}

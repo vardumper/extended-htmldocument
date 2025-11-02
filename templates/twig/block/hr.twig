@@ -8,13 +8,13 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block hr %}
-{% set align_choices = ['center', 'justify', 'left', 'right'] %}
-{% set dir_choices = ['ltr', 'rtl', 'auto'] %}
+{% set align_choices = {'center': true, 'justify': true, 'left': true, 'right': true} %}
+{% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
 <hr
-  {% if align is defined and align|length > 0 and align in align_choices %}align="{{ align }}"{% endif %}
+  {% if align is defined and align|length > 0 and align_choices[align] is defined %}align="{{ align }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if color is defined and color|length > 0 %}color="{{ color }}"{% endif %}
-  {% if dir is defined and dir|length > 0 and dir in dir_choices %}dir="{{ dir }}"{% endif %}
+  {% if dir is defined and dir|length > 0 and dir_choices[dir] is defined %}dir="{{ dir }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}

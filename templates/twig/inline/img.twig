@@ -8,26 +8,26 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block img %}
-{% set ariaHidden_choices = ['false', 'true'] %}
-{% set crossorigin_choices = ['anonymous', 'use-credentials'] %}
-{% set decoding_choices = ['async', 'auto', 'sync'] %}
-{% set dir_choices = ['ltr', 'rtl', 'auto'] %}
-{% set referrerpolicy_choices = ['no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', 'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'] %}
+{% set ariaHidden_choices = {'false': true, 'true': true} %}
+{% set crossorigin_choices = {'anonymous': true, 'use-credentials': true} %}
+{% set decoding_choices = {'async': true, 'auto': true, 'sync': true} %}
+{% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
+{% set referrerpolicy_choices = {'no-referrer': true, 'no-referrer-when-downgrade': true, 'origin': true, 'origin-when-cross-origin': true, 'same-origin': true, 'strict-origin': true, 'strict-origin-when-cross-origin': true, 'unsafe-url': true} %}
 <img
   {% if alt is defined and alt|length > 0 %}alt="{{ alt }}"{% endif %}
-  {% if ariaHidden is defined and ariaHidden|length > 0 and ariaHidden in ariaHidden_choices %}aria-hidden="{{ ariaHidden }}"{% endif %}
+  {% if ariaHidden is defined and ariaHidden|length > 0 and ariaHidden_choices[ariaHidden] is defined %}aria-hidden="{{ ariaHidden }}"{% endif %}
   {% if ariaLabel is defined and ariaLabel|length > 0 %}aria-label="{{ ariaLabel }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
-  {% if crossorigin is defined and crossorigin|length > 0 and crossorigin in crossorigin_choices %}crossorigin="{{ crossorigin }}"{% endif %}
-  {% if decoding is defined and decoding|length > 0 and decoding in decoding_choices %}decoding="{{ decoding }}"{% endif %}
-  {% if dir is defined and dir|length > 0 and dir in dir_choices %}dir="{{ dir }}"{% endif %}
+  {% if crossorigin is defined and crossorigin|length > 0 and crossorigin_choices[crossorigin] is defined %}crossorigin="{{ crossorigin }}"{% endif %}
+  {% if decoding is defined and decoding|length > 0 and decoding_choices[decoding] is defined %}decoding="{{ decoding }}"{% endif %}
+  {% if dir is defined and dir|length > 0 and dir_choices[dir] is defined %}dir="{{ dir }}"{% endif %}
   {% if draggable is defined and draggable|length > 0 %}draggable="{{ draggable }}"{% endif %}
   {% if height is defined and height|length > 0 %}height="{{ height }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
   {% if ismap is defined and ismap|length > 0 %}ismap="{{ ismap }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
-  {% if referrerpolicy is defined and referrerpolicy|length > 0 and referrerpolicy in referrerpolicy_choices %}referrerpolicy="{{ referrerpolicy }}"{% endif %}
+  {% if referrerpolicy is defined and referrerpolicy|length > 0 and referrerpolicy_choices[referrerpolicy] is defined %}referrerpolicy="{{ referrerpolicy }}"{% endif %}
   {% if sizes is defined and sizes|length > 0 %}sizes="{{ sizes }}"{% endif %}
   {% if src is defined and src|length > 0 %}src="{{ src }}"{% endif %}
   {% if srcset is defined and srcset|length > 0 %}srcset="{{ srcset }}"{% endif %}

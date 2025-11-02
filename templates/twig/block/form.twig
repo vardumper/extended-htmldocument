@@ -8,37 +8,37 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block form %}
-{% set ariaInvalid_choices = ['false', 'true', 'grammar', 'spelling'] %}
-{% set autocomplete_choices = ['off', 'on'] %}
-{% set autocorrect_choices = ['off', 'on'] %}
-{% set dir_choices = ['ltr', 'rtl', 'auto'] %}
-{% set enctype_choices = ['application/x-www-form-urlencoded', 'multipart/form-data', 'text/plain'] %}
-{% set method_choices = ['get', 'post'] %}
-{% set target_choices = ['_blank', '_parent', '_self', '_top'] %}
-{% set translate_choices = ['yes', 'no'] %}
+{% set ariaInvalid_choices = {'false': true, 'true': true, 'grammar': true, 'spelling': true} %}
+{% set autocomplete_choices = {'off': true, 'on': true} %}
+{% set autocorrect_choices = {'off': true, 'on': true} %}
+{% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
+{% set enctype_choices = {'application/x-www-form-urlencoded': true, 'multipart/form-data': true, 'text/plain': true} %}
+{% set method_choices = {'get': true, 'post': true} %}
+{% set target_choices = {'_blank': true, '_parent': true, '_self': true, '_top': true} %}
+{% set translate_choices = {'yes': true, 'no': true} %}
 <form
   {% if acceptCharset is defined and acceptCharset|length > 0 %}accept-charset="{{ acceptCharset }}"{% endif %}
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
   {% if action is defined and action|length > 0 %}action="{{ action }}"{% endif %}
-  {% if ariaInvalid is defined and ariaInvalid|length > 0 and ariaInvalid in ariaInvalid_choices %}aria-invalid="{{ ariaInvalid }}"{% endif %}
+  {% if ariaInvalid is defined and ariaInvalid|length > 0 and ariaInvalid_choices[ariaInvalid] is defined %}aria-invalid="{{ ariaInvalid }}"{% endif %}
   {% if ariaLabel is defined and ariaLabel|length > 0 %}aria-label="{{ ariaLabel }}"{% endif %}
-  {% if autocomplete is defined and autocomplete|length > 0 and autocomplete in autocomplete_choices %}autocomplete="{{ autocomplete }}"{% endif %}
-  {% if autocorrect is defined and autocorrect|length > 0 and autocorrect in autocorrect_choices %}autocorrect="{{ autocorrect }}"{% endif %}
+  {% if autocomplete is defined and autocomplete|length > 0 and autocomplete_choices[autocomplete] is defined %}autocomplete="{{ autocomplete }}"{% endif %}
+  {% if autocorrect is defined and autocorrect|length > 0 and autocorrect_choices[autocorrect] is defined %}autocorrect="{{ autocorrect }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
-  {% if dir is defined and dir|length > 0 and dir in dir_choices %}dir="{{ dir }}"{% endif %}
+  {% if dir is defined and dir|length > 0 and dir_choices[dir] is defined %}dir="{{ dir }}"{% endif %}
   {% if draggable is defined and draggable|length > 0 %}draggable="{{ draggable }}"{% endif %}
-  {% if enctype is defined and enctype|length > 0 and enctype in enctype_choices %}enctype="{{ enctype }}"{% endif %}
+  {% if enctype is defined and enctype|length > 0 and enctype_choices[enctype] is defined %}enctype="{{ enctype }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
-  {% if method is defined and method|length > 0 and method in method_choices %}method="{{ method }}"{% endif %}
+  {% if method is defined and method|length > 0 and method_choices[method] is defined %}method="{{ method }}"{% endif %}
   {% if name is defined and name|length > 0 %}name="{{ name }}"{% endif %}
   {% if novalidate is defined and novalidate|length > 0 %}novalidate="{{ novalidate }}"{% endif %}
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
   {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}
-  {% if target is defined and target|length > 0 and target in target_choices %}target="{{ target }}"{% endif %}
+  {% if target is defined and target|length > 0 and target_choices[target] is defined %}target="{{ target }}"{% endif %}
   {% if title is defined and title|length > 0 %}title="{{ title }}"{% endif %}
-  {% if translate is defined and translate|length > 0 and translate in translate_choices %}translate="{{ translate }}"{% endif %}>
+  {% if translate is defined and translate|length > 0 and translate_choices[translate] is defined %}translate="{{ translate }}"{% endif %}>
   {% block content %}{{- content|raw -}}{% endblock %}
 </form>
 {% endblock %}

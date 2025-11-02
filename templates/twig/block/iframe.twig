@@ -8,30 +8,30 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block iframe %}
-{% set ariaBusy_choices = ['true', 'false'] %}
-{% set ariaHidden_choices = ['false', 'true'] %}
-{% set dir_choices = ['ltr', 'rtl', 'auto'] %}
-{% set popover_choices = ['auto', 'hint', 'manual'] %}
-{% set referrerpolicy_choices = ['no-referrer', 'no-referrer-when-downgrade', 'origin', 'origin-when-cross-origin', 'same-origin', 'strict-origin', 'strict-origin-when-cross-origin', 'unsafe-url'] %}
-{% set role_choices = ['alert', 'application', 'article', 'banner', 'button', 'checkbox', 'complementary', 'contentinfo', 'dialog', 'form', 'grid', 'group', 'heading', 'img', 'link', 'list', 'listbox', 'listitem', 'main', 'menu', 'menubar', 'menuitem', 'navigation', 'none', 'presentation', 'radio', 'region', 'search', 'status', 'tab', 'tablist', 'tabpanel', 'textbox', 'toolbar', 'tooltip'] %}
+{% set ariaBusy_choices = {'true': true, 'false': true} %}
+{% set ariaHidden_choices = {'false': true, 'true': true} %}
+{% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
+{% set popover_choices = {'auto': true, 'hint': true, 'manual': true} %}
+{% set referrerpolicy_choices = {'no-referrer': true, 'no-referrer-when-downgrade': true, 'origin': true, 'origin-when-cross-origin': true, 'same-origin': true, 'strict-origin': true, 'strict-origin-when-cross-origin': true, 'unsafe-url': true} %}
+{% set role_choices = {'alert': true, 'application': true, 'article': true, 'banner': true, 'button': true, 'checkbox': true, 'complementary': true, 'contentinfo': true, 'dialog': true, 'form': true, 'grid': true, 'group': true, 'heading': true, 'img': true, 'link': true, 'list': true, 'listbox': true, 'listitem': true, 'main': true, 'menu': true, 'menubar': true, 'menuitem': true, 'navigation': true, 'none': true, 'presentation': true, 'radio': true, 'region': true, 'search': true, 'status': true, 'tab': true, 'tablist': true, 'tabpanel': true, 'textbox': true, 'toolbar': true, 'tooltip': true} %}
 <iframe
   {% if allowfullscreen is defined and allowfullscreen|length > 0 %}allowfullscreen="{{ allowfullscreen }}"{% endif %}
-  {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy in ariaBusy_choices %}aria-busy="{{ ariaBusy }}"{% endif %}
+  {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy_choices[ariaBusy] is defined %}aria-busy="{{ ariaBusy }}"{% endif %}
   {% if ariaControls is defined and ariaControls|length > 0 %}aria-controls="{{ ariaControls }}"{% endif %}
   {% if ariaDescribedby is defined and ariaDescribedby|length > 0 %}aria-describedby="{{ ariaDescribedby }}"{% endif %}
-  {% if ariaHidden is defined and ariaHidden|length > 0 and ariaHidden in ariaHidden_choices %}aria-hidden="{{ ariaHidden }}"{% endif %}
+  {% if ariaHidden is defined and ariaHidden|length > 0 and ariaHidden_choices[ariaHidden] is defined %}aria-hidden="{{ ariaHidden }}"{% endif %}
   {% if ariaLabel is defined and ariaLabel|length > 0 %}aria-label="{{ ariaLabel }}"{% endif %}
   {% if ariaLabelledby is defined and ariaLabelledby|length > 0 %}aria-labelledby="{{ ariaLabelledby }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
-  {% if dir is defined and dir|length > 0 and dir in dir_choices %}dir="{{ dir }}"{% endif %}
+  {% if dir is defined and dir|length > 0 and dir_choices[dir] is defined %}dir="{{ dir }}"{% endif %}
   {% if height is defined and height|length > 0 %}height="{{ height }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
   {% if name is defined and name|length > 0 %}name="{{ name }}"{% endif %}
-  {% if popover is defined and popover|length > 0 and popover in popover_choices %}popover="{{ popover }}"{% endif %}
-  {% if referrerpolicy is defined and referrerpolicy|length > 0 and referrerpolicy in referrerpolicy_choices %}referrerpolicy="{{ referrerpolicy }}"{% endif %}
-  {% if role is defined and role|length > 0 and role in role_choices %}role="{{ role }}"{% endif %}
+  {% if popover is defined and popover|length > 0 and popover_choices[popover] is defined %}popover="{{ popover }}"{% endif %}
+  {% if referrerpolicy is defined and referrerpolicy|length > 0 and referrerpolicy_choices[referrerpolicy] is defined %}referrerpolicy="{{ referrerpolicy }}"{% endif %}
+  {% if role is defined and role|length > 0 and role_choices[role] is defined %}role="{{ role }}"{% endif %}
   {% if attribute(_context, 'sandbox') is defined and attribute(_context, 'sandbox')|length > 0 %}sandbox="{{ attribute(_context, 'sandbox') }}"{% endif %}
   {% if seamless is defined and seamless|length > 0 %}seamless="{{ seamless }}"{% endif %}
   {% if src is defined and src|length > 0 %}src="{{ src }}"{% endif %}

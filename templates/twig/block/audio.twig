@@ -8,36 +8,36 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block audio %}
-{% set ariaBusy_choices = ['true', 'false'] %}
-{% set crossorigin_choices = ['anonymous', 'use-credentials'] %}
-{% set popover_choices = ['auto', 'hint', 'manual'] %}
-{% set preload_choices = ['auto', 'metadata', 'none'] %}
-{% set role_choices = ['alert', 'application', 'article', 'banner', 'button', 'checkbox', 'complementary', 'contentinfo', 'dialog', 'form', 'grid', 'group', 'heading', 'img', 'link', 'list', 'listbox', 'listitem', 'main', 'menu', 'menubar', 'menuitem', 'navigation', 'none', 'presentation', 'radio', 'region', 'search', 'status', 'tab', 'tablist', 'tabpanel', 'textbox', 'toolbar', 'tooltip'] %}
-{% set translate_choices = ['yes', 'no'] %}
+{% set ariaBusy_choices = {'true': true, 'false': true} %}
+{% set crossorigin_choices = {'anonymous': true, 'use-credentials': true} %}
+{% set popover_choices = {'auto': true, 'hint': true, 'manual': true} %}
+{% set preload_choices = {'auto': true, 'metadata': true, 'none': true} %}
+{% set role_choices = {'alert': true, 'application': true, 'article': true, 'banner': true, 'button': true, 'checkbox': true, 'complementary': true, 'contentinfo': true, 'dialog': true, 'form': true, 'grid': true, 'group': true, 'heading': true, 'img': true, 'link': true, 'list': true, 'listbox': true, 'listitem': true, 'main': true, 'menu': true, 'menubar': true, 'menuitem': true, 'navigation': true, 'none': true, 'presentation': true, 'radio': true, 'region': true, 'search': true, 'status': true, 'tab': true, 'tablist': true, 'tabpanel': true, 'textbox': true, 'toolbar': true, 'tooltip': true} %}
+{% set translate_choices = {'yes': true, 'no': true} %}
 <audio
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
-  {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy in ariaBusy_choices %}aria-busy="{{ ariaBusy }}"{% endif %}
+  {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy_choices[ariaBusy] is defined %}aria-busy="{{ ariaBusy }}"{% endif %}
   {% if ariaControls is defined and ariaControls|length > 0 %}aria-controls="{{ ariaControls }}"{% endif %}
   {% if ariaDescribedby is defined and ariaDescribedby|length > 0 %}aria-describedby="{{ ariaDescribedby }}"{% endif %}
   {% if ariaLabelledby is defined and ariaLabelledby|length > 0 %}aria-labelledby="{{ ariaLabelledby }}"{% endif %}
   {% if autoplay is defined and autoplay|length > 0 %}autoplay="{{ autoplay }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if controls is defined and controls|length > 0 %}controls="{{ controls }}"{% endif %}
-  {% if crossorigin is defined and crossorigin|length > 0 and crossorigin in crossorigin_choices %}crossorigin="{{ crossorigin }}"{% endif %}
+  {% if crossorigin is defined and crossorigin|length > 0 and crossorigin_choices[crossorigin] is defined %}crossorigin="{{ crossorigin }}"{% endif %}
   {% if draggable is defined and draggable|length > 0 %}draggable="{{ draggable }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
   {% if attribute(_context, 'loop') is defined and attribute(_context, 'loop')|length > 0 %}loop="{{ attribute(_context, 'loop') }}"{% endif %}
   {% if muted is defined and muted|length > 0 %}muted="{{ muted }}"{% endif %}
-  {% if popover is defined and popover|length > 0 and popover in popover_choices %}popover="{{ popover }}"{% endif %}
-  {% if preload is defined and preload|length > 0 and preload in preload_choices %}preload="{{ preload }}"{% endif %}
-  {% if role is defined and role|length > 0 and role in role_choices %}role="{{ role }}"{% endif %}
+  {% if popover is defined and popover|length > 0 and popover_choices[popover] is defined %}popover="{{ popover }}"{% endif %}
+  {% if preload is defined and preload|length > 0 and preload_choices[preload] is defined %}preload="{{ preload }}"{% endif %}
+  {% if role is defined and role|length > 0 and role_choices[role] is defined %}role="{{ role }}"{% endif %}
   {% if src is defined and src|length > 0 %}src="{{ src }}"{% endif %}
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
   {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}
   {% if title is defined and title|length > 0 %}title="{{ title }}"{% endif %}
-  {% if translate is defined and translate|length > 0 and translate in translate_choices %}translate="{{ translate }}"{% endif %}>
+  {% if translate is defined and translate|length > 0 and translate_choices[translate] is defined %}translate="{{ translate }}"{% endif %}>
   {% block content %}{{- content|raw -}}{% endblock %}
 </audio>
 {% endblock %}
