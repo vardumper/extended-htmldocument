@@ -2521,8 +2521,7 @@ fieldset:
         - select
         - textarea
     role:
-      description:
-        - 'The role attribute is used to define the semantic purpose of an element.'
+      description: 'The role attribute is used to define the semantic purpose of an element.'
       type: enum
       choices:
         - alert
@@ -3931,8 +3930,7 @@ input:
         - object
         - video
     role:
-      description:
-        - 'The role attribute is used to define the purpose of an element.'
+      description: 'The role attribute is used to define the purpose of an element.'
       type: enum
       choices:
         - alert
