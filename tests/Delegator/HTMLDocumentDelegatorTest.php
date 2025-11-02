@@ -10,7 +10,7 @@ use Html\Element\Block\TableData;
 use Html\Element\Block\TableRow;
 use Html\TemplateGenerator\HTMLGenerator;
 
-uses(\Html\Trait\GlobalAttributesTrait::class);
+// uses(\Html\Trait\GlobalAttributesTrait::class);
 
 beforeEach(function () {
     $this->document = HTMLDocument::createEmpty();

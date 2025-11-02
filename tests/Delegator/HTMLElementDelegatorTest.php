@@ -11,7 +11,7 @@ use Html\Enum\RelEnum;
 use Html\Enum\TargetEnum;
 use Html\TemplateGenerator\HTMLGenerator;
 
-uses(\Html\Trait\GlobalAttributesTrait::class);
+// uses(\Html\Trait\GlobalAttributesTrait::class);
 
 beforeEach(function () {
     $this->document = HTMLDocumentDelegator::createEmpty();
