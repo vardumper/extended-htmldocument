@@ -4,7 +4,7 @@
  *
  * Abbreviation - The abbr element represents an abbreviation or acronym, optionally with its expansion. The title attribute can be used to provide an expansion of the abbreviation. The attribute, if specified, must contain an expansion of the abbreviation, and nothing else.
  * 
- * @generated 2025-11-02 17:52:56
+ * @generated 2025-11-02 22:39:29
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline

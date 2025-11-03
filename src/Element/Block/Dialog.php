@@ -4,7 +4,7 @@
  *
  * Dialog - The dialog element represents a part of an application that a user interacts with to perform a task, for example a dialog box, inspector, or window.
  * 
- * @generated 2025-11-02 17:52:56
+ * @generated 2025-11-02 22:39:29
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

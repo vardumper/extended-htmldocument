@@ -116,11 +116,26 @@ class NextJSGenerator implements TemplateGeneratorInterface
         }
 
         // Add className (React equivalent of class attribute)
+        // Check YAML for class attribute enum|string type
+        $classAttrDetails = $meta['attributes']['class'] ?? [];
+        $classType = $classAttrDetails['type'] ?? null;
+        $classDescription = $classAttrDetails['description'] ?? 'CSS class names';
+        $classTypeScript = 'string';
+
+        if (($classType === 'enum|string' || $classType === 'string|enum') &&
+            isset($classAttrDetails['choices']) &&
+            is_array($classAttrDetails['choices']) &&
+            count($classAttrDetails['choices']) > 0) {
+            // Generate union type: 'value1' | 'value2' | string
+            $enumValues = array_map(fn ($c) => "'{$c}'", $classAttrDetails['choices']);
+            $classTypeScript = implode(' | ', $enumValues) . ' | string';
+        }
+
         $props['className'] = [
             'name' => 'className',
-            'type' => 'string',
+            'type' => $classTypeScript,
             'optional' => true,
-            'description' => 'CSS class names',
+            'description' => $classDescription,
         ];
 
         // Create an example instance of the element to resolve global attributes
@@ -194,38 +209,52 @@ class NextJSGenerator implements TemplateGeneratorInterface
                 $tsType = 'string';
                 $choices = null;
 
-                // If the property is an enum-backed property, try to read the property type via reflection
-                try {
-                    $rp = new ReflectionClass($example);
-                    if ($rp->hasProperty($propName)) {
-                        $prop = $rp->getProperty($propName);
-                        $type = $prop->getType();
-                        if ($type instanceof ReflectionUnionType) {
-                            foreach ($type->getTypes() as $t) {
-                                if (enum_exists($t->getName())) {
-                                    $choices = array_map(fn ($c) => $c->value, $t->getName()::cases());
-                                    $tsType = implode(' | ', array_map(fn ($c) => "'{$c}'", $choices));
-                                    break;
+                // First check YAML for enum|string type
+                $kebabAttr = $this->camelToKebab($propName);
+                $attrDetails = $meta['attributes'][$kebabAttr] ?? $meta['attributes'][$propName] ?? [];
+                $yamlType = $attrDetails['type'] ?? null;
+
+                if (($yamlType === 'enum|string' || $yamlType === 'string|enum') &&
+                    isset($attrDetails['choices']) &&
+                    is_array($attrDetails['choices']) &&
+                    count($attrDetails['choices']) > 0) {
+                    // Generate union type: 'value1' | 'value2' | string
+                    $enumValues = array_map(fn ($c) => "'{$c}'", $attrDetails['choices']);
+                    $tsType = implode(' | ', $enumValues) . ' | string';
+                } else {
+                    // Fallback to reflection for PHP enum-backed properties
+                    try {
+                        $rp = new ReflectionClass($example);
+                        if ($rp->hasProperty($propName)) {
+                            $prop = $rp->getProperty($propName);
+                            $type = $prop->getType();
+                            if ($type instanceof ReflectionUnionType) {
+                                foreach ($type->getTypes() as $t) {
+                                    if (enum_exists($t->getName())) {
+                                        $choices = array_map(fn ($c) => $c->value, $t->getName()::cases());
+                                        $tsType = implode(' | ', array_map(fn ($c) => "'{$c}'", $choices));
+                                        break;
+                                    }
+                                    if ($t->getName() === 'int') {
+                                        $tsType = 'number';
+                                    } elseif ($t->getName() === 'bool') {
+                                        $tsType = 'boolean';
+                                    }
                                 }
-                                if ($t->getName() === 'int') {
+                            } elseif ($type && $type instanceof ReflectionNamedType) {
+                                if (enum_exists($type->getName())) {
+                                    $choices = array_map(fn ($c) => $c->value, $type->getName()::cases());
+                                    $tsType = implode(' | ', array_map(fn ($c) => "'{$c}'", $choices));
+                                } elseif ($type->getName() === 'int') {
                                     $tsType = 'number';
-                                } elseif ($t->getName() === 'bool') {
+                                } elseif ($type->getName() === 'bool') {
                                     $tsType = 'boolean';
                                 }
                             }
-                        } elseif ($type && $type instanceof ReflectionNamedType) {
-                            if (enum_exists($type->getName())) {
-                                $choices = array_map(fn ($c) => $c->value, $type->getName()::cases());
-                                $tsType = implode(' | ', array_map(fn ($c) => "'{$c}'", $choices));
-                            } elseif ($type->getName() === 'int') {
-                                $tsType = 'number';
-                            } elseif ($type->getName() === 'bool') {
-                                $tsType = 'boolean';
-                            }
                         }
+                    } catch (Throwable $e) {
+                        // ignore reflection errors and treat as string
                     }
-                } catch (Throwable $e) {
-                    // ignore reflection errors and treat as string
                 }
 
                 $props[$jsVarName] = [
@@ -243,6 +272,11 @@ class NextJSGenerator implements TemplateGeneratorInterface
             $propName = $prop->getName();
             $getter = 'get' . ucfirst($propName);
             $setter = 'set' . ucfirst($propName);
+
+            // Skip class - already handled as className
+            if ($propName === 'class' || $propName === 'className') {
+                continue;
+            }
 
             if ($ref->hasMethod($getter) && $ref->hasMethod($setter)) {
                 $type = $prop->getType();
@@ -273,6 +307,17 @@ class NextJSGenerator implements TemplateGeneratorInterface
                 // Get attribute details from YAML
                 $attrDetails = $meta['attributes'][$this->camelToKebab($propName)] ??
                               $meta['attributes'][$propName] ?? [];
+
+                // Check if YAML defines enum|string type with choices
+                $yamlType = $attrDetails['type'] ?? null;
+                if (($yamlType === 'enum|string' || $yamlType === 'string|enum') &&
+                    isset($attrDetails['choices']) &&
+                    is_array($attrDetails['choices']) &&
+                    count($attrDetails['choices']) > 0) {
+                    // Generate union type: 'value1' | 'value2' | string
+                    $enumValues = array_map(fn ($c) => "'{$c}'", $attrDetails['choices']);
+                    $tsType = implode(' | ', $enumValues) . ' | string';
+                }
 
                 // Handle JS reserved words by appending 'Prop'
                 $jsVarName = in_array($propName, self::JS_RESERVED_WORDS, true) ? $propName . 'Prop' : $propName;

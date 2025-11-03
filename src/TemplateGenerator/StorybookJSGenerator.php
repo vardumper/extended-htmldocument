@@ -508,9 +508,9 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         $js .= " * @description {$description}\n";
         $js .= " */\n\n";
 
-        $js .= "import {\n";
-        $js .= "  withActions\n";
-        $js .= "} from '@storybook/addon-actions/decorator';\n\n";
+        // $js .= "import {\n";
+        // $js .= "  withActions\n";
+        // $js .= "} from '@storybook/addon-actions/decorator';\n\n";
 
         $js .= "export default {\n";
         $js .= "  title: \"{$title}\",\n";
@@ -548,7 +548,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         $js .= implode("\n", $renderAssignments);
         $js .= "\n    return el;\n";
         $js .= "  },\n";
-        $js .= "  decorators: [withActions],\n";
+        $js .= "  decorators: [],\n";
         $js .= "};\n\n";
 
         // Default story

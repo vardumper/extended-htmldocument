@@ -4,7 +4,7 @@
  *
  * Superscript - The sup element represents a superscript.
  * 
- * @generated 2025-11-02 17:52:56
+ * @generated 2025-11-02 22:39:29
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline

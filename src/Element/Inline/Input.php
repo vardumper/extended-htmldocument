@@ -4,7 +4,7 @@
  *
  * Input - The input element represents a typed data field, usually with a form control to allow user input.
  * 
- * @generated 2025-11-02 17:52:56
+ * @generated 2025-11-02 22:39:29
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline

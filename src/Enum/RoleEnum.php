@@ -4,7 +4,7 @@
  *
  * RoleEnum - Defines the semantic purpose of an element for assistive technologies.
  * 
- * @generated 2025-11-02 17:52:56
+ * @generated 2025-11-02 22:39:29
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

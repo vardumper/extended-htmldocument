@@ -4,7 +4,7 @@
  *
  * HeadingsGroup - The hgroup element represents a multi-level heading for a section of a document. It groups a set of h1–h6 elements.
  * 
- * @generated 2025-11-02 17:52:56
+ * @generated 2025-11-02 22:39:29
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

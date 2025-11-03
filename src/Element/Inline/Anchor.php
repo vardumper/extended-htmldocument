@@ -4,7 +4,7 @@
  *
  * Anchor - The a element represents a hyperlink, linking to another resource.
  * 
- * @generated 2025-11-02 17:52:56
+ * @generated 2025-11-02 22:39:29
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -35,6 +35,7 @@ use Html\Enum\ARoleEnum;
 use Html\Enum\AriaBusyEnum;
 use Html\Enum\AriaCurrentEnum;
 use Html\Enum\AriaDisabledEnum;
+use Html\Enum\ClassEnum;
 use Html\Enum\RelEnum;
 use Html\Enum\TargetEnum;
 use Html\Trait\GlobalAttribute;
@@ -113,6 +114,15 @@ class Anchor extends InlineElement
     ];
 
 
+    /** 
+     * The class attribute is used to define equal styles for multiple elements.
+     * @category HTML attribute
+     * @example 
+    
+     * @required
+     */
+    public null|string|ClassEnum $class = null;
+
     /** Indicates that the linked content should be downloaded rather than displayed. */
     public ?string $download = null;
 
@@ -178,6 +188,29 @@ class Anchor extends InlineElement
      */
     public ?AriaDisabledEnum $ariaDisabled = null;
 
+
+    public function setClass(string|ClassEnum $class): static
+    {
+        $value = $class;
+        if (is_string($class)) {
+            $resolved = ClassEnum::tryFrom($class);
+            if (!is_null($resolved)) {
+                $class = $resolved;
+            }
+        }
+        if ($class instanceof ClassEnum) {
+            $value = $class->value;
+        }
+        $this->class = $class;
+        $this->delegated->setAttribute('class', (string) $value);
+
+        return $this;
+    }
+
+    public function getClass(): null|string|ClassEnum
+    {
+        return $this->class;
+    }
 
     public function setDownload(string $download): static
     {
