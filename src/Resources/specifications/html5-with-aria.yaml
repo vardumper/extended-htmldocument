@@ -23,17 +23,6 @@ a:
     - popover
   unique: false
   attributes:
-    class:
-      description: 'The class attribute is used to define equal styles for multiple elements.'
-      required: true
-      defaultValue: ''
-      type: enum|string
-      choices:
-        - secondary
-        - contrast
-        - outline
-        - 'secondary outline'
-        - 'contrast outline'
     download:
       description: 'Indicates that the linked content should be downloaded rather than displayed.'
       type: string
@@ -4611,7 +4600,7 @@ head:
   name: Head
   description: 'The head element contains meta-information about the HTML document, including its title and links to its scripts and stylesheets.'
   level: void
-  unique_per_parent: true
+  unique: true
   parent: html
   children:
     - base
@@ -8643,7 +8632,6 @@ script:
     src:
       description: 'Specifies the URL of the external resource to be embedded or referenced.'
       type: uri
-      required: true
       elements:
         - audio
         - embed
