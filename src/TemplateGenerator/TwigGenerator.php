@@ -87,6 +87,15 @@ class TwigGenerator implements TemplateGeneratorInterface
         return null;
     }
 
+    /**
+     * Twig generator does not currently support composed element templates
+     */
+    public function renderComposedElement(HTMLElementDelegatorInterface $element): ?string
+    {
+        // TODO: Implement composed template generation for Twig
+        return null;
+    }
+
     public function setComponentHandle(string $handle): void
     {
         $this->componentHandle = $handle;

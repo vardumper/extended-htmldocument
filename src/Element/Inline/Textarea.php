@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Textarea - The textarea element represents a multiline plain text edit control for the element's raw value.
- * 
+ *
  * @generated 2025-11-02 22:39:29
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Aside;
@@ -27,16 +27,15 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
-use Html\Element\Inline\MarkedText;
-use Html\Element\Inline\Slot;
 use Html\Enum\AriaDisabledEnum;
 use Html\Enum\AriaInvalidEnum;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\AutocorrectEnum;
 use Html\Enum\RoleEnum;
 use Html\Enum\WrapEnum;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 #[Element('textarea')]
 class Textarea extends InlineElement
@@ -59,6 +58,7 @@ class Textarea extends InlineElement
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
     use GlobalAttribute\PopoverTrait;
+
     /**
      * The HTML element name
      */
@@ -105,98 +105,122 @@ class Textarea extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** 
-     * 
-     * @category HTML attribute
+    /**
      * @example on
      */
     public ?AutocompleteEnum $autocomplete = null;
 
-    /** 
+    /**
      * Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.
-     * @category HTML attribute
      * @example on
      */
     public ?AutocorrectEnum $autocorrect = null;
 
-    /** Specifies the visible width of a text area, in average character widths. */
+    /**
+     * Specifies the visible width of a text area, in average character widths.
+     */
     public ?int $cols = null;
 
-    /** Specifies the name of the field that will contain the text direction (ltr or rtl) of the input or textarea when the form is submitted */
+    /**
+     * Specifies the name of the field that will contain the text direction (ltr or rtl) of the input or textarea when the form is submitted
+     */
     public ?string $dirname = null;
 
-    /** When present, it specifies that an input element should be disabled. */
+    /**
+     * When present, it specifies that an input element should be disabled.
+     */
     public ?bool $disabled = null;
 
-    /** Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset. */
+    /**
+     * Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.
+     */
     public ?string $form = null;
 
-    /** Specifies the maximum number of characters allowed in an input field. */
+    /**
+     * Specifies the maximum number of characters allowed in an input field.
+     */
     public ?int $maxlength = null;
 
-    /** Specifies the minimum number of characters required in an input field. */
+    /**
+     * Specifies the minimum number of characters required in an input field.
+     */
     public ?int $minlength = null;
 
-    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /**
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     */
     public ?string $name = null;
 
-    /** Specifies a short hint that describes the expected value of an input field. */
+    /**
+     * Specifies a short hint that describes the expected value of an input field.
+     */
     public ?string $placeholder = null;
 
-    /** When present, it specifies that an input element is read-only. */
+    /**
+     * When present, it specifies that an input element is read-only.
+     */
     public ?bool $readonly = null;
 
-    /** When present, it specifies that an input field must be filled out before submitting the form. */
+    /**
+     * When present, it specifies that an input field must be filled out before submitting the form.
+     */
     public ?bool $required = null;
 
-    /** Specifies the visible number of lines in a text area. */
+    /**
+     * Specifies the visible number of lines in a text area.
+     */
     public ?int $rows = null;
 
-    /** 
-     * 
-     * @category HTML attribute
+    /**
      * @example soft
      */
     public ?WrapEnum $wrap = null;
 
-    /** Defines the semantic purpose of an element for assistive technologies. */
+    /**
+     * Defines the semantic purpose of an element for assistive technologies.
+     */
     public ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     */
     public ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     */
     public ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     */
     public ?string $ariaLabelledby = null;
 
-    /** 
+    /**
      * Indicates that the value entered does not conform to the expected format.
-     * @category HTML attribute
      * @example false
      */
     public ?AriaInvalidEnum $ariaInvalid = null;
 
-    /** Defines a string value that labels the current element for assistive technologies. */
+    /**
+     * Defines a string value that labels the current element for assistive technologies.
+     */
     public ?string $ariaLabel = null;
 
-    /** 
+    /**
      * Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
-     * @category HTML attribute
      * @example false
      */
     public ?AriaDisabledEnum $ariaDisabled = null;
 
-
     public function setAutocomplete(string|AutocompleteEnum $autocomplete): static
     {
         if (is_string($autocomplete)) {
-            $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new \InvalidArgumentException("Invalid value for \$autocomplete.");
+            $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new InvalidArgumentException(
+                'Invalid value for $autocomplete.'
+            );
         }
         $this->autocomplete = $autocomplete;
         $this->delegated->setAttribute('autocomplete', (string) $autocomplete->value);
@@ -212,7 +236,9 @@ class Textarea extends InlineElement
     public function setAutocorrect(string|AutocorrectEnum $autocorrect): static
     {
         if (is_string($autocorrect)) {
-            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new \InvalidArgumentException("Invalid value for \$autocorrect.");
+            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new InvalidArgumentException(
+                'Invalid value for $autocorrect.'
+            );
         }
         $this->autocorrect = $autocorrect;
         $this->delegated->setAttribute('autocorrect', (string) $autocorrect->value);
@@ -360,7 +386,7 @@ class Textarea extends InlineElement
     public function setWrap(string|WrapEnum $wrap): static
     {
         if (is_string($wrap)) {
-            $wrap = WrapEnum::tryFrom($wrap) ?? throw new \InvalidArgumentException("Invalid value for \$wrap.");
+            $wrap = WrapEnum::tryFrom($wrap) ?? throw new InvalidArgumentException('Invalid value for $wrap.');
         }
         $this->wrap = $wrap;
         $this->delegated->setAttribute('wrap', (string) $wrap->value);
@@ -376,7 +402,7 @@ class Textarea extends InlineElement
     public function setRole(string|RoleEnum $role): static
     {
         if (is_string($role)) {
-            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
+            $role = RoleEnum::tryFrom($role) ?? throw new InvalidArgumentException('Invalid value for $role.');
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -428,7 +454,9 @@ class Textarea extends InlineElement
     public function setAriaInvalid(string|AriaInvalidEnum $ariaInvalid): static
     {
         if (is_string($ariaInvalid)) {
-            $ariaInvalid = AriaInvalidEnum::tryFrom($ariaInvalid) ?? throw new \InvalidArgumentException("Invalid value for \$ariaInvalid.");
+            $ariaInvalid = AriaInvalidEnum::tryFrom($ariaInvalid) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaInvalid.'
+            );
         }
         $this->ariaInvalid = $ariaInvalid;
         $this->delegated->setAttribute('aria-invalid', (string) $ariaInvalid->value);
@@ -456,7 +484,9 @@ class Textarea extends InlineElement
     public function setAriaDisabled(string|AriaDisabledEnum $ariaDisabled): static
     {
         if (is_string($ariaDisabled)) {
-            $ariaDisabled = AriaDisabledEnum::tryFrom($ariaDisabled) ?? throw new \InvalidArgumentException("Invalid value for \$ariaDisabled.");
+            $ariaDisabled = AriaDisabledEnum::tryFrom($ariaDisabled) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaDisabled.'
+            );
         }
         $this->ariaDisabled = $ariaDisabled;
         $this->delegated->setAttribute('aria-disabled', (string) $ariaDisabled->value);
@@ -468,5 +498,4 @@ class Textarea extends InlineElement
     {
         return $this->ariaDisabled;
     }
-
 }

@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Abbreviation - The abbr element represents an abbreviation or acronym, optionally with its expansion. The title attribute can be used to provide an expansion of the abbreviation. The attribute, if specified, must contain an expansion of the abbreviation, and nothing else.
- * 
+ *
  * @generated 2025-11-02 22:39:29
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -27,8 +27,9 @@ use Html\Element\Block\Section;
 use Html\Element\InlineElement;
 use Html\Enum\AriaBusyEnum;
 use Html\Enum\RoleEnum;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 #[Element('abbr')]
 class Abbreviation extends InlineElement
@@ -51,6 +52,7 @@ class Abbreviation extends InlineElement
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
     use GlobalAttribute\PopoverTrait;
+
     /**
      * The HTML element name
      */
@@ -93,32 +95,38 @@ class Abbreviation extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** Specifies additional information about the element, typically displayed as a tooltip. */
+    /**
+     * Specifies additional information about the element, typically displayed as a tooltip.
+     */
     public ?string $title = null;
 
-    /** Defines the semantic purpose of an element for assistive technologies. */
+    /**
+     * Defines the semantic purpose of an element for assistive technologies.
+     */
     public ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     */
     public ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     */
     public ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     */
     public ?string $ariaLabelledby = null;
 
-    /** 
+    /**
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
-     * @category HTML attribute
      * @example false
      */
     public ?AriaBusyEnum $ariaBusy = null;
-
 
     public function setTitle(string $title): static
     {
@@ -135,7 +143,7 @@ class Abbreviation extends InlineElement
     public function setRole(string|RoleEnum $role): static
     {
         if (is_string($role)) {
-            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
+            $role = RoleEnum::tryFrom($role) ?? throw new InvalidArgumentException('Invalid value for $role.');
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -187,7 +195,9 @@ class Abbreviation extends InlineElement
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
         if (is_string($ariaBusy)) {
-            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
+            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaBusy.'
+            );
         }
         $this->ariaBusy = $ariaBusy;
         $this->delegated->setAttribute('aria-busy', (string) $ariaBusy->value);
@@ -199,5 +209,4 @@ class Abbreviation extends InlineElement
     {
         return $this->ariaBusy;
     }
-
 }

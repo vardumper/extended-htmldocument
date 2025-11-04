@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * BidirectionalOverride - The bdo element represents explicit text directionality formatting control for its children. It allows authors to override the Unicode bidirectional algorithm by explicitly specifying a direction override.
- * 
+ *
  * @generated 2025-11-02 22:39:29
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdo
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Article;
@@ -24,12 +24,12 @@ use Html\Element\Block\Main;
 use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\InlineElement;
-use Html\Element\Inline\MarkedText;
 use Html\Enum\AriaBusyEnum;
 use Html\Enum\AriaHiddenEnum;
 use Html\Enum\RoleEnum;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 #[Element('bdo')]
 class BidirectionalOverride extends InlineElement
@@ -52,6 +52,7 @@ class BidirectionalOverride extends InlineElement
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
     use GlobalAttribute\PopoverTrait;
+
     /**
      * The HTML element name
      */
@@ -94,41 +95,44 @@ class BidirectionalOverride extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** Defines the semantic purpose of an element for assistive technologies. */
+    /**
+     * Defines the semantic purpose of an element for assistive technologies.
+     */
     public ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     */
     public ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     */
     public ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     */
     public ?string $ariaLabelledby = null;
 
-    /** 
+    /**
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
-     * @category HTML attribute
      * @example false
      */
     public ?AriaBusyEnum $ariaBusy = null;
 
-    /** 
+    /**
      * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
-     * @category HTML attribute
      * @example false
      */
     public ?AriaHiddenEnum $ariaHidden = null;
 
-
     public function setRole(string|RoleEnum $role): static
     {
         if (is_string($role)) {
-            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
+            $role = RoleEnum::tryFrom($role) ?? throw new InvalidArgumentException('Invalid value for $role.');
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -180,7 +184,9 @@ class BidirectionalOverride extends InlineElement
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
         if (is_string($ariaBusy)) {
-            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
+            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaBusy.'
+            );
         }
         $this->ariaBusy = $ariaBusy;
         $this->delegated->setAttribute('aria-busy', (string) $ariaBusy->value);
@@ -196,7 +202,9 @@ class BidirectionalOverride extends InlineElement
     public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
     {
         if (is_string($ariaHidden)) {
-            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
+            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaHidden.'
+            );
         }
         $this->ariaHidden = $ariaHidden;
         $this->delegated->setAttribute('aria-hidden', (string) $ariaHidden->value);
@@ -208,5 +216,4 @@ class BidirectionalOverride extends InlineElement
     {
         return $this->ariaHidden;
     }
-
 }

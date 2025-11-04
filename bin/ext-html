@@ -7,6 +7,7 @@ use Html\Command\BatchGeneratorCommand;
 use Html\Command\CreateClassCommand;
 use Html\Command\CreateEnumCommand;
 use Html\Command\CreateJsonCommand;
+use Html\Command\GenerateComposedCommand;
 use Html\Command\MergeSpecifications;
 use Html\Command\WatchCommand;
 use Html\Service\ComponentBuilder;
@@ -37,6 +38,10 @@ $app->command('make:all [--specification=]', function (InputInterface $input, Ou
 $app->command('generate:all [generator] [dest] [--overwrite-existing=] [--specification=]', function ($generator, $dest, InputInterface $input, OutputInterface $output, $overwriteExisting = false, $specification = null) {
     (new BatchGeneratorCommand())($generator, $dest, $input, $output, (bool) $overwriteExisting, $specification);
 })->descriptions('Generates templates. Uses a given generator. Requires a Generator Name (eg. html, twig) and a destination path for the generated templates. You can also provide a list of generators separated by comma.', ['generator' => 'name of the generator(s)', 'dest' => 'destination path']);
+
+$app->command('generate:composed [generator] [dest] [--overwrite-existing=]', function ($generator, $dest, InputInterface $input, OutputInterface $output, $overwriteExisting = false) {
+    return (new GenerateComposedCommand())($generator, $dest, $input, $output, (bool) $overwriteExisting);
+})->descriptions('Generates composed component templates showing valid parent-child relationships based on content model metadata', ['generator' => 'name of the generator (nextjs, storybook, twig)', 'dest' => 'destination path']);
 
 $app->command('merge:specs [import] [dest]', function ($import, $dest, InputInterface $input, OutputInterface $output) {
    return (new MergeSpecifications())($import, $dest, $input, $output);

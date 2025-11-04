@@ -2275,7 +2275,7 @@ head:
   name: Head
   description: 'The head element contains meta-information about the HTML document, including its title and links to its scripts and stylesheets.'
   level: void
-  unique_per_parent: true
+  unique: true
   parent: html
   children:
     - base
@@ -4521,7 +4521,6 @@ script:
     src:
       description: 'Specifies the URL of the external resource to be embedded or referenced.'
       type: uri
-      required: true
       elements:
         - audio
         - embed

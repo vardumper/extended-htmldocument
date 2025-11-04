@@ -1,37 +1,28 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Video - The video element is used to embed video content in a document, such as a movie clip or other video streams.
- * 
+ *
  * @generated 2025-11-02 22:39:29
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Body;
-use Html\Element\Block\DefinitionDescription;
-use Html\Element\Block\Division;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Header;
-use Html\Element\Block\Main;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
 use Html\Enum\AriaBusyEnum;
 use Html\Enum\AriaHiddenEnum;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\PreloadEnum;
 use Html\Enum\RoleEnum;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 #[Element('video')]
 class Video extends BlockElement
@@ -54,6 +45,7 @@ class Video extends BlockElement
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
     use GlobalAttribute\PopoverTrait;
+
     /**
      * The HTML element name
      */
@@ -96,70 +88,84 @@ class Video extends BlockElement
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** When present, it specifies that the audio or video will automatically start playing as soon as it can do so without stopping. */
+    /**
+     * When present, it specifies that the audio or video will automatically start playing as soon as it can do so without stopping.
+     */
     public ?bool $autoplay = null;
 
-    /** When present, it specifies that audio or video controls should be displayed (such as play, pause, and volume). */
+    /**
+     * When present, it specifies that audio or video controls should be displayed (such as play, pause, and volume).
+     */
     public ?bool $controls = null;
 
-    /**  */
     public ?CrossoriginEnum $crossorigin = null;
 
-    /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     public ?string $height = null;
 
-    /** When present, it specifies that the audio or video will start over again every time it is finished. */
+    /**
+     * When present, it specifies that the audio or video will start over again every time it is finished.
+     */
     public ?bool $loop = null;
 
-    /** When present, it specifies that the audio output of the video should be muted. */
+    /**
+     * When present, it specifies that the audio output of the video should be muted.
+     */
     public ?bool $muted = null;
 
-    /** Specifies the URL of an image to be displayed as the video's poster (thumbnail) image. */
+    /**
+     * Specifies the URL of an image to be displayed as the video's poster (thumbnail) image.
+     */
     public ?string $poster = null;
 
-    /**  */
     public ?PreloadEnum $preload = null;
 
-    /** 
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
-     * @category HTML attribute
      * @required
      */
     public ?string $src = null;
 
-    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     public ?string $width = null;
 
-    /** Defines the semantic purpose of an element for assistive technologies. */
+    /**
+     * Defines the semantic purpose of an element for assistive technologies.
+     */
     public ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     */
     public ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     */
     public ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     */
     public ?string $ariaLabelledby = null;
 
-    /** 
+    /**
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
-     * @category HTML attribute
      * @example false
      */
     public ?AriaBusyEnum $ariaBusy = null;
 
-    /** 
+    /**
      * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
-     * @category HTML attribute
      * @example false
      */
     public ?AriaHiddenEnum $ariaHidden = null;
-
 
     public function setAutoplay(bool $autoplay): static
     {
@@ -188,7 +194,9 @@ class Video extends BlockElement
     public function setCrossorigin(string|CrossoriginEnum $crossorigin): static
     {
         if (is_string($crossorigin)) {
-            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new \InvalidArgumentException("Invalid value for \$crossorigin.");
+            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
+                'Invalid value for $crossorigin.'
+            );
         }
         $this->crossorigin = $crossorigin;
         $this->delegated->setAttribute('crossorigin', (string) $crossorigin->value);
@@ -252,7 +260,9 @@ class Video extends BlockElement
     public function setPreload(string|PreloadEnum $preload): static
     {
         if (is_string($preload)) {
-            $preload = PreloadEnum::tryFrom($preload) ?? throw new \InvalidArgumentException("Invalid value for \$preload.");
+            $preload = PreloadEnum::tryFrom($preload) ?? throw new InvalidArgumentException(
+                'Invalid value for $preload.'
+            );
         }
         $this->preload = $preload;
         $this->delegated->setAttribute('preload', (string) $preload->value);
@@ -292,7 +302,7 @@ class Video extends BlockElement
     public function setRole(string|RoleEnum $role): static
     {
         if (is_string($role)) {
-            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
+            $role = RoleEnum::tryFrom($role) ?? throw new InvalidArgumentException('Invalid value for $role.');
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -344,7 +354,9 @@ class Video extends BlockElement
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
         if (is_string($ariaBusy)) {
-            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
+            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaBusy.'
+            );
         }
         $this->ariaBusy = $ariaBusy;
         $this->delegated->setAttribute('aria-busy', (string) $ariaBusy->value);
@@ -360,7 +372,9 @@ class Video extends BlockElement
     public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
     {
         if (is_string($ariaHidden)) {
-            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
+            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaHidden.'
+            );
         }
         $this->ariaHidden = $ariaHidden;
         $this->delegated->setAttribute('aria-hidden', (string) $ariaHidden->value);
@@ -372,6 +386,4 @@ class Video extends BlockElement
     {
         return $this->ariaHidden;
     }
-
-
 }

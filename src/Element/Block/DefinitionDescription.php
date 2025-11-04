@@ -1,46 +1,19 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * DefinitionDescription - The dd element represents the description, definition, or value, part of a term-description group in a description list (dl element).
- * 
+ *
  * @generated 2025-11-02 22:39:29
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dd
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Audio;
-use Html\Element\Block\DefinitionList;
-use Html\Element\Block\DefinitionTerm;
-use Html\Element\Block\DeletedText;
-use Html\Element\Block\Details;
-use Html\Element\Block\Division;
-use Html\Element\Block\Embed;
-use Html\Element\Block\Figure;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Form;
-use Html\Element\Block\Header;
-use Html\Element\Block\InlineFrame;
-use Html\Element\Block\InsertedText;
-use Html\Element\Block\ListItem;
-use Html\Element\Block\Main;
-use Html\Element\Block\Map;
-use Html\Element\Block\ObjectElement;
-use Html\Element\Block\OrderedList;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Picture;
-use Html\Element\Block\PreformattedText;
-use Html\Element\Block\Section;
-use Html\Element\Block\Summary;
-use Html\Element\Block\Table;
-use Html\Element\Block\UnorderedList;
-use Html\Element\Block\Video;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\BidirectionalIsolation;
@@ -82,8 +55,9 @@ use Html\Element\Void\WordBreakOpportunity;
 use Html\Enum\AriaBusyEnum;
 use Html\Enum\AriaHiddenEnum;
 use Html\Enum\RoleEnum;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 #[Element('dd')]
 class DefinitionDescription extends BlockElement
@@ -106,6 +80,7 @@ class DefinitionDescription extends BlockElement
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
     use GlobalAttribute\PopoverTrait;
+
     /**
      * The HTML element name
      */
@@ -133,7 +108,7 @@ class DefinitionDescription extends BlockElement
     public static array $childOf = [
         DefinitionList::class,
         Aside::class,
-        DefinitionDescription::class,
+        self::class,
         Division::class,
         Footer::class,
         Header::class,
@@ -157,7 +132,7 @@ class DefinitionDescription extends BlockElement
         Citation::class,
         Code::class,
         Data::class,
-        DefinitionDescription::class,
+        self::class,
         DeletedText::class,
         Definition::class,
         Division::class,
@@ -209,38 +184,42 @@ class DefinitionDescription extends BlockElement
         WordBreakOpportunity::class,
     ];
 
-
-    /** Defines the semantic purpose of an element for assistive technologies. */
+    /**
+     * Defines the semantic purpose of an element for assistive technologies.
+     */
     public ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     */
     public ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     */
     public ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     */
     public ?string $ariaLabelledby = null;
 
-    /** 
+    /**
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
-     * @category HTML attribute
      * @example false
      */
     public ?AriaBusyEnum $ariaBusy = null;
 
-    /** 
+    /**
      * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
-     * @category HTML attribute
      * @example false
      */
     public ?AriaHiddenEnum $ariaHidden = null;
 
-
     public function setRole(string|RoleEnum $role): static
     {
         if (is_string($role)) {
-            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
+            $role = RoleEnum::tryFrom($role) ?? throw new InvalidArgumentException('Invalid value for $role.');
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -292,7 +271,9 @@ class DefinitionDescription extends BlockElement
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
         if (is_string($ariaBusy)) {
-            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
+            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaBusy.'
+            );
         }
         $this->ariaBusy = $ariaBusy;
         $this->delegated->setAttribute('aria-busy', (string) $ariaBusy->value);
@@ -308,7 +289,9 @@ class DefinitionDescription extends BlockElement
     public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
     {
         if (is_string($ariaHidden)) {
-            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
+            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaHidden.'
+            );
         }
         $this->ariaHidden = $ariaHidden;
         $this->delegated->setAttribute('aria-hidden', (string) $ariaHidden->value);
@@ -320,6 +303,4 @@ class DefinitionDescription extends BlockElement
     {
         return $this->ariaHidden;
     }
-
-
 }

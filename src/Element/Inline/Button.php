@@ -1,16 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
- * 
+ *
  * @generated 2025-11-02 22:39:29
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
  */
+
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Aside;
@@ -28,8 +28,6 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\InlineElement;
-use Html\Element\Inline\MarkedText;
-use Html\Element\Inline\Slot;
 use Html\Enum\AriaBusyEnum;
 use Html\Enum\AriaCurrentEnum;
 use Html\Enum\AriaDisabledEnum;
@@ -40,8 +38,9 @@ use Html\Enum\FormmethodEnum;
 use Html\Enum\FormtargetEnum;
 use Html\Enum\PopovertargetactionEnum;
 use Html\Enum\RoleEnum;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 #[Element('button')]
 class Button extends InlineElement
@@ -64,6 +63,7 @@ class Button extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -111,110 +111,132 @@ class Button extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** When present, it specifies that an element should automatically get focus when the page loads. */
+    /**
+     * When present, it specifies that an element should automatically get focus when the page loads.
+     */
     public ?bool $autofocus = null;
 
-    /** 
+    /**
      * Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.
-     * @category HTML attribute
      * @example on
      */
     public ?AutocorrectEnum $autocorrect = null;
 
-    /** When present, it specifies that an input element should be disabled. */
+    /**
+     * When present, it specifies that an input element should be disabled.
+     */
     public ?bool $disabled = null;
 
-    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /**
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     */
     public ?string $name = null;
 
-    /** Specifies the type of the button. */
+    /**
+     * Specifies the type of the button.
+     */
     public ?ButtonTypeEnum $type = null;
 
-    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
+    /**
+     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
+     */
     public ?string $value = null;
 
-    /** Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset. */
+    /**
+     * Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.
+     */
     public ?string $form = null;
 
-    /** The URL that processes the form submission. Overrides the action attribute of the button's form owner. Only applies to submit buttons. Element-specific to button and input elements with type submit or image. */
+    /**
+     * The URL that processes the form submission. Overrides the action attribute of the button's form owner. Only applies to submit buttons. Element-specific to button and input elements with type submit or image.
+     */
     public ?string $formaction = null;
 
-    /** 
+    /**
      * Specifies how form data should be encoded when submitting to the server. Only for submit buttons. Overrides the form's enctype attribute. Element-specific to button and input elements with type submit or image.
-     * @category HTML attribute
      * @example application/x-www-form-urlencoded
      */
     public ?FormenctypeEnum $formenctype = null;
 
-    /** 
+    /**
      * Specifies the HTTP method to use when submitting the form. Only for submit buttons. Overrides the form's method attribute. Use "post" for sensitive data, "get" for idempotent operations, "dialog" to close dialog without submission. Element-specific to button and input elements with type submit or image.
-     * @category HTML attribute
      * @example get
      */
     public ?FormmethodEnum $formmethod = null;
 
-    /** When present, specifies that the form should not be validated when submitted. Only applies to submit buttons. Overrides the form's novalidate attribute. Element-specific to button and input elements with type submit or image. */
+    /**
+     * When present, specifies that the form should not be validated when submitted. Only applies to submit buttons. Overrides the form's novalidate attribute. Element-specific to button and input elements with type submit or image.
+     */
     public ?bool $formnovalidate = null;
 
     /** Specifies where to display the response after form submission. Can be a browsing context name or keyword (_self, _blank, _parent, _top). Only for submit buttons. Overrides the form's target attribute. Element-specific to button and input elements with type submit or image. */
     public null|string|FormtargetEnum $formtarget = null;
 
-    /** Turns the button into a popover control by specifying the ID of the popover element to control. Creates implicit aria-details and aria-expanded relationships, establishes anchor positioning reference, and improves accessibility. Part of the Popover API. Element-specific to button and input elements. */
+    /**
+     * Turns the button into a popover control by specifying the ID of the popover element to control. Creates implicit aria-details and aria-expanded relationships, establishes anchor positioning reference, and improves accessibility. Part of the Popover API. Element-specific to button and input elements.
+     */
     public ?string $popovertarget = null;
 
-    /** 
+    /**
      * Specifies the action to perform on the popover element controlled by popovertarget. "show" displays a hidden popover, "hide" hides a visible popover, "toggle" (default) switches between states. Part of the Popover API. Element-specific to button and input elements.
-     * @category HTML attribute
      * @example toggle
      */
     public ?PopovertargetactionEnum $popovertargetaction = null;
 
-    /** Specifies the action to be performed on an element controlled via commandfor attribute. Supports dialog operations (show-modal, close, request-close), popover operations (show-popover, hide-popover, toggle-popover), and custom commands prefixed with "--". Provides declarative element control without JavaScript. Element-specific to button element. */
+    /**
+     * Specifies the action to be performed on an element controlled via commandfor attribute. Supports dialog operations (show-modal, close, request-close), popover operations (show-popover, hide-popover, toggle-popover), and custom commands prefixed with "--". Provides declarative element control without JavaScript. Element-specific to button element.
+     */
     public ?string $command = null;
 
-    /** Turns the button into a command button by specifying the ID of the element to control. Works with the command attribute to define the action. A more general version of popovertarget. Enables declarative control of interactive elements. Element-specific to button element. */
+    /**
+     * Turns the button into a command button by specifying the ID of the element to control. Works with the command attribute to define the action. A more general version of popovertarget. Enables declarative control of interactive elements. Element-specific to button element.
+     */
     public ?string $commandfor = null;
 
-    /** Defines the semantic purpose of an element for assistive technologies. */
+    /**
+     * Defines the semantic purpose of an element for assistive technologies.
+     */
     public ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     */
     public ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     */
     public ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     */
     public ?string $ariaLabelledby = null;
 
-    /** 
+    /**
      * Indicates the current item within a container or set of related elements.
-     * @category HTML attribute
      * @example false
      */
     public ?AriaCurrentEnum $ariaCurrent = null;
 
-    /** 
+    /**
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
-     * @category HTML attribute
      * @example false
      */
     public ?AriaBusyEnum $ariaBusy = null;
 
-    /** Defines a string value that labels the current element for assistive technologies. */
+    /**
+     * Defines a string value that labels the current element for assistive technologies.
+     */
     public ?string $ariaLabel = null;
 
-    /** 
+    /**
      * Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
-     * @category HTML attribute
      * @example false
      */
     public ?AriaDisabledEnum $ariaDisabled = null;
-
 
     public function setAutofocus(bool $autofocus): static
     {
@@ -231,7 +253,9 @@ class Button extends InlineElement
     public function setAutocorrect(string|AutocorrectEnum $autocorrect): static
     {
         if (is_string($autocorrect)) {
-            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new \InvalidArgumentException("Invalid value for \$autocorrect.");
+            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new InvalidArgumentException(
+                'Invalid value for $autocorrect.'
+            );
         }
         $this->autocorrect = $autocorrect;
         $this->delegated->setAttribute('autocorrect', (string) $autocorrect->value);
@@ -271,7 +295,7 @@ class Button extends InlineElement
     public function setType(string|ButtonTypeEnum $type): static
     {
         if (is_string($type)) {
-            $type = ButtonTypeEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
+            $type = ButtonTypeEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
         }
         $this->type = $type;
         $this->delegated->setAttribute('type', (string) $type->value);
@@ -323,7 +347,9 @@ class Button extends InlineElement
     public function setFormenctype(string|FormenctypeEnum $formenctype): static
     {
         if (is_string($formenctype)) {
-            $formenctype = FormenctypeEnum::tryFrom($formenctype) ?? throw new \InvalidArgumentException("Invalid value for \$formenctype.");
+            $formenctype = FormenctypeEnum::tryFrom($formenctype) ?? throw new InvalidArgumentException(
+                'Invalid value for $formenctype.'
+            );
         }
         $this->formenctype = $formenctype;
         $this->delegated->setAttribute('formenctype', (string) $formenctype->value);
@@ -339,7 +365,9 @@ class Button extends InlineElement
     public function setFormmethod(string|FormmethodEnum $formmethod): static
     {
         if (is_string($formmethod)) {
-            $formmethod = FormmethodEnum::tryFrom($formmethod) ?? throw new \InvalidArgumentException("Invalid value for \$formmethod.");
+            $formmethod = FormmethodEnum::tryFrom($formmethod) ?? throw new InvalidArgumentException(
+                'Invalid value for $formmethod.'
+            );
         }
         $this->formmethod = $formmethod;
         $this->delegated->setAttribute('formmethod', (string) $formmethod->value);
@@ -369,7 +397,7 @@ class Button extends InlineElement
         $value = $formtarget;
         if (is_string($formtarget)) {
             $resolved = FormtargetEnum::tryFrom($formtarget);
-            if (!is_null($resolved)) {
+            if ($resolved !== null) {
                 $formtarget = $resolved;
             }
         }
@@ -402,7 +430,11 @@ class Button extends InlineElement
     public function setPopovertargetaction(string|PopovertargetactionEnum $popovertargetaction): static
     {
         if (is_string($popovertargetaction)) {
-            $popovertargetaction = PopovertargetactionEnum::tryFrom($popovertargetaction) ?? throw new \InvalidArgumentException("Invalid value for \$popovertargetaction.");
+            $popovertargetaction = PopovertargetactionEnum::tryFrom(
+                $popovertargetaction
+            ) ?? throw new InvalidArgumentException(
+                'Invalid value for $popovertargetaction.'
+            );
         }
         $this->popovertargetaction = $popovertargetaction;
         $this->delegated->setAttribute('popovertargetaction', (string) $popovertargetaction->value);
@@ -442,7 +474,7 @@ class Button extends InlineElement
     public function setRole(string|RoleEnum $role): static
     {
         if (is_string($role)) {
-            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
+            $role = RoleEnum::tryFrom($role) ?? throw new InvalidArgumentException('Invalid value for $role.');
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -494,7 +526,9 @@ class Button extends InlineElement
     public function setAriaCurrent(string|AriaCurrentEnum $ariaCurrent): static
     {
         if (is_string($ariaCurrent)) {
-            $ariaCurrent = AriaCurrentEnum::tryFrom($ariaCurrent) ?? throw new \InvalidArgumentException("Invalid value for \$ariaCurrent.");
+            $ariaCurrent = AriaCurrentEnum::tryFrom($ariaCurrent) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaCurrent.'
+            );
         }
         $this->ariaCurrent = $ariaCurrent;
         $this->delegated->setAttribute('aria-current', (string) $ariaCurrent->value);
@@ -510,7 +544,9 @@ class Button extends InlineElement
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
         if (is_string($ariaBusy)) {
-            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
+            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaBusy.'
+            );
         }
         $this->ariaBusy = $ariaBusy;
         $this->delegated->setAttribute('aria-busy', (string) $ariaBusy->value);
@@ -538,7 +574,9 @@ class Button extends InlineElement
     public function setAriaDisabled(string|AriaDisabledEnum $ariaDisabled): static
     {
         if (is_string($ariaDisabled)) {
-            $ariaDisabled = AriaDisabledEnum::tryFrom($ariaDisabled) ?? throw new \InvalidArgumentException("Invalid value for \$ariaDisabled.");
+            $ariaDisabled = AriaDisabledEnum::tryFrom($ariaDisabled) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaDisabled.'
+            );
         }
         $this->ariaDisabled = $ariaDisabled;
         $this->delegated->setAttribute('aria-disabled', (string) $ariaDisabled->value);
@@ -550,5 +588,4 @@ class Button extends InlineElement
     {
         return $this->ariaDisabled;
     }
-
 }

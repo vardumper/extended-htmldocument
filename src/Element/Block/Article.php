@@ -1,49 +1,19 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Article - The article element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable.
- * 
+ *
  * @generated 2025-11-02 22:39:29
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Audio;
-use Html\Element\Block\Blockquote;
-use Html\Element\Block\Body;
-use Html\Element\Block\DefinitionList;
-use Html\Element\Block\DeletedText;
-use Html\Element\Block\Division;
-use Html\Element\Block\Embed;
-use Html\Element\Block\Figure;
-use Html\Element\Block\Form;
-use Html\Element\Block\Heading1;
-use Html\Element\Block\Heading2;
-use Html\Element\Block\Heading3;
-use Html\Element\Block\Heading4;
-use Html\Element\Block\Heading5;
-use Html\Element\Block\Heading6;
-use Html\Element\Block\InlineFrame;
-use Html\Element\Block\InsertedText;
-use Html\Element\Block\Main;
-use Html\Element\Block\Map;
-use Html\Element\Block\Navigation;
-use Html\Element\Block\ObjectElement;
-use Html\Element\Block\OrderedList;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Picture;
-use Html\Element\Block\PreformattedText;
-use Html\Element\Block\Section;
-use Html\Element\Block\Table;
-use Html\Element\Block\UnorderedList;
-use Html\Element\Block\Video;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\BidirectionalIsolation;
@@ -75,8 +45,9 @@ use Html\Element\Void\BreakElement;
 use Html\Element\Void\WordBreakOpportunity;
 use Html\Enum\AriaBusyEnum;
 use Html\Enum\RoleEnum;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 #[Element('article')]
 class Article extends BlockElement
@@ -99,6 +70,7 @@ class Article extends BlockElement
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
     use GlobalAttribute\PopoverTrait;
+
     /**
      * The HTML element name
      */
@@ -124,7 +96,7 @@ class Article extends BlockElement
      * @var array<string>
      */
     public static array $childOf = [
-        Article::class,
+        self::class,
         Aside::class,
         Blockquote::class,
         Body::class,
@@ -143,7 +115,7 @@ class Article extends BlockElement
         Anchor::class,
         Abbreviation::class,
         Area::class,
-        Article::class,
+        self::class,
         Audio::class,
         Bold::class,
         BidirectionalIsolation::class,
@@ -196,31 +168,36 @@ class Article extends BlockElement
         WordBreakOpportunity::class,
     ];
 
-
-    /** Defines the semantic purpose of an element for assistive technologies. */
+    /**
+     * Defines the semantic purpose of an element for assistive technologies.
+     */
     public ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     */
     public ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     */
     public ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     */
     public ?string $ariaLabelledby = null;
 
-    /** 
+    /**
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
-     * @category HTML attribute
      * @example false
      */
     public ?AriaBusyEnum $ariaBusy = null;
 
-
     public function setRole(string|RoleEnum $role): static
     {
         if (is_string($role)) {
-            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
+            $role = RoleEnum::tryFrom($role) ?? throw new InvalidArgumentException('Invalid value for $role.');
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -272,7 +249,9 @@ class Article extends BlockElement
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
         if (is_string($ariaBusy)) {
-            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
+            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaBusy.'
+            );
         }
         $this->ariaBusy = $ariaBusy;
         $this->delegated->setAttribute('aria-busy', (string) $ariaBusy->value);
@@ -284,6 +263,4 @@ class Article extends BlockElement
     {
         return $this->ariaBusy;
     }
-
-
 }
