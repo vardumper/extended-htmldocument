@@ -683,7 +683,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
 
         // Collect imports and render logic for child elements
         $imports = $this->collectImportsForComposedStory($elementName, $parentOf, $ref);
-        
+
         // Add imports
         foreach ($imports['imports'] as $import) {
             $js .= $import . "\n";
@@ -715,12 +715,12 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         $js .= "  render: () => {\n";
         $js .= "    const parent = document.createElement('{$elementName}');\n";
         $js .= "    parent.className = 'example';\n\n";
-        
+
         // Add children using the Default story renders
         foreach ($imports['children'] as $child) {
             $js .= $child['renderCode'];
         }
-        
+
         $js .= "\n    return parent;\n";
         $js .= "  },\n";
         $js .= "};\n";
@@ -791,12 +791,12 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
             $childRef = $child['ref'];
             $uniquePerParent = $childRef->getStaticPropertyValue('uniquePerParent', false);
             $childLevel = $this->determineLevel($child['class']);
-            
+
             $renderCount = $uniquePerParent ? 1 : 2;
 
             // Determine import name (capitalize first letter)
             $importName = ucfirst($childName) . 'Stories';
-            
+
             // Add import if not already imported
             if (!isset($importedNames[$importName])) {
                 $imports[] = "import * as {$importName} from '../{$childLevel}/{$childName}.stories.js';";
