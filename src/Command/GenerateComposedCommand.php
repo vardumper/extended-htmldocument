@@ -77,7 +77,7 @@ class GenerateComposedCommand extends Command
         // }
 
         $templateGenerators = $this->getGenerators($generators);
-        foreach ($templateGenerators as $name => $generatorInstance) {
+        foreach ($templateGenerators as $generator => $generatorInstance) {
 
             // Check if generator supports composed element rendering
             if (!method_exists($generatorInstance, 'renderComposedElement')) {
