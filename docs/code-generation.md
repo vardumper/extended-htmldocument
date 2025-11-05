@@ -25,6 +25,7 @@ php vendor/bin/ext-html make:classes a # only generates the Html\Element\Anchor 
 php vendor/bin/ext-html make:classes # generates all classes, no enums
 php vendor/bin/ext-html make:all # generates both enums and classes
 php vendor/bin/ext-html generate:all twig,storybook templates # generates all twig templates and storybook stories, and saved them into templates folder
+php vendor/bin/ext-html generate:composed twig,storybook templates # generates composed templates based on content model (eg <table> with <tr>, <td>, etc), and saves them into templates folder
 php vendor/bin/ext-html merge:specs custom/schema.yaml destination/path.yaml # merges a custom regex or element-based specification into the html5.yaml file
 php vendor/bin/ext-html watch source/path dest/path # component builder. watches for component yaml changes, and generates templates on the fly
 ```
