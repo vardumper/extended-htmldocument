@@ -29,6 +29,7 @@ echo (string) Anchor::create($dom)
 ```
 ## Generated Templates
 Templates are generated from the HTML5 schema for every HTML element. These allow for better consistency in your design system(s), support all possible HTML attributes and have basic validations for enum attributes.
+Files are grouped into inline, block and void elements. For elements with a specific content model, a composed template is generated as well. (eg `<table><tr><td>Cell</td><tr></table>`)
 
 ### Twig
 They are compatible with different ways of using Twig (`include`, `embed` and `use`).
@@ -65,6 +66,9 @@ export default function Page() {
   );
 }
 ```
+
+### Storybook
+
 
 ## Documentation
 See the [Documentation](https://vardumper.github.io/extended-htmldocument/) for more.
