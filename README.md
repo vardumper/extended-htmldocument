@@ -27,11 +27,15 @@ echo (string) Anchor::create($dom)
 // output is:
 // <a class="secondary" href="https://google.com" rel="nofollow" title="Google it"></a>
 ```
-## Twig Templates
-There's now a Twig Template for every HTML element included. These allow for better consistency in your design system(s), support all possible HTML attributes and have basic validations for enum attributes. They are compatible with different ways of using Twig (`include`, `embed` and `use`).
+## Generated Templates
+Templates are generated from the HTML5 schema for every HTML element. These allow for better consistency in your design system(s), support all possible HTML attributes and have basic validations for enum attributes.
+
+### Twig
+They are compatible with different ways of using Twig (`include`, `embed` and `use`).
 ```php
 $twig->path('vendor/vardumper/extended-htmldocument/templates', 'html'); /** register template path with or without namespace */
 ```
+Example 
 ```twig
 {% include '@html/inline/a.twig' with {
   href: 'https://example.com',
@@ -40,6 +44,26 @@ $twig->path('vendor/vardumper/extended-htmldocument/templates', 'html'); /** reg
   role: 'button',
   content: '<strong>Click here</strong>'
 } %}
+```
+
+### React & NextJS
+Type-safe, auto-generated React components for all HTML5 elements with full ARIA support. Work in both Next.js (Server Components, Client Components) and regular React applications (CRA, Vite, etc.). They use pure functional React patterns without hooks or browser-specific APIs.
+Example:
+```tsx
+import { Button, Div, H1 } from './index';
+
+export default function Page() {
+  return (
+    <Div className="container">
+      <H1>Welcome</H1>
+      <A
+        href="/contact"
+      >
+        Contact us
+      </A>
+    </Div>
+  );
+}
 ```
 
 ## Documentation
