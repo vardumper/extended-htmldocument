@@ -4,7 +4,7 @@
  *
  * Data - The data element represents its contents, along with a machine-readable form of those contents in the value attribute.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:20
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -49,6 +49,7 @@ class Data extends InlineElement
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\InputmodeTrait;
     use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SlotTrait;
     use GlobalAttribute\SpellcheckTrait;
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\TabindexTrait;

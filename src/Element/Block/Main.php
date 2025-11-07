@@ -4,7 +4,7 @@
  *
  * Main - The main element represents the dominant content of the body of a document. The main content area consists of content that is directly related to or expands upon the central topic of a document, or the central functionality of an application.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:20
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -109,6 +109,7 @@ class Main extends BlockElement
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\InputmodeTrait;
     use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SlotTrait;
     use GlobalAttribute\SpellcheckTrait;
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\TabindexTrait;

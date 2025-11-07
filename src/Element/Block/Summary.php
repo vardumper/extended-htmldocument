@@ -4,7 +4,7 @@
  *
  * Summary - The summary element represents a summary, caption, or legend for the rest of the contents of the summary element's parent details element, if any.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:20
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -55,6 +55,7 @@ class Summary extends BlockElement
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\InputmodeTrait;
     use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SlotTrait;
     use GlobalAttribute\SpellcheckTrait;
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\TabindexTrait;

@@ -4,7 +4,7 @@
  *
  * Template - The template element is a mechanism for holding client-side content that is not to be rendered when a page is loaded but may subsequently be instantiated during runtime using JavaScript.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:20
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -63,6 +63,7 @@ class Template extends BlockElement
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\InputmodeTrait;
     use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SlotTrait;
     use GlobalAttribute\SpellcheckTrait;
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\TabindexTrait;

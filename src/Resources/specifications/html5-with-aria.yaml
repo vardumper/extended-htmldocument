@@ -15,6 +15,7 @@ a:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -271,6 +272,7 @@ abbr:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -409,6 +411,7 @@ address:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -640,6 +643,7 @@ article:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -812,6 +816,7 @@ aside:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -998,6 +1003,7 @@ audio:
     - hidden
     - id
     - lang
+    - slot
     - style
     - tabindex
     - title
@@ -1171,6 +1177,7 @@ b:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -1439,19 +1446,20 @@ bdo:
     2: autofocus
     3: class
     4: contenteditable
-    5: inputmode
-    6: 'data-*'
-    7: dir
-    8: draggable
-    9: hidden
-    10: id
+    5: 'data-*'
+    6: dir
+    7: draggable
+    8: hidden
+    9: id
+    10: inputmode
     12: lang
-    13: spellcheck
-    14: style
-    15: tabindex
-    16: title
-    17: translate
-    18: popover
+    13: slot
+    14: spellcheck
+    15: style
+    16: tabindex
+    17: title
+    18: translate
+    19: popover
   unique: false
   text: string
   attributes:
@@ -1568,6 +1576,7 @@ blockquote:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -1880,9 +1889,9 @@ button:
   description: 'The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.'
   level: inline
   allowed_global_attributes:
-    - autofocus
     - accesskey
     - autocapitalize
+    - autofocus
     - autofocus
     - class
     - contenteditable
@@ -1893,6 +1902,7 @@ button:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -2223,6 +2233,7 @@ canvas:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -2367,6 +2378,7 @@ caption:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -2491,6 +2503,7 @@ cite:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -2613,6 +2626,7 @@ code:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -2759,6 +2773,7 @@ colgroup:
     - hidden
     - id
     - lang
+    - slot
     - style
   unique: false
   children:
@@ -2787,6 +2802,7 @@ data:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -2922,6 +2938,7 @@ datalist:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -3045,6 +3062,7 @@ dd:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -3231,6 +3249,7 @@ del:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -3368,6 +3387,7 @@ details:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -3535,6 +3555,7 @@ dfn:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -3657,6 +3678,7 @@ dialog:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -3842,6 +3864,7 @@ div:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -4059,6 +4082,7 @@ dl:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -4183,6 +4207,7 @@ dt:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -4306,6 +4331,7 @@ em:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -4499,6 +4525,7 @@ fieldset:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -4672,6 +4699,7 @@ figcaption:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -4796,6 +4824,7 @@ figure:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -4920,6 +4949,7 @@ footer:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -5110,6 +5140,7 @@ form:
     - hidden
     - id
     - lang
+    - slot
     - style
     - tabindex
     - title
@@ -6132,6 +6163,7 @@ hgroup:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -6339,6 +6371,7 @@ i:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -6455,6 +6488,7 @@ iframe:
     - hidden
     - id
     - lang
+    - slot
     - style
     - tabindex
     - title
@@ -7339,6 +7373,7 @@ ins:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -7476,6 +7511,7 @@ kbd:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -7598,6 +7634,7 @@ label:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -7732,6 +7769,7 @@ legend:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -7862,6 +7900,7 @@ li:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -8167,6 +8206,7 @@ main:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -8367,6 +8407,7 @@ map:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -8506,6 +8547,7 @@ mark:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -8660,6 +8702,7 @@ menu:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -8871,6 +8914,7 @@ meter:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -8985,6 +9029,7 @@ nav:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -9155,6 +9200,7 @@ object:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -9345,6 +9391,7 @@ ol:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -9498,22 +9545,23 @@ optgroup:
   description: 'The optgroup element represents a group of option elements with a common label.'
   level: block
   allowed_global_attributes:
-    - id
-    - class
-    - title
-    - lang
-    - style
-    - hidden
-    - tabindex
     - accesskey
     - autocapitalize
+    - class
     - contenteditable
-    - inputmode
+    - 'data-*'
     - dir
     - draggable
+    - hidden
+    - id
+    - inputmode
+    - lang
+    - slot
     - spellcheck
+    - style
+    - tabindex
+    - title
     - translate
-    - 'data-*'
     - popover
   unique: false
   parent: select
@@ -9639,22 +9687,23 @@ option:
   description: 'The option element represents an item in a select dropdown list.'
   level: block
   allowed_global_attributes:
-    - id
-    - class
-    - title
-    - lang
-    - style
-    - hidden
-    - tabindex
     - accesskey
     - autocapitalize
+    - class
     - contenteditable
-    - inputmode
+    - 'data-*'
     - dir
     - draggable
+    - hidden
+    - id
+    - inputmode
+    - lang
+    - slot
     - spellcheck
+    - style
+    - tabindex
+    - title
     - translate
-    - 'data-*'
     - popover
   unique: false
   parent: 'select | optgroup'
@@ -9824,6 +9873,7 @@ output:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -9903,6 +9953,7 @@ p:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -10140,6 +10191,7 @@ picture:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -10264,6 +10316,7 @@ pre:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -10386,6 +10439,7 @@ progress:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -10476,6 +10530,7 @@ q:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -10606,6 +10661,7 @@ rp:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -10728,6 +10784,7 @@ rt:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -10850,6 +10907,7 @@ ruby:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -10974,6 +11032,7 @@ s:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -11096,6 +11155,7 @@ samp:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -11312,6 +11372,7 @@ section:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -11511,6 +11572,7 @@ select:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -11793,6 +11855,7 @@ slot:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -11954,6 +12017,7 @@ small:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -12133,6 +12197,7 @@ span:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -12255,6 +12320,7 @@ strong:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -12435,6 +12501,7 @@ sub:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -12557,6 +12624,7 @@ summary:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -12709,6 +12777,7 @@ sup:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -12831,6 +12900,7 @@ svg:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -13067,6 +13137,7 @@ table:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -13213,6 +13284,7 @@ tbody:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -13337,6 +13409,7 @@ td:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -13504,6 +13577,7 @@ template:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -13649,6 +13723,7 @@ textarea:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -13954,6 +14029,7 @@ tfoot:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -14079,6 +14155,7 @@ th:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -14251,6 +14328,7 @@ thead:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -14376,6 +14454,7 @@ time:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -14779,6 +14858,7 @@ u:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -14901,6 +14981,7 @@ ul:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -15044,6 +15125,7 @@ var:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex
@@ -15166,6 +15248,7 @@ video:
     - id
     - inputmode
     - lang
+    - slot
     - spellcheck
     - style
     - tabindex

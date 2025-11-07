@@ -4,7 +4,7 @@
  *
  * BidirectionalOverride - The bdo element represents explicit text directionality formatting control for its children. It allows authors to override the Unicode bidirectional algorithm by explicitly specifying a direction override.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:20
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -42,13 +42,14 @@ class BidirectionalOverride extends InlineElement
     use GlobalAttribute\AutofocusTrait;
     use GlobalAttribute\ClassTrait;
     use GlobalAttribute\ContenteditableTrait;
-    use GlobalAttribute\InputmodeTrait;
     use GlobalAttribute\DataTrait;
     use GlobalAttribute\DirTrait;
     use GlobalAttribute\DraggableTrait;
     use GlobalAttribute\HiddenTrait;
     use GlobalAttribute\IdTrait;
+    use GlobalAttribute\InputmodeTrait;
     use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SlotTrait;
     use GlobalAttribute\SpellcheckTrait;
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\TabindexTrait;

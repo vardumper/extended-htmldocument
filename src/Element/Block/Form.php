@@ -4,7 +4,7 @@
  *
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:20
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -66,6 +66,7 @@ class Form extends BlockElement
     use GlobalAttribute\HiddenTrait;
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SlotTrait;
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;

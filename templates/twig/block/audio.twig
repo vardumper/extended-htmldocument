@@ -8,7 +8,10 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block audio %}
+{% set ariaAtomic_choices = {'false': true, 'true': true} %}
 {% set ariaBusy_choices = {'true': true, 'false': true} %}
+{% set ariaLive_choices = {'off': true, 'polite': true, 'assertive': true} %}
+{% set ariaRelevant_choices = {'additions': true, 'removals': true, 'text': true, 'all': true, 'additions text': true} %}
 {% set crossorigin_choices = {'anonymous': true, 'use-credentials': true} %}
 {% set popover_choices = {'auto': true, 'hint': true, 'manual': true} %}
 {% set preload_choices = {'auto': true, 'metadata': true, 'none': true} %}
@@ -16,10 +19,16 @@
 {% set translate_choices = {'yes': true, 'no': true} %}
 <audio
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
+  {% if ariaAtomic is defined and ariaAtomic|length > 0 and ariaAtomic_choices[ariaAtomic] is defined %}aria-atomic="{{ ariaAtomic }}"{% endif %}
   {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy_choices[ariaBusy] is defined %}aria-busy="{{ ariaBusy }}"{% endif %}
   {% if ariaControls is defined and ariaControls|length > 0 %}aria-controls="{{ ariaControls }}"{% endif %}
   {% if ariaDescribedby is defined and ariaDescribedby|length > 0 %}aria-describedby="{{ ariaDescribedby }}"{% endif %}
+  {% if ariaDetails is defined and ariaDetails|length > 0 %}aria-details="{{ ariaDetails }}"{% endif %}
+  {% if ariaKeyshortcuts is defined and ariaKeyshortcuts|length > 0 %}aria-keyshortcuts="{{ ariaKeyshortcuts }}"{% endif %}
   {% if ariaLabelledby is defined and ariaLabelledby|length > 0 %}aria-labelledby="{{ ariaLabelledby }}"{% endif %}
+  {% if ariaLive is defined and ariaLive|length > 0 and ariaLive_choices[ariaLive] is defined %}aria-live="{{ ariaLive }}"{% endif %}
+  {% if ariaRelevant is defined and ariaRelevant|length > 0 and ariaRelevant_choices[ariaRelevant] is defined %}aria-relevant="{{ ariaRelevant }}"{% endif %}
+  {% if ariaRoledescription is defined and ariaRoledescription|length > 0 %}aria-roledescription="{{ ariaRoledescription }}"{% endif %}
   {% if autoplay is defined and autoplay|length > 0 %}autoplay="{{ autoplay }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if controls is defined and controls|length > 0 %}controls="{{ controls }}"{% endif %}
@@ -33,6 +42,7 @@
   {% if popover is defined and popover|length > 0 and popover_choices[popover] is defined %}popover="{{ popover }}"{% endif %}
   {% if preload is defined and preload|length > 0 and preload_choices[preload] is defined %}preload="{{ preload }}"{% endif %}
   {% if role is defined and role|length > 0 and role_choices[role] is defined %}role="{{ role }}"{% endif %}
+  {% if slot is defined and slot|length > 0 %}slot="{{ slot }}"{% endif %}
   {% if src is defined and src|length > 0 %}src="{{ src }}"{% endif %}
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
   {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}

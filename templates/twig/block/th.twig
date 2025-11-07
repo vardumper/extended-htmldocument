@@ -8,8 +8,12 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block th %}
+{% set ariaAtomic_choices = {'false': true, 'true': true} %}
 {% set ariaBusy_choices = {'true': true, 'false': true} %}
 {% set ariaHidden_choices = {'false': true, 'true': true} %}
+{% set ariaLive_choices = {'off': true, 'polite': true, 'assertive': true} %}
+{% set ariaRelevant_choices = {'additions': true, 'removals': true, 'text': true, 'all': true, 'additions text': true} %}
+{% set ariaSort_choices = {'none': true, 'ascending': true, 'descending': true, 'other': true} %}
 {% set autocapitalize_choices = {'none': true, 'sentences': true, 'words': true, 'characters': true} %}
 {% set contenteditable_choices = {'true': true, 'false': true, 'inherit': true} %}
 {% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
@@ -20,11 +24,24 @@
 {% set translate_choices = {'yes': true, 'no': true} %}
 <th
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
+  {% if ariaAtomic is defined and ariaAtomic|length > 0 and ariaAtomic_choices[ariaAtomic] is defined %}aria-atomic="{{ ariaAtomic }}"{% endif %}
   {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy_choices[ariaBusy] is defined %}aria-busy="{{ ariaBusy }}"{% endif %}
+  {% if ariaColcount is defined and ariaColcount|length > 0 %}aria-colcount="{{ ariaColcount }}"{% endif %}
+  {% if ariaColindex is defined and ariaColindex|length > 0 %}aria-colindex="{{ ariaColindex }}"{% endif %}
+  {% if ariaColspan is defined and ariaColspan|length > 0 %}aria-colspan="{{ ariaColspan }}"{% endif %}
   {% if ariaControls is defined and ariaControls|length > 0 %}aria-controls="{{ ariaControls }}"{% endif %}
   {% if ariaDescribedby is defined and ariaDescribedby|length > 0 %}aria-describedby="{{ ariaDescribedby }}"{% endif %}
+  {% if ariaDetails is defined and ariaDetails|length > 0 %}aria-details="{{ ariaDetails }}"{% endif %}
   {% if ariaHidden is defined and ariaHidden|length > 0 and ariaHidden_choices[ariaHidden] is defined %}aria-hidden="{{ ariaHidden }}"{% endif %}
+  {% if ariaKeyshortcuts is defined and ariaKeyshortcuts|length > 0 %}aria-keyshortcuts="{{ ariaKeyshortcuts }}"{% endif %}
   {% if ariaLabelledby is defined and ariaLabelledby|length > 0 %}aria-labelledby="{{ ariaLabelledby }}"{% endif %}
+  {% if ariaLive is defined and ariaLive|length > 0 and ariaLive_choices[ariaLive] is defined %}aria-live="{{ ariaLive }}"{% endif %}
+  {% if ariaRelevant is defined and ariaRelevant|length > 0 and ariaRelevant_choices[ariaRelevant] is defined %}aria-relevant="{{ ariaRelevant }}"{% endif %}
+  {% if ariaRoledescription is defined and ariaRoledescription|length > 0 %}aria-roledescription="{{ ariaRoledescription }}"{% endif %}
+  {% if ariaRowcount is defined and ariaRowcount|length > 0 %}aria-rowcount="{{ ariaRowcount }}"{% endif %}
+  {% if ariaRowindex is defined and ariaRowindex|length > 0 %}aria-rowindex="{{ ariaRowindex }}"{% endif %}
+  {% if ariaRowspan is defined and ariaRowspan|length > 0 %}aria-rowspan="{{ ariaRowspan }}"{% endif %}
+  {% if ariaSort is defined and ariaSort|length > 0 and ariaSort_choices[ariaSort] is defined %}aria-sort="{{ ariaSort }}"{% endif %}
   {% if autocapitalize is defined and autocapitalize|length > 0 and autocapitalize_choices[autocapitalize] is defined %}autocapitalize="{{ autocapitalize }}"{% endif %}
   {% if autofocus is defined and autofocus|length > 0 %}autofocus="{{ autofocus }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
@@ -41,6 +58,7 @@
   {% if role is defined and role|length > 0 and role_choices[role] is defined %}role="{{ role }}"{% endif %}
   {% if rowspan is defined and rowspan|length > 0 %}rowspan="{{ rowspan }}"{% endif %}
   {% if scope is defined and scope|length > 0 %}scope="{{ scope }}"{% endif %}
+  {% if slot is defined and slot|length > 0 %}slot="{{ slot }}"{% endif %}
   {% if spellcheck is defined and spellcheck|length > 0 and spellcheck_choices[spellcheck] is defined %}spellcheck="{{ spellcheck }}"{% endif %}
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
   {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}

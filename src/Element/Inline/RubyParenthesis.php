@@ -4,7 +4,7 @@
  *
  * RubyParenthesis - The rp element is used to provide fallback parentheses for browsers non-supporting ruby annotations. It can be used in complex ruby markup to provide parentheses around the rt element for browsers that do not support ruby elements.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:20
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -47,6 +47,7 @@ class RubyParenthesis extends InlineElement
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\InputmodeTrait;
     use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SlotTrait;
     use GlobalAttribute\SpellcheckTrait;
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\TabindexTrait;

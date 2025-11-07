@@ -8,15 +8,24 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block img %}
+{% set ariaAtomic_choices = {'false': true, 'true': true} %}
 {% set ariaHidden_choices = {'false': true, 'true': true} %}
+{% set ariaLive_choices = {'off': true, 'polite': true, 'assertive': true} %}
+{% set ariaRelevant_choices = {'additions': true, 'removals': true, 'text': true, 'all': true, 'additions text': true} %}
 {% set crossorigin_choices = {'anonymous': true, 'use-credentials': true} %}
 {% set decoding_choices = {'async': true, 'auto': true, 'sync': true} %}
 {% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
 {% set referrerpolicy_choices = {'no-referrer': true, 'no-referrer-when-downgrade': true, 'origin': true, 'origin-when-cross-origin': true, 'same-origin': true, 'strict-origin': true, 'strict-origin-when-cross-origin': true, 'unsafe-url': true} %}
 <img
   {% if alt is defined and alt|length > 0 %}alt="{{ alt }}"{% endif %}
+  {% if ariaAtomic is defined and ariaAtomic|length > 0 and ariaAtomic_choices[ariaAtomic] is defined %}aria-atomic="{{ ariaAtomic }}"{% endif %}
+  {% if ariaDetails is defined and ariaDetails|length > 0 %}aria-details="{{ ariaDetails }}"{% endif %}
   {% if ariaHidden is defined and ariaHidden|length > 0 and ariaHidden_choices[ariaHidden] is defined %}aria-hidden="{{ ariaHidden }}"{% endif %}
+  {% if ariaKeyshortcuts is defined and ariaKeyshortcuts|length > 0 %}aria-keyshortcuts="{{ ariaKeyshortcuts }}"{% endif %}
   {% if ariaLabel is defined and ariaLabel|length > 0 %}aria-label="{{ ariaLabel }}"{% endif %}
+  {% if ariaLive is defined and ariaLive|length > 0 and ariaLive_choices[ariaLive] is defined %}aria-live="{{ ariaLive }}"{% endif %}
+  {% if ariaRelevant is defined and ariaRelevant|length > 0 and ariaRelevant_choices[ariaRelevant] is defined %}aria-relevant="{{ ariaRelevant }}"{% endif %}
+  {% if ariaRoledescription is defined and ariaRoledescription|length > 0 %}aria-roledescription="{{ ariaRoledescription }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if crossorigin is defined and crossorigin|length > 0 and crossorigin_choices[crossorigin] is defined %}crossorigin="{{ crossorigin }}"{% endif %}
   {% if decoding is defined and decoding|length > 0 and decoding_choices[decoding] is defined %}decoding="{{ decoding }}"{% endif %}

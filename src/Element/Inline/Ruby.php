@@ -4,7 +4,7 @@
  *
  * Ruby - The ruby element represents a ruby annotation. Ruby annotations are short runs of text presented alongside base text, primarily used for East Asian typography to indicate pronunciation or to provide a short annotation.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:20
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -51,6 +51,7 @@ class Ruby extends InlineElement
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\InputmodeTrait;
     use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SlotTrait;
     use GlobalAttribute\SpellcheckTrait;
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\TabindexTrait;

@@ -4,7 +4,7 @@
  *
  * Option - The option element represents an item in a select dropdown list.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:20
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -30,22 +30,23 @@ use Html\Mapping\Element;
 #[Element('option')]
 class Option extends BlockElement
 {
-    use GlobalAttribute\IdTrait;
-    use GlobalAttribute\ClassTrait;
-    use GlobalAttribute\TitleTrait;
-    use GlobalAttribute\LangTrait;
-    use GlobalAttribute\StyleTrait;
-    use GlobalAttribute\HiddenTrait;
-    use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\AccesskeyTrait;
     use GlobalAttribute\AutocapitalizeTrait;
+    use GlobalAttribute\ClassTrait;
     use GlobalAttribute\ContenteditableTrait;
-    use GlobalAttribute\InputmodeTrait;
+    use GlobalAttribute\DataTrait;
     use GlobalAttribute\DirTrait;
     use GlobalAttribute\DraggableTrait;
+    use GlobalAttribute\HiddenTrait;
+    use GlobalAttribute\IdTrait;
+    use GlobalAttribute\InputmodeTrait;
+    use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SlotTrait;
     use GlobalAttribute\SpellcheckTrait;
+    use GlobalAttribute\StyleTrait;
+    use GlobalAttribute\TabindexTrait;
+    use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
-    use GlobalAttribute\DataTrait;
     use GlobalAttribute\PopoverTrait;
     /**
      * The HTML element name

@@ -4,7 +4,7 @@
  *
  * TableRow - The tr element represents a row of cells in a table.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:20
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block

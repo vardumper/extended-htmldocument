@@ -18,8 +18,8 @@
   class: 'example'
 } %}
   {% block content %}
-  {% include 'head.composed.twig' %}
-  {% include 'body.composed.twig' %}
+  {% include '../block/body.twig' with {'content': 'Example content'} %}
+  {% include '../void/head.twig' with {'content': 'Example content'} %}
   {% endblock %}
 {% endembed %}
 {% endblock %}

@@ -7,6 +7,7 @@
   CONTENT MODEL:
   - Can be a child of: HTML
   - Can contain: Base, Link, Meta, NoScript, Script, Style, Title
+  - UNIQUE: Only one allowed per document
   - UNIQUE PER PARENT: Only one allowed per parent element
 
   @author vardumper <info@erikpoehler.com>
@@ -15,12 +16,12 @@
 #}
 {% block head_composed %}
 {% embed '../void/head.twig' with {
-  class: 'example',
+  class: 'example'
 } %}
   {% block content %}
-  {% include '../void/base.twig' with {href: '/'} %}
-  {% include '../void/link.twig' with {rel: 'stylesheet', href: '/styles.css', media: 'screen'} %}
-  {% include '../void/link.twig' with {rel: 'stylesheet', href: '/print.css', media: 'print'} %}
+  {% include '../void/base.twig' with {'href': '/'} %}
+  {% include '../void/link.twig' with {'rel': 'stylesheet', 'href': '/styles.css'} %}
+  {% include '../void/link.twig' with {'rel': 'stylesheet', 'href': '/styles.css'} %}
   {% include '../void/meta.twig' with {'name': 'description', 'content': 'Example'} %}
   {% include '../void/meta.twig' with {'name': 'description', 'content': 'Example'} %}
   {% include '../void/script.twig' with {'content': 'Example content'} %}

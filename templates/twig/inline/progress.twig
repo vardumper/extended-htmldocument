@@ -8,6 +8,9 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block progress %}
+{% set ariaAtomic_choices = {'false': true, 'true': true} %}
+{% set ariaLive_choices = {'off': true, 'polite': true, 'assertive': true} %}
+{% set ariaRelevant_choices = {'additions': true, 'removals': true, 'text': true, 'all': true, 'additions text': true} %}
 {% set autocapitalize_choices = {'none': true, 'sentences': true, 'words': true, 'characters': true} %}
 {% set contenteditable_choices = {'true': true, 'false': true, 'inherit': true} %}
 {% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
@@ -16,6 +19,16 @@
 {% set translate_choices = {'yes': true, 'no': true} %}
 <progress
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
+  {% if ariaAtomic is defined and ariaAtomic|length > 0 and ariaAtomic_choices[ariaAtomic] is defined %}aria-atomic="{{ ariaAtomic }}"{% endif %}
+  {% if ariaDetails is defined and ariaDetails|length > 0 %}aria-details="{{ ariaDetails }}"{% endif %}
+  {% if ariaKeyshortcuts is defined and ariaKeyshortcuts|length > 0 %}aria-keyshortcuts="{{ ariaKeyshortcuts }}"{% endif %}
+  {% if ariaLive is defined and ariaLive|length > 0 and ariaLive_choices[ariaLive] is defined %}aria-live="{{ ariaLive }}"{% endif %}
+  {% if ariaRelevant is defined and ariaRelevant|length > 0 and ariaRelevant_choices[ariaRelevant] is defined %}aria-relevant="{{ ariaRelevant }}"{% endif %}
+  {% if ariaRoledescription is defined and ariaRoledescription|length > 0 %}aria-roledescription="{{ ariaRoledescription }}"{% endif %}
+  {% if ariaValuemax is defined and ariaValuemax|length > 0 %}aria-valuemax="{{ ariaValuemax }}"{% endif %}
+  {% if ariaValuemin is defined and ariaValuemin|length > 0 %}aria-valuemin="{{ ariaValuemin }}"{% endif %}
+  {% if ariaValuenow is defined and ariaValuenow|length > 0 %}aria-valuenow="{{ ariaValuenow }}"{% endif %}
+  {% if ariaValuetext is defined and ariaValuetext|length > 0 %}aria-valuetext="{{ ariaValuetext }}"{% endif %}
   {% if autocapitalize is defined and autocapitalize|length > 0 and autocapitalize_choices[autocapitalize] is defined %}autocapitalize="{{ autocapitalize }}"{% endif %}
   {% if autofocus is defined and autofocus|length > 0 %}autofocus="{{ autofocus }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
@@ -27,6 +40,7 @@
   {% if inputmode is defined and inputmode|length > 0 and inputmode_choices[inputmode] is defined %}inputmode="{{ inputmode }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
   {% if max is defined and max|length > 0 %}max="{{ max }}"{% endif %}
+  {% if slot is defined and slot|length > 0 %}slot="{{ slot }}"{% endif %}
   {% if spellcheck is defined and spellcheck|length > 0 and spellcheck_choices[spellcheck] is defined %}spellcheck="{{ spellcheck }}"{% endif %}
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
   {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}

@@ -4,7 +4,7 @@
  *
  * ColumnGroup - The colgroup element represents a group of one or more columns in the table that is its parent, if it has a parent and that is a table element.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:20
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -28,6 +28,7 @@ class ColumnGroup extends BlockElement
     use GlobalAttribute\HiddenTrait;
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SlotTrait;
     use GlobalAttribute\StyleTrait;
     /**
      * The HTML element name

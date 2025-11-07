@@ -4,7 +4,7 @@
  *
  * AriaAtomicEnum - Indicates whether assistive technologies should present the entire region as a whole when changes occur.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:16
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

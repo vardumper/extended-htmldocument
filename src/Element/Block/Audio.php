@@ -4,7 +4,7 @@
  *
  * Audio - The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:20
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -45,6 +45,7 @@ class Audio extends BlockElement
     use GlobalAttribute\HiddenTrait;
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SlotTrait;
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;

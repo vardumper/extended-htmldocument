@@ -4,7 +4,7 @@
  *
  * AriaHaspopupEnum - Indicates that an element has an associated popup menu, listbox, tree, grid, or dialog.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:16
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

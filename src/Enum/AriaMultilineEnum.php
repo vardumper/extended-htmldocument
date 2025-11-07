@@ -4,7 +4,7 @@
  *
  * AriaMultilineEnum - Indicates whether the input allows multiple lines of text.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:16
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

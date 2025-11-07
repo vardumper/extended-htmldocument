@@ -8,20 +8,29 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block form %}
+{% set ariaAtomic_choices = {'false': true, 'true': true} %}
 {% set ariaInvalid_choices = {'false': true, 'true': true, 'grammar': true, 'spelling': true} %}
+{% set ariaLive_choices = {'off': true, 'polite': true, 'assertive': true} %}
+{% set ariaRelevant_choices = {'additions': true, 'removals': true, 'text': true, 'all': true, 'additions text': true} %}
 {% set autocomplete_choices = {'off': true, 'on': true} %}
 {% set autocorrect_choices = {'off': true, 'on': true} %}
 {% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
 {% set enctype_choices = {'application/x-www-form-urlencoded': true, 'multipart/form-data': true, 'text/plain': true} %}
-{% set method_choices = {'get': true, 'post': true, 'dialog': true} %}
-{% set target_choices = {'_self': true, '_blank': true, '_parent': true, '_top': true} %}
+{% set method_choices = {'get': true, 'post': true} %}
+{% set target_choices = {'_blank': true, '_parent': true, '_self': true, '_top': true} %}
 {% set translate_choices = {'yes': true, 'no': true} %}
 <form
   {% if acceptCharset is defined and acceptCharset|length > 0 %}accept-charset="{{ acceptCharset }}"{% endif %}
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
   {% if action is defined and action|length > 0 %}action="{{ action }}"{% endif %}
+  {% if ariaAtomic is defined and ariaAtomic|length > 0 and ariaAtomic_choices[ariaAtomic] is defined %}aria-atomic="{{ ariaAtomic }}"{% endif %}
+  {% if ariaDetails is defined and ariaDetails|length > 0 %}aria-details="{{ ariaDetails }}"{% endif %}
   {% if ariaInvalid is defined and ariaInvalid|length > 0 and ariaInvalid_choices[ariaInvalid] is defined %}aria-invalid="{{ ariaInvalid }}"{% endif %}
+  {% if ariaKeyshortcuts is defined and ariaKeyshortcuts|length > 0 %}aria-keyshortcuts="{{ ariaKeyshortcuts }}"{% endif %}
   {% if ariaLabel is defined and ariaLabel|length > 0 %}aria-label="{{ ariaLabel }}"{% endif %}
+  {% if ariaLive is defined and ariaLive|length > 0 and ariaLive_choices[ariaLive] is defined %}aria-live="{{ ariaLive }}"{% endif %}
+  {% if ariaRelevant is defined and ariaRelevant|length > 0 and ariaRelevant_choices[ariaRelevant] is defined %}aria-relevant="{{ ariaRelevant }}"{% endif %}
+  {% if ariaRoledescription is defined and ariaRoledescription|length > 0 %}aria-roledescription="{{ ariaRoledescription }}"{% endif %}
   {% if autocomplete is defined and autocomplete|length > 0 and autocomplete_choices[autocomplete] is defined %}autocomplete="{{ autocomplete }}"{% endif %}
   {% if autocorrect is defined and autocorrect|length > 0 and autocorrect_choices[autocorrect] is defined %}autocorrect="{{ autocorrect }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
@@ -34,6 +43,7 @@
   {% if method is defined and method|length > 0 and method_choices[method] is defined %}method="{{ method }}"{% endif %}
   {% if name is defined and name|length > 0 %}name="{{ name }}"{% endif %}
   {% if novalidate is defined and novalidate|length > 0 %}novalidate="{{ novalidate }}"{% endif %}
+  {% if slot is defined and slot|length > 0 %}slot="{{ slot }}"{% endif %}
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
   {% if tabindex is defined and tabindex|length > 0 %}tabindex="{{ tabindex }}"{% endif %}
   {% if target is defined and target|length > 0 and target_choices[target] is defined %}target="{{ target }}"{% endif %}

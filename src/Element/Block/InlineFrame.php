@@ -4,7 +4,7 @@
  *
  * InlineFrame - The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:20
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -47,6 +47,7 @@ class InlineFrame extends BlockElement
     use GlobalAttribute\HiddenTrait;
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SlotTrait;
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;

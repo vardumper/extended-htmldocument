@@ -4,7 +4,7 @@
  *
  * Heading1 - The h1 element represents a section heading. It has the highest rank among the six levels of section headings.
  * 
- * @generated 2025-11-07 16:53:19
+ * @generated 2025-11-07 17:10:20
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
