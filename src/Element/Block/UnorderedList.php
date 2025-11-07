@@ -4,7 +4,7 @@
  *
  * UnorderedList - The ul element represents an unordered list of items, namely a collection of items that do not have a numerical ordering, and their order in the list is meaningless.
  * 
- * @generated 2025-11-05 11:58:47
+ * @generated 2025-11-07 16:53:19
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -29,8 +29,13 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Block\Template;
 use Html\Element\Inline\Slot;
+use Html\Enum\AriaAtomicEnum;
 use Html\Enum\AriaBusyEnum;
 use Html\Enum\AriaHiddenEnum;
+use Html\Enum\AriaLiveEnum;
+use Html\Enum\AriaMultiselectableEnum;
+use Html\Enum\AriaOrientationEnum;
+use Html\Enum\AriaRelevantEnum;
 use Html\Enum\RoleEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
@@ -133,6 +138,52 @@ class UnorderedList extends BlockElement
      */
     public ?AriaHiddenEnum $ariaHidden = null;
 
+    /** References an element that provides additional details about the current element. */
+    public ?string $ariaDetails = null;
+
+    /** Defines keyboard shortcuts available for the element. */
+    public ?string $ariaKeyshortcuts = null;
+
+    /** Provides a human-readable custom role description for assistive technologies. */
+    public ?string $ariaRoledescription = null;
+
+    /** 
+     * Defines how updates to the element should be announced to screen readers.
+     * @category HTML attribute
+     * @example off
+     */
+    public ?AriaLiveEnum $ariaLive = null;
+
+    /** 
+     * Indicates what content changes should be announced in a live region.
+     * @category HTML attribute
+     * @example additions text
+     */
+    public ?AriaRelevantEnum $ariaRelevant = null;
+
+    /** 
+     * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaAtomicEnum $ariaAtomic = null;
+
+    /** 
+     * Defines whether multiple items can be selected in a listbox, grid, or tree.
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaMultiselectableEnum $ariaMultiselectable = null;
+
+    /** Identifies the currently active child element (e.g., for autocomplete suggestions or composite widgets). */
+    public ?string $ariaActivedescendant = null;
+
+    /** Specifies whether an element is horizontal or vertical. */
+    public ?AriaOrientationEnum $ariaOrientation = null;
+
+    /** Establishes ownership relationships between elements. Value is a space-separated list of IDs. */
+    public ?string $ariaOwns = null;
+
 
     public function setRole(string|RoleEnum $role): static
     {
@@ -216,6 +267,146 @@ class UnorderedList extends BlockElement
     public function getAriaHidden(): ?AriaHiddenEnum
     {
         return $this->ariaHidden;
+    }
+
+    public function setAriaDetails(string $ariaDetails): static
+    {
+        $this->ariaDetails = $ariaDetails;
+        $this->delegated->setAttribute('aria-details', (string) $ariaDetails);
+        return $this;
+    }
+
+    public function getAriaDetails(): ?string
+    {
+        return $this->ariaDetails;
+    }
+
+    public function setAriaKeyshortcuts(string $ariaKeyshortcuts): static
+    {
+        $this->ariaKeyshortcuts = $ariaKeyshortcuts;
+        $this->delegated->setAttribute('aria-keyshortcuts', (string) $ariaKeyshortcuts);
+        return $this;
+    }
+
+    public function getAriaKeyshortcuts(): ?string
+    {
+        return $this->ariaKeyshortcuts;
+    }
+
+    public function setAriaRoledescription(string $ariaRoledescription): static
+    {
+        $this->ariaRoledescription = $ariaRoledescription;
+        $this->delegated->setAttribute('aria-roledescription', (string) $ariaRoledescription);
+        return $this;
+    }
+
+    public function getAriaRoledescription(): ?string
+    {
+        return $this->ariaRoledescription;
+    }
+
+    public function setAriaLive(string|AriaLiveEnum $ariaLive): static
+    {
+        if (is_string($ariaLive)) {
+            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
+        }
+        $this->ariaLive = $ariaLive;
+        $this->delegated->setAttribute('aria-live', (string) $ariaLive->value);
+
+        return $this;
+    }
+
+    public function getAriaLive(): ?AriaLiveEnum
+    {
+        return $this->ariaLive;
+    }
+
+    public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
+    {
+        if (is_string($ariaRelevant)) {
+            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
+        }
+        $this->ariaRelevant = $ariaRelevant;
+        $this->delegated->setAttribute('aria-relevant', (string) $ariaRelevant->value);
+
+        return $this;
+    }
+
+    public function getAriaRelevant(): ?AriaRelevantEnum
+    {
+        return $this->ariaRelevant;
+    }
+
+    public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
+    {
+        if (is_string($ariaAtomic)) {
+            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
+        }
+        $this->ariaAtomic = $ariaAtomic;
+        $this->delegated->setAttribute('aria-atomic', (string) $ariaAtomic->value);
+
+        return $this;
+    }
+
+    public function getAriaAtomic(): ?AriaAtomicEnum
+    {
+        return $this->ariaAtomic;
+    }
+
+    public function setAriaMultiselectable(string|AriaMultiselectableEnum $ariaMultiselectable): static
+    {
+        if (is_string($ariaMultiselectable)) {
+            $ariaMultiselectable = AriaMultiselectableEnum::tryFrom($ariaMultiselectable) ?? throw new \InvalidArgumentException("Invalid value for \$ariaMultiselectable.");
+        }
+        $this->ariaMultiselectable = $ariaMultiselectable;
+        $this->delegated->setAttribute('aria-multiselectable', (string) $ariaMultiselectable->value);
+
+        return $this;
+    }
+
+    public function getAriaMultiselectable(): ?AriaMultiselectableEnum
+    {
+        return $this->ariaMultiselectable;
+    }
+
+    public function setAriaActivedescendant(string $ariaActivedescendant): static
+    {
+        $this->ariaActivedescendant = $ariaActivedescendant;
+        $this->delegated->setAttribute('aria-activedescendant', (string) $ariaActivedescendant);
+        return $this;
+    }
+
+    public function getAriaActivedescendant(): ?string
+    {
+        return $this->ariaActivedescendant;
+    }
+
+    public function setAriaOrientation(string|AriaOrientationEnum $ariaOrientation): static
+    {
+        if (is_string($ariaOrientation)) {
+            $ariaOrientation = AriaOrientationEnum::tryFrom($ariaOrientation) ?? throw new \InvalidArgumentException("Invalid value for \$ariaOrientation.");
+        }
+        $this->ariaOrientation = $ariaOrientation;
+        $this->delegated->setAttribute('aria-orientation', (string) $ariaOrientation->value);
+
+        return $this;
+    }
+
+    public function getAriaOrientation(): ?AriaOrientationEnum
+    {
+        return $this->ariaOrientation;
+    }
+
+    public function setAriaOwns(string $ariaOwns): static
+    {
+        $this->ariaOwns = $ariaOwns;
+        $this->delegated->setAttribute('aria-owns', (string) $ariaOwns);
+        return $this;
+    }
+
+    public function getAriaOwns(): ?string
+    {
+        return $this->ariaOwns;
     }
 
 

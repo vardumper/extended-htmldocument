@@ -4,7 +4,7 @@
  *
  * Style - The style element is used to embed CSS styles directly into an HTML document.
  * 
- * @generated 2025-11-05 11:58:47
+ * @generated 2025-11-07 16:53:19
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void

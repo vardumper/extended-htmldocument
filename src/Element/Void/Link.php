@@ -4,7 +4,7 @@
  *
  * Link - The link element defines a link between a document and an external resource. It is used to link to external stylesheets.
  * 
- * @generated 2025-11-05 11:58:47
+ * @generated 2025-11-07 16:53:19
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void

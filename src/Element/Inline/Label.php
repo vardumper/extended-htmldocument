@@ -4,7 +4,7 @@
  *
  * Label - The label element represents a caption in a user interface. The caption can be associated with a specific form control, known as the label element's labeled control, either using the for attribute, or by putting the form control inside the label element itself.
  * 
- * @generated 2025-11-05 11:58:47
+ * @generated 2025-11-07 16:53:19
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -18,9 +18,12 @@ use Html\Element\Block\Fieldset;
 use Html\Element\Block\Form;
 use Html\Element\Block\Paragraph;
 use Html\Element\InlineElement;
+use Html\Enum\AriaAtomicEnum;
 use Html\Enum\AriaBusyEnum;
 use Html\Enum\AriaDisabledEnum;
 use Html\Enum\AriaHiddenEnum;
+use Html\Enum\AriaLiveEnum;
+use Html\Enum\AriaRelevantEnum;
 use Html\Enum\RoleEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
@@ -120,6 +123,36 @@ class Label extends InlineElement
      * @example false
      */
     public ?AriaDisabledEnum $ariaDisabled = null;
+
+    /** References an element that provides additional details about the current element. */
+    public ?string $ariaDetails = null;
+
+    /** Defines keyboard shortcuts available for the element. */
+    public ?string $ariaKeyshortcuts = null;
+
+    /** Provides a human-readable custom role description for assistive technologies. */
+    public ?string $ariaRoledescription = null;
+
+    /** 
+     * Defines how updates to the element should be announced to screen readers.
+     * @category HTML attribute
+     * @example off
+     */
+    public ?AriaLiveEnum $ariaLive = null;
+
+    /** 
+     * Indicates what content changes should be announced in a live region.
+     * @category HTML attribute
+     * @example additions text
+     */
+    public ?AriaRelevantEnum $ariaRelevant = null;
+
+    /** 
+     * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaAtomicEnum $ariaAtomic = null;
 
 
     public function setFor(string $for): static
@@ -232,6 +265,90 @@ class Label extends InlineElement
     public function getAriaDisabled(): ?AriaDisabledEnum
     {
         return $this->ariaDisabled;
+    }
+
+    public function setAriaDetails(string $ariaDetails): static
+    {
+        $this->ariaDetails = $ariaDetails;
+        $this->delegated->setAttribute('aria-details', (string) $ariaDetails);
+        return $this;
+    }
+
+    public function getAriaDetails(): ?string
+    {
+        return $this->ariaDetails;
+    }
+
+    public function setAriaKeyshortcuts(string $ariaKeyshortcuts): static
+    {
+        $this->ariaKeyshortcuts = $ariaKeyshortcuts;
+        $this->delegated->setAttribute('aria-keyshortcuts', (string) $ariaKeyshortcuts);
+        return $this;
+    }
+
+    public function getAriaKeyshortcuts(): ?string
+    {
+        return $this->ariaKeyshortcuts;
+    }
+
+    public function setAriaRoledescription(string $ariaRoledescription): static
+    {
+        $this->ariaRoledescription = $ariaRoledescription;
+        $this->delegated->setAttribute('aria-roledescription', (string) $ariaRoledescription);
+        return $this;
+    }
+
+    public function getAriaRoledescription(): ?string
+    {
+        return $this->ariaRoledescription;
+    }
+
+    public function setAriaLive(string|AriaLiveEnum $ariaLive): static
+    {
+        if (is_string($ariaLive)) {
+            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
+        }
+        $this->ariaLive = $ariaLive;
+        $this->delegated->setAttribute('aria-live', (string) $ariaLive->value);
+
+        return $this;
+    }
+
+    public function getAriaLive(): ?AriaLiveEnum
+    {
+        return $this->ariaLive;
+    }
+
+    public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
+    {
+        if (is_string($ariaRelevant)) {
+            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
+        }
+        $this->ariaRelevant = $ariaRelevant;
+        $this->delegated->setAttribute('aria-relevant', (string) $ariaRelevant->value);
+
+        return $this;
+    }
+
+    public function getAriaRelevant(): ?AriaRelevantEnum
+    {
+        return $this->ariaRelevant;
+    }
+
+    public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
+    {
+        if (is_string($ariaAtomic)) {
+            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
+        }
+        $this->ariaAtomic = $ariaAtomic;
+        $this->delegated->setAttribute('aria-atomic', (string) $ariaAtomic->value);
+
+        return $this;
+    }
+
+    public function getAriaAtomic(): ?AriaAtomicEnum
+    {
+        return $this->ariaAtomic;
     }
 
 }

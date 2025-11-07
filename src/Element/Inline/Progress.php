@@ -4,7 +4,7 @@
  *
  * Progress - The progress element represents the completion progress of a task.
  * 
- * @generated 2025-11-05 11:58:47
+ * @generated 2025-11-07 16:53:19
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -18,6 +18,9 @@ use Html\Element\Block\Fieldset;
 use Html\Element\Block\Form;
 use Html\Element\Block\Paragraph;
 use Html\Element\InlineElement;
+use Html\Enum\AriaAtomicEnum;
+use Html\Enum\AriaLiveEnum;
+use Html\Enum\AriaRelevantEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
 
@@ -86,6 +89,48 @@ class Progress extends InlineElement
     /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     public ?string $value = null;
 
+    /** References an element that provides additional details about the current element. */
+    public ?string $ariaDetails = null;
+
+    /** Defines keyboard shortcuts available for the element. */
+    public ?string $ariaKeyshortcuts = null;
+
+    /** Provides a human-readable custom role description for assistive technologies. */
+    public ?string $ariaRoledescription = null;
+
+    /** 
+     * Defines how updates to the element should be announced to screen readers.
+     * @category HTML attribute
+     * @example off
+     */
+    public ?AriaLiveEnum $ariaLive = null;
+
+    /** 
+     * Indicates what content changes should be announced in a live region.
+     * @category HTML attribute
+     * @example additions text
+     */
+    public ?AriaRelevantEnum $ariaRelevant = null;
+
+    /** 
+     * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaAtomicEnum $ariaAtomic = null;
+
+    /** Defines the maximum value for a range input. */
+    public ?int $ariaValuemax = null;
+
+    /** Defines the minimum value for a range input. */
+    public ?int $ariaValuemin = null;
+
+    /** Specifies the current value for a range input. */
+    public ?int $ariaValuenow = null;
+
+    /** Provides a human-readable representation of the current value. */
+    public ?string $ariaValuetext = null;
+
 
     public function setMax(int $max): static
     {
@@ -109,6 +154,138 @@ class Progress extends InlineElement
     public function getValue(): ?string
     {
         return $this->value;
+    }
+
+    public function setAriaDetails(string $ariaDetails): static
+    {
+        $this->ariaDetails = $ariaDetails;
+        $this->delegated->setAttribute('aria-details', (string) $ariaDetails);
+        return $this;
+    }
+
+    public function getAriaDetails(): ?string
+    {
+        return $this->ariaDetails;
+    }
+
+    public function setAriaKeyshortcuts(string $ariaKeyshortcuts): static
+    {
+        $this->ariaKeyshortcuts = $ariaKeyshortcuts;
+        $this->delegated->setAttribute('aria-keyshortcuts', (string) $ariaKeyshortcuts);
+        return $this;
+    }
+
+    public function getAriaKeyshortcuts(): ?string
+    {
+        return $this->ariaKeyshortcuts;
+    }
+
+    public function setAriaRoledescription(string $ariaRoledescription): static
+    {
+        $this->ariaRoledescription = $ariaRoledescription;
+        $this->delegated->setAttribute('aria-roledescription', (string) $ariaRoledescription);
+        return $this;
+    }
+
+    public function getAriaRoledescription(): ?string
+    {
+        return $this->ariaRoledescription;
+    }
+
+    public function setAriaLive(string|AriaLiveEnum $ariaLive): static
+    {
+        if (is_string($ariaLive)) {
+            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
+        }
+        $this->ariaLive = $ariaLive;
+        $this->delegated->setAttribute('aria-live', (string) $ariaLive->value);
+
+        return $this;
+    }
+
+    public function getAriaLive(): ?AriaLiveEnum
+    {
+        return $this->ariaLive;
+    }
+
+    public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
+    {
+        if (is_string($ariaRelevant)) {
+            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
+        }
+        $this->ariaRelevant = $ariaRelevant;
+        $this->delegated->setAttribute('aria-relevant', (string) $ariaRelevant->value);
+
+        return $this;
+    }
+
+    public function getAriaRelevant(): ?AriaRelevantEnum
+    {
+        return $this->ariaRelevant;
+    }
+
+    public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
+    {
+        if (is_string($ariaAtomic)) {
+            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
+        }
+        $this->ariaAtomic = $ariaAtomic;
+        $this->delegated->setAttribute('aria-atomic', (string) $ariaAtomic->value);
+
+        return $this;
+    }
+
+    public function getAriaAtomic(): ?AriaAtomicEnum
+    {
+        return $this->ariaAtomic;
+    }
+
+    public function setAriaValuemax(int $ariaValuemax): static
+    {
+        $this->ariaValuemax = $ariaValuemax;
+        $this->delegated->setAttribute('aria-valuemax', (string) $ariaValuemax);
+        return $this;
+    }
+
+    public function getAriaValuemax(): ?int
+    {
+        return $this->ariaValuemax;
+    }
+
+    public function setAriaValuemin(int $ariaValuemin): static
+    {
+        $this->ariaValuemin = $ariaValuemin;
+        $this->delegated->setAttribute('aria-valuemin', (string) $ariaValuemin);
+        return $this;
+    }
+
+    public function getAriaValuemin(): ?int
+    {
+        return $this->ariaValuemin;
+    }
+
+    public function setAriaValuenow(int $ariaValuenow): static
+    {
+        $this->ariaValuenow = $ariaValuenow;
+        $this->delegated->setAttribute('aria-valuenow', (string) $ariaValuenow);
+        return $this;
+    }
+
+    public function getAriaValuenow(): ?int
+    {
+        return $this->ariaValuenow;
+    }
+
+    public function setAriaValuetext(string $ariaValuetext): static
+    {
+        $this->ariaValuetext = $ariaValuetext;
+        $this->delegated->setAttribute('aria-valuetext', (string) $ariaValuetext);
+        return $this;
+    }
+
+    public function getAriaValuetext(): ?string
+    {
+        return $this->ariaValuetext;
     }
 
 }

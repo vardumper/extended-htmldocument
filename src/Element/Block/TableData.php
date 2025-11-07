@@ -4,7 +4,7 @@
  *
  * TableData - The td element represents a data cell in a table.
  * 
- * @generated 2025-11-05 11:58:47
+ * @generated 2025-11-07 16:53:19
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -15,8 +15,12 @@ namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
 use Html\Element\Block\TableRow;
+use Html\Enum\AriaAtomicEnum;
 use Html\Enum\AriaBusyEnum;
 use Html\Enum\AriaHiddenEnum;
+use Html\Enum\AriaLiveEnum;
+use Html\Enum\AriaRelevantEnum;
+use Html\Enum\AriaSortEnum;
 use Html\Enum\RoleEnum;
 use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
@@ -112,6 +116,61 @@ class TableData extends BlockElement
      * @example false
      */
     public ?AriaHiddenEnum $ariaHidden = null;
+
+    /** References an element that provides additional details about the current element. */
+    public ?string $ariaDetails = null;
+
+    /** Defines keyboard shortcuts available for the element. */
+    public ?string $ariaKeyshortcuts = null;
+
+    /** Provides a human-readable custom role description for assistive technologies. */
+    public ?string $ariaRoledescription = null;
+
+    /** 
+     * Defines how updates to the element should be announced to screen readers.
+     * @category HTML attribute
+     * @example off
+     */
+    public ?AriaLiveEnum $ariaLive = null;
+
+    /** 
+     * Indicates what content changes should be announced in a live region.
+     * @category HTML attribute
+     * @example additions text
+     */
+    public ?AriaRelevantEnum $ariaRelevant = null;
+
+    /** 
+     * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaAtomicEnum $ariaAtomic = null;
+
+    /** Defines the total number of columns in a table or grid. */
+    public ?int $ariaColcount = null;
+
+    /** Defines the total number of rows in a table or grid. */
+    public ?int $ariaRowcount = null;
+
+    /** 
+     * Defines the sorting order of a column.
+     * @category HTML attribute
+     * @example none
+     */
+    public ?AriaSortEnum $ariaSort = null;
+
+    /** Specifies the column index of a cell in a table or grid. */
+    public ?int $ariaColindex = null;
+
+    /** Specifies how many columns a cell spans. */
+    public ?int $ariaColspan = null;
+
+    /** Specifies the row index of a cell in a table or grid. */
+    public ?int $ariaRowindex = null;
+
+    /** Specifies how many rows a cell spans. */
+    public ?int $ariaRowspan = null;
 
 
     public function setColspan(int $colspan): static
@@ -232,6 +291,178 @@ class TableData extends BlockElement
     public function getAriaHidden(): ?AriaHiddenEnum
     {
         return $this->ariaHidden;
+    }
+
+    public function setAriaDetails(string $ariaDetails): static
+    {
+        $this->ariaDetails = $ariaDetails;
+        $this->delegated->setAttribute('aria-details', (string) $ariaDetails);
+        return $this;
+    }
+
+    public function getAriaDetails(): ?string
+    {
+        return $this->ariaDetails;
+    }
+
+    public function setAriaKeyshortcuts(string $ariaKeyshortcuts): static
+    {
+        $this->ariaKeyshortcuts = $ariaKeyshortcuts;
+        $this->delegated->setAttribute('aria-keyshortcuts', (string) $ariaKeyshortcuts);
+        return $this;
+    }
+
+    public function getAriaKeyshortcuts(): ?string
+    {
+        return $this->ariaKeyshortcuts;
+    }
+
+    public function setAriaRoledescription(string $ariaRoledescription): static
+    {
+        $this->ariaRoledescription = $ariaRoledescription;
+        $this->delegated->setAttribute('aria-roledescription', (string) $ariaRoledescription);
+        return $this;
+    }
+
+    public function getAriaRoledescription(): ?string
+    {
+        return $this->ariaRoledescription;
+    }
+
+    public function setAriaLive(string|AriaLiveEnum $ariaLive): static
+    {
+        if (is_string($ariaLive)) {
+            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
+        }
+        $this->ariaLive = $ariaLive;
+        $this->delegated->setAttribute('aria-live', (string) $ariaLive->value);
+
+        return $this;
+    }
+
+    public function getAriaLive(): ?AriaLiveEnum
+    {
+        return $this->ariaLive;
+    }
+
+    public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
+    {
+        if (is_string($ariaRelevant)) {
+            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
+        }
+        $this->ariaRelevant = $ariaRelevant;
+        $this->delegated->setAttribute('aria-relevant', (string) $ariaRelevant->value);
+
+        return $this;
+    }
+
+    public function getAriaRelevant(): ?AriaRelevantEnum
+    {
+        return $this->ariaRelevant;
+    }
+
+    public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
+    {
+        if (is_string($ariaAtomic)) {
+            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
+        }
+        $this->ariaAtomic = $ariaAtomic;
+        $this->delegated->setAttribute('aria-atomic', (string) $ariaAtomic->value);
+
+        return $this;
+    }
+
+    public function getAriaAtomic(): ?AriaAtomicEnum
+    {
+        return $this->ariaAtomic;
+    }
+
+    public function setAriaColcount(int $ariaColcount): static
+    {
+        $this->ariaColcount = $ariaColcount;
+        $this->delegated->setAttribute('aria-colcount', (string) $ariaColcount);
+        return $this;
+    }
+
+    public function getAriaColcount(): ?int
+    {
+        return $this->ariaColcount;
+    }
+
+    public function setAriaRowcount(int $ariaRowcount): static
+    {
+        $this->ariaRowcount = $ariaRowcount;
+        $this->delegated->setAttribute('aria-rowcount', (string) $ariaRowcount);
+        return $this;
+    }
+
+    public function getAriaRowcount(): ?int
+    {
+        return $this->ariaRowcount;
+    }
+
+    public function setAriaSort(string|AriaSortEnum $ariaSort): static
+    {
+        if (is_string($ariaSort)) {
+            $ariaSort = AriaSortEnum::tryFrom($ariaSort) ?? throw new \InvalidArgumentException("Invalid value for \$ariaSort.");
+        }
+        $this->ariaSort = $ariaSort;
+        $this->delegated->setAttribute('aria-sort', (string) $ariaSort->value);
+
+        return $this;
+    }
+
+    public function getAriaSort(): ?AriaSortEnum
+    {
+        return $this->ariaSort;
+    }
+
+    public function setAriaColindex(int $ariaColindex): static
+    {
+        $this->ariaColindex = $ariaColindex;
+        $this->delegated->setAttribute('aria-colindex', (string) $ariaColindex);
+        return $this;
+    }
+
+    public function getAriaColindex(): ?int
+    {
+        return $this->ariaColindex;
+    }
+
+    public function setAriaColspan(int $ariaColspan): static
+    {
+        $this->ariaColspan = $ariaColspan;
+        $this->delegated->setAttribute('aria-colspan', (string) $ariaColspan);
+        return $this;
+    }
+
+    public function getAriaColspan(): ?int
+    {
+        return $this->ariaColspan;
+    }
+
+    public function setAriaRowindex(int $ariaRowindex): static
+    {
+        $this->ariaRowindex = $ariaRowindex;
+        $this->delegated->setAttribute('aria-rowindex', (string) $ariaRowindex);
+        return $this;
+    }
+
+    public function getAriaRowindex(): ?int
+    {
+        return $this->ariaRowindex;
+    }
+
+    public function setAriaRowspan(int $ariaRowspan): static
+    {
+        $this->ariaRowspan = $ariaRowspan;
+        $this->delegated->setAttribute('aria-rowspan', (string) $ariaRowspan);
+        return $this;
+    }
+
+    public function getAriaRowspan(): ?int
+    {
+        return $this->ariaRowspan;
     }
 
 

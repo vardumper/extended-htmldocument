@@ -4,7 +4,7 @@
  *
  * Select - The select element represents a control for selecting amongst a set of options.
  * 
- * @generated 2025-11-05 11:58:47
+ * @generated 2025-11-07 16:53:19
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -31,8 +31,19 @@ use Html\Element\Block\Template;
 use Html\Element\InlineElement;
 use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\Slot;
+use Html\Enum\AriaAtomicEnum;
+use Html\Enum\AriaAutocompleteEnum;
 use Html\Enum\AriaDisabledEnum;
+use Html\Enum\AriaExpandedEnum;
+use Html\Enum\AriaHaspopupEnum;
 use Html\Enum\AriaInvalidEnum;
+use Html\Enum\AriaLiveEnum;
+use Html\Enum\AriaMultiselectableEnum;
+use Html\Enum\AriaOrientationEnum;
+use Html\Enum\AriaPressedEnum;
+use Html\Enum\AriaReadonlyEnum;
+use Html\Enum\AriaRelevantEnum;
+use Html\Enum\AriaRequiredEnum;
 use Html\Enum\AutocompleteEnum;
 use Html\Enum\AutocorrectEnum;
 use Html\Enum\RoleEnum;
@@ -172,6 +183,86 @@ class Select extends InlineElement
      * @example false
      */
     public ?AriaDisabledEnum $ariaDisabled = null;
+
+    /** References an element that provides additional details about the current element. */
+    public ?string $ariaDetails = null;
+
+    /** Defines keyboard shortcuts available for the element. */
+    public ?string $ariaKeyshortcuts = null;
+
+    /** Provides a human-readable custom role description for assistive technologies. */
+    public ?string $ariaRoledescription = null;
+
+    /** 
+     * Defines how updates to the element should be announced to screen readers.
+     * @category HTML attribute
+     * @example off
+     */
+    public ?AriaLiveEnum $ariaLive = null;
+
+    /** 
+     * Indicates what content changes should be announced in a live region.
+     * @category HTML attribute
+     * @example additions text
+     */
+    public ?AriaRelevantEnum $ariaRelevant = null;
+
+    /** 
+     * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaAtomicEnum $ariaAtomic = null;
+
+    /** Indicates whether a collapsible UI element is expanded (true) or collapsed (false). */
+    public ?AriaExpandedEnum $ariaExpanded = null;
+
+    /** 
+     * Indicates that an element has an associated popup menu, listbox, tree, grid, or dialog.
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaHaspopupEnum $ariaHaspopup = null;
+
+    /** Indicates whether a toggle button is pressed (true, false, or mixed). */
+    public ?AriaPressedEnum $ariaPressed = null;
+
+    /** 
+     * Specifies autocomplete behavior for input fields.
+     * @category HTML attribute
+     * @example none
+     */
+    public ?AriaAutocompleteEnum $ariaAutocomplete = null;
+
+    /** Provides a placeholder hint for an input field. */
+    public ?string $ariaPlaceholder = null;
+
+    /** 
+     * Marks an input field as read-only but still selectable and focusable.
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaReadonlyEnum $ariaReadonly = null;
+
+    /** 
+     * Specifies that an input field is required before form submission.
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaRequiredEnum $ariaRequired = null;
+
+    /** 
+     * Defines whether multiple items can be selected in a listbox, grid, or tree.
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaMultiselectableEnum $ariaMultiselectable = null;
+
+    /** Identifies the currently active child element (e.g., for autocomplete suggestions or composite widgets). */
+    public ?string $ariaActivedescendant = null;
+
+    /** Specifies whether an element is horizontal or vertical. */
+    public ?AriaOrientationEnum $ariaOrientation = null;
 
 
     public function setAutocomplete(string|AutocompleteEnum $autocomplete): static
@@ -372,6 +463,242 @@ class Select extends InlineElement
     public function getAriaDisabled(): ?AriaDisabledEnum
     {
         return $this->ariaDisabled;
+    }
+
+    public function setAriaDetails(string $ariaDetails): static
+    {
+        $this->ariaDetails = $ariaDetails;
+        $this->delegated->setAttribute('aria-details', (string) $ariaDetails);
+        return $this;
+    }
+
+    public function getAriaDetails(): ?string
+    {
+        return $this->ariaDetails;
+    }
+
+    public function setAriaKeyshortcuts(string $ariaKeyshortcuts): static
+    {
+        $this->ariaKeyshortcuts = $ariaKeyshortcuts;
+        $this->delegated->setAttribute('aria-keyshortcuts', (string) $ariaKeyshortcuts);
+        return $this;
+    }
+
+    public function getAriaKeyshortcuts(): ?string
+    {
+        return $this->ariaKeyshortcuts;
+    }
+
+    public function setAriaRoledescription(string $ariaRoledescription): static
+    {
+        $this->ariaRoledescription = $ariaRoledescription;
+        $this->delegated->setAttribute('aria-roledescription', (string) $ariaRoledescription);
+        return $this;
+    }
+
+    public function getAriaRoledescription(): ?string
+    {
+        return $this->ariaRoledescription;
+    }
+
+    public function setAriaLive(string|AriaLiveEnum $ariaLive): static
+    {
+        if (is_string($ariaLive)) {
+            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
+        }
+        $this->ariaLive = $ariaLive;
+        $this->delegated->setAttribute('aria-live', (string) $ariaLive->value);
+
+        return $this;
+    }
+
+    public function getAriaLive(): ?AriaLiveEnum
+    {
+        return $this->ariaLive;
+    }
+
+    public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
+    {
+        if (is_string($ariaRelevant)) {
+            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
+        }
+        $this->ariaRelevant = $ariaRelevant;
+        $this->delegated->setAttribute('aria-relevant', (string) $ariaRelevant->value);
+
+        return $this;
+    }
+
+    public function getAriaRelevant(): ?AriaRelevantEnum
+    {
+        return $this->ariaRelevant;
+    }
+
+    public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
+    {
+        if (is_string($ariaAtomic)) {
+            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
+        }
+        $this->ariaAtomic = $ariaAtomic;
+        $this->delegated->setAttribute('aria-atomic', (string) $ariaAtomic->value);
+
+        return $this;
+    }
+
+    public function getAriaAtomic(): ?AriaAtomicEnum
+    {
+        return $this->ariaAtomic;
+    }
+
+    public function setAriaExpanded(string|AriaExpandedEnum $ariaExpanded): static
+    {
+        if (is_string($ariaExpanded)) {
+            $ariaExpanded = AriaExpandedEnum::tryFrom($ariaExpanded) ?? throw new \InvalidArgumentException("Invalid value for \$ariaExpanded.");
+        }
+        $this->ariaExpanded = $ariaExpanded;
+        $this->delegated->setAttribute('aria-expanded', (string) $ariaExpanded->value);
+
+        return $this;
+    }
+
+    public function getAriaExpanded(): ?AriaExpandedEnum
+    {
+        return $this->ariaExpanded;
+    }
+
+    public function setAriaHaspopup(string|AriaHaspopupEnum $ariaHaspopup): static
+    {
+        if (is_string($ariaHaspopup)) {
+            $ariaHaspopup = AriaHaspopupEnum::tryFrom($ariaHaspopup) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHaspopup.");
+        }
+        $this->ariaHaspopup = $ariaHaspopup;
+        $this->delegated->setAttribute('aria-haspopup', (string) $ariaHaspopup->value);
+
+        return $this;
+    }
+
+    public function getAriaHaspopup(): ?AriaHaspopupEnum
+    {
+        return $this->ariaHaspopup;
+    }
+
+    public function setAriaPressed(string|AriaPressedEnum $ariaPressed): static
+    {
+        if (is_string($ariaPressed)) {
+            $ariaPressed = AriaPressedEnum::tryFrom($ariaPressed) ?? throw new \InvalidArgumentException("Invalid value for \$ariaPressed.");
+        }
+        $this->ariaPressed = $ariaPressed;
+        $this->delegated->setAttribute('aria-pressed', (string) $ariaPressed->value);
+
+        return $this;
+    }
+
+    public function getAriaPressed(): ?AriaPressedEnum
+    {
+        return $this->ariaPressed;
+    }
+
+    public function setAriaAutocomplete(string|AriaAutocompleteEnum $ariaAutocomplete): static
+    {
+        if (is_string($ariaAutocomplete)) {
+            $ariaAutocomplete = AriaAutocompleteEnum::tryFrom($ariaAutocomplete) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAutocomplete.");
+        }
+        $this->ariaAutocomplete = $ariaAutocomplete;
+        $this->delegated->setAttribute('aria-autocomplete', (string) $ariaAutocomplete->value);
+
+        return $this;
+    }
+
+    public function getAriaAutocomplete(): ?AriaAutocompleteEnum
+    {
+        return $this->ariaAutocomplete;
+    }
+
+    public function setAriaPlaceholder(string $ariaPlaceholder): static
+    {
+        $this->ariaPlaceholder = $ariaPlaceholder;
+        $this->delegated->setAttribute('aria-placeholder', (string) $ariaPlaceholder);
+        return $this;
+    }
+
+    public function getAriaPlaceholder(): ?string
+    {
+        return $this->ariaPlaceholder;
+    }
+
+    public function setAriaReadonly(string|AriaReadonlyEnum $ariaReadonly): static
+    {
+        if (is_string($ariaReadonly)) {
+            $ariaReadonly = AriaReadonlyEnum::tryFrom($ariaReadonly) ?? throw new \InvalidArgumentException("Invalid value for \$ariaReadonly.");
+        }
+        $this->ariaReadonly = $ariaReadonly;
+        $this->delegated->setAttribute('aria-readonly', (string) $ariaReadonly->value);
+
+        return $this;
+    }
+
+    public function getAriaReadonly(): ?AriaReadonlyEnum
+    {
+        return $this->ariaReadonly;
+    }
+
+    public function setAriaRequired(string|AriaRequiredEnum $ariaRequired): static
+    {
+        if (is_string($ariaRequired)) {
+            $ariaRequired = AriaRequiredEnum::tryFrom($ariaRequired) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRequired.");
+        }
+        $this->ariaRequired = $ariaRequired;
+        $this->delegated->setAttribute('aria-required', (string) $ariaRequired->value);
+
+        return $this;
+    }
+
+    public function getAriaRequired(): ?AriaRequiredEnum
+    {
+        return $this->ariaRequired;
+    }
+
+    public function setAriaMultiselectable(string|AriaMultiselectableEnum $ariaMultiselectable): static
+    {
+        if (is_string($ariaMultiselectable)) {
+            $ariaMultiselectable = AriaMultiselectableEnum::tryFrom($ariaMultiselectable) ?? throw new \InvalidArgumentException("Invalid value for \$ariaMultiselectable.");
+        }
+        $this->ariaMultiselectable = $ariaMultiselectable;
+        $this->delegated->setAttribute('aria-multiselectable', (string) $ariaMultiselectable->value);
+
+        return $this;
+    }
+
+    public function getAriaMultiselectable(): ?AriaMultiselectableEnum
+    {
+        return $this->ariaMultiselectable;
+    }
+
+    public function setAriaActivedescendant(string $ariaActivedescendant): static
+    {
+        $this->ariaActivedescendant = $ariaActivedescendant;
+        $this->delegated->setAttribute('aria-activedescendant', (string) $ariaActivedescendant);
+        return $this;
+    }
+
+    public function getAriaActivedescendant(): ?string
+    {
+        return $this->ariaActivedescendant;
+    }
+
+    public function setAriaOrientation(string|AriaOrientationEnum $ariaOrientation): static
+    {
+        if (is_string($ariaOrientation)) {
+            $ariaOrientation = AriaOrientationEnum::tryFrom($ariaOrientation) ?? throw new \InvalidArgumentException("Invalid value for \$ariaOrientation.");
+        }
+        $this->ariaOrientation = $ariaOrientation;
+        $this->delegated->setAttribute('aria-orientation', (string) $ariaOrientation->value);
+
+        return $this;
+    }
+
+    public function getAriaOrientation(): ?AriaOrientationEnum
+    {
+        return $this->ariaOrientation;
     }
 
 }

@@ -139,3 +139,239 @@ input:
 '/^(?!area|base|body|button|br|col|embed|head|hr|img|input|link|meta|meter|noscript|output|param|progress|script|source|track|wbr|script|style|title|html|form$)[a-z][a-z0-9]*$/':
   allowed_global_attributes:
     - popover
+
+# Additional global ARIA attributes for most elements
+'/^(?!area|base|body|br|col|embed|head|hr|link|meta|noscript|param|script|source|style|track|wbr|title|html$)[a-z][a-z0-9]*$/':
+  attributes:
+    aria-details:
+      description: 'References an element that provides additional details about the current element.'
+      type: string
+    aria-keyshortcuts:
+      description: 'Defines keyboard shortcuts available for the element.'
+      type: string
+    aria-roledescription:
+      description: 'Provides a human-readable custom role description for assistive technologies.'
+      type: string
+
+# aria-live and aria-relevant for live regions (most elements except void and structural)
+'/^(?!area|base|body|br|col|embed|head|hr|html|link|meta|noscript|param|script|source|style|title|track|wbr$)[a-z][a-z0-9]*$/':
+  attributes:
+    aria-live:
+      description: 'Defines how updates to the element should be announced to screen readers.'
+      type: enum
+      defaultValue: 'off'
+      choices:
+        - 'off'
+        - 'polite'
+        - 'assertive'
+    aria-relevant:
+      description: 'Indicates what content changes should be announced in a live region.'
+      type: enum
+      defaultValue: 'additions text'
+      choices:
+        - 'additions'
+        - 'removals'
+        - 'text'
+        - 'all'
+        - 'additions text'
+    aria-atomic:
+      description: 'Indicates whether assistive technologies should present the entire region as a whole when changes occur.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+
+# Interactive element attributes (buttons, links, inputs, interactive widgets)
+'/^(a|button|input|select|textarea|details|summary|dialog|menu|menuitem)$/':
+  attributes:
+    aria-expanded:
+      description: 'Indicates whether a collapsible UI element is expanded (true) or collapsed (false).'
+      type: enum
+      choices:
+        - 'false'
+        - 'true'
+        - 'undefined'
+    aria-haspopup:
+      description: 'Indicates that an element has an associated popup menu, listbox, tree, grid, or dialog.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+        - 'menu'
+        - 'listbox'
+        - 'tree'
+        - 'grid'
+        - 'dialog'
+    aria-pressed:
+      description: 'Indicates whether a toggle button is pressed (true, false, or mixed).'
+      type: enum
+      choices:
+        - 'false'
+        - 'true'
+        - 'mixed'
+        - 'undefined'
+
+# Checkbox and radio button attributes
+'/^(input|button|menuitem)$/':
+  attributes:
+    aria-checked:
+      description: 'Defines the checked state for checkboxes, radio buttons, or toggle switches.'
+      type: enum
+      choices:
+        - 'false'
+        - 'true'
+        - 'mixed'
+        - 'undefined'
+
+# Form input specific attributes
+'/^(input|textarea|select)$/':
+  attributes:
+    aria-autocomplete:
+      description: 'Specifies autocomplete behavior for input fields.'
+      type: enum
+      defaultValue: 'none'
+      choices:
+        - 'none'
+        - 'inline'
+        - 'list'
+        - 'both'
+    aria-placeholder:
+      description: 'Provides a placeholder hint for an input field.'
+      type: string
+    aria-readonly:
+      description: 'Marks an input field as read-only but still selectable and focusable.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+    aria-required:
+      description: 'Specifies that an input field is required before form submission.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+
+# Textarea specific
+textarea:
+  attributes:
+    aria-multiline:
+      description: 'Indicates whether the input allows multiple lines of text.'
+      type: enum
+      defaultValue: 'true'
+      choices:
+        - 'false'
+        - 'true'
+
+# Modal dialog attribute
+dialog:
+  attributes:
+    aria-modal:
+      description: 'Specifies whether an element is a modal dialog that blocks interaction with other content.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+
+# Listbox, grid, tree attributes
+'/^(select|ul|ol|div)$/':
+  attributes:
+    aria-multiselectable:
+      description: 'Defines whether multiple items can be selected in a listbox, grid, or tree.'
+      type: enum
+      defaultValue: 'false'
+      choices:
+        - 'false'
+        - 'true'
+    aria-activedescendant:
+      description: 'Identifies the currently active child element (e.g., for autocomplete suggestions or composite widgets).'
+      type: string
+    aria-orientation:
+      description: 'Specifies whether an element is horizontal or vertical.'
+      type: enum
+      choices:
+        - 'horizontal'
+        - 'vertical'
+        - 'undefined'
+
+# List and tree item attributes
+'/^(li|option|tr)$/':
+  attributes:
+    aria-selected:
+      description: 'Indicates whether an item is selected (e.g., in a list, table, or tree).'
+      type: enum
+      choices:
+        - 'false'
+        - 'true'
+        - 'undefined'
+    aria-posinset:
+      description: "Defines an element's position within a set (1-based index)."
+      type: integer
+    aria-setsize:
+      description: 'Specifies the total number of items in a set.'
+      type: integer
+    aria-level:
+      description: 'Defines the hierarchical level of an element (e.g., headings, tree items).'
+      type: integer
+
+# Table and grid specific attributes
+'/^(table|tr|td|th)$/':
+  attributes:
+    aria-colcount:
+      description: 'Defines the total number of columns in a table or grid.'
+      type: integer
+    aria-rowcount:
+      description: 'Defines the total number of rows in a table or grid.'
+      type: integer
+    aria-sort:
+      description: 'Defines the sorting order of a column.'
+      type: enum
+      defaultValue: 'none'
+      choices:
+        - 'none'
+        - 'ascending'
+        - 'descending'
+        - 'other'
+
+# Table cell specific attributes
+'/^(td|th)$/':
+  attributes:
+    aria-colindex:
+      description: 'Specifies the column index of a cell in a table or grid.'
+      type: integer
+    aria-colspan:
+      description: 'Specifies how many columns a cell spans.'
+      type: integer
+    aria-rowindex:
+      description: 'Specifies the row index of a cell in a table or grid.'
+      type: integer
+    aria-rowspan:
+      description: 'Specifies how many rows a cell spans.'
+      type: integer
+
+# Container elements that can establish ownership
+'/^(div|section|article|aside|nav|main|ul|ol|table)$/':
+  attributes:
+    aria-owns:
+      description: 'Establishes ownership relationships between elements. Value is a space-separated list of IDs.'
+      type: string
+
+# Range input attributes (sliders, progress bars, spin buttons, meter)
+'/^(input|progress|meter)$/':
+  attributes:
+    aria-valuemax:
+      description: 'Defines the maximum value for a range input.'
+      type: number
+    aria-valuemin:
+      description: 'Defines the minimum value for a range input.'
+      type: number
+    aria-valuenow:
+      description: 'Specifies the current value for a range input.'
+      type: number
+    aria-valuetext:
+      description: 'Provides a human-readable representation of the current value.'
+      type: string

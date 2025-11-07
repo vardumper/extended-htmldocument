@@ -4,7 +4,7 @@
  *
  * Anchor - The a element represents a hyperlink, linking to another resource.
  * 
- * @generated 2025-11-05 11:58:47
+ * @generated 2025-11-07 16:53:19
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -32,9 +32,15 @@ use Html\Element\Inline\MarkedText;
 use Html\Element\Inline\ScalableVectorGraphics;
 use Html\Element\Inline\Slot;
 use Html\Enum\ARoleEnum;
+use Html\Enum\AriaAtomicEnum;
 use Html\Enum\AriaBusyEnum;
 use Html\Enum\AriaCurrentEnum;
 use Html\Enum\AriaDisabledEnum;
+use Html\Enum\AriaExpandedEnum;
+use Html\Enum\AriaHaspopupEnum;
+use Html\Enum\AriaLiveEnum;
+use Html\Enum\AriaPressedEnum;
+use Html\Enum\AriaRelevantEnum;
 use Html\Enum\RelEnum;
 use Html\Enum\TargetEnum;
 use Html\Trait\GlobalAttribute;
@@ -177,6 +183,49 @@ class Anchor extends InlineElement
      * @example false
      */
     public ?AriaDisabledEnum $ariaDisabled = null;
+
+    /** References an element that provides additional details about the current element. */
+    public ?string $ariaDetails = null;
+
+    /** Defines keyboard shortcuts available for the element. */
+    public ?string $ariaKeyshortcuts = null;
+
+    /** Provides a human-readable custom role description for assistive technologies. */
+    public ?string $ariaRoledescription = null;
+
+    /** 
+     * Defines how updates to the element should be announced to screen readers.
+     * @category HTML attribute
+     * @example off
+     */
+    public ?AriaLiveEnum $ariaLive = null;
+
+    /** 
+     * Indicates what content changes should be announced in a live region.
+     * @category HTML attribute
+     * @example additions text
+     */
+    public ?AriaRelevantEnum $ariaRelevant = null;
+
+    /** 
+     * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaAtomicEnum $ariaAtomic = null;
+
+    /** Indicates whether a collapsible UI element is expanded (true) or collapsed (false). */
+    public ?AriaExpandedEnum $ariaExpanded = null;
+
+    /** 
+     * Indicates that an element has an associated popup menu, listbox, tree, grid, or dialog.
+     * @category HTML attribute
+     * @example false
+     */
+    public ?AriaHaspopupEnum $ariaHaspopup = null;
+
+    /** Indicates whether a toggle button is pressed (true, false, or mixed). */
+    public ?AriaPressedEnum $ariaPressed = null;
 
 
     public function setDownload(string $download): static
@@ -388,6 +437,138 @@ class Anchor extends InlineElement
     public function getAriaDisabled(): ?AriaDisabledEnum
     {
         return $this->ariaDisabled;
+    }
+
+    public function setAriaDetails(string $ariaDetails): static
+    {
+        $this->ariaDetails = $ariaDetails;
+        $this->delegated->setAttribute('aria-details', (string) $ariaDetails);
+        return $this;
+    }
+
+    public function getAriaDetails(): ?string
+    {
+        return $this->ariaDetails;
+    }
+
+    public function setAriaKeyshortcuts(string $ariaKeyshortcuts): static
+    {
+        $this->ariaKeyshortcuts = $ariaKeyshortcuts;
+        $this->delegated->setAttribute('aria-keyshortcuts', (string) $ariaKeyshortcuts);
+        return $this;
+    }
+
+    public function getAriaKeyshortcuts(): ?string
+    {
+        return $this->ariaKeyshortcuts;
+    }
+
+    public function setAriaRoledescription(string $ariaRoledescription): static
+    {
+        $this->ariaRoledescription = $ariaRoledescription;
+        $this->delegated->setAttribute('aria-roledescription', (string) $ariaRoledescription);
+        return $this;
+    }
+
+    public function getAriaRoledescription(): ?string
+    {
+        return $this->ariaRoledescription;
+    }
+
+    public function setAriaLive(string|AriaLiveEnum $ariaLive): static
+    {
+        if (is_string($ariaLive)) {
+            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
+        }
+        $this->ariaLive = $ariaLive;
+        $this->delegated->setAttribute('aria-live', (string) $ariaLive->value);
+
+        return $this;
+    }
+
+    public function getAriaLive(): ?AriaLiveEnum
+    {
+        return $this->ariaLive;
+    }
+
+    public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
+    {
+        if (is_string($ariaRelevant)) {
+            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
+        }
+        $this->ariaRelevant = $ariaRelevant;
+        $this->delegated->setAttribute('aria-relevant', (string) $ariaRelevant->value);
+
+        return $this;
+    }
+
+    public function getAriaRelevant(): ?AriaRelevantEnum
+    {
+        return $this->ariaRelevant;
+    }
+
+    public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
+    {
+        if (is_string($ariaAtomic)) {
+            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
+        }
+        $this->ariaAtomic = $ariaAtomic;
+        $this->delegated->setAttribute('aria-atomic', (string) $ariaAtomic->value);
+
+        return $this;
+    }
+
+    public function getAriaAtomic(): ?AriaAtomicEnum
+    {
+        return $this->ariaAtomic;
+    }
+
+    public function setAriaExpanded(string|AriaExpandedEnum $ariaExpanded): static
+    {
+        if (is_string($ariaExpanded)) {
+            $ariaExpanded = AriaExpandedEnum::tryFrom($ariaExpanded) ?? throw new \InvalidArgumentException("Invalid value for \$ariaExpanded.");
+        }
+        $this->ariaExpanded = $ariaExpanded;
+        $this->delegated->setAttribute('aria-expanded', (string) $ariaExpanded->value);
+
+        return $this;
+    }
+
+    public function getAriaExpanded(): ?AriaExpandedEnum
+    {
+        return $this->ariaExpanded;
+    }
+
+    public function setAriaHaspopup(string|AriaHaspopupEnum $ariaHaspopup): static
+    {
+        if (is_string($ariaHaspopup)) {
+            $ariaHaspopup = AriaHaspopupEnum::tryFrom($ariaHaspopup) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHaspopup.");
+        }
+        $this->ariaHaspopup = $ariaHaspopup;
+        $this->delegated->setAttribute('aria-haspopup', (string) $ariaHaspopup->value);
+
+        return $this;
+    }
+
+    public function getAriaHaspopup(): ?AriaHaspopupEnum
+    {
+        return $this->ariaHaspopup;
+    }
+
+    public function setAriaPressed(string|AriaPressedEnum $ariaPressed): static
+    {
+        if (is_string($ariaPressed)) {
+            $ariaPressed = AriaPressedEnum::tryFrom($ariaPressed) ?? throw new \InvalidArgumentException("Invalid value for \$ariaPressed.");
+        }
+        $this->ariaPressed = $ariaPressed;
+        $this->delegated->setAttribute('aria-pressed', (string) $ariaPressed->value);
+
+        return $this;
+    }
+
+    public function getAriaPressed(): ?AriaPressedEnum
+    {
+        return $this->ariaPressed;
     }
 
 }

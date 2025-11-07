@@ -4,7 +4,7 @@
  *
  * HrAlignEnum - Specifies the horizontal alignment of the element.
  * 
- * @generated 2025-11-05 11:58:47
+ * @generated 2025-11-07 16:53:19
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum
