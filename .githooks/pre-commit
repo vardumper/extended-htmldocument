@@ -148,7 +148,7 @@ fi
 # fi
 
 # PHPMD - PHP Mess Detector
-source ./bin/phpmd.sh
+source ./.githooks/pre-commit.d/phpmd.sh
 
 # Run composer audit locally
 printf "${YELLOW}Composer Audit${NC}\n"

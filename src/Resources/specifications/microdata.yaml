@@ -1,0 +1,28 @@
+# Microdata attributes for semantic HTML elements
+# See: https://html.spec.whatwg.org/multipage/microdata.html
+# Used for embedding machine-readable data using vocabularies like Schema.org
+
+# Microdata applies to most elements, excluding:
+# - Non-semantic void elements: br, wbr, hr
+# - Metadata infrastructure: base, head, html
+# - Script/style: script, style, noscript
+# - Resource definitions: param, source, track
+# - Link metadata (has its own mechanism): link
+'/^(?!base|br|head|hr|html|link|noscript|param|script|source|style|track|wbr$)[a-z][a-z0-9]*$/':
+  attributes:
+    itemscope:
+      description: 'Creates a new item scope. This is a boolean attribute that indicates the element contains microdata.'
+      type: boolean
+      defaultValue: false
+    itemtype:
+      description: 'Specifies the URL of the vocabulary that will be used to define item properties in the data structure. Only valid when itemscope is present. Common values include Schema.org types like https://schema.org/Article, https://schema.org/Person, https://schema.org/Product, etc.'
+      type: string
+    itemprop:
+      description: 'Adds a property to an item. The value can be a string or a reference to another item. This attribute can be used on elements within an itemscope to define properties, or independently to add properties to an ancestor item scope.'
+      type: string
+    itemid:
+      description: 'Provides a global identifier (URL) for the item. Only valid when both itemscope and itemtype are present on the same element.'
+      type: string
+    itemref:
+      description: 'References additional elements (by their IDs) to include in the item scope. Provide a space-separated list of element IDs. Only meaningful when itemscope is present.'
+      type: string
