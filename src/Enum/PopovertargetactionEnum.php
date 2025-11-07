@@ -1,11 +1,12 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * PopovertargetactionEnum - Specifies the action to perform on the popover element controlled by popovertarget. "show" displays a hidden popover, "hide" hides a visible popover, "toggle" (default) switches between states. Part of the Popover API. Element-specific to button and input elements.
- *
- * @generated 2025-11-02 22:39:29
+ * 
+ * @generated 2025-11-05 11:58:47
+ * @category HTML Attribute
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/popovertargetaction/
@@ -14,8 +15,7 @@
 
 namespace Html\Enum;
 
-enum PopovertargetactionEnum: string
-{
+enum PopovertargetactionEnum: string {
     case SHOW = 'show';
     case HIDE = 'hide';
     case TOGGLE = 'toggle'; // default

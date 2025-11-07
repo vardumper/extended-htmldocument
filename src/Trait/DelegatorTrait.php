@@ -11,6 +11,8 @@ declare(strict_types=1);
 namespace Html\Trait;
 
 use BadMethodCallException;
+use Dom\HTMLDocument;
+use Html\Element\Block\Division;
 use InvalidArgumentException;
 use ReflectionClass;
 
@@ -27,10 +29,34 @@ trait DelegatorTrait
         $reflection = new ReflectionClass($this->delegated);
         if ($reflection->hasMethod($name)) {
             $method = $reflection->getMethod($name);
-            // var_dump(\get_class($this->delegated));
-            // exit;
+            // var_dump($method->getParameters());
+            // var_dump($method->getName());
+            if ($reflection->getName() === HTMLDocument::class && $name === 'appendChild') {
+                // die('ohno');
+            }
+            if ($this->delegated instanceof Division) {
+                // die('ohno');
+                // Debugging purpose
+                // var_dump($name, $arguments);
+                // var_dump(\get_class($this->delegated));
+                // exit;
+                // var_dump(\get_class($this->delegated));
+                // var_dump($this->delegated);
+                // exit;
+            }
             $method->setAccessible(true);
-            return $method->invokeArgs($this->delegated, $arguments);
+            try {
+                return $method->invokeArgs($this->delegated, $arguments);
+            } catch(\TypeError $e) {
+                
+                // var_dump($method->getName(), $arguments);
+                // echo $e;
+                // var_dump(\get_class($this));
+                // var_dump(\get_class($this->delegated));
+                // var_dump($this->delegated);
+                // var_dump($name, $arguments, $this->delegated);
+            }
+
         }
         throw new BadMethodCallException(
             "Method {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__

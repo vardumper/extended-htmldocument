@@ -1,16 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Output - The output element represents the result of a calculation or user action.
- *
- * @generated 2025-11-02 22:39:29
+ * 
+ * @generated 2025-11-05 11:58:47
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
  */
-
 namespace Html\Element\Inline;
 
 use Html\Element\Block\Body;
@@ -19,9 +19,8 @@ use Html\Element\Block\Form;
 use Html\Element\Block\Paragraph;
 use Html\Element\InlineElement;
 use Html\Enum\AutocorrectEnum;
-use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute;
-use InvalidArgumentException;
+use Html\Mapping\Element;
 
 #[Element('output')]
 class Output extends InlineElement
@@ -43,7 +42,6 @@ class Output extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
-
     /**
      * The HTML element name
      */
@@ -68,31 +66,36 @@ class Output extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Body::class, Fieldset::class, Form::class, Paragraph::class];
+    public static array $childOf = [
+        Body::class,
+        Fieldset::class,
+        Form::class,
+        Paragraph::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
+
+    /** 
      * Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.
+     * @category HTML attribute
      * @example on
      */
     public ?AutocorrectEnum $autocorrect = null;
 
-    /**
-     * Refers to the <datalist> element that contains the options for an input element.
-     */
+    /** Refers to the <datalist> element that contains the options for an input element. */
     public ?string $for = null;
+
 
     public function setAutocorrect(string|AutocorrectEnum $autocorrect): static
     {
         if (is_string($autocorrect)) {
-            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new InvalidArgumentException(
-                'Invalid value for $autocorrect.'
-            );
+            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new \InvalidArgumentException("Invalid value for \$autocorrect.");
         }
         $this->autocorrect = $autocorrect;
         $this->delegated->setAttribute('autocorrect', (string) $autocorrect->value);
@@ -116,4 +119,5 @@ class Output extends InlineElement
     {
         return $this->for;
     }
+
 }

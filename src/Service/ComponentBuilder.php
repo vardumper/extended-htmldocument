@@ -61,6 +61,7 @@ class ComponentBuilder implements ComponentBuilderInterface
                 $importedNode = $doc->importNode($element->delegated, true);
                 $doc->appendChild($importedNode);
             } else {
+                // exit('there');
                 $parent->appendChild($element);
             }
         }

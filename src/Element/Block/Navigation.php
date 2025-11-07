@@ -1,19 +1,22 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Navigation - The nav element represents a section of a page whose purpose is to provide navigation links, either within the current document or to other documents.
- *
- * @generated 2025-11-02 22:39:29
+ * 
+ * @generated 2025-11-05 11:58:47
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Article;
+use Html\Element\Block\Body;
+use Html\Element\Block\Paragraph;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\Citation;
 use Html\Element\Inline\Emphasis;
@@ -25,9 +28,8 @@ use Html\Enum\AriaBusyEnum;
 use Html\Enum\AriaCurrentEnum;
 use Html\Enum\AriaHiddenEnum;
 use Html\Enum\RoleEnum;
-use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute;
-use InvalidArgumentException;
+use Html\Mapping\Element;
 
 #[Element('nav')]
 class Navigation extends BlockElement
@@ -50,7 +52,6 @@ class Navigation extends BlockElement
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
     use GlobalAttribute\PopoverTrait;
-
     /**
      * The HTML element name
      */
@@ -75,7 +76,10 @@ class Navigation extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Body::class, Paragraph::class];
+    public static array $childOf = [
+        Body::class,
+        Paragraph::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -92,53 +96,48 @@ class Navigation extends BlockElement
         Strong::class,
     ];
 
-    /**
-     * Defines the semantic purpose of an element for assistive technologies.
-     */
+
+    /** Defines the semantic purpose of an element for assistive technologies. */
     public ?RoleEnum $role = null;
 
-    /**
-     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
-     */
+    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
     public ?string $ariaControls = null;
 
-    /**
-     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
-     */
+    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
     public ?string $ariaDescribedby = null;
 
-    /**
-     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
-     */
+    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
     public ?string $ariaLabelledby = null;
 
-    /**
+    /** 
      * Indicates the current item within a container or set of related elements.
+     * @category HTML attribute
      * @example false
      */
     public ?AriaCurrentEnum $ariaCurrent = null;
 
-    /**
+    /** 
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
+     * @category HTML attribute
      * @example false
      */
     public ?AriaBusyEnum $ariaBusy = null;
 
-    /**
+    /** 
      * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
+     * @category HTML attribute
      * @example false
      */
     public ?AriaHiddenEnum $ariaHidden = null;
 
-    /**
-     * Defines a string value that labels the current element for assistive technologies.
-     */
+    /** Defines a string value that labels the current element for assistive technologies. */
     public ?string $ariaLabel = null;
+
 
     public function setRole(string|RoleEnum $role): static
     {
         if (is_string($role)) {
-            $role = RoleEnum::tryFrom($role) ?? throw new InvalidArgumentException('Invalid value for $role.');
+            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -190,9 +189,7 @@ class Navigation extends BlockElement
     public function setAriaCurrent(string|AriaCurrentEnum $ariaCurrent): static
     {
         if (is_string($ariaCurrent)) {
-            $ariaCurrent = AriaCurrentEnum::tryFrom($ariaCurrent) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaCurrent.'
-            );
+            $ariaCurrent = AriaCurrentEnum::tryFrom($ariaCurrent) ?? throw new \InvalidArgumentException("Invalid value for \$ariaCurrent.");
         }
         $this->ariaCurrent = $ariaCurrent;
         $this->delegated->setAttribute('aria-current', (string) $ariaCurrent->value);
@@ -208,9 +205,7 @@ class Navigation extends BlockElement
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
         if (is_string($ariaBusy)) {
-            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaBusy.'
-            );
+            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
         }
         $this->ariaBusy = $ariaBusy;
         $this->delegated->setAttribute('aria-busy', (string) $ariaBusy->value);
@@ -226,9 +221,7 @@ class Navigation extends BlockElement
     public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
     {
         if (is_string($ariaHidden)) {
-            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaHidden.'
-            );
+            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
         }
         $this->ariaHidden = $ariaHidden;
         $this->delegated->setAttribute('aria-hidden', (string) $ariaHidden->value);
@@ -252,4 +245,6 @@ class Navigation extends BlockElement
     {
         return $this->ariaLabel;
     }
+
+
 }

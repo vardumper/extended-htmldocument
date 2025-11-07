@@ -1,27 +1,40 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * OrderedList - The ol element represents an ordered list of items. The order of the list is meaningful.
- *
- * @generated 2025-11-02 22:39:29
+ * 
+ * @generated 2025-11-05 11:58:47
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\Article;
+use Html\Element\Block\Aside;
+use Html\Element\Block\Body;
+use Html\Element\Block\DefinitionDescription;
+use Html\Element\Block\Details;
+use Html\Element\Block\Dialog;
+use Html\Element\Block\Division;
+use Html\Element\Block\Footer;
+use Html\Element\Block\Header;
+use Html\Element\Block\ListItem;
+use Html\Element\Block\Main;
+use Html\Element\Block\Paragraph;
+use Html\Element\Block\Section;
+use Html\Element\Block\Template;
 use Html\Element\Inline\Slot;
 use Html\Enum\AriaBusyEnum;
 use Html\Enum\AriaHiddenEnum;
 use Html\Enum\OlTypeEnum;
 use Html\Enum\RoleEnum;
-use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute;
-use InvalidArgumentException;
+use Html\Mapping\Element;
 
 #[Element('ol')]
 class OrderedList extends BlockElement
@@ -44,7 +57,6 @@ class OrderedList extends BlockElement
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
     use GlobalAttribute\PopoverTrait;
-
     /**
      * The HTML element name
      */
@@ -91,55 +103,50 @@ class OrderedList extends BlockElement
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [ListItem::class];
+    public static array $parentOf = [
+        ListItem::class,
+    ];
 
-    /**
-     * When present, it specifies that the list order should be descending (9,8,7...).
-     */
+
+    /** When present, it specifies that the list order should be descending (9,8,7...). */
     public ?bool $reversed = null;
 
-    /**
-     * Specifies the starting value of an ordered list.
-     */
+    /** Specifies the starting value of an ordered list. */
     public ?int $start = null;
 
-    /**
+    /** 
      * Specifies the numbering type of the ordered list.
+     * @category HTML attribute
      * @example 1
      */
     public ?OlTypeEnum $type = null;
 
-    /**
-     * Defines the semantic purpose of an element for assistive technologies.
-     */
+    /** Defines the semantic purpose of an element for assistive technologies. */
     public ?RoleEnum $role = null;
 
-    /**
-     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
-     */
+    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
     public ?string $ariaControls = null;
 
-    /**
-     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
-     */
+    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
     public ?string $ariaDescribedby = null;
 
-    /**
-     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
-     */
+    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
     public ?string $ariaLabelledby = null;
 
-    /**
+    /** 
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
+     * @category HTML attribute
      * @example false
      */
     public ?AriaBusyEnum $ariaBusy = null;
 
-    /**
+    /** 
      * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
+     * @category HTML attribute
      * @example false
      */
     public ?AriaHiddenEnum $ariaHidden = null;
+
 
     public function setReversed(bool $reversed): static
     {
@@ -168,7 +175,7 @@ class OrderedList extends BlockElement
     public function setType(string|OlTypeEnum $type): static
     {
         if (is_string($type)) {
-            $type = OlTypeEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
+            $type = OlTypeEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
         }
         $this->type = $type;
         $this->delegated->setAttribute('type', (string) $type->value);
@@ -184,7 +191,7 @@ class OrderedList extends BlockElement
     public function setRole(string|RoleEnum $role): static
     {
         if (is_string($role)) {
-            $role = RoleEnum::tryFrom($role) ?? throw new InvalidArgumentException('Invalid value for $role.');
+            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -236,9 +243,7 @@ class OrderedList extends BlockElement
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
         if (is_string($ariaBusy)) {
-            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaBusy.'
-            );
+            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
         }
         $this->ariaBusy = $ariaBusy;
         $this->delegated->setAttribute('aria-busy', (string) $ariaBusy->value);
@@ -254,9 +259,7 @@ class OrderedList extends BlockElement
     public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
     {
         if (is_string($ariaHidden)) {
-            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaHidden.'
-            );
+            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
         }
         $this->ariaHidden = $ariaHidden;
         $this->delegated->setAttribute('aria-hidden', (string) $ariaHidden->value);
@@ -268,4 +271,6 @@ class OrderedList extends BlockElement
     {
         return $this->ariaHidden;
     }
+
+
 }

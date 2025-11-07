@@ -27,7 +27,7 @@ class BatchGeneratorCommand extends Command
     use ClassResolverTrait;
     use GeneratorResolverTrait;
 
-    private const HTML_DEFINITION_PATH = __DIR__ . '/../Resources/specifications/html5.yaml';
+    private const HTML_DEFINITION_PATH = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
 
     private ?array $data = null;
     private SymfonyStyle $io;
