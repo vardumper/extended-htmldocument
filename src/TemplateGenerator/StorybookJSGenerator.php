@@ -799,7 +799,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
 
             // Add import if not already imported
             if (!isset($importedNames[$importName])) {
-                $imports[] = "import * as {$importName} from '../{$childLevel}/{$childName}.stories.js';";
+                $imports[] = "import * as {$importName} from '../../{$childLevel}/{$childName}.stories.js';";
                 $importedNames[$importName] = true;
             }
 
