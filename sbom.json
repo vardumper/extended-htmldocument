@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:2d300fb0-4f63-44c4-a985-0979f6f6c8d7",
+  "serialNumber": "urn:uuid:e5ebbc1c-3d6b-4afa-90c8-67c9c4528574",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-10-31T20:44:51+00:00",
+    "timestamp": "2025-11-08T12:19:44+00:00",
     "tools": {
       "components": [
         {
@@ -17,7 +17,7 @@
       ]
     },
     "component": {
-      "bom-ref": "1a229a53-bb81-4210-b848-d90d2399eb04",
+      "bom-ref": "21b51cf1-3673-421f-80a7-6f933f222113",
       "type": "application",
       "name": ".",
       "properties": [
@@ -30,7 +30,24 @@
   },
   "components": [
     {
-      "bom-ref": "714a4f5d-bfb3-4206-9baa-c8527639bfb4",
+      "bom-ref": "2ce2ca30-70e1-4b58-a815-d3c1ba378737",
+      "type": "library",
+      "name": "csstype",
+      "version": "3.1.3",
+      "purl": "pkg:npm/csstype@3.1.3",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "csstype@3.1.3"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "5d9c8401-a424-4096-bb57-ba8798acabe7",
       "type": "application",
       "name": "composer.lock",
       "properties": [
@@ -45,7 +62,39 @@
       ]
     },
     {
-      "bom-ref": "dfc92aa3-c0a9-4294-b0a0-2187be8e4463",
+      "bom-ref": "7b97df19-e17c-47a7-b422-af6451ca704f",
+      "type": "library",
+      "name": "csstype",
+      "version": "3.1.3",
+      "purl": "pkg:npm/csstype@3.1.3",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "csstype@3.1.3"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "bf947995-0bf5-4269-b1d9-e0404b2bdc33",
+      "type": "application",
+      "name": "templates/nextjs/yarn.lock",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:Class",
+          "value": "lang-pkgs"
+        },
+        {
+          "name": "aquasecurity:trivy:Type",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "ce612a2e-708d-4131-9a1e-8aa73455fc0a",
       "type": "application",
       "name": "yarn.lock",
       "properties": [
@@ -1128,6 +1177,60 @@
       ]
     },
     {
+      "bom-ref": "pkg:npm/%40types/prop-types@15.7.15",
+      "type": "library",
+      "group": "@types",
+      "name": "prop-types",
+      "version": "15.7.15",
+      "purl": "pkg:npm/%40types/prop-types@15.7.15",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "@types/prop-types@15.7.15"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/%40types/react-dom@18.3.7",
+      "type": "library",
+      "group": "@types",
+      "name": "react-dom",
+      "version": "18.3.7",
+      "purl": "pkg:npm/%40types/react-dom@18.3.7",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "@types/react-dom@18.3.7"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:npm/%40types/react@18.3.26",
+      "type": "library",
+      "group": "@types",
+      "name": "react",
+      "version": "18.3.26",
+      "purl": "pkg:npm/%40types/react@18.3.26",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "@types/react@18.3.26"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:npm/%40types/unist@3.0.3",
       "type": "library",
       "group": "@types",
@@ -1804,23 +1907,6 @@
         {
           "name": "aquasecurity:trivy:PkgID",
           "value": "core-js@2.6.12"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
-        }
-      ]
-    },
-    {
-      "bom-ref": "pkg:npm/csstype@3.1.3",
-      "type": "library",
-      "name": "csstype",
-      "version": "3.1.3",
-      "purl": "pkg:npm/csstype@3.1.3",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "csstype@3.1.3"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -3036,6 +3122,23 @@
       ]
     },
     {
+      "bom-ref": "pkg:npm/typescript@5.9.3",
+      "type": "library",
+      "name": "typescript",
+      "version": "5.9.3",
+      "purl": "pkg:npm/typescript@5.9.3",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "typescript@5.9.3"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:npm/unist-util-is@6.0.0",
       "type": "library",
       "name": "unist-util-is",
@@ -3225,14 +3328,19 @@
   ],
   "dependencies": [
     {
-      "ref": "1a229a53-bb81-4210-b848-d90d2399eb04",
+      "ref": "21b51cf1-3673-421f-80a7-6f933f222113",
       "dependsOn": [
-        "714a4f5d-bfb3-4206-9baa-c8527639bfb4",
-        "dfc92aa3-c0a9-4294-b0a0-2187be8e4463"
+        "5d9c8401-a424-4096-bb57-ba8798acabe7",
+        "bf947995-0bf5-4269-b1d9-e0404b2bdc33",
+        "ce612a2e-708d-4131-9a1e-8aa73455fc0a"
       ]
     },
     {
-      "ref": "714a4f5d-bfb3-4206-9baa-c8527639bfb4",
+      "ref": "2ce2ca30-70e1-4b58-a815-d3c1ba378737",
+      "dependsOn": []
+    },
+    {
+      "ref": "5d9c8401-a424-4096-bb57-ba8798acabe7",
       "dependsOn": [
         "pkg:composer/mnapoli/silly@1.9.1",
         "pkg:composer/revolt/event-loop@v1.0.7",
@@ -3240,7 +3348,19 @@
       ]
     },
     {
-      "ref": "dfc92aa3-c0a9-4294-b0a0-2187be8e4463",
+      "ref": "7b97df19-e17c-47a7-b422-af6451ca704f",
+      "dependsOn": []
+    },
+    {
+      "ref": "bf947995-0bf5-4269-b1d9-e0404b2bdc33",
+      "dependsOn": [
+        "pkg:npm/%40types/react-dom@18.3.7",
+        "pkg:npm/%40types/react@18.3.26",
+        "pkg:npm/typescript@5.9.3"
+      ]
+    },
+    {
+      "ref": "ce612a2e-708d-4131-9a1e-8aa73455fc0a",
       "dependsOn": [
         "pkg:npm/%40zackad/prettier-plugin-twig-melody@0.6.0",
         "pkg:npm/vitepress@1.6.4"
@@ -3598,6 +3718,21 @@
       "dependsOn": []
     },
     {
+      "ref": "pkg:npm/%40types/prop-types@15.7.15",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/%40types/react-dom@18.3.7",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/%40types/react@18.3.26",
+      "dependsOn": [
+        "7b97df19-e17c-47a7-b422-af6451ca704f",
+        "pkg:npm/%40types/prop-types@15.7.15"
+      ]
+    },
+    {
       "ref": "pkg:npm/%40types/unist@3.0.3",
       "dependsOn": []
     },
@@ -3691,10 +3826,10 @@
     {
       "ref": "pkg:npm/%40vue/runtime-dom@3.5.19",
       "dependsOn": [
+        "2ce2ca30-70e1-4b58-a815-d3c1ba378737",
         "pkg:npm/%40vue/reactivity@3.5.19",
         "pkg:npm/%40vue/runtime-core@3.5.19",
-        "pkg:npm/%40vue/shared@3.5.19",
-        "pkg:npm/csstype@3.1.3"
+        "pkg:npm/%40vue/shared@3.5.19"
       ]
     },
     {
@@ -3870,10 +4005,6 @@
     },
     {
       "ref": "pkg:npm/core-js@2.6.12",
-      "dependsOn": []
-    },
-    {
-      "ref": "pkg:npm/csstype@3.1.3",
       "dependsOn": []
     },
     {
@@ -4256,6 +4387,10 @@
     },
     {
       "ref": "pkg:npm/trim-lines@3.0.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "pkg:npm/typescript@5.9.3",
       "dependsOn": []
     },
     {
