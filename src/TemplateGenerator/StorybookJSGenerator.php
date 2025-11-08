@@ -643,7 +643,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         $escapedDesc = $this->escapeJsString($description);
 
         $category = 'HTML5';
-        $folder = ucfirst($level) . ' Elements';
+        $folder = 'Content Model';
         $title = "{$category}/{$folder}/{$name} - Composed";
 
         $js = "/**\n";
