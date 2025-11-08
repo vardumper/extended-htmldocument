@@ -805,7 +805,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
 
             for ($i = 0; $i < $renderCount && $rendered < $maxChildren; $i++) {
                 $childrenRenderCode[] = [
-                    'renderCode' => "    const child{$rendered} = {$importName}.Default.render({$importName}.Default.args);\n    parent.appendChild(child{$rendered});\n",
+                    'renderCode' => "    const child{$rendered} = {$importName}.default.render({$importName}.Default.args);\n    parent.appendChild(child{$rendered});\n",
                 ];
                 $rendered++;
             }

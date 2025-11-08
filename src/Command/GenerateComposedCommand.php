@@ -8,9 +8,6 @@ use Html\Delegator\HTMLDocumentDelegator;
 use Html\Element\BlockElement;
 use Html\Element\InlineElement;
 use Html\Element\VoidElement;
-use Html\TemplateGenerator\NextJSGenerator;
-use Html\TemplateGenerator\StorybookJSGenerator;
-use Html\TemplateGenerator\TwigGenerator;
 use Html\Trait\ClassResolverTrait;
 use Html\Trait\GeneratorResolverTrait;
 use ReflectionClass;
@@ -63,18 +60,6 @@ class GenerateComposedCommand extends Command
         if (! $this->loadHtmlDefinitions($specificationPath)) {
             return Command::FAILURE;
         }
-        // // Instantiate the appropriate generator
-        // $generatorInstance = match ($generator) {
-        //     'nextjs' => new NextJSGenerator(),
-        //     'storybook' => new StorybookJSGenerator(),
-        //     'twig' => new TwigGenerator(),
-        //     default => null,
-        // };
-
-        // if ($generatorInstance === null) {
-        //     $io->error("Unsupported generator '{$generator}'. Supported generators: nextjs, storybook, twig");
-        //     return Command::FAILURE;
-        // }
 
         $templateGenerators = $this->getGenerators($generators);
         foreach ($templateGenerators as $generator => $generatorInstance) {
@@ -121,9 +106,13 @@ class GenerateComposedCommand extends Command
                     continue;
                 }
 
-                $elementShortName = $ref->getShortName();
                 $fileName = $elementInstance::QUALIFIED_NAME . '.composed.' . $generatorInstance->getExtension();
-                $outFile = $contentDir . \DIRECTORY_SEPARATOR . $fileName;
+                $outFile = $contentDir . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME . \DIRECTORY_SEPARATOR . $fileName;
+                $outDir = dirname($outFile);
+
+                if (! is_dir($outDir)) {
+                    mkdir($outDir, 0755, true);
+                }
 
                 if (file_exists($outFile) && ! $overwriteExisting) {
                     $io->warning("File '{$outFile}' already exists. Skipping.");

@@ -83,13 +83,13 @@ class BatchGeneratorCommand extends Command
                 $fileName = $elementInstance::QUALIFIED_NAME . '.' . $generatorInstance->getExtension();
                 $level = $this->determineLevel($className);
                 if (! is_dir(
-                    rtrim($dest, \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level
+                    rtrim($dest, \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME
                 )) {
                     mkdir(
                         rtrim(
                             $dest,
                             \DIRECTORY_SEPARATOR
-                        ) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level,
+                        ) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level  . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME,
                         0755,
                         true
                     );
@@ -97,7 +97,7 @@ class BatchGeneratorCommand extends Command
                 $outFile = rtrim(
                     $dest,
                     \DIRECTORY_SEPARATOR
-                ) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level . \DIRECTORY_SEPARATOR . $fileName;
+                ) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME . \DIRECTORY_SEPARATOR . $fileName;
                 if (file_exists($outFile) && ! $overwriteExisting) {
                     $this->io->warning("File '{$outFile}' already exists. Skipping generation.");
                     continue;
