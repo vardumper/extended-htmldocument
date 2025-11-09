@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "vitepress": "^1.6.3"
+    "vitepress": "^1.6.4"
   },
   "license": "MIT",
   "scripts": {
@@ -10,5 +10,6 @@
   },
   "dependencies": {
     "@zackad/prettier-plugin-twig-melody": "^0.6.0"
-  }
+  },
+  "packageManager": "yarn@4.11.0"
 }
