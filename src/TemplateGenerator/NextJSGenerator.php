@@ -522,15 +522,9 @@ class NextJSGenerator implements TemplateGeneratorInterface
         // Build props object for element
         $tsx .= "  const elementProps: React.HTMLAttributes<HTMLElement> & Record<string, any> = {};\n\n";
 
-        // Handle className
-        if (isset($props['className'])) {
-            $tsx .= "  if (className) {\n";
-            $tsx .= "    elementProps.className = className;\n";
-            $tsx .= "  }\n\n";
-        }
-
-        // Handle data attributes
+        // Handle data attributes specially
         if (isset($props['data'])) {
+            $tsx .= "  // Handle data attributes specially\n";
             $tsx .= "  if (data) {\n";
             $tsx .= "    Object.entries(data).forEach(([key, value]) => {\n";
             $tsx .= "      elementProps[`data-\${key}`] = value;\n";
@@ -538,34 +532,46 @@ class NextJSGenerator implements TemplateGeneratorInterface
             $tsx .= "  }\n\n";
         }
 
-        // Handle other props
+        $tsx .= "  // Convert camelCase to kebab-case for attribute names\n";
+        $tsx .= "  const toKebabCase = (str: string): string => {\n";
+        $tsx .= "    return str.replace(/([a-z])([A-Z])/g, '\$1-\$2').toLowerCase();\n";
+        $tsx .= "  };\n\n";
+
+        $tsx .= "  // Props to exclude from automatic mapping\n";
+        $tsx .= "  const excludedProps = new Set(['children', 'data']);\n\n";
+
+        $tsx .= "  // Iterate over all props and map them to element attributes\n";
+        $tsx .= "  Object.entries(props).forEach(([key, value]) => {\n";
+        $tsx .= "    if (excludedProps.has(key) || value === undefined) {\n";
+        $tsx .= "      return;\n";
+        $tsx .= "    }\n\n";
+
+        $tsx .= "    // Convert camelCase aria/contenteditable/autocapitalize to kebab-case\n";
+        $tsx .= "    const attrName = key.startsWith('aria') || key === 'contenteditable' || key === 'autocapitalize' \n";
+        $tsx .= "      ? toKebabCase(key)\n";
+        $tsx .= "      : key;\n\n";
+
+        // Collect boolean prop names for the generated code
+        $booleanProps = [];
         foreach ($props as $prop) {
-            if (in_array($prop['name'], ['children', 'className', 'data'], true)) {
-                continue;
-            }
-
-            $propName = $prop['name'];
-            $htmlAttr = $prop['htmlAttr'] ?? $this->camelToKebab($propName);
-
-            // Special handling for boolean attributes - React expects boolean values
-            if ($prop['type'] === 'boolean') {
-                $tsx .= "  if ({$propName} !== undefined) {\n";
-                if (strpos($htmlAttr, '-') !== false) {
-                    $tsx .= "    elementProps['{$htmlAttr}'] = {$propName} ? true : false;\n";
-                } else {
-                    $tsx .= "    elementProps.{$htmlAttr} = {$propName} ? true : false;\n";
-                }
-                $tsx .= "  }\n\n";
-            } else {
-                $tsx .= "  if ({$propName} !== undefined) {\n";
-                if (strpos($htmlAttr, '-') !== false) {
-                    $tsx .= "    elementProps['{$htmlAttr}'] = {$propName};\n";
-                } else {
-                    $tsx .= "    elementProps.{$htmlAttr} = {$propName};\n";
-                }
-                $tsx .= "  }\n\n";
+            if ($prop['type'] === 'boolean' && ! in_array($prop['name'], ['children', 'data'], true)) {
+                $booleanProps[] = $prop['name'];
             }
         }
+
+        if (! empty($booleanProps)) {
+            $tsx .= "    // Handle boolean props that need explicit conversion\n";
+            $booleanPropsStr = implode("' || key === '", $booleanProps);
+            $tsx .= "    if (typeof value === 'boolean' && (key === '{$booleanPropsStr}')) {\n";
+            $tsx .= "      elementProps[attrName] = value ? true : false;\n";
+            $tsx .= "    } else {\n";
+            $tsx .= "      elementProps[attrName] = value;\n";
+            $tsx .= "    }\n";
+        } else {
+            $tsx .= "    elementProps[attrName] = value;\n";
+        }
+
+        $tsx .= "  });\n\n";
 
         // Render element
         $tsx .= "  return React.createElement(\n";
