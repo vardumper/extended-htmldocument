@@ -550,11 +550,19 @@ class NextJSGenerator implements TemplateGeneratorInterface
             // Special handling for boolean attributes - React expects boolean values
             if ($prop['type'] === 'boolean') {
                 $tsx .= "  if ({$propName} !== undefined) {\n";
-                $tsx .= "    elementProps.{$htmlAttr} = {$propName};\n";
+                if (strpos($htmlAttr, '-') !== false) {
+                    $tsx .= "    elementProps['{$htmlAttr}'] = {$propName} ? true : false;\n";
+                } else {
+                    $tsx .= "    elementProps.{$htmlAttr} = {$propName} ? true : false;\n";
+                }
                 $tsx .= "  }\n\n";
             } else {
                 $tsx .= "  if ({$propName} !== undefined) {\n";
-                $tsx .= "    elementProps.{$htmlAttr} = {$propName};\n";
+                if (strpos($htmlAttr, '-') !== false) {
+                    $tsx .= "    elementProps['{$htmlAttr}'] = {$propName};\n";
+                } else {
+                    $tsx .= "    elementProps.{$htmlAttr} = {$propName};\n";
+                }
                 $tsx .= "  }\n\n";
             }
         }
