@@ -549,7 +549,6 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         bool $isSelfClosing
     ): string {
         $date = date('F j, Y H:i');
-        $escapedDesc = $this->escapeJsString($description);
 
         $js = "/**\n";
         $js .= " *\n";
@@ -577,7 +576,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         $js .= "      inlineStories: true,\n";
         $js .= "      source: true,\n";
         $js .= "      description: {\n";
-        $js .= "        component: \"{$escapedDesc}\",\n";
+        $js .= "        component: \"{$description}\",\n";
         $js .= "      },\n";
         $js .= "    },\n";
         $js .= "  },\n";
@@ -655,18 +654,18 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         $js .= " *\n";
         $js .= " * CONTENT MODEL:\n";
 
-        if (!empty($childOf)) {
-            $childOfNames = array_map(function($class) {
+        if (! empty($childOf)) {
+            $childOfNames = array_map(function ($class) {
                 return (new ReflectionClass($class))->getShortName();
             }, $childOf);
-            $js .= " * - Can be a child of: " . implode(', ', $childOfNames) . "\n";
+            $js .= ' * - Can be a child of: ' . implode(', ', $childOfNames) . "\n";
         }
 
-        if (!empty($parentOf)) {
-            $parentOfNames = array_map(function($class) {
+        if (! empty($parentOf)) {
+            $parentOfNames = array_map(function ($class) {
                 return (new ReflectionClass($class))->getShortName();
             }, $parentOf);
-            $js .= " * - Can contain: " . implode(', ', $parentOfNames) . "\n";
+            $js .= ' * - Can contain: ' . implode(', ', $parentOfNames) . "\n";
         }
 
         $uniquePerParent = $ref->getStaticPropertyValue('uniquePerParent', false);
@@ -695,7 +694,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         $js .= "  tags: [\"autodocs\"],\n";
         $js .= "  parameters: {\n";
         $js .= "    layout: \"centered\",\n";
-        $js .= '    componentSubtitle: "Composed Example with Valid Children",'."\n";
+        $js .= '    componentSubtitle: "Composed Example with Valid Children",' . "\n";
         $js .= "    docs: {\n";
         $js .= "      description: {\n";
         $js .= "        component: \"{$escapedDesc}\",\n";
@@ -731,8 +730,11 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
     /**
      * Collect imports and generate render code for child elements
      */
-    private function collectImportsForComposedStory(string $parentElementName, array $parentOf, ReflectionClass $parentRef): array
-    {
+    private function collectImportsForComposedStory(
+        string $parentElementName,
+        array $parentOf,
+        ReflectionClass $parentRef
+    ): array {
         // Priority elements for specific containers
         $priorityElements = [
             'form' => ['fieldset', 'label', 'input', 'textarea', 'button', 'select'],
@@ -763,8 +765,8 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         $relevantChildren = $children;
         if (isset($priorityElements[$parentElementName]) && count($children) > 5) {
             $priorities = $priorityElements[$parentElementName];
-            $filtered = array_filter($children, fn($c) => in_array($c['name'], $priorities, true));
-            if (!empty($filtered)) {
+            $filtered = array_filter($children, fn ($c) => in_array($c['name'], $priorities, true));
+            if (! empty($filtered)) {
                 $relevantChildren = array_values($filtered);
             }
         }
@@ -798,7 +800,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
             $importName = ucfirst($childName) . 'Stories';
 
             // Add import if not already imported
-            if (!isset($importedNames[$importName])) {
+            if (! isset($importedNames[$importName])) {
                 $imports[] = "import * as {$importName} from './../../{$childLevel}/{$childName}/{$childName}.stories.js';";
                 $importedNames[$importName] = true;
             }
@@ -830,5 +832,4 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         }
         return 'block';
     }
-
 }

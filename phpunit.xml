@@ -5,7 +5,7 @@
       <directory suffix="Test.php">./tests</directory>
     </testsuite>
   </testsuites>
-  <coverage includeUncoveredFiles="false">
+  <coverage includeUncoveredFiles="false" processUncoveredFiles="false">
     <report>
       <clover outputFile="clover.xml"/>
     </report>
@@ -17,15 +17,15 @@
   <source>
     <include>
       <directory suffix=".php">./src/Delegator</directory>
-      <directory suffix=".php">./src/Enum</directory>
       <directory suffix=".php">./src/Helper</directory>
       <directory suffix=".php">./src/Interface</directory>
       <directory suffix=".php">./src/Mapping</directory>
       <directory suffix=".php">./src/Service</directory>
       <directory suffix=".php">./src/TemplateGenerator</directory>
-      <directory suffix=".php">./src/Trait</directory>
     </include>
     <exclude>
+      <directory suffix=".php">./src/Enum</directory>
+      <directory suffix=".php">./src/Trait</directory>
       <directory suffix=".php">src/Command</directory>
       <directory suffix=".php">src/Resources</directory>
       <directory suffix=".php">src/Element</directory>
