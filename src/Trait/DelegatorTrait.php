@@ -29,32 +29,14 @@ trait DelegatorTrait
         $reflection = new ReflectionClass($this->delegated);
         if ($reflection->hasMethod($name)) {
             $method = $reflection->getMethod($name);
-            // var_dump($method->getParameters());
-            // var_dump($method->getName());
             if ($reflection->getName() === HTMLDocument::class && $name === 'appendChild') {
-                // die('ohno');
             }
-            if ($this->delegated instanceof Division) {
-                // die('ohno');
-                // Debugging purpose
-                // var_dump($name, $arguments);
-                // var_dump(\get_class($this->delegated));
-                // exit;
-                // var_dump(\get_class($this->delegated));
-                // var_dump($this->delegated);
-                // exit;
+            if ($this->delegated instanceof Division) {    
             }
             $method->setAccessible(true);
             try {
                 return $method->invokeArgs($this->delegated, $arguments);
             } catch(\TypeError $e) {
-                
-                // var_dump($method->getName(), $arguments);
-                // echo $e;
-                // var_dump(\get_class($this));
-                // var_dump(\get_class($this->delegated));
-                // var_dump($this->delegated);
-                // var_dump($name, $arguments, $this->delegated);
             }
 
         }
