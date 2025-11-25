@@ -280,7 +280,9 @@ class NextJSGenerator implements TemplateGeneratorInterface
                 }
 
                 // Handle JS reserved words by appending 'Prop'
-                $jsVarName = in_array($propName, self::JS_RESERVED_WORDS, true) ? 'html' . ucfirst($propName) : $propName;
+                $jsVarName = in_array($propName, self::JS_RESERVED_WORDS, true) ? 'html' . ucfirst(
+                    $propName
+                ) : $propName;
 
                 // Avoid duplicates
                 if (isset($props[$jsVarName])) {
@@ -410,7 +412,9 @@ class NextJSGenerator implements TemplateGeneratorInterface
                 }
 
                 // Handle JS reserved words by appending 'Prop'
-                $jsVarName = in_array($propName, self::JS_RESERVED_WORDS, true) ? 'html' . ucfirst($propName) : $propName;
+                $jsVarName = in_array($propName, self::JS_RESERVED_WORDS, true) ? 'html' . ucfirst(
+                    $propName
+                ) : $propName;
 
                 $props[$jsVarName] = [
                     'name' => $jsVarName,
@@ -518,15 +522,9 @@ class NextJSGenerator implements TemplateGeneratorInterface
         // Build props object for element
         $tsx .= "  const elementProps: React.HTMLAttributes<HTMLElement> & Record<string, any> = {};\n\n";
 
-        // Handle className
-        if (isset($props['className'])) {
-            $tsx .= "  if (className) {\n";
-            $tsx .= "    elementProps.className = className;\n";
-            $tsx .= "  }\n\n";
-        }
-
-        // Handle data attributes
+        // Handle data attributes specially
         if (isset($props['data'])) {
+            $tsx .= "  // Handle data attributes specially\n";
             $tsx .= "  if (data) {\n";
             $tsx .= "    Object.entries(data).forEach(([key, value]) => {\n";
             $tsx .= "      elementProps[`data-\${key}`] = value;\n";
@@ -534,26 +532,46 @@ class NextJSGenerator implements TemplateGeneratorInterface
             $tsx .= "  }\n\n";
         }
 
-        // Handle other props
+        $tsx .= "  // Convert camelCase to kebab-case for attribute names\n";
+        $tsx .= "  const toKebabCase = (str: string): string => {\n";
+        $tsx .= "    return str.replace(/([a-z])([A-Z])/g, '\$1-\$2').toLowerCase();\n";
+        $tsx .= "  };\n\n";
+
+        $tsx .= "  // Props to exclude from automatic mapping\n";
+        $tsx .= "  const excludedProps = new Set(['children', 'data']);\n\n";
+
+        $tsx .= "  // Iterate over all props and map them to element attributes\n";
+        $tsx .= "  Object.entries(props).forEach(([key, value]) => {\n";
+        $tsx .= "    if (excludedProps.has(key) || value === undefined) {\n";
+        $tsx .= "      return;\n";
+        $tsx .= "    }\n\n";
+
+        $tsx .= "    // Convert camelCase aria/contenteditable/autocapitalize to kebab-case\n";
+        $tsx .= "    const attrName = key.startsWith('aria') || key === 'contenteditable' || key === 'autocapitalize' \n";
+        $tsx .= "      ? toKebabCase(key)\n";
+        $tsx .= "      : key;\n\n";
+
+        // Collect boolean prop names for the generated code
+        $booleanProps = [];
         foreach ($props as $prop) {
-            if (in_array($prop['name'], ['children', 'className', 'data'], true)) {
-                continue;
-            }
-
-            $propName = $prop['name'];
-            $htmlAttr = $prop['htmlAttr'] ?? $this->camelToKebab($propName);
-
-            // Special handling for boolean attributes - React expects boolean values
-            if ($prop['type'] === 'boolean') {
-                $tsx .= "  if ({$propName} !== undefined) {\n";
-                $tsx .= "    elementProps['{$htmlAttr}'] = {$propName};\n";
-                $tsx .= "  }\n\n";
-            } else {
-                $tsx .= "  if ({$propName} !== undefined) {\n";
-                $tsx .= "    elementProps['{$htmlAttr}'] = {$propName};\n";
-                $tsx .= "  }\n\n";
+            if ($prop['type'] === 'boolean' && ! in_array($prop['name'], ['children', 'data'], true)) {
+                $booleanProps[] = $prop['name'];
             }
         }
+
+        if (! empty($booleanProps)) {
+            $tsx .= "    // Handle boolean props that need explicit conversion\n";
+            $booleanPropsStr = implode("' || key === '", $booleanProps);
+            $tsx .= "    if (typeof value === 'boolean' && (key === '{$booleanPropsStr}')) {\n";
+            $tsx .= "      elementProps[attrName] = value ? true : false;\n";
+            $tsx .= "    } else {\n";
+            $tsx .= "      elementProps[attrName] = value;\n";
+            $tsx .= "    }\n";
+        } else {
+            $tsx .= "    elementProps[attrName] = value;\n";
+        }
+
+        $tsx .= "  });\n\n";
 
         // Render element
         $tsx .= "  return React.createElement(\n";
@@ -593,14 +611,14 @@ class NextJSGenerator implements TemplateGeneratorInterface
         $tsx .= " *\n";
         $tsx .= " * CONTENT MODEL:\n";
 
-        if (!empty($childOf)) {
-            $tsx .= " * - Can be a child of: " . implode(', ', array_map(function($class) {
+        if (! empty($childOf)) {
+            $tsx .= ' * - Can be a child of: ' . implode(', ', array_map(function ($class) {
                 return (new ReflectionClass($class))->getShortName();
             }, $childOf)) . "\n";
         }
 
-        if (!empty($parentOf)) {
-            $tsx .= " * - Can contain: " . implode(', ', array_map(function($class) {
+        if (! empty($parentOf)) {
+            $tsx .= ' * - Can contain: ' . implode(', ', array_map(function ($class) {
                 return (new ReflectionClass($class))->getShortName();
             }, $parentOf)) . "\n";
         }
@@ -618,7 +636,9 @@ class NextJSGenerator implements TemplateGeneratorInterface
         $tsx .= " */\n\n";
 
         $tsx .= "import React from 'react';\n";
-        $tsx .= "import { {$componentName} } from '../" . $this->determineLevel($ref->getName()) . "/{$elementName}';\n";
+        $tsx .= "import { {$componentName} } from '../" . $this->determineLevel(
+            $ref->getName()
+        ) . "/{$elementName}';\n";
 
         // Import child components - we'll collect all needed imports recursively
         $collected = [];
@@ -650,8 +670,12 @@ class NextJSGenerator implements TemplateGeneratorInterface
     /**
      * Recursively collect all imports needed for the composition
      */
-    private function collectImportsRecursively(array $parentOf, string $parentElementName, array &$collected = [], int $depth = 0): array
-    {
+    private function collectImportsRecursively(
+        array $parentOf,
+        string $parentElementName,
+        array &$collected = [],
+        int $depth = 0
+    ): array {
         // Prevent infinite recursion and limit depth
         if ($depth > 2) {
             return [];
@@ -688,9 +712,14 @@ class NextJSGenerator implements TemplateGeneratorInterface
 
             // Only recurse if this element has a limited, specific set of children (< 10)
             // This prevents collecting all flow content from generic containers
-            if (!empty($grandChildren) && count($grandChildren) < 10) {
+            if (! empty($grandChildren) && count($grandChildren) < 10) {
                 // Recursively collect imports for nested children
-                $nestedImports = $this->collectImportsRecursively($grandChildren, $childElementName, $collected, $depth + 1);
+                $nestedImports = $this->collectImportsRecursively(
+                    $grandChildren,
+                    $childElementName,
+                    $collected,
+                    $depth + 1
+                );
                 $importMap = array_merge($importMap, $nestedImports);
             }
         }
@@ -701,8 +730,12 @@ class NextJSGenerator implements TemplateGeneratorInterface
     /**
      * Generate nested example code based on content model metadata
      */
-    private function generateNestedExampleFromContentModel(string $elementName, array $parentOf, int $indentLevel = 3, int $depth = 0): string
-    {
+    private function generateNestedExampleFromContentModel(
+        string $elementName,
+        array $parentOf,
+        int $indentLevel = 3,
+        int $depth = 0
+    ): string {
         // Prevent infinite recursion - limit nesting depth
         if ($depth >= 3) {
             return '';
@@ -743,15 +776,18 @@ class NextJSGenerator implements TemplateGeneratorInterface
         if (isset($priorityElements[$elementName]) && count($children) > 5) {
             // Filter to priority elements first
             $priorities = $priorityElements[$elementName];
-            $filtered = array_filter($children, fn($c) => in_array($c['name'], $priorities, true));
+            $filtered = array_filter($children, fn ($c) => in_array($c['name'], $priorities, true));
 
-            if (!empty($filtered)) {
+            if (! empty($filtered)) {
                 $relevantChildren = array_values($filtered);
 
                 // For head element, ensure title comes first, then base
                 if ($elementName === 'head') {
-                    usort($relevantChildren, function($a, $b) {
-                        $order = ['title' => 0, 'base' => 1];
+                    usort($relevantChildren, function ($a, $b) {
+                        $order = [
+                            'title' => 0,
+                            'base' => 1,
+                        ];
                         $aOrder = $order[$a['name']] ?? 999;
                         $bOrder = $order[$b['name']] ?? 999;
                         return $aOrder <=> $bOrder;
@@ -761,7 +797,22 @@ class NextJSGenerator implements TemplateGeneratorInterface
         }
 
         // Elements that should render with simple text content instead of nested children
-        $textOnlyElements = ['dd', 'dt', 'li', 'th', 'td', 'label', 'button', 'legend', 'summary', 'figcaption', 'caption', 'body', 'title', 'p'];
+        $textOnlyElements = [
+            'dd',
+            'dt',
+            'li',
+            'th',
+            'td',
+            'label',
+            'button',
+            'legend',
+            'summary',
+            'figcaption',
+            'caption',
+            'body',
+            'title',
+            'p',
+        ];
 
         // Generate examples for each child based on common patterns
         $rendered = 0;
@@ -782,10 +833,15 @@ class NextJSGenerator implements TemplateGeneratorInterface
                 $forceTextOnly = in_array($child['name'], $textOnlyElements, true);
 
                 // Check if child has its own children (needs nesting)
-                if (!empty($childParentOf) && !$forceTextOnly) {
+                if (! empty($childParentOf) && ! $forceTextOnly) {
                     // This child has its own structure - render it nested
                     $tsx .= "{$indent}<{$componentName}>\n";
-                    $tsx .= $this->generateNestedExampleFromContentModel($child['name'], $childParentOf, $indentLevel + 1, $depth + 1);
+                    $tsx .= $this->generateNestedExampleFromContentModel(
+                        $child['name'],
+                        $childParentOf,
+                        $indentLevel + 1,
+                        $depth + 1
+                    );
                     $tsx .= "{$indent}</{$componentName}>\n";
                 } else {
                     // Leaf node or text-only element - render with sample content
@@ -817,7 +873,21 @@ class NextJSGenerator implements TemplateGeneratorInterface
     private function generateLeafExample(string $elementName, string $componentName, string $indent, int $index): string
     {
         // Self-closing elements
-        $selfClosing = ['img', 'input', 'br', 'hr', 'area', 'source', 'col', 'track', 'wbr', 'meta', 'link', 'base', 'param'];
+        $selfClosing = [
+            'img',
+            'input',
+            'br',
+            'hr',
+            'area',
+            'source',
+            'col',
+            'track',
+            'wbr',
+            'meta',
+            'link',
+            'base',
+            'param',
+        ];
 
         $tsx = '';
 
@@ -860,7 +930,7 @@ class NextJSGenerator implements TemplateGeneratorInterface
                     break;
                 case 'th':
                 case 'td':
-                    $tsx .= "{$indent}<{$componentName}>" . ($elementName === 'th' ? 'Header' : 'Data') . " " . ($index + 1) . "</{$componentName}>\n";
+                    $tsx .= "{$indent}<{$componentName}>" . ($elementName === 'th' ? 'Header' : 'Data') . ' ' . ($index + 1) . "</{$componentName}>\n";
                     break;
                 case 'legend':
                     $tsx .= "{$indent}<{$componentName}>Group Title</{$componentName}>\n";
@@ -906,7 +976,7 @@ class NextJSGenerator implements TemplateGeneratorInterface
     private function determineLevel(string $className): string
     {
         $level = (new ReflectionClass($className))->getParentClass();
-        if (!$level) {
+        if (! $level) {
             return 'inline'; // default
         }
         $parts = explode('\\', $level->getName());

@@ -106,7 +106,7 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
         return new HTMLElementDelegator($htmlElement);
     }
 
-    public function appendChild($child): void
+    public function appendChild(HTMLElementDelegator $child): void
     {
         $this->delegated->documentElement->appendChild($child->delegated);
     }

@@ -30,6 +30,7 @@ class BatchGeneratorCommand extends Command
     private const HTML_DEFINITION_PATH = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
 
     private ?array $data = null;
+
     private SymfonyStyle $io;
 
     /**
@@ -42,7 +43,7 @@ class BatchGeneratorCommand extends Command
         InputInterface $input,
         OutputInterface $output,
         bool $overwriteExisting = false,
-        string $specification = null
+        ?string $specification = null
     ): int {
         $this->io = new SymfonyStyle($input, $output);
 
@@ -83,13 +84,16 @@ class BatchGeneratorCommand extends Command
                 $fileName = $elementInstance::QUALIFIED_NAME . '.' . $generatorInstance->getExtension();
                 $level = $this->determineLevel($className);
                 if (! is_dir(
-                    rtrim($dest, \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME
+                    rtrim(
+                        $dest,
+                        \DIRECTORY_SEPARATOR
+                    ) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME
                 )) {
                     mkdir(
                         rtrim(
                             $dest,
                             \DIRECTORY_SEPARATOR
-                        ) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level  . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME,
+                        ) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME,
                         0755,
                         true
                     );

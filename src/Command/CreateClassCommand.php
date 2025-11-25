@@ -624,7 +624,7 @@ final class CreateClassCommand extends Command
     {
         return "    public function set%s(%s \$%s): static
     {
-        if (is_string(\$%s)) {
+        if (\is_string(\$%s)) {
             \$%s = %s::tryFrom(\$%s) ?? throw new \InvalidArgumentException(\"Invalid value for \\$%s.\");
         }
         \$this->%s = \$%s;
@@ -644,9 +644,9 @@ final class CreateClassCommand extends Command
         return "    public function set%s(%s \$%s): static
     {
         \$value = \$%s;
-        if (is_string(\$%s)) {
+        if (\is_string(\$%s)) {
             \$resolved = %s::tryFrom(\$%s);
-            if (!is_null(\$resolved)) {
+            if (!\is_null(\$resolved)) {
                 \$%s = \$resolved;
             }
         }

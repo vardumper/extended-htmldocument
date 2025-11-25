@@ -11,10 +11,9 @@ declare(strict_types=1);
 namespace Html\Trait;
 
 use BadMethodCallException;
-use Dom\HTMLDocument;
-use Html\Element\Block\Division;
 use InvalidArgumentException;
 use ReflectionClass;
+use TypeError;
 
 trait DelegatorTrait
 {
@@ -37,8 +36,8 @@ trait DelegatorTrait
             try {
                 return $method->invokeArgs($this->delegated, $arguments);
             } catch(\TypeError $e) {
+                \error_log($e->getMessage());
             }
-
         }
         throw new BadMethodCallException(
             "Method {$name} does not exist on " . $reflection->getName() . '. However you can implement it on ' . __CLASS__
