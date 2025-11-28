@@ -39,7 +39,8 @@ test('item', function () {
     $element = $document->createElement('div', 'example content');
     $document->appendChild($element);
     $item = $delegator->item(0);
-    expect($item instanceof NodeDelegator || strpos(get_class($item), 'Html\\Element\\') === 0)->toBeTrue();
+    expect($item instanceof NodeDelegator || strpos(get_class($item), 'Html\\Element\\') === 0)
+        ->toBeTrue();
 });
 
 test('item count', function () {
@@ -75,4 +76,22 @@ test('remove child', function () {
     $delegator = new NodeListDelegator($document->documentElement->childNodes);
     expect(iterator_to_array($delegator->getIterator()))
         ->toHaveCount(0);
+});
+
+test('forEach applies callback to all elements', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $a1 = $document->createElement('a');
+    $a2 = $document->createElement('a');
+    $document->appendChild($a1);
+    $document->appendChild($a2);
+    $list = new NodeListDelegator($document->documentElement->getElementsByTagName('a'));
+    $list->forEach(function ($element, $i) {
+        $element->setAttribute('data-tracking-id', 'id-' . $i);
+    });
+    $ids = [];
+    foreach ($list as $i => $el) {
+        $ids[] = $el->getAttribute('data-tracking-id');
+    }
+    expect($ids)
+        ->toBe(['id-0', 'id-1']);
 });

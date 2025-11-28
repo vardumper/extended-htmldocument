@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Html\Delegator;
 
 use AllowDynamicProperties;
@@ -143,5 +145,16 @@ class NodeListDelegator implements Countable, IteratorAggregate
     final public function count(): int
     {
         return $this->delegated->length;
+    }
+
+    /**
+     * Applies callback to each item in the node list.
+     * @param callable $callback function($element, $index, $list)
+     */
+    public function forEach(callable $callback): void
+    {
+        foreach ($this as $i => $item) {
+            $callback($item, $i, $this);
+        }
     }
 }
