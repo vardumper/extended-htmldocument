@@ -2,6 +2,7 @@
 
 namespace Html\TemplateGenerator;
 
+use Exception;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
@@ -142,11 +143,6 @@ class TwigGenerator implements TemplateGeneratorInterface
         $this->componentHandle = $handle;
     }
 
-    private function camelToKebab(string $string): string
-    {
-        return strtolower(preg_replace('/([a-z])([A-Z])/', '$1-$2', $string));
-    }
-
     public function renderElement(HTMLElementDelegatorInterface $element): string
     {
         $ref = new ReflectionClass($element);
@@ -249,214 +245,6 @@ class TwigGenerator implements TemplateGeneratorInterface
         return $twig;
     }
 
-    /**
-     * Build a composed Twig template showing parent-child relationships
-     */
-    private function buildComposedTemplate(
-        string $elementName,
-        string $name,
-        string $description,
-        ReflectionClass $ref,
-        array $childOf,
-        array $parentOf
-    ): string {
-        $twig = "{#\n";
-        $twig .= "  This file is auto-generated.\n\n";
-        $twig .= "  {$name} - Composed Example\n";
-        $twig .= "  {$description}\n\n";
-        $twig .= "  CONTENT MODEL:\n";
-
-        if (!empty($childOf)) {
-            $childOfNames = array_map(function($class) {
-                return (new ReflectionClass($class))->getShortName();
-            }, $childOf);
-            $twig .= "  - Can be a child of: " . implode(', ', $childOfNames) . "\n";
-        }
-
-        if (!empty($parentOf)) {
-            $parentOfNames = array_map(function($class) {
-                return (new ReflectionClass($class))->getShortName();
-            }, $parentOf);
-            $twig .= "  - Can contain: " . implode(', ', $parentOfNames) . "\n";
-        }
-
-        $uniquePerParent = $ref->getStaticPropertyValue('uniquePerParent', false);
-        $unique = $ref->getStaticPropertyValue('unique', false);
-
-        if ($unique) {
-            $twig .= "  - UNIQUE: Only one allowed per document\n";
-        }
-        if ($uniquePerParent) {
-            $twig .= "  - UNIQUE PER PARENT: Only one allowed per parent element\n";
-        }
-
-        $twig .= "\n  @author vardumper <info@erikpoehler.com>\n";
-        $twig .= "  @package vardumper/extended-htmldocument\n";
-        $twig .= "  @see src/TemplateGenerator/TwigGenerator.php\n";
-        $twig .= "#}\n";
-
-        // Avoid reserved words for block names
-        $blockName = in_array($elementName, self::TWIG_RESERVED_WORDS, true)
-            ? $elementName . '_composed'
-            : $elementName . '_composed';
-
-        // Determine the level (directory) for the parent element
-        $parentLevel = $this->determineLevel($ref->getName());
-
-        $twig .= "{% block {$blockName} %}\n";
-        $twig .= "{% embed '../{$parentLevel}/{$elementName}.twig' with {\n";
-        $twig .= "  class: 'example'\n";
-        $twig .= "} %}\n";
-        $twig .= "  {% block content %}\n";
-
-        // Generate child elements based on content model
-        $children = $this->collectChildrenForComposedTemplate($elementName, $parentOf, $ref);
-
-        foreach ($children as $child) {
-            $twig .= "  " . $child['twigCode'];
-        }
-
-        $twig .= "  {% endblock %}\n";
-        $twig .= "{% endembed %}\n";
-        $twig .= "{% endblock %}\n";
-
-        return $twig;
-    }
-
-    /**
-     * Determine the level (directory) for a given element class
-     */
-    private function determineLevel(string $className): string
-    {
-        if (strpos($className, 'InlineElement') !== false || strpos($className, '\\Element\\Inline\\') !== false) {
-            return 'inline';
-        }
-        if (strpos($className, 'VoidElement') !== false || strpos($className, '\\Element\\Void\\') !== false) {
-            return 'void';
-        }
-        return 'block';
-    }
-
-    /**
-     * Collect and generate Twig code for child elements
-     */
-    private function collectChildrenForComposedTemplate(string $parentElementName, array $parentOf, ReflectionClass $parentRef): array
-    {
-        // Priority elements for specific containers
-        $priorityElements = [
-            'form' => ['fieldset', 'label', 'input', 'textarea', 'button', 'select'],
-            'fieldset' => ['legend', 'label', 'input', 'textarea', 'button'],
-            'select' => ['optgroup', 'option'],
-            'datalist' => ['option'],
-            'table' => ['caption', 'colgroup', 'thead', 'tbody', 'tfoot', 'tr'],
-            'head' => ['title', 'base', 'meta', 'link', 'script', 'style'],
-            'details' => ['summary', 'p'],
-        ];
-
-        // Get children to render
-        $children = [];
-        foreach ($parentOf as $childClass) {
-            $childRef = new ReflectionClass($childClass);
-            $childElementName = $childRef->hasConstant('QUALIFIED_NAME')
-                ? $childRef->getConstant('QUALIFIED_NAME')
-                : strtolower($childRef->getShortName());
-
-            $children[] = [
-                'name' => $childElementName,
-                'ref' => $childRef,
-                'class' => $childClass,
-            ];
-        }
-
-        // Filter to priority elements if there are too many children
-        $relevantChildren = $children;
-        if (isset($priorityElements[$parentElementName]) && count($children) > 5) {
-            $priorities = $priorityElements[$parentElementName];
-            $filtered = array_filter($children, fn($c) => in_array($c['name'], $priorities, true));
-            if (!empty($filtered)) {
-                $relevantChildren = array_values($filtered);
-            }
-        }
-
-        // Limit to reasonable number of examples
-        $maxChildren = 3;
-        if ($parentElementName === 'head') {
-            $maxChildren = 6;
-        } elseif (count($children) > 10) {
-            $maxChildren = 4;
-        }
-
-        // Elements that should have text content only
-        $textOnlyElements = ['dd', 'dt', 'li', 'th', 'td', 'label', 'button', 'legend', 'summary', 'title', 'option'];
-
-        $childrenTwigCode = [];
-        $rendered = 0;
-
-        foreach ($relevantChildren as $child) {
-            if ($rendered >= $maxChildren) {
-                break;
-            }
-
-            $childName = $child['name'];
-            $childRef = $child['ref'];
-            $childClass = $child['class'];
-            $uniquePerParent = $childRef->getStaticPropertyValue('uniquePerParent', false);
-            $isSelfClosing = $childRef->hasConstant('SELF_CLOSING') && $childRef->getConstant('SELF_CLOSING');
-
-            // Determine the level for this child element
-            $childLevel = $this->determineLevel($childClass);
-
-            $renderCount = $uniquePerParent ? 1 : 2;
-
-            for ($i = 0; $i < $renderCount && $rendered < $maxChildren; $i++) {
-                $twigCode = "";
-
-                if ($isSelfClosing) {
-                    // Self-closing elements with common attributes
-                    if ($childName === 'input') {
-                        $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' with {'type': 'text', 'name': 'example'} %}\n";
-                    } elseif ($childName === 'img') {
-                        $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' with {'src': '/image.jpg', 'alt': 'Example'} %}\n";
-                    } elseif ($childName === 'link') {
-                        $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' with {'rel': 'stylesheet', 'href': '/styles.css'} %}\n";
-                    } elseif ($childName === 'meta') {
-                        $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' with {'name': 'description', 'content': 'Example'} %}\n";
-                    } elseif ($childName === 'base') {
-                        $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' with {'href': '/'} %}\n";
-                    } else {
-                        $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' %}\n";
-                    }
-                } elseif (in_array($childName, $textOnlyElements, true)) {
-                    // Text-only elements
-                    $textContent = match($childName) {
-                        'title' => 'Page Title',
-                        'option' => 'Option ' . ($i + 1),
-                        'li' => 'Item ' . ($i + 1),
-                        'dt' => 'Term ' . ($i + 1),
-                        'dd' => 'Definition ' . ($i + 1),
-                        'th', 'td' => 'Cell ' . ($i + 1),
-                        'label' => 'Label ' . ($i + 1),
-                        'button' => 'Button ' . ($i + 1),
-                        'legend' => 'Legend',
-                        'summary' => 'Summary',
-                        default => 'Example content',
-                    };
-                    $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' with {'content': '{$textContent}'} %}\n";
-                } else {
-                    // Elements with content
-                    $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' with {'content': 'Example content'} %}\n";
-                }
-
-                $childrenTwigCode[] = [
-                    'twigCode' => $twigCode,
-                ];
-                $rendered++;
-            }
-        }
-
-        return $childrenTwigCode;
-    }
-
     public function renderDocument(HTMLDocumentDelegatorInterface $document): string
     {
         $html = '';
@@ -504,6 +292,222 @@ Ok, I'm ready to generate my response:</think>" . $head;
         return $finalHtml;
     }
 
+    private function camelToKebab(string $string): string
+    {
+        return strtolower(preg_replace('/([a-z])([A-Z])/', '$1-$2', $string));
+    }
+
+    /**
+     * Build a composed Twig template showing parent-child relationships
+     */
+    private function buildComposedTemplate(
+        string $elementName,
+        string $name,
+        string $description,
+        ReflectionClass $ref,
+        array $childOf,
+        array $parentOf
+    ): string {
+        $twig = "{#\n";
+        $twig .= "  This file is auto-generated.\n\n";
+        $twig .= "  {$name} - Composed Example\n";
+        $twig .= "  {$description}\n\n";
+        $twig .= "  CONTENT MODEL:\n";
+
+        if (! empty($childOf)) {
+            $childOfNames = array_map(function ($class) {
+                return (new ReflectionClass($class))->getShortName();
+            }, $childOf);
+            $twig .= '  - Can be a child of: ' . implode(', ', $childOfNames) . "\n";
+        }
+
+        if (! empty($parentOf)) {
+            $parentOfNames = array_map(function ($class) {
+                return (new ReflectionClass($class))->getShortName();
+            }, $parentOf);
+            $twig .= '  - Can contain: ' . implode(', ', $parentOfNames) . "\n";
+        }
+
+        $uniquePerParent = $ref->getStaticPropertyValue('uniquePerParent', false);
+        $unique = $ref->getStaticPropertyValue('unique', false);
+
+        if ($unique) {
+            $twig .= "  - UNIQUE: Only one allowed per document\n";
+        }
+        if ($uniquePerParent) {
+            $twig .= "  - UNIQUE PER PARENT: Only one allowed per parent element\n";
+        }
+
+        $twig .= "\n  @author vardumper <info@erikpoehler.com>\n";
+        $twig .= "  @package vardumper/extended-htmldocument\n";
+        $twig .= "  @see src/TemplateGenerator/TwigGenerator.php\n";
+        $twig .= "#}\n";
+
+        // Avoid reserved words for block names
+        $blockName = in_array($elementName, self::TWIG_RESERVED_WORDS, true)
+            ? $elementName . '_composed'
+            : $elementName . '_composed';
+
+        // Determine the level (directory) for the parent element
+        $parentLevel = $this->determineLevel($ref->getName());
+
+        $twig .= "{% block {$blockName} %}\n";
+        $twig .= "{% embed '../{$parentLevel}/{$elementName}.twig' with {\n";
+        $twig .= "  class: 'example'\n";
+        $twig .= "} %}\n";
+        $twig .= "  {% block content %}\n";
+
+        // Generate child elements based on content model
+        $children = $this->collectChildrenForComposedTemplate($elementName, $parentOf, $ref);
+
+        foreach ($children as $child) {
+            $twig .= '  ' . $child['twigCode'];
+        }
+
+        $twig .= "  {% endblock %}\n";
+        $twig .= "{% endembed %}\n";
+        $twig .= "{% endblock %}\n";
+
+        return $twig;
+    }
+
+    /**
+     * Determine the level (directory) for a given element class
+     */
+    private function determineLevel(string $className): string
+    {
+        if (strpos($className, 'InlineElement') !== false || strpos($className, '\\Element\\Inline\\') !== false) {
+            return 'inline';
+        }
+        if (strpos($className, 'VoidElement') !== false || strpos($className, '\\Element\\Void\\') !== false) {
+            return 'void';
+        }
+        return 'block';
+    }
+
+    /**
+     * Collect and generate Twig code for child elements
+     */
+    private function collectChildrenForComposedTemplate(
+        string $parentElementName,
+        array $parentOf,
+        ReflectionClass $parentRef
+    ): array {
+        // Priority elements for specific containers
+        $priorityElements = [
+            'form' => ['fieldset', 'label', 'input', 'textarea', 'button', 'select'],
+            'fieldset' => ['legend', 'label', 'input', 'textarea', 'button'],
+            'select' => ['optgroup', 'option'],
+            'datalist' => ['option'],
+            'table' => ['caption', 'colgroup', 'thead', 'tbody', 'tfoot', 'tr'],
+            'head' => ['title', 'base', 'meta', 'link', 'script', 'style'],
+            'details' => ['summary', 'p'],
+        ];
+
+        // Get children to render
+        $children = [];
+        foreach ($parentOf as $childClass) {
+            $childRef = new ReflectionClass($childClass);
+            $childElementName = $childRef->hasConstant('QUALIFIED_NAME')
+                ? $childRef->getConstant('QUALIFIED_NAME')
+                : strtolower($childRef->getShortName());
+
+            $children[] = [
+                'name' => $childElementName,
+                'ref' => $childRef,
+                'class' => $childClass,
+            ];
+        }
+
+        // Filter to priority elements if there are too many children
+        $relevantChildren = $children;
+        if (isset($priorityElements[$parentElementName]) && count($children) > 5) {
+            $priorities = $priorityElements[$parentElementName];
+            $filtered = array_filter($children, fn ($c) => in_array($c['name'], $priorities, true));
+            if (! empty($filtered)) {
+                $relevantChildren = array_values($filtered);
+            }
+        }
+
+        // Limit to reasonable number of examples
+        $maxChildren = 3;
+        if ($parentElementName === 'head') {
+            $maxChildren = 6;
+        } elseif (count($children) > 10) {
+            $maxChildren = 4;
+        }
+
+        // Elements that should have text content only
+        $textOnlyElements = ['dd', 'dt', 'li', 'th', 'td', 'label', 'button', 'legend', 'summary', 'title', 'option'];
+
+        $childrenTwigCode = [];
+        $rendered = 0;
+
+        foreach ($relevantChildren as $child) {
+            if ($rendered >= $maxChildren) {
+                break;
+            }
+
+            $childName = $child['name'];
+            $childRef = $child['ref'];
+            $childClass = $child['class'];
+            $uniquePerParent = $childRef->getStaticPropertyValue('uniquePerParent', false);
+            $isSelfClosing = $childRef->hasConstant('SELF_CLOSING') && $childRef->getConstant('SELF_CLOSING');
+
+            // Determine the level for this child element
+            $childLevel = $this->determineLevel($childClass);
+
+            $renderCount = $uniquePerParent ? 1 : 2;
+
+            for ($i = 0; $i < $renderCount && $rendered < $maxChildren; $i++) {
+                $twigCode = '';
+
+                if ($isSelfClosing) {
+                    // Self-closing elements with common attributes
+                    if ($childName === 'input') {
+                        $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' with {'type': 'text', 'name': 'example'} %}\n";
+                    } elseif ($childName === 'img') {
+                        $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' with {'src': '/image.jpg', 'alt': 'Example'} %}\n";
+                    } elseif ($childName === 'link') {
+                        $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' with {'rel': 'stylesheet', 'href': '/styles.css'} %}\n";
+                    } elseif ($childName === 'meta') {
+                        $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' with {'name': 'description', 'content': 'Example'} %}\n";
+                    } elseif ($childName === 'base') {
+                        $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' with {'href': '/'} %}\n";
+                    } else {
+                        $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' %}\n";
+                    }
+                } elseif (in_array($childName, $textOnlyElements, true)) {
+                    // Text-only elements
+                    $textContent = match ($childName) {
+                        'title' => 'Page Title',
+                        'option' => 'Option ' . ($i + 1),
+                        'li' => 'Item ' . ($i + 1),
+                        'dt' => 'Term ' . ($i + 1),
+                        'dd' => 'Definition ' . ($i + 1),
+                        'th', 'td' => 'Cell ' . ($i + 1),
+                        'label' => 'Label ' . ($i + 1),
+                        'button' => 'Button ' . ($i + 1),
+                        'legend' => 'Legend',
+                        'summary' => 'Summary',
+                        default => 'Example content',
+                    };
+                    $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' with {'content': '{$textContent}'} %}\n";
+                } else {
+                    // Elements with content
+                    $twigCode .= "{% include '../{$childLevel}/{$childName}.twig' with {'content': 'Example content'} %}\n";
+                }
+
+                $childrenTwigCode[] = [
+                    'twigCode' => $twigCode,
+                ];
+                $rendered++;
+            }
+        }
+
+        return $childrenTwigCode;
+    }
+
     /**
      * Render the HTML head section using Twig
      */
@@ -517,7 +521,9 @@ Ok, I'm ready to generate my response:</think>" . $head;
         }
 
         // Render the head using a Twig template
-        return $this->renderTwigTemplate('head', ['metadata' => $metadata]);
+        return $this->renderTwigTemplate('head', [
+            'metadata' => $metadata,
+        ]);
     }
 
     /**
@@ -562,7 +568,7 @@ Ok, I'm ready to generate my response:</think>" . $head;
         // Render the template with context variables
         try {
             return $template->render($context);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             error_log('Twig rendering error: ' . $e->getMessage());
             return null; // Or return an error message
         }

@@ -1,32 +1,22 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Embed - The embed element provides an integration point for an external (typically non-HTML) application or interactive content.
- * 
+ *
  * @generated 2025-11-28 14:53:40
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Body;
-use Html\Element\Block\DefinitionDescription;
-use Html\Element\Block\Division;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Header;
-use Html\Element\Block\Main;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 #[Element('embed')]
 class Embed extends BlockElement
@@ -48,6 +38,7 @@ class Embed extends BlockElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -90,26 +81,28 @@ class Embed extends BlockElement
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     protected ?string $height = null;
 
-    /** 
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
-     * @category HTML attribute
      * @required
      */
     protected ?string $src = null;
 
-    /** Specifies the media type of the linked resource. */
+    /**
+     * Specifies the media type of the linked resource.
+     */
     protected ?string $type = null;
 
-    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     protected ?string $width = null;
-
 
     public function setHeight(string $height): static
     {
@@ -158,6 +151,4 @@ class Embed extends BlockElement
     {
         return $this->width;
     }
-
-
 }

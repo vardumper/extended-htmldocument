@@ -6,8 +6,6 @@ namespace Html\Delegator;
 
 use AllowDynamicProperties;
 use DOM\HTMLDocument;
-use Dom\Node;
-use Dom\NodeList;
 use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\TemplateGenerator\HTMLGenerator;
@@ -111,7 +109,7 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
     public function appendChild(HTMLElementDelegator $child): void
     {
         if ($this->delegated->documentElement === null) {
-            $this->delegated->appendChild($this->delegated->createElement('html')); 
+            $this->delegated->appendChild($this->delegated->createElement('html'));
         }
         $this->delegated->documentElement->appendChild($child->delegated);
     }

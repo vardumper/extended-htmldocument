@@ -321,7 +321,8 @@ test('can querySelectorAll', function () {
     $delegator = HTMLDocumentDelegator::createFromString($html);
 
     $elements = $delegator->querySelectorAll('.test-class');
-    expect($elements->length)->toBe(2);
+    expect($elements->length)
+        ->toBe(2);
     expect($elements)
         ->toBeInstanceOf(NodeListDelegator::class);
     expect($elements->item(0)->tagName)

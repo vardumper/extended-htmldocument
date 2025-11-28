@@ -423,7 +423,7 @@ final class CreateClassCommand extends Command
         // Gather global attribute names for this element (as variable names)
         $elementData = $this->data[$element] ?? [];
         $globalAttributes = $elementData['allowed_global_attributes'] ?? [];
-        $globalAttributeVariableNames = array_map(fn($attr) => $this->toVariableName($attr), $globalAttributes);
+        $globalAttributeVariableNames = array_map(fn ($attr) => $this->toVariableName($attr), $globalAttributes);
 
         foreach ($attributes as $attribute => $details) {
             $variableName = $this->toVariableName($attribute);
