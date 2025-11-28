@@ -28,7 +28,6 @@ trait DelegatorTrait
         $reflection = new ReflectionClass($this->delegated);
         if ($reflection->hasMethod($name)) {
             $method = $reflection->getMethod($name);
-
             try {
                 return $method->invokeArgs($this->delegated, $arguments);
             } catch (TypeError $e) {
