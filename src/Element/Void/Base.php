@@ -4,7 +4,7 @@
  *
  * Base - The base element specifies the base URL to use for all relative URLs in a document. There can be at maximum one <base> element in a document, and it must be inside the <head> element.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -62,14 +62,14 @@ class Base extends VoidElement
      * @category HTML attribute
      * @required
      */
-    public ?string $href = null;
+    protected ?string $href = null;
 
     /** 
      * Specifies where to open the linked document.
      * @category HTML attribute
      * @example _self
      */
-    public ?TargetEnum $target = null;
+    protected ?TargetEnum $target = null;
 
 
     public function setHref(string $href): static
@@ -86,7 +86,7 @@ class Base extends VoidElement
 
     public function setTarget(string|TargetEnum $target): static
     {
-        if (is_string($target)) {
+        if (\is_string($target)) {
             $target = TargetEnum::tryFrom($target) ?? throw new \InvalidArgumentException("Invalid value for \$target.");
         }
         $this->target = $target;

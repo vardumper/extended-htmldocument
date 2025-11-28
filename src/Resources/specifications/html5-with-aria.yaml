@@ -83,29 +83,6 @@ a:
         - area
         - base
         - form
-    title:
-      description: 'Specifies additional information about the element, typically displayed as a tooltip.'
-      type: string
-      elements:
-        - a
-        - abbr
-        - area
-        - audio
-        - button
-        - details
-        - iframe
-        - img
-        - input
-        - map
-        - object
-        - progress
-        - span
-        - strong
-        - sub
-        - sup
-        - svg
-        - time
-        - video
     type:
       description: 'Specifies the media type of the linked resource.'
       type: string
@@ -282,29 +259,6 @@ abbr:
   unique: false
   text: string
   attributes:
-    title:
-      description: 'Specifies additional information about the element, typically displayed as a tooltip.'
-      type: string
-      elements:
-        - a
-        - abbr
-        - area
-        - audio
-        - button
-        - details
-        - iframe
-        - img
-        - input
-        - map
-        - object
-        - progress
-        - span
-        - strong
-        - sub
-        - sup
-        - svg
-        - time
-        - video
     role:
       description: 'Defines the semantic purpose of an element for assistive technologies.'
       type: enum

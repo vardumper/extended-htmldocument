@@ -4,7 +4,7 @@
  *
  * Style - The style element is used to embed CSS styles directly into an HTML document.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -62,13 +62,10 @@ class Style extends VoidElement
     ];
 
     /** Specifies the media type for which the linked resource or style sheet is intended. */
-    public ?string $media = null;
+    protected ?string $media = null;
 
     /** Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks. */
-    public ?string $nonce = null;
-
-    /** Specifies additional information about the element, typically displayed as a tooltip. */
-    public ?string $title = null;
+    protected ?string $nonce = null;
 
     /** 
      * Specifies the media type of the inline styles.
@@ -77,7 +74,7 @@ class Style extends VoidElement
     
      * @example text/css
      */
-    public ?StyleTypeEnum $type = null;
+    protected ?StyleTypeEnum $type = null;
 
 
     public function setMedia(string $media): static
@@ -118,7 +115,7 @@ class Style extends VoidElement
 
     public function setType(string|StyleTypeEnum $type): static
     {
-        if (is_string($type)) {
+        if (\is_string($type)) {
             $type = StyleTypeEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
         }
         $this->type = $type;

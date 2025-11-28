@@ -4,7 +4,7 @@
  *
  * Image - The img element represents an image.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -103,81 +103,81 @@ class Image extends InlineElement
      * @category HTML attribute
      * @required
      */
-    public ?string $alt = null;
+    protected ?string $alt = null;
 
     /**  */
-    public ?CrossoriginEnum $crossorigin = null;
+    protected ?CrossoriginEnum $crossorigin = null;
 
     /** Specifies the decoding process applied to the image. */
-    public ?DecodingEnum $decoding = null;
+    protected ?DecodingEnum $decoding = null;
 
     /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
-    public ?string $height = null;
+    protected ?string $height = null;
 
     /** Specifies that an area should be part of an image map. */
-    public ?bool $ismap = null;
+    protected ?bool $ismap = null;
 
     /** Specifies the referrer policy for fetches initiated by the element. */
-    public ?ReferrerpolicyEnum $referrerpolicy = null;
+    protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
     /** Specifies the sizes of the images or icons for different display/window sizes. */
-    public ?string $sizes = null;
+    protected ?string $sizes = null;
 
     /** 
      * Specifies the URL of the external resource to be embedded or referenced.
      * @category HTML attribute
      * @required
      */
-    public ?string $src = null;
+    protected ?string $src = null;
 
     /** Specifies a set of image candidate URLs and descriptors for responsive images. */
-    public ?string $srcset = null;
+    protected ?string $srcset = null;
 
     /** Specifies a client-side image map to be used with the element. */
-    public ?string $usemap = null;
+    protected ?string $usemap = null;
 
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
-    public ?string $width = null;
+    protected ?string $width = null;
 
     /** 
      * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
      * @category HTML attribute
      * @example false
      */
-    public ?AriaHiddenEnum $ariaHidden = null;
+    protected ?AriaHiddenEnum $ariaHidden = null;
 
     /** Defines a string value that labels the current element for assistive technologies. */
-    public ?string $ariaLabel = null;
+    protected ?string $ariaLabel = null;
 
     /** References an element that provides additional details about the current element. */
-    public ?string $ariaDetails = null;
+    protected ?string $ariaDetails = null;
 
     /** Defines keyboard shortcuts available for the element. */
-    public ?string $ariaKeyshortcuts = null;
+    protected ?string $ariaKeyshortcuts = null;
 
     /** Provides a human-readable custom role description for assistive technologies. */
-    public ?string $ariaRoledescription = null;
+    protected ?string $ariaRoledescription = null;
 
     /** 
      * Defines how updates to the element should be announced to screen readers.
      * @category HTML attribute
      * @example off
      */
-    public ?AriaLiveEnum $ariaLive = null;
+    protected ?AriaLiveEnum $ariaLive = null;
 
     /** 
      * Indicates what content changes should be announced in a live region.
      * @category HTML attribute
      * @example additions text
      */
-    public ?AriaRelevantEnum $ariaRelevant = null;
+    protected ?AriaRelevantEnum $ariaRelevant = null;
 
     /** 
      * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaAtomicEnum $ariaAtomic = null;
+    protected ?AriaAtomicEnum $ariaAtomic = null;
 
 
     public function setAlt(string $alt): static
@@ -194,7 +194,7 @@ class Image extends InlineElement
 
     public function setCrossorigin(string|CrossoriginEnum $crossorigin): static
     {
-        if (is_string($crossorigin)) {
+        if (\is_string($crossorigin)) {
             $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new \InvalidArgumentException("Invalid value for \$crossorigin.");
         }
         $this->crossorigin = $crossorigin;
@@ -210,7 +210,7 @@ class Image extends InlineElement
 
     public function setDecoding(string|DecodingEnum $decoding): static
     {
-        if (is_string($decoding)) {
+        if (\is_string($decoding)) {
             $decoding = DecodingEnum::tryFrom($decoding) ?? throw new \InvalidArgumentException("Invalid value for \$decoding.");
         }
         $this->decoding = $decoding;
@@ -250,7 +250,7 @@ class Image extends InlineElement
 
     public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): static
     {
-        if (is_string($referrerpolicy)) {
+        if (\is_string($referrerpolicy)) {
             $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new \InvalidArgumentException("Invalid value for \$referrerpolicy.");
         }
         $this->referrerpolicy = $referrerpolicy;
@@ -326,7 +326,7 @@ class Image extends InlineElement
 
     public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
     {
-        if (is_string($ariaHidden)) {
+        if (\is_string($ariaHidden)) {
             $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
         }
         $this->ariaHidden = $ariaHidden;
@@ -390,7 +390,7 @@ class Image extends InlineElement
 
     public function setAriaLive(string|AriaLiveEnum $ariaLive): static
     {
-        if (is_string($ariaLive)) {
+        if (\is_string($ariaLive)) {
             $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
         }
         $this->ariaLive = $ariaLive;
@@ -406,7 +406,7 @@ class Image extends InlineElement
 
     public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
     {
-        if (is_string($ariaRelevant)) {
+        if (\is_string($ariaRelevant)) {
             $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
         }
         $this->ariaRelevant = $ariaRelevant;
@@ -422,7 +422,7 @@ class Image extends InlineElement
 
     public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
     {
-        if (is_string($ariaAtomic)) {
+        if (\is_string($ariaAtomic)) {
             $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
         }
         $this->ariaAtomic = $ariaAtomic;

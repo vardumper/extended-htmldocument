@@ -4,7 +4,7 @@
  *
  * HorizontalRule - The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -73,36 +73,36 @@ class HorizontalRule extends BlockElement
      * @category HTML attribute
      * @deprecated
      */
-    public ?HrAlignEnum $align = null;
+    protected ?HrAlignEnum $align = null;
 
     /** 
      * 
      * @category HTML attribute
      * @deprecated
      */
-    public ?string $color = null;
+    protected ?string $color = null;
 
     /** 
      * 
      * @category HTML attribute
      * @deprecated
      */
-    public ?bool $noshade = null;
+    protected ?bool $noshade = null;
 
     /** 
      * Specifies the height of a hr element in pixels.
      * @category HTML attribute
      * @deprecated
      */
-    public ?int $size = null;
+    protected ?int $size = null;
 
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
-    public ?string $width = null;
+    protected ?string $width = null;
 
 
     public function setAlign(string|HrAlignEnum $align): static
     {
-        if (is_string($align)) {
+        if (\is_string($align)) {
             $align = HrAlignEnum::tryFrom($align) ?? throw new \InvalidArgumentException("Invalid value for \$align.");
         }
         $this->align = $align;

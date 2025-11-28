@@ -82,29 +82,6 @@ a:
         - area
         - base
         - form
-    title:
-      description: 'Specifies additional information about the element, typically displayed as a tooltip.'
-      type: string
-      elements:
-        - a
-        - abbr
-        - area
-        - audio
-        - button
-        - details
-        - iframe
-        - img
-        - input
-        - map
-        - object
-        - progress
-        - span
-        - strong
-        - sub
-        - sup
-        - svg
-        - time
-        - video
     type:
       description: 'Specifies the media type of the linked resource.'
       type: string
@@ -141,30 +118,6 @@ abbr:
     - translate
   unique: false
   text: string
-  attributes:
-    title:
-      description: 'Specifies additional information about the element, typically displayed as a tooltip.'
-      type: string
-      elements:
-        - a
-        - abbr
-        - area
-        - audio
-        - button
-        - details
-        - iframe
-        - img
-        - input
-        - map
-        - object
-        - progress
-        - span
-        - strong
-        - sub
-        - sup
-        - svg
-        - time
-        - video
 address:
   name: Address
   description: 'The address element represents the contact information for its nearest article or body ancestor. If that is the body element, then the contact information applies to the document as a whole.'
@@ -920,19 +873,6 @@ button:
     - translate
   unique: false
   attributes:
-    autofocus:
-      description: 'When present, it specifies that an element should automatically get focus when the page loads.'
-      type: boolean
-      elements:
-        - a
-        - area
-        - button
-        - details
-        - iframe
-        - input
-        - object
-        - select
-        - textarea
     autocorrect:
       type: enum
       description: 'Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.'

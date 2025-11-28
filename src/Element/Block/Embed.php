@@ -4,7 +4,7 @@
  *
  * Embed - The embed element provides an integration point for an external (typically non-HTML) application or interactive content.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -95,20 +95,20 @@ class Embed extends BlockElement
 
 
     /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
-    public ?string $height = null;
+    protected ?string $height = null;
 
     /** 
      * Specifies the URL of the external resource to be embedded or referenced.
      * @category HTML attribute
      * @required
      */
-    public ?string $src = null;
+    protected ?string $src = null;
 
     /** Specifies the media type of the linked resource. */
-    public ?string $type = null;
+    protected ?string $type = null;
 
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
-    public ?string $width = null;
+    protected ?string $width = null;
 
 
     public function setHeight(string $height): static

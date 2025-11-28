@@ -4,7 +4,7 @@
  *
  * Option - The option element represents an item in a select dropdown list.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -87,84 +87,84 @@ class Option extends BlockElement
 
 
     /** When present, it specifies that an input element should be disabled. */
-    public ?bool $disabled = null;
+    protected ?bool $disabled = null;
 
     /** Specifies a label for the associated form control, option group, or option. */
-    public ?string $label = null;
+    protected ?string $label = null;
 
     /** When present, it specifies that an option should be pre-selected when the page loads. */
-    public ?bool $selected = null;
+    protected ?bool $selected = null;
 
     /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
-    public ?string $value = null;
+    protected ?string $value = null;
 
     /** Defines the semantic purpose of an element for assistive technologies. */
-    public ?RoleEnum $role = null;
+    protected ?RoleEnum $role = null;
 
     /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
-    public ?string $ariaControls = null;
+    protected ?string $ariaControls = null;
 
     /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
-    public ?string $ariaDescribedby = null;
+    protected ?string $ariaDescribedby = null;
 
     /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
-    public ?string $ariaLabelledby = null;
+    protected ?string $ariaLabelledby = null;
 
     /** 
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaBusyEnum $ariaBusy = null;
+    protected ?AriaBusyEnum $ariaBusy = null;
 
     /** 
      * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
      * @category HTML attribute
      * @example false
      */
-    public ?AriaHiddenEnum $ariaHidden = null;
+    protected ?AriaHiddenEnum $ariaHidden = null;
 
     /** References an element that provides additional details about the current element. */
-    public ?string $ariaDetails = null;
+    protected ?string $ariaDetails = null;
 
     /** Defines keyboard shortcuts available for the element. */
-    public ?string $ariaKeyshortcuts = null;
+    protected ?string $ariaKeyshortcuts = null;
 
     /** Provides a human-readable custom role description for assistive technologies. */
-    public ?string $ariaRoledescription = null;
+    protected ?string $ariaRoledescription = null;
 
     /** 
      * Defines how updates to the element should be announced to screen readers.
      * @category HTML attribute
      * @example off
      */
-    public ?AriaLiveEnum $ariaLive = null;
+    protected ?AriaLiveEnum $ariaLive = null;
 
     /** 
      * Indicates what content changes should be announced in a live region.
      * @category HTML attribute
      * @example additions text
      */
-    public ?AriaRelevantEnum $ariaRelevant = null;
+    protected ?AriaRelevantEnum $ariaRelevant = null;
 
     /** 
      * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaAtomicEnum $ariaAtomic = null;
+    protected ?AriaAtomicEnum $ariaAtomic = null;
 
     /** Indicates whether an item is selected (e.g., in a list, table, or tree). */
-    public ?AriaSelectedEnum $ariaSelected = null;
+    protected ?AriaSelectedEnum $ariaSelected = null;
 
     /** Defines an element's position within a set (1-based index). */
-    public ?int $ariaPosinset = null;
+    protected ?int $ariaPosinset = null;
 
     /** Specifies the total number of items in a set. */
-    public ?int $ariaSetsize = null;
+    protected ?int $ariaSetsize = null;
 
     /** Defines the hierarchical level of an element (e.g., headings, tree items). */
-    public ?int $ariaLevel = null;
+    protected ?int $ariaLevel = null;
 
 
     public function setDisabled(bool $disabled): static
@@ -217,7 +217,7 @@ class Option extends BlockElement
 
     public function setRole(string|RoleEnum $role): static
     {
-        if (is_string($role)) {
+        if (\is_string($role)) {
             $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
@@ -269,7 +269,7 @@ class Option extends BlockElement
 
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
-        if (is_string($ariaBusy)) {
+        if (\is_string($ariaBusy)) {
             $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
         }
         $this->ariaBusy = $ariaBusy;
@@ -285,7 +285,7 @@ class Option extends BlockElement
 
     public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
     {
-        if (is_string($ariaHidden)) {
+        if (\is_string($ariaHidden)) {
             $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
         }
         $this->ariaHidden = $ariaHidden;
@@ -337,7 +337,7 @@ class Option extends BlockElement
 
     public function setAriaLive(string|AriaLiveEnum $ariaLive): static
     {
-        if (is_string($ariaLive)) {
+        if (\is_string($ariaLive)) {
             $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
         }
         $this->ariaLive = $ariaLive;
@@ -353,7 +353,7 @@ class Option extends BlockElement
 
     public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
     {
-        if (is_string($ariaRelevant)) {
+        if (\is_string($ariaRelevant)) {
             $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
         }
         $this->ariaRelevant = $ariaRelevant;
@@ -369,7 +369,7 @@ class Option extends BlockElement
 
     public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
     {
-        if (is_string($ariaAtomic)) {
+        if (\is_string($ariaAtomic)) {
             $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
         }
         $this->ariaAtomic = $ariaAtomic;
@@ -385,7 +385,7 @@ class Option extends BlockElement
 
     public function setAriaSelected(string|AriaSelectedEnum $ariaSelected): static
     {
-        if (is_string($ariaSelected)) {
+        if (\is_string($ariaSelected)) {
             $ariaSelected = AriaSelectedEnum::tryFrom($ariaSelected) ?? throw new \InvalidArgumentException("Invalid value for \$ariaSelected.");
         }
         $this->ariaSelected = $ariaSelected;

@@ -96,7 +96,6 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         $reflection = new ReflectionClass($this->delegated);
         if ($reflection->hasProperty($name)) {
             $property = $reflection->getProperty($name);
-            $property->setAccessible(true);
             $property->setValue($this->delegated, $value);
             return;
         }

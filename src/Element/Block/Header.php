@@ -4,7 +4,7 @@
  *
  * Header - The header element represents a container for introductory content or a set of navigational links. It typically contains the section's heading (an h1–h6 element or an hgroup element), but can also contain other content such as a table of contents, a search form, or any relevant logos.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -212,7 +212,7 @@ class Header extends BlockElement
 
 
     /** Defines a string value that labels the current element for assistive technologies. */
-    public ?string $ariaLabel = null;
+    protected ?string $ariaLabel = null;
 
 
     public function setAriaLabel(string $ariaLabel): static

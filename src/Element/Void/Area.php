@@ -4,7 +4,7 @@
  *
  * Area - The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -104,39 +104,39 @@ class Area extends VoidElement
      * @category HTML attribute
      * @required
      */
-    public ?string $alt = null;
+    protected ?string $alt = null;
 
     /** Specifies the coordinates of the shape in a rectangular area or a polygonal area on an image map. */
-    public ?string $coords = null;
+    protected ?string $coords = null;
 
     /** Indicates that the linked content should be downloaded rather than displayed. */
-    public ?string $download = null;
+    protected ?string $download = null;
 
     /** 
      * Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.
      * @category HTML attribute
      * @required
      */
-    public ?string $href = null;
+    protected ?string $href = null;
 
     /** Specifies the language of the linked resource. */
-    public ?string $hreflang = null;
+    protected ?string $hreflang = null;
 
     /** Specifies the relationship between the current document and the linked document. */
-    public ?RelEnum $rel = null;
+    protected ?RelEnum $rel = null;
 
     /**  */
-    public ?ShapeEnum $shape = null;
+    protected ?ShapeEnum $shape = null;
 
     /** 
      * Specifies where to open the linked document.
      * @category HTML attribute
      * @example _self
      */
-    public ?TargetEnum $target = null;
+    protected ?TargetEnum $target = null;
 
     /** Specifies the media type of the linked resource. */
-    public ?string $type = null;
+    protected ?string $type = null;
 
 
     public function setAlt(string $alt): static
@@ -201,7 +201,7 @@ class Area extends VoidElement
 
     public function setRel(string|RelEnum $rel): static
     {
-        if (is_string($rel)) {
+        if (\is_string($rel)) {
             $rel = RelEnum::tryFrom($rel) ?? throw new \InvalidArgumentException("Invalid value for \$rel.");
         }
         $this->rel = $rel;
@@ -217,7 +217,7 @@ class Area extends VoidElement
 
     public function setShape(string|ShapeEnum $shape): static
     {
-        if (is_string($shape)) {
+        if (\is_string($shape)) {
             $shape = ShapeEnum::tryFrom($shape) ?? throw new \InvalidArgumentException("Invalid value for \$shape.");
         }
         $this->shape = $shape;
@@ -233,7 +233,7 @@ class Area extends VoidElement
 
     public function setTarget(string|TargetEnum $target): static
     {
-        if (is_string($target)) {
+        if (\is_string($target)) {
             $target = TargetEnum::tryFrom($target) ?? throw new \InvalidArgumentException("Invalid value for \$target.");
         }
         $this->target = $target;

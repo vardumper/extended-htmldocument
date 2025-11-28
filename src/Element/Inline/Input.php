@@ -4,7 +4,7 @@
  *
  * Input - The input element represents a typed data field, usually with a form control to allow user input.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -124,245 +124,245 @@ class Input extends InlineElement
 
 
     /** Specifies a comma-separated list of file types that the server accepts. */
-    public ?string $accept = null;
+    protected ?string $accept = null;
 
     /** 
      * Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.
      * @category HTML attribute
      * @example on
      */
-    public ?AutocorrectEnum $autocorrect = null;
+    protected ?AutocorrectEnum $autocorrect = null;
 
     /** Specifies alternative text to be displayed when the image cannot be rendered. */
-    public ?string $alt = null;
+    protected ?string $alt = null;
 
     /** 
      * 
      * @category HTML attribute
      * @example on
      */
-    public ?AutocompleteEnum $autocomplete = null;
+    protected ?AutocompleteEnum $autocomplete = null;
 
     /** When present, it indicates that an input element should be pre-selected (checked) when the page loads. */
-    public ?bool $checked = null;
+    protected ?bool $checked = null;
 
     /** Specifies the direction of the text. */
-    public ?string $dirname = null;
+    protected ?string $dirname = null;
 
     /** When present, it specifies that an input element should be disabled. */
-    public ?bool $disabled = null;
+    protected ?bool $disabled = null;
 
     /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
-    public ?string $height = null;
+    protected ?string $height = null;
 
     /** Refers to a <datalist> element that contains pre-defined options for an input element. */
-    public ?string $list = null;
+    protected ?string $list = null;
 
     /** Specifies the maximum value for an input element, meter, or progress element. */
-    public ?int $max = null;
+    protected ?int $max = null;
 
     /** Specifies the maximum number of characters allowed in an input field. */
-    public ?int $maxlength = null;
+    protected ?int $maxlength = null;
 
     /** Specifies the minimum value for an input element or a meter element. */
-    public ?string $min = null;
+    protected ?string $min = null;
 
     /** Specifies the minimum number of characters required in an input field. */
-    public ?int $minlength = null;
+    protected ?int $minlength = null;
 
     /** When present, it specifies that the user is allowed to enter more than one value in an input element. */
-    public ?bool $multiple = null;
+    protected ?bool $multiple = null;
 
     /** Specifies the name associated with the element. The meaning may vary depending on the context. */
-    public ?string $name = null;
+    protected ?string $name = null;
 
     /** Specifies a regular expression that the <input> element's value is checked against. */
-    public ?string $pattern = null;
+    protected ?string $pattern = null;
 
     /** Specifies a short hint that describes the expected value of an input field. */
-    public ?string $placeholder = null;
+    protected ?string $placeholder = null;
 
     /** When present, it specifies that an input element is read-only. */
-    public ?bool $readonly = null;
+    protected ?bool $readonly = null;
 
     /** When present, it specifies that an input field must be filled out before submitting the form. */
-    public ?bool $required = null;
+    protected ?bool $required = null;
 
     /** Specifies the height of a hr element in pixels. */
-    public ?int $size = null;
+    protected ?int $size = null;
 
     /** Specifies the URL of the external resource to be embedded or referenced. Required if input type is image */
-    public ?string $src = null;
+    protected ?string $src = null;
 
     /** Specifies the legal number intervals for an input element. */
-    public ?string $step = null;
+    protected ?string $step = null;
 
     /** 
      * Specifies the type of the input. Defaults to text if the attribute is omitted
      * @category HTML attribute
      * @example text
      */
-    public ?InputTypeEnum $type = null;
+    protected ?InputTypeEnum $type = null;
 
     /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
-    public ?string $value = null;
+    protected ?string $value = null;
 
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
-    public ?string $width = null;
+    protected ?string $width = null;
 
     /** Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset. */
-    public ?string $form = null;
+    protected ?string $form = null;
 
     /** The URL that processes the form submission. Overrides the action attribute of the button's form owner. Only applies to submit buttons. Element-specific to button and input elements with type submit or image. */
-    public ?string $formaction = null;
+    protected ?string $formaction = null;
 
     /** 
      * Specifies how form data should be encoded when submitting to the server. Only for submit buttons. Overrides the form's enctype attribute. Element-specific to button and input elements with type submit or image.
      * @category HTML attribute
      * @example application/x-www-form-urlencoded
      */
-    public ?FormenctypeEnum $formenctype = null;
+    protected ?FormenctypeEnum $formenctype = null;
 
     /** 
      * Specifies the HTTP method to use when submitting the form. Only for submit buttons. Overrides the form's method attribute. Use "post" for sensitive data, "get" for idempotent operations, "dialog" to close dialog without submission. Element-specific to button and input elements with type submit or image.
      * @category HTML attribute
      * @example get
      */
-    public ?FormmethodEnum $formmethod = null;
+    protected ?FormmethodEnum $formmethod = null;
 
     /** When present, specifies that the form should not be validated when submitted. Only applies to submit buttons. Overrides the form's novalidate attribute. Element-specific to button and input elements with type submit or image. */
-    public ?bool $formnovalidate = null;
+    protected ?bool $formnovalidate = null;
 
     /** Specifies where to display the response after form submission. Can be a browsing context name or keyword (_self, _blank, _parent, _top). Only for submit buttons. Overrides the form's target attribute. Element-specific to button and input elements with type submit or image. */
-    public null|string|FormtargetEnum $formtarget = null;
+    protected null|string|FormtargetEnum $formtarget = null;
 
     /** Turns the button into a popover control by specifying the ID of the popover element to control. Creates implicit aria-details and aria-expanded relationships, establishes anchor positioning reference, and improves accessibility. Part of the Popover API. Element-specific to button and input elements. */
-    public ?string $popovertarget = null;
+    protected ?string $popovertarget = null;
 
     /** 
      * Specifies the action to perform on the popover element controlled by popovertarget. "show" displays a hidden popover, "hide" hides a visible popover, "toggle" (default) switches between states. Part of the Popover API. Element-specific to button and input elements.
      * @category HTML attribute
      * @example toggle
      */
-    public ?PopovertargetactionEnum $popovertargetaction = null;
+    protected ?PopovertargetactionEnum $popovertargetaction = null;
 
     /** The role attribute is used to define the purpose of an element. */
-    public ?RoleEnum $role = null;
+    protected ?RoleEnum $role = null;
 
     /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
-    public ?string $ariaControls = null;
+    protected ?string $ariaControls = null;
 
     /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
-    public ?string $ariaDescribedby = null;
+    protected ?string $ariaDescribedby = null;
 
     /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
-    public ?string $ariaLabelledby = null;
+    protected ?string $ariaLabelledby = null;
 
     /** 
      * Indicates the current item within a container or set of related elements.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaCurrentEnum $ariaCurrent = null;
+    protected ?AriaCurrentEnum $ariaCurrent = null;
 
     /** 
      * Indicates that the value entered does not conform to the expected format.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaInvalidEnum $ariaInvalid = null;
+    protected ?AriaInvalidEnum $ariaInvalid = null;
 
     /** Defines a string value that labels the current element for assistive technologies. */
-    public ?string $ariaLabel = null;
+    protected ?string $ariaLabel = null;
 
     /** 
      * Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaDisabledEnum $ariaDisabled = null;
+    protected ?AriaDisabledEnum $ariaDisabled = null;
 
     /** References an element that provides additional details about the current element. */
-    public ?string $ariaDetails = null;
+    protected ?string $ariaDetails = null;
 
     /** Defines keyboard shortcuts available for the element. */
-    public ?string $ariaKeyshortcuts = null;
+    protected ?string $ariaKeyshortcuts = null;
 
     /** Provides a human-readable custom role description for assistive technologies. */
-    public ?string $ariaRoledescription = null;
+    protected ?string $ariaRoledescription = null;
 
     /** 
      * Defines how updates to the element should be announced to screen readers.
      * @category HTML attribute
      * @example off
      */
-    public ?AriaLiveEnum $ariaLive = null;
+    protected ?AriaLiveEnum $ariaLive = null;
 
     /** 
      * Indicates what content changes should be announced in a live region.
      * @category HTML attribute
      * @example additions text
      */
-    public ?AriaRelevantEnum $ariaRelevant = null;
+    protected ?AriaRelevantEnum $ariaRelevant = null;
 
     /** 
      * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaAtomicEnum $ariaAtomic = null;
+    protected ?AriaAtomicEnum $ariaAtomic = null;
 
     /** Indicates whether a collapsible UI element is expanded (true) or collapsed (false). */
-    public ?AriaExpandedEnum $ariaExpanded = null;
+    protected ?AriaExpandedEnum $ariaExpanded = null;
 
     /** 
      * Indicates that an element has an associated popup menu, listbox, tree, grid, or dialog.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaHaspopupEnum $ariaHaspopup = null;
+    protected ?AriaHaspopupEnum $ariaHaspopup = null;
 
     /** Indicates whether a toggle button is pressed (true, false, or mixed). */
-    public ?AriaPressedEnum $ariaPressed = null;
+    protected ?AriaPressedEnum $ariaPressed = null;
 
     /** Defines the checked state for checkboxes, radio buttons, or toggle switches. */
-    public ?AriaCheckedEnum $ariaChecked = null;
+    protected ?AriaCheckedEnum $ariaChecked = null;
 
     /** 
      * Specifies autocomplete behavior for input fields.
      * @category HTML attribute
      * @example none
      */
-    public ?AriaAutocompleteEnum $ariaAutocomplete = null;
+    protected ?AriaAutocompleteEnum $ariaAutocomplete = null;
 
     /** Provides a placeholder hint for an input field. */
-    public ?string $ariaPlaceholder = null;
+    protected ?string $ariaPlaceholder = null;
 
     /** 
      * Marks an input field as read-only but still selectable and focusable.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaReadonlyEnum $ariaReadonly = null;
+    protected ?AriaReadonlyEnum $ariaReadonly = null;
 
     /** 
      * Specifies that an input field is required before form submission.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaRequiredEnum $ariaRequired = null;
+    protected ?AriaRequiredEnum $ariaRequired = null;
 
     /** Defines the maximum value for a range input. */
-    public ?int $ariaValuemax = null;
+    protected ?int $ariaValuemax = null;
 
     /** Defines the minimum value for a range input. */
-    public ?int $ariaValuemin = null;
+    protected ?int $ariaValuemin = null;
 
     /** Specifies the current value for a range input. */
-    public ?int $ariaValuenow = null;
+    protected ?int $ariaValuenow = null;
 
     /** Provides a human-readable representation of the current value. */
-    public ?string $ariaValuetext = null;
+    protected ?string $ariaValuetext = null;
 
 
     public function setAccept(string $accept): static
@@ -379,7 +379,7 @@ class Input extends InlineElement
 
     public function setAutocorrect(string|AutocorrectEnum $autocorrect): static
     {
-        if (is_string($autocorrect)) {
+        if (\is_string($autocorrect)) {
             $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new \InvalidArgumentException("Invalid value for \$autocorrect.");
         }
         $this->autocorrect = $autocorrect;
@@ -407,7 +407,7 @@ class Input extends InlineElement
 
     public function setAutocomplete(string|AutocompleteEnum $autocomplete): static
     {
-        if (is_string($autocomplete)) {
+        if (\is_string($autocomplete)) {
             $autocomplete = AutocompleteEnum::tryFrom($autocomplete) ?? throw new \InvalidArgumentException("Invalid value for \$autocomplete.");
         }
         $this->autocomplete = $autocomplete;
@@ -639,7 +639,7 @@ class Input extends InlineElement
 
     public function setType(string|InputTypeEnum $type): static
     {
-        if (is_string($type)) {
+        if (\is_string($type)) {
             $type = InputTypeEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
         }
         $this->type = $type;
@@ -703,7 +703,7 @@ class Input extends InlineElement
 
     public function setFormenctype(string|FormenctypeEnum $formenctype): static
     {
-        if (is_string($formenctype)) {
+        if (\is_string($formenctype)) {
             $formenctype = FormenctypeEnum::tryFrom($formenctype) ?? throw new \InvalidArgumentException("Invalid value for \$formenctype.");
         }
         $this->formenctype = $formenctype;
@@ -719,7 +719,7 @@ class Input extends InlineElement
 
     public function setFormmethod(string|FormmethodEnum $formmethod): static
     {
-        if (is_string($formmethod)) {
+        if (\is_string($formmethod)) {
             $formmethod = FormmethodEnum::tryFrom($formmethod) ?? throw new \InvalidArgumentException("Invalid value for \$formmethod.");
         }
         $this->formmethod = $formmethod;
@@ -748,9 +748,9 @@ class Input extends InlineElement
     public function setFormtarget(string|FormtargetEnum $formtarget): static
     {
         $value = $formtarget;
-        if (is_string($formtarget)) {
+        if (\is_string($formtarget)) {
             $resolved = FormtargetEnum::tryFrom($formtarget);
-            if (!is_null($resolved)) {
+            if (!\is_null($resolved)) {
                 $formtarget = $resolved;
             }
         }
@@ -782,7 +782,7 @@ class Input extends InlineElement
 
     public function setPopovertargetaction(string|PopovertargetactionEnum $popovertargetaction): static
     {
-        if (is_string($popovertargetaction)) {
+        if (\is_string($popovertargetaction)) {
             $popovertargetaction = PopovertargetactionEnum::tryFrom($popovertargetaction) ?? throw new \InvalidArgumentException("Invalid value for \$popovertargetaction.");
         }
         $this->popovertargetaction = $popovertargetaction;
@@ -798,7 +798,7 @@ class Input extends InlineElement
 
     public function setRole(string|RoleEnum $role): static
     {
-        if (is_string($role)) {
+        if (\is_string($role)) {
             $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
@@ -850,7 +850,7 @@ class Input extends InlineElement
 
     public function setAriaCurrent(string|AriaCurrentEnum $ariaCurrent): static
     {
-        if (is_string($ariaCurrent)) {
+        if (\is_string($ariaCurrent)) {
             $ariaCurrent = AriaCurrentEnum::tryFrom($ariaCurrent) ?? throw new \InvalidArgumentException("Invalid value for \$ariaCurrent.");
         }
         $this->ariaCurrent = $ariaCurrent;
@@ -866,7 +866,7 @@ class Input extends InlineElement
 
     public function setAriaInvalid(string|AriaInvalidEnum $ariaInvalid): static
     {
-        if (is_string($ariaInvalid)) {
+        if (\is_string($ariaInvalid)) {
             $ariaInvalid = AriaInvalidEnum::tryFrom($ariaInvalid) ?? throw new \InvalidArgumentException("Invalid value for \$ariaInvalid.");
         }
         $this->ariaInvalid = $ariaInvalid;
@@ -894,7 +894,7 @@ class Input extends InlineElement
 
     public function setAriaDisabled(string|AriaDisabledEnum $ariaDisabled): static
     {
-        if (is_string($ariaDisabled)) {
+        if (\is_string($ariaDisabled)) {
             $ariaDisabled = AriaDisabledEnum::tryFrom($ariaDisabled) ?? throw new \InvalidArgumentException("Invalid value for \$ariaDisabled.");
         }
         $this->ariaDisabled = $ariaDisabled;
@@ -946,7 +946,7 @@ class Input extends InlineElement
 
     public function setAriaLive(string|AriaLiveEnum $ariaLive): static
     {
-        if (is_string($ariaLive)) {
+        if (\is_string($ariaLive)) {
             $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
         }
         $this->ariaLive = $ariaLive;
@@ -962,7 +962,7 @@ class Input extends InlineElement
 
     public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
     {
-        if (is_string($ariaRelevant)) {
+        if (\is_string($ariaRelevant)) {
             $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
         }
         $this->ariaRelevant = $ariaRelevant;
@@ -978,7 +978,7 @@ class Input extends InlineElement
 
     public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
     {
-        if (is_string($ariaAtomic)) {
+        if (\is_string($ariaAtomic)) {
             $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
         }
         $this->ariaAtomic = $ariaAtomic;
@@ -994,7 +994,7 @@ class Input extends InlineElement
 
     public function setAriaExpanded(string|AriaExpandedEnum $ariaExpanded): static
     {
-        if (is_string($ariaExpanded)) {
+        if (\is_string($ariaExpanded)) {
             $ariaExpanded = AriaExpandedEnum::tryFrom($ariaExpanded) ?? throw new \InvalidArgumentException("Invalid value for \$ariaExpanded.");
         }
         $this->ariaExpanded = $ariaExpanded;
@@ -1010,7 +1010,7 @@ class Input extends InlineElement
 
     public function setAriaHaspopup(string|AriaHaspopupEnum $ariaHaspopup): static
     {
-        if (is_string($ariaHaspopup)) {
+        if (\is_string($ariaHaspopup)) {
             $ariaHaspopup = AriaHaspopupEnum::tryFrom($ariaHaspopup) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHaspopup.");
         }
         $this->ariaHaspopup = $ariaHaspopup;
@@ -1026,7 +1026,7 @@ class Input extends InlineElement
 
     public function setAriaPressed(string|AriaPressedEnum $ariaPressed): static
     {
-        if (is_string($ariaPressed)) {
+        if (\is_string($ariaPressed)) {
             $ariaPressed = AriaPressedEnum::tryFrom($ariaPressed) ?? throw new \InvalidArgumentException("Invalid value for \$ariaPressed.");
         }
         $this->ariaPressed = $ariaPressed;
@@ -1042,7 +1042,7 @@ class Input extends InlineElement
 
     public function setAriaChecked(string|AriaCheckedEnum $ariaChecked): static
     {
-        if (is_string($ariaChecked)) {
+        if (\is_string($ariaChecked)) {
             $ariaChecked = AriaCheckedEnum::tryFrom($ariaChecked) ?? throw new \InvalidArgumentException("Invalid value for \$ariaChecked.");
         }
         $this->ariaChecked = $ariaChecked;
@@ -1058,7 +1058,7 @@ class Input extends InlineElement
 
     public function setAriaAutocomplete(string|AriaAutocompleteEnum $ariaAutocomplete): static
     {
-        if (is_string($ariaAutocomplete)) {
+        if (\is_string($ariaAutocomplete)) {
             $ariaAutocomplete = AriaAutocompleteEnum::tryFrom($ariaAutocomplete) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAutocomplete.");
         }
         $this->ariaAutocomplete = $ariaAutocomplete;
@@ -1086,7 +1086,7 @@ class Input extends InlineElement
 
     public function setAriaReadonly(string|AriaReadonlyEnum $ariaReadonly): static
     {
-        if (is_string($ariaReadonly)) {
+        if (\is_string($ariaReadonly)) {
             $ariaReadonly = AriaReadonlyEnum::tryFrom($ariaReadonly) ?? throw new \InvalidArgumentException("Invalid value for \$ariaReadonly.");
         }
         $this->ariaReadonly = $ariaReadonly;
@@ -1102,7 +1102,7 @@ class Input extends InlineElement
 
     public function setAriaRequired(string|AriaRequiredEnum $ariaRequired): static
     {
-        if (is_string($ariaRequired)) {
+        if (\is_string($ariaRequired)) {
             $ariaRequired = AriaRequiredEnum::tryFrom($ariaRequired) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRequired.");
         }
         $this->ariaRequired = $ariaRequired;

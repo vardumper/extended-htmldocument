@@ -4,7 +4,7 @@
  *
  * HTML - The root element of an HTML document. It represents the top-level of the HTML structure.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -63,7 +63,7 @@ class HTML extends BlockElement
 
 
     /** Specifies the address of the document's cache manifest. */
-    public ?string $manifest = null;
+    protected ?string $manifest = null;
 
 
     public function setManifest(string $manifest): static

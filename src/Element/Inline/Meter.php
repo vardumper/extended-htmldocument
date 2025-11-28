@@ -4,7 +4,7 @@
  *
  * Meter - The meter element represents a scalar measurement within a known range, or a fractional value.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -85,64 +85,64 @@ class Meter extends InlineElement
 
 
     /** Specifies the high value for a range input or a meter element. */
-    public ?string $high = null;
+    protected ?string $high = null;
 
     /** Specifies the low value for a range input. */
-    public ?string $low = null;
+    protected ?string $low = null;
 
     /** Specifies the maximum value for an input element, meter, or progress element. */
-    public ?int $max = null;
+    protected ?int $max = null;
 
     /** Specifies the minimum value for an input element or a meter element. */
-    public ?string $min = null;
+    protected ?string $min = null;
 
     /** Specifies the optimal value for a gauge or progress element. */
-    public ?string $optimum = null;
+    protected ?string $optimum = null;
 
     /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
-    public ?string $value = null;
+    protected ?string $value = null;
 
     /** References an element that provides additional details about the current element. */
-    public ?string $ariaDetails = null;
+    protected ?string $ariaDetails = null;
 
     /** Defines keyboard shortcuts available for the element. */
-    public ?string $ariaKeyshortcuts = null;
+    protected ?string $ariaKeyshortcuts = null;
 
     /** Provides a human-readable custom role description for assistive technologies. */
-    public ?string $ariaRoledescription = null;
+    protected ?string $ariaRoledescription = null;
 
     /** 
      * Defines how updates to the element should be announced to screen readers.
      * @category HTML attribute
      * @example off
      */
-    public ?AriaLiveEnum $ariaLive = null;
+    protected ?AriaLiveEnum $ariaLive = null;
 
     /** 
      * Indicates what content changes should be announced in a live region.
      * @category HTML attribute
      * @example additions text
      */
-    public ?AriaRelevantEnum $ariaRelevant = null;
+    protected ?AriaRelevantEnum $ariaRelevant = null;
 
     /** 
      * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaAtomicEnum $ariaAtomic = null;
+    protected ?AriaAtomicEnum $ariaAtomic = null;
 
     /** Defines the maximum value for a range input. */
-    public ?int $ariaValuemax = null;
+    protected ?int $ariaValuemax = null;
 
     /** Defines the minimum value for a range input. */
-    public ?int $ariaValuemin = null;
+    protected ?int $ariaValuemin = null;
 
     /** Specifies the current value for a range input. */
-    public ?int $ariaValuenow = null;
+    protected ?int $ariaValuenow = null;
 
     /** Provides a human-readable representation of the current value. */
-    public ?string $ariaValuetext = null;
+    protected ?string $ariaValuetext = null;
 
 
     public function setHigh(string $high): static
@@ -255,7 +255,7 @@ class Meter extends InlineElement
 
     public function setAriaLive(string|AriaLiveEnum $ariaLive): static
     {
-        if (is_string($ariaLive)) {
+        if (\is_string($ariaLive)) {
             $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
         }
         $this->ariaLive = $ariaLive;
@@ -271,7 +271,7 @@ class Meter extends InlineElement
 
     public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
     {
-        if (is_string($ariaRelevant)) {
+        if (\is_string($ariaRelevant)) {
             $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
         }
         $this->ariaRelevant = $ariaRelevant;
@@ -287,7 +287,7 @@ class Meter extends InlineElement
 
     public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
     {
-        if (is_string($ariaAtomic)) {
+        if (\is_string($ariaAtomic)) {
             $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
         }
         $this->ariaAtomic = $ariaAtomic;

@@ -4,7 +4,7 @@
  *
  * Parameter - The param element defines parameters for an object element.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -77,10 +77,10 @@ class Parameter extends VoidElement
     ];
 
     /** Specifies the name associated with the element. The meaning may vary depending on the context. */
-    public ?string $name = null;
+    protected ?string $name = null;
 
     /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
-    public ?string $value = null;
+    protected ?string $value = null;
 
 
     public function setName(string $name): static

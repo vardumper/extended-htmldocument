@@ -83,7 +83,6 @@ class NodeListDelegator
         $reflection = new ReflectionClass($this->delegated);
         if ($reflection->hasMethod($name)) {
             $method = $reflection->getMethod($name);
-            $method->setAccessible(true);
             return $method->invokeArgs($this->delegated, $arguments);
         }
         throw new BadMethodCallException(

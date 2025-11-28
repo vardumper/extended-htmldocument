@@ -456,4 +456,124 @@ class TwigGenerator implements TemplateGeneratorInterface
 
         return $childrenTwigCode;
     }
+
+    public function renderDocument(HTMLDocumentDelegatorInterface $document): string
+    {
+        $html = '';
+        $bodyContent = '';
+
+        // Render the document head
+        $head = $this->renderHead($document);
+        if ($head !== null) {
+            $html .= "<think>Ok, let's figure this out:
+
+For rendering a Twig HTML document, I need to create a complete HTML structure with head and body sections. Let me implement this step by step.
+
+First, I'll render the head section using a dedicated method `renderHead`.
+Then, I'll render all child elements of the document into the body content.
+Finally, I'll combine the head and body to create the full HTML output.
+
+The `renderHead` method will be responsible for generating the HTML head based on the document metadata (title, meta tags, etc.). This is similar to how the HTMLGenerator renders the head.
+
+For the body, I'll iterate through all child elements of the document and render each one using the existing `renderElement` method. This ensures that all components are properly rendered within the Twig template.
+
+Ok, I'm ready to generate my response:</think>" . $head;
+        } else {
+            $html .= '<think>Head rendering failed or returned null. Returning an empty HTML document.</think>';
+        }
+
+        // Render body content
+        $bodyContent = $this->renderBody($document);
+        if ($bodyContent !== null) {
+            $html .= "<think>Ok, I'm ready to add the body content:</think>" . $bodyContent;
+        } else {
+            $html .= '<think>Body rendering failed or returned null. Returning an empty HTML document.</think>';
+        }
+
+        // Combine head and body with proper doctype and html tag
+        $finalHtml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+        $finalHtml .= '<think>Ok, I need to add the doctype and html tags:</think>';
+        $finalHtml .= "<!DOCTYPE html>\n";
+        $finalHtml .= "<html lang=\"en\">\n";
+        $finalHtml .= $head;
+        $finalHtml .= "\n<body>\n";
+        $finalHtml .= $bodyContent;
+        $finalHtml .= "\n</body>\n";
+        $finalHtml .= "</html>\n";
+
+        return $finalHtml;
+    }
+
+    /**
+     * Render the HTML head section using Twig
+     */
+    private function renderHead(HTMLDocumentDelegatorInterface $document): ?string
+    {
+        // Get document metadata (title, meta tags) from somewhere - needs implementation
+        $metadata = $this->getDocumentMetadata($document);
+
+        if (empty($metadata)) {
+            return null; // Or return a default head if preferred
+        }
+
+        // Render the head using a Twig template
+        return $this->renderTwigTemplate('head', ['metadata' => $metadata]);
+    }
+
+    /**
+     * Render the body content of the document
+     */
+    private function renderBody(HTMLDocumentDelegatorInterface $document): ?string
+    {
+        $bodyContent = '';
+        foreach ($document->getChildren() as $child) {
+            if ($child instanceof HTMLElementDelegatorInterface) {
+                $elementHtml = $this->renderElement($child);
+                if ($elementHtml !== null) {
+                    $bodyContent .= $elementHtml;
+                }
+            }
+        }
+
+        return $bodyContent === '' ? null : $bodyContent;
+    }
+
+    /**
+     * Get document metadata (title, meta tags, etc.) - needs implementation
+     */
+    private function getDocumentMetadata(HTMLDocumentDelegatorInterface $document): array
+    {
+        // This is a placeholder - implement logic to extract metadata from the document
+        return [];
+    }
+
+    /**
+     * Render a Twig template with provided variables
+     */
+    private function renderTwigTemplate(string $templateName, array $context = []): ?string
+    {
+        // Load the template (implementation needed - where are templates stored?)
+        $template = $this->loadTwigTemplate($templateName);
+
+        if ($template === null) {
+            return null; // Or return a default template if preferred
+        }
+
+        // Render the template with context variables
+        try {
+            return $template->render($context);
+        } catch (\Exception $e) {
+            error_log('Twig rendering error: ' . $e->getMessage());
+            return null; // Or return an error message
+        }
+    }
+
+    /**
+     * Load a Twig template - implementation needed
+     */
+    private function loadTwigTemplate(string $templateName): ?\Twig\Environment
+    {
+        // This is a placeholder - implement logic to load the Twig template
+        return null;
+    }
 }

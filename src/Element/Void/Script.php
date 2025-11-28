@@ -4,7 +4,7 @@
  *
  * Script - The script element is used to embed or reference an executable script within an HTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -70,35 +70,35 @@ class Script extends VoidElement
     ];
 
     /** When present, it specifies that the script will be executed asynchronously as soon as it is available. */
-    public ?bool $async = null;
+    protected ?bool $async = null;
 
     /** Specifies the character encoding for the resource. */
-    public ?string $charset = null;
+    protected ?string $charset = null;
 
     /**  */
-    public ?CrossoriginEnum $crossorigin = null;
+    protected ?CrossoriginEnum $crossorigin = null;
 
     /** When present, it specifies that the script should be executed after the page has been parsed. */
-    public ?bool $defer = null;
+    protected ?bool $defer = null;
 
     /** Specifies the integrity value of a resource. */
-    public ?string $integrity = null;
+    protected ?string $integrity = null;
 
     /** Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks. */
-    public ?string $nonce = null;
+    protected ?string $nonce = null;
 
     /** Specifies the referrer policy for fetches initiated by the element. */
-    public ?ReferrerpolicyEnum $referrerpolicy = null;
+    protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
     /** Specifies the URL of the external resource to be embedded or referenced. */
-    public ?string $src = null;
+    protected ?string $src = null;
 
     /** 
      * Specifies the media type of the linked resource.
      * @category HTML attribute
      * @example text/javascript
      */
-    public ?ScriptTypeEnum $type = null;
+    protected ?ScriptTypeEnum $type = null;
 
 
     public function setAsync(bool $async): static
@@ -127,7 +127,7 @@ class Script extends VoidElement
 
     public function setCrossorigin(string|CrossoriginEnum $crossorigin): static
     {
-        if (is_string($crossorigin)) {
+        if (\is_string($crossorigin)) {
             $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new \InvalidArgumentException("Invalid value for \$crossorigin.");
         }
         $this->crossorigin = $crossorigin;
@@ -179,7 +179,7 @@ class Script extends VoidElement
 
     public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): static
     {
-        if (is_string($referrerpolicy)) {
+        if (\is_string($referrerpolicy)) {
             $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new \InvalidArgumentException("Invalid value for \$referrerpolicy.");
         }
         $this->referrerpolicy = $referrerpolicy;
@@ -207,7 +207,7 @@ class Script extends VoidElement
 
     public function setType(string|ScriptTypeEnum $type): static
     {
-        if (is_string($type)) {
+        if (\is_string($type)) {
             $type = ScriptTypeEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
         }
         $this->type = $type;

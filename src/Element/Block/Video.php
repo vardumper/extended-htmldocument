@@ -4,7 +4,7 @@
  *
  * Video - The video element is used to embed video content in a document, such as a movie clip or other video streams.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -105,94 +105,94 @@ class Video extends BlockElement
 
 
     /** When present, it specifies that the audio or video will automatically start playing as soon as it can do so without stopping. */
-    public ?bool $autoplay = null;
+    protected ?bool $autoplay = null;
 
     /** When present, it specifies that audio or video controls should be displayed (such as play, pause, and volume). */
-    public ?bool $controls = null;
+    protected ?bool $controls = null;
 
     /**  */
-    public ?CrossoriginEnum $crossorigin = null;
+    protected ?CrossoriginEnum $crossorigin = null;
 
     /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
-    public ?string $height = null;
+    protected ?string $height = null;
 
     /** When present, it specifies that the audio or video will start over again every time it is finished. */
-    public ?bool $loop = null;
+    protected ?bool $loop = null;
 
     /** When present, it specifies that the audio output of the video should be muted. */
-    public ?bool $muted = null;
+    protected ?bool $muted = null;
 
     /** Specifies the URL of an image to be displayed as the video's poster (thumbnail) image. */
-    public ?string $poster = null;
+    protected ?string $poster = null;
 
     /**  */
-    public ?PreloadEnum $preload = null;
+    protected ?PreloadEnum $preload = null;
 
     /** 
      * Specifies the URL of the external resource to be embedded or referenced.
      * @category HTML attribute
      * @required
      */
-    public ?string $src = null;
+    protected ?string $src = null;
 
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
-    public ?string $width = null;
+    protected ?string $width = null;
 
     /** Defines the semantic purpose of an element for assistive technologies. */
-    public ?RoleEnum $role = null;
+    protected ?RoleEnum $role = null;
 
     /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
-    public ?string $ariaControls = null;
+    protected ?string $ariaControls = null;
 
     /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
-    public ?string $ariaDescribedby = null;
+    protected ?string $ariaDescribedby = null;
 
     /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
-    public ?string $ariaLabelledby = null;
+    protected ?string $ariaLabelledby = null;
 
     /** 
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaBusyEnum $ariaBusy = null;
+    protected ?AriaBusyEnum $ariaBusy = null;
 
     /** 
      * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
      * @category HTML attribute
      * @example false
      */
-    public ?AriaHiddenEnum $ariaHidden = null;
+    protected ?AriaHiddenEnum $ariaHidden = null;
 
     /** References an element that provides additional details about the current element. */
-    public ?string $ariaDetails = null;
+    protected ?string $ariaDetails = null;
 
     /** Defines keyboard shortcuts available for the element. */
-    public ?string $ariaKeyshortcuts = null;
+    protected ?string $ariaKeyshortcuts = null;
 
     /** Provides a human-readable custom role description for assistive technologies. */
-    public ?string $ariaRoledescription = null;
+    protected ?string $ariaRoledescription = null;
 
     /** 
      * Defines how updates to the element should be announced to screen readers.
      * @category HTML attribute
      * @example off
      */
-    public ?AriaLiveEnum $ariaLive = null;
+    protected ?AriaLiveEnum $ariaLive = null;
 
     /** 
      * Indicates what content changes should be announced in a live region.
      * @category HTML attribute
      * @example additions text
      */
-    public ?AriaRelevantEnum $ariaRelevant = null;
+    protected ?AriaRelevantEnum $ariaRelevant = null;
 
     /** 
      * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaAtomicEnum $ariaAtomic = null;
+    protected ?AriaAtomicEnum $ariaAtomic = null;
 
 
     public function setAutoplay(bool $autoplay): static
@@ -221,7 +221,7 @@ class Video extends BlockElement
 
     public function setCrossorigin(string|CrossoriginEnum $crossorigin): static
     {
-        if (is_string($crossorigin)) {
+        if (\is_string($crossorigin)) {
             $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new \InvalidArgumentException("Invalid value for \$crossorigin.");
         }
         $this->crossorigin = $crossorigin;
@@ -285,7 +285,7 @@ class Video extends BlockElement
 
     public function setPreload(string|PreloadEnum $preload): static
     {
-        if (is_string($preload)) {
+        if (\is_string($preload)) {
             $preload = PreloadEnum::tryFrom($preload) ?? throw new \InvalidArgumentException("Invalid value for \$preload.");
         }
         $this->preload = $preload;
@@ -325,7 +325,7 @@ class Video extends BlockElement
 
     public function setRole(string|RoleEnum $role): static
     {
-        if (is_string($role)) {
+        if (\is_string($role)) {
             $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
@@ -377,7 +377,7 @@ class Video extends BlockElement
 
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
-        if (is_string($ariaBusy)) {
+        if (\is_string($ariaBusy)) {
             $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
         }
         $this->ariaBusy = $ariaBusy;
@@ -393,7 +393,7 @@ class Video extends BlockElement
 
     public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
     {
-        if (is_string($ariaHidden)) {
+        if (\is_string($ariaHidden)) {
             $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
         }
         $this->ariaHidden = $ariaHidden;
@@ -445,7 +445,7 @@ class Video extends BlockElement
 
     public function setAriaLive(string|AriaLiveEnum $ariaLive): static
     {
-        if (is_string($ariaLive)) {
+        if (\is_string($ariaLive)) {
             $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
         }
         $this->ariaLive = $ariaLive;
@@ -461,7 +461,7 @@ class Video extends BlockElement
 
     public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
     {
-        if (is_string($ariaRelevant)) {
+        if (\is_string($ariaRelevant)) {
             $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
         }
         $this->ariaRelevant = $ariaRelevant;
@@ -477,7 +477,7 @@ class Video extends BlockElement
 
     public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
     {
-        if (is_string($ariaAtomic)) {
+        if (\is_string($ariaAtomic)) {
             $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
         }
         $this->ariaAtomic = $ariaAtomic;

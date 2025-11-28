@@ -13,4 +13,4 @@ layout: home
 ## Design
 
 
-Fri Nov  7 09:23:21 AM CET 2025
+Fri Nov 28 15:56:20 CET 2025

@@ -4,7 +4,7 @@
  *
  * ColumnGroup - The colgroup element represents a group of one or more columns in the table that is its parent, if it has a parent and that is a table element.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -68,7 +68,7 @@ class ColumnGroup extends BlockElement
 
 
     /** Specifies the number of columns the <col> element should span in a table. */
-    public ?int $span = null;
+    protected ?int $span = null;
 
 
     public function setSpan(int $span): static

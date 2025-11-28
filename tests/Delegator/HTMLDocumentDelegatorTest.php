@@ -184,7 +184,7 @@ test('to string', function () {
     $body = $this->delegator->createElement('body');
     $this->delegator->appendChild($body);
     expect((string) $this->delegator)
-        ->toEqual('<body></body>');
+        ->toEqual('<html><body></body></html>');
 
     $this->expectException(Error::class);
     $this->expectExceptionMessage('Object of class Dom\HTMLDocument could not be converted to string');
@@ -299,4 +299,35 @@ test('set renderer test', function () {
     $this->delegator->setRenderer($renderer);
     expect($this->delegator->renderer)
         ->toBe($renderer);
+});
+
+test('can querySelector', function () {
+    $html = '<!DOCTYPE html><html><head><title>Test</title></head><body><div class="test-class"><p>Test</p></div></body></html>';
+    $delegator = HTMLDocumentDelegator::createFromString($html);
+
+    $element = $delegator->querySelector('.test-class');
+    expect($element)
+        ->toBeInstanceOf(HTMLElementDelegator::class);
+    expect($element->tagName)
+        ->toEqual('DIV');
+
+    $nonExistentElement = $delegator->querySelector('.non-existent-class');
+    expect($nonExistentElement)
+        ->toBeNull();
+});
+
+test('can querySelectorAll', function () {
+    $html = '<!DOCTYPE html><html><head><title>Test</title></head><body><div class="test-class"><p class="test-class">Test</p></div></body></html>';
+    $delegator = HTMLDocumentDelegator::createFromString($html);
+
+    $elements = $delegator->querySelectorAll('.test-class');
+    expect($elements->length)->toBe(2);
+    expect($elements)
+        ->toBeInstanceOf(NodeListDelegator::class);
+    expect($elements->item(0)->tagName)
+        ->toEqual('DIV');
+
+    $nonExistentElement = $delegator->querySelector('.non-existent-class');
+    expect($nonExistentElement)
+        ->toBeNull();
 });

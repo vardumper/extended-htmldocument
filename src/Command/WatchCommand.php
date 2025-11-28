@@ -154,7 +154,6 @@ class WatchCommand extends Command
             $data = $yaml->parseFile($sourceFile);
             $componentHandle = array_key_first($data);
             $templateGenerators = $this->getGenerators($generators);
-            $templateGenerators = $this->getGenerators($generators);
             foreach ($templateGenerators as $name => $templateGenerator) {
                 if ($templateGenerator === null) {
                     $io->error(sprintf('Failed to find generator for %s.', $name));

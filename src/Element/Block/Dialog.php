@@ -4,7 +4,7 @@
  *
  * Dialog - The dialog element represents a part of an application that a user interacts with to perform a task, for example a dialog box, inspector, or window.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -134,83 +134,83 @@ class Dialog extends BlockElement
 
 
     /** When present, it specifies that the details should be visible (open) to the user. */
-    public ?bool $open = null;
+    protected ?bool $open = null;
 
     /** Defines the semantic purpose of an element for assistive technologies. */
-    public ?RoleEnum $role = null;
+    protected ?RoleEnum $role = null;
 
     /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
-    public ?string $ariaControls = null;
+    protected ?string $ariaControls = null;
 
     /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
-    public ?string $ariaDescribedby = null;
+    protected ?string $ariaDescribedby = null;
 
     /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
-    public ?string $ariaLabelledby = null;
+    protected ?string $ariaLabelledby = null;
 
     /** 
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaBusyEnum $ariaBusy = null;
+    protected ?AriaBusyEnum $ariaBusy = null;
 
     /** 
      * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
      * @category HTML attribute
      * @example false
      */
-    public ?AriaHiddenEnum $ariaHidden = null;
+    protected ?AriaHiddenEnum $ariaHidden = null;
 
     /** References an element that provides additional details about the current element. */
-    public ?string $ariaDetails = null;
+    protected ?string $ariaDetails = null;
 
     /** Defines keyboard shortcuts available for the element. */
-    public ?string $ariaKeyshortcuts = null;
+    protected ?string $ariaKeyshortcuts = null;
 
     /** Provides a human-readable custom role description for assistive technologies. */
-    public ?string $ariaRoledescription = null;
+    protected ?string $ariaRoledescription = null;
 
     /** 
      * Defines how updates to the element should be announced to screen readers.
      * @category HTML attribute
      * @example off
      */
-    public ?AriaLiveEnum $ariaLive = null;
+    protected ?AriaLiveEnum $ariaLive = null;
 
     /** 
      * Indicates what content changes should be announced in a live region.
      * @category HTML attribute
      * @example additions text
      */
-    public ?AriaRelevantEnum $ariaRelevant = null;
+    protected ?AriaRelevantEnum $ariaRelevant = null;
 
     /** 
      * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaAtomicEnum $ariaAtomic = null;
+    protected ?AriaAtomicEnum $ariaAtomic = null;
 
     /** Indicates whether a collapsible UI element is expanded (true) or collapsed (false). */
-    public ?AriaExpandedEnum $ariaExpanded = null;
+    protected ?AriaExpandedEnum $ariaExpanded = null;
 
     /** 
      * Indicates that an element has an associated popup menu, listbox, tree, grid, or dialog.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaHaspopupEnum $ariaHaspopup = null;
+    protected ?AriaHaspopupEnum $ariaHaspopup = null;
 
     /** Indicates whether a toggle button is pressed (true, false, or mixed). */
-    public ?AriaPressedEnum $ariaPressed = null;
+    protected ?AriaPressedEnum $ariaPressed = null;
 
     /** 
      * Specifies whether an element is a modal dialog that blocks interaction with other content.
      * @category HTML attribute
      * @example false
      */
-    public ?AriaModalEnum $ariaModal = null;
+    protected ?AriaModalEnum $ariaModal = null;
 
 
     public function setOpen(bool $open): static
@@ -227,7 +227,7 @@ class Dialog extends BlockElement
 
     public function setRole(string|RoleEnum $role): static
     {
-        if (is_string($role)) {
+        if (\is_string($role)) {
             $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
@@ -279,7 +279,7 @@ class Dialog extends BlockElement
 
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
-        if (is_string($ariaBusy)) {
+        if (\is_string($ariaBusy)) {
             $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
         }
         $this->ariaBusy = $ariaBusy;
@@ -295,7 +295,7 @@ class Dialog extends BlockElement
 
     public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
     {
-        if (is_string($ariaHidden)) {
+        if (\is_string($ariaHidden)) {
             $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
         }
         $this->ariaHidden = $ariaHidden;
@@ -347,7 +347,7 @@ class Dialog extends BlockElement
 
     public function setAriaLive(string|AriaLiveEnum $ariaLive): static
     {
-        if (is_string($ariaLive)) {
+        if (\is_string($ariaLive)) {
             $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
         }
         $this->ariaLive = $ariaLive;
@@ -363,7 +363,7 @@ class Dialog extends BlockElement
 
     public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
     {
-        if (is_string($ariaRelevant)) {
+        if (\is_string($ariaRelevant)) {
             $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
         }
         $this->ariaRelevant = $ariaRelevant;
@@ -379,7 +379,7 @@ class Dialog extends BlockElement
 
     public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
     {
-        if (is_string($ariaAtomic)) {
+        if (\is_string($ariaAtomic)) {
             $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
         }
         $this->ariaAtomic = $ariaAtomic;
@@ -395,7 +395,7 @@ class Dialog extends BlockElement
 
     public function setAriaExpanded(string|AriaExpandedEnum $ariaExpanded): static
     {
-        if (is_string($ariaExpanded)) {
+        if (\is_string($ariaExpanded)) {
             $ariaExpanded = AriaExpandedEnum::tryFrom($ariaExpanded) ?? throw new \InvalidArgumentException("Invalid value for \$ariaExpanded.");
         }
         $this->ariaExpanded = $ariaExpanded;
@@ -411,7 +411,7 @@ class Dialog extends BlockElement
 
     public function setAriaHaspopup(string|AriaHaspopupEnum $ariaHaspopup): static
     {
-        if (is_string($ariaHaspopup)) {
+        if (\is_string($ariaHaspopup)) {
             $ariaHaspopup = AriaHaspopupEnum::tryFrom($ariaHaspopup) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHaspopup.");
         }
         $this->ariaHaspopup = $ariaHaspopup;
@@ -427,7 +427,7 @@ class Dialog extends BlockElement
 
     public function setAriaPressed(string|AriaPressedEnum $ariaPressed): static
     {
-        if (is_string($ariaPressed)) {
+        if (\is_string($ariaPressed)) {
             $ariaPressed = AriaPressedEnum::tryFrom($ariaPressed) ?? throw new \InvalidArgumentException("Invalid value for \$ariaPressed.");
         }
         $this->ariaPressed = $ariaPressed;
@@ -443,7 +443,7 @@ class Dialog extends BlockElement
 
     public function setAriaModal(string|AriaModalEnum $ariaModal): static
     {
-        if (is_string($ariaModal)) {
+        if (\is_string($ariaModal)) {
             $ariaModal = AriaModalEnum::tryFrom($ariaModal) ?? throw new \InvalidArgumentException("Invalid value for \$ariaModal.");
         }
         $this->ariaModal = $ariaModal;

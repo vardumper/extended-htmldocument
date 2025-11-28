@@ -4,7 +4,7 @@
  *
  * Track - The track element is used as a child of the media elements—audio and video. It lets you specify timed text tracks (or time-based data), for example to automatically handle subtitles. The tracks are formatted in WebVTT format (.vtt files) — Web Video Text Tracks.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -79,27 +79,27 @@ class Track extends VoidElement
     ];
 
     /** Specifies that the track should be enabled by default when the page loads. */
-    public ?bool $default = null;
+    protected ?bool $default = null;
 
     /** 
      * 
      * @category HTML attribute
      * @example subtitles
      */
-    public ?KindEnum $kind = null;
+    protected ?KindEnum $kind = null;
 
     /** Specifies a label for the associated form control, option group, or option. */
-    public ?string $label = null;
+    protected ?string $label = null;
 
     /** 
      * Specifies the URL of the external resource to be embedded or referenced.
      * @category HTML attribute
      * @required
      */
-    public ?string $src = null;
+    protected ?string $src = null;
 
     /** Specifies the language of the track text data. */
-    public ?string $srclang = null;
+    protected ?string $srclang = null;
 
 
     public function setDefault(bool $default): static
@@ -116,7 +116,7 @@ class Track extends VoidElement
 
     public function setKind(string|KindEnum $kind): static
     {
-        if (is_string($kind)) {
+        if (\is_string($kind)) {
             $kind = KindEnum::tryFrom($kind) ?? throw new \InvalidArgumentException("Invalid value for \$kind.");
         }
         $this->kind = $kind;

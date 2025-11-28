@@ -4,7 +4,7 @@
  *
  * Column - The col element represents a column in a table.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -62,10 +62,10 @@ class Column extends VoidElement
     ];
 
     /** Specifies the number of columns the <col> element should span in a table. */
-    public ?int $span = null;
+    protected ?int $span = null;
 
     /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
-    public ?string $width = null;
+    protected ?string $width = null;
 
 
     public function setSpan(int $span): static

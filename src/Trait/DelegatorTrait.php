@@ -28,7 +28,7 @@ trait DelegatorTrait
         $reflection = new ReflectionClass($this->delegated);
         if ($reflection->hasMethod($name)) {
             $method = $reflection->getMethod($name);
-            $method->setAccessible(true);
+            
             try {
                 return $method->invokeArgs($this->delegated, $arguments);
             } catch (TypeError $e) {
@@ -49,7 +49,6 @@ trait DelegatorTrait
         $reflection = new ReflectionClass($this->delegated);
         if ($reflection->hasProperty($name)) {
             $property = $reflection->getProperty($name);
-            $property->setAccessible(true);
             return $property->getValue($this->delegated);
         }
         throw new InvalidArgumentException(
@@ -62,7 +61,6 @@ trait DelegatorTrait
         $reflection = new ReflectionClass($this->delegated);
         if ($reflection->hasProperty($name)) {
             $property = $reflection->getProperty($name);
-            $property->setAccessible(true);
             $property->setValue($this->delegated, $value);
             return;
         }

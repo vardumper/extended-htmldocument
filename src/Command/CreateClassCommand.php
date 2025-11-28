@@ -420,7 +420,17 @@ final class CreateClassCommand extends Command
     private function getAttributes(array $attributes, string $element): string
     {
         $transformedAttributes = '';
+        // Gather global attribute names for this element (as variable names)
+        $elementData = $this->data[$element] ?? [];
+        $globalAttributes = $elementData['allowed_global_attributes'] ?? [];
+        $globalAttributeVariableNames = array_map(fn($attr) => $this->toVariableName($attr), $globalAttributes);
+
         foreach ($attributes as $attribute => $details) {
+            $variableName = $this->toVariableName($attribute);
+            // Skip property if it's provided by a global attribute trait
+            if (in_array($variableName, $globalAttributeVariableNames, true)) {
+                continue;
+            }
             $transformedAttributes .= $this->generateAttributeDeclaration($attribute, $details, $element);
         }
         return $transformedAttributes;
@@ -431,7 +441,7 @@ final class CreateClassCommand extends Command
         $type = $this->mapToPhpType($details['type'] ?? '');
         $variableName = $this->toVariableName($attribute);
         $comment = $this->getAttributeComment($details);
-        $visibility = 'public';
+        $visibility = 'protected';
         $returnType = '?' . $type;
 
         if (str_contains($type, 'enum')) {
@@ -487,7 +497,7 @@ final class CreateClassCommand extends Command
             $returnType = sprintf('?%s', $enumName);
         }
 
-        return [$returnType, 'public'];
+        return [$returnType, 'protected'];
     }
 
     private function getOtherTypesFromEnum(string $type): array

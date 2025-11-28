@@ -4,7 +4,7 @@
  *
  * Source - The source element allows authors to specify multiple media resources for media elements. It is an empty element. It is commonly used within the picture element.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -78,23 +78,23 @@ class Source extends VoidElement
     ];
 
     /** Specifies the media type for which the linked resource or style sheet is intended. */
-    public ?string $media = null;
+    protected ?string $media = null;
 
     /** Specifies the sizes of the images or icons for different display/window sizes. */
-    public ?string $sizes = null;
+    protected ?string $sizes = null;
 
     /** 
      * Specifies the URL of the external resource to be embedded or referenced.
      * @category HTML attribute
      * @required
      */
-    public ?string $src = null;
+    protected ?string $src = null;
 
     /** Specifies a list of possible image sources for the browser to use. */
-    public ?string $srcset = null;
+    protected ?string $srcset = null;
 
     /** Specifies the media type of the linked resource. */
-    public ?string $type = null;
+    protected ?string $type = null;
 
 
     public function setMedia(string $media): static

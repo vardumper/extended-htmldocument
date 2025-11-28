@@ -4,7 +4,7 @@
  *
  * Meta - The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -65,19 +65,19 @@ class Meta extends VoidElement
     ];
 
     /** Specifies the character encoding for the resource. */
-    public ?string $charset = null;
+    protected ?string $charset = null;
 
     /** Specifies the value associated with the http-equiv or name attribute. */
-    public ?string $content = null;
+    protected ?string $content = null;
 
     /** Provides an HTTP header for the information/value of the content attribute. */
-    public ?HttpEquivEnum $httpEquiv = null;
+    protected ?HttpEquivEnum $httpEquiv = null;
 
     /** Specifies the name associated with the element. The meaning may vary depending on the context. */
-    public ?string $name = null;
+    protected ?string $name = null;
 
     /** Specifies the content type of the value attribute when the http-equiv attribute is used. */
-    public ?string $scheme = null;
+    protected ?string $scheme = null;
 
 
     public function setCharset(string $charset): static
@@ -106,7 +106,7 @@ class Meta extends VoidElement
 
     public function setHttpEquiv(string|HttpEquivEnum $httpEquiv): static
     {
-        if (is_string($httpEquiv)) {
+        if (\is_string($httpEquiv)) {
             $httpEquiv = HttpEquivEnum::tryFrom($httpEquiv) ?? throw new \InvalidArgumentException("Invalid value for \$httpEquiv.");
         }
         $this->httpEquiv = $httpEquiv;

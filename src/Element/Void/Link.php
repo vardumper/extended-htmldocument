@@ -4,7 +4,7 @@
  *
  * Link - The link element defines a link between a document and an external resource. It is used to link to external stylesheets.
  * 
- * @generated 2025-11-07 17:10:20
+ * @generated 2025-11-28 14:53:40
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -69,40 +69,40 @@ class Link extends VoidElement
     ];
 
     /**  */
-    public ?CrossoriginEnum $crossorigin = null;
+    protected ?CrossoriginEnum $crossorigin = null;
 
     /** 
      * Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.
      * @category HTML attribute
      * @required
      */
-    public ?string $href = null;
+    protected ?string $href = null;
 
     /** Specifies the language of the linked resource. */
-    public ?string $hreflang = null;
+    protected ?string $hreflang = null;
 
     /** Specifies the integrity value of a resource. */
-    public ?string $integrity = null;
+    protected ?string $integrity = null;
 
     /** Specifies the media type for which the linked resource or style sheet is intended. */
-    public ?string $media = null;
+    protected ?string $media = null;
 
     /** Specifies the referrer policy for fetches initiated by the element. */
-    public ?ReferrerpolicyEnum $referrerpolicy = null;
+    protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
     /** Specifies the relationship between the current document and the linked document. */
-    public ?LinkRelEnum $rel = null;
+    protected ?LinkRelEnum $rel = null;
 
     /** Specifies the sizes of the images or icons for different display/window sizes. */
-    public ?string $sizes = null;
+    protected ?string $sizes = null;
 
     /** Specifies the media type of the linked resource. */
-    public ?string $type = null;
+    protected ?string $type = null;
 
 
     public function setCrossorigin(string|CrossoriginEnum $crossorigin): static
     {
-        if (is_string($crossorigin)) {
+        if (\is_string($crossorigin)) {
             $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new \InvalidArgumentException("Invalid value for \$crossorigin.");
         }
         $this->crossorigin = $crossorigin;
@@ -166,7 +166,7 @@ class Link extends VoidElement
 
     public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): static
     {
-        if (is_string($referrerpolicy)) {
+        if (\is_string($referrerpolicy)) {
             $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new \InvalidArgumentException("Invalid value for \$referrerpolicy.");
         }
         $this->referrerpolicy = $referrerpolicy;
@@ -182,7 +182,7 @@ class Link extends VoidElement
 
     public function setRel(string|LinkRelEnum $rel): static
     {
-        if (is_string($rel)) {
+        if (\is_string($rel)) {
             $rel = LinkRelEnum::tryFrom($rel) ?? throw new \InvalidArgumentException("Invalid value for \$rel.");
         }
         $this->rel = $rel;
