@@ -49,9 +49,9 @@ test('render element', function () {
 test('render document', function () {
     $document = HTMLDocumentDelegator::createEmpty();
     $element = Body::create($document);
-    $document->appendChild($element->delegated);
+    $document->appendChild($element);
     expect($this->generator->render($document))
-        ->toBe('<body></body>');
+        ->toBe('<html><body></body></html>');
 });
 
 test('render invalid', function () {

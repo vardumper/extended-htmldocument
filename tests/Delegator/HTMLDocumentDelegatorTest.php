@@ -288,11 +288,11 @@ test('get elements by tag name', function () {
     $delegator = HTMLDocumentDelegator::createFromString($html);
     expect($delegator->getElementsByTagName('div'))
         ->toBeInstanceOf(NodeListDelegator::class);
-    expect($delegator->getElementsByTagName('div')->count())
+    expect(\count($delegator->getElementsByTagName('div')))
         ->toEqual(1);
-    expect($delegator->getElementsByTagName('p')->count())
+    expect(\count($delegator->getElementsByTagName('p')))
         ->toEqual(1);
-    expect($delegator->getElementsByTagName('span')->count())
+    expect(\count($delegator->getElementsByTagName('span')))
         ->toEqual(0);
 });
 

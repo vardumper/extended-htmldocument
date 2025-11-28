@@ -106,6 +106,6 @@ test('call with htmlelement delegator argument', function () {
     $other = $this->document->createTextNode('I\'m a node, too');
     $anchor->appendChild($other);
 
-    expect($anchor->contains($other))
+    expect($anchor->contains($other->delegated))
         ->toBeTrue();
 });

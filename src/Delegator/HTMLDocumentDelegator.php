@@ -104,6 +104,7 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
         if ($nodeValue !== null) {
             $htmlElement->append($nodeValue);
         }
+        \Html\Delegator\HTMLElementDelegator::$ownerDocument = $this;
         return new HTMLElementDelegator($htmlElement);
     }
 
@@ -118,6 +119,7 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
     public function createTextNode(string $nodeValue): TextDelegator
     {
         $textNode = $this->delegated->createTextNode($nodeValue);
+        \Html\Delegator\TextDelegator::$ownerDocument = $this;
         return new TextDelegator($textNode);
     }
 
@@ -143,5 +145,12 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
             return null;
         }
         return new NodeListDelegator($nodeList);
+    }
+
+    public function removeChild(HTMLElementDelegator $child): void
+    {
+        if ($this->delegated->documentElement !== null) {
+            $this->delegated->documentElement->removeChild($child->delegated);
+        }
     }
 }

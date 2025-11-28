@@ -81,8 +81,18 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             $reflection = new ReflectionClass($this);
             $property = $reflection->getProperty($name);
             $propertyType = $property->getType();
-            $enumClass = $propertyType->getName();
-            if (\is_subclass_of($enumClass, BackedEnum::class) && is_string($value)) {
+            $enumClass = null;
+            if ($propertyType instanceof ReflectionUnionType) {
+                foreach ($propertyType->getTypes() as $type) {
+                    if (\is_subclass_of($type->getName(), BackedEnum::class)) {
+                        $enumClass = $type->getName();
+                        break;
+                    }
+                }
+            } else {
+                $enumClass = $propertyType->getName();
+            }
+            if ($enumClass && \is_subclass_of($enumClass, BackedEnum::class) && is_string($value)) {
                 $value = $enumClass::from($value);
                 $methodName = 'set' . $name;
                 if (\method_exists($this, $methodName)) {

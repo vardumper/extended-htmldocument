@@ -4,10 +4,12 @@ namespace Html\Delegator;
 
 use AllowDynamicProperties;
 use BadMethodCallException;
+use Countable;
 use Dom\HTMLCollection;
 use DOM\NodeList;
-use Html\Trait\DelegatorTrait;
+use InvalidArgumentException;
 use Iterator;
+use IteratorAggregate;
 use ReflectionClass;
 use Traversable;
 
@@ -70,9 +72,9 @@ use Traversable;
  */
 
 #[AllowDynamicProperties]
-class NodeListDelegator
+
+class NodeListDelegator implements Countable, IteratorAggregate
 {
-    use DelegatorTrait;
     use \Html\Trait\ClassResolverTrait;
 
     public function __construct(
@@ -80,8 +82,23 @@ class NodeListDelegator
     ) {
     }
 
+    /**
+     * Public property for compatibility with DOM NodeList/HTMLCollection
+     */
+    public function __get($name)
+    {
+        if ($name === 'length') {
+            return $this->count();
+        }
+        throw new InvalidArgumentException("Property {$name} does not exist on " . __CLASS__);
+    }
+
     public function __call($name, $arguments)
     {
+        if ($name === 'count') {
+            // Always call the local count() method
+            return $this->count();
+        }
         $reflection = new ReflectionClass($this->delegated);
         if ($reflection->hasMethod($name)) {
             $method = $reflection->getMethod($name);
@@ -99,6 +116,9 @@ class NodeListDelegator
             return null;
         }
 
+        if ($node->parentNode === null) {
+            return null;
+        }
         if ($node instanceof \DOM\Element) {
             $delegator = $this->getDelegatorFromElement($node);
             if ($delegator) {
@@ -118,5 +138,10 @@ class NodeListDelegator
     public function getNodeList(): NodeList|HTMLCollection
     {
         return $this->delegated;
+    }
+
+    final public function count(): int
+    {
+        return $this->delegated->length;
     }
 }
