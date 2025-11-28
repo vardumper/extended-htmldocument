@@ -101,6 +101,20 @@ trait ClassResolverTrait
     }
 
     /**
+     * Given a DOM element, return an instance of the correct delegator class (or null).
+     * Uses getElementByQualifiedName to resolve the class.
+     */
+    public function getDelegatorFromElement(\DOM\Element $element): ?HTMLElementDelegator
+    {
+        $tagName = strtolower($element->tagName);
+        $class = $this->getElementByQualifiedName($tagName);
+        if ($class && class_exists($class)) {
+            return new $class($element);
+        }
+        return null;
+    }
+
+    /**
      * Load all relevant PHP files for class scanning.
      */
     private function loadAllRelevantPhpFiles(): void
@@ -141,7 +155,7 @@ trait ClassResolverTrait
         foreach ($files as $file) {
             // echo $file->getPathname() . PHP_EOL;
             if ($file->isFile() && $file->getExtension() === 'php') {
-                if (str_ends_with($file->getFilename(), '.tpl.php')) {
+                if (str_ends_with($file->getFilename(), '.tpl.php') || str_contains($file->getPathname(), 'Command')) {
                     continue;
                 }
 

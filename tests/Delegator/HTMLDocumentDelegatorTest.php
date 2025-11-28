@@ -6,8 +6,11 @@ use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
 use Html\Delegator\NodeListDelegator;
 use Html\Element\Block\Body;
+use Html\Element\Block\Division;
 use Html\Element\Block\TableData;
 use Html\Element\Block\TableRow;
+use Html\Element\Inline\Anchor;
+use Html\Enum\TargetEnum;
 use Html\TemplateGenerator\HTMLGenerator;
 
 // uses(\Html\Trait\GlobalAttributesTrait::class);
@@ -316,6 +319,24 @@ test('can querySelector', function () {
         ->toBeNull();
 });
 
+test('can use querySelected element', function () {
+    $html = '<!DOCTYPE html><html><head><title>Test</title></head><body><a class="test-class">Link</a></body></html>';
+    $delegator = HTMLDocumentDelegator::createFromString($html);
+
+    $element = $delegator->querySelector('.test-class');
+    $element->setTarget('_blank');
+    $element->setTextContent('New Link Text');
+    expect($element)
+        ->toBeInstanceOf(HTMLElementDelegator::class);
+    expect($element)
+        ->toBeInstanceOf(Anchor::class);
+    expect($element->getTarget())
+        ->toBe(TargetEnum::BLANK);
+    expect($element->getTextContent())
+        ->toBe('New Link Text');
+});
+
+
 test('can querySelectorAll', function () {
     $html = '<!DOCTYPE html><html><head><title>Test</title></head><body><div class="test-class"><p class="test-class">Test</p></div></body></html>';
     $delegator = HTMLDocumentDelegator::createFromString($html);
@@ -331,4 +352,23 @@ test('can querySelectorAll', function () {
     $nonExistentElement = $delegator->querySelector('.non-existent-class');
     expect($nonExistentElement)
         ->toBeNull();
+});
+
+test('can use querySelectorAll element', function () {
+    $html = '<!DOCTYPE html><html><head><title>Test</title></head><body><div class="test-class"><p class="test-class">Test</p></div></body></html>';
+    $delegator = HTMLDocumentDelegator::createFromString($html);
+
+    $elements = $delegator->querySelectorAll('.test-class');
+    expect($elements->item(1)->tagName)
+        ->toBe('P');
+    expect($elements->item(0)->tagName)
+        ->toBe('DIV');
+    /** @var \Html\Element\Division $div */
+    $div = $elements->item(0);
+    expect($div)
+        ->toBeInstanceOf(Division::class);
+    $elements->item(1)
+        ->setTextContent('Updated Paragraph Text');
+    expect($elements->item(1)->getTextContent())
+        ->toBe('Updated Paragraph Text');
 });

@@ -57,6 +57,7 @@ use InvalidArgumentException;
 class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
 {
     use DelegatorTrait;
+    use \Html\Trait\ClassResolverTrait;
 
     public bool $formatOutput;
 
@@ -132,7 +133,7 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
         if ($element === null) {
             return null;
         }
-        return new HTMLElementDelegator($element);
+        return $this->getDelegatorFromElement($element);
     }
 
     public function querySelectorAll(string $selectors): ?NodeListDelegator

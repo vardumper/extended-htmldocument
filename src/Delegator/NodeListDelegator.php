@@ -9,6 +9,7 @@ use DOM\NodeList;
 use Html\Trait\DelegatorTrait;
 use Iterator;
 use ReflectionClass;
+use Traversable;
 
 /**
  * inheritDoc
@@ -72,6 +73,7 @@ use ReflectionClass;
 class NodeListDelegator
 {
     use DelegatorTrait;
+    use \Html\Trait\ClassResolverTrait;
 
     public function __construct(
         private readonly NodeList|HTMLCollection $delegated
@@ -90,10 +92,27 @@ class NodeListDelegator
         );
     }
 
-    public function item(int $index): ?NodeDelegator
+    public function item(int $index): mixed
     {
         $node = $this->delegated->item($index);
-        return $node ? new NodeDelegator($node) : null;
+        if (! $node) {
+            return null;
+        }
+
+        if ($node instanceof \DOM\Element) {
+            $delegator = $this->getDelegatorFromElement($node);
+            if ($delegator) {
+                return $delegator;
+            }
+        }
+        return new NodeDelegator($node);
+    }
+
+    public function getIterator(): Traversable
+    {
+        for ($i = 0, $len = $this->delegated->length; $i < $len; $i++) {
+            yield $this->item($i);
+        }
     }
 
     public function getNodeList(): NodeList|HTMLCollection
