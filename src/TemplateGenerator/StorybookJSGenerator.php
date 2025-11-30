@@ -587,17 +587,36 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         $js .= "\n  },\n";
 
         // render function
-        $js .= "  render: ({\n";
-        $js .= '    ' . implode(",\n    ", $props) . ",\n";
-        $js .= "  }) => {\n";
+        $js .= "  render: (args) => {\n";
         $js .= "    let el = document.createElement(\"{$elementName}\");\n";
-
         if (! $isSelfClosing) {
-            $js .= "    el.innerHTML = text;\n";
+            $js .= "    el.innerHTML = args.text;\n";
         }
-
-        $js .= implode("\n", $renderAssignments);
-        $js .= "\n    return el;\n";
+        $js .= "\n    // Map argument keys to attribute names, handle special cases\n";
+        $js .= "    const argMap = {\n";
+        $js .= "      classProp: 'class',\n";
+        $js .= "      style: 'style',\n";
+        $js .= "      tabindex: 'tabindex',\n";
+        $js .= "    };\n";
+        $js .= "    Object.entries(args).forEach(([key, value]) => {\n";
+        $js .= "      if (key === 'text' || value === undefined || value === \"\") return;\n";
+        $js .= "      if (key === 'data' && typeof value === 'object') {\n";
+        $js .= "        Object.keys(value).forEach(dataKey => {\n";
+        $js .= "          el.setAttribute(`data-\${dataKey}`, value[dataKey]);\n";
+        $js .= "        });\n";
+        $js .= "        return;\n";
+        $js .= "      }\n";
+        $js .= "      const attr = argMap[key] || key.replace(/[A-Z]/g, m => '-' + m.toLowerCase());\n";
+        $js .= "      // Only set boolean attributes if true, omit if false\n";
+        $js .= "      if (typeof value === 'boolean') {\n";
+        $js .= "        if (value) {\n";
+        $js .= "          el.setAttribute(attr, \"\");\n";
+        $js .= "        }\n";
+        $js .= "        return;\n";
+        $js .= "      }\n";
+        $js .= "      el.setAttribute(attr, value);\n";
+        $js .= "    });\n";
+        $js .= "    return el;\n";
         $js .= "  },\n";
         $js .= "  decorators: [],\n";
         $js .= "};\n\n";
