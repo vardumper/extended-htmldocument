@@ -96,8 +96,227 @@ class BladeGenerator implements TemplateGeneratorInterface
         return $blade;
     }
 
+    /**
+     * Generate a composed Blade template showing valid parent-child relationships
+     *
+     * Creates a Blade template demonstrating the element with its valid children
+     * based on content model metadata ($parentOf).
+     */
+    public function renderComposedElement(HTMLElementDelegatorInterface $element): ?string
+    {
+        $ref = new ReflectionClass($element);
+
+        // Get content model metadata
+        $childOf = $ref->getStaticPropertyValue('childOf', []);
+        $parentOf = $ref->getStaticPropertyValue('parentOf', []);
+
+        // Only generate composed templates for elements with SPECIFIC allowed children
+        if (empty($parentOf)) {
+            return null;
+        }
+
+        $elementName = $ref->hasConstant('QUALIFIED_NAME') ? $ref->getConstant('QUALIFIED_NAME') : strtolower(
+            $ref->getShortName()
+        );
+
+        // Skip generic containers that don't have meaningful composition patterns
+        $excludedElements = [
+            'div', 'article', 'aside', 'section', 'nav', 'header', 'footer', 'main',
+            'blockquote', 'p', 'dialog', 'dd', 'legend', 'li', 'mark', 'slot',
+            'svg', 'template', 'thead', 'tbody', 'tfoot', 'tr', 'td', 'th',
+            'caption', 'colgroup', 'col', 'fieldset', 'dt', 'optgroup', 'option',
+            'figcaption', 'summary', 'rt', 'rp',
+        ];
+        if (in_array($elementName, $excludedElements, true)) {
+            return null;
+        }
+
+        // Read element metadata from YAML
+        $yamlPath = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
+        if (! is_readable($yamlPath)) {
+            $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
+        }
+        $yaml = is_readable($yamlPath) ? \Symfony\Component\Yaml\Yaml::parseFile($yamlPath) : [];
+        $meta = $yaml[strtolower($elementName)] ?? [];
+
+        $name = $meta['name'] ?? ucfirst($elementName);
+        $desc = $meta['description'] ?? '';
+
+        return $this->buildComposedBladeTemplate($elementName, $name, $desc, $ref, $childOf, $parentOf);
+    }
+
     private function camelToKebab(string $string): string
     {
         return strtolower(preg_replace('/([a-z])([A-Z])/', '$1-$2', $string));
+    }
+
+    /**
+     * Build a composed Blade template showing parent-child relationships
+     */
+    private function buildComposedBladeTemplate(
+        string $elementName,
+        string $name,
+        string $description,
+        ReflectionClass $ref,
+        array $childOf,
+        array $parentOf
+    ): string {
+        $blade = "{{--\n  This file is auto-generated.\n\n  {$name} - Composed Example\n  {$description}\n\n  CONTENT MODEL:\n";
+        if (! empty($childOf)) {
+            $childOfNames = array_map(function ($class) {
+                return (new ReflectionClass($class))->getShortName();
+            }, $childOf);
+            $blade .= '  - Can be a child of: ' . implode(', ', $childOfNames) . "\n";
+        }
+        if (! empty($parentOf)) {
+            $parentOfNames = array_map(function ($class) {
+                return (new ReflectionClass($class))->getShortName();
+            }, $parentOf);
+            $blade .= '  - Can contain: ' . implode(', ', $parentOfNames) . "\n";
+        }
+        $uniquePerParent = $ref->getStaticPropertyValue('uniquePerParent', false);
+        $unique = $ref->getStaticPropertyValue('unique', false);
+        if ($unique) {
+            $blade .= "  - UNIQUE: Only one allowed per document\n";
+        }
+        if ($uniquePerParent) {
+            $blade .= "  - UNIQUE PER PARENT: Only one allowed per parent element\n";
+        }
+        $blade .= "\n  @author vardumper <info@erikpoehler.com>\n  @package vardumper/extended-htmldocument\n  @see src/TemplateGenerator/BladeGenerator.php\n--}}\n";
+
+        $sectionName = in_array(
+            $elementName,
+            self::BLADE_RESERVED_WORDS,
+            true
+        ) ? $elementName . '_composed' : $elementName . '_composed';
+        $parentLevel = $this->determineLevel($ref->getName());
+        $blade .= "@section('{$sectionName}')\n";
+        $blade .= "<{$elementName} class=\"example\">\n";
+        $children = $this->collectChildrenForComposedBladeTemplate($elementName, $parentOf, $ref);
+        foreach ($children as $child) {
+            $blade .= $child['bladeCode'];
+        }
+        $blade .= "@endsection\n";
+        $blade .= "</{$elementName}>\n";
+        return $blade;
+    }
+
+    /**
+     * Collect and generate Blade code for child elements
+     */
+    private function collectChildrenForComposedBladeTemplate(
+        string $parentElementName,
+        array $parentOf,
+        ReflectionClass $parentRef
+    ): array {
+        // Priority elements for specific containers
+        $priorityElements = [
+            'form' => ['fieldset', 'label', 'input', 'textarea', 'button', 'select'],
+            'fieldset' => ['legend', 'label', 'input', 'textarea', 'button'],
+            'select' => ['optgroup', 'option'],
+            'datalist' => ['option'],
+            'table' => ['caption', 'colgroup', 'thead', 'tbody', 'tfoot', 'tr'],
+            'head' => ['title', 'base', 'meta', 'link', 'script', 'style'],
+            'details' => ['summary', 'p'],
+        ];
+        // Get children to render
+        $children = [];
+        foreach ($parentOf as $childClass) {
+            $childRef = new ReflectionClass($childClass);
+            $childElementName = $childRef->hasConstant('QUALIFIED_NAME')
+                ? $childRef->getConstant('QUALIFIED_NAME')
+                : strtolower($childRef->getShortName());
+            $children[] = [
+                'name' => $childElementName,
+                'ref' => $childRef,
+                'class' => $childClass,
+            ];
+        }
+        // Filter to priority elements if there are too many children
+        $relevantChildren = $children;
+        if (isset($priorityElements[$parentElementName]) && count($children) > 5) {
+            $priorities = $priorityElements[$parentElementName];
+            $filtered = array_filter($children, fn ($c) => in_array($c['name'], $priorities, true));
+            if (! empty($filtered)) {
+                $relevantChildren = array_values($filtered);
+            }
+        }
+        // Limit to reasonable number of examples
+        $maxChildren = 3;
+        if ($parentElementName === 'head') {
+            $maxChildren = 6;
+        } elseif (count($children) > 10) {
+            $maxChildren = 4;
+        }
+        // Elements that should have text content only
+        $textOnlyElements = ['dd', 'dt', 'li', 'th', 'td', 'label', 'button', 'legend', 'summary', 'title', 'option'];
+        $childrenBladeCode = [];
+        $rendered = 0;
+        foreach ($relevantChildren as $child) {
+            if ($rendered >= $maxChildren) {
+                break;
+            }
+            $childName = $child['name'];
+            $childRef = $child['ref'];
+            $childClass = $child['class'];
+            $uniquePerParent = $childRef->getStaticPropertyValue('uniquePerParent', false);
+            $isSelfClosing = $childRef->hasConstant('SELF_CLOSING') && $childRef->getConstant('SELF_CLOSING');
+            $childLevel = $this->determineLevel($childClass);
+            $renderCount = $uniquePerParent ? 1 : 2;
+            for ($i = 0; $i < $renderCount && $rendered < $maxChildren; $i++) {
+                $bladeCode = '';
+                if ($isSelfClosing) {
+                    if ($childName === 'input') {
+                        $bladeCode .= "@include('blade.{$childLevel}.{$childName}.{$childName}', ['type' => 'text', 'name' => 'example'])\n";
+                    } elseif ($childName === 'img') {
+                        $bladeCode .= "@include('blade.{$childLevel}.{$childName}.{$childName}', ['src' => '/image.jpg', 'alt' => 'Example'])\n";
+                    } elseif ($childName === 'link') {
+                        $bladeCode .= "@include('blade.{$childLevel}.{$childName}.{$childName}', ['rel' => 'stylesheet', 'href' => '/styles.css'])\n";
+                    } elseif ($childName === 'meta') {
+                        $bladeCode .= "@include('blade.{$childLevel}.{$childName}.{$childName}', ['name' => 'description', 'content' => 'Example'])\n";
+                    } elseif ($childName === 'base') {
+                        $bladeCode .= "@include('blade.{$childLevel}.{$childName}.{$childName}', ['href' => '/'])\n";
+                    } else {
+                        $bladeCode .= "@include('blade.{$childLevel}.{$childName}.{$childName}')\n";
+                    }
+                } elseif (in_array($childName, $textOnlyElements, true)) {
+                    $textContent = match ($childName) {
+                        'title' => 'Page Title',
+                        'option' => 'Option ' . ($i + 1),
+                        'li' => 'Item ' . ($i + 1),
+                        'dt' => 'Term ' . ($i + 1),
+                        'dd' => 'Definition ' . ($i + 1),
+                        'th', 'td' => 'Cell ' . ($i + 1),
+                        'label' => 'Label ' . ($i + 1),
+                        'button' => 'Button ' . ($i + 1),
+                        'legend' => 'Legend',
+                        'summary' => 'Summary',
+                        default => 'Example content',
+                    };
+                    $bladeCode .= "@include('blade.{$childLevel}.{$childName}.{$childName}', ['content' => '{$textContent}'])\n";
+                } else {
+                    $bladeCode .= "@include('blade.{$childLevel}.{$childName}.{$childName}', ['content' => 'Example content'])\n";
+                }
+                $childrenBladeCode[] = [
+                    'bladeCode' => $bladeCode,
+                ];
+                $rendered++;
+            }
+        }
+        return $childrenBladeCode;
+    }
+
+    /**
+     * Determine the level (directory) for a given element class
+     */
+    private function determineLevel(string $className): string
+    {
+        if (strpos($className, 'InlineElement') !== false || strpos($className, '\\Element\\Inline\\') !== false) {
+            return 'inline';
+        }
+        if (strpos($className, 'VoidElement') !== false || strpos($className, '\\Element\\Void\\') !== false) {
+            return 'void';
+        }
+        return 'block';
     }
 }
