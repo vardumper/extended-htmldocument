@@ -6,6 +6,8 @@ use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
 use ReflectionClass;
+use ReflectionNamedType;
+use ReflectionUnionType;
 
 #[TemplateGenerator('blade')]
 class BladeGenerator implements TemplateGeneratorInterface
@@ -63,14 +65,14 @@ class BladeGenerator implements TemplateGeneratorInterface
             $setter = 'set' . ucfirst($name);
             if ($ref->hasMethod($getter) && $ref->hasMethod($setter)) {
                 $type = $prop->getType();
-                if ($type instanceof \ReflectionUnionType) {
+                if ($type instanceof ReflectionUnionType) {
                     foreach ($type->getTypes() as $unionType) {
-                        if ($unionType instanceof \ReflectionNamedType && enum_exists($unionType->getName())) {
+                        if ($unionType instanceof ReflectionNamedType && enum_exists($unionType->getName())) {
                             $choices = array_map(fn ($case) => $case->value, $unionType->getName()::cases());
                             $enums[$name] = $choices;
                         }
                     }
-                } elseif ($type && $type instanceof \ReflectionNamedType && enum_exists($type->getName())) {
+                } elseif ($type && $type instanceof ReflectionNamedType && enum_exists($type->getName())) {
                     $choices = array_map(fn ($case) => $case->value, $type->getName()::cases());
                     $enums[$name] = $choices;
                 }
@@ -213,7 +215,11 @@ class BladeGenerator implements TemplateGeneratorInterface
         }
         $blade .= "--}}\n";
 
-        $sectionName = in_array($elementName, self::BLADE_RESERVED_WORDS, true) ? $elementName . '_section' : $elementName;
+        $sectionName = in_array(
+            $elementName,
+            self::BLADE_RESERVED_WORDS,
+            true
+        ) ? $elementName . '_section' : $elementName;
         $blade .= "@section('{$sectionName}')\n";
         $blade .= "<{$elementName} class=\"example\">\n";
 

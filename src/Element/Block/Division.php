@@ -1,56 +1,19 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Division - The div element has no special meaning at all. It represents its children. It can be used with the class, lang, and title attributes to mark up semantics common to a group of consecutive elements.
- * 
+ *
  * @generated 2025-12-01 08:37:28
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Audio;
-use Html\Element\Block\Body;
-use Html\Element\Block\DefinitionDescription;
-use Html\Element\Block\DefinitionList;
-use Html\Element\Block\DefinitionTerm;
-use Html\Element\Block\DeletedText;
-use Html\Element\Block\Details;
-use Html\Element\Block\Dialog;
-use Html\Element\Block\Embed;
-use Html\Element\Block\Figure;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Form;
-use Html\Element\Block\Header;
-use Html\Element\Block\Heading1;
-use Html\Element\Block\Heading2;
-use Html\Element\Block\Heading3;
-use Html\Element\Block\Heading4;
-use Html\Element\Block\Heading5;
-use Html\Element\Block\Heading6;
-use Html\Element\Block\InlineFrame;
-use Html\Element\Block\InsertedText;
-use Html\Element\Block\ListItem;
-use Html\Element\Block\Main;
-use Html\Element\Block\Map;
-use Html\Element\Block\ObjectElement;
-use Html\Element\Block\OrderedList;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Picture;
-use Html\Element\Block\PreformattedText;
-use Html\Element\Block\Section;
-use Html\Element\Block\Summary;
-use Html\Element\Block\Table;
-use Html\Element\Block\Template;
-use Html\Element\Block\UnorderedList;
-use Html\Element\Block\Video;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\BidirectionalIsolation;
@@ -98,8 +61,9 @@ use Html\Enum\AriaMultiselectableEnum;
 use Html\Enum\AriaOrientationEnum;
 use Html\Enum\AriaRelevantEnum;
 use Html\Enum\RoleEnum;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 #[Element('div')]
 class Division extends BlockElement
@@ -123,6 +87,7 @@ class Division extends BlockElement
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
     use GlobalAttribute\PopoverTrait;
+
     /**
      * The HTML element name
      */
@@ -154,7 +119,7 @@ class Division extends BlockElement
         DefinitionDescription::class,
         Details::class,
         Dialog::class,
-        Division::class,
+        self::class,
         Footer::class,
         Header::class,
         ListItem::class,
@@ -186,7 +151,7 @@ class Division extends BlockElement
         DefinitionDescription::class,
         DeletedText::class,
         Definition::class,
-        Division::class,
+        self::class,
         DefinitionList::class,
         DefinitionTerm::class,
         Emphasis::class,
@@ -242,87 +207,101 @@ class Division extends BlockElement
         WordBreakOpportunity::class,
     ];
 
-
-    /** The role attribute is used to define the purpose of an element. */
+    /**
+     * The role attribute is used to define the purpose of an element.
+     */
     protected ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     */
     protected ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     */
     protected ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /**
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     */
     protected ?string $ariaLabelledby = null;
 
-    /** 
+    /**
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
-     * @category HTML attribute
      * @example false
      */
     protected ?AriaBusyEnum $ariaBusy = null;
 
-    /** 
+    /**
      * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
-     * @category HTML attribute
      * @example false
      */
     protected ?AriaHiddenEnum $ariaHidden = null;
 
-    /** Defines a string value that labels the current element for assistive technologies. */
+    /**
+     * Defines a string value that labels the current element for assistive technologies.
+     */
     protected ?string $ariaLabel = null;
 
-    /** References an element that provides additional details about the current element. */
+    /**
+     * References an element that provides additional details about the current element.
+     */
     protected ?string $ariaDetails = null;
 
-    /** Defines keyboard shortcuts available for the element. */
+    /**
+     * Defines keyboard shortcuts available for the element.
+     */
     protected ?string $ariaKeyshortcuts = null;
 
-    /** Provides a human-readable custom role description for assistive technologies. */
+    /**
+     * Provides a human-readable custom role description for assistive technologies.
+     */
     protected ?string $ariaRoledescription = null;
 
-    /** 
+    /**
      * Defines how updates to the element should be announced to screen readers.
-     * @category HTML attribute
      * @example off
      */
     protected ?AriaLiveEnum $ariaLive = null;
 
-    /** 
+    /**
      * Indicates what content changes should be announced in a live region.
-     * @category HTML attribute
      * @example additions text
      */
     protected ?AriaRelevantEnum $ariaRelevant = null;
 
-    /** 
+    /**
      * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
-     * @category HTML attribute
      * @example false
      */
     protected ?AriaAtomicEnum $ariaAtomic = null;
 
-    /** 
+    /**
      * Defines whether multiple items can be selected in a listbox, grid, or tree.
-     * @category HTML attribute
      * @example false
      */
     protected ?AriaMultiselectableEnum $ariaMultiselectable = null;
 
-    /** Identifies the currently active child element (e.g., for autocomplete suggestions or composite widgets). */
+    /**
+     * Identifies the currently active child element (e.g., for autocomplete suggestions or composite widgets).
+     */
     protected ?string $ariaActivedescendant = null;
 
-    /** Specifies whether an element is horizontal or vertical. */
+    /**
+     * Specifies whether an element is horizontal or vertical.
+     */
     protected ?AriaOrientationEnum $ariaOrientation = null;
 
-    /** Establishes ownership relationships between elements. Value is a space-separated list of IDs. */
+    /**
+     * Establishes ownership relationships between elements. Value is a space-separated list of IDs.
+     */
     protected ?string $ariaOwns = null;
-
 
     public function setRole(string|RoleEnum $role): static
     {
         if (\is_string($role)) {
-            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
+            $role = RoleEnum::tryFrom($role) ?? throw new InvalidArgumentException('Invalid value for $role.');
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -374,7 +353,9 @@ class Division extends BlockElement
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
         if (\is_string($ariaBusy)) {
-            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
+            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaBusy.'
+            );
         }
         $this->ariaBusy = $ariaBusy;
         $this->delegated->setAttribute('aria-busy', (string) $ariaBusy->value);
@@ -390,7 +371,9 @@ class Division extends BlockElement
     public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
     {
         if (\is_string($ariaHidden)) {
-            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
+            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaHidden.'
+            );
         }
         $this->ariaHidden = $ariaHidden;
         $this->delegated->setAttribute('aria-hidden', (string) $ariaHidden->value);
@@ -454,7 +437,9 @@ class Division extends BlockElement
     public function setAriaLive(string|AriaLiveEnum $ariaLive): static
     {
         if (\is_string($ariaLive)) {
-            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
+            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaLive.'
+            );
         }
         $this->ariaLive = $ariaLive;
         $this->delegated->setAttribute('aria-live', (string) $ariaLive->value);
@@ -470,7 +455,9 @@ class Division extends BlockElement
     public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
     {
         if (\is_string($ariaRelevant)) {
-            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
+            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaRelevant.'
+            );
         }
         $this->ariaRelevant = $ariaRelevant;
         $this->delegated->setAttribute('aria-relevant', (string) $ariaRelevant->value);
@@ -486,7 +473,9 @@ class Division extends BlockElement
     public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
     {
         if (\is_string($ariaAtomic)) {
-            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
+            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaAtomic.'
+            );
         }
         $this->ariaAtomic = $ariaAtomic;
         $this->delegated->setAttribute('aria-atomic', (string) $ariaAtomic->value);
@@ -502,7 +491,11 @@ class Division extends BlockElement
     public function setAriaMultiselectable(string|AriaMultiselectableEnum $ariaMultiselectable): static
     {
         if (\is_string($ariaMultiselectable)) {
-            $ariaMultiselectable = AriaMultiselectableEnum::tryFrom($ariaMultiselectable) ?? throw new \InvalidArgumentException("Invalid value for \$ariaMultiselectable.");
+            $ariaMultiselectable = AriaMultiselectableEnum::tryFrom(
+                $ariaMultiselectable
+            ) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaMultiselectable.'
+            );
         }
         $this->ariaMultiselectable = $ariaMultiselectable;
         $this->delegated->setAttribute('aria-multiselectable', (string) $ariaMultiselectable->value);
@@ -530,7 +523,9 @@ class Division extends BlockElement
     public function setAriaOrientation(string|AriaOrientationEnum $ariaOrientation): static
     {
         if (\is_string($ariaOrientation)) {
-            $ariaOrientation = AriaOrientationEnum::tryFrom($ariaOrientation) ?? throw new \InvalidArgumentException("Invalid value for \$ariaOrientation.");
+            $ariaOrientation = AriaOrientationEnum::tryFrom($ariaOrientation) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaOrientation.'
+            );
         }
         $this->ariaOrientation = $ariaOrientation;
         $this->delegated->setAttribute('aria-orientation', (string) $ariaOrientation->value);
@@ -554,6 +549,4 @@ class Division extends BlockElement
     {
         return $this->ariaOwns;
     }
-
-
 }

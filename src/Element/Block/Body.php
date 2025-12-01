@@ -1,60 +1,19 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Body - The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
- * 
+ *
  * @generated 2025-12-01 08:37:28
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Audio;
-use Html\Element\Block\Blockquote;
-use Html\Element\Block\Canvas;
-use Html\Element\Block\DataList;
-use Html\Element\Block\DefinitionList;
-use Html\Element\Block\DeletedText;
-use Html\Element\Block\Details;
-use Html\Element\Block\Dialog;
-use Html\Element\Block\Division;
-use Html\Element\Block\Embed;
-use Html\Element\Block\Fieldset;
-use Html\Element\Block\Figure;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Form;
-use Html\Element\Block\HTML;
-use Html\Element\Block\Header;
-use Html\Element\Block\Heading1;
-use Html\Element\Block\Heading2;
-use Html\Element\Block\Heading3;
-use Html\Element\Block\Heading4;
-use Html\Element\Block\Heading5;
-use Html\Element\Block\Heading6;
-use Html\Element\Block\HorizontalRule;
-use Html\Element\Block\InlineFrame;
-use Html\Element\Block\InsertedText;
-use Html\Element\Block\Main;
-use Html\Element\Block\Map;
-use Html\Element\Block\Navigation;
-use Html\Element\Block\NoScript;
-use Html\Element\Block\ObjectElement;
-use Html\Element\Block\OrderedList;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Picture;
-use Html\Element\Block\PreformattedText;
-use Html\Element\Block\Section;
-use Html\Element\Block\Table;
-use Html\Element\Block\Template;
-use Html\Element\Block\UnorderedList;
-use Html\Element\Block\Video;
 use Html\Element\Inline\Abbreviation;
 use Html\Element\Inline\Address;
 use Html\Element\Inline\Anchor;
@@ -94,8 +53,8 @@ use Html\Element\Void\Area;
 use Html\Element\Void\BreakElement;
 use Html\Element\Void\Script;
 use Html\Element\Void\WordBreakOpportunity;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 #[Element('body')]
 class Body extends BlockElement
@@ -112,6 +71,7 @@ class Body extends BlockElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -136,9 +96,7 @@ class Body extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        HTML::class,
-    ];
+    public static array $childOf = [HTML::class];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -226,55 +184,85 @@ class Body extends BlockElement
         WordBreakOpportunity::class,
     ];
 
-
-    /** Fires after the associated document has started printing or the print preview has been closed. */
+    /**
+     * Fires after the associated document has started printing or the print preview has been closed.
+     */
     protected ?string $onafterprint = null;
 
-    /** Fires before the associated document is printed or previewed for printing. */
+    /**
+     * Fires before the associated document is printed or previewed for printing.
+     */
     protected ?string $onbeforeprint = null;
 
-    /** Fires before the user navigates away from the page. */
+    /**
+     * Fires before the user navigates away from the page.
+     */
     protected ?string $onbeforeunload = null;
 
-    /** Fires when the fragment identifier part of the URL changes. */
+    /**
+     * Fires when the fragment identifier part of the URL changes.
+     */
     protected ?string $onhashchange = null;
 
-    /** Fires when the user changes the preferred language of the user interface. */
+    /**
+     * Fires when the user changes the preferred language of the user interface.
+     */
     protected ?string $onlanguagechange = null;
 
-    /** Fires when a message is received from a different browsing context (e.g., an iframe). */
+    /**
+     * Fires when a message is received from a different browsing context (e.g., an iframe).
+     */
     protected ?string $onmessage = null;
 
-    /** Fires when an error occurs while receiving a message from a different browsing context. */
+    /**
+     * Fires when an error occurs while receiving a message from a different browsing context.
+     */
     protected ?string $onmessageerror = null;
 
-    /** Fires when the browser goes offline. */
+    /**
+     * Fires when the browser goes offline.
+     */
     protected ?string $onoffline = null;
 
-    /** Fires when the browser goes online. */
+    /**
+     * Fires when the browser goes online.
+     */
     protected ?string $ononline = null;
 
-    /** Fires when the user navigates away from a page. */
+    /**
+     * Fires when the user navigates away from a page.
+     */
     protected ?string $onpagehide = null;
 
-    /** Fires when the user navigates to a page. */
+    /**
+     * Fires when the user navigates to a page.
+     */
     protected ?string $onpageshow = null;
 
-    /** Fires when the user navigates through the history by clicking the browser's Back or Forward buttons. */
+    /**
+     * Fires when the user navigates through the history by clicking the browser's Back or Forward buttons.
+     */
     protected ?string $onpopstate = null;
 
-    /** Fires when a Promise is rejected and the rejection is handled by a Promise handler (e.g., catch). */
+    /**
+     * Fires when a Promise is rejected and the rejection is handled by a Promise handler (e.g., catch).
+     */
     protected ?string $onrejectionhandled = null;
 
-    /** Fires when a storage area (e.g., localStorage or sessionStorage) changes. */
+    /**
+     * Fires when a storage area (e.g., localStorage or sessionStorage) changes.
+     */
     protected ?string $onstorage = null;
 
-    /** Fires when a Promise is rejected but there is no rejection handler (e.g., catch). */
+    /**
+     * Fires when a Promise is rejected but there is no rejection handler (e.g., catch).
+     */
     protected ?string $onunhandledrejection = null;
 
-    /** Fires when the user is navigating away from the page (similar to onbeforeunload). */
+    /**
+     * Fires when the user is navigating away from the page (similar to onbeforeunload).
+     */
     protected ?string $onunload = null;
-
 
     public function setOnafterprint(string $onafterprint): static
     {
@@ -467,6 +455,4 @@ class Body extends BlockElement
     {
         return $this->onunload;
     }
-
-
 }
