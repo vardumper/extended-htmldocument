@@ -6,16 +6,12 @@
 
   CONTENT MODEL:
   - Can be a child of: Article, Aside, Body, DefinitionDescription, Division, Footer, Header, ListItem, Main, Paragraph, Section
-  - Can contain: FigureCaption, Image
-
-  @author vardumper <info@erikpoehler.com>
-  @package vardumper/extended-htmldocument
-  @see src/TemplateGenerator/BladeGenerator.php
+  - Can have children: FigureCaption, Image
 --}}
-@section('figure_composed')
+@section('figure')
 <figure class="example">
 @include('blade.block.figcaption.figcaption', ['content' => 'Example content'])
 @include('blade.inline.img.img', ['src' => '/image.jpg', 'alt' => 'Example'])
 @include('blade.inline.img.img', ['src' => '/image.jpg', 'alt' => 'Example'])
-@endsection
 </figure>
+@endsection

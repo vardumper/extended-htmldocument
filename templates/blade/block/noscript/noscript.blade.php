@@ -6,24 +6,33 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/BladeGenerator.php
 --}}
+@php
+$autocapitalizeChoices = ['none' => true, 'sentences' => true, 'words' => true, 'characters' => true];
+$contenteditableChoices = ['true' => true, 'false' => true, 'inherit' => true];
+$dirChoices = ['ltr' => true, 'rtl' => true, 'auto' => true];
+$inputmodeChoices = ['none' => true, 'text' => true, 'decimal' => true, 'numeric' => true, 'email' => true, 'tel' => true, 'url' => true, 'search' => true];
+$spellcheckChoices = ['true' => true, 'false' => true];
+$translateChoices = ['yes' => true, 'no' => true];
+$attrs = [];
+if (isset($accesskey)) $attrs[] = 'accesskey="' . e($accesskey) . '"';
+if (isset($autocapitalize) && isset($autocapitalizeChoices[$autocapitalize])) $attrs[] = 'autocapitalize="' . e($autocapitalize) . '"';
+if (isset($autofocus) && $autofocus) $attrs[] = 'autofocus';
+if (isset($class)) $attrs[] = 'class="' . e($class) . '"';
+if (isset($contenteditable) && isset($contenteditableChoices[$contenteditable])) $attrs[] = 'contenteditable="' . e($contenteditable) . '"';
+if (isset($dir) && isset($dirChoices[$dir])) $attrs[] = 'dir="' . e($dir) . '"';
+if (isset($draggable) && $draggable) $attrs[] = 'draggable';
+if (isset($hidden) && $hidden) $attrs[] = 'hidden';
+if (isset($id)) $attrs[] = 'id="' . e($id) . '"';
+if (isset($inputmode) && isset($inputmodeChoices[$inputmode])) $attrs[] = 'inputmode="' . e($inputmode) . '"';
+if (isset($lang)) $attrs[] = 'lang="' . e($lang) . '"';
+if (isset($spellcheck) && isset($spellcheckChoices[$spellcheck])) $attrs[] = 'spellcheck="' . e($spellcheck) . '"';
+if (isset($style)) $attrs[] = 'style="' . e($style) . '"';
+if (isset($tabindex)) $attrs[] = 'tabindex="' . e($tabindex) . '"';
+if (isset($title)) $attrs[] = 'title="' . e($title) . '"';
+if (isset($translate) && isset($translateChoices[$translate])) $attrs[] = 'translate="' . e($translate) . '"';
+@endphp
 @section('noscript')
-<noscript
-  @if(isset($accesskey) && is_bool($accesskey) && $accesskey) accesskey @elseif(isset($accesskey) && $accesskey) accesskey="{{ $accesskey }}" @endif
-  @if(isset($autocapitalize) && is_bool($autocapitalize) && $autocapitalize) autocapitalize @elseif(isset($autocapitalize) && $autocapitalize) autocapitalize="{{ $autocapitalize }}" @endif
-  @if(isset($autofocus) && is_bool($autofocus) && $autofocus) autofocus @elseif(isset($autofocus) && $autofocus) autofocus="{{ $autofocus }}" @endif
-  @if(isset($class) && is_bool($class) && $class) class @elseif(isset($class) && $class) class="{{ $class }}" @endif
-  @if(isset($contenteditable) && is_bool($contenteditable) && $contenteditable) contenteditable @elseif(isset($contenteditable) && $contenteditable) contenteditable="{{ $contenteditable }}" @endif
-  @if(isset($dir) && is_bool($dir) && $dir) dir @elseif(isset($dir) && $dir) dir="{{ $dir }}" @endif
-  @if(isset($draggable) && is_bool($draggable) && $draggable) draggable @elseif(isset($draggable) && $draggable) draggable="{{ $draggable }}" @endif
-  @if(isset($hidden) && is_bool($hidden) && $hidden) hidden @elseif(isset($hidden) && $hidden) hidden="{{ $hidden }}" @endif
-  @if(isset($id) && is_bool($id) && $id) id @elseif(isset($id) && $id) id="{{ $id }}" @endif
-  @if(isset($inputmode) && is_bool($inputmode) && $inputmode) inputmode @elseif(isset($inputmode) && $inputmode) inputmode="{{ $inputmode }}" @endif
-  @if(isset($lang) && is_bool($lang) && $lang) lang @elseif(isset($lang) && $lang) lang="{{ $lang }}" @endif
-  @if(isset($spellcheck) && is_bool($spellcheck) && $spellcheck) spellcheck @elseif(isset($spellcheck) && $spellcheck) spellcheck="{{ $spellcheck }}" @endif
-  @if(isset($style) && is_bool($style) && $style) style @elseif(isset($style) && $style) style="{{ $style }}" @endif
-  @if(isset($tabindex) && is_bool($tabindex) && $tabindex) tabindex @elseif(isset($tabindex) && $tabindex) tabindex="{{ $tabindex }}" @endif
-  @if(isset($title) && is_bool($title) && $title) title @elseif(isset($title) && $title) title="{{ $title }}" @endif
-  @if(isset($translate) && is_bool($translate) && $translate) translate @elseif(isset($translate) && $translate) translate="{{ $translate }}" @endif>
+<noscript {!! implode(' ', $attrs) !!}>
   @yield('content')
 </noscript>
 @endsection

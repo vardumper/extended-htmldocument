@@ -6,11 +6,15 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/BladeGenerator.php
 --}}
+@php
+$dirChoices = ['ltr' => true, 'rtl' => true, 'auto' => true];
+$attrs = [];
+if (isset($dir) && isset($dirChoices[$dir])) $attrs[] = 'dir="' . e($dir) . '"';
+if (isset($lang)) $attrs[] = 'lang="' . e($lang) . '"';
+if (isset($manifest)) $attrs[] = 'manifest="' . e($manifest) . '"';
+@endphp
 @section('html')
-<html
-  @if(isset($dir) && is_bool($dir) && $dir) dir @elseif(isset($dir) && $dir) dir="{{ $dir }}" @endif
-  @if(isset($lang) && is_bool($lang) && $lang) lang @elseif(isset($lang) && $lang) lang="{{ $lang }}" @endif
-  @if(isset($manifest) && is_bool($manifest) && $manifest) manifest @elseif(isset($manifest) && $manifest) manifest="{{ $manifest }}" @endif>
+<html {!! implode(' ', $attrs) !!}>
   @yield('content')
 </html>
 @endsection

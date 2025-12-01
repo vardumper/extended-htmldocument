@@ -6,15 +6,11 @@
 
   CONTENT MODEL:
   - Can be a child of: Article, Aside, Body, DefinitionDescription, Division, Footer, Header, Main, MarkedText, Paragraph, Section
-  - Can contain: Area
-
-  @author vardumper <info@erikpoehler.com>
-  @package vardumper/extended-htmldocument
-  @see src/TemplateGenerator/BladeGenerator.php
+  - Can have children: Area
 --}}
-@section('map_composed')
+@section('map')
 <map class="example">
 @include('blade.void.area.area')
 @include('blade.void.area.area')
-@endsection
 </map>
+@endsection

@@ -54,15 +54,30 @@ class BladeGenerator implements TemplateGeneratorInterface
             $ref->getShortName()
         );
         $props = [];
+        $enums = [];
+
         // Collect all properties with getter and setter
         foreach ($ref->getProperties() as $prop) {
             $name = $prop->getName();
             $getter = 'get' . ucfirst($name);
             $setter = 'set' . ucfirst($name);
             if ($ref->hasMethod($getter) && $ref->hasMethod($setter)) {
+                $type = $prop->getType();
+                if ($type instanceof \ReflectionUnionType) {
+                    foreach ($type->getTypes() as $unionType) {
+                        if ($unionType instanceof \ReflectionNamedType && enum_exists($unionType->getName())) {
+                            $choices = array_map(fn ($case) => $case->value, $unionType->getName()::cases());
+                            $enums[$name] = $choices;
+                        }
+                    }
+                } elseif ($type && $type instanceof \ReflectionNamedType && enum_exists($type->getName())) {
+                    $choices = array_map(fn ($case) => $case->value, $type->getName()::cases());
+                    $enums[$name] = $choices;
+                }
                 $props[] = $name;
             }
         }
+
         // Add global attributes
         $globalAttrs = ['id', 'class'];
         foreach ($globalAttrs as $gAttr) {
@@ -73,26 +88,48 @@ class BladeGenerator implements TemplateGeneratorInterface
         }
         sort($props, \SORT_NATURAL | \SORT_FLAG_CASE);
         $isSelfClosing = $ref->hasConstant('SELF_CLOSING') && $ref->getConstant('SELF_CLOSING');
+
         // Avoid reserved words for section names
         $sectionName = in_array(
             $elementName,
             self::BLADE_RESERVED_WORDS,
             true
         ) ? $elementName . '_section' : $elementName;
+
         $blade = "{{--\n  This file is auto-generated.\n\n  @component {$elementName}\n  @author vardumper <info@erikpoehler.com>\n  @package vardumper/extended-htmldocument\n  @see src/TemplateGenerator/BladeGenerator.php\n--}}\n";
-        $blade .= "@section('{$sectionName}')\n";
-        $blade .= "<{$elementName}";
+
+        // Emit enum choices as Blade @php associative arrays
+        $blade .= "@php\n";
+        foreach ($enums as $attr => $choices) {
+            $assoc = [];
+            foreach ($choices as $choice) {
+                $assoc[] = var_export($choice, true) . ' => true';
+            }
+            $blade .= '$' . $attr . 'Choices = [' . implode(', ', $assoc) . '];' . "\n";
+        }
+
+        // Attribute rendering logic
+        $blade .= '$attrs = [];' . "\n";
         foreach ($props as $attr) {
             $htmlAttr = $this->camelToKebab($attr);
-            // Boolean attributes: render as attribute if true, omit if false
-            $blade .= "\n  @if(isset($" . $attr . ') && is_bool($' . $attr . ') && $' . $attr . ") {$htmlAttr} @elseif(isset($" . $attr . ') && $' . $attr . ") {$htmlAttr}=\"{{ " . '$' . $attr . ' }}" @endif';
+            if (array_key_exists($attr, $enums)) {
+                $blade .= 'if (isset($' . $attr . ') && isset($' . $attr . 'Choices[$' . $attr . '])) $attrs[] = \'' . $htmlAttr . '="\' . e($' . $attr . ') . \'"\';' . "\n";
+            } elseif (in_array($attr, ['autofocus', 'draggable', 'hidden'], true)) {
+                $blade .= 'if (isset($' . $attr . ') && $' . $attr . ') $attrs[] = \'' . $htmlAttr . '\';' . "\n";
+            } else {
+                $blade .= 'if (isset($' . $attr . ')) $attrs[] = \'' . $htmlAttr . '="\' . e($' . $attr . ') . \'"\';' . "\n";
+            }
         }
+        $blade .= "@endphp\n";
+
+        $blade .= "@section('{$sectionName}')\n";
         if ($isSelfClosing) {
-            $blade .= " />\n";
+            $blade .= "<{$elementName} {!! implode(' ', \$attrs) !!} />\n";
         } else {
-            $blade .= ">\n  @yield('content')\n</{$elementName}>\n";
+            $blade .= "<{$elementName} {!! implode(' ', \$attrs) !!}>\n  @yield('content')\n</{$elementName}>\n";
         }
         $blade .= "@endsection\n";
+
         return $blade;
     }
 
@@ -172,32 +209,22 @@ class BladeGenerator implements TemplateGeneratorInterface
             $parentOfNames = array_map(function ($class) {
                 return (new ReflectionClass($class))->getShortName();
             }, $parentOf);
-            $blade .= '  - Can contain: ' . implode(', ', $parentOfNames) . "\n";
+            $blade .= '  - Can have children: ' . implode(', ', $parentOfNames) . "\n";
         }
-        $uniquePerParent = $ref->getStaticPropertyValue('uniquePerParent', false);
-        $unique = $ref->getStaticPropertyValue('unique', false);
-        if ($unique) {
-            $blade .= "  - UNIQUE: Only one allowed per document\n";
-        }
-        if ($uniquePerParent) {
-            $blade .= "  - UNIQUE PER PARENT: Only one allowed per parent element\n";
-        }
-        $blade .= "\n  @author vardumper <info@erikpoehler.com>\n  @package vardumper/extended-htmldocument\n  @see src/TemplateGenerator/BladeGenerator.php\n--}}\n";
+        $blade .= "--}}\n";
 
-        $sectionName = in_array(
-            $elementName,
-            self::BLADE_RESERVED_WORDS,
-            true
-        ) ? $elementName . '_composed' : $elementName . '_composed';
-        $parentLevel = $this->determineLevel($ref->getName());
+        $sectionName = in_array($elementName, self::BLADE_RESERVED_WORDS, true) ? $elementName . '_section' : $elementName;
         $blade .= "@section('{$sectionName}')\n";
         $blade .= "<{$elementName} class=\"example\">\n";
+
         $children = $this->collectChildrenForComposedBladeTemplate($elementName, $parentOf, $ref);
         foreach ($children as $child) {
             $blade .= $child['bladeCode'];
         }
-        $blade .= "@endsection\n";
+
         $blade .= "</{$elementName}>\n";
+        $blade .= "@endsection\n";
+
         return $blade;
     }
 
@@ -219,6 +246,7 @@ class BladeGenerator implements TemplateGeneratorInterface
             'head' => ['title', 'base', 'meta', 'link', 'script', 'style'],
             'details' => ['summary', 'p'],
         ];
+
         // Get children to render
         $children = [];
         foreach ($parentOf as $childClass) {
@@ -228,10 +256,11 @@ class BladeGenerator implements TemplateGeneratorInterface
                 : strtolower($childRef->getShortName());
             $children[] = [
                 'name' => $childElementName,
-                'ref' => $childRef,
                 'class' => $childClass,
+                'ref' => $childRef,
             ];
         }
+
         // Filter to priority elements if there are too many children
         $relevantChildren = $children;
         if (isset($priorityElements[$parentElementName]) && count($children) > 5) {
@@ -241,6 +270,7 @@ class BladeGenerator implements TemplateGeneratorInterface
                 $relevantChildren = array_values($filtered);
             }
         }
+
         // Limit to reasonable number of examples
         $maxChildren = 3;
         if ($parentElementName === 'head') {
@@ -248,10 +278,12 @@ class BladeGenerator implements TemplateGeneratorInterface
         } elseif (count($children) > 10) {
             $maxChildren = 4;
         }
+
         // Elements that should have text content only
         $textOnlyElements = ['dd', 'dt', 'li', 'th', 'td', 'label', 'button', 'legend', 'summary', 'title', 'option'];
         $childrenBladeCode = [];
         $rendered = 0;
+
         foreach ($relevantChildren as $child) {
             if ($rendered >= $maxChildren) {
                 break;
@@ -263,6 +295,7 @@ class BladeGenerator implements TemplateGeneratorInterface
             $isSelfClosing = $childRef->hasConstant('SELF_CLOSING') && $childRef->getConstant('SELF_CLOSING');
             $childLevel = $this->determineLevel($childClass);
             $renderCount = $uniquePerParent ? 1 : 2;
+
             for ($i = 0; $i < $renderCount && $rendered < $maxChildren; $i++) {
                 $bladeCode = '';
                 if ($isSelfClosing) {

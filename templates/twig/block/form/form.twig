@@ -16,8 +16,8 @@
 {% set autocorrect_choices = {'off': true, 'on': true} %}
 {% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
 {% set enctype_choices = {'application/x-www-form-urlencoded': true, 'multipart/form-data': true, 'text/plain': true} %}
-{% set method_choices = {'get': true, 'post': true} %}
-{% set target_choices = {'_blank': true, '_parent': true, '_self': true, '_top': true} %}
+{% set method_choices = {'get': true, 'post': true, 'dialog': true} %}
+{% set target_choices = {'_self': true, '_blank': true, '_parent': true, '_top': true} %}
 {% set translate_choices = {'yes': true, 'no': true} %}
 <form
   {% if acceptCharset is defined and acceptCharset|length > 0 %}accept-charset="{{ acceptCharset }}"{% endif %}

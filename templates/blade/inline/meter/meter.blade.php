@@ -6,41 +6,53 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/BladeGenerator.php
 --}}
+@php
+$ariaLiveChoices = ['off' => true, 'polite' => true, 'assertive' => true];
+$ariaRelevantChoices = ['additions' => true, 'removals' => true, 'text' => true, 'all' => true, 'additions text' => true];
+$ariaAtomicChoices = ['false' => true, 'true' => true];
+$autocapitalizeChoices = ['none' => true, 'sentences' => true, 'words' => true, 'characters' => true];
+$contenteditableChoices = ['true' => true, 'false' => true, 'inherit' => true];
+$dirChoices = ['ltr' => true, 'rtl' => true, 'auto' => true];
+$inputmodeChoices = ['none' => true, 'text' => true, 'decimal' => true, 'numeric' => true, 'email' => true, 'tel' => true, 'url' => true, 'search' => true];
+$spellcheckChoices = ['true' => true, 'false' => true];
+$translateChoices = ['yes' => true, 'no' => true];
+$attrs = [];
+if (isset($accesskey)) $attrs[] = 'accesskey="' . e($accesskey) . '"';
+if (isset($ariaAtomic) && isset($ariaAtomicChoices[$ariaAtomic])) $attrs[] = 'aria-atomic="' . e($ariaAtomic) . '"';
+if (isset($ariaDetails)) $attrs[] = 'aria-details="' . e($ariaDetails) . '"';
+if (isset($ariaKeyshortcuts)) $attrs[] = 'aria-keyshortcuts="' . e($ariaKeyshortcuts) . '"';
+if (isset($ariaLive) && isset($ariaLiveChoices[$ariaLive])) $attrs[] = 'aria-live="' . e($ariaLive) . '"';
+if (isset($ariaRelevant) && isset($ariaRelevantChoices[$ariaRelevant])) $attrs[] = 'aria-relevant="' . e($ariaRelevant) . '"';
+if (isset($ariaRoledescription)) $attrs[] = 'aria-roledescription="' . e($ariaRoledescription) . '"';
+if (isset($ariaValuemax)) $attrs[] = 'aria-valuemax="' . e($ariaValuemax) . '"';
+if (isset($ariaValuemin)) $attrs[] = 'aria-valuemin="' . e($ariaValuemin) . '"';
+if (isset($ariaValuenow)) $attrs[] = 'aria-valuenow="' . e($ariaValuenow) . '"';
+if (isset($ariaValuetext)) $attrs[] = 'aria-valuetext="' . e($ariaValuetext) . '"';
+if (isset($autocapitalize) && isset($autocapitalizeChoices[$autocapitalize])) $attrs[] = 'autocapitalize="' . e($autocapitalize) . '"';
+if (isset($autofocus) && $autofocus) $attrs[] = 'autofocus';
+if (isset($class)) $attrs[] = 'class="' . e($class) . '"';
+if (isset($contenteditable) && isset($contenteditableChoices[$contenteditable])) $attrs[] = 'contenteditable="' . e($contenteditable) . '"';
+if (isset($dir) && isset($dirChoices[$dir])) $attrs[] = 'dir="' . e($dir) . '"';
+if (isset($draggable) && $draggable) $attrs[] = 'draggable';
+if (isset($hidden) && $hidden) $attrs[] = 'hidden';
+if (isset($high)) $attrs[] = 'high="' . e($high) . '"';
+if (isset($id)) $attrs[] = 'id="' . e($id) . '"';
+if (isset($inputmode) && isset($inputmodeChoices[$inputmode])) $attrs[] = 'inputmode="' . e($inputmode) . '"';
+if (isset($lang)) $attrs[] = 'lang="' . e($lang) . '"';
+if (isset($low)) $attrs[] = 'low="' . e($low) . '"';
+if (isset($max)) $attrs[] = 'max="' . e($max) . '"';
+if (isset($min)) $attrs[] = 'min="' . e($min) . '"';
+if (isset($optimum)) $attrs[] = 'optimum="' . e($optimum) . '"';
+if (isset($slot)) $attrs[] = 'slot="' . e($slot) . '"';
+if (isset($spellcheck) && isset($spellcheckChoices[$spellcheck])) $attrs[] = 'spellcheck="' . e($spellcheck) . '"';
+if (isset($style)) $attrs[] = 'style="' . e($style) . '"';
+if (isset($tabindex)) $attrs[] = 'tabindex="' . e($tabindex) . '"';
+if (isset($title)) $attrs[] = 'title="' . e($title) . '"';
+if (isset($translate) && isset($translateChoices[$translate])) $attrs[] = 'translate="' . e($translate) . '"';
+if (isset($value)) $attrs[] = 'value="' . e($value) . '"';
+@endphp
 @section('meter')
-<meter
-  @if(isset($accesskey) && is_bool($accesskey) && $accesskey) accesskey @elseif(isset($accesskey) && $accesskey) accesskey="{{ $accesskey }}" @endif
-  @if(isset($ariaAtomic) && is_bool($ariaAtomic) && $ariaAtomic) aria-atomic @elseif(isset($ariaAtomic) && $ariaAtomic) aria-atomic="{{ $ariaAtomic }}" @endif
-  @if(isset($ariaDetails) && is_bool($ariaDetails) && $ariaDetails) aria-details @elseif(isset($ariaDetails) && $ariaDetails) aria-details="{{ $ariaDetails }}" @endif
-  @if(isset($ariaKeyshortcuts) && is_bool($ariaKeyshortcuts) && $ariaKeyshortcuts) aria-keyshortcuts @elseif(isset($ariaKeyshortcuts) && $ariaKeyshortcuts) aria-keyshortcuts="{{ $ariaKeyshortcuts }}" @endif
-  @if(isset($ariaLive) && is_bool($ariaLive) && $ariaLive) aria-live @elseif(isset($ariaLive) && $ariaLive) aria-live="{{ $ariaLive }}" @endif
-  @if(isset($ariaRelevant) && is_bool($ariaRelevant) && $ariaRelevant) aria-relevant @elseif(isset($ariaRelevant) && $ariaRelevant) aria-relevant="{{ $ariaRelevant }}" @endif
-  @if(isset($ariaRoledescription) && is_bool($ariaRoledescription) && $ariaRoledescription) aria-roledescription @elseif(isset($ariaRoledescription) && $ariaRoledescription) aria-roledescription="{{ $ariaRoledescription }}" @endif
-  @if(isset($ariaValuemax) && is_bool($ariaValuemax) && $ariaValuemax) aria-valuemax @elseif(isset($ariaValuemax) && $ariaValuemax) aria-valuemax="{{ $ariaValuemax }}" @endif
-  @if(isset($ariaValuemin) && is_bool($ariaValuemin) && $ariaValuemin) aria-valuemin @elseif(isset($ariaValuemin) && $ariaValuemin) aria-valuemin="{{ $ariaValuemin }}" @endif
-  @if(isset($ariaValuenow) && is_bool($ariaValuenow) && $ariaValuenow) aria-valuenow @elseif(isset($ariaValuenow) && $ariaValuenow) aria-valuenow="{{ $ariaValuenow }}" @endif
-  @if(isset($ariaValuetext) && is_bool($ariaValuetext) && $ariaValuetext) aria-valuetext @elseif(isset($ariaValuetext) && $ariaValuetext) aria-valuetext="{{ $ariaValuetext }}" @endif
-  @if(isset($autocapitalize) && is_bool($autocapitalize) && $autocapitalize) autocapitalize @elseif(isset($autocapitalize) && $autocapitalize) autocapitalize="{{ $autocapitalize }}" @endif
-  @if(isset($autofocus) && is_bool($autofocus) && $autofocus) autofocus @elseif(isset($autofocus) && $autofocus) autofocus="{{ $autofocus }}" @endif
-  @if(isset($class) && is_bool($class) && $class) class @elseif(isset($class) && $class) class="{{ $class }}" @endif
-  @if(isset($contenteditable) && is_bool($contenteditable) && $contenteditable) contenteditable @elseif(isset($contenteditable) && $contenteditable) contenteditable="{{ $contenteditable }}" @endif
-  @if(isset($dir) && is_bool($dir) && $dir) dir @elseif(isset($dir) && $dir) dir="{{ $dir }}" @endif
-  @if(isset($draggable) && is_bool($draggable) && $draggable) draggable @elseif(isset($draggable) && $draggable) draggable="{{ $draggable }}" @endif
-  @if(isset($hidden) && is_bool($hidden) && $hidden) hidden @elseif(isset($hidden) && $hidden) hidden="{{ $hidden }}" @endif
-  @if(isset($high) && is_bool($high) && $high) high @elseif(isset($high) && $high) high="{{ $high }}" @endif
-  @if(isset($id) && is_bool($id) && $id) id @elseif(isset($id) && $id) id="{{ $id }}" @endif
-  @if(isset($inputmode) && is_bool($inputmode) && $inputmode) inputmode @elseif(isset($inputmode) && $inputmode) inputmode="{{ $inputmode }}" @endif
-  @if(isset($lang) && is_bool($lang) && $lang) lang @elseif(isset($lang) && $lang) lang="{{ $lang }}" @endif
-  @if(isset($low) && is_bool($low) && $low) low @elseif(isset($low) && $low) low="{{ $low }}" @endif
-  @if(isset($max) && is_bool($max) && $max) max @elseif(isset($max) && $max) max="{{ $max }}" @endif
-  @if(isset($min) && is_bool($min) && $min) min @elseif(isset($min) && $min) min="{{ $min }}" @endif
-  @if(isset($optimum) && is_bool($optimum) && $optimum) optimum @elseif(isset($optimum) && $optimum) optimum="{{ $optimum }}" @endif
-  @if(isset($slot) && is_bool($slot) && $slot) slot @elseif(isset($slot) && $slot) slot="{{ $slot }}" @endif
-  @if(isset($spellcheck) && is_bool($spellcheck) && $spellcheck) spellcheck @elseif(isset($spellcheck) && $spellcheck) spellcheck="{{ $spellcheck }}" @endif
-  @if(isset($style) && is_bool($style) && $style) style @elseif(isset($style) && $style) style="{{ $style }}" @endif
-  @if(isset($tabindex) && is_bool($tabindex) && $tabindex) tabindex @elseif(isset($tabindex) && $tabindex) tabindex="{{ $tabindex }}" @endif
-  @if(isset($title) && is_bool($title) && $title) title @elseif(isset($title) && $title) title="{{ $title }}" @endif
-  @if(isset($translate) && is_bool($translate) && $translate) translate @elseif(isset($translate) && $translate) translate="{{ $translate }}" @endif
-  @if(isset($value) && is_bool($value) && $value) value @elseif(isset($value) && $value) value="{{ $value }}" @endif>
+<meter {!! implode(' ', $attrs) !!}>
   @yield('content')
 </meter>
 @endsection

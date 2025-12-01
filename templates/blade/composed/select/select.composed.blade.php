@@ -6,16 +6,12 @@
 
   CONTENT MODEL:
   - Can be a child of: Aside, Body, DefinitionDescription, Dialog, Division, Fieldset, Footer, Form, Header, Main, MarkedText, Paragraph, Section, Slot, Template
-  - Can contain: OptionGroup, Option
-
-  @author vardumper <info@erikpoehler.com>
-  @package vardumper/extended-htmldocument
-  @see src/TemplateGenerator/BladeGenerator.php
+  - Can have children: OptionGroup, Option
 --}}
-@section('select_composed')
+@section('select')
 <select class="example">
 @include('blade.block.optgroup.optgroup', ['content' => 'Example content'])
 @include('blade.block.optgroup.optgroup', ['content' => 'Example content'])
 @include('blade.block.option.option', ['content' => 'Option 1'])
-@endsection
 </select>
+@endsection

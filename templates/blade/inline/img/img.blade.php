@@ -6,34 +6,45 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/BladeGenerator.php
 --}}
+@php
+$crossoriginChoices = ['anonymous' => true, 'use-credentials' => true];
+$decodingChoices = ['async' => true, 'auto' => true, 'sync' => true];
+$referrerpolicyChoices = ['no-referrer' => true, 'no-referrer-when-downgrade' => true, 'origin' => true, 'origin-when-cross-origin' => true, 'same-origin' => true, 'strict-origin' => true, 'strict-origin-when-cross-origin' => true, 'unsafe-url' => true];
+$ariaHiddenChoices = ['false' => true, 'true' => true];
+$ariaLiveChoices = ['off' => true, 'polite' => true, 'assertive' => true];
+$ariaRelevantChoices = ['additions' => true, 'removals' => true, 'text' => true, 'all' => true, 'additions text' => true];
+$ariaAtomicChoices = ['false' => true, 'true' => true];
+$dirChoices = ['ltr' => true, 'rtl' => true, 'auto' => true];
+$attrs = [];
+if (isset($alt)) $attrs[] = 'alt="' . e($alt) . '"';
+if (isset($ariaAtomic) && isset($ariaAtomicChoices[$ariaAtomic])) $attrs[] = 'aria-atomic="' . e($ariaAtomic) . '"';
+if (isset($ariaDetails)) $attrs[] = 'aria-details="' . e($ariaDetails) . '"';
+if (isset($ariaHidden) && isset($ariaHiddenChoices[$ariaHidden])) $attrs[] = 'aria-hidden="' . e($ariaHidden) . '"';
+if (isset($ariaKeyshortcuts)) $attrs[] = 'aria-keyshortcuts="' . e($ariaKeyshortcuts) . '"';
+if (isset($ariaLabel)) $attrs[] = 'aria-label="' . e($ariaLabel) . '"';
+if (isset($ariaLive) && isset($ariaLiveChoices[$ariaLive])) $attrs[] = 'aria-live="' . e($ariaLive) . '"';
+if (isset($ariaRelevant) && isset($ariaRelevantChoices[$ariaRelevant])) $attrs[] = 'aria-relevant="' . e($ariaRelevant) . '"';
+if (isset($ariaRoledescription)) $attrs[] = 'aria-roledescription="' . e($ariaRoledescription) . '"';
+if (isset($class)) $attrs[] = 'class="' . e($class) . '"';
+if (isset($crossorigin) && isset($crossoriginChoices[$crossorigin])) $attrs[] = 'crossorigin="' . e($crossorigin) . '"';
+if (isset($decoding) && isset($decodingChoices[$decoding])) $attrs[] = 'decoding="' . e($decoding) . '"';
+if (isset($dir) && isset($dirChoices[$dir])) $attrs[] = 'dir="' . e($dir) . '"';
+if (isset($draggable) && $draggable) $attrs[] = 'draggable';
+if (isset($height)) $attrs[] = 'height="' . e($height) . '"';
+if (isset($hidden) && $hidden) $attrs[] = 'hidden';
+if (isset($id)) $attrs[] = 'id="' . e($id) . '"';
+if (isset($ismap)) $attrs[] = 'ismap="' . e($ismap) . '"';
+if (isset($lang)) $attrs[] = 'lang="' . e($lang) . '"';
+if (isset($referrerpolicy) && isset($referrerpolicyChoices[$referrerpolicy])) $attrs[] = 'referrerpolicy="' . e($referrerpolicy) . '"';
+if (isset($sizes)) $attrs[] = 'sizes="' . e($sizes) . '"';
+if (isset($src)) $attrs[] = 'src="' . e($src) . '"';
+if (isset($srcset)) $attrs[] = 'srcset="' . e($srcset) . '"';
+if (isset($style)) $attrs[] = 'style="' . e($style) . '"';
+if (isset($tabindex)) $attrs[] = 'tabindex="' . e($tabindex) . '"';
+if (isset($title)) $attrs[] = 'title="' . e($title) . '"';
+if (isset($usemap)) $attrs[] = 'usemap="' . e($usemap) . '"';
+if (isset($width)) $attrs[] = 'width="' . e($width) . '"';
+@endphp
 @section('img')
-<img
-  @if(isset($alt) && is_bool($alt) && $alt) alt @elseif(isset($alt) && $alt) alt="{{ $alt }}" @endif
-  @if(isset($ariaAtomic) && is_bool($ariaAtomic) && $ariaAtomic) aria-atomic @elseif(isset($ariaAtomic) && $ariaAtomic) aria-atomic="{{ $ariaAtomic }}" @endif
-  @if(isset($ariaDetails) && is_bool($ariaDetails) && $ariaDetails) aria-details @elseif(isset($ariaDetails) && $ariaDetails) aria-details="{{ $ariaDetails }}" @endif
-  @if(isset($ariaHidden) && is_bool($ariaHidden) && $ariaHidden) aria-hidden @elseif(isset($ariaHidden) && $ariaHidden) aria-hidden="{{ $ariaHidden }}" @endif
-  @if(isset($ariaKeyshortcuts) && is_bool($ariaKeyshortcuts) && $ariaKeyshortcuts) aria-keyshortcuts @elseif(isset($ariaKeyshortcuts) && $ariaKeyshortcuts) aria-keyshortcuts="{{ $ariaKeyshortcuts }}" @endif
-  @if(isset($ariaLabel) && is_bool($ariaLabel) && $ariaLabel) aria-label @elseif(isset($ariaLabel) && $ariaLabel) aria-label="{{ $ariaLabel }}" @endif
-  @if(isset($ariaLive) && is_bool($ariaLive) && $ariaLive) aria-live @elseif(isset($ariaLive) && $ariaLive) aria-live="{{ $ariaLive }}" @endif
-  @if(isset($ariaRelevant) && is_bool($ariaRelevant) && $ariaRelevant) aria-relevant @elseif(isset($ariaRelevant) && $ariaRelevant) aria-relevant="{{ $ariaRelevant }}" @endif
-  @if(isset($ariaRoledescription) && is_bool($ariaRoledescription) && $ariaRoledescription) aria-roledescription @elseif(isset($ariaRoledescription) && $ariaRoledescription) aria-roledescription="{{ $ariaRoledescription }}" @endif
-  @if(isset($class) && is_bool($class) && $class) class @elseif(isset($class) && $class) class="{{ $class }}" @endif
-  @if(isset($crossorigin) && is_bool($crossorigin) && $crossorigin) crossorigin @elseif(isset($crossorigin) && $crossorigin) crossorigin="{{ $crossorigin }}" @endif
-  @if(isset($decoding) && is_bool($decoding) && $decoding) decoding @elseif(isset($decoding) && $decoding) decoding="{{ $decoding }}" @endif
-  @if(isset($dir) && is_bool($dir) && $dir) dir @elseif(isset($dir) && $dir) dir="{{ $dir }}" @endif
-  @if(isset($draggable) && is_bool($draggable) && $draggable) draggable @elseif(isset($draggable) && $draggable) draggable="{{ $draggable }}" @endif
-  @if(isset($height) && is_bool($height) && $height) height @elseif(isset($height) && $height) height="{{ $height }}" @endif
-  @if(isset($hidden) && is_bool($hidden) && $hidden) hidden @elseif(isset($hidden) && $hidden) hidden="{{ $hidden }}" @endif
-  @if(isset($id) && is_bool($id) && $id) id @elseif(isset($id) && $id) id="{{ $id }}" @endif
-  @if(isset($ismap) && is_bool($ismap) && $ismap) ismap @elseif(isset($ismap) && $ismap) ismap="{{ $ismap }}" @endif
-  @if(isset($lang) && is_bool($lang) && $lang) lang @elseif(isset($lang) && $lang) lang="{{ $lang }}" @endif
-  @if(isset($referrerpolicy) && is_bool($referrerpolicy) && $referrerpolicy) referrerpolicy @elseif(isset($referrerpolicy) && $referrerpolicy) referrerpolicy="{{ $referrerpolicy }}" @endif
-  @if(isset($sizes) && is_bool($sizes) && $sizes) sizes @elseif(isset($sizes) && $sizes) sizes="{{ $sizes }}" @endif
-  @if(isset($src) && is_bool($src) && $src) src @elseif(isset($src) && $src) src="{{ $src }}" @endif
-  @if(isset($srcset) && is_bool($srcset) && $srcset) srcset @elseif(isset($srcset) && $srcset) srcset="{{ $srcset }}" @endif
-  @if(isset($style) && is_bool($style) && $style) style @elseif(isset($style) && $style) style="{{ $style }}" @endif
-  @if(isset($tabindex) && is_bool($tabindex) && $tabindex) tabindex @elseif(isset($tabindex) && $tabindex) tabindex="{{ $tabindex }}" @endif
-  @if(isset($title) && is_bool($title) && $title) title @elseif(isset($title) && $title) title="{{ $title }}" @endif
-  @if(isset($usemap) && is_bool($usemap) && $usemap) usemap @elseif(isset($usemap) && $usemap) usemap="{{ $usemap }}" @endif
-  @if(isset($width) && is_bool($width) && $width) width @elseif(isset($width) && $width) width="{{ $width }}" @endif />
+<img {!! implode(' ', $attrs) !!} />
 @endsection

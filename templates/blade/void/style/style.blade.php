@@ -6,16 +6,21 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/BladeGenerator.php
 --}}
+@php
+$typeChoices = ['text/css' => true];
+$dirChoices = ['ltr' => true, 'rtl' => true, 'auto' => true];
+$attrs = [];
+if (isset($class)) $attrs[] = 'class="' . e($class) . '"';
+if (isset($dir) && isset($dirChoices[$dir])) $attrs[] = 'dir="' . e($dir) . '"';
+if (isset($id)) $attrs[] = 'id="' . e($id) . '"';
+if (isset($lang)) $attrs[] = 'lang="' . e($lang) . '"';
+if (isset($media)) $attrs[] = 'media="' . e($media) . '"';
+if (isset($nonce)) $attrs[] = 'nonce="' . e($nonce) . '"';
+if (isset($title)) $attrs[] = 'title="' . e($title) . '"';
+if (isset($type) && isset($typeChoices[$type])) $attrs[] = 'type="' . e($type) . '"';
+@endphp
 @section('style')
-<style
-  @if(isset($class) && is_bool($class) && $class) class @elseif(isset($class) && $class) class="{{ $class }}" @endif
-  @if(isset($dir) && is_bool($dir) && $dir) dir @elseif(isset($dir) && $dir) dir="{{ $dir }}" @endif
-  @if(isset($id) && is_bool($id) && $id) id @elseif(isset($id) && $id) id="{{ $id }}" @endif
-  @if(isset($lang) && is_bool($lang) && $lang) lang @elseif(isset($lang) && $lang) lang="{{ $lang }}" @endif
-  @if(isset($media) && is_bool($media) && $media) media @elseif(isset($media) && $media) media="{{ $media }}" @endif
-  @if(isset($nonce) && is_bool($nonce) && $nonce) nonce @elseif(isset($nonce) && $nonce) nonce="{{ $nonce }}" @endif
-  @if(isset($title) && is_bool($title) && $title) title @elseif(isset($title) && $title) title="{{ $title }}" @endif
-  @if(isset($type) && is_bool($type) && $type) type @elseif(isset($type) && $type) type="{{ $type }}" @endif>
+<style {!! implode(' ', $attrs) !!}>
   @yield('content')
 </style>
 @endsection

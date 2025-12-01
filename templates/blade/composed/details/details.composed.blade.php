@@ -6,16 +6,12 @@
 
   CONTENT MODEL:
   - Can be a child of: Aside, Body, DefinitionDescription, Dialog, Division, Footer, Form, Header, Main, MarkedText, Paragraph, Section, Slot, Template
-  - Can contain: Division, DefinitionList, Form, ListItem, OrderedList, Paragraph, PreformattedText, Summary, Table, UnorderedList
-
-  @author vardumper <info@erikpoehler.com>
-  @package vardumper/extended-htmldocument
-  @see src/TemplateGenerator/BladeGenerator.php
+  - Can have children: Division, DefinitionList, Form, ListItem, OrderedList, Paragraph, PreformattedText, Summary, Table, UnorderedList
 --}}
-@section('details_composed')
+@section('details')
 <details class="example">
 @include('blade.block.p.p', ['content' => 'Example content'])
 @include('blade.block.p.p', ['content' => 'Example content'])
 @include('blade.block.summary.summary', ['content' => 'Summary'])
-@endsection
 </details>
+@endsection

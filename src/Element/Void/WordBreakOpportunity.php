@@ -1,16 +1,16 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * WordBreakOpportunity - The wbr element represents a word break opportunity.
- *
- * @generated 2025-11-28 14:53:40
+ * 
+ * @generated 2025-12-01 08:37:28
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr
  */
-
 namespace Html\Element\Void;
 
 use Html\Element\Block\Article;
@@ -25,8 +25,8 @@ use Html\Element\Block\Paragraph;
 use Html\Element\Block\Section;
 use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
-use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute;
+use Html\Mapping\Element;
 
 #[Element('wbr')]
 class WordBreakOpportunity extends VoidElement
@@ -36,7 +36,6 @@ class WordBreakOpportunity extends VoidElement
     use GlobalAttribute\DirTrait;
     use GlobalAttribute\HiddenTrait;
     use GlobalAttribute\IdTrait;
-
     /**
      * The HTML element name
      */
@@ -77,7 +76,11 @@ class WordBreakOpportunity extends VoidElement
 
     /**
      * The list of allowed direct children. Any if empty.
+     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
+
+
 }

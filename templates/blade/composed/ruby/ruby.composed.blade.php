@@ -6,16 +6,12 @@
 
   CONTENT MODEL:
   - Can be a child of: Article, Aside, Body, DefinitionDescription, Division, Footer, Header, Main, MarkedText, Paragraph, Section
-  - Can contain: RubyParenthesis, RubyText
-
-  @author vardumper <info@erikpoehler.com>
-  @package vardumper/extended-htmldocument
-  @see src/TemplateGenerator/BladeGenerator.php
+  - Can have children: RubyParenthesis, RubyText
 --}}
-@section('ruby_composed')
+@section('ruby')
 <ruby class="example">
 @include('blade.inline.rp.rp', ['content' => 'Example content'])
 @include('blade.inline.rp.rp', ['content' => 'Example content'])
 @include('blade.inline.rt.rt', ['content' => 'Example content'])
-@endsection
 </ruby>
+@endsection

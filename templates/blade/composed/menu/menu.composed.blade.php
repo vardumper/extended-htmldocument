@@ -5,16 +5,12 @@
   The menu element represents a group of commands that a user can perform or activate. It can be used for toolbars, context menus, or listing form controls.
 
   CONTENT MODEL:
-  - Can contain: Button, Form, ListItem, Script, Template
-
-  @author vardumper <info@erikpoehler.com>
-  @package vardumper/extended-htmldocument
-  @see src/TemplateGenerator/BladeGenerator.php
+  - Can have children: Button, Form, ListItem, Script, Template
 --}}
-@section('menu_composed')
+@section('menu')
 <menu class="example">
 @include('blade.inline.button.button', ['content' => 'Button 1'])
 @include('blade.inline.button.button', ['content' => 'Button 2'])
 @include('blade.block.form.form', ['content' => 'Example content'])
-@endsection
 </menu>
+@endsection

@@ -1,24 +1,24 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Style - The style element is used to embed CSS styles directly into an HTML document.
- *
- * @generated 2025-11-28 14:53:40
+ * 
+ * @generated 2025-12-01 08:37:28
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
  */
-
 namespace Html\Element\Void;
 
 use Html\Element\Inline\ScalableVectorGraphics;
 use Html\Element\VoidElement;
+use Html\Element\Void\Head;
 use Html\Enum\StyleTypeEnum;
-use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute;
-use InvalidArgumentException;
+use Html\Mapping\Element;
 
 #[Element('style')]
 class Style extends VoidElement
@@ -29,7 +29,6 @@ class Style extends VoidElement
     use GlobalAttribute\DataTrait;
     use GlobalAttribute\LangTrait;
     use GlobalAttribute\DirTrait;
-
     /**
      * The HTML element name
      */
@@ -49,31 +48,34 @@ class Style extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Head::class, ScalableVectorGraphics::class];
+    public static array $childOf = [
+        Head::class,
+        ScalableVectorGraphics::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
+     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies the media type for which the linked resource or style sheet is intended.
-     */
+    /** Specifies the media type for which the linked resource or style sheet is intended. */
     protected ?string $media = null;
 
-    /**
-     * Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks.
-     */
+    /** Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks. */
     protected ?string $nonce = null;
 
-    /**
+    /** 
      * Specifies the media type of the inline styles.
+     * @category HTML attribute
      * @deprecated
-
+    
      * @example text/css
      */
     protected ?StyleTypeEnum $type = null;
+
 
     public function setMedia(string $media): static
     {
@@ -114,7 +116,7 @@ class Style extends VoidElement
     public function setType(string|StyleTypeEnum $type): static
     {
         if (\is_string($type)) {
-            $type = StyleTypeEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
+            $type = StyleTypeEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
         }
         $this->type = $type;
         $this->delegated->setAttribute('type', (string) $type->value);
@@ -126,4 +128,5 @@ class Style extends VoidElement
     {
         return $this->type;
     }
+
 }

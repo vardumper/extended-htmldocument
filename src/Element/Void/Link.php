@@ -1,25 +1,25 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * Link - The link element defines a link between a document and an external resource. It is used to link to external stylesheets.
- *
- * @generated 2025-11-28 14:53:40
+ * 
+ * @generated 2025-12-01 08:37:28
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
  */
-
 namespace Html\Element\Void;
 
 use Html\Element\VoidElement;
+use Html\Element\Void\Head;
 use Html\Enum\CrossoriginEnum;
 use Html\Enum\LinkRelEnum;
 use Html\Enum\ReferrerpolicyEnum;
-use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute;
-use InvalidArgumentException;
+use Html\Mapping\Element;
 
 #[Element('link')]
 class Link extends VoidElement
@@ -32,7 +32,6 @@ class Link extends VoidElement
     use GlobalAttribute\LangTrait;
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\TitleTrait;
-
     /**
      * The HTML element name
      */
@@ -57,63 +56,54 @@ class Link extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Head::class];
+    public static array $childOf = [
+        Head::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
+     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
+    /**  */
     protected ?CrossoriginEnum $crossorigin = null;
 
-    /**
+    /** 
      * Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.
+     * @category HTML attribute
      * @required
      */
     protected ?string $href = null;
 
-    /**
-     * Specifies the language of the linked resource.
-     */
+    /** Specifies the language of the linked resource. */
     protected ?string $hreflang = null;
 
-    /**
-     * Specifies the integrity value of a resource.
-     */
+    /** Specifies the integrity value of a resource. */
     protected ?string $integrity = null;
 
-    /**
-     * Specifies the media type for which the linked resource or style sheet is intended.
-     */
+    /** Specifies the media type for which the linked resource or style sheet is intended. */
     protected ?string $media = null;
 
-    /**
-     * Specifies the referrer policy for fetches initiated by the element.
-     */
+    /** Specifies the referrer policy for fetches initiated by the element. */
     protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
-    /**
-     * Specifies the relationship between the current document and the linked document.
-     */
+    /** Specifies the relationship between the current document and the linked document. */
     protected ?LinkRelEnum $rel = null;
 
-    /**
-     * Specifies the sizes of the images or icons for different display/window sizes.
-     */
+    /** Specifies the sizes of the images or icons for different display/window sizes. */
     protected ?string $sizes = null;
 
-    /**
-     * Specifies the media type of the linked resource.
-     */
+    /** Specifies the media type of the linked resource. */
     protected ?string $type = null;
+
 
     public function setCrossorigin(string|CrossoriginEnum $crossorigin): static
     {
         if (\is_string($crossorigin)) {
-            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
-                'Invalid value for $crossorigin.'
-            );
+            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new \InvalidArgumentException("Invalid value for \$crossorigin.");
         }
         $this->crossorigin = $crossorigin;
         $this->delegated->setAttribute('crossorigin', (string) $crossorigin->value);
@@ -177,9 +167,7 @@ class Link extends VoidElement
     public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): static
     {
         if (\is_string($referrerpolicy)) {
-            $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new InvalidArgumentException(
-                'Invalid value for $referrerpolicy.'
-            );
+            $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new \InvalidArgumentException("Invalid value for \$referrerpolicy.");
         }
         $this->referrerpolicy = $referrerpolicy;
         $this->delegated->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
@@ -195,7 +183,7 @@ class Link extends VoidElement
     public function setRel(string|LinkRelEnum $rel): static
     {
         if (\is_string($rel)) {
-            $rel = LinkRelEnum::tryFrom($rel) ?? throw new InvalidArgumentException('Invalid value for $rel.');
+            $rel = LinkRelEnum::tryFrom($rel) ?? throw new \InvalidArgumentException("Invalid value for \$rel.");
         }
         $this->rel = $rel;
         $this->delegated->setAttribute('rel', (string) $rel->value);
@@ -231,4 +219,5 @@ class Link extends VoidElement
     {
         return $this->type;
     }
+
 }

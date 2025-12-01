@@ -6,15 +6,11 @@
 
   CONTENT MODEL:
   - Can be a child of: Article, Aside, Body, DefinitionDescription, Details, Dialog, Division, Footer, Header, ListItem, Main, Paragraph, Section, Slot, Template
-  - Can contain: ListItem
-
-  @author vardumper <info@erikpoehler.com>
-  @package vardumper/extended-htmldocument
-  @see src/TemplateGenerator/BladeGenerator.php
+  - Can have children: ListItem
 --}}
-@section('ul_composed')
+@section('ul')
 <ul class="example">
 @include('blade.block.li.li', ['content' => 'Item 1'])
 @include('blade.block.li.li', ['content' => 'Item 2'])
-@endsection
 </ul>
+@endsection

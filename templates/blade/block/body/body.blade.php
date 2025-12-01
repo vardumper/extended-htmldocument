@@ -6,35 +6,40 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/BladeGenerator.php
 --}}
+@php
+$dirChoices = ['ltr' => true, 'rtl' => true, 'auto' => true];
+$translateChoices = ['yes' => true, 'no' => true];
+$attrs = [];
+if (isset($accesskey)) $attrs[] = 'accesskey="' . e($accesskey) . '"';
+if (isset($class)) $attrs[] = 'class="' . e($class) . '"';
+if (isset($dir) && isset($dirChoices[$dir])) $attrs[] = 'dir="' . e($dir) . '"';
+if (isset($draggable) && $draggable) $attrs[] = 'draggable';
+if (isset($hidden) && $hidden) $attrs[] = 'hidden';
+if (isset($id)) $attrs[] = 'id="' . e($id) . '"';
+if (isset($lang)) $attrs[] = 'lang="' . e($lang) . '"';
+if (isset($onafterprint)) $attrs[] = 'onafterprint="' . e($onafterprint) . '"';
+if (isset($onbeforeprint)) $attrs[] = 'onbeforeprint="' . e($onbeforeprint) . '"';
+if (isset($onbeforeunload)) $attrs[] = 'onbeforeunload="' . e($onbeforeunload) . '"';
+if (isset($onhashchange)) $attrs[] = 'onhashchange="' . e($onhashchange) . '"';
+if (isset($onlanguagechange)) $attrs[] = 'onlanguagechange="' . e($onlanguagechange) . '"';
+if (isset($onmessage)) $attrs[] = 'onmessage="' . e($onmessage) . '"';
+if (isset($onmessageerror)) $attrs[] = 'onmessageerror="' . e($onmessageerror) . '"';
+if (isset($onoffline)) $attrs[] = 'onoffline="' . e($onoffline) . '"';
+if (isset($ononline)) $attrs[] = 'ononline="' . e($ononline) . '"';
+if (isset($onpagehide)) $attrs[] = 'onpagehide="' . e($onpagehide) . '"';
+if (isset($onpageshow)) $attrs[] = 'onpageshow="' . e($onpageshow) . '"';
+if (isset($onpopstate)) $attrs[] = 'onpopstate="' . e($onpopstate) . '"';
+if (isset($onrejectionhandled)) $attrs[] = 'onrejectionhandled="' . e($onrejectionhandled) . '"';
+if (isset($onstorage)) $attrs[] = 'onstorage="' . e($onstorage) . '"';
+if (isset($onunhandledrejection)) $attrs[] = 'onunhandledrejection="' . e($onunhandledrejection) . '"';
+if (isset($onunload)) $attrs[] = 'onunload="' . e($onunload) . '"';
+if (isset($style)) $attrs[] = 'style="' . e($style) . '"';
+if (isset($tabindex)) $attrs[] = 'tabindex="' . e($tabindex) . '"';
+if (isset($title)) $attrs[] = 'title="' . e($title) . '"';
+if (isset($translate) && isset($translateChoices[$translate])) $attrs[] = 'translate="' . e($translate) . '"';
+@endphp
 @section('body')
-<body
-  @if(isset($accesskey) && is_bool($accesskey) && $accesskey) accesskey @elseif(isset($accesskey) && $accesskey) accesskey="{{ $accesskey }}" @endif
-  @if(isset($class) && is_bool($class) && $class) class @elseif(isset($class) && $class) class="{{ $class }}" @endif
-  @if(isset($dir) && is_bool($dir) && $dir) dir @elseif(isset($dir) && $dir) dir="{{ $dir }}" @endif
-  @if(isset($draggable) && is_bool($draggable) && $draggable) draggable @elseif(isset($draggable) && $draggable) draggable="{{ $draggable }}" @endif
-  @if(isset($hidden) && is_bool($hidden) && $hidden) hidden @elseif(isset($hidden) && $hidden) hidden="{{ $hidden }}" @endif
-  @if(isset($id) && is_bool($id) && $id) id @elseif(isset($id) && $id) id="{{ $id }}" @endif
-  @if(isset($lang) && is_bool($lang) && $lang) lang @elseif(isset($lang) && $lang) lang="{{ $lang }}" @endif
-  @if(isset($onafterprint) && is_bool($onafterprint) && $onafterprint) onafterprint @elseif(isset($onafterprint) && $onafterprint) onafterprint="{{ $onafterprint }}" @endif
-  @if(isset($onbeforeprint) && is_bool($onbeforeprint) && $onbeforeprint) onbeforeprint @elseif(isset($onbeforeprint) && $onbeforeprint) onbeforeprint="{{ $onbeforeprint }}" @endif
-  @if(isset($onbeforeunload) && is_bool($onbeforeunload) && $onbeforeunload) onbeforeunload @elseif(isset($onbeforeunload) && $onbeforeunload) onbeforeunload="{{ $onbeforeunload }}" @endif
-  @if(isset($onhashchange) && is_bool($onhashchange) && $onhashchange) onhashchange @elseif(isset($onhashchange) && $onhashchange) onhashchange="{{ $onhashchange }}" @endif
-  @if(isset($onlanguagechange) && is_bool($onlanguagechange) && $onlanguagechange) onlanguagechange @elseif(isset($onlanguagechange) && $onlanguagechange) onlanguagechange="{{ $onlanguagechange }}" @endif
-  @if(isset($onmessage) && is_bool($onmessage) && $onmessage) onmessage @elseif(isset($onmessage) && $onmessage) onmessage="{{ $onmessage }}" @endif
-  @if(isset($onmessageerror) && is_bool($onmessageerror) && $onmessageerror) onmessageerror @elseif(isset($onmessageerror) && $onmessageerror) onmessageerror="{{ $onmessageerror }}" @endif
-  @if(isset($onoffline) && is_bool($onoffline) && $onoffline) onoffline @elseif(isset($onoffline) && $onoffline) onoffline="{{ $onoffline }}" @endif
-  @if(isset($ononline) && is_bool($ononline) && $ononline) ononline @elseif(isset($ononline) && $ononline) ononline="{{ $ononline }}" @endif
-  @if(isset($onpagehide) && is_bool($onpagehide) && $onpagehide) onpagehide @elseif(isset($onpagehide) && $onpagehide) onpagehide="{{ $onpagehide }}" @endif
-  @if(isset($onpageshow) && is_bool($onpageshow) && $onpageshow) onpageshow @elseif(isset($onpageshow) && $onpageshow) onpageshow="{{ $onpageshow }}" @endif
-  @if(isset($onpopstate) && is_bool($onpopstate) && $onpopstate) onpopstate @elseif(isset($onpopstate) && $onpopstate) onpopstate="{{ $onpopstate }}" @endif
-  @if(isset($onrejectionhandled) && is_bool($onrejectionhandled) && $onrejectionhandled) onrejectionhandled @elseif(isset($onrejectionhandled) && $onrejectionhandled) onrejectionhandled="{{ $onrejectionhandled }}" @endif
-  @if(isset($onstorage) && is_bool($onstorage) && $onstorage) onstorage @elseif(isset($onstorage) && $onstorage) onstorage="{{ $onstorage }}" @endif
-  @if(isset($onunhandledrejection) && is_bool($onunhandledrejection) && $onunhandledrejection) onunhandledrejection @elseif(isset($onunhandledrejection) && $onunhandledrejection) onunhandledrejection="{{ $onunhandledrejection }}" @endif
-  @if(isset($onunload) && is_bool($onunload) && $onunload) onunload @elseif(isset($onunload) && $onunload) onunload="{{ $onunload }}" @endif
-  @if(isset($style) && is_bool($style) && $style) style @elseif(isset($style) && $style) style="{{ $style }}" @endif
-  @if(isset($tabindex) && is_bool($tabindex) && $tabindex) tabindex @elseif(isset($tabindex) && $tabindex) tabindex="{{ $tabindex }}" @endif
-  @if(isset($title) && is_bool($title) && $title) title @elseif(isset($title) && $title) title="{{ $title }}" @endif
-  @if(isset($translate) && is_bool($translate) && $translate) translate @elseif(isset($translate) && $translate) translate="{{ $translate }}" @endif>
+<body {!! implode(' ', $attrs) !!}>
   @yield('content')
 </body>
 @endsection

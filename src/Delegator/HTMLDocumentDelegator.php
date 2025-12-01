@@ -57,7 +57,6 @@ use InvalidArgumentException;
 class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
 {
     use DelegatorTrait;
-    use \Html\Trait\ClassResolverTrait;
 
     public bool $formatOutput;
 

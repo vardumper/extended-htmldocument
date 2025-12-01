@@ -6,11 +6,14 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/BladeGenerator.php
 --}}
+@php
+$attrs = [];
+if (isset($class)) $attrs[] = 'class="' . e($class) . '"';
+if (isset($id)) $attrs[] = 'id="' . e($id) . '"';
+if (isset($span)) $attrs[] = 'span="' . e($span) . '"';
+if (isset($style)) $attrs[] = 'style="' . e($style) . '"';
+if (isset($width)) $attrs[] = 'width="' . e($width) . '"';
+@endphp
 @section('col')
-<col
-  @if(isset($class) && is_bool($class) && $class) class @elseif(isset($class) && $class) class="{{ $class }}" @endif
-  @if(isset($id) && is_bool($id) && $id) id @elseif(isset($id) && $id) id="{{ $id }}" @endif
-  @if(isset($span) && is_bool($span) && $span) span @elseif(isset($span) && $span) span="{{ $span }}" @endif
-  @if(isset($style) && is_bool($style) && $style) style @elseif(isset($style) && $style) style="{{ $style }}" @endif
-  @if(isset($width) && is_bool($width) && $width) width @elseif(isset($width) && $width) width="{{ $width }}" @endif />
+<col {!! implode(' ', $attrs) !!} />
 @endsection

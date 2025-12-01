@@ -6,22 +6,29 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/BladeGenerator.php
 --}}
+@php
+$crossoriginChoices = ['anonymous' => true, 'use-credentials' => true];
+$referrerpolicyChoices = ['no-referrer' => true, 'no-referrer-when-downgrade' => true, 'origin' => true, 'origin-when-cross-origin' => true, 'same-origin' => true, 'strict-origin' => true, 'strict-origin-when-cross-origin' => true, 'unsafe-url' => true];
+$relChoices = ['alternate' => true, 'author' => true, 'bookmark' => true, 'canonical' => true, 'help' => true, 'icon' => true, 'license' => true, 'manifest' => true, 'next' => true, 'nofollow' => true, 'noreferrer' => true, 'prefetch' => true, 'prev' => true, 'search' => true, 'stylesheet' => true, 'tag' => true];
+$dirChoices = ['ltr' => true, 'rtl' => true, 'auto' => true];
+$attrs = [];
+if (isset($class)) $attrs[] = 'class="' . e($class) . '"';
+if (isset($crossorigin) && isset($crossoriginChoices[$crossorigin])) $attrs[] = 'crossorigin="' . e($crossorigin) . '"';
+if (isset($dir) && isset($dirChoices[$dir])) $attrs[] = 'dir="' . e($dir) . '"';
+if (isset($hidden) && $hidden) $attrs[] = 'hidden';
+if (isset($href)) $attrs[] = 'href="' . e($href) . '"';
+if (isset($hreflang)) $attrs[] = 'hreflang="' . e($hreflang) . '"';
+if (isset($id)) $attrs[] = 'id="' . e($id) . '"';
+if (isset($integrity)) $attrs[] = 'integrity="' . e($integrity) . '"';
+if (isset($lang)) $attrs[] = 'lang="' . e($lang) . '"';
+if (isset($media)) $attrs[] = 'media="' . e($media) . '"';
+if (isset($referrerpolicy) && isset($referrerpolicyChoices[$referrerpolicy])) $attrs[] = 'referrerpolicy="' . e($referrerpolicy) . '"';
+if (isset($rel) && isset($relChoices[$rel])) $attrs[] = 'rel="' . e($rel) . '"';
+if (isset($sizes)) $attrs[] = 'sizes="' . e($sizes) . '"';
+if (isset($style)) $attrs[] = 'style="' . e($style) . '"';
+if (isset($title)) $attrs[] = 'title="' . e($title) . '"';
+if (isset($type)) $attrs[] = 'type="' . e($type) . '"';
+@endphp
 @section('link')
-<link
-  @if(isset($class) && is_bool($class) && $class) class @elseif(isset($class) && $class) class="{{ $class }}" @endif
-  @if(isset($crossorigin) && is_bool($crossorigin) && $crossorigin) crossorigin @elseif(isset($crossorigin) && $crossorigin) crossorigin="{{ $crossorigin }}" @endif
-  @if(isset($dir) && is_bool($dir) && $dir) dir @elseif(isset($dir) && $dir) dir="{{ $dir }}" @endif
-  @if(isset($hidden) && is_bool($hidden) && $hidden) hidden @elseif(isset($hidden) && $hidden) hidden="{{ $hidden }}" @endif
-  @if(isset($href) && is_bool($href) && $href) href @elseif(isset($href) && $href) href="{{ $href }}" @endif
-  @if(isset($hreflang) && is_bool($hreflang) && $hreflang) hreflang @elseif(isset($hreflang) && $hreflang) hreflang="{{ $hreflang }}" @endif
-  @if(isset($id) && is_bool($id) && $id) id @elseif(isset($id) && $id) id="{{ $id }}" @endif
-  @if(isset($integrity) && is_bool($integrity) && $integrity) integrity @elseif(isset($integrity) && $integrity) integrity="{{ $integrity }}" @endif
-  @if(isset($lang) && is_bool($lang) && $lang) lang @elseif(isset($lang) && $lang) lang="{{ $lang }}" @endif
-  @if(isset($media) && is_bool($media) && $media) media @elseif(isset($media) && $media) media="{{ $media }}" @endif
-  @if(isset($referrerpolicy) && is_bool($referrerpolicy) && $referrerpolicy) referrerpolicy @elseif(isset($referrerpolicy) && $referrerpolicy) referrerpolicy="{{ $referrerpolicy }}" @endif
-  @if(isset($rel) && is_bool($rel) && $rel) rel @elseif(isset($rel) && $rel) rel="{{ $rel }}" @endif
-  @if(isset($sizes) && is_bool($sizes) && $sizes) sizes @elseif(isset($sizes) && $sizes) sizes="{{ $sizes }}" @endif
-  @if(isset($style) && is_bool($style) && $style) style @elseif(isset($style) && $style) style="{{ $style }}" @endif
-  @if(isset($title) && is_bool($title) && $title) title @elseif(isset($title) && $title) title="{{ $title }}" @endif
-  @if(isset($type) && is_bool($type) && $type) type @elseif(isset($type) && $type) type="{{ $type }}" @endif />
+<link {!! implode(' ', $attrs) !!} />
 @endsection

@@ -6,16 +6,12 @@
 
   CONTENT MODEL:
   - Can be a child of: Article, Aside, Body, DefinitionDescription, Division, Footer, Header, Main, MarkedText, Section
-  - Can contain: Image, Source
-
-  @author vardumper <info@erikpoehler.com>
-  @package vardumper/extended-htmldocument
-  @see src/TemplateGenerator/BladeGenerator.php
+  - Can have children: Image, Source
 --}}
-@section('picture_composed')
+@section('picture')
 <picture class="example">
 @include('blade.inline.img.img', ['src' => '/image.jpg', 'alt' => 'Example'])
 @include('blade.inline.img.img', ['src' => '/image.jpg', 'alt' => 'Example'])
 @include('blade.void.source.source')
-@endsection
 </picture>
+@endsection

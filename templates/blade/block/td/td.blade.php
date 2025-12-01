@@ -6,48 +6,65 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/BladeGenerator.php
 --}}
+@php
+$roleChoices = ['alert' => true, 'application' => true, 'article' => true, 'banner' => true, 'button' => true, 'checkbox' => true, 'complementary' => true, 'contentinfo' => true, 'dialog' => true, 'form' => true, 'grid' => true, 'group' => true, 'heading' => true, 'img' => true, 'link' => true, 'list' => true, 'listbox' => true, 'listitem' => true, 'main' => true, 'menu' => true, 'menubar' => true, 'menuitem' => true, 'navigation' => true, 'none' => true, 'presentation' => true, 'radio' => true, 'region' => true, 'search' => true, 'status' => true, 'tab' => true, 'tablist' => true, 'tabpanel' => true, 'textbox' => true, 'toolbar' => true, 'tooltip' => true];
+$ariaBusyChoices = ['true' => true, 'false' => true];
+$ariaHiddenChoices = ['false' => true, 'true' => true];
+$ariaLiveChoices = ['off' => true, 'polite' => true, 'assertive' => true];
+$ariaRelevantChoices = ['additions' => true, 'removals' => true, 'text' => true, 'all' => true, 'additions text' => true];
+$ariaAtomicChoices = ['false' => true, 'true' => true];
+$ariaSortChoices = ['none' => true, 'ascending' => true, 'descending' => true, 'other' => true];
+$autocapitalizeChoices = ['none' => true, 'sentences' => true, 'words' => true, 'characters' => true];
+$contenteditableChoices = ['true' => true, 'false' => true, 'inherit' => true];
+$dirChoices = ['ltr' => true, 'rtl' => true, 'auto' => true];
+$inputmodeChoices = ['none' => true, 'text' => true, 'decimal' => true, 'numeric' => true, 'email' => true, 'tel' => true, 'url' => true, 'search' => true];
+$spellcheckChoices = ['true' => true, 'false' => true];
+$translateChoices = ['yes' => true, 'no' => true];
+$popoverChoices = ['auto' => true, 'hint' => true, 'manual' => true];
+$attrs = [];
+if (isset($accesskey)) $attrs[] = 'accesskey="' . e($accesskey) . '"';
+if (isset($ariaAtomic) && isset($ariaAtomicChoices[$ariaAtomic])) $attrs[] = 'aria-atomic="' . e($ariaAtomic) . '"';
+if (isset($ariaBusy) && isset($ariaBusyChoices[$ariaBusy])) $attrs[] = 'aria-busy="' . e($ariaBusy) . '"';
+if (isset($ariaColcount)) $attrs[] = 'aria-colcount="' . e($ariaColcount) . '"';
+if (isset($ariaColindex)) $attrs[] = 'aria-colindex="' . e($ariaColindex) . '"';
+if (isset($ariaColspan)) $attrs[] = 'aria-colspan="' . e($ariaColspan) . '"';
+if (isset($ariaControls)) $attrs[] = 'aria-controls="' . e($ariaControls) . '"';
+if (isset($ariaDescribedby)) $attrs[] = 'aria-describedby="' . e($ariaDescribedby) . '"';
+if (isset($ariaDetails)) $attrs[] = 'aria-details="' . e($ariaDetails) . '"';
+if (isset($ariaHidden) && isset($ariaHiddenChoices[$ariaHidden])) $attrs[] = 'aria-hidden="' . e($ariaHidden) . '"';
+if (isset($ariaKeyshortcuts)) $attrs[] = 'aria-keyshortcuts="' . e($ariaKeyshortcuts) . '"';
+if (isset($ariaLabelledby)) $attrs[] = 'aria-labelledby="' . e($ariaLabelledby) . '"';
+if (isset($ariaLive) && isset($ariaLiveChoices[$ariaLive])) $attrs[] = 'aria-live="' . e($ariaLive) . '"';
+if (isset($ariaRelevant) && isset($ariaRelevantChoices[$ariaRelevant])) $attrs[] = 'aria-relevant="' . e($ariaRelevant) . '"';
+if (isset($ariaRoledescription)) $attrs[] = 'aria-roledescription="' . e($ariaRoledescription) . '"';
+if (isset($ariaRowcount)) $attrs[] = 'aria-rowcount="' . e($ariaRowcount) . '"';
+if (isset($ariaRowindex)) $attrs[] = 'aria-rowindex="' . e($ariaRowindex) . '"';
+if (isset($ariaRowspan)) $attrs[] = 'aria-rowspan="' . e($ariaRowspan) . '"';
+if (isset($ariaSort) && isset($ariaSortChoices[$ariaSort])) $attrs[] = 'aria-sort="' . e($ariaSort) . '"';
+if (isset($autocapitalize) && isset($autocapitalizeChoices[$autocapitalize])) $attrs[] = 'autocapitalize="' . e($autocapitalize) . '"';
+if (isset($autofocus) && $autofocus) $attrs[] = 'autofocus';
+if (isset($class)) $attrs[] = 'class="' . e($class) . '"';
+if (isset($colspan)) $attrs[] = 'colspan="' . e($colspan) . '"';
+if (isset($contenteditable) && isset($contenteditableChoices[$contenteditable])) $attrs[] = 'contenteditable="' . e($contenteditable) . '"';
+if (isset($dir) && isset($dirChoices[$dir])) $attrs[] = 'dir="' . e($dir) . '"';
+if (isset($draggable) && $draggable) $attrs[] = 'draggable';
+if (isset($headers)) $attrs[] = 'headers="' . e($headers) . '"';
+if (isset($hidden) && $hidden) $attrs[] = 'hidden';
+if (isset($id)) $attrs[] = 'id="' . e($id) . '"';
+if (isset($inputmode) && isset($inputmodeChoices[$inputmode])) $attrs[] = 'inputmode="' . e($inputmode) . '"';
+if (isset($lang)) $attrs[] = 'lang="' . e($lang) . '"';
+if (isset($popover) && isset($popoverChoices[$popover])) $attrs[] = 'popover="' . e($popover) . '"';
+if (isset($role) && isset($roleChoices[$role])) $attrs[] = 'role="' . e($role) . '"';
+if (isset($rowspan)) $attrs[] = 'rowspan="' . e($rowspan) . '"';
+if (isset($slot)) $attrs[] = 'slot="' . e($slot) . '"';
+if (isset($spellcheck) && isset($spellcheckChoices[$spellcheck])) $attrs[] = 'spellcheck="' . e($spellcheck) . '"';
+if (isset($style)) $attrs[] = 'style="' . e($style) . '"';
+if (isset($tabindex)) $attrs[] = 'tabindex="' . e($tabindex) . '"';
+if (isset($title)) $attrs[] = 'title="' . e($title) . '"';
+if (isset($translate) && isset($translateChoices[$translate])) $attrs[] = 'translate="' . e($translate) . '"';
+@endphp
 @section('td')
-<td
-  @if(isset($accesskey) && is_bool($accesskey) && $accesskey) accesskey @elseif(isset($accesskey) && $accesskey) accesskey="{{ $accesskey }}" @endif
-  @if(isset($ariaAtomic) && is_bool($ariaAtomic) && $ariaAtomic) aria-atomic @elseif(isset($ariaAtomic) && $ariaAtomic) aria-atomic="{{ $ariaAtomic }}" @endif
-  @if(isset($ariaBusy) && is_bool($ariaBusy) && $ariaBusy) aria-busy @elseif(isset($ariaBusy) && $ariaBusy) aria-busy="{{ $ariaBusy }}" @endif
-  @if(isset($ariaColcount) && is_bool($ariaColcount) && $ariaColcount) aria-colcount @elseif(isset($ariaColcount) && $ariaColcount) aria-colcount="{{ $ariaColcount }}" @endif
-  @if(isset($ariaColindex) && is_bool($ariaColindex) && $ariaColindex) aria-colindex @elseif(isset($ariaColindex) && $ariaColindex) aria-colindex="{{ $ariaColindex }}" @endif
-  @if(isset($ariaColspan) && is_bool($ariaColspan) && $ariaColspan) aria-colspan @elseif(isset($ariaColspan) && $ariaColspan) aria-colspan="{{ $ariaColspan }}" @endif
-  @if(isset($ariaControls) && is_bool($ariaControls) && $ariaControls) aria-controls @elseif(isset($ariaControls) && $ariaControls) aria-controls="{{ $ariaControls }}" @endif
-  @if(isset($ariaDescribedby) && is_bool($ariaDescribedby) && $ariaDescribedby) aria-describedby @elseif(isset($ariaDescribedby) && $ariaDescribedby) aria-describedby="{{ $ariaDescribedby }}" @endif
-  @if(isset($ariaDetails) && is_bool($ariaDetails) && $ariaDetails) aria-details @elseif(isset($ariaDetails) && $ariaDetails) aria-details="{{ $ariaDetails }}" @endif
-  @if(isset($ariaHidden) && is_bool($ariaHidden) && $ariaHidden) aria-hidden @elseif(isset($ariaHidden) && $ariaHidden) aria-hidden="{{ $ariaHidden }}" @endif
-  @if(isset($ariaKeyshortcuts) && is_bool($ariaKeyshortcuts) && $ariaKeyshortcuts) aria-keyshortcuts @elseif(isset($ariaKeyshortcuts) && $ariaKeyshortcuts) aria-keyshortcuts="{{ $ariaKeyshortcuts }}" @endif
-  @if(isset($ariaLabelledby) && is_bool($ariaLabelledby) && $ariaLabelledby) aria-labelledby @elseif(isset($ariaLabelledby) && $ariaLabelledby) aria-labelledby="{{ $ariaLabelledby }}" @endif
-  @if(isset($ariaLive) && is_bool($ariaLive) && $ariaLive) aria-live @elseif(isset($ariaLive) && $ariaLive) aria-live="{{ $ariaLive }}" @endif
-  @if(isset($ariaRelevant) && is_bool($ariaRelevant) && $ariaRelevant) aria-relevant @elseif(isset($ariaRelevant) && $ariaRelevant) aria-relevant="{{ $ariaRelevant }}" @endif
-  @if(isset($ariaRoledescription) && is_bool($ariaRoledescription) && $ariaRoledescription) aria-roledescription @elseif(isset($ariaRoledescription) && $ariaRoledescription) aria-roledescription="{{ $ariaRoledescription }}" @endif
-  @if(isset($ariaRowcount) && is_bool($ariaRowcount) && $ariaRowcount) aria-rowcount @elseif(isset($ariaRowcount) && $ariaRowcount) aria-rowcount="{{ $ariaRowcount }}" @endif
-  @if(isset($ariaRowindex) && is_bool($ariaRowindex) && $ariaRowindex) aria-rowindex @elseif(isset($ariaRowindex) && $ariaRowindex) aria-rowindex="{{ $ariaRowindex }}" @endif
-  @if(isset($ariaRowspan) && is_bool($ariaRowspan) && $ariaRowspan) aria-rowspan @elseif(isset($ariaRowspan) && $ariaRowspan) aria-rowspan="{{ $ariaRowspan }}" @endif
-  @if(isset($ariaSort) && is_bool($ariaSort) && $ariaSort) aria-sort @elseif(isset($ariaSort) && $ariaSort) aria-sort="{{ $ariaSort }}" @endif
-  @if(isset($autocapitalize) && is_bool($autocapitalize) && $autocapitalize) autocapitalize @elseif(isset($autocapitalize) && $autocapitalize) autocapitalize="{{ $autocapitalize }}" @endif
-  @if(isset($autofocus) && is_bool($autofocus) && $autofocus) autofocus @elseif(isset($autofocus) && $autofocus) autofocus="{{ $autofocus }}" @endif
-  @if(isset($class) && is_bool($class) && $class) class @elseif(isset($class) && $class) class="{{ $class }}" @endif
-  @if(isset($colspan) && is_bool($colspan) && $colspan) colspan @elseif(isset($colspan) && $colspan) colspan="{{ $colspan }}" @endif
-  @if(isset($contenteditable) && is_bool($contenteditable) && $contenteditable) contenteditable @elseif(isset($contenteditable) && $contenteditable) contenteditable="{{ $contenteditable }}" @endif
-  @if(isset($dir) && is_bool($dir) && $dir) dir @elseif(isset($dir) && $dir) dir="{{ $dir }}" @endif
-  @if(isset($draggable) && is_bool($draggable) && $draggable) draggable @elseif(isset($draggable) && $draggable) draggable="{{ $draggable }}" @endif
-  @if(isset($headers) && is_bool($headers) && $headers) headers @elseif(isset($headers) && $headers) headers="{{ $headers }}" @endif
-  @if(isset($hidden) && is_bool($hidden) && $hidden) hidden @elseif(isset($hidden) && $hidden) hidden="{{ $hidden }}" @endif
-  @if(isset($id) && is_bool($id) && $id) id @elseif(isset($id) && $id) id="{{ $id }}" @endif
-  @if(isset($inputmode) && is_bool($inputmode) && $inputmode) inputmode @elseif(isset($inputmode) && $inputmode) inputmode="{{ $inputmode }}" @endif
-  @if(isset($lang) && is_bool($lang) && $lang) lang @elseif(isset($lang) && $lang) lang="{{ $lang }}" @endif
-  @if(isset($popover) && is_bool($popover) && $popover) popover @elseif(isset($popover) && $popover) popover="{{ $popover }}" @endif
-  @if(isset($role) && is_bool($role) && $role) role @elseif(isset($role) && $role) role="{{ $role }}" @endif
-  @if(isset($rowspan) && is_bool($rowspan) && $rowspan) rowspan @elseif(isset($rowspan) && $rowspan) rowspan="{{ $rowspan }}" @endif
-  @if(isset($slot) && is_bool($slot) && $slot) slot @elseif(isset($slot) && $slot) slot="{{ $slot }}" @endif
-  @if(isset($spellcheck) && is_bool($spellcheck) && $spellcheck) spellcheck @elseif(isset($spellcheck) && $spellcheck) spellcheck="{{ $spellcheck }}" @endif
-  @if(isset($style) && is_bool($style) && $style) style @elseif(isset($style) && $style) style="{{ $style }}" @endif
-  @if(isset($tabindex) && is_bool($tabindex) && $tabindex) tabindex @elseif(isset($tabindex) && $tabindex) tabindex="{{ $tabindex }}" @endif
-  @if(isset($title) && is_bool($title) && $title) title @elseif(isset($title) && $title) title="{{ $title }}" @endif
-  @if(isset($translate) && is_bool($translate) && $translate) translate @elseif(isset($translate) && $translate) translate="{{ $translate }}" @endif>
+<td {!! implode(' ', $attrs) !!}>
   @yield('content')
 </td>
 @endsection

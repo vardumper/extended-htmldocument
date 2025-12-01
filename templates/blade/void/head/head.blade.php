@@ -6,8 +6,11 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/BladeGenerator.php
 --}}
+@php
+$attrs = [];
+@endphp
 @section('head')
-<head>
+<head {!! implode(' ', $attrs) !!}>
   @yield('content')
 </head>
 @endsection

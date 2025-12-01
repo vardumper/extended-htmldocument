@@ -6,15 +6,9 @@
 
   CONTENT MODEL:
   - Can be a child of: HTML
-  - Can contain: Base, Link, Meta, NoScript, Script, Style, Title
-  - UNIQUE: Only one allowed per document
-  - UNIQUE PER PARENT: Only one allowed per parent element
-
-  @author vardumper <info@erikpoehler.com>
-  @package vardumper/extended-htmldocument
-  @see src/TemplateGenerator/BladeGenerator.php
+  - Can have children: Base, Link, Meta, NoScript, Script, Style, Title
 --}}
-@section('head_composed')
+@section('head')
 <head class="example">
 @include('blade.void.base.base', ['href' => '/'])
 @include('blade.void.link.link', ['rel' => 'stylesheet', 'href' => '/styles.css'])
@@ -22,5 +16,5 @@
 @include('blade.void.meta.meta', ['name' => 'description', 'content' => 'Example'])
 @include('blade.void.meta.meta', ['name' => 'description', 'content' => 'Example'])
 @include('blade.void.script.script', ['content' => 'Example content'])
-@endsection
 </head>
+@endsection

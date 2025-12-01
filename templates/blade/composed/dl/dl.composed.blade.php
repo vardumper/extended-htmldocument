@@ -6,15 +6,11 @@
 
   CONTENT MODEL:
   - Can be a child of: Article, Aside, Body, DefinitionDescription, Details, Dialog, Division, Footer, Header, ListItem, Main, Paragraph, Section, Slot, Template
-  - Can contain: DefinitionDescription, DefinitionTerm
-
-  @author vardumper <info@erikpoehler.com>
-  @package vardumper/extended-htmldocument
-  @see src/TemplateGenerator/BladeGenerator.php
+  - Can have children: DefinitionDescription, DefinitionTerm
 --}}
-@section('dl_composed')
+@section('dl')
 <dl class="example">
 @include('blade.block.dd.dd', ['content' => 'Definition 1'])
 @include('blade.block.dt.dt', ['content' => 'Term 1'])
-@endsection
 </dl>
+@endsection

@@ -6,31 +6,43 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/BladeGenerator.php
 --}}
+@php
+$relChoices = ['alternate' => true, 'author' => true, 'bookmark' => true, 'canonical' => true, 'help' => true, 'icon' => true, 'license' => true, 'next' => true, 'nofollow' => true, 'noreferrer' => true, 'prefetch' => true, 'prev' => true, 'search' => true, 'stylesheet' => true, 'tag' => true];
+$shapeChoices = ['circle' => true, 'default' => true, 'poly' => true, 'rect' => true];
+$targetChoices = ['_blank' => true, '_parent' => true, '_self' => true, '_top' => true];
+$autocapitalizeChoices = ['none' => true, 'sentences' => true, 'words' => true, 'characters' => true];
+$contenteditableChoices = ['true' => true, 'false' => true, 'inherit' => true];
+$dirChoices = ['ltr' => true, 'rtl' => true, 'auto' => true];
+$inputmodeChoices = ['none' => true, 'text' => true, 'decimal' => true, 'numeric' => true, 'email' => true, 'tel' => true, 'url' => true, 'search' => true];
+$spellcheckChoices = ['true' => true, 'false' => true];
+$translateChoices = ['yes' => true, 'no' => true];
+$attrs = [];
+if (isset($accesskey)) $attrs[] = 'accesskey="' . e($accesskey) . '"';
+if (isset($alt)) $attrs[] = 'alt="' . e($alt) . '"';
+if (isset($autocapitalize) && isset($autocapitalizeChoices[$autocapitalize])) $attrs[] = 'autocapitalize="' . e($autocapitalize) . '"';
+if (isset($autofocus) && $autofocus) $attrs[] = 'autofocus';
+if (isset($class)) $attrs[] = 'class="' . e($class) . '"';
+if (isset($contenteditable) && isset($contenteditableChoices[$contenteditable])) $attrs[] = 'contenteditable="' . e($contenteditable) . '"';
+if (isset($coords)) $attrs[] = 'coords="' . e($coords) . '"';
+if (isset($dir) && isset($dirChoices[$dir])) $attrs[] = 'dir="' . e($dir) . '"';
+if (isset($download)) $attrs[] = 'download="' . e($download) . '"';
+if (isset($draggable) && $draggable) $attrs[] = 'draggable';
+if (isset($hidden) && $hidden) $attrs[] = 'hidden';
+if (isset($href)) $attrs[] = 'href="' . e($href) . '"';
+if (isset($hreflang)) $attrs[] = 'hreflang="' . e($hreflang) . '"';
+if (isset($id)) $attrs[] = 'id="' . e($id) . '"';
+if (isset($inputmode) && isset($inputmodeChoices[$inputmode])) $attrs[] = 'inputmode="' . e($inputmode) . '"';
+if (isset($lang)) $attrs[] = 'lang="' . e($lang) . '"';
+if (isset($rel) && isset($relChoices[$rel])) $attrs[] = 'rel="' . e($rel) . '"';
+if (isset($shape) && isset($shapeChoices[$shape])) $attrs[] = 'shape="' . e($shape) . '"';
+if (isset($spellcheck) && isset($spellcheckChoices[$spellcheck])) $attrs[] = 'spellcheck="' . e($spellcheck) . '"';
+if (isset($style)) $attrs[] = 'style="' . e($style) . '"';
+if (isset($tabindex)) $attrs[] = 'tabindex="' . e($tabindex) . '"';
+if (isset($target) && isset($targetChoices[$target])) $attrs[] = 'target="' . e($target) . '"';
+if (isset($title)) $attrs[] = 'title="' . e($title) . '"';
+if (isset($translate) && isset($translateChoices[$translate])) $attrs[] = 'translate="' . e($translate) . '"';
+if (isset($type)) $attrs[] = 'type="' . e($type) . '"';
+@endphp
 @section('area')
-<area
-  @if(isset($accesskey) && is_bool($accesskey) && $accesskey) accesskey @elseif(isset($accesskey) && $accesskey) accesskey="{{ $accesskey }}" @endif
-  @if(isset($alt) && is_bool($alt) && $alt) alt @elseif(isset($alt) && $alt) alt="{{ $alt }}" @endif
-  @if(isset($autocapitalize) && is_bool($autocapitalize) && $autocapitalize) autocapitalize @elseif(isset($autocapitalize) && $autocapitalize) autocapitalize="{{ $autocapitalize }}" @endif
-  @if(isset($autofocus) && is_bool($autofocus) && $autofocus) autofocus @elseif(isset($autofocus) && $autofocus) autofocus="{{ $autofocus }}" @endif
-  @if(isset($class) && is_bool($class) && $class) class @elseif(isset($class) && $class) class="{{ $class }}" @endif
-  @if(isset($contenteditable) && is_bool($contenteditable) && $contenteditable) contenteditable @elseif(isset($contenteditable) && $contenteditable) contenteditable="{{ $contenteditable }}" @endif
-  @if(isset($coords) && is_bool($coords) && $coords) coords @elseif(isset($coords) && $coords) coords="{{ $coords }}" @endif
-  @if(isset($dir) && is_bool($dir) && $dir) dir @elseif(isset($dir) && $dir) dir="{{ $dir }}" @endif
-  @if(isset($download) && is_bool($download) && $download) download @elseif(isset($download) && $download) download="{{ $download }}" @endif
-  @if(isset($draggable) && is_bool($draggable) && $draggable) draggable @elseif(isset($draggable) && $draggable) draggable="{{ $draggable }}" @endif
-  @if(isset($hidden) && is_bool($hidden) && $hidden) hidden @elseif(isset($hidden) && $hidden) hidden="{{ $hidden }}" @endif
-  @if(isset($href) && is_bool($href) && $href) href @elseif(isset($href) && $href) href="{{ $href }}" @endif
-  @if(isset($hreflang) && is_bool($hreflang) && $hreflang) hreflang @elseif(isset($hreflang) && $hreflang) hreflang="{{ $hreflang }}" @endif
-  @if(isset($id) && is_bool($id) && $id) id @elseif(isset($id) && $id) id="{{ $id }}" @endif
-  @if(isset($inputmode) && is_bool($inputmode) && $inputmode) inputmode @elseif(isset($inputmode) && $inputmode) inputmode="{{ $inputmode }}" @endif
-  @if(isset($lang) && is_bool($lang) && $lang) lang @elseif(isset($lang) && $lang) lang="{{ $lang }}" @endif
-  @if(isset($rel) && is_bool($rel) && $rel) rel @elseif(isset($rel) && $rel) rel="{{ $rel }}" @endif
-  @if(isset($shape) && is_bool($shape) && $shape) shape @elseif(isset($shape) && $shape) shape="{{ $shape }}" @endif
-  @if(isset($spellcheck) && is_bool($spellcheck) && $spellcheck) spellcheck @elseif(isset($spellcheck) && $spellcheck) spellcheck="{{ $spellcheck }}" @endif
-  @if(isset($style) && is_bool($style) && $style) style @elseif(isset($style) && $style) style="{{ $style }}" @endif
-  @if(isset($tabindex) && is_bool($tabindex) && $tabindex) tabindex @elseif(isset($tabindex) && $tabindex) tabindex="{{ $tabindex }}" @endif
-  @if(isset($target) && is_bool($target) && $target) target @elseif(isset($target) && $target) target="{{ $target }}" @endif
-  @if(isset($title) && is_bool($title) && $title) title @elseif(isset($title) && $title) title="{{ $title }}" @endif
-  @if(isset($translate) && is_bool($translate) && $translate) translate @elseif(isset($translate) && $translate) translate="{{ $translate }}" @endif
-  @if(isset($type) && is_bool($type) && $type) type @elseif(isset($type) && $type) type="{{ $type }}" @endif />
+<area {!! implode(' ', $attrs) !!} />
 @endsection

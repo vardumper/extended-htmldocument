@@ -6,15 +6,11 @@
 
   CONTENT MODEL:
   - Can be a child of: Body, Fieldset, Form
-  - Can contain: Option
-
-  @author vardumper <info@erikpoehler.com>
-  @package vardumper/extended-htmldocument
-  @see src/TemplateGenerator/BladeGenerator.php
+  - Can have children: Option
 --}}
-@section('datalist_composed')
+@section('datalist')
 <datalist class="example">
 @include('blade.block.option.option', ['content' => 'Option 1'])
 @include('blade.block.option.option', ['content' => 'Option 2'])
-@endsection
 </datalist>
+@endsection
