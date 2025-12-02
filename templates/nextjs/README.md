@@ -6,16 +6,16 @@ Type-safe, auto-generated React components for all HTML5 elements with full ARIA
 
 ## Features
 
-- ✅ **Type-Safe**: Full TypeScript support with comprehensive prop types
-- ✅ **ARIA Compliant**: Complete ARIA attribute support with proper types
-- ✅ **Universal React**: Works in Next.js (App Router, Pages Router) and regular React apps
-- ✅ **Server Components**: Compatible with Next.js Server Components (no hooks, no client-side APIs)
-- ✅ **Client Components**: Works as client components when needed
-- ✅ **Auto-Generated**: Consistent API across all HTML5 elements
-- ✅ **Tree-Shakeable**: Import only the components you need
-- ✅ **Zero Dependencies**: Only requires React
-- ✅ **Semantic HTML**: Direct mapping to native HTML elements
-- ✅ **Data Attributes**: Support for custom `data-*` attributes via object syntax
+- **Type-Safe**: Full TypeScript support with comprehensive prop types
+- **ARIA Compliant**: Complete ARIA attribute support with proper types
+- **Universal React**: Works in Next.js (App Router, Pages Router) and regular React apps
+- **Server Components**: Compatible with Next.js Server Components (no hooks, no client-side APIs)
+- **Client Components**: Works as client components when needed
+- **Auto-Generated**: Consistent API across all HTML5 elements via Schema-first approach
+- **Tree-Shakeable**: Import only the components you need
+- **Zero Dependencies**: Only requires React
+- **Semantic HTML**: Direct mapping to native HTML elements
+- **Data Attributes**: Support for custom `data-*` attributes via object syntax
 
 ## Installation
 
