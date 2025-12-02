@@ -203,7 +203,9 @@ function MyComponent() {
     </Div>
   );
 }
-```## Props
+```
+
+## Props
 
 All components support:
 - Standard HTML attributes for their element type
