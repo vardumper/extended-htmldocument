@@ -1,0 +1,34 @@
+{
+  "name": "@typesafe-html5/twig",
+  "version": "0.2.24",
+  "type": "module",
+  "license": "MIT",
+  "description": "Fully Type-Safe, WCAG and ARIA compliant, HTML5 components for use in more consistent Twig templates. Has static attribute (enums) validation.",
+  "repository": "https://github.com/vardumper/extended-htmldocument/tree/main/templates/twig",
+  "author": "Erik Poehler",
+  "bugs": {
+    "url": "https://github.com/vardumper/extended-htmldocument/issues"
+  },
+  "homepage": "https://vardumper.github.io/extended-htmldocument/templates/twig",
+  "keywords": [
+    "HTML",
+    "HTML5",
+    "Typesafe",
+    "Schema-first",
+    "WCAG",
+    "ARIA",
+    "Twig",
+    "Symfony",
+    "Components",
+    "Templates",
+    "static"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "block",
+    "inline",
+    "void"
+  ]
+}
