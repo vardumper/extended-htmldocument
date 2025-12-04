@@ -1,0 +1,34 @@
+{
+  "name": "@html5/blade",
+  "version": "0.0.1",
+  "type": "module",
+  "license": "MIT",
+  "description": "Fully Type-Safe, WCAG and ARIA compliant, HTML5 components for use in more consistent Blade templates. Has static attribute enum validation.",
+  "repository": "https://github.com/vardumper/extended-htmldocument/tree/main/templates/blade",
+  "author": "Erik Poehler",
+  "bugs": {
+    "url": "https://github.com/vardumper/extended-htmldocument/issues"
+  },
+  "homepage": "https://vardumper.github.io/extended-htmldocument/templates/blade",
+  "keywords": [
+    "HTML",
+    "HTML5",
+    "Typesafe",
+    "Schema-first",
+    "WCAG",
+    "ARIA",
+    "Blade",
+    "Laravel",
+    "Components",
+    "Templates",
+    "static"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "block",
+    "inline",
+    "void"
+  ]
+}
