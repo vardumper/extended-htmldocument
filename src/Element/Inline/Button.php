@@ -488,9 +488,7 @@ class Button extends InlineElement
         if (\is_string($popovertargetaction)) {
             $popovertargetaction = PopovertargetactionEnum::tryFrom(
                 $popovertargetaction
-            ) ?? throw new InvalidArgumentException(
-                'Invalid value for $popovertargetaction.'
-            );
+            ) ?? throw new InvalidArgumentException('Invalid value for $popovertargetaction.');
         }
         $this->popovertargetaction = $popovertargetaction;
         $this->delegated->setAttribute('popovertargetaction', (string) $popovertargetaction->value);

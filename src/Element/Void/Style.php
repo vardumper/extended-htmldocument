@@ -70,7 +70,6 @@ class Style extends VoidElement
     /**
      * Specifies the media type of the inline styles.
      * @deprecated
-
      * @example text/css
      */
     protected ?StyleTypeEnum $type = null;

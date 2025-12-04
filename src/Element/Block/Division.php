@@ -493,9 +493,7 @@ class Division extends BlockElement
         if (\is_string($ariaMultiselectable)) {
             $ariaMultiselectable = AriaMultiselectableEnum::tryFrom(
                 $ariaMultiselectable
-            ) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaMultiselectable.'
-            );
+            ) ?? throw new InvalidArgumentException('Invalid value for $ariaMultiselectable.');
         }
         $this->ariaMultiselectable = $ariaMultiselectable;
         $this->delegated->setAttribute('aria-multiselectable', (string) $ariaMultiselectable->value);

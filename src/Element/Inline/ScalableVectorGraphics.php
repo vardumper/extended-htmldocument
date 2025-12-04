@@ -80,13 +80,7 @@ class ScalableVectorGraphics extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-        Anchor::class,
-        Script::class,
-        Style::class,
-        self::class,
-        Title::class,
-    ];
+    public static array $parentOf = [Anchor::class, Script::class, Style::class, self::class, Title::class];
 
     /**
      * Specifies the XML namespace for the SVG element.
