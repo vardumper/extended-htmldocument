@@ -1,7 +1,7 @@
 {
-  "name": "@vardumper/extended-htmldocument-nextjs",
-  "version": "1.0.0",
-  "description": "Type-safe, auto-generated React components for all HTML5 elements with full ARIA support",
+  "name": "@typesafe-html5/react",
+  "version": "0.2.24",
+  "description": "Type-safe, framework-agnostic, auto-generated React components for all HTML5 elements with full WCAG, ARIA support and validation.",
   "main": "index.ts",
   "types": "index.ts",
   "type": "module",
@@ -17,8 +17,16 @@
     "accessibility",
     "components"
   ],
-  "author": "vardumper <info@erikpoehler.com>",
+  "author": "Erik Poehler",
   "license": "MIT",
+  "repository": "https://github.com/vardumper/extended-htmldocument/tree/main/templates/next",
+  "bugs": {
+    "url": "https://github.com/vardumper/extended-htmldocument/issues"
+  },
+  "homepage": "https://vardumper.github.io/extended-htmldocument/templates/next",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0"

@@ -1,6 +1,6 @@
 {
-  "name": "@html5/blade",
-  "version": "0.0.1",
+  "name": "@typesafe-html5/blade",
+  "version": "0.2.24",
   "type": "module",
   "license": "MIT",
   "description": "Fully Type-Safe, WCAG and ARIA compliant, HTML5 components for use in more consistent Blade templates. Has static attribute enum validation.",

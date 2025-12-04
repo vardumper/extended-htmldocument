@@ -2,6 +2,22 @@
 
 Auto-generated Blade templates for HTML elements with built-in validation for best consistency.
 
+## Installation
+
+Via composer
+```bash
+composer require vardumper/extended-htmldocument
+```
+
+Via NPM
+```bash
+npm install @html5/blade
+# or
+yarn add @html5/blade
+# or
+pnpm add @html5/blade
+```
+
 ## Setup
 
 Register the components path in your Laravel application's `AppServiceProvider`:
@@ -37,7 +53,7 @@ public function boot(): void
     title="Some info about the link"
     rel="nofollow"
     role="button">
-    <x-inline.strong>
+    <x-inline.strong.strong>
         Click here
     </x-inline.strong>
 </x-inline.a>
