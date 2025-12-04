@@ -5,7 +5,7 @@
  *
  * MarkedText - The mark element represents a run of text in one document marked or highlighted for reference or notation purposes, due to the marked passage's relevance or importance in the enclosing context.
  *
- * @generated 2025-12-01 08:37:28
+ * @generated 2025-12-04 12:02:25
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark

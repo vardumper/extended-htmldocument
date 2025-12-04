@@ -12,13 +12,13 @@ fi
 
 if $HAS_XSLT; then
   if $HAS_PHPMD; then
-    DIR="tmp"
+    DIR="./tmp"
     if [ ! -d "$DIR" ]; then
         mkdir -p "$DIR"
     fi
     printf "${YELLOW}PHP Mess Detector${NC}\n"
-    rm docs/phpmd.md
-    cat << EOF > docs/phpmd.md
+    rm ./docs/phpmd.md
+    cat << EOF > ./docs/phpmd.md
 ---
 layout: home
 ---
@@ -27,61 +27,73 @@ layout: home
 [[toc]]
 EOF
     printf "Searching for unused code... "
-    PHPMD_OUTPUT=$($PHPMD ./src xml unusedcode --report-file=tmp/unusedcode.xml   2>&1)
-    if [ $? -eq 0 ]; then
+    $PHPMD ./src xml unusedcode --report-file=$DIR/unusedcode.xml 2>/dev/null
+    PHPMD_EXIT=$?
+    if [ $PHPMD_EXIT -eq 0 ]; then
       printf "${GREEN}PASSED${NC}\n"
     else
-      cat << EOF >> docs/phpmd.md
+      if [ -s "$DIR/unusedcode.xml" ]; then
+        cat << EOF >> ./docs/phpmd.md
 ## Unused Code
-$(xsltproc phpmd.xsl tmp/unusedcode.xml)
+$(xsltproc ./phpmd.xsl $DIR/unusedcode.xml)
 EOF
+      fi
       #xsltproc phpmd.xsl tmp/unusedcode.xml >> docs/phpmd.md
       printf "${RED}FAILED${NC}\n"
       PASS=false
     fi
 
     printf "Checking code size rule... "
-    PHPMD_OUTPUT=$($PHPMD ./src xml codesize --report-file=tmp/codesize.xml  2>&1)
-    if [ $? -eq 0 ]; then
+    $PHPMD ./src xml codesize --report-file=$DIR/codesize.xml 2>/dev/null
+    PHPMD_EXIT=$?
+    if [ $PHPMD_EXIT -eq 0 ]; then
       printf "${GREEN}PASSED${NC}\n"
     else
-      cat << EOF >> docs/phpmd.md
+      if [ -s "$DIR/codesize.xml" ]; then
+        cat << EOF >> ./docs/phpmd.md
 ## Code Size
-$(xsltproc phpmd.xsl tmp/codesize.xml)
+$(xsltproc ./phpmd.xsl $DIR/codesize.xml)
 EOF
+      fi
       printf "${RED}FAILED${NC}\n"
       PASS=false
     fi
 
     printf "Checking cleancode rule... "
-    PHPMD_OUTPUT=$($PHPMD ./src xml cleancode --report-file=tmp/cleancode.xml  2>&1)
-    if [ $? -eq 0 ]; then
+    $PHPMD ./src xml cleancode --report-file=$DIR/cleancode.xml 2>/dev/null
+    PHPMD_EXIT=$?
+    if [ $PHPMD_EXIT -eq 0 ]; then
       printf "${GREEN}PASSED${NC}\n"
     else
-      cat << EOF >> docs/phpmd.md
+      if [ -s "$DIR/cleancode.xml" ]; then
+        cat << EOF >> ./docs/phpmd.md
 ## Clean Code
-$(xsltproc phpmd.xsl tmp/cleancode.xml)
+$(xsltproc ./phpmd.xsl $DIR/cleancode.xml)
 EOF
+      fi
       printf "${RED}FAILED${NC}\n"
       PASS=false
     fi
 
     printf "Checking code design... "
-    PHPMD_OUTPUT=$($PHPMD ./src xml design --report-file=tmp/design.xml  2>&1)
-    if [ $? -eq 0 ]; then
+    $PHPMD ./src xml design --report-file=$DIR/design.xml 2>/dev/null
+    PHPMD_EXIT=$?
+    if [ $PHPMD_EXIT -eq 0 ]; then
       printf "${GREEN}PASSED${NC}\n"
     else
-      cat << EOF >> docs/phpmd.md
+      if [ -s "$DIR/design.xml" ]; then
+        cat << EOF >> ./docs/phpmd.md
 ## Design
-$(xsltproc phpmd.xsl tmp/design.xml)
+$(xsltproc ./phpmd.xsl $DIR/design.xml)
 
 $(date)
 EOF
+      fi
       printf "${RED}FAILED${NC}\n"
       PASS=false
     fi
-    rm -rf "$DIR"
-    git add docs/phpmd.md
+    # rm -rf "$DIR"
+    git add ./docs/phpmd.md
     printf "Report generation completed.\n"
   else
     printf "\nphpmd is required. Install it with:\n\n  composer require --dev phpmd/phpmd\n\n"

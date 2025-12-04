@@ -5,7 +5,7 @@
  *
  * Fieldset - The fieldset element represents a set of form controls optionally grouped under a common name.
  *
- * @generated 2025-12-01 08:37:28
+ * @generated 2025-12-04 12:02:25
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset

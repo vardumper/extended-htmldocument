@@ -1846,7 +1846,6 @@ button:
     - accesskey
     - autocapitalize
     - autofocus
-    - autofocus
     - class
     - contenteditable
     - 'data-*'

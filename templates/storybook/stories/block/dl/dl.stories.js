@@ -415,7 +415,7 @@ export const Default = {
     },
   },
   args: {
-    text: "Sample text",
+    text: "Hallo Welt!",
     accesskey: "Sample value",
     ariaAtomic: "",
     ariaBusy: "",

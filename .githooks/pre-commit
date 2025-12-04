@@ -36,14 +36,14 @@ fi
 printf "${YELLOW}Rector Swiss Knife${NC}\n"
 if $HAS_PHP_SWISSKNIFE; then
     # prevent comitting unresolved conflicts or erroneous merges
-    $PHP_SWISSKNIFE check-conflicts ./bin ./src ./tests --ansi
+    php -d error_reporting=E_ALL~E_DEPRECATED $PHP_SWISSKNIFE check-conflicts ./bin ./src ./tests --ansi
     ret_code=$?
 
     if [[ $ret_code == 1 ]]; then
         PASS=false
     fi
 
-    $PHP_SWISSKNIFE check-commented-code ./bin ./src ./tests --line-limit 4 --no-ansi -n
+    php -d error_reporting=E_ALL~E_DEPRECATED $PHP_SWISSKNIFE check-commented-code ./bin ./src ./tests --line-limit 4 --no-ansi -n
     ret_code=$?
     if [[ $ret_code == 1 ]]; then
         PASS=false
@@ -80,7 +80,7 @@ if $HAS_PHP_ECS; then
     if [ -z "$FILES" ]; then
           printf "No PHP file in this commit. Skipping ECS.\n"
     else
-        $PHP_ECS check ${FILES} --fix
+        php -d error_reporting=E_ALL~E_DEPRECATED $PHP_ECS check ${FILES} --fix
         ret_code=$?
         if [[ $ret_code == 0 ]]; then
             echo $FILES > .commit
@@ -103,7 +103,7 @@ fi
 printf "${YELLOW}PHPStan${NC}\n"
 # @todo consider having phpstan scan all the complete repo, instead of comitted php files
 if $HAS_PHPSTAN; then
-  if $PHPSTAN analyse -c ./phpstan.neon --memory-limit=1G $CHANGED_FILES; then
+  if php -d error_reporting=E_ALL~E_DEPRECATED $PHPSTAN analyse -c ./phpstan.neon --memory-limit=1G $CHANGED_FILES; then
     # All good
     printf "${GREEN}PHPStan passed${NC}\n"
   else

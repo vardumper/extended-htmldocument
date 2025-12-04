@@ -5,7 +5,7 @@
  *
  * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
  *
- * @generated 2025-12-01 08:37:28
+ * @generated 2025-12-04 12:02:25
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
@@ -54,7 +54,6 @@ class Button extends InlineElement
 {
     use GlobalAttribute\AccesskeyTrait;
     use GlobalAttribute\AutocapitalizeTrait;
-    use GlobalAttribute\AutofocusTrait;
     use GlobalAttribute\AutofocusTrait;
     use GlobalAttribute\ClassTrait;
     use GlobalAttribute\ContenteditableTrait;

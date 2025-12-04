@@ -180,6 +180,9 @@ final class CreateClassCommand extends Command
 
     private function getGlobalAttributes(array $allowedGlobalAttributes): string
     {
+        // Remove duplicates from the allowed global attributes
+        $allowedGlobalAttributes = array_unique($allowedGlobalAttributes);
+
         $traits = [];
         foreach ($allowedGlobalAttributes as $attribute) {
             $traitName = \ucwords(\str_replace(['-', '*'], '', $attribute)) . 'Trait';

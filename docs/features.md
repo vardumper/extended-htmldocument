@@ -87,7 +87,7 @@ $input->setAttributes(['inputmode' => 'numeric', 'required' => true]);
 //  setting multiple attributes at once (recommended)
 $input->setAttributes(['inputmode' => InputModeEnum::NUMERIC]);
 
-// via setAttribute()
+// via setAttribute() method (backwards compatible with DOMDocument)
 $input->setAttribute('inputmode', 'numeric');
 
 // via single attribute with enum

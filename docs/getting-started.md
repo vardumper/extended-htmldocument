@@ -50,7 +50,7 @@ While the include and embed snippets below aren't shorter than just writing HTML
 ### Twig examples
 ::: code-group
 ```twig  [Twig include]
-{% include 'inline/a.twig' with {
+{% include 'inline/a/a.twig' with {
   href: 'https://example.com',
   title: 'Some info about the link'
   rel: 'nofollow',
@@ -59,7 +59,7 @@ While the include and embed snippets below aren't shorter than just writing HTML
 } %}
 ```
 ```twig [Twig embed]
-{% embed 'inline/a.twig' with {
+{% embed 'inline/a/a.twig' with {
   href: 'https://example.com',
   title: 'Some info about the link'
   rel: 'nofollow',
@@ -74,7 +74,7 @@ While the include and embed snippets below aren't shorter than just writing HTML
 
 ```
 ```twig [Twig use]
-{% use 'inline/a.twig' %}
+{% use 'inline/a/a.twig' %}
 
 {% block a %}
   {% set href = 'https://example.com' %}
@@ -82,7 +82,7 @@ While the include and embed snippets below aren't shorter than just writing HTML
   {% set rel = 'nofollow' %}
   {% set role = 'button' %}
   {% block content %}
-    {% include 'inline/strong.twig' with {
+    {% include 'inline/strong/strong.twig' with {
       content: 'Overriding content here'
     } %}
   {% endblock %}
