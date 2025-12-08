@@ -83,31 +83,37 @@ class BatchGeneratorCommand extends Command
                 $elementShortName = (new ReflectionClass($className))->getShortName();
                 $fileName = $elementInstance::QUALIFIED_NAME . '.' . $generatorInstance->getExtension();
                 $level = $this->determineLevel($className);
-                if (! is_dir(
-                    rtrim(
-                        $dest,
-                        \DIRECTORY_SEPARATOR
-                    ) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME
-                )) {
-                    mkdir(
-                        rtrim(
-                            $dest,
-                            \DIRECTORY_SEPARATOR
-                        ) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME,
-                        0755,
-                        true
-                    );
-                }
-                $outFile = rtrim(
+                $componentDir = rtrim(
                     $dest,
                     \DIRECTORY_SEPARATOR
-                ) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME . \DIRECTORY_SEPARATOR . $fileName;
+                ) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME;
+
+                if (! is_dir($componentDir)) {
+                    mkdir($componentDir, 0755, true);
+                }
+
+                $outFile = $componentDir . \DIRECTORY_SEPARATOR . $fileName;
                 if (file_exists($outFile) && ! $overwriteExisting) {
                     $this->io->warning("File '{$outFile}' already exists. Skipping generation.");
                     continue;
                 }
                 file_put_contents($outFile, $output);
                 $this->io->success("Generated: {$outFile}");
+
+                // Generate PHP component class for twig-component generator
+                if ($name === 'twig-component' && method_exists($generatorInstance, 'renderComponentClass')) {
+                    $componentClass = $generatorInstance->renderComponentClass($elementInstance);
+                    $componentName = ucfirst($elementInstance::QUALIFIED_NAME);
+                    $componentFile = $componentDir . \DIRECTORY_SEPARATOR . $componentName . '.php';
+
+                    if (file_exists($componentFile) && ! $overwriteExisting) {
+                        $this->io->warning("File '{$componentFile}' already exists. Skipping generation.");
+                        continue;
+                    }
+
+                    file_put_contents($componentFile, $componentClass);
+                    $this->io->success("Generated component class: {$componentFile}");
+                }
             }
         }
         return Command::SUCCESS;
