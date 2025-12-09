@@ -67,6 +67,15 @@ Or
 </x-inline.a.a>
 ```
 
+## Benefits & Features
+
+When or why is using these Blade templates better than writing plain HTML?
+* Because the templates are generated from the HTML5 schema, every atom is guaranteed to be structurally correct, semantically valid, consistently formatted.
+* Enum attribute validation ensures that static attributes can only receive allowed options.
+* This gives you a pristine, error-free starting point for every component you build on top of them.
+* It's the “perfect atom” for each HTML5 element, and you build only the custom logic or styling on top of it
+* Your IDE might be able to provide auto-completion for an improved ease of use.
+
 ## Read More
 * [Extended HTMLDocument Documentation](https://vardumper.github.io/extended-htmldocument/)
 * [Laravel Blade Templates Documentation](https://laravel.com/docs/12.x/blade)
