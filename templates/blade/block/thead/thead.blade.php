@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Thead - The thead element groups the header content in a table.
+
   @component thead
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

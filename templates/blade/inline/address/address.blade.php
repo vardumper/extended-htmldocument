@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Address - The address element represents the contact information for its nearest article or body ancestor. If that is the body element, then the contact information applies to the document as a whole.
+
   @component address
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

@@ -9,6 +9,25 @@ use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionUnionType;
 
+/**
+ * BladeGenerator - Generates Laravel Blade Templates
+ *
+ * Creates Blade component templates with automatic attribute binding,
+ * enum validation, and content sections. Templates use @php blocks for
+ * attribute logic and @section/@yield for content composition.
+ *
+ * Generated structure:
+ * - Templates: blade/{block|inline|void}/element-name/element-name.blade.php
+ *
+ * Features:
+ * - Enum choices validation via associative arrays
+ * - Boolean attribute handling (autofocus, draggable, hidden)
+ * - Automatic camelCase to kebab-case conversion
+ * - Reserved word collision avoidance
+ * - Content model documentation in composed templates
+ *
+ * @see https://laravel.com/docs/blade
+ */
 #[TemplateGenerator('blade')]
 class BladeGenerator implements TemplateGeneratorInterface
 {
@@ -91,6 +110,17 @@ class BladeGenerator implements TemplateGeneratorInterface
         sort($props, \SORT_NATURAL | \SORT_FLAG_CASE);
         $isSelfClosing = $ref->hasConstant('SELF_CLOSING') && $ref->getConstant('SELF_CLOSING');
 
+        // Get element metadata from class-level doc comment
+        $desc = '';
+        $docComment = $ref->getDocComment();
+        if ($docComment !== false) {
+            // Extract description from class docblock (first line of content)
+            if (preg_match('/\/\*\*\s*\n\s*\*\s*(.+?)\s*\n/s', $docComment, $matches)) {
+                $desc = trim($matches[1]);
+            }
+        }
+        $name = ucfirst($elementName);
+
         // Avoid reserved words for section names
         $sectionName = in_array(
             $elementName,
@@ -98,7 +128,7 @@ class BladeGenerator implements TemplateGeneratorInterface
             true
         ) ? $elementName . '_section' : $elementName;
 
-        $blade = "{{--\n  This file is auto-generated.\n\n  @component {$elementName}\n  @author vardumper <info@erikpoehler.com>\n  @package vardumper/extended-htmldocument\n  @see src/TemplateGenerator/BladeGenerator.php\n--}}\n";
+        $blade = "{{--\n  This file is auto-generated.\n\n  {$name} - {$desc}\n\n  @component {$elementName}\n  @author vardumper <info@erikpoehler.com>\n  @package vardumper/extended-htmldocument\n  @see src/TemplateGenerator/BladeGenerator.php\n--}}\n";
 
         // Emit enum choices as Blade @php associative arrays
         $blade .= "@php\n";
@@ -170,13 +200,14 @@ class BladeGenerator implements TemplateGeneratorInterface
             return null;
         }
 
-        // Get element metadata from class doc comment
-        $docComment = $ref->getDocComment();
+        // Get element metadata from class-level doc comment
         $desc = '';
-        if ($docComment) {
-            // Extract description from docblock
-            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
-            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
+        $docComment = $ref->getDocComment();
+        if ($docComment !== false) {
+            // Extract description from class docblock (first line of content)
+            if (preg_match('/\/\*\*\s*\n\s*\*\s*(.+?)\s*\n/s', $docComment, $matches)) {
+                $desc = trim($matches[1]);
+            }
         }
         $name = ucfirst($elementName);
 

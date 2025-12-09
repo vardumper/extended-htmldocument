@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Rt - The rt element marks the ruby text component of a ruby annotation, which is used to provide pronunciation, translation, or transliteration information for East Asian typography. The rt element must be a child of a ruby element.
+
   @component rt
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

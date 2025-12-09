@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Samp - The samp element represents sample (or quoted) output from a computer program.
+
   @component samp
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

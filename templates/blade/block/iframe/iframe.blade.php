@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Iframe - The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.
+
   @component iframe
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

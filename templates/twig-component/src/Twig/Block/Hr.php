@@ -3,34 +3,43 @@
 namespace Html\TwigComponentBundle\Twig\Block;
 
 use Html\Enum\{
-    HrAlignEnum,
     DirectionEnum,
+    HrAlignEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Hr - 
+ * Hr - The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Hr', template: '@HtmlTwigComponent/block/hr/hr.html.twig')]
 class Hr
 {
     public ?HrAlignEnum $align = null;
+
     public ?string $color = null;
+
     public ?bool $noshade = null;
+
     public ?int $size = null;
+
     public ?string $width = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $hidden = null;
+
     public ?string $lang = null;
+
     public ?string $style = null;
+
     public ?string $title = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

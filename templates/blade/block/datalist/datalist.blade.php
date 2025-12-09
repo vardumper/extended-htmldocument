@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Datalist - The datalist element contains a set of option elements that represent the permissible or recommended options available to users.
+
   @component datalist
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

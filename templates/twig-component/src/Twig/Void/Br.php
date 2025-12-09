@@ -5,24 +5,26 @@ namespace Html\TwigComponentBundle\Twig\Void;
 use Html\Enum\{
     DirectionEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Br - 
+ * Br - The br element represents a line break.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Br', template: '@HtmlTwigComponent/void/br/br.html.twig')]
 class Br
 {
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $hidden = null;
+
     public ?string $style = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

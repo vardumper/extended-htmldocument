@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Del - The del element represents a deletion from the document.
+
   @component del
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

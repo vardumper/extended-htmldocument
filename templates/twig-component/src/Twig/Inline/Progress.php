@@ -3,9 +3,9 @@
 namespace Html\TwigComponentBundle\Twig\Inline;
 
 use Html\Enum\{
+    AriaAtomicEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
-    AriaAtomicEnum,
     AutoCapitalizeEnum,
     ContentEditableEnum,
     DirectionEnum,
@@ -13,48 +13,74 @@ use Html\Enum\{
     SpellCheckEnum,
     TranslateEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Progress - 
+ * Progress - The progress element represents the completion progress of a task.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Progress', template: '@HtmlTwigComponent/inline/progress/progress.html.twig')]
 class Progress
 {
     public ?int $max = null;
+
     public ?string $value = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?int $ariaValuemax = null;
+
     public ?int $ariaValuemin = null;
+
     public ?int $ariaValuenow = null;
+
     public ?string $ariaValuetext = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public null|string|bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?string $slot = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

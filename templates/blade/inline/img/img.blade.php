@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Img - The img element represents an image.
+
   @component img
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

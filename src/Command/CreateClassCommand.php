@@ -183,17 +183,31 @@ final class CreateClassCommand extends Command
         // Remove duplicates from the allowed global attributes
         $allowedGlobalAttributes = array_unique($allowedGlobalAttributes);
 
-        $traits = [];
+        $traitNames = [];
         foreach ($allowedGlobalAttributes as $attribute) {
             $traitName = \ucwords(\str_replace(['-', '*'], '', $attribute)) . 'Trait';
             if ($traitName !== null) {
                 if (! in_array("Html\Trait\GlobalAttribute", $this->uses, true)) {
                     $this->uses[] = "Html\Trait\GlobalAttribute";
                 }
-                $traits[] = sprintf("    use GlobalAttribute\%s;\n", $traitName);
+                $traitNames[] = $traitName;
             }
         }
-        return implode('', $traits);
+
+        if (empty($traitNames)) {
+            return '';
+        }
+
+        // Sort trait names alphabetically
+        sort($traitNames, SORT_STRING);
+
+        // Generate individual trait use statements (traits cannot use grouped syntax)
+        $traits = '';
+        foreach ($traitNames as $traitName) {
+            $traits .= sprintf("    use GlobalAttribute\\%s;\n", $traitName);
+        }
+
+        return $traits;
     }
 
     private function getUniquePerParent(array $elementData): bool
@@ -517,10 +531,42 @@ final class CreateClassCommand extends Command
         $all = $this->normalizeClassNames($all);
         $uses = $this->filterAndSortUses($all, $ignoreClass);
 
-        $useStatements = '';
+        // Group by namespace
+        $grouped = [];
         foreach ($uses as $use) {
-            $useStatements .= sprintf("use %s;\n", $use);
+            $parts = explode('\\', $use);
+            $className = array_pop($parts);
+            $namespace = implode('\\', $parts);
+
+            if (!isset($grouped[$namespace])) {
+                $grouped[$namespace] = [];
+            }
+            $grouped[$namespace][] = $className;
         }
+
+        // Sort namespaces and classes within each namespace
+        ksort($grouped);
+        foreach ($grouped as $namespace => &$classes) {
+            sort($classes, SORT_STRING);
+        }
+        unset($classes);
+
+        // Build use statements with grouping
+        $useStatements = '';
+        foreach ($grouped as $namespace => $classes) {
+            if (count($classes) === 1) {
+                // Single use statement
+                $useStatements .= sprintf("use %s\\%s;\n", $namespace, $classes[0]);
+            } else {
+                // Grouped use statement
+                $useStatements .= sprintf("use %s\\{\n", $namespace);
+                foreach ($classes as $i => $class) {
+                    $useStatements .= sprintf("    %s", $class);
+                    $useStatements .= ($i < count($classes) - 1) ? ",\n" : ",\n};\n";
+                }
+            }
+        }
+
         return $useStatements;
     }
 

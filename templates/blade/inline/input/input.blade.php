@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Input - The input element represents a typed data field, usually with a form control to allow user input.
+
   @component input
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

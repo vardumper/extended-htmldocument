@@ -7,33 +7,44 @@ use Html\Enum\{
     ReferrerpolicyEnum,
     ScriptTypeEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Script - 
+ * Script - The script element is used to embed or reference an executable script within an HTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Script', template: '@HtmlTwigComponent/void/script/script.html.twig')]
 class Script
 {
     public ?bool $async = null;
+
     public ?string $charset = null;
+
     public ?CrossoriginEnum $crossorigin = null;
+
     public ?bool $defer = null;
+
     public ?string $integrity = null;
+
     public ?string $nonce = null;
+
     public ?ReferrerpolicyEnum $referrerpolicy = null;
+
     public ?string $src = null;
+
     public ?ScriptTypeEnum $type = null;
+
     public null|string|bool $hidden = null;
+
     public ?string $title = null;
+
     public ?string $lang = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

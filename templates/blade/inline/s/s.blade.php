@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  S - The s element represents contents that are no longer accurate or no longer relevant.
+
   @component s
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

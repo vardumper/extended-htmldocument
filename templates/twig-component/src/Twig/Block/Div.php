@@ -3,70 +3,102 @@
 namespace Html\TwigComponentBundle\Twig\Block;
 
 use Html\Enum\{
-    RoleEnum,
+    AriaAtomicEnum,
     AriaBusyEnum,
     AriaHiddenEnum,
     AriaLiveEnum,
-    AriaRelevantEnum,
-    AriaAtomicEnum,
     AriaMultiselectableEnum,
     AriaOrientationEnum,
+    AriaRelevantEnum,
     AutoCapitalizeEnum,
     ContentEditableEnum,
     DirectionEnum,
     InputModeEnum,
+    PopoverEnum,
+    RoleEnum,
     SpellCheckEnum,
     TranslateEnum,
-    PopoverEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Div - 
+ * Div - The div element has no special meaning at all. It represents its children. It can be used with the class, lang, and title attributes to mark up semantics common to a group of consecutive elements.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Div', template: '@HtmlTwigComponent/block/div/div.html.twig')]
 class Div
 {
     public ?RoleEnum $role = null;
+
     public ?string $ariaControls = null;
+
     public ?string $ariaDescribedby = null;
+
     public ?string $ariaLabelledby = null;
+
     public ?AriaBusyEnum $ariaBusy = null;
+
     public ?AriaHiddenEnum $ariaHidden = null;
+
     public ?string $ariaLabel = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?AriaMultiselectableEnum $ariaMultiselectable = null;
+
     public ?string $ariaActivedescendant = null;
+
     public ?AriaOrientationEnum $ariaOrientation = null;
+
     public ?string $ariaOwns = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public null|string|bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?string $slot = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?PopoverEnum $popover = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

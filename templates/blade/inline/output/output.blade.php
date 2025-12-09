@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Output - The output element represents the result of a calculation or user action.
+
   @component output
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

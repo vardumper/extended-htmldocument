@@ -3,63 +3,90 @@
 namespace Html\TwigComponentBundle\Twig\Inline;
 
 use Html\Enum\{
-    RoleEnum,
+    AriaAtomicEnum,
     AriaBusyEnum,
     AriaHiddenEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
-    AriaAtomicEnum,
     AutoCapitalizeEnum,
     ContentEditableEnum,
     DirectionEnum,
     InputModeEnum,
+    PopoverEnum,
+    RoleEnum,
     SpellCheckEnum,
     TranslateEnum,
-    PopoverEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * B - 
+ * B - The b element represents a span of text to which attention is being drawn for utilitarian purposes without conveying any extra importance and with no implication of an alternate voice or mood, such as key words in a document abstract, product names in a review, actionable words in interactive text-driven software, or an article lede.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('B', template: '@HtmlTwigComponent/inline/b/b.html.twig')]
 class B
 {
     public ?RoleEnum $role = null;
+
     public ?string $ariaControls = null;
+
     public ?string $ariaDescribedby = null;
+
     public ?string $ariaLabelledby = null;
+
     public ?AriaBusyEnum $ariaBusy = null;
+
     public ?AriaHiddenEnum $ariaHidden = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public null|string|bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?string $slot = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?PopoverEnum $popover = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

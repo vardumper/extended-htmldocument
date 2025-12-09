@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Wbr - The wbr element represents a word break opportunity.
+
   @component wbr
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Colgroup - The colgroup element represents a group of one or more columns in the table that is its parent, if it has a parent and that is a table element.
+
   @component colgroup
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

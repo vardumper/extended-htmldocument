@@ -10,39 +10,56 @@ use Html\Enum\{
     SpellCheckEnum,
     TranslateEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Embed - 
+ * Embed - The embed element provides an integration point for an external (typically non-HTML) application or interactive content.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Embed', template: '@HtmlTwigComponent/block/embed/embed.html.twig')]
 class Embed
 {
     public ?string $height = null;
+
     public ?string $src = null;
+
     public ?string $type = null;
+
     public ?string $width = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public null|string|bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

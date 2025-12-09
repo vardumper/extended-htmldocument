@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Details - The details element represents a disclosure widget from which the user can obtain additional information or controls.
+
   @component details
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Tr - The tr element represents a row of cells in a table.
+
   @component tr
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

@@ -2,8 +2,6 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * <?= /** @phpstan-ignore variable.undefined */ $class_name ?> - <?= /** @phpstan-ignore variable.undefined */ $description . \PHP_EOL ?>
- * <?= \PHP_EOL ?>
  * @generated <?= $generatedAt . \PHP_EOL ?>
  * @category HTML
  * @package vardumper/extended-htmldocument
@@ -17,6 +15,9 @@ namespace <?= /** @phpstan-ignore variable.undefined */ $namespace; ?>;
 <?= /** @phpstan-ignore variable.undefined */ $use_statements ?>
 use Html\Mapping\Element;
 
+/**
+ * <?= /** @phpstan-ignore variable.undefined */ $description . \PHP_EOL ?>
+ */
 #[Element('<?= $element_name ?>')]
 class <?= /** @phpstan-ignore variable.undefined */ $class_name ?> extends <?= ucfirst(
     /** @phpstan-ignore variable.undefined */

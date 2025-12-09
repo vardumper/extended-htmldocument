@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Footer - The footer element represents a container for the bottom section of a document or a section, typically containing information about the author, copyright information, and links to related documents.
+
   @component footer
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

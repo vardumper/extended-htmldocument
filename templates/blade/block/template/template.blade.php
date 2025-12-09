@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Template - The template element is a mechanism for holding client-side content that is not to be rendered when a page is loaded but may subsequently be instantiated during runtime using JavaScript.
+
   @component template
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

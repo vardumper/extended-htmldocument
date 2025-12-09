@@ -2,8 +2,6 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * <?= $class_name ?> - <?= $description . \PHP_EOL ?>
- * <?= \PHP_EOL ?>
  * @generated <?= $generatedAt . \PHP_EOL ?>
  * @category HTML
  * @package vardumper/extended-htmldocument
@@ -17,6 +15,9 @@ namespace <?= $namespace; ?>;
 <?= $use_statements ?>
 use Html\Mapping\Element;
 
+/**
+ * <?= $description . \PHP_EOL ?>
+ */
 #[Element('<?= $element_name ?>')]
 class <?= $class_name ?> extends <?= ucfirst($level) ?>Element
 {

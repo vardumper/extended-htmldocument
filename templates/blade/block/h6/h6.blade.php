@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  H6 - The h6 element represents a section heading. It has the lowest rank among the six levels of section headings.
+
   @component h6
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

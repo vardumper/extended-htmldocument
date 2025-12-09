@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Hr - The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.
+
   @component hr
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

@@ -3,122 +3,194 @@
 namespace Html\TwigComponentBundle\Twig\Inline;
 
 use Html\Enum\{
-    AutocorrectEnum,
+    AriaAtomicEnum,
+    AriaAutocompleteEnum,
+    AriaCheckedEnum,
+    AriaCurrentEnum,
+    AriaDisabledEnum,
+    AriaExpandedEnum,
+    AriaHaspopupEnum,
+    AriaInvalidEnum,
+    AriaLiveEnum,
+    AriaPressedEnum,
+    AriaReadonlyEnum,
+    AriaRelevantEnum,
+    AriaRequiredEnum,
+    AutoCapitalizeEnum,
     AutocompleteEnum,
-    InputTypeEnum,
+    AutocorrectEnum,
+    ContentEditableEnum,
+    DirectionEnum,
     FormenctypeEnum,
     FormmethodEnum,
     FormtargetEnum,
+    InputModeEnum,
+    InputTypeEnum,
     PopovertargetactionEnum,
     RoleEnum,
-    AriaCurrentEnum,
-    AriaInvalidEnum,
-    AriaDisabledEnum,
-    AriaLiveEnum,
-    AriaRelevantEnum,
-    AriaAtomicEnum,
-    AriaExpandedEnum,
-    AriaHaspopupEnum,
-    AriaPressedEnum,
-    AriaCheckedEnum,
-    AriaAutocompleteEnum,
-    AriaReadonlyEnum,
-    AriaRequiredEnum,
-    AutoCapitalizeEnum,
-    ContentEditableEnum,
-    DirectionEnum,
-    InputModeEnum,
     SpellCheckEnum,
     TranslateEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Input - 
+ * Input - The input element represents a typed data field, usually with a form control to allow user input.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Input', template: '@HtmlTwigComponent/inline/input/input.html.twig')]
 class Input
 {
     public ?string $accept = null;
+
     public ?AutocorrectEnum $autocorrect = null;
+
     public ?string $alt = null;
+
     public ?AutocompleteEnum $autocomplete = null;
+
     public ?bool $checked = null;
+
     public ?string $dirname = null;
+
     public ?bool $disabled = null;
+
     public ?string $height = null;
+
     public ?string $list = null;
+
     public ?int $max = null;
+
     public ?int $maxlength = null;
+
     public ?string $min = null;
+
     public ?int $minlength = null;
+
     public ?bool $multiple = null;
+
     public ?string $name = null;
+
     public ?string $pattern = null;
+
     public ?string $placeholder = null;
+
     public ?bool $readonly = null;
+
     public ?bool $required = null;
+
     public ?int $size = null;
+
     public ?string $src = null;
+
     public ?string $step = null;
+
     public ?InputTypeEnum $type = null;
+
     public ?string $value = null;
+
     public ?string $width = null;
+
     public ?string $form = null;
+
     public ?string $formaction = null;
+
     public ?FormenctypeEnum $formenctype = null;
+
     public ?FormmethodEnum $formmethod = null;
+
     public ?bool $formnovalidate = null;
+
     public ?FormtargetEnum $formtarget = null;
+
     public ?string $popovertarget = null;
+
     public ?PopovertargetactionEnum $popovertargetaction = null;
+
     public ?RoleEnum $role = null;
+
     public ?string $ariaControls = null;
+
     public ?string $ariaDescribedby = null;
+
     public ?string $ariaLabelledby = null;
+
     public ?AriaCurrentEnum $ariaCurrent = null;
+
     public ?AriaInvalidEnum $ariaInvalid = null;
+
     public ?string $ariaLabel = null;
+
     public ?AriaDisabledEnum $ariaDisabled = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?AriaExpandedEnum $ariaExpanded = null;
+
     public ?AriaHaspopupEnum $ariaHaspopup = null;
+
     public ?AriaPressedEnum $ariaPressed = null;
+
     public ?AriaCheckedEnum $ariaChecked = null;
+
     public ?AriaAutocompleteEnum $ariaAutocomplete = null;
+
     public ?string $ariaPlaceholder = null;
+
     public ?AriaReadonlyEnum $ariaReadonly = null;
+
     public ?AriaRequiredEnum $ariaRequired = null;
+
     public ?int $ariaValuemax = null;
+
     public ?int $ariaValuemin = null;
+
     public ?int $ariaValuenow = null;
+
     public ?string $ariaValuetext = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public null|string|bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

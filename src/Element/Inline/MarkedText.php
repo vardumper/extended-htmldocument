@@ -1,58 +1,78 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * MarkedText - The mark element represents a run of text in one document marked or highlighted for reference or notation purposes, due to the marked passage's relevance or importance in the enclosing context.
- *
- * @generated 2025-12-04 12:02:25
+ * @generated 2025-12-09 15:32:40
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
  */
-
 namespace Html\Element\Inline;
 
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Audio;
-use Html\Element\Block\Body;
-use Html\Element\Block\DefinitionDescription;
-use Html\Element\Block\DeletedText;
-use Html\Element\Block\Details;
-use Html\Element\Block\Division;
-use Html\Element\Block\Embed;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Form;
-use Html\Element\Block\Header;
-use Html\Element\Block\InlineFrame;
-use Html\Element\Block\InsertedText;
-use Html\Element\Block\Main;
-use Html\Element\Block\Map;
-use Html\Element\Block\ObjectElement;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Picture;
-use Html\Element\Block\Section;
-use Html\Element\Block\Summary;
-use Html\Element\Block\Table;
-use Html\Element\Block\Video;
 use Html\Element\InlineElement;
-use Html\Element\Void\Area;
-use Html\Element\Void\BreakElement;
-use Html\Element\Void\Parameter;
-use Html\Element\Void\Source;
-use Html\Element\Void\Track;
-use Html\Element\Void\WordBreakOpportunity;
-use Html\Enum\AriaAtomicEnum;
-use Html\Enum\AriaBusyEnum;
-use Html\Enum\AriaHiddenEnum;
-use Html\Enum\AriaLiveEnum;
-use Html\Enum\AriaRelevantEnum;
-use Html\Enum\RoleEnum;
-use Html\Mapping\Element;
+use Html\Element\Block\{
+    Article,
+    Aside,
+    Audio,
+    Body,
+    DefinitionDescription,
+    DeletedText,
+    Details,
+    Division,
+    Embed,
+    Footer,
+    Form,
+    Header,
+    InlineFrame,
+    InsertedText,
+    Main,
+    Map,
+    ObjectElement,
+    Paragraph,
+    Picture,
+    Section,
+    Summary,
+    Table,
+    Video,
+};
+use Html\Element\Inline\{
+    Anchor,
+    BidirectionalIsolation,
+    BidirectionalOverride,
+    Button,
+    Image,
+    Input,
+    Ruby,
+    RubyParenthesis,
+    RubyText,
+    Select,
+    Span,
+    Textarea,
+};
+use Html\Element\Void\{
+    Area,
+    BreakElement,
+    Parameter,
+    Source,
+    Track,
+    WordBreakOpportunity,
+};
+use Html\Enum\{
+    AriaAtomicEnum,
+    AriaBusyEnum,
+    AriaHiddenEnum,
+    AriaLiveEnum,
+    AriaRelevantEnum,
+    RoleEnum,
+};
 use Html\Trait\GlobalAttribute;
-use InvalidArgumentException;
+use Html\Mapping\Element;
 
+/**
+ * The mark element represents a run of text in one document marked or highlighted for reference or notation purposes, due to the marked passage's relevance or importance in the enclosing context.
+ */
 #[Element('mark')]
 class MarkedText extends InlineElement
 {
@@ -68,14 +88,13 @@ class MarkedText extends InlineElement
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\InputmodeTrait;
     use GlobalAttribute\LangTrait;
+    use GlobalAttribute\PopoverTrait;
     use GlobalAttribute\SlotTrait;
     use GlobalAttribute\SpellcheckTrait;
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
-    use GlobalAttribute\PopoverTrait;
-
     /**
      * The HTML element name
      */
@@ -151,75 +170,68 @@ class MarkedText extends InlineElement
         WordBreakOpportunity::class,
     ];
 
-    /**
-     * Defines the semantic purpose of an element for assistive technologies.
-     */
+
+    /** Defines the semantic purpose of an element for assistive technologies. */
     protected ?RoleEnum $role = null;
 
-    /**
-     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
-     */
+    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
     protected ?string $ariaControls = null;
 
-    /**
-     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
-     */
+    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
     protected ?string $ariaDescribedby = null;
 
-    /**
-     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
-     */
+    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
     protected ?string $ariaLabelledby = null;
 
-    /**
+    /** 
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
+     * @category HTML attribute
      * @example false
      */
     protected ?AriaBusyEnum $ariaBusy = null;
 
-    /**
+    /** 
      * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
+     * @category HTML attribute
      * @example false
      */
     protected ?AriaHiddenEnum $ariaHidden = null;
 
-    /**
-     * References an element that provides additional details about the current element.
-     */
+    /** References an element that provides additional details about the current element. */
     protected ?string $ariaDetails = null;
 
-    /**
-     * Defines keyboard shortcuts available for the element.
-     */
+    /** Defines keyboard shortcuts available for the element. */
     protected ?string $ariaKeyshortcuts = null;
 
-    /**
-     * Provides a human-readable custom role description for assistive technologies.
-     */
+    /** Provides a human-readable custom role description for assistive technologies. */
     protected ?string $ariaRoledescription = null;
 
-    /**
+    /** 
      * Defines how updates to the element should be announced to screen readers.
+     * @category HTML attribute
      * @example off
      */
     protected ?AriaLiveEnum $ariaLive = null;
 
-    /**
+    /** 
      * Indicates what content changes should be announced in a live region.
+     * @category HTML attribute
      * @example additions text
      */
     protected ?AriaRelevantEnum $ariaRelevant = null;
 
-    /**
+    /** 
      * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
+     * @category HTML attribute
      * @example false
      */
     protected ?AriaAtomicEnum $ariaAtomic = null;
 
+
     public function setRole(string|RoleEnum $role): static
     {
         if (\is_string($role)) {
-            $role = RoleEnum::tryFrom($role) ?? throw new InvalidArgumentException('Invalid value for $role.');
+            $role = RoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -271,9 +283,7 @@ class MarkedText extends InlineElement
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
         if (\is_string($ariaBusy)) {
-            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaBusy.'
-            );
+            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
         }
         $this->ariaBusy = $ariaBusy;
         $this->delegated->setAttribute('aria-busy', (string) $ariaBusy->value);
@@ -289,9 +299,7 @@ class MarkedText extends InlineElement
     public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
     {
         if (\is_string($ariaHidden)) {
-            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaHidden.'
-            );
+            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
         }
         $this->ariaHidden = $ariaHidden;
         $this->delegated->setAttribute('aria-hidden', (string) $ariaHidden->value);
@@ -343,9 +351,7 @@ class MarkedText extends InlineElement
     public function setAriaLive(string|AriaLiveEnum $ariaLive): static
     {
         if (\is_string($ariaLive)) {
-            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaLive.'
-            );
+            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
         }
         $this->ariaLive = $ariaLive;
         $this->delegated->setAttribute('aria-live', (string) $ariaLive->value);
@@ -361,9 +367,7 @@ class MarkedText extends InlineElement
     public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
     {
         if (\is_string($ariaRelevant)) {
-            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaRelevant.'
-            );
+            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
         }
         $this->ariaRelevant = $ariaRelevant;
         $this->delegated->setAttribute('aria-relevant', (string) $ariaRelevant->value);
@@ -379,9 +383,7 @@ class MarkedText extends InlineElement
     public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
     {
         if (\is_string($ariaAtomic)) {
-            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaAtomic.'
-            );
+            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
         }
         $this->ariaAtomic = $ariaAtomic;
         $this->delegated->setAttribute('aria-atomic', (string) $ariaAtomic->value);
@@ -393,4 +395,5 @@ class MarkedText extends InlineElement
     {
         return $this->ariaAtomic;
     }
+
 }

@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Ins - The ins element represents an addition to the document.
+
   @component ins
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

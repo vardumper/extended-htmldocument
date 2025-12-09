@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Dialog - The dialog element represents a part of an application that a user interacts with to perform a task, for example a dialog box, inspector, or window.
+
   @component dialog
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

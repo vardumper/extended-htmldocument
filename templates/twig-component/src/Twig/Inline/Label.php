@@ -3,66 +3,95 @@
 namespace Html\TwigComponentBundle\Twig\Inline;
 
 use Html\Enum\{
-    RoleEnum,
+    AriaAtomicEnum,
     AriaBusyEnum,
-    AriaHiddenEnum,
     AriaDisabledEnum,
+    AriaHiddenEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
-    AriaAtomicEnum,
     AutoCapitalizeEnum,
     ContentEditableEnum,
     DirectionEnum,
     InputModeEnum,
+    PopoverEnum,
+    RoleEnum,
     SpellCheckEnum,
     TranslateEnum,
-    PopoverEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Label - 
+ * Label - The label element represents a caption in a user interface. The caption can be associated with a specific form control, known as the label element's labeled control, either using the for attribute, or by putting the form control inside the label element itself.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Label', template: '@HtmlTwigComponent/inline/label/label.html.twig')]
 class Label
 {
     public ?string $for = null;
+
     public ?RoleEnum $role = null;
+
     public ?string $ariaControls = null;
+
     public ?string $ariaDescribedby = null;
+
     public ?string $ariaLabelledby = null;
+
     public ?AriaBusyEnum $ariaBusy = null;
+
     public ?AriaHiddenEnum $ariaHidden = null;
+
     public ?AriaDisabledEnum $ariaDisabled = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public null|string|bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?string $slot = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?PopoverEnum $popover = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

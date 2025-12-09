@@ -11,6 +11,35 @@ use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionUnionType;
 
+/**
+ * TwigGenerator - Generates Standard Twig Templates
+ *
+ * Creates classic Twig templates with blocks, conditional attributes,
+ * and enum validation. These templates use traditional Twig syntax
+ * (not Symfony UX Twig Components) and are suitable for any Twig-based
+ * application.
+ *
+ * Generated structure:
+ * - Templates: twig/{block|inline|void}/element-name.twig
+ * - Composed: twig/{block|inline|void}/element-name-composed.twig
+ *
+ * Features:
+ * - Block-based template structure
+ * - Enum validation via hashmap lookup (better performance)
+ * - Conditional attribute rendering
+ * - Reserved word collision avoidance
+ * - Content block with raw filter
+ * - Automatic camelCase to kebab-case conversion
+ * - Content model documentation in composed templates
+ *
+ * Template structure:
+ * - {% block element_name %}
+ * - {% set enum_choices = {...} %} for enum validation
+ * - <element {% if condition %}attribute="{{ value }}"{% endif %}>
+ * - {% block content %}{% endblock %}
+ *
+ * @see https://twig.symfony.com/
+ */
 #[TemplateGenerator('twig')]
 class TwigGenerator implements TemplateGeneratorInterface
 {
@@ -124,13 +153,14 @@ class TwigGenerator implements TemplateGeneratorInterface
             return null;
         }
 
-        // Get element metadata from class doc comment
-        $docComment = $ref->getDocComment();
+        // Get element metadata from class-level doc comment
         $desc = '';
-        if ($docComment) {
-            // Extract description from docblock
-            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
-            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
+        $docComment = $ref->getDocComment();
+        if ($docComment !== false) {
+            // Extract description from class docblock (first line of content)
+            if (preg_match('/\/\*\*\s*\n\s*\*\s*(.+?)\s*\n/s', $docComment, $matches)) {
+                $desc = trim($matches[1]);
+            }
         }
         $name = ucfirst($elementName);
 
@@ -190,13 +220,14 @@ class TwigGenerator implements TemplateGeneratorInterface
         usort($enums, fn ($a, $b) => strcmp($a['name'], $b['name']));
         $isSelfClosing = $ref->hasConstant('SELF_CLOSING') && $ref->getConstant('SELF_CLOSING');
 
-        // Get element metadata from class doc comment
-        $docComment = $ref->getDocComment();
+        // Get element metadata from class-level doc comment
         $desc = '';
-        if ($docComment) {
-            // Extract description from docblock
-            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
-            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
+        $docComment = $ref->getDocComment();
+        if ($docComment !== false) {
+            // Extract description from class docblock (first line of content)
+            if (preg_match('/\/\*\*\s*\n\s*\*\s*(.+?)\s*\n/s', $docComment, $matches)) {
+                $desc = trim($matches[1]);
+            }
         }
         $name = ucfirst($elementName);
 

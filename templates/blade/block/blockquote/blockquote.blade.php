@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Blockquote - The blockquote element represents a section that is quoted from another source. Content inside a blockquote must be quoted from another source, whose address, if it has one, may be cited in the cite attribute.
+
   @component blockquote
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

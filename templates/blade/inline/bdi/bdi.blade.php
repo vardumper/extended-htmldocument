@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Bdi - The bdi element represents a span of text that is to be isolated from its surroundings for the purposes of bidirectional text formatting. (Bidirectional-isolate)
+
   @component bdi
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Var - The var element represents the name of a variable in a mathematical expression or a programming context.
+
   @component var
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

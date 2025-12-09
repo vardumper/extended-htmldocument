@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Small - The small element represents side comments such as small print.
+
   @component small
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

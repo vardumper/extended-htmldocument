@@ -3,63 +3,90 @@
 namespace Html\TwigComponentBundle\Twig\Inline;
 
 use Html\Enum\{
-    RoleEnum,
+    AriaAtomicEnum,
     AriaBusyEnum,
     AriaHiddenEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
-    AriaAtomicEnum,
     AutoCapitalizeEnum,
     ContentEditableEnum,
     DirectionEnum,
     InputModeEnum,
+    PopoverEnum,
+    RoleEnum,
     SpellCheckEnum,
     TranslateEnum,
-    PopoverEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Cite - 
+ * Cite - The cite element represents the title of a work (e.g. a book, a paper, an essay, a poem, a score, a song, a script, a film, a TV show, a game, a sculpture, a painting, a theatre production, a play, an opera, a musical, an exhibition, a legal case report, etc). This can be a work that is being quoted or referenced in detail (i.e. a citation), or it can just be a work that is mentioned in passing.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Cite', template: '@HtmlTwigComponent/inline/cite/cite.html.twig')]
 class Cite
 {
     public ?RoleEnum $role = null;
+
     public ?string $ariaControls = null;
+
     public ?string $ariaDescribedby = null;
+
     public ?string $ariaLabelledby = null;
+
     public ?AriaBusyEnum $ariaBusy = null;
+
     public ?AriaHiddenEnum $ariaHidden = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public null|string|bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?string $slot = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?PopoverEnum $popover = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Tbody - The tbody element groups one or more tr elements as the body of a table.
+
   @component tbody
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

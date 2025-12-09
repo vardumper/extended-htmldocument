@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  H5 - The h5 element represents a section heading. It has the fifth highest rank among the six levels of section headings.
+
   @component h5
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

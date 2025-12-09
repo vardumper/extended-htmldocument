@@ -3,80 +3,118 @@
 namespace Html\TwigComponentBundle\Twig\Inline;
 
 use Html\Enum\{
-    RelEnum,
-    TargetEnum,
     ARoleEnum,
-    AriaCurrentEnum,
-    AriaBusyEnum,
-    AriaDisabledEnum,
-    AriaLiveEnum,
-    AriaRelevantEnum,
     AriaAtomicEnum,
+    AriaBusyEnum,
+    AriaCurrentEnum,
+    AriaDisabledEnum,
     AriaExpandedEnum,
     AriaHaspopupEnum,
+    AriaLiveEnum,
     AriaPressedEnum,
+    AriaRelevantEnum,
     AutoCapitalizeEnum,
     ContentEditableEnum,
     DirectionEnum,
     InputModeEnum,
-    SpellCheckEnum,
-    TranslateEnum,
     PopoverEnum,
+    RelEnum,
+    SpellCheckEnum,
+    TargetEnum,
+    TranslateEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * A - 
+ * A - The a element represents a hyperlink, linking to another resource.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('A', template: '@HtmlTwigComponent/inline/a/a.html.twig')]
 class A
 {
     public ?string $download = null;
+
     public ?string $href = null;
+
     public ?string $hreflang = null;
+
     public ?RelEnum $rel = null;
+
     public ?TargetEnum $target = null;
+
     public ?string $type = null;
+
     public ?ARoleEnum $role = null;
+
     public ?string $ariaControls = null;
+
     public ?string $ariaDescribedby = null;
+
     public ?string $ariaLabelledby = null;
+
     public ?AriaCurrentEnum $ariaCurrent = null;
+
     public ?AriaBusyEnum $ariaBusy = null;
+
     public ?string $ariaLabel = null;
+
     public ?AriaDisabledEnum $ariaDisabled = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?AriaExpandedEnum $ariaExpanded = null;
+
     public ?AriaHaspopupEnum $ariaHaspopup = null;
+
     public ?AriaPressedEnum $ariaPressed = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public null|string|bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?string $slot = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?PopoverEnum $popover = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

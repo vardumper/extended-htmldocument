@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Body - The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
+
   @component body
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

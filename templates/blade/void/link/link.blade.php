@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Link - The link element defines a link between a document and an external resource. It is used to link to external stylesheets.
+
   @component link
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

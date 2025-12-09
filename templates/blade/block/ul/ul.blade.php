@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Ul - The ul element represents an unordered list of items, namely a collection of items that do not have a numerical ordering, and their order in the list is meaningless.
+
   @component ul
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

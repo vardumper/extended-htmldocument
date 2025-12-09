@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  U - The u element represents a span of text with an unarticulated, though explicitly rendered, non-textual annotation, such as labeling the text as being a proper name in Chinese text (a Chinese proper name mark), or labeling the text as being misspelt.
+
   @component u
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Td - The td element represents a data cell in a table.
+
   @component td
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

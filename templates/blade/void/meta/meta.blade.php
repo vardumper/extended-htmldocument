@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Meta - The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.
+
   @component meta
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

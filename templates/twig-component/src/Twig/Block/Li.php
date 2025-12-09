@@ -3,71 +3,104 @@
 namespace Html\TwigComponentBundle\Twig\Block;
 
 use Html\Enum\{
-    RoleEnum,
-    AriaCurrentEnum,
+    AriaAtomicEnum,
     AriaBusyEnum,
+    AriaCurrentEnum,
     AriaHiddenEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
-    AriaAtomicEnum,
     AriaSelectedEnum,
     AutoCapitalizeEnum,
     ContentEditableEnum,
     DirectionEnum,
     InputModeEnum,
+    PopoverEnum,
+    RoleEnum,
     SpellCheckEnum,
     TranslateEnum,
-    PopoverEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Li - 
+ * Li - The li element represents a list item. If its parent element is an ol, ul, or menu, then the element is an item of the parent element's list, as defined for those elements. Otherwise, the list item has no defined list-related semantics.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Li', template: '@HtmlTwigComponent/block/li/li.html.twig')]
 class Li
 {
     public ?string $value = null;
+
     public ?RoleEnum $role = null;
+
     public ?string $ariaControls = null;
+
     public ?string $ariaDescribedby = null;
+
     public ?string $ariaLabelledby = null;
+
     public ?AriaCurrentEnum $ariaCurrent = null;
+
     public ?AriaBusyEnum $ariaBusy = null;
+
     public ?AriaHiddenEnum $ariaHidden = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?AriaSelectedEnum $ariaSelected = null;
+
     public ?int $ariaPosinset = null;
+
     public ?int $ariaSetsize = null;
+
     public ?int $ariaLevel = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public null|string|bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?string $slot = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?PopoverEnum $popover = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

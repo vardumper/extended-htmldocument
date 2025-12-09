@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Figure - The figure element represents self-contained content, potentially with an optional caption, which is specified using the (optional) figcaption element.
+
   @component figure
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

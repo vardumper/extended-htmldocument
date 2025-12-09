@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  P - The p element represents a paragraph.
+
   @component p
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

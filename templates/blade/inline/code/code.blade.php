@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Code - The code element represents a fragment of computer code. This could be an XML element name, a filename, a computer program, or any other string that a computer would recognize.
+
   @component code
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

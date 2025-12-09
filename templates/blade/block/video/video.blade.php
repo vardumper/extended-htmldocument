@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Video - The video element is used to embed video content in a document, such as a movie clip or other video streams.
+
   @component video
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

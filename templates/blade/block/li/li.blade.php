@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Li - The li element represents a list item. If its parent element is an ol, ul, or menu, then the element is an item of the parent element's list, as defined for those elements. Otherwise, the list item has no defined list-related semantics.
+
   @component li
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

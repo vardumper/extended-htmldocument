@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
+
   @component button
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

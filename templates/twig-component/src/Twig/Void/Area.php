@@ -3,54 +3,76 @@
 namespace Html\TwigComponentBundle\Twig\Void;
 
 use Html\Enum\{
-    RelEnum,
-    ShapeEnum,
-    TargetEnum,
     AutoCapitalizeEnum,
     ContentEditableEnum,
     DirectionEnum,
     InputModeEnum,
+    RelEnum,
+    ShapeEnum,
     SpellCheckEnum,
+    TargetEnum,
     TranslateEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Area - 
+ * Area - The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Area', template: '@HtmlTwigComponent/void/area/area.html.twig')]
 class Area
 {
     public ?string $alt = null;
+
     public ?string $coords = null;
+
     public ?string $download = null;
+
     public ?string $href = null;
+
     public ?string $hreflang = null;
+
     public ?RelEnum $rel = null;
+
     public ?ShapeEnum $shape = null;
+
     public ?TargetEnum $target = null;
+
     public ?string $type = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public null|string|bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

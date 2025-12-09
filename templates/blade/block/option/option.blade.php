@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Option - The option element represents an item in a select dropdown list.
+
   @component option
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Canvas - The canvas element is used to draw graphics, on the fly, via scripting (usually JavaScript).
+
   @component canvas
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

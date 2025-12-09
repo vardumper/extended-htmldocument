@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Audio - The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.
+
   @component audio
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Aside - The aside element represents a section of a page that consists of content that is tangentially related to the content around the aside element, and which could be considered separate from that content.
+
   @component aside
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

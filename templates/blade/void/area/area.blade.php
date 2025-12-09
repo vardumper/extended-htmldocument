@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Area - The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.
+
   @component area
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

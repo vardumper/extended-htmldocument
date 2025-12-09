@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Hgroup - The hgroup element represents a multi-level heading for a section of a document. It groups a set of h1–h6 elements.
+
   @component hgroup
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

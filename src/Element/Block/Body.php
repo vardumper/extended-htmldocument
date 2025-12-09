@@ -1,61 +1,109 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * Body - The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
- *
- * @generated 2025-12-04 12:02:25
+ * @generated 2025-12-09 15:32:40
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/body
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Inline\Abbreviation;
-use Html\Element\Inline\Address;
-use Html\Element\Inline\Anchor;
-use Html\Element\Inline\BidirectionalIsolation;
-use Html\Element\Inline\BidirectionalOverride;
-use Html\Element\Inline\Bold;
-use Html\Element\Inline\Button;
-use Html\Element\Inline\Citation;
-use Html\Element\Inline\Code;
-use Html\Element\Inline\Data;
-use Html\Element\Inline\Definition;
-use Html\Element\Inline\Emphasis;
-use Html\Element\Inline\Image;
-use Html\Element\Inline\Input;
-use Html\Element\Inline\Italic;
-use Html\Element\Inline\KeyboardInput;
-use Html\Element\Inline\Label;
-use Html\Element\Inline\MarkedText;
-use Html\Element\Inline\Meter;
-use Html\Element\Inline\Output;
-use Html\Element\Inline\Progress;
-use Html\Element\Inline\Quotation;
-use Html\Element\Inline\Ruby;
-use Html\Element\Inline\SampleOutput;
-use Html\Element\Inline\Select;
-use Html\Element\Inline\Small;
-use Html\Element\Inline\Span;
-use Html\Element\Inline\Strikethrough;
-use Html\Element\Inline\Strong;
-use Html\Element\Inline\Subscript;
-use Html\Element\Inline\Superscript;
-use Html\Element\Inline\Textarea;
-use Html\Element\Inline\Time;
-use Html\Element\Inline\Underline;
-use Html\Element\Inline\Variable;
-use Html\Element\Void\Area;
-use Html\Element\Void\BreakElement;
-use Html\Element\Void\Script;
-use Html\Element\Void\WordBreakOpportunity;
-use Html\Mapping\Element;
+use Html\Element\Block\{
+    Article,
+    Aside,
+    Audio,
+    Blockquote,
+    Canvas,
+    DataList,
+    DefinitionList,
+    DeletedText,
+    Details,
+    Dialog,
+    Division,
+    Embed,
+    Fieldset,
+    Figure,
+    Footer,
+    Form,
+    HTML,
+    Header,
+    Heading1,
+    Heading2,
+    Heading3,
+    Heading4,
+    Heading5,
+    Heading6,
+    HorizontalRule,
+    InlineFrame,
+    InsertedText,
+    Main,
+    Map,
+    Navigation,
+    NoScript,
+    ObjectElement,
+    OrderedList,
+    Paragraph,
+    Picture,
+    PreformattedText,
+    Section,
+    Table,
+    Template,
+    UnorderedList,
+    Video,
+};
+use Html\Element\Inline\{
+    Abbreviation,
+    Address,
+    Anchor,
+    BidirectionalIsolation,
+    BidirectionalOverride,
+    Bold,
+    Button,
+    Citation,
+    Code,
+    Data,
+    Definition,
+    Emphasis,
+    Image,
+    Input,
+    Italic,
+    KeyboardInput,
+    Label,
+    MarkedText,
+    Meter,
+    Output,
+    Progress,
+    Quotation,
+    Ruby,
+    SampleOutput,
+    Select,
+    Small,
+    Span,
+    Strikethrough,
+    Strong,
+    Subscript,
+    Superscript,
+    Textarea,
+    Time,
+    Underline,
+    Variable,
+};
+use Html\Element\Void\{
+    Area,
+    BreakElement,
+    Script,
+    WordBreakOpportunity,
+};
 use Html\Trait\GlobalAttribute;
+use Html\Mapping\Element;
 
+/**
+ * The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
+ */
 #[Element('body')]
 class Body extends BlockElement
 {
@@ -71,7 +119,6 @@ class Body extends BlockElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
-
     /**
      * The HTML element name
      */
@@ -96,7 +143,9 @@ class Body extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [HTML::class];
+    public static array $childOf = [
+        HTML::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -184,85 +233,55 @@ class Body extends BlockElement
         WordBreakOpportunity::class,
     ];
 
-    /**
-     * Fires after the associated document has started printing or the print preview has been closed.
-     */
+
+    /** Fires after the associated document has started printing or the print preview has been closed. */
     protected ?string $onafterprint = null;
 
-    /**
-     * Fires before the associated document is printed or previewed for printing.
-     */
+    /** Fires before the associated document is printed or previewed for printing. */
     protected ?string $onbeforeprint = null;
 
-    /**
-     * Fires before the user navigates away from the page.
-     */
+    /** Fires before the user navigates away from the page. */
     protected ?string $onbeforeunload = null;
 
-    /**
-     * Fires when the fragment identifier part of the URL changes.
-     */
+    /** Fires when the fragment identifier part of the URL changes. */
     protected ?string $onhashchange = null;
 
-    /**
-     * Fires when the user changes the preferred language of the user interface.
-     */
+    /** Fires when the user changes the preferred language of the user interface. */
     protected ?string $onlanguagechange = null;
 
-    /**
-     * Fires when a message is received from a different browsing context (e.g., an iframe).
-     */
+    /** Fires when a message is received from a different browsing context (e.g., an iframe). */
     protected ?string $onmessage = null;
 
-    /**
-     * Fires when an error occurs while receiving a message from a different browsing context.
-     */
+    /** Fires when an error occurs while receiving a message from a different browsing context. */
     protected ?string $onmessageerror = null;
 
-    /**
-     * Fires when the browser goes offline.
-     */
+    /** Fires when the browser goes offline. */
     protected ?string $onoffline = null;
 
-    /**
-     * Fires when the browser goes online.
-     */
+    /** Fires when the browser goes online. */
     protected ?string $ononline = null;
 
-    /**
-     * Fires when the user navigates away from a page.
-     */
+    /** Fires when the user navigates away from a page. */
     protected ?string $onpagehide = null;
 
-    /**
-     * Fires when the user navigates to a page.
-     */
+    /** Fires when the user navigates to a page. */
     protected ?string $onpageshow = null;
 
-    /**
-     * Fires when the user navigates through the history by clicking the browser's Back or Forward buttons.
-     */
+    /** Fires when the user navigates through the history by clicking the browser's Back or Forward buttons. */
     protected ?string $onpopstate = null;
 
-    /**
-     * Fires when a Promise is rejected and the rejection is handled by a Promise handler (e.g., catch).
-     */
+    /** Fires when a Promise is rejected and the rejection is handled by a Promise handler (e.g., catch). */
     protected ?string $onrejectionhandled = null;
 
-    /**
-     * Fires when a storage area (e.g., localStorage or sessionStorage) changes.
-     */
+    /** Fires when a storage area (e.g., localStorage or sessionStorage) changes. */
     protected ?string $onstorage = null;
 
-    /**
-     * Fires when a Promise is rejected but there is no rejection handler (e.g., catch).
-     */
+    /** Fires when a Promise is rejected but there is no rejection handler (e.g., catch). */
     protected ?string $onunhandledrejection = null;
 
-    /**
-     * Fires when the user is navigating away from the page (similar to onbeforeunload).
-     */
+    /** Fires when the user is navigating away from the page (similar to onbeforeunload). */
     protected ?string $onunload = null;
+
 
     public function setOnafterprint(string $onafterprint): static
     {
@@ -455,4 +474,6 @@ class Body extends BlockElement
     {
         return $this->onunload;
     }
+
+
 }

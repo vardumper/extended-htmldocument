@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Nav - The nav element represents a section of a page whose purpose is to provide navigation links, either within the current document or to other documents.
+
   @component nav
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

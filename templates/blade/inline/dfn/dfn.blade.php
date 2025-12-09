@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Dfn - The dfn element represents the defining instance of a term.
+
   @component dfn
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

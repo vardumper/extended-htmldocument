@@ -1,60 +1,98 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * Header - The header element represents a container for introductory content or a set of navigational links. It typically contains the section's heading (an h1–h6 element or an hgroup element), but can also contain other content such as a table of contents, a search form, or any relevant logos.
- *
- * @generated 2025-12-04 12:02:25
+ * @generated 2025-12-09 15:32:40
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Inline\Abbreviation;
-use Html\Element\Inline\Anchor;
-use Html\Element\Inline\BidirectionalIsolation;
-use Html\Element\Inline\BidirectionalOverride;
-use Html\Element\Inline\Bold;
-use Html\Element\Inline\Button;
-use Html\Element\Inline\Citation;
-use Html\Element\Inline\Code;
-use Html\Element\Inline\Data;
-use Html\Element\Inline\Definition;
-use Html\Element\Inline\Emphasis;
-use Html\Element\Inline\Image;
-use Html\Element\Inline\Input;
-use Html\Element\Inline\Italic;
-use Html\Element\Inline\KeyboardInput;
-use Html\Element\Inline\MarkedText;
-use Html\Element\Inline\Quotation;
-use Html\Element\Inline\Ruby;
-use Html\Element\Inline\RubyParenthesis;
-use Html\Element\Inline\RubyText;
-use Html\Element\Inline\SampleOutput;
-use Html\Element\Inline\Select;
-use Html\Element\Inline\Small;
-use Html\Element\Inline\Span;
-use Html\Element\Inline\Strikethrough;
-use Html\Element\Inline\Strong;
-use Html\Element\Inline\Subscript;
-use Html\Element\Inline\Superscript;
-use Html\Element\Inline\Textarea;
-use Html\Element\Inline\Time;
-use Html\Element\Inline\Underline;
-use Html\Element\Inline\Variable;
-use Html\Element\Void\Area;
-use Html\Element\Void\BreakElement;
-use Html\Element\Void\Parameter;
-use Html\Element\Void\Source;
-use Html\Element\Void\Track;
-use Html\Element\Void\WordBreakOpportunity;
-use Html\Mapping\Element;
+use Html\Element\Block\{
+    Audio,
+    Body,
+    DefinitionDescription,
+    DefinitionList,
+    DefinitionTerm,
+    DeletedText,
+    Details,
+    Division,
+    Embed,
+    Figure,
+    FigureCaption,
+    Form,
+    Heading1,
+    Heading2,
+    Heading3,
+    Heading4,
+    Heading5,
+    Heading6,
+    InlineFrame,
+    InsertedText,
+    ListItem,
+    Map,
+    ObjectElement,
+    OrderedList,
+    Paragraph,
+    Picture,
+    PreformattedText,
+    Summary,
+    Table,
+    UnorderedList,
+    Video,
+};
+use Html\Element\Inline\{
+    Abbreviation,
+    Anchor,
+    BidirectionalIsolation,
+    BidirectionalOverride,
+    Bold,
+    Button,
+    Citation,
+    Code,
+    Data,
+    Definition,
+    Emphasis,
+    Image,
+    Input,
+    Italic,
+    KeyboardInput,
+    MarkedText,
+    Quotation,
+    Ruby,
+    RubyParenthesis,
+    RubyText,
+    SampleOutput,
+    Select,
+    Small,
+    Span,
+    Strikethrough,
+    Strong,
+    Subscript,
+    Superscript,
+    Textarea,
+    Time,
+    Underline,
+    Variable,
+};
+use Html\Element\Void\{
+    Area,
+    BreakElement,
+    Parameter,
+    Source,
+    Track,
+    WordBreakOpportunity,
+};
 use Html\Trait\GlobalAttribute;
+use Html\Mapping\Element;
 
+/**
+ * The header element represents a container for introductory content or a set of navigational links. It typically contains the section's heading (an h1–h6 element or an hgroup element), but can also contain other content such as a table of contents, a search form, or any relevant logos.
+ */
 #[Element('header')]
 class Header extends BlockElement
 {
@@ -75,7 +113,6 @@ class Header extends BlockElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
-
     /**
      * The HTML element name
      */
@@ -100,7 +137,10 @@ class Header extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Body::class, Paragraph::class];
+    public static array $childOf = [
+        Body::class,
+        Paragraph::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -177,10 +217,10 @@ class Header extends BlockElement
         WordBreakOpportunity::class,
     ];
 
-    /**
-     * Defines a string value that labels the current element for assistive technologies.
-     */
+
+    /** Defines a string value that labels the current element for assistive technologies. */
     protected ?string $ariaLabel = null;
+
 
     public function setAriaLabel(string $ariaLabel): static
     {
@@ -193,4 +233,6 @@ class Header extends BlockElement
     {
         return $this->ariaLabel;
     }
+
+
 }

@@ -3,93 +3,140 @@
 namespace Html\TwigComponentBundle\Twig\Inline;
 
 use Html\Enum\{
+    AriaAtomicEnum,
+    AriaBusyEnum,
+    AriaCheckedEnum,
+    AriaCurrentEnum,
+    AriaDisabledEnum,
+    AriaExpandedEnum,
+    AriaHaspopupEnum,
+    AriaLiveEnum,
+    AriaPressedEnum,
+    AriaRelevantEnum,
+    AutoCapitalizeEnum,
     AutocorrectEnum,
     ButtonTypeEnum,
+    ContentEditableEnum,
+    DirectionEnum,
     FormenctypeEnum,
     FormmethodEnum,
     FormtargetEnum,
+    InputModeEnum,
     PopovertargetactionEnum,
     RoleEnum,
-    AriaCurrentEnum,
-    AriaBusyEnum,
-    AriaDisabledEnum,
-    AriaLiveEnum,
-    AriaRelevantEnum,
-    AriaAtomicEnum,
-    AriaExpandedEnum,
-    AriaHaspopupEnum,
-    AriaPressedEnum,
-    AriaCheckedEnum,
-    AutoCapitalizeEnum,
-    ContentEditableEnum,
-    DirectionEnum,
-    InputModeEnum,
     SpellCheckEnum,
     TranslateEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Button - 
+ * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Button', template: '@HtmlTwigComponent/inline/button/button.html.twig')]
 class Button
 {
     public ?AutocorrectEnum $autocorrect = null;
+
     public ?bool $disabled = null;
+
     public ?string $name = null;
+
     public ?ButtonTypeEnum $type = null;
+
     public ?string $value = null;
+
     public ?string $form = null;
+
     public ?string $formaction = null;
+
     public ?FormenctypeEnum $formenctype = null;
+
     public ?FormmethodEnum $formmethod = null;
+
     public ?bool $formnovalidate = null;
+
     public ?FormtargetEnum $formtarget = null;
+
     public ?string $popovertarget = null;
+
     public ?PopovertargetactionEnum $popovertargetaction = null;
+
     public ?string $command = null;
+
     public ?string $commandfor = null;
+
     public ?RoleEnum $role = null;
+
     public ?string $ariaControls = null;
+
     public ?string $ariaDescribedby = null;
+
     public ?string $ariaLabelledby = null;
+
     public ?AriaCurrentEnum $ariaCurrent = null;
+
     public ?AriaBusyEnum $ariaBusy = null;
+
     public ?string $ariaLabel = null;
+
     public ?AriaDisabledEnum $ariaDisabled = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?AriaExpandedEnum $ariaExpanded = null;
+
     public ?AriaHaspopupEnum $ariaHaspopup = null;
+
     public ?AriaPressedEnum $ariaPressed = null;
+
     public ?AriaCheckedEnum $ariaChecked = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public ?bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?string $slot = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

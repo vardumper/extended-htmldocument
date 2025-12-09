@@ -3,56 +3,81 @@
 namespace Html\TwigComponentBundle\Twig\Inline;
 
 use Html\Enum\{
-    CrossoriginEnum,
-    DecodingEnum,
-    ReferrerpolicyEnum,
+    AriaAtomicEnum,
     AriaHiddenEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
-    AriaAtomicEnum,
+    CrossoriginEnum,
+    DecodingEnum,
     DirectionEnum,
+    ReferrerpolicyEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Img - 
+ * Img - The img element represents an image.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Img', template: '@HtmlTwigComponent/inline/img/img.html.twig')]
 class Img
 {
     public ?string $alt = null;
+
     public ?CrossoriginEnum $crossorigin = null;
+
     public ?DecodingEnum $decoding = null;
+
     public ?string $height = null;
+
     public ?bool $ismap = null;
+
     public ?ReferrerpolicyEnum $referrerpolicy = null;
+
     public ?string $sizes = null;
+
     public ?string $src = null;
+
     public ?string $srcset = null;
+
     public ?string $usemap = null;
+
     public ?string $width = null;
+
     public ?AriaHiddenEnum $ariaHidden = null;
+
     public ?string $ariaLabel = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?string $lang = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

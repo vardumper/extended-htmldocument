@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Select - The select element represents a control for selecting amongst a set of options.
+
   @component select
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

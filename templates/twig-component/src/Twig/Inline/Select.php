@@ -3,92 +3,138 @@
 namespace Html\TwigComponentBundle\Twig\Inline;
 
 use Html\Enum\{
-    AutocompleteEnum,
-    AutocorrectEnum,
-    RoleEnum,
-    AriaInvalidEnum,
-    AriaDisabledEnum,
-    AriaLiveEnum,
-    AriaRelevantEnum,
     AriaAtomicEnum,
+    AriaAutocompleteEnum,
+    AriaDisabledEnum,
     AriaExpandedEnum,
     AriaHaspopupEnum,
-    AriaPressedEnum,
-    AriaAutocompleteEnum,
-    AriaReadonlyEnum,
-    AriaRequiredEnum,
+    AriaInvalidEnum,
+    AriaLiveEnum,
     AriaMultiselectableEnum,
     AriaOrientationEnum,
+    AriaPressedEnum,
+    AriaReadonlyEnum,
+    AriaRelevantEnum,
+    AriaRequiredEnum,
     AutoCapitalizeEnum,
+    AutocompleteEnum,
+    AutocorrectEnum,
     ContentEditableEnum,
     DirectionEnum,
     InputModeEnum,
+    PopoverEnum,
+    RoleEnum,
     SpellCheckEnum,
     TranslateEnum,
-    PopoverEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Select - 
+ * Select - The select element represents a control for selecting amongst a set of options.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Select', template: '@HtmlTwigComponent/inline/select/select.html.twig')]
 class Select
 {
     public ?AutocompleteEnum $autocomplete = null;
+
     public ?AutocorrectEnum $autocorrect = null;
+
     public ?bool $disabled = null;
+
     public ?bool $multiple = null;
+
     public ?string $name = null;
+
     public ?bool $required = null;
+
     public ?int $size = null;
+
     public ?string $form = null;
+
     public ?RoleEnum $role = null;
+
     public ?string $ariaControls = null;
+
     public ?string $ariaDescribedby = null;
+
     public ?string $ariaLabelledby = null;
+
     public ?AriaInvalidEnum $ariaInvalid = null;
+
     public ?string $ariaLabel = null;
+
     public ?AriaDisabledEnum $ariaDisabled = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?AriaExpandedEnum $ariaExpanded = null;
+
     public ?AriaHaspopupEnum $ariaHaspopup = null;
+
     public ?AriaPressedEnum $ariaPressed = null;
+
     public ?AriaAutocompleteEnum $ariaAutocomplete = null;
+
     public ?string $ariaPlaceholder = null;
+
     public ?AriaReadonlyEnum $ariaReadonly = null;
+
     public ?AriaRequiredEnum $ariaRequired = null;
+
     public ?AriaMultiselectableEnum $ariaMultiselectable = null;
+
     public ?string $ariaActivedescendant = null;
+
     public ?AriaOrientationEnum $ariaOrientation = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public null|string|bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?string $slot = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?PopoverEnum $popover = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

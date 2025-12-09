@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
+
   @component form
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

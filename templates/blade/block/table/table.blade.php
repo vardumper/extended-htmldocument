@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Table - The table element represents tabular data — that is, information presented in a two-dimensional table comprised of rows and columns of cells containing data.
+
   @component table
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

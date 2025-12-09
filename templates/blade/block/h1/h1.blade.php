@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  H1 - The h1 element represents a section heading. It has the highest rank among the six levels of section headings.
+
   @component h1
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

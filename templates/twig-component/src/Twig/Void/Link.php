@@ -4,39 +4,52 @@ namespace Html\TwigComponentBundle\Twig\Void;
 
 use Html\Enum\{
     CrossoriginEnum,
-    ReferrerpolicyEnum,
-    LinkRelEnum,
     DirectionEnum,
+    LinkRelEnum,
+    ReferrerpolicyEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Link - 
+ * Link - The link element defines a link between a document and an external resource. It is used to link to external stylesheets.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Link', template: '@HtmlTwigComponent/void/link/link.html.twig')]
 class Link
 {
     public ?CrossoriginEnum $crossorigin = null;
+
     public ?string $href = null;
+
     public ?string $hreflang = null;
+
     public ?string $integrity = null;
+
     public ?string $media = null;
+
     public ?ReferrerpolicyEnum $referrerpolicy = null;
+
     public ?LinkRelEnum $rel = null;
+
     public ?string $sizes = null;
+
     public ?string $type = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $hidden = null;
+
     public ?string $lang = null;
+
     public ?string $style = null;
+
     public ?string $title = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Svg - The svg element is a container for embedded SVG graphics.
+
   @component svg
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

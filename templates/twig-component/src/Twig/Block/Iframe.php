@@ -3,61 +3,90 @@
 namespace Html\TwigComponentBundle\Twig\Block;
 
 use Html\Enum\{
-    ReferrerpolicyEnum,
-    RoleEnum,
+    AriaAtomicEnum,
     AriaBusyEnum,
     AriaHiddenEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
-    AriaAtomicEnum,
     DirectionEnum,
     PopoverEnum,
+    ReferrerpolicyEnum,
+    RoleEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Iframe - 
+ * Iframe - The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Iframe', template: '@HtmlTwigComponent/block/iframe/iframe.html.twig')]
 class Iframe
 {
     public ?bool $allowfullscreen = null;
+
     public ?string $height = null;
+
     public ?string $name = null;
+
     public ?ReferrerpolicyEnum $referrerpolicy = null;
+
     public ?string $sandbox = null;
+
     public ?bool $seamless = null;
+
     public ?string $src = null;
+
     public ?string $srcdoc = null;
+
     public ?string $width = null;
+
     public ?RoleEnum $role = null;
+
     public ?string $ariaControls = null;
+
     public ?string $ariaDescribedby = null;
+
     public ?string $ariaLabelledby = null;
+
     public ?AriaBusyEnum $ariaBusy = null;
+
     public ?AriaHiddenEnum $ariaHidden = null;
+
     public ?string $ariaLabel = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $hidden = null;
+
     public ?string $lang = null;
+
     public ?string $slot = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?PopoverEnum $popover = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

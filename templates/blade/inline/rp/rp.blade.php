@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Rp - The rp element is used to provide fallback parentheses for browsers non-supporting ruby annotations. It can be used in complex ruby markup to provide parentheses around the rt element for browsers that do not support ruby elements.
+
   @component rp
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

@@ -5,27 +5,32 @@ namespace Html\TwigComponentBundle\Twig\Block;
 use Html\Enum\{
     DirectionEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Colgroup - 
+ * Colgroup - The colgroup element represents a group of one or more columns in the table that is its parent, if it has a parent and that is a table element.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Colgroup', template: '@HtmlTwigComponent/block/colgroup/colgroup.html.twig')]
 class Colgroup
 {
     public ?int $span = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $hidden = null;
+
     public ?string $lang = null;
+
     public ?string $slot = null;
+
     public ?string $style = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

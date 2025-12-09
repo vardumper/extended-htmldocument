@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Div - The div element has no special meaning at all. It represents its children. It can be used with the class, lang, and title attributes to mark up semantics common to a group of consecutive elements.
+
   @component div
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

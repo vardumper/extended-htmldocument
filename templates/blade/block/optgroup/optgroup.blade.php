@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Optgroup - The optgroup element represents a group of option elements with a common label.
+
   @component optgroup
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

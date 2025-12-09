@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Abbr - The abbr element represents an abbreviation or acronym, optionally with its expansion. The title attribute can be used to provide an expansion of the abbreviation. The attribute, if specified, must contain an expansion of the abbreviation, and nothing else.
+
   @component abbr
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

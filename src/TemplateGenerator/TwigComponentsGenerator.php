@@ -9,6 +9,27 @@ use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionUnionType;
 
+/**
+ * TwigComponentsGenerator - Generates Symfony UX Twig Components
+ *
+ * Creates PHP component classes with PreMount validation and corresponding
+ * Twig templates for use with Symfony UX Twig Component 2.x. Each component
+ * includes type safety through OptionsResolver, enum normalization, and
+ * automatic attribute mapping.
+ *
+ * Generated structure:
+ * - PHP Classes: src/Twig/{Block|Inline|Void}/ComponentName.php
+ * - Templates: src/Resources/{block|inline|void}/element-name/element-name.html.twig
+ *
+ * Features:
+ * - Grouped use statements for enums
+ * - PreMount hooks with type validation
+ * - Enum string normalization (string -> EnumClass)
+ * - Union type support (null|string|bool)
+ * - Global attribute handling (id, class)
+ *
+ * @see https://symfony.com/bundles/ux-twig-component/current/index.html
+ */
 #[TemplateGenerator('twig-component')]
 class TwigComponentsGenerator implements TemplateGeneratorInterface
 {
@@ -190,13 +211,14 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             }
         }
 
-        // Get element metadata from class doc comment
+        // Get element metadata from class-level doc comment
         $docComment = $ref->getDocComment();
         $desc = '';
-        if ($docComment) {
-            // Extract description from docblock
-            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
-            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
+        if ($docComment !== false) {
+            // Extract description from class docblock (first line of content)
+            if (preg_match('/\/\*\*\s*\n\s*\*\s*(.+?)\s*\n/s', $docComment, $matches)) {
+                $desc = trim($matches[1]);
+            }
         }
         $name = ucfirst($elementName);
 
@@ -206,9 +228,9 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
 
         // Add use statements for enums (grouped)
         $uniqueEnumClasses = array_unique(array_filter(array_column($props, 'enumClass')));
-        if (!empty($uniqueEnumClasses)) {
+        if (! empty($uniqueEnumClasses)) {
             $php .= "use Html\\Enum\\{\n";
-            $enumShortNames = array_map(function($enumClass) {
+            $enumShortNames = array_map(function ($enumClass) {
                 return '    ' . basename(str_replace('\\', '/', $enumClass));
             }, $uniqueEnumClasses);
             $php .= implode(",\n", $enumShortNames);
@@ -313,13 +335,14 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             return null;
         }
 
-        // Get element metadata from class doc comment
-        $docComment = $ref->getDocComment();
+        // Get element metadata from class-level doc comment
         $desc = '';
-        if ($docComment) {
-            // Extract description from docblock
-            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
-            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
+        $docComment = $ref->getDocComment();
+        if ($docComment !== false) {
+            // Extract description from class docblock (first line of content)
+            if (preg_match('/\/\*\*\s*\n\s*\*\s*(.+?)\s*\n/s', $docComment, $matches)) {
+                $desc = trim($matches[1]);
+            }
         }
         $name = ucfirst($elementName);
 
@@ -383,13 +406,14 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
 
         $isSelfClosing = $ref->hasConstant('SELF_CLOSING') && $ref->getConstant('SELF_CLOSING');
 
-        // Get element metadata from class doc comment
-        $docComment = $ref->getDocComment();
+        // Get element metadata from class-level doc comment
         $desc = '';
-        if ($docComment) {
-            // Extract description from docblock
-            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
-            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
+        $docComment = $ref->getDocComment();
+        if ($docComment !== false) {
+            // Extract description from class docblock (first line of content)
+            if (preg_match('/\/\*\*\s*\n\s*\*\s*(.+?)\s*\n/s', $docComment, $matches)) {
+                $desc = trim($matches[1]);
+            }
         }
         $name = ucfirst($elementName);
 

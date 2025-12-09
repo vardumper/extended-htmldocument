@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Bdo - The bdo element represents explicit text directionality formatting control for its children. It allows authors to override the Unicode bidirectional algorithm by explicitly specifying a direction override.
+
   @component bdo
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

@@ -1,23 +1,28 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * NoScript - The noscript element defines an alternate content for users that have disabled scripts in their browser or have a browser that doesn't support script.
- *
- * @generated 2025-12-04 12:02:25
+ * @generated 2025-12-09 15:32:40
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript
  */
-
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
+use Html\Element\Block\{
+    Body,
+    Form,
+};
 use Html\Element\Void\Head;
-use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute;
+use Html\Mapping\Element;
 
+/**
+ * The noscript element defines an alternate content for users that have disabled scripts in their browser or have a browser that doesn't support script.
+ */
 #[Element('noscript')]
 class NoScript extends BlockElement
 {
@@ -38,7 +43,6 @@ class NoScript extends BlockElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
-
     /**
      * The HTML element name
      */
@@ -63,11 +67,20 @@ class NoScript extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Body::class, Form::class, Head::class];
+    public static array $childOf = [
+        Body::class,
+        Form::class,
+        Head::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
+
+
+
+
 }

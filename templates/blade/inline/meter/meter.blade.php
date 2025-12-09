@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Meter - The meter element represents a scalar measurement within a known range, or a fractional value.
+
   @component meter
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

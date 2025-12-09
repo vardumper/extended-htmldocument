@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Q - The q element represents some phrasing content quoted from another source.
+
   @component q
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

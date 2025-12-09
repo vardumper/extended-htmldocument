@@ -22,7 +22,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Var - 
+ * Var - The var element represents the name of a variable in a mathematical expression or a programming context.
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle

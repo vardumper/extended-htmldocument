@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Mark - The mark element represents a run of text in one document marked or highlighted for reference or notation purposes, due to the marked passage's relevance or importance in the enclosing context.
+
   @component mark
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

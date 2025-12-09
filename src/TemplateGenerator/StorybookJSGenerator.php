@@ -12,6 +12,34 @@ use ReflectionUnionType;
 use Throwable;
 use TypeError;
 
+/**
+ * StorybookJSGenerator - Generates Storybook Stories for HTML Elements
+ *
+ * Creates interactive Storybook stories (.stories.js) with full argTypes
+ * documentation, controls, and automatic attribute mapping. Stories use
+ * native DOM createElement for framework-agnostic component demonstration.
+ *
+ * Generated structure:
+ * - Stories: storybook/{block|inline|void}/element-name.stories.js
+ * - Composed: storybook/{block|inline|void}/element-name-composed.stories.js
+ *
+ * Features:
+ * - Automatic argTypes generation with type inference
+ * - Control types (text, number, boolean, select for enums)
+ * - Default story with all arguments
+ * - Boolean attribute handling (only set if true)
+ * - Data attribute object spreading
+ * - Autodocs integration
+ * - Content model documentation in composed stories
+ *
+ * Story structure:
+ * - Default export with meta configuration
+ * - argTypes with descriptions and controls
+ * - render function using document.createElement
+ * - Default story export
+ *
+ * @see https://storybook.js.org/
+ */
 #[TemplateGenerator('storybook')]
 class StorybookJSGenerator implements TemplateGeneratorInterface
 {
@@ -95,13 +123,14 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
             return null;
         }
 
-        // Get element metadata from class doc comment
-        $docComment = $ref->getDocComment();
+        // Get element metadata from class-level doc comment
         $desc = '';
-        if ($docComment) {
-            // Extract description from docblock
-            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
-            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
+        $docComment = $ref->getDocComment();
+        if ($docComment !== false) {
+            // Extract description from class docblock (first line of content)
+            if (preg_match('/\/\*\*\s*\n\s*\*\s*(.+?)\s*\n/s', $docComment, $matches)) {
+                $desc = trim($matches[1]);
+            }
         }
         $name = ucfirst($elementName);
         $level = $this->determineLevel($ref->getName());
@@ -121,10 +150,11 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         // Get element metadata from class doc comment
         $docComment = $ref->getDocComment();
         $desc = '';
-        if ($docComment) {
-            // Extract description from docblock
-            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
-            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
+        if ($docComment !== false) {
+            // Extract description from class docblock (first line of content)
+            if (preg_match('/\/\*\*\s*\n\s*\*\s*(.+?)\s*\n/s', $docComment, $matches)) {
+                $desc = trim($matches[1]);
+            }
         }
         $name = ucfirst($elementName);
         $level = $this->determineLevel($ref->getName());

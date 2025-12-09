@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Span - The span element doesn't mean anything on its own, but can be useful when used together with the global attributes, e.g. class, lang, or dir. It represents its children.
+
   @component span
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

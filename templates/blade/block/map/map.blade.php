@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Map - The map element, in conjunction with an img element and any area element descendants, defines an image map. The element represents a related collection of map areas.
+
   @component map
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

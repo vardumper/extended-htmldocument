@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Menu - The menu element represents a group of commands that a user can perform or activate. It can be used for toolbars, context menus, or listing form controls.
+
   @component menu
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

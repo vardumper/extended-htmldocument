@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Kbd - The kbd element represents user input (typically keyboard input, although it may also be used to represent other input methods, such as voice commands).
+
   @component kbd
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

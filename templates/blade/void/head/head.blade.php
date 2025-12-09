@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Head - The head element contains meta-information about the HTML document, including its title and links to its scripts and stylesheets.
+
   @component head
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

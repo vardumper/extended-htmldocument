@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Sub - The sub element represents a subscript.
+
   @component sub
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

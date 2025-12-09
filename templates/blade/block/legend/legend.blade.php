@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Legend - The legend element represents a caption for the content of its parent fieldset.
+
   @component legend
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

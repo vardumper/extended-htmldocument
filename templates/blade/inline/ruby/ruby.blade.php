@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Ruby - The ruby element represents a ruby annotation. Ruby annotations are short runs of text presented alongside base text, primarily used for East Asian typography to indicate pronunciation or to provide a short annotation.
+
   @component ruby
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

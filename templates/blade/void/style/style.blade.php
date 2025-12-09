@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Style - The style element is used to embed CSS styles directly into an HTML document.
+
   @component style
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

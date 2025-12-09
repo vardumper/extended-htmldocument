@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Data - The data element represents its contents, along with a machine-readable form of those contents in the value attribute.
+
   @component data
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

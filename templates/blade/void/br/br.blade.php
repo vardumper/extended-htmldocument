@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Br - The br element represents a line break.
+
   @component br
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

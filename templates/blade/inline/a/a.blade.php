@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  A - The a element represents a hyperlink, linking to another resource.
+
   @component a
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

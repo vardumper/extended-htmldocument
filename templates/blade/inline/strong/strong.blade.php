@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Strong - The strong element represents strong importance, seriousness, or urgency for its contents.
+
   @component strong
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  H2 - The h2 element represents a section heading. It has the second highest rank among the six levels of section headings.
+
   @component h2
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

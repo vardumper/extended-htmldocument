@@ -13,9 +13,9 @@ use Throwable;
 use TypeError;
 
 /**
- * NextJSGenerator - Generates TypeScript React components (.tsx)
+ * NextJSGenerator - Generates TypeScript React Components (.tsx)
  *
- * Despite the name, these components are universal and work in:
+ * Creates framework-agnostic React components that work universally across:
  * - Next.js 13+ (Server Components and Client Components)
  * - Next.js 12 and earlier (Pages Router)
  * - Create React App
@@ -24,11 +24,26 @@ use TypeError;
  * - Gatsby
  * - Any React application
  *
+ * Generated structure:
+ * - Components: nextjs/{block|inline|void}/ComponentName.tsx
+ * - Composed: nextjs/{block|inline|void}/ComponentNameExample.tsx
+ *
+ * Features:
+ * - TypeScript interfaces with full type safety
+ * - React.createElement (no JSX compilation required)
+ * - Pure functional components (no hooks or state)
+ * - Automatic camelCase to kebab-case attribute conversion
+ * - Boolean attribute handling
+ * - Data attribute object spreading
+ * - Content model documentation in composed examples
+ *
  * The components are framework-agnostic because they:
- * - Use only React.FC and React.createElement (no JSX)
+ * - Use only React.FC and React.createElement
  * - Don't use hooks (useState, useEffect, etc.)
  * - Don't use browser APIs (window, document, etc.)
  * - Are pure functional components
+ *
+ * @see https://react.dev/
  */
 #[TemplateGenerator('nextjs')]
 class NextJSGenerator implements TemplateGeneratorInterface
@@ -156,13 +171,14 @@ class NextJSGenerator implements TemplateGeneratorInterface
 
         $componentName = ucfirst($elementName);
 
-        // Get element metadata from class doc comment
-        $docComment = $ref->getDocComment();
+        // Get element metadata from class-level doc comment
         $desc = '';
-        if ($docComment) {
-            // Extract description from docblock
-            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
-            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
+        $docComment = $ref->getDocComment();
+        if ($docComment !== false) {
+            // Extract description from class docblock (first line of content)
+            if (preg_match('/\/\*\*\s*\n\s*\*\s*(.+?)\s*\n/s', $docComment, $matches)) {
+                $desc = trim($matches[1]);
+            }
         }
         $name = ucfirst($elementName);
 
@@ -181,10 +197,11 @@ class NextJSGenerator implements TemplateGeneratorInterface
         // Get element metadata from class doc comment
         $docComment = $ref->getDocComment();
         $desc = '';
-        if ($docComment) {
-            // Extract description from docblock
-            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
-            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
+        if ($docComment !== false) {
+            // Extract description from class docblock (first line of content)
+            if (preg_match('/\/\*\*\s*\n\s*\*\s*(.+?)\s*\n/s', $docComment, $matches)) {
+                $desc = trim($matches[1]);
+            }
         }
         $name = ucfirst($elementName);
         $level = 'inline'; // Will be determined by class hierarchy

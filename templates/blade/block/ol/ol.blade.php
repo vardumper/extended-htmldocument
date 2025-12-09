@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Ol - The ol element represents an ordered list of items. The order of the list is meaningful.
+
   @component ol
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

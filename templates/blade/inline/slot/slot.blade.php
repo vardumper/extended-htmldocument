@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Slot - The slot element is a placeholder inside a web component that you can fill with your own markup, which lets you create separate DOM trees and present them together.
+
   @component slot
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

@@ -3,78 +3,116 @@
 namespace Html\TwigComponentBundle\Twig\Block;
 
 use Html\Enum\{
-    TrAlignEnum,
-    ValignEnum,
-    RoleEnum,
+    AriaAtomicEnum,
     AriaBusyEnum,
     AriaHiddenEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
-    AriaAtomicEnum,
     AriaSelectedEnum,
     AriaSortEnum,
     AutoCapitalizeEnum,
     ContentEditableEnum,
     DirectionEnum,
     InputModeEnum,
-    SpellCheckEnum,
-    TranslateEnum,
     PopoverEnum,
+    RoleEnum,
+    SpellCheckEnum,
+    TrAlignEnum,
+    TranslateEnum,
+    ValignEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Tr - 
+ * Tr - The tr element represents a row of cells in a table.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Tr', template: '@HtmlTwigComponent/block/tr/tr.html.twig')]
 class Tr
 {
     public ?TrAlignEnum $align = null;
+
     public ?string $bgcolor = null;
+
     public ?string $char = null;
+
     public ?string $charoff = null;
+
     public ?ValignEnum $valign = null;
+
     public ?RoleEnum $role = null;
+
     public ?string $ariaControls = null;
+
     public ?string $ariaDescribedby = null;
+
     public ?string $ariaLabelledby = null;
+
     public ?AriaBusyEnum $ariaBusy = null;
+
     public ?AriaHiddenEnum $ariaHidden = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?AriaSelectedEnum $ariaSelected = null;
+
     public ?int $ariaPosinset = null;
+
     public ?int $ariaSetsize = null;
+
     public ?int $ariaLevel = null;
+
     public ?int $ariaColcount = null;
+
     public ?int $ariaRowcount = null;
+
     public ?AriaSortEnum $ariaSort = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public null|string|bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?PopoverEnum $popover = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

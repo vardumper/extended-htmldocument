@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Noscript - The noscript element defines an alternate content for users that have disabled scripts in their browser or have a browser that doesn't support script.
+
   @component noscript
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

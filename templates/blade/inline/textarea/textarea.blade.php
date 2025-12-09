@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Textarea - The textarea element represents a multiline plain text edit control for the element's raw value.
+
   @component textarea
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

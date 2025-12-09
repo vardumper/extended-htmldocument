@@ -1,49 +1,58 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * Anchor - The a element represents a hyperlink, linking to another resource.
- *
- * @generated 2025-12-04 12:02:25
+ * @generated 2025-12-09 15:32:40
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
  */
-
 namespace Html\Element\Inline;
 
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Body;
-use Html\Element\Block\DefinitionDescription;
-use Html\Element\Block\Dialog;
-use Html\Element\Block\Division;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Header;
-use Html\Element\Block\ListItem;
-use Html\Element\Block\Main;
-use Html\Element\Block\Navigation;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Section;
-use Html\Element\Block\Template;
 use Html\Element\InlineElement;
-use Html\Enum\AriaAtomicEnum;
-use Html\Enum\AriaBusyEnum;
-use Html\Enum\AriaCurrentEnum;
-use Html\Enum\AriaDisabledEnum;
-use Html\Enum\AriaExpandedEnum;
-use Html\Enum\AriaHaspopupEnum;
-use Html\Enum\AriaLiveEnum;
-use Html\Enum\AriaPressedEnum;
-use Html\Enum\AriaRelevantEnum;
-use Html\Enum\ARoleEnum;
-use Html\Enum\RelEnum;
-use Html\Enum\TargetEnum;
-use Html\Mapping\Element;
+use Html\Element\Block\{
+    Article,
+    Aside,
+    Body,
+    DefinitionDescription,
+    Dialog,
+    Division,
+    Footer,
+    Header,
+    ListItem,
+    Main,
+    Navigation,
+    Paragraph,
+    Section,
+    Template,
+};
+use Html\Element\Inline\{
+    MarkedText,
+    ScalableVectorGraphics,
+    Slot,
+};
+use Html\Enum\{
+    ARoleEnum,
+    AriaAtomicEnum,
+    AriaBusyEnum,
+    AriaCurrentEnum,
+    AriaDisabledEnum,
+    AriaExpandedEnum,
+    AriaHaspopupEnum,
+    AriaLiveEnum,
+    AriaPressedEnum,
+    AriaRelevantEnum,
+    RelEnum,
+    TargetEnum,
+};
 use Html\Trait\GlobalAttribute;
-use InvalidArgumentException;
+use Html\Mapping\Element;
 
+/**
+ * The a element represents a hyperlink, linking to another resource.
+ */
 #[Element('a')]
 class Anchor extends InlineElement
 {
@@ -59,14 +68,13 @@ class Anchor extends InlineElement
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\InputmodeTrait;
     use GlobalAttribute\LangTrait;
+    use GlobalAttribute\PopoverTrait;
     use GlobalAttribute\SlotTrait;
     use GlobalAttribute\SpellcheckTrait;
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
-    use GlobalAttribute\PopoverTrait;
-
     /**
      * The HTML element name
      */
@@ -115,131 +123,115 @@ class Anchor extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Indicates that the linked content should be downloaded rather than displayed.
-     */
+
+    /** Indicates that the linked content should be downloaded rather than displayed. */
     protected ?string $download = null;
 
-    /**
+    /** 
      * Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.
+     * @category HTML attribute
      * @required
      */
     protected ?string $href = null;
 
-    /**
-     * Specifies the language of the linked resource.
-     */
+    /** Specifies the language of the linked resource. */
     protected ?string $hreflang = null;
 
-    /**
-     * Specifies the relationship between the current document and the linked document.
-     */
+    /** Specifies the relationship between the current document and the linked document. */
     protected ?RelEnum $rel = null;
 
-    /**
+    /** 
      * Specifies where to open the linked document.
+     * @category HTML attribute
      * @example _self
      */
     protected null|string|TargetEnum $target = null;
 
-    /**
-     * Specifies the media type of the linked resource.
-     */
+    /** Specifies the media type of the linked resource. */
     protected ?string $type = null;
 
-    /**
-     * Defines the semantic purpose of an element for assistive technologies.
-     */
+    /** Defines the semantic purpose of an element for assistive technologies. */
     protected ?ARoleEnum $role = null;
 
-    /**
-     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
-     */
+    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
     protected ?string $ariaControls = null;
 
-    /**
-     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
-     */
+    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
     protected ?string $ariaDescribedby = null;
 
-    /**
-     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
-     */
+    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
     protected ?string $ariaLabelledby = null;
 
-    /**
+    /** 
      * Indicates the current item within a container or set of related elements.
+     * @category HTML attribute
      * @example false
      */
     protected ?AriaCurrentEnum $ariaCurrent = null;
 
-    /**
+    /** 
      * The aria-busy attribute is used to indicate whether an element is currently busy or not.
+     * @category HTML attribute
      * @example false
      */
     protected ?AriaBusyEnum $ariaBusy = null;
 
-    /**
-     * Defines a string value that labels the current element for assistive technologies.
-     */
+    /** Defines a string value that labels the current element for assistive technologies. */
     protected ?string $ariaLabel = null;
 
-    /**
+    /** 
      * Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
+     * @category HTML attribute
      * @example false
      */
     protected ?AriaDisabledEnum $ariaDisabled = null;
 
-    /**
-     * References an element that provides additional details about the current element.
-     */
+    /** References an element that provides additional details about the current element. */
     protected ?string $ariaDetails = null;
 
-    /**
-     * Defines keyboard shortcuts available for the element.
-     */
+    /** Defines keyboard shortcuts available for the element. */
     protected ?string $ariaKeyshortcuts = null;
 
-    /**
-     * Provides a human-readable custom role description for assistive technologies.
-     */
+    /** Provides a human-readable custom role description for assistive technologies. */
     protected ?string $ariaRoledescription = null;
 
-    /**
+    /** 
      * Defines how updates to the element should be announced to screen readers.
+     * @category HTML attribute
      * @example off
      */
     protected ?AriaLiveEnum $ariaLive = null;
 
-    /**
+    /** 
      * Indicates what content changes should be announced in a live region.
+     * @category HTML attribute
      * @example additions text
      */
     protected ?AriaRelevantEnum $ariaRelevant = null;
 
-    /**
+    /** 
      * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
+     * @category HTML attribute
      * @example false
      */
     protected ?AriaAtomicEnum $ariaAtomic = null;
 
-    /**
-     * Indicates whether a collapsible UI element is expanded (true) or collapsed (false).
-     */
+    /** Indicates whether a collapsible UI element is expanded (true) or collapsed (false). */
     protected ?AriaExpandedEnum $ariaExpanded = null;
 
-    /**
+    /** 
      * Indicates that an element has an associated popup menu, listbox, tree, grid, or dialog.
+     * @category HTML attribute
      * @example false
      */
     protected ?AriaHaspopupEnum $ariaHaspopup = null;
 
-    /**
-     * Indicates whether a toggle button is pressed (true, false, or mixed).
-     */
+    /** Indicates whether a toggle button is pressed (true, false, or mixed). */
     protected ?AriaPressedEnum $ariaPressed = null;
+
 
     public function setDownload(string $download): static
     {
@@ -280,7 +272,7 @@ class Anchor extends InlineElement
     public function setRel(string|RelEnum $rel): static
     {
         if (\is_string($rel)) {
-            $rel = RelEnum::tryFrom($rel) ?? throw new InvalidArgumentException('Invalid value for $rel.');
+            $rel = RelEnum::tryFrom($rel) ?? throw new \InvalidArgumentException("Invalid value for \$rel.");
         }
         $this->rel = $rel;
         $this->delegated->setAttribute('rel', (string) $rel->value);
@@ -298,7 +290,7 @@ class Anchor extends InlineElement
         $value = $target;
         if (\is_string($target)) {
             $resolved = TargetEnum::tryFrom($target);
-            if ($resolved !== null) {
+            if (!\is_null($resolved)) {
                 $target = $resolved;
             }
         }
@@ -331,7 +323,7 @@ class Anchor extends InlineElement
     public function setRole(string|ARoleEnum $role): static
     {
         if (\is_string($role)) {
-            $role = ARoleEnum::tryFrom($role) ?? throw new InvalidArgumentException('Invalid value for $role.');
+            $role = ARoleEnum::tryFrom($role) ?? throw new \InvalidArgumentException("Invalid value for \$role.");
         }
         $this->role = $role;
         $this->delegated->setAttribute('role', (string) $role->value);
@@ -383,9 +375,7 @@ class Anchor extends InlineElement
     public function setAriaCurrent(string|AriaCurrentEnum $ariaCurrent): static
     {
         if (\is_string($ariaCurrent)) {
-            $ariaCurrent = AriaCurrentEnum::tryFrom($ariaCurrent) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaCurrent.'
-            );
+            $ariaCurrent = AriaCurrentEnum::tryFrom($ariaCurrent) ?? throw new \InvalidArgumentException("Invalid value for \$ariaCurrent.");
         }
         $this->ariaCurrent = $ariaCurrent;
         $this->delegated->setAttribute('aria-current', (string) $ariaCurrent->value);
@@ -401,9 +391,7 @@ class Anchor extends InlineElement
     public function setAriaBusy(string|AriaBusyEnum $ariaBusy): static
     {
         if (\is_string($ariaBusy)) {
-            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaBusy.'
-            );
+            $ariaBusy = AriaBusyEnum::tryFrom($ariaBusy) ?? throw new \InvalidArgumentException("Invalid value for \$ariaBusy.");
         }
         $this->ariaBusy = $ariaBusy;
         $this->delegated->setAttribute('aria-busy', (string) $ariaBusy->value);
@@ -431,9 +419,7 @@ class Anchor extends InlineElement
     public function setAriaDisabled(string|AriaDisabledEnum $ariaDisabled): static
     {
         if (\is_string($ariaDisabled)) {
-            $ariaDisabled = AriaDisabledEnum::tryFrom($ariaDisabled) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaDisabled.'
-            );
+            $ariaDisabled = AriaDisabledEnum::tryFrom($ariaDisabled) ?? throw new \InvalidArgumentException("Invalid value for \$ariaDisabled.");
         }
         $this->ariaDisabled = $ariaDisabled;
         $this->delegated->setAttribute('aria-disabled', (string) $ariaDisabled->value);
@@ -485,9 +471,7 @@ class Anchor extends InlineElement
     public function setAriaLive(string|AriaLiveEnum $ariaLive): static
     {
         if (\is_string($ariaLive)) {
-            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaLive.'
-            );
+            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
         }
         $this->ariaLive = $ariaLive;
         $this->delegated->setAttribute('aria-live', (string) $ariaLive->value);
@@ -503,9 +487,7 @@ class Anchor extends InlineElement
     public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
     {
         if (\is_string($ariaRelevant)) {
-            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaRelevant.'
-            );
+            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
         }
         $this->ariaRelevant = $ariaRelevant;
         $this->delegated->setAttribute('aria-relevant', (string) $ariaRelevant->value);
@@ -521,9 +503,7 @@ class Anchor extends InlineElement
     public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
     {
         if (\is_string($ariaAtomic)) {
-            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaAtomic.'
-            );
+            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
         }
         $this->ariaAtomic = $ariaAtomic;
         $this->delegated->setAttribute('aria-atomic', (string) $ariaAtomic->value);
@@ -539,9 +519,7 @@ class Anchor extends InlineElement
     public function setAriaExpanded(string|AriaExpandedEnum $ariaExpanded): static
     {
         if (\is_string($ariaExpanded)) {
-            $ariaExpanded = AriaExpandedEnum::tryFrom($ariaExpanded) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaExpanded.'
-            );
+            $ariaExpanded = AriaExpandedEnum::tryFrom($ariaExpanded) ?? throw new \InvalidArgumentException("Invalid value for \$ariaExpanded.");
         }
         $this->ariaExpanded = $ariaExpanded;
         $this->delegated->setAttribute('aria-expanded', (string) $ariaExpanded->value);
@@ -557,9 +535,7 @@ class Anchor extends InlineElement
     public function setAriaHaspopup(string|AriaHaspopupEnum $ariaHaspopup): static
     {
         if (\is_string($ariaHaspopup)) {
-            $ariaHaspopup = AriaHaspopupEnum::tryFrom($ariaHaspopup) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaHaspopup.'
-            );
+            $ariaHaspopup = AriaHaspopupEnum::tryFrom($ariaHaspopup) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHaspopup.");
         }
         $this->ariaHaspopup = $ariaHaspopup;
         $this->delegated->setAttribute('aria-haspopup', (string) $ariaHaspopup->value);
@@ -575,9 +551,7 @@ class Anchor extends InlineElement
     public function setAriaPressed(string|AriaPressedEnum $ariaPressed): static
     {
         if (\is_string($ariaPressed)) {
-            $ariaPressed = AriaPressedEnum::tryFrom($ariaPressed) ?? throw new InvalidArgumentException(
-                'Invalid value for $ariaPressed.'
-            );
+            $ariaPressed = AriaPressedEnum::tryFrom($ariaPressed) ?? throw new \InvalidArgumentException("Invalid value for \$ariaPressed.");
         }
         $this->ariaPressed = $ariaPressed;
         $this->delegated->setAttribute('aria-pressed', (string) $ariaPressed->value);
@@ -589,4 +563,5 @@ class Anchor extends InlineElement
     {
         return $this->ariaPressed;
     }
+
 }

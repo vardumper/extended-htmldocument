@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Sup - The sup element represents a superscript.
+
   @component sup
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

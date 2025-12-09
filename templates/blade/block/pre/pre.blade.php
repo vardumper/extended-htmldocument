@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Pre - The pre element represents preformatted text. Text within this element is typically displayed in a non-proportional font exactly as it is laid out in the file.
+
   @component pre
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

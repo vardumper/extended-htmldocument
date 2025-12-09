@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Embed - The embed element provides an integration point for an external (typically non-HTML) application or interactive content.
+
   @component embed
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

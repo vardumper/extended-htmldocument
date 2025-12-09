@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Picture - The picture element contains zero or more source elements and one img element to offer alternative versions of an image for different display/device scenarios.
+
   @component picture
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

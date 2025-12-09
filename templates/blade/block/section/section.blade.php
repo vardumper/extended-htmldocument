@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Section - The section element helps in structuring the content of a webpage by grouping related information together.
+
   @component section
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

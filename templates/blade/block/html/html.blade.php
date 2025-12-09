@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Html - The root element of an HTML document. It represents the top-level of the HTML structure.
+
   @component html
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

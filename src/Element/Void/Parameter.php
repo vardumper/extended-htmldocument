@@ -1,39 +1,41 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * Parameter - The param element defines parameters for an object element.
- *
- * @generated 2025-12-04 12:02:25
+ * @generated 2025-12-09 15:32:40
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param
  */
-
 namespace Html\Element\Void;
 
-use Html\Element\Block\Aside;
-use Html\Element\Block\DefinitionDescription;
-use Html\Element\Block\Division;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Header;
-use Html\Element\Block\Main;
-use Html\Element\Block\Section;
-use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
-use Html\Mapping\Element;
+use Html\Element\Block\{
+    Aside,
+    DefinitionDescription,
+    Division,
+    Footer,
+    Header,
+    Main,
+    Section,
+};
+use Html\Element\Inline\MarkedText;
 use Html\Trait\GlobalAttribute;
+use Html\Mapping\Element;
 
+/**
+ * The param element defines parameters for an object element.
+ */
 #[Element('param')]
 class Parameter extends VoidElement
 {
-    use GlobalAttribute\IdTrait;
     use GlobalAttribute\ClassTrait;
-    use GlobalAttribute\StyleTrait;
-    use GlobalAttribute\HiddenTrait;
     use GlobalAttribute\DataTrait;
-
+    use GlobalAttribute\HiddenTrait;
+    use GlobalAttribute\IdTrait;
+    use GlobalAttribute\StyleTrait;
     /**
      * The HTML element name
      */
@@ -71,19 +73,18 @@ class Parameter extends VoidElement
 
     /**
      * The list of allowed direct children. Any if empty.
+     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies the name associated with the element. The meaning may vary depending on the context.
-     */
+    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
     protected ?string $name = null;
 
-    /**
-     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
-     */
+    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     protected ?string $value = null;
+
 
     public function setName(string $name): static
     {
@@ -108,4 +109,5 @@ class Parameter extends VoidElement
     {
         return $this->value;
     }
+
 }

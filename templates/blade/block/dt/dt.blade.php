@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Dt - The dt element represents the term, or name, part of a term-description group in a description list (dl element).
+
   @component dt
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

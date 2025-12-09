@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Th - The th element represents a header cell in a table.
+
   @component th
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

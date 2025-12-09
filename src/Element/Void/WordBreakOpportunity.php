@@ -1,33 +1,36 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * WordBreakOpportunity - The wbr element represents a word break opportunity.
- *
- * @generated 2025-12-04 12:02:25
+ * @generated 2025-12-09 15:32:40
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr
  */
-
 namespace Html\Element\Void;
 
-use Html\Element\Block\Article;
-use Html\Element\Block\Aside;
-use Html\Element\Block\Body;
-use Html\Element\Block\DefinitionDescription;
-use Html\Element\Block\Division;
-use Html\Element\Block\Footer;
-use Html\Element\Block\Header;
-use Html\Element\Block\Main;
-use Html\Element\Block\Paragraph;
-use Html\Element\Block\Section;
-use Html\Element\Inline\MarkedText;
 use Html\Element\VoidElement;
-use Html\Mapping\Element;
+use Html\Element\Block\{
+    Article,
+    Aside,
+    Body,
+    DefinitionDescription,
+    Division,
+    Footer,
+    Header,
+    Main,
+    Paragraph,
+    Section,
+};
+use Html\Element\Inline\MarkedText;
 use Html\Trait\GlobalAttribute;
+use Html\Mapping\Element;
 
+/**
+ * The wbr element represents a word break opportunity.
+ */
 #[Element('wbr')]
 class WordBreakOpportunity extends VoidElement
 {
@@ -36,7 +39,6 @@ class WordBreakOpportunity extends VoidElement
     use GlobalAttribute\DirTrait;
     use GlobalAttribute\HiddenTrait;
     use GlobalAttribute\IdTrait;
-
     /**
      * The HTML element name
      */
@@ -77,7 +79,11 @@ class WordBreakOpportunity extends VoidElement
 
     /**
      * The list of allowed direct children. Any if empty.
+     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
+
+
 }

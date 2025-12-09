@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Article - The article element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable.
+
   @component article
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

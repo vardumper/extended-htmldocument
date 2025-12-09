@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Tfoot - The tfoot element groups the footer content in a table.
+
   @component tfoot
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

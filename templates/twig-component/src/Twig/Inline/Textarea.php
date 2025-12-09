@@ -3,96 +3,146 @@
 namespace Html\TwigComponentBundle\Twig\Inline;
 
 use Html\Enum\{
-    AutocompleteEnum,
-    AutocorrectEnum,
-    WrapEnum,
-    RoleEnum,
-    AriaInvalidEnum,
-    AriaDisabledEnum,
-    AriaLiveEnum,
-    AriaRelevantEnum,
     AriaAtomicEnum,
+    AriaAutocompleteEnum,
+    AriaDisabledEnum,
     AriaExpandedEnum,
     AriaHaspopupEnum,
-    AriaPressedEnum,
-    AriaAutocompleteEnum,
-    AriaReadonlyEnum,
-    AriaRequiredEnum,
+    AriaInvalidEnum,
+    AriaLiveEnum,
     AriaMultilineEnum,
+    AriaPressedEnum,
+    AriaReadonlyEnum,
+    AriaRelevantEnum,
+    AriaRequiredEnum,
     AutoCapitalizeEnum,
+    AutocompleteEnum,
+    AutocorrectEnum,
     ContentEditableEnum,
     DirectionEnum,
     InputModeEnum,
+    PopoverEnum,
+    RoleEnum,
     SpellCheckEnum,
     TranslateEnum,
-    PopoverEnum,
+    WrapEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Textarea - 
+ * Textarea - The textarea element represents a multiline plain text edit control for the element's raw value.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Textarea', template: '@HtmlTwigComponent/inline/textarea/textarea.html.twig')]
 class Textarea
 {
     public ?AutocompleteEnum $autocomplete = null;
+
     public ?AutocorrectEnum $autocorrect = null;
+
     public ?int $cols = null;
+
     public ?string $dirname = null;
+
     public ?bool $disabled = null;
+
     public ?string $form = null;
+
     public ?int $maxlength = null;
+
     public ?int $minlength = null;
+
     public ?string $name = null;
+
     public ?string $placeholder = null;
+
     public ?bool $readonly = null;
+
     public ?bool $required = null;
+
     public ?int $rows = null;
+
     public ?WrapEnum $wrap = null;
+
     public ?RoleEnum $role = null;
+
     public ?string $ariaControls = null;
+
     public ?string $ariaDescribedby = null;
+
     public ?string $ariaLabelledby = null;
+
     public ?AriaInvalidEnum $ariaInvalid = null;
+
     public ?string $ariaLabel = null;
+
     public ?AriaDisabledEnum $ariaDisabled = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?AriaExpandedEnum $ariaExpanded = null;
+
     public ?AriaHaspopupEnum $ariaHaspopup = null;
+
     public ?AriaPressedEnum $ariaPressed = null;
+
     public ?AriaAutocompleteEnum $ariaAutocomplete = null;
+
     public ?string $ariaPlaceholder = null;
+
     public ?AriaReadonlyEnum $ariaReadonly = null;
+
     public ?AriaRequiredEnum $ariaRequired = null;
+
     public ?AriaMultilineEnum $ariaMultiline = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public null|string|bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?string $slot = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?PopoverEnum $popover = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

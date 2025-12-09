@@ -2,24 +2,26 @@
 
 namespace Html\TwigComponentBundle\Twig\Void;
 
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Col - 
+ * Col - The col element represents a column in a table.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Col', template: '@HtmlTwigComponent/void/col/col.html.twig')]
 class Col
 {
     public ?int $span = null;
+
     public ?string $width = null;
+
     public ?string $style = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

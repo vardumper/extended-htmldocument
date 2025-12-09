@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Dd - The dd element represents the description, definition, or value, part of a term-description group in a description list (dl element).
+
   @component dd
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

@@ -3,60 +3,86 @@
 namespace Html\TwigComponentBundle\Twig\Block;
 
 use Html\Enum\{
-    AutocompleteEnum,
-    AutocorrectEnum,
-    FormEnctypeEnum,
-    FormMethodEnum,
-    FormTargetEnum,
+    AriaAtomicEnum,
     AriaInvalidEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
-    AriaAtomicEnum,
+    AutocompleteEnum,
+    AutocorrectEnum,
     DirectionEnum,
+    FormEnctypeEnum,
+    FormMethodEnum,
+    FormTargetEnum,
     TranslateEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Form - 
+ * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Form', template: '@HtmlTwigComponent/block/form/form.html.twig')]
 class Form
 {
     public ?string $acceptCharset = null;
+
     public ?string $action = null;
+
     public ?AutocompleteEnum $autocomplete = null;
+
     public ?AutocorrectEnum $autocorrect = null;
+
     public ?FormEnctypeEnum $enctype = null;
+
     public ?FormMethodEnum $method = null;
+
     public ?string $name = null;
+
     public ?bool $novalidate = null;
+
     public ?FormTargetEnum $target = null;
+
     public ?AriaInvalidEnum $ariaInvalid = null;
+
     public ?string $ariaLabel = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?string $accesskey = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?string $lang = null;
+
     public ?string $slot = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

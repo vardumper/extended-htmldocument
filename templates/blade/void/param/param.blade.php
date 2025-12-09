@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Param - The param element defines parameters for an object element.
+
   @component param
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

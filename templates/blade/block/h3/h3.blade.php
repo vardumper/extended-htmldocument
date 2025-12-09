@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  H3 - The h3 element represents a section heading. It has the third highest rank among the six levels of section headings.
+
   @component h3
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

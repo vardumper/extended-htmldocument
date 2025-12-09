@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Fieldset - The fieldset element represents a set of form controls optionally grouped under a common name.
+
   @component fieldset
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

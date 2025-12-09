@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  H4 - The h4 element represents a section heading. It has the fourth highest rank among the six levels of section headings.
+
   @component h4
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

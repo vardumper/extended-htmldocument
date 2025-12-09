@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Caption - The caption element represents the title of the table that is its parent, if it has a parent and that is a table element.
+
   @component caption
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

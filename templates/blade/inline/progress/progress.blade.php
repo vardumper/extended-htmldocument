@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Progress - The progress element represents the completion progress of a task.
+
   @component progress
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument

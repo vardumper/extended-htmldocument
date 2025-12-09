@@ -3,59 +3,86 @@
 namespace Html\TwigComponentBundle\Twig\Block;
 
 use Html\Enum\{
-    CrossoriginEnum,
-    PreloadEnum,
-    RoleEnum,
+    AriaAtomicEnum,
     AriaBusyEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
-    AriaAtomicEnum,
-    TranslateEnum,
+    CrossoriginEnum,
     PopoverEnum,
+    PreloadEnum,
+    RoleEnum,
+    TranslateEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Audio - 
+ * Audio - The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Audio', template: '@HtmlTwigComponent/block/audio/audio.html.twig')]
 class Audio
 {
     public ?bool $autoplay = null;
+
     public ?bool $controls = null;
+
     public ?CrossoriginEnum $crossorigin = null;
+
     public ?bool $loop = null;
+
     public ?bool $muted = null;
+
     public ?PreloadEnum $preload = null;
+
     public ?string $src = null;
+
     public ?RoleEnum $role = null;
+
     public ?string $ariaControls = null;
+
     public ?string $ariaDescribedby = null;
+
     public ?string $ariaLabelledby = null;
+
     public ?AriaBusyEnum $ariaBusy = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?string $accesskey = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?string $lang = null;
+
     public ?string $slot = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?PopoverEnum $popover = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
 
     #[PreMount]

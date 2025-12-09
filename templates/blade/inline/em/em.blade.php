@@ -1,6 +1,8 @@
 {{--
   This file is auto-generated.
 
+  Em - The em element represents stress emphasis of its contents.
+
   @component em
   @author vardumper <info@erikpoehler.com>
   @package vardumper/extended-htmldocument
