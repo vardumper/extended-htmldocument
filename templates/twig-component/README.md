@@ -1,4 +1,4 @@
-# HTML Component Bundle
+# Twig Component Bundle with all HTML5 elements
 
 Symfony UX Twig Components for all HTML5 elements with ARIA support and static attribute validation via Enums.
 It provides auto-completion in your IDE of choice, so all available attributes can be quickly accessed. 
