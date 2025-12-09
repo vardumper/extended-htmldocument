@@ -1,0 +1,58 @@
+name: Sync Symfony Twig Component Bundle upon Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get previous tag
+        id: previoustag
+        run: |
+          echo "tag=$(git describe --tags --abbrev=0 HEAD^)" >> $GITHUB_OUTPUT
+
+      - name: Check if subfolder changed
+        id: diff
+        run: |
+          if git diff --quiet ${{ steps.previoustag.outputs.tag }} HEAD -- templates/twig-component; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Sync folder to secondary repo
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git clone https://github.com/vardumper/html5-twig-component-bundle.git target
+          rm -rf target/*
+          cp -R templates/twig-component/* target/
+          cd target
+
+          # Update version in composer.json
+          release_version="${GITHUB_REF_NAME#v}"   # Strip leading "v" if present
+
+          # Update "version" key in composer.json
+          jq --arg v "$release_version" '.version = $v' composer.json > composer.json.tmp
+          mv composer.json.tmp composer.json
+
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Sync from ${GITHUB_REPOSITORY} release ${GITHUB_REF_NAME}" || echo "No changes"
+          git push
+
+      - name: Create release in target repo
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          gh release create ${{ github.ref_name }} \
+            --repo vardumper/html5-twig-component-bundle \
+            --notes "Auto-synced from ${GITHUB_REPOSITORY} release ${GITHUB_REF_NAME}"
