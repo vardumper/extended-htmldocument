@@ -1,4 +1,4 @@
-# Blade Templates
+# Blade Templates for all HTML5 elements
 
 Fully-typesafe Laravel Blade templates for all HTML5 elements. Provides validation for static HTML attributes (enums). Supports ARIA, WCAG by design.
 These templates are compiled from the HTML5 schema.
