@@ -83,10 +83,21 @@ class BatchGeneratorCommand extends Command
                 $elementShortName = (new ReflectionClass($className))->getShortName();
                 $fileName = $elementInstance::QUALIFIED_NAME . '.' . $generatorInstance->getExtension();
                 $level = $this->determineLevel($className);
-                $componentDir = rtrim(
-                    $dest,
-                    \DIRECTORY_SEPARATOR
-                ) . \DIRECTORY_SEPARATOR . $name . \DIRECTORY_SEPARATOR . $level . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME;
+
+                // For twig-component, use bundle structure: src/{Twig|Resources}/{Block|Inline|Void}
+                if ($name === 'twig-component') {
+                    $componentDir = rtrim($dest, \DIRECTORY_SEPARATOR)
+                        . \DIRECTORY_SEPARATOR . $name
+                        . \DIRECTORY_SEPARATOR . 'src'
+                        . \DIRECTORY_SEPARATOR . 'Resources'
+                        . \DIRECTORY_SEPARATOR . $level
+                        . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME;
+                } else {
+                    $componentDir = rtrim($dest, \DIRECTORY_SEPARATOR)
+                        . \DIRECTORY_SEPARATOR . $name
+                        . \DIRECTORY_SEPARATOR . $level
+                        . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME;
+                }
 
                 if (! is_dir($componentDir)) {
                     mkdir($componentDir, 0755, true);
@@ -104,7 +115,20 @@ class BatchGeneratorCommand extends Command
                 if ($name === 'twig-component' && method_exists($generatorInstance, 'renderComponentClass')) {
                     $componentClass = $generatorInstance->renderComponentClass($elementInstance);
                     $componentName = ucfirst($elementInstance::QUALIFIED_NAME);
-                    $componentFile = $componentDir . \DIRECTORY_SEPARATOR . $componentName . '.php';
+
+                    // PHP classes go in src/Twig/{Block|Inline|Void}
+                    $levelCap = ucfirst($level);
+                    $phpDir = rtrim($dest, \DIRECTORY_SEPARATOR)
+                        . \DIRECTORY_SEPARATOR . $name
+                        . \DIRECTORY_SEPARATOR . 'src'
+                        . \DIRECTORY_SEPARATOR . 'Twig'
+                        . \DIRECTORY_SEPARATOR . $levelCap;
+
+                    if (! is_dir($phpDir)) {
+                        mkdir($phpDir, 0755, true);
+                    }
+
+                    $componentFile = $phpDir . \DIRECTORY_SEPARATOR . $componentName . '.php';
 
                     if (file_exists($componentFile) && ! $overwriteExisting) {
                         $this->io->warning("File '{$componentFile}' already exists. Skipping generation.");
@@ -114,6 +138,11 @@ class BatchGeneratorCommand extends Command
                     file_put_contents($componentFile, $componentClass);
                     $this->io->success("Generated component class: {$componentFile}");
                 }
+            }
+
+            // Generate bundle files for twig-component
+            if ($name === 'twig-component') {
+                $this->generateBundleFiles($dest . \DIRECTORY_SEPARATOR . $name, $overwriteExisting);
             }
         }
         return Command::SUCCESS;
@@ -144,5 +173,150 @@ class BatchGeneratorCommand extends Command
 
         $this->data = Yaml::parseFile(self::HTML_DEFINITION_PATH);
         return true;
+    }
+
+    private function generateBundleFiles(string $bundleDir, bool $overwrite): void
+    {
+        // Generate composer.json
+        $composerJson = [
+            'name' => 'vardumper/html5-ux-twig-component-bundle',
+            'description' => 'Symfony UX Twig Components for typesafe HTML5 elements with ARIA support & enum validation',
+            'type' => 'symfony-bundle',
+            'license' => 'MIT',
+            'keywords' => ['symfony', 'twig', 'components', 'html5', 'aria', 'ux'],
+            'authors' => [
+                [
+                    'name' => 'vardumper',
+                    'email' => 'info@erikpoehler.com',
+                ],
+            ],
+            'require' => [
+                'php' => '^8.2',
+                'symfony/twig-bundle' => '^6.0|^7.0',
+                'symfony/ux-twig-component' => '^2.0',
+                'vardumper/extended-htmldocument' => '^0.2',
+            ],
+            'autoload' => [
+                'psr-4' => [
+                    'Html\\TwigComponentBundle\\' => 'src/',
+                ],
+            ],
+            'extra' => [
+                'symfony' => [
+                    'require' => '^6.0|^7.0',
+                ],
+            ],
+        ];
+
+        $composerFile = $bundleDir . \DIRECTORY_SEPARATOR . 'composer.json';
+        if (! file_exists($composerFile) || $overwrite) {
+            file_put_contents(
+                $composerFile,
+                json_encode($composerJson, \JSON_PRETTY_PRINT | \JSON_UNESCAPED_SLASHES) . "\n"
+            );
+            $this->io->success("Generated: {$composerFile}");
+        }
+
+        // Generate HtmlComponentBundle.php
+        $bundleClass = <<<'PHP'
+<?php
+
+namespace Html\ComponentBundle;
+
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+/**
+ * HTML Component Bundle
+ * 
+ * Provides Symfony UX Twig Components for all HTML5 elements with ARIA support.
+ * 
+ * @author vardumper <info@erikpoehler.com>
+ * @package Html\ComponentBundle
+ */
+class HtmlComponentBundle extends Bundle
+{
+    public function getPath(): string
+    {
+        return \dirname(__DIR__);
+    }
+}
+
+PHP;
+
+        $bundleFile = $bundleDir . \DIRECTORY_SEPARATOR . 'src' . \DIRECTORY_SEPARATOR . 'HtmlComponentBundle.php';
+        if (! file_exists($bundleFile) || $overwrite) {
+            $bundleFileDir = dirname($bundleFile);
+            if (! is_dir($bundleFileDir)) {
+                mkdir($bundleFileDir, 0755, true);
+            }
+            file_put_contents($bundleFile, $bundleClass);
+            $this->io->success("Generated: {$bundleFile}");
+        }
+
+        // Generate README.md
+        $readme = <<<'MD'
+# HTML Component Bundle
+
+Symfony UX Twig Components for all HTML5 elements with ARIA support.
+
+## Installation
+
+```bash
+composer require html/component-bundle
+```
+
+## Configuration
+
+Register the bundle in `config/bundles.php`:
+
+```php
+return [
+    // ...
+    Html\ComponentBundle\HtmlComponentBundle::class => ['all' => true],
+];
+```
+
+## Usage
+
+Use any HTML element as a Twig Component:
+
+```twig
+<twig:Blockquote cite="https://example.com">
+    This is a quote from example.com
+</twig:Blockquote>
+
+<twig:Button role="button" type="submit">
+    Submit Form
+</twig:Button>
+
+<twig:Input type="email" name="email" required />
+```
+
+## Features
+
+- ✅ All HTML5 elements supported
+- ✅ Full ARIA attributes support
+- ✅ Type-safe enum validation
+- ✅ PreMount validation with OptionsResolver
+- ✅ Proper namespace structure (Block/Inline/Void)
+
+## Components Structure
+
+Components are organized by type:
+- `Block` - Block-level elements (div, section, article, etc.)
+- `Inline` - Inline elements (span, a, strong, etc.)
+- `Void` - Self-closing elements (img, input, br, etc.)
+
+## License
+
+MIT
+
+MD;
+
+        $readmeFile = $bundleDir . \DIRECTORY_SEPARATOR . 'README.md';
+        if (! file_exists($readmeFile) || $overwrite) {
+            file_put_contents($readmeFile, $readme);
+            $this->io->success("Generated: {$readmeFile}");
+        }
     }
 }

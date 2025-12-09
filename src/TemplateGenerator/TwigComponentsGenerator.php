@@ -82,6 +82,11 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             : strtolower($ref->getShortName());
 
         $componentName = ucfirst($elementName);
+
+        // Determine the level (Block, Inline, or Void)
+        $level = $this->determineComponentLevel($ref->getName());
+        $levelNamespace = ucfirst($level);
+
         $props = [];
         $enums = [];
         $enumClasses = [];
@@ -93,37 +98,81 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             $setter = 'set' . ucfirst($name);
 
             if ($ref->hasMethod($getter) && $ref->hasMethod($setter)) {
-                $type = $prop->getType();
+                // Get the setter method to check its parameter types (more accurate than property type)
+                $setterMethod = $ref->getMethod($setter);
+                $setterParams = $setterMethod->getParameters();
+
+                // Use setter's first parameter type if available, otherwise fall back to property type
+                $type = ! empty($setterParams) ? $setterParams[0]->getType() : $prop->getType();
+
                 $phpType = '?string';
                 $enumClass = null;
+                $allowedTypes = ['null', 'string'];
+                $needsNormalizer = false;
 
                 if ($type instanceof ReflectionUnionType) {
+                    $types = [];
+                    $hasEnum = false;
                     foreach ($type->getTypes() as $unionType) {
-                        if ($unionType instanceof ReflectionNamedType && enum_exists($unionType->getName())) {
-                            $enumClassName = $unionType->getName();
-                            $enumClass = $enumClassName;
-                            $shortEnumName = basename(str_replace('\\', '/', $enumClassName));
-                            $phpType = '?' . $shortEnumName;
-                            $choices = array_map(fn($case) => $case->value, $enumClassName::cases());
-                            $enums[$name] = $choices;
-                            $enumClasses[$name] = $enumClassName;
+                        if ($unionType instanceof ReflectionNamedType) {
+                            $typeName = $unionType->getName();
+                            if (enum_exists($typeName)) {
+                                $enumClassName = $typeName;
+                                $enumClass = $enumClassName;
+                                $shortEnumName = basename(str_replace('\\', '/', $enumClassName));
+                                $phpType = '?' . $shortEnumName;
+                                $choices = array_map(fn ($case) => $case->value, $enumClassName::cases());
+                                $enums[$name] = $choices;
+                                $enumClasses[$name] = $enumClassName;
+                                $hasEnum = true;
+                                $needsNormalizer = true;
+                            } else {
+                                $types[] = $typeName;
+                            }
                         }
                     }
-                } elseif ($type && $type instanceof ReflectionNamedType && enum_exists($type->getName())) {
-                    $enumClassName = $type->getName();
-                    $enumClass = $enumClassName;
-                    $shortEnumName = basename(str_replace('\\', '/', $enumClassName));
-                    $phpType = '?' . $shortEnumName;
-                    $choices = array_map(fn($case) => $case->value, $enumClassName::cases());
-                    $enums[$name] = $choices;
-                    $enumClasses[$name] = $enumClassName;
-                } elseif ($type instanceof ReflectionNamedType) {
-                    $phpType = '?' . $type->getName();
+
+                    if ($hasEnum) {
+                        // If it's an enum, allow null, string, and the enum class
+                        $shortEnumName = basename(str_replace('\\', '/', $enumClass));
+                        $allowedTypes = ['null', 'string', $shortEnumName . '::class'];
+                    } elseif (! empty($types)) {
+                        // Union type without enum - use the actual types
+                        $phpType = '?' . implode('|', $types);
+                        $allowedTypes = array_merge(['null'], $types);
+                    }
+                } elseif ($type && $type instanceof ReflectionNamedType) {
+                    $typeName = $type->getName();
+                    if (enum_exists($typeName)) {
+                        $enumClassName = $typeName;
+                        $enumClass = $enumClassName;
+                        $shortEnumName = basename(str_replace('\\', '/', $enumClassName));
+                        $phpType = '?' . $shortEnumName;
+                        $choices = array_map(fn ($case) => $case->value, $enumClassName::cases());
+                        $enums[$name] = $choices;
+                        $enumClasses[$name] = $enumClassName;
+                        $allowedTypes = ['null', 'string', $shortEnumName . '::class'];
+                        $needsNormalizer = true;
+                    } else {
+                        // Use the actual type from the setter parameter
+                        // For the property type, use the property's actual type (e.g., ?bool)
+                        $propType = $prop->getType();
+                        if ($propType instanceof ReflectionNamedType) {
+                            $phpType = ($propType->allowsNull() ? '?' : '') . $propType->getName();
+                        } else {
+                            $phpType = ($type->allowsNull() ? '?' : '') . $typeName;
+                        }
+
+                        // For validation, use setter's accepted types
+                        $allowedTypes = $type->allowsNull() ? ['null', $typeName] : [$typeName];
+                    }
                 }
 
                 $props[$name] = [
                     'type' => $phpType,
                     'enumClass' => $enumClass,
+                    'allowedTypes' => $allowedTypes,
+                    'needsNormalizer' => $needsNormalizer,
                 ];
             }
         }
@@ -132,14 +181,19 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         $globalAttrs = ['id', 'class'];
         foreach ($globalAttrs as $gAttr) {
             $getter = 'get' . ucfirst($gAttr);
-            if (method_exists($element, $getter) && !isset($props[$gAttr])) {
-                $props[$gAttr] = ['type' => '?string', 'enumClass' => null];
+            if (method_exists($element, $getter) && ! isset($props[$gAttr])) {
+                $props[$gAttr] = [
+                    'type' => '?string',
+                    'enumClass' => null,
+                    'allowedTypes' => ['null', 'string'],
+                    'needsNormalizer' => false,
+                ];
             }
         }
 
         // Read element metadata from YAML
         $yamlPath = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
-        if (!is_readable($yamlPath)) {
+        if (! is_readable($yamlPath)) {
             $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
         }
         $yaml = is_readable($yamlPath) ? Yaml::parseFile($yamlPath) : [];
@@ -150,7 +204,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
 
         // Build PHP class
         $php = "<?php\n\n";
-        $php .= "namespace App\\Twig\\Components;\n\n";
+        $php .= "namespace Html\\TwigComponentBundle\\Twig\\{$levelNamespace};\n\n";
 
         // Add use statements for enums
         $uniqueEnumClasses = array_unique(array_filter(array_column($props, 'enumClass')));
@@ -166,16 +220,22 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         $php .= " * {$name} - {$desc}\n";
         $php .= " *\n";
         $php .= " * @author vardumper <info@erikpoehler.com>\n";
-        $php .= " * @package vardumper/extended-htmldocument\n";
-        $php .= " * @see src/TemplateGenerator/TwigComponentsGenerator.php\n";
+        $php .= " * @package Html\\TwigComponentBundle\n";
+        $php .= " * @see https://github.com/vardumper/extended-htmldocument\n";
         $php .= " */\n";
-        $php .= "#[AsTwigComponent('{$componentName}')]\n";
+        $php .= "#[AsTwigComponent('{$componentName}', template: '@HtmlTwigComponent/{$level}/{$elementName}/{$elementName}.html.twig')]\n";
         $php .= "class {$componentName}\n";
         $php .= "{\n";
 
         // Add public properties
         foreach ($props as $propName => $propData) {
-            $php .= "    public {$propData['type']} \${$propName} = null;\n";
+            // Extract just the class name from the full type string
+            $typeDeclaration = $propData['type'];
+            if ($propData['enumClass']) {
+                $shortName = basename(str_replace('\\', '/', $propData['enumClass']));
+                $typeDeclaration = '?' . $shortName;
+            }
+            $php .= "    public {$typeDeclaration} \${$propName} = null;\n";
         }
 
         $php .= "\n";
@@ -187,17 +247,29 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
 
         // Define allowed types and values for each prop
         foreach ($props as $propName => $propData) {
-            if ($propData['enumClass']) {
+            // Format allowed types for setAllowedTypes
+            $allowedTypesFormatted = array_map(function ($type) {
+                if ($type === 'null') {
+                    return "'null'";
+                } elseif (str_ends_with($type, '::class')) {
+                    return $type;
+                }
+                return "'{$type}'";
+            }, $propData['allowedTypes']);
+
+            $php .= "        \$resolver->setAllowedTypes('{$propName}', [" . implode(
+                ', ',
+                $allowedTypesFormatted
+            ) . "]);\n";
+
+            if ($propData['needsNormalizer']) {
                 $enumClassName = basename(str_replace('\\', '/', $propData['enumClass']));
-                $php .= "        \$resolver->setAllowedTypes('{$propName}', ['null', 'string', {$enumClassName}::class]);\n";
                 $php .= "        \$resolver->setNormalizer('{$propName}', function (\$options, \$value) {\n";
                 $php .= "            if (is_string(\$value)) {\n";
                 $php .= "                return {$enumClassName}::tryFrom(\$value);\n";
                 $php .= "            }\n";
                 $php .= "            return \$value;\n";
                 $php .= "        });\n";
-            } else {
-                $php .= "        \$resolver->setAllowedTypes('{$propName}', ['null', 'string']);\n";
             }
         }
 
@@ -207,6 +279,49 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         $php .= "}\n";
 
         return $php;
+    }
+
+    /**
+     * Generate a composed Twig Component showing valid parent-child relationships
+     */
+    public function renderComposedElement(HTMLElementDelegatorInterface $element): ?string
+    {
+        $ref = new ReflectionClass($element);
+
+        // Get content model metadata
+        $parentOf = $ref->getStaticPropertyValue('parentOf', []);
+
+        // Only generate composed templates for elements with specific allowed children
+        if (empty($parentOf)) {
+            return null;
+        }
+
+        $elementName = $ref->hasConstant('QUALIFIED_NAME')
+            ? $ref->getConstant('QUALIFIED_NAME')
+            : strtolower($ref->getShortName());
+
+        // Skip generic containers
+        $excludedElements = [
+            'div', 'article', 'aside', 'section', 'nav', 'header', 'footer', 'main',
+            'blockquote', 'p', 'dialog', 'dd', 'legend', 'li', 'mark', 'slot',
+        ];
+
+        if (in_array($elementName, $excludedElements, true)) {
+            return null;
+        }
+
+        // Read element metadata from YAML
+        $yamlPath = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
+        if (! is_readable($yamlPath)) {
+            $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
+        }
+        $yaml = is_readable($yamlPath) ? Yaml::parseFile($yamlPath) : [];
+        $meta = $yaml[strtolower($elementName)] ?? [];
+
+        $name = $meta['name'] ?? ucfirst($elementName);
+        $desc = $meta['description'] ?? '';
+
+        return $this->buildComposedTemplate($elementName, $name, $desc, $parentOf);
     }
 
     /**
@@ -234,7 +349,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
                 if ($type instanceof ReflectionUnionType) {
                     foreach ($type->getTypes() as $unionType) {
                         if ($unionType instanceof ReflectionNamedType && enum_exists($unionType->getName())) {
-                            $choices = array_map(fn($case) => $case->value, $unionType->getName()::cases());
+                            $choices = array_map(fn ($case) => $case->value, $unionType->getName()::cases());
                             $enums[$name] = [
                                 'choices' => $choices,
                                 'default' => $choices[0] ?? null,
@@ -242,7 +357,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
                         }
                     }
                 } elseif ($type && $type instanceof ReflectionNamedType && enum_exists($type->getName())) {
-                    $choices = array_map(fn($case) => $case->value, $type->getName()::cases());
+                    $choices = array_map(fn ($case) => $case->value, $type->getName()::cases());
                     $enums[$name] = [
                         'choices' => $choices,
                         'default' => $choices[0] ?? null,
@@ -268,7 +383,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
 
         // Read element metadata from YAML
         $yamlPath = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
-        if (!is_readable($yamlPath)) {
+        if (! is_readable($yamlPath)) {
             $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
         }
         $yaml = is_readable($yamlPath) ? Yaml::parseFile($yamlPath) : [];
@@ -284,7 +399,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         $twig .= "  Symfony UX Twig Component (Anonymous)\n";
         $twig .= "  @see https://symfony.com/bundles/ux-twig-component/current/index.html\n\n";
         $twig .= "  Usage:\n";
-        $twig .= "    <twig:" . ucfirst($elementName);
+        $twig .= '    <twig:' . ucfirst($elementName);
 
         // Add example usage
         $exampleProps = [];
@@ -298,7 +413,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             }
         }
 
-        if (!empty($exampleProps)) {
+        if (! empty($exampleProps)) {
             $twig .= ' ' . implode(' ', array_slice($exampleProps, 0, 2));
         }
 
@@ -307,7 +422,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         } else {
             $twig .= ">\n";
             $twig .= "      Content goes here\n";
-            $twig .= "    </twig:" . ucfirst($elementName) . ">\n";
+            $twig .= '    </twig:' . ucfirst($elementName) . ">\n";
         }
 
         $twig .= "\n  @author vardumper <info@erikpoehler.com>\n";
@@ -347,49 +462,6 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
     }
 
     /**
-     * Generate a composed Twig Component showing valid parent-child relationships
-     */
-    public function renderComposedElement(HTMLElementDelegatorInterface $element): ?string
-    {
-        $ref = new ReflectionClass($element);
-
-        // Get content model metadata
-        $parentOf = $ref->getStaticPropertyValue('parentOf', []);
-
-        // Only generate composed templates for elements with specific allowed children
-        if (empty($parentOf)) {
-            return null;
-        }
-
-        $elementName = $ref->hasConstant('QUALIFIED_NAME')
-            ? $ref->getConstant('QUALIFIED_NAME')
-            : strtolower($ref->getShortName());
-
-        // Skip generic containers
-        $excludedElements = [
-            'div', 'article', 'aside', 'section', 'nav', 'header', 'footer', 'main',
-            'blockquote', 'p', 'dialog', 'dd', 'legend', 'li', 'mark', 'slot',
-        ];
-
-        if (in_array($elementName, $excludedElements, true)) {
-            return null;
-        }
-
-        // Read element metadata from YAML
-        $yamlPath = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
-        if (!is_readable($yamlPath)) {
-            $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
-        }
-        $yaml = is_readable($yamlPath) ? Yaml::parseFile($yamlPath) : [];
-        $meta = $yaml[strtolower($elementName)] ?? [];
-
-        $name = $meta['name'] ?? ucfirst($elementName);
-        $desc = $meta['description'] ?? '';
-
-        return $this->buildComposedTemplate($elementName, $name, $desc, $parentOf);
-    }
-
-    /**
      * Build a composed Twig Component template showing parent-child relationships
      */
     private function buildComposedTemplate(
@@ -407,8 +479,8 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         $twig .= "  Demonstrates nested Twig Components\n";
         $twig .= "  @see https://symfony.com/bundles/ux-twig-component/current/index.html#nested-components\n\n";
 
-        if (!empty($parentOf)) {
-            $parentOfNames = array_map(function($class) {
+        if (! empty($parentOf)) {
+            $parentOfNames = array_map(function ($class) {
                 return (new ReflectionClass($class))->getShortName();
             }, $parentOf);
             $twig .= '  Can contain: ' . implode(', ', $parentOfNames) . "\n";
@@ -469,7 +541,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
                 }
             } else {
                 // Elements with content
-                $content = match($childElementName) {
+                $content = match ($childElementName) {
                     'li' => 'List item',
                     'option' => 'Option text',
                     'button' => 'Click me',
@@ -479,7 +551,9 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
                 $twigCode = "<twig:{$childComponentName}>{$content}</twig:{$childComponentName}>\n";
             }
 
-            $children[] = ['twigCode' => $twigCode];
+            $children[] = [
+                'twigCode' => $twigCode,
+            ];
             $rendered++;
         }
 
@@ -492,5 +566,19 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
     private function camelToKebab(string $string): string
     {
         return strtolower(preg_replace('/([a-z])([A-Z])/', '$1-$2', $string));
+    }
+
+    /**
+     * Determine the component level (block, inline, void) from class name
+     */
+    private function determineComponentLevel(string $className): string
+    {
+        if (strpos($className, 'InlineElement') !== false || strpos($className, '\\Element\\Inline\\') !== false) {
+            return 'inline';
+        }
+        if (strpos($className, 'VoidElement') !== false || strpos($className, '\\Element\\Void\\') !== false) {
+            return 'void';
+        }
+        return 'block';
     }
 }
