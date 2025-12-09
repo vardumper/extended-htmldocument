@@ -1,26 +1,28 @@
 # Blade Templates
 
-Auto-generated Blade templates for HTML elements with built-in validation for best consistency.
+Fully-typesafe Laravel Blade templates for all HTML5 elements. Provides validation for static HTML attributes (enums). Supports ARIA, WCAG by design.
+These templates are compiled from the HTML5 schema.
 
 ## Installation
 
-Via composer
+### with Composer
 ```bash
 composer require vardumper/extended-htmldocument
 ```
 
-Via NPM
+### NPM, Yarn, PNPM, etc
+
+This is a static NPM package, providing just the Blade templates.
+
 ```bash
-npm install @html5/blade
-# or
-yarn add @html5/blade
-# or
-pnpm add @html5/blade
+npm install @typesafe-html5/blade
+yarn add @typesafe-html5/blade
+pnpm add @typesafe-html5/blade
 ```
 
 ## Setup
 
-Register the components path in your Laravel application's `AppServiceProvider`:
+Register the components path in your Laravel application's `AppServiceProvider`
 
 ```php
 use Illuminate\Support\Facades\Blade;
@@ -42,7 +44,13 @@ public function boot(): void
     rel="nofollow"
     role="button">
     Click here
-</x-inline.a>
+</x-inline.a.a>
+```
+
+Or
+```blade
+@include('inline.a.a', ['content' => 'Click me', 'href' => 'https://example.com'])
+@include('inline.abbr.abbr', ['content' => 'ABBR', 'title' => 'Abbreviation'])
 ```
 
 ### With Nested Components
@@ -55,6 +63,8 @@ public function boot(): void
     role="button">
     <x-inline.strong.strong>
         Click here
-    </x-inline.strong>
-</x-inline.a>
+    </x-inline.strong.strong>
+</x-inline.a.a>
 ```
+
+[Full Documentation](https://vardumper.github.io/extended-htmldocument/)
