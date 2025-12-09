@@ -20,9 +20,9 @@ $autocapitalizeChoices = ['none' => true, 'sentences' => true, 'words' => true, 
 $contenteditableChoices = ['true' => true, 'false' => true, 'inherit' => true];
 $dirChoices = ['ltr' => true, 'rtl' => true, 'auto' => true];
 $inputmodeChoices = ['none' => true, 'text' => true, 'decimal' => true, 'numeric' => true, 'email' => true, 'tel' => true, 'url' => true, 'search' => true];
+$popoverChoices = ['auto' => true, 'hint' => true, 'manual' => true];
 $spellcheckChoices = ['true' => true, 'false' => true];
 $translateChoices = ['yes' => true, 'no' => true];
-$popoverChoices = ['auto' => true, 'hint' => true, 'manual' => true];
 $attrs = [];
 if (isset($accesskey)) $attrs[] = 'accesskey="' . e($accesskey) . '"';
 if (isset($ariaAtomic) && isset($ariaAtomicChoices[$ariaAtomic])) $attrs[] = 'aria-atomic="' . e($ariaAtomic) . '"';
