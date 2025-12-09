@@ -68,7 +68,23 @@ export default function Page() {
 ```
 
 ### Storybook
+Inside `templates/storybook` you can find a fully working Storybook boilerplate that includes all HTML5 elements.
 
+Start it with:
+```bash
+cd templates/storybook
+yarn && yarn storybook
+```
+
+It is supposed to help you as a starting point - helpful when creating a design system. Instead of starting from scratch, you would use the pre-made 'atoms' and thus ensure great consistrncy.
+
+## Twig Components Bundle
+
+Symnfony introduced [Twig Components](https://symfony.com/bundles/ux-twig-component/current/index.html) as part of the much larger Symfony UX ecosystem.
+
+While maintained and published from the `templates/twig-components` directory, there is a separate package to install it from. 
+
+You will find a Symfony Bundle that brings typesafe, schema-first 
 
 ## Documentation
 See the [Documentation](https://vardumper.github.io/extended-htmldocument/) for more.
