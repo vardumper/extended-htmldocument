@@ -32,6 +32,9 @@ jobs:
       - name: Sync folder to secondary repo
         if: steps.diff.outputs.changed == 'true'
         run: |
+          # authenticate git for HTTPS pushes
+          git config --global url."https://${GH_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
+
           git clone https://github.com/vardumper/html5-twig-component-bundle.git target
           rm -rf target/*
           cp -R templates/twig-component/* target/
