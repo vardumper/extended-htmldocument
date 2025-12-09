@@ -1,4 +1,4 @@
-# Storybook Templates
+# Storybook pre-set with all HTML5 elements as atoms
 
 Schema-first auto-generated Storybook stories for all HTML5 elements with built-in validation for best consistency.
 
