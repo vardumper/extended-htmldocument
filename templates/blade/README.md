@@ -67,4 +67,6 @@ Or
 </x-inline.a.a>
 ```
 
-[Full Documentation](https://vardumper.github.io/extended-htmldocument/)
+## Read More
+* [Extended HTMLDocument Documentation](https://vardumper.github.io/extended-htmldocument/)
+* [Laravel Blade Templates Documentation](https://laravel.com/docs/12.x/blade)
