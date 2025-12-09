@@ -2,28 +2,30 @@
 
 namespace Html\TwigComponentBundle\Twig\Block;
 
-use Html\Enum\OlTypeEnum;
-use Html\Enum\RoleEnum;
-use Html\Enum\AriaBusyEnum;
-use Html\Enum\AriaHiddenEnum;
-use Html\Enum\AriaLiveEnum;
-use Html\Enum\AriaRelevantEnum;
-use Html\Enum\AriaAtomicEnum;
-use Html\Enum\AriaMultiselectableEnum;
-use Html\Enum\AriaOrientationEnum;
-use Html\Enum\AutoCapitalizeEnum;
-use Html\Enum\ContentEditableEnum;
-use Html\Enum\DirectionEnum;
-use Html\Enum\InputModeEnum;
-use Html\Enum\SpellCheckEnum;
-use Html\Enum\TranslateEnum;
-use Html\Enum\PopoverEnum;
+use Html\Enum\{
+    OlTypeEnum,
+    RoleEnum,
+    AriaBusyEnum,
+    AriaHiddenEnum,
+    AriaLiveEnum,
+    AriaRelevantEnum,
+    AriaAtomicEnum,
+    AriaMultiselectableEnum,
+    AriaOrientationEnum,
+    AutoCapitalizeEnum,
+    ContentEditableEnum,
+    DirectionEnum,
+    InputModeEnum,
+    SpellCheckEnum,
+    TranslateEnum,
+    PopoverEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Ordered List - The ol element represents an ordered list of items. The order of the list is meaningful.
+ * Ol - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -53,11 +55,11 @@ class Ol
     public ?string $ariaOwns = null;
     public ?string $accesskey = null;
     public ?AutoCapitalizeEnum $autocapitalize = null;
-    public ?string|bool $autofocus = null;
+    public null|string|bool $autofocus = null;
     public ?ContentEditableEnum $contenteditable = null;
     public ?DirectionEnum $dir = null;
-    public ?string|bool $draggable = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $draggable = null;
+    public null|string|bool $hidden = null;
     public ?InputModeEnum $inputmode = null;
     public ?string $lang = null;
     public ?string $slot = null;

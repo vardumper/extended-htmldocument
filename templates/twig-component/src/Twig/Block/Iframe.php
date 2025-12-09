@@ -2,21 +2,23 @@
 
 namespace Html\TwigComponentBundle\Twig\Block;
 
-use Html\Enum\ReferrerpolicyEnum;
-use Html\Enum\RoleEnum;
-use Html\Enum\AriaBusyEnum;
-use Html\Enum\AriaHiddenEnum;
-use Html\Enum\AriaLiveEnum;
-use Html\Enum\AriaRelevantEnum;
-use Html\Enum\AriaAtomicEnum;
-use Html\Enum\DirectionEnum;
-use Html\Enum\PopoverEnum;
+use Html\Enum\{
+    ReferrerpolicyEnum,
+    RoleEnum,
+    AriaBusyEnum,
+    AriaHiddenEnum,
+    AriaLiveEnum,
+    AriaRelevantEnum,
+    AriaAtomicEnum,
+    DirectionEnum,
+    PopoverEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Inline Frame - The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.
+ * Iframe - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -48,7 +50,7 @@ class Iframe
     public ?AriaRelevantEnum $ariaRelevant = null;
     public ?AriaAtomicEnum $ariaAtomic = null;
     public ?DirectionEnum $dir = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $hidden = null;
     public ?string $lang = null;
     public ?string $slot = null;
     public ?string $style = null;

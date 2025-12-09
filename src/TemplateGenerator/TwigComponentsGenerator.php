@@ -8,7 +8,6 @@ use Html\Mapping\TemplateGenerator;
 use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionUnionType;
-use Symfony\Component\Yaml\Yaml;
 
 #[TemplateGenerator('twig-component')]
 class TwigComponentsGenerator implements TemplateGeneratorInterface
@@ -137,8 +136,8 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
                         $shortEnumName = basename(str_replace('\\', '/', $enumClass));
                         $allowedTypes = ['null', 'string', $shortEnumName . '::class'];
                     } elseif (! empty($types)) {
-                        // Union type without enum - use the actual types
-                        $phpType = '?' . implode('|', $types);
+                        // Union type without enum - use the actual types with null as part of union
+                        $phpType = 'null|' . implode('|', $types);
                         $allowedTypes = array_merge(['null'], $types);
                     }
                 } elseif ($type && $type instanceof ReflectionNamedType) {
@@ -191,25 +190,29 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             }
         }
 
-        // Read element metadata from YAML
-        $yamlPath = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
-        if (! is_readable($yamlPath)) {
-            $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
+        // Get element metadata from class doc comment
+        $docComment = $ref->getDocComment();
+        $desc = '';
+        if ($docComment) {
+            // Extract description from docblock
+            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
+            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
         }
-        $yaml = is_readable($yamlPath) ? Yaml::parseFile($yamlPath) : [];
-        $meta = $yaml[strtolower($elementName)] ?? [];
-
-        $name = $meta['name'] ?? ucfirst($elementName);
-        $desc = $meta['description'] ?? '';
+        $name = ucfirst($elementName);
 
         // Build PHP class
         $php = "<?php\n\n";
         $php .= "namespace Html\\TwigComponentBundle\\Twig\\{$levelNamespace};\n\n";
 
-        // Add use statements for enums
+        // Add use statements for enums (grouped)
         $uniqueEnumClasses = array_unique(array_filter(array_column($props, 'enumClass')));
-        foreach ($uniqueEnumClasses as $enumClass) {
-            $php .= "use {$enumClass};\n";
+        if (!empty($uniqueEnumClasses)) {
+            $php .= "use Html\\Enum\\{\n";
+            $enumShortNames = array_map(function($enumClass) {
+                return '    ' . basename(str_replace('\\', '/', $enumClass));
+            }, $uniqueEnumClasses);
+            $php .= implode(",\n", $enumShortNames);
+            $php .= ",\n};\n";
         }
 
         $php .= "use Symfony\\UX\\TwigComponent\\Attribute\\AsTwigComponent;\n";
@@ -310,16 +313,15 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             return null;
         }
 
-        // Read element metadata from YAML
-        $yamlPath = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
-        if (! is_readable($yamlPath)) {
-            $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
+        // Get element metadata from class doc comment
+        $docComment = $ref->getDocComment();
+        $desc = '';
+        if ($docComment) {
+            // Extract description from docblock
+            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
+            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
         }
-        $yaml = is_readable($yamlPath) ? Yaml::parseFile($yamlPath) : [];
-        $meta = $yaml[strtolower($elementName)] ?? [];
-
-        $name = $meta['name'] ?? ucfirst($elementName);
-        $desc = $meta['description'] ?? '';
+        $name = ucfirst($elementName);
 
         return $this->buildComposedTemplate($elementName, $name, $desc, $parentOf);
     }
@@ -381,16 +383,15 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
 
         $isSelfClosing = $ref->hasConstant('SELF_CLOSING') && $ref->getConstant('SELF_CLOSING');
 
-        // Read element metadata from YAML
-        $yamlPath = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
-        if (! is_readable($yamlPath)) {
-            $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
+        // Get element metadata from class doc comment
+        $docComment = $ref->getDocComment();
+        $desc = '';
+        if ($docComment) {
+            // Extract description from docblock
+            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
+            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
         }
-        $yaml = is_readable($yamlPath) ? Yaml::parseFile($yamlPath) : [];
-        $meta = $yaml[strtolower($elementName)] ?? [];
-
-        $name = $meta['name'] ?? ucfirst($elementName);
-        $desc = $meta['description'] ?? '';
+        $name = ucfirst($elementName);
 
         // Build Twig Component template
         $twig = "{#\n";

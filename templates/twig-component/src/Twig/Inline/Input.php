@@ -2,39 +2,41 @@
 
 namespace Html\TwigComponentBundle\Twig\Inline;
 
-use Html\Enum\AutocorrectEnum;
-use Html\Enum\AutocompleteEnum;
-use Html\Enum\InputTypeEnum;
-use Html\Enum\FormenctypeEnum;
-use Html\Enum\FormmethodEnum;
-use Html\Enum\FormtargetEnum;
-use Html\Enum\PopovertargetactionEnum;
-use Html\Enum\RoleEnum;
-use Html\Enum\AriaCurrentEnum;
-use Html\Enum\AriaInvalidEnum;
-use Html\Enum\AriaDisabledEnum;
-use Html\Enum\AriaLiveEnum;
-use Html\Enum\AriaRelevantEnum;
-use Html\Enum\AriaAtomicEnum;
-use Html\Enum\AriaExpandedEnum;
-use Html\Enum\AriaHaspopupEnum;
-use Html\Enum\AriaPressedEnum;
-use Html\Enum\AriaCheckedEnum;
-use Html\Enum\AriaAutocompleteEnum;
-use Html\Enum\AriaReadonlyEnum;
-use Html\Enum\AriaRequiredEnum;
-use Html\Enum\AutoCapitalizeEnum;
-use Html\Enum\ContentEditableEnum;
-use Html\Enum\DirectionEnum;
-use Html\Enum\InputModeEnum;
-use Html\Enum\SpellCheckEnum;
-use Html\Enum\TranslateEnum;
+use Html\Enum\{
+    AutocorrectEnum,
+    AutocompleteEnum,
+    InputTypeEnum,
+    FormenctypeEnum,
+    FormmethodEnum,
+    FormtargetEnum,
+    PopovertargetactionEnum,
+    RoleEnum,
+    AriaCurrentEnum,
+    AriaInvalidEnum,
+    AriaDisabledEnum,
+    AriaLiveEnum,
+    AriaRelevantEnum,
+    AriaAtomicEnum,
+    AriaExpandedEnum,
+    AriaHaspopupEnum,
+    AriaPressedEnum,
+    AriaCheckedEnum,
+    AriaAutocompleteEnum,
+    AriaReadonlyEnum,
+    AriaRequiredEnum,
+    AutoCapitalizeEnum,
+    ContentEditableEnum,
+    DirectionEnum,
+    InputModeEnum,
+    SpellCheckEnum,
+    TranslateEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Input - The input element represents a typed data field, usually with a form control to allow user input.
+ * Input - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -104,11 +106,11 @@ class Input
     public ?string $ariaValuetext = null;
     public ?string $accesskey = null;
     public ?AutoCapitalizeEnum $autocapitalize = null;
-    public ?string|bool $autofocus = null;
+    public null|string|bool $autofocus = null;
     public ?ContentEditableEnum $contenteditable = null;
     public ?DirectionEnum $dir = null;
-    public ?string|bool $draggable = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $draggable = null;
+    public null|string|bool $hidden = null;
     public ?InputModeEnum $inputmode = null;
     public ?string $lang = null;
     public ?SpellCheckEnum $spellcheck = null;

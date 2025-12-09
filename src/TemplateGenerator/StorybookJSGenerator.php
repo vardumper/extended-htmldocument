@@ -9,7 +9,6 @@ use Html\Mapping\TemplateGenerator;
 use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionUnionType;
-use Symfony\Component\Yaml\Yaml;
 use Throwable;
 use TypeError;
 
@@ -96,17 +95,16 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
             return null;
         }
 
-        // Read element metadata from YAML
-        $yamlPath = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
-        if (! is_readable($yamlPath)) {
-            $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
+        // Get element metadata from class doc comment
+        $docComment = $ref->getDocComment();
+        $desc = '';
+        if ($docComment) {
+            // Extract description from docblock
+            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
+            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
         }
-        $yaml = is_readable($yamlPath) ? Yaml::parseFile($yamlPath) : [];
-        $meta = $yaml[strtolower($elementName)] ?? [];
-
-        $name = $meta['name'] ?? ucfirst($elementName);
-        $desc = $meta['description'] ?? '';
-        $level = $meta['level'] ?? 'block';
+        $name = ucfirst($elementName);
+        $level = $this->determineLevel($ref->getName());
 
         return $this->buildComposedStory($elementName, $name, $desc, $level, $ref, $childOf, $parentOf);
     }
@@ -120,17 +118,16 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
 
         $isSelfClosing = $ref->hasConstant('SELF_CLOSING') && $ref->getConstant('SELF_CLOSING');
 
-        // Read element metadata from YAML
-        $yamlPath = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
-        if (! is_readable($yamlPath)) {
-            $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
+        // Get element metadata from class doc comment
+        $docComment = $ref->getDocComment();
+        $desc = '';
+        if ($docComment) {
+            // Extract description from docblock
+            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
+            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
         }
-        $yaml = is_readable($yamlPath) ? Yaml::parseFile($yamlPath) : [];
-        $meta = $yaml[strtolower($elementName)] ?? [];
-
-        $name = $meta['name'] ?? ucfirst($elementName);
-        $desc = $meta['description'] ?? '';
-        $level = $meta['level'] ?? 'inline';
+        $name = ucfirst($elementName);
+        $level = $this->determineLevel($ref->getName());
 
         $props = [];
         $argTypes = [];
@@ -307,10 +304,6 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                     }
                 }
 
-                // Get attribute details from YAML
-                $attrDetails = $meta['attributes'][$this->camelToKebab($propName)] ??
-                              $meta['attributes'][$propName] ?? [];
-
                 // Handle JS reserved words by appending 'Prop'
                 $jsVarName = in_array($propName, self::JS_RESERVED_WORDS, true) ? $propName . 'Prop' : $propName;
 
@@ -320,8 +313,8 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                 $props[] = $jsVarName;
                 $argTypes[] = $this->generateArgType($jsVarName, [
                     'type' => $phpType,
-                    'description' => $attrDetails['description'] ?? '',
-                    'required' => $attrDetails['required'] ?? false,
+                    'description' => '',
+                    'required' => false,
                     'defaultValue' => $this->getDefaultValue($phpType, $choices),
                     'choices' => $choices,
                 ]);

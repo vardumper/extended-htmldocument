@@ -2,15 +2,17 @@
 
 namespace Html\TwigComponentBundle\Twig\Void;
 
-use Html\Enum\CrossoriginEnum;
-use Html\Enum\ReferrerpolicyEnum;
-use Html\Enum\ScriptTypeEnum;
+use Html\Enum\{
+    CrossoriginEnum,
+    ReferrerpolicyEnum,
+    ScriptTypeEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Script - The script element is used to embed or reference an executable script within an HTML document. Scripts without async or defer attributes, as well as inline scripts, are fetched and executed immediately, before the browser continues to parse the page.
+ * Script - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -28,7 +30,7 @@ class Script
     public ?ReferrerpolicyEnum $referrerpolicy = null;
     public ?string $src = null;
     public ?ScriptTypeEnum $type = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $hidden = null;
     public ?string $title = null;
     public ?string $lang = null;
     public ?string $id = null;

@@ -2,14 +2,16 @@
 
 namespace Html\TwigComponentBundle\Twig\Void;
 
-use Html\Enum\StyleTypeEnum;
-use Html\Enum\DirectionEnum;
+use Html\Enum\{
+    StyleTypeEnum,
+    DirectionEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Style - The style element is used to embed CSS styles directly into an HTML document.
+ * Style - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle

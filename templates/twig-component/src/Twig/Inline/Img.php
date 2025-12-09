@@ -2,20 +2,22 @@
 
 namespace Html\TwigComponentBundle\Twig\Inline;
 
-use Html\Enum\CrossoriginEnum;
-use Html\Enum\DecodingEnum;
-use Html\Enum\ReferrerpolicyEnum;
-use Html\Enum\AriaHiddenEnum;
-use Html\Enum\AriaLiveEnum;
-use Html\Enum\AriaRelevantEnum;
-use Html\Enum\AriaAtomicEnum;
-use Html\Enum\DirectionEnum;
+use Html\Enum\{
+    CrossoriginEnum,
+    DecodingEnum,
+    ReferrerpolicyEnum,
+    AriaHiddenEnum,
+    AriaLiveEnum,
+    AriaRelevantEnum,
+    AriaAtomicEnum,
+    DirectionEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Image - The img element represents an image.
+ * Img - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -44,8 +46,8 @@ class Img
     public ?AriaRelevantEnum $ariaRelevant = null;
     public ?AriaAtomicEnum $ariaAtomic = null;
     public ?DirectionEnum $dir = null;
-    public ?string|bool $draggable = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $draggable = null;
+    public null|string|bool $hidden = null;
     public ?string $lang = null;
     public ?string $style = null;
     public ?int $tabindex = null;

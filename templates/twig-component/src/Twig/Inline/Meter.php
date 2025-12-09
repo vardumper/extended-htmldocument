@@ -2,21 +2,23 @@
 
 namespace Html\TwigComponentBundle\Twig\Inline;
 
-use Html\Enum\AriaLiveEnum;
-use Html\Enum\AriaRelevantEnum;
-use Html\Enum\AriaAtomicEnum;
-use Html\Enum\AutoCapitalizeEnum;
-use Html\Enum\ContentEditableEnum;
-use Html\Enum\DirectionEnum;
-use Html\Enum\InputModeEnum;
-use Html\Enum\SpellCheckEnum;
-use Html\Enum\TranslateEnum;
+use Html\Enum\{
+    AriaLiveEnum,
+    AriaRelevantEnum,
+    AriaAtomicEnum,
+    AutoCapitalizeEnum,
+    ContentEditableEnum,
+    DirectionEnum,
+    InputModeEnum,
+    SpellCheckEnum,
+    TranslateEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Meter - The meter element represents a scalar measurement within a known range, or a fractional value.
+ * Meter - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -43,11 +45,11 @@ class Meter
     public ?string $ariaValuetext = null;
     public ?string $accesskey = null;
     public ?AutoCapitalizeEnum $autocapitalize = null;
-    public ?string|bool $autofocus = null;
+    public null|string|bool $autofocus = null;
     public ?ContentEditableEnum $contenteditable = null;
     public ?DirectionEnum $dir = null;
-    public ?string|bool $draggable = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $draggable = null;
+    public null|string|bool $hidden = null;
     public ?InputModeEnum $inputmode = null;
     public ?string $lang = null;
     public ?string $slot = null;

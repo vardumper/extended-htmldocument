@@ -2,18 +2,20 @@
 
 namespace Html\TwigComponentBundle\Twig\Block;
 
-use Html\Enum\AutoCapitalizeEnum;
-use Html\Enum\ContentEditableEnum;
-use Html\Enum\DirectionEnum;
-use Html\Enum\InputModeEnum;
-use Html\Enum\SpellCheckEnum;
-use Html\Enum\TranslateEnum;
+use Html\Enum\{
+    AutoCapitalizeEnum,
+    ContentEditableEnum,
+    DirectionEnum,
+    InputModeEnum,
+    SpellCheckEnum,
+    TranslateEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Header - The header element represents a container for introductory content or a set of navigational links. It typically contains the section's heading (an h1–h6 element or an hgroup element), but can also contain other content such as a table of contents, a search form, or any relevant logos.
+ * Header - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -25,11 +27,11 @@ class Header
     public ?string $ariaLabel = null;
     public ?string $accesskey = null;
     public ?AutoCapitalizeEnum $autocapitalize = null;
-    public ?string|bool $autofocus = null;
+    public null|string|bool $autofocus = null;
     public ?ContentEditableEnum $contenteditable = null;
     public ?DirectionEnum $dir = null;
-    public ?string|bool $draggable = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $draggable = null;
+    public null|string|bool $hidden = null;
     public ?InputModeEnum $inputmode = null;
     public ?string $lang = null;
     public ?SpellCheckEnum $spellcheck = null;

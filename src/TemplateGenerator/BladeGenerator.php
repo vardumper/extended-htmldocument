@@ -170,16 +170,15 @@ class BladeGenerator implements TemplateGeneratorInterface
             return null;
         }
 
-        // Read element metadata from YAML
-        $yamlPath = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
-        if (! is_readable($yamlPath)) {
-            $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
+        // Get element metadata from class doc comment
+        $docComment = $ref->getDocComment();
+        $desc = '';
+        if ($docComment) {
+            // Extract description from docblock
+            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
+            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
         }
-        $yaml = is_readable($yamlPath) ? \Symfony\Component\Yaml\Yaml::parseFile($yamlPath) : [];
-        $meta = $yaml[strtolower($elementName)] ?? [];
-
-        $name = $meta['name'] ?? ucfirst($elementName);
-        $desc = $meta['description'] ?? '';
+        $name = ucfirst($elementName);
 
         return $this->buildComposedBladeTemplate($elementName, $name, $desc, $ref, $childOf, $parentOf);
     }

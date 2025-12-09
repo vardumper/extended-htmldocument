@@ -2,23 +2,25 @@
 
 namespace Html\TwigComponentBundle\Twig\Block;
 
-use Html\Enum\AutocompleteEnum;
-use Html\Enum\AutocorrectEnum;
-use Html\Enum\FormEnctypeEnum;
-use Html\Enum\FormMethodEnum;
-use Html\Enum\FormTargetEnum;
-use Html\Enum\AriaInvalidEnum;
-use Html\Enum\AriaLiveEnum;
-use Html\Enum\AriaRelevantEnum;
-use Html\Enum\AriaAtomicEnum;
-use Html\Enum\DirectionEnum;
-use Html\Enum\TranslateEnum;
+use Html\Enum\{
+    AutocompleteEnum,
+    AutocorrectEnum,
+    FormEnctypeEnum,
+    FormMethodEnum,
+    FormTargetEnum,
+    AriaInvalidEnum,
+    AriaLiveEnum,
+    AriaRelevantEnum,
+    AriaAtomicEnum,
+    DirectionEnum,
+    TranslateEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
+ * Form - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -46,8 +48,8 @@ class Form
     public ?AriaAtomicEnum $ariaAtomic = null;
     public ?string $accesskey = null;
     public ?DirectionEnum $dir = null;
-    public ?string|bool $draggable = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $draggable = null;
+    public null|string|bool $hidden = null;
     public ?string $lang = null;
     public ?string $slot = null;
     public ?string $style = null;

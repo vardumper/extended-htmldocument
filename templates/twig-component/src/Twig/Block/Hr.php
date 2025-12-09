@@ -2,14 +2,16 @@
 
 namespace Html\TwigComponentBundle\Twig\Block;
 
-use Html\Enum\HrAlignEnum;
-use Html\Enum\DirectionEnum;
+use Html\Enum\{
+    HrAlignEnum,
+    DirectionEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Horizontal Rule - The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.
+ * Hr - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -24,7 +26,7 @@ class Hr
     public ?int $size = null;
     public ?string $width = null;
     public ?DirectionEnum $dir = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $hidden = null;
     public ?string $lang = null;
     public ?string $style = null;
     public ?string $title = null;

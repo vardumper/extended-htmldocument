@@ -3,13 +3,13 @@
 namespace Html\TemplateGenerator;
 
 use Exception;
+use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
 use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionUnionType;
-use Symfony\Component\Yaml\Yaml;
 
 #[TemplateGenerator('twig')]
 class TwigGenerator implements TemplateGeneratorInterface
@@ -124,16 +124,15 @@ class TwigGenerator implements TemplateGeneratorInterface
             return null;
         }
 
-        // Read element metadata from YAML
-        $yamlPath = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
-        if (! is_readable($yamlPath)) {
-            $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
+        // Get element metadata from class doc comment
+        $docComment = $ref->getDocComment();
+        $desc = '';
+        if ($docComment) {
+            // Extract description from docblock
+            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
+            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
         }
-        $yaml = is_readable($yamlPath) ? Yaml::parseFile($yamlPath) : [];
-        $meta = $yaml[strtolower($elementName)] ?? [];
-
-        $name = $meta['name'] ?? ucfirst($elementName);
-        $desc = $meta['description'] ?? '';
+        $name = ucfirst($elementName);
 
         return $this->buildComposedTemplate($elementName, $name, $desc, $ref, $childOf, $parentOf);
     }
@@ -190,12 +189,16 @@ class TwigGenerator implements TemplateGeneratorInterface
         sort($props, \SORT_NATURAL | \SORT_FLAG_CASE);
         usort($enums, fn ($a, $b) => strcmp($a['name'], $b['name']));
         $isSelfClosing = $ref->hasConstant('SELF_CLOSING') && $ref->getConstant('SELF_CLOSING');
-        // Read element metadata from YAML
-        $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
-        $yaml = is_readable($yamlPath) ? Yaml::parseFile($yamlPath) : [];
-        $meta = $yaml[strtolower($elementName)] ?? [];
-        $name = $meta['name'] ?? $elementName;
-        $desc = $meta['description'] ?? '';
+
+        // Get element metadata from class doc comment
+        $docComment = $ref->getDocComment();
+        $desc = '';
+        if ($docComment) {
+            // Extract description from docblock
+            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
+            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
+        }
+        $name = ucfirst($elementName);
 
         // Avoid reserved words for block names
         $blockName = in_array($elementName, self::TWIG_RESERVED_WORDS, true) ? $elementName . '_block' : $elementName;

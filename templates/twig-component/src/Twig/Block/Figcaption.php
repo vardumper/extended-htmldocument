@@ -2,25 +2,27 @@
 
 namespace Html\TwigComponentBundle\Twig\Block;
 
-use Html\Enum\RoleEnum;
-use Html\Enum\AriaBusyEnum;
-use Html\Enum\AriaHiddenEnum;
-use Html\Enum\AriaLiveEnum;
-use Html\Enum\AriaRelevantEnum;
-use Html\Enum\AriaAtomicEnum;
-use Html\Enum\AutoCapitalizeEnum;
-use Html\Enum\ContentEditableEnum;
-use Html\Enum\DirectionEnum;
-use Html\Enum\InputModeEnum;
-use Html\Enum\SpellCheckEnum;
-use Html\Enum\TranslateEnum;
-use Html\Enum\PopoverEnum;
+use Html\Enum\{
+    RoleEnum,
+    AriaBusyEnum,
+    AriaHiddenEnum,
+    AriaLiveEnum,
+    AriaRelevantEnum,
+    AriaAtomicEnum,
+    AutoCapitalizeEnum,
+    ContentEditableEnum,
+    DirectionEnum,
+    InputModeEnum,
+    SpellCheckEnum,
+    TranslateEnum,
+    PopoverEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Figure Caption - The figcaption element represents a caption or a legend associated with a figure or an illustration described by the rest of the data of the figure element. The figcaption element can be placed as the first or the last child of a parent figure element.
+ * Figcaption - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -43,11 +45,11 @@ class Figcaption
     public ?AriaAtomicEnum $ariaAtomic = null;
     public ?string $accesskey = null;
     public ?AutoCapitalizeEnum $autocapitalize = null;
-    public ?string|bool $autofocus = null;
+    public null|string|bool $autofocus = null;
     public ?ContentEditableEnum $contenteditable = null;
     public ?DirectionEnum $dir = null;
-    public ?string|bool $draggable = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $draggable = null;
+    public null|string|bool $hidden = null;
     public ?InputModeEnum $inputmode = null;
     public ?string $lang = null;
     public ?string $slot = null;

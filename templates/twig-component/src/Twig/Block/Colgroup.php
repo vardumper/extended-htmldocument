@@ -2,13 +2,15 @@
 
 namespace Html\TwigComponentBundle\Twig\Block;
 
-use Html\Enum\DirectionEnum;
+use Html\Enum\{
+    DirectionEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Column Group - The colgroup element represents a group of one or more columns in the table that is its parent, if it has a parent and that is a table element.
+ * Colgroup - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -19,7 +21,7 @@ class Colgroup
 {
     public ?int $span = null;
     public ?DirectionEnum $dir = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $hidden = null;
     public ?string $lang = null;
     public ?string $slot = null;
     public ?string $style = null;

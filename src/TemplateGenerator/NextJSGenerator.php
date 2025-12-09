@@ -9,7 +9,6 @@ use Html\Mapping\TemplateGenerator;
 use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionUnionType;
-use Symfony\Component\Yaml\Yaml;
 use Throwable;
 use TypeError;
 
@@ -153,18 +152,19 @@ class NextJSGenerator implements TemplateGeneratorInterface
 
         if (in_array($elementName, $excludedElements, true)) {
             return null;
-        }        $componentName = ucfirst($elementName);
-
-        // Read element metadata from YAML
-        $yamlPath = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
-        if (! is_readable($yamlPath)) {
-            $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
         }
-        $yaml = is_readable($yamlPath) ? Yaml::parseFile($yamlPath) : [];
-        $meta = $yaml[strtolower($elementName)] ?? [];
 
-        $name = $meta['name'] ?? ucfirst($elementName);
-        $desc = $meta['description'] ?? '';
+        $componentName = ucfirst($elementName);
+
+        // Get element metadata from class doc comment
+        $docComment = $ref->getDocComment();
+        $desc = '';
+        if ($docComment) {
+            // Extract description from docblock
+            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
+            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
+        }
+        $name = ucfirst($elementName);
 
         return $this->buildComposedComponent($componentName, $elementName, $name, $desc, $ref, $childOf, $parentOf);
     }
@@ -178,17 +178,16 @@ class NextJSGenerator implements TemplateGeneratorInterface
 
         $isSelfClosing = $ref->hasConstant('SELF_CLOSING') && $ref->getConstant('SELF_CLOSING');
 
-        // Read element metadata from YAML
-        $yamlPath = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
-        if (! is_readable($yamlPath)) {
-            $yamlPath = __DIR__ . '/../Resources/specifications/html5.yaml';
+        // Get element metadata from class doc comment
+        $docComment = $ref->getDocComment();
+        $desc = '';
+        if ($docComment) {
+            // Extract description from docblock
+            preg_match('/@description\s+(.+?)(?=@|\*\/)/s', $docComment, $matches);
+            $desc = isset($matches[1]) ? trim(preg_replace('/\s+/', ' ', $matches[1])) : '';
         }
-        $yaml = is_readable($yamlPath) ? Yaml::parseFile($yamlPath) : [];
-        $meta = $yaml[strtolower($elementName)] ?? [];
-
-        $name = $meta['name'] ?? ucfirst($elementName);
-        $desc = $meta['description'] ?? '';
-        $level = $meta['level'] ?? 'inline';
+        $name = ucfirst($elementName);
+        $level = 'inline'; // Will be determined by class hierarchy
 
         $componentName = ucfirst($elementName);
 
@@ -206,20 +205,8 @@ class NextJSGenerator implements TemplateGeneratorInterface
         }
 
         // Add className (React equivalent of class attribute)
-        // Check YAML for class attribute enum|string type
-        $classAttrDetails = $meta['attributes']['class'] ?? [];
-        $classType = $classAttrDetails['type'] ?? null;
-        $classDescription = $classAttrDetails['description'] ?? 'CSS class names';
         $classTypeScript = 'string';
-
-        if (($classType === 'enum|string' || $classType === 'string|enum') &&
-            isset($classAttrDetails['choices']) &&
-            is_array($classAttrDetails['choices']) &&
-            count($classAttrDetails['choices']) > 0) {
-            // Generate union type: 'value1' | 'value2' | string
-            $enumValues = array_map(fn ($c) => "'{$c}'", $classAttrDetails['choices']);
-            $classTypeScript = implode(' | ', $enumValues) . ' | string';
-        }
+        $classDescription = 'CSS class names';
 
         $props['className'] = [
             'name' => 'className',
@@ -301,52 +288,38 @@ class NextJSGenerator implements TemplateGeneratorInterface
                 $tsType = 'string';
                 $choices = null;
 
-                // First check YAML for enum|string type
-                $kebabAttr = $this->camelToKebab($propName);
-                $attrDetails = $meta['attributes'][$kebabAttr] ?? $meta['attributes'][$propName] ?? [];
-                $yamlType = $attrDetails['type'] ?? null;
-
-                if (($yamlType === 'enum|string' || $yamlType === 'string|enum') &&
-                    isset($attrDetails['choices']) &&
-                    is_array($attrDetails['choices']) &&
-                    count($attrDetails['choices']) > 0) {
-                    // Generate union type: 'value1' | 'value2' | string
-                    $enumValues = array_map(fn ($c) => "'{$c}'", $attrDetails['choices']);
-                    $tsType = implode(' | ', $enumValues) . ' | string';
-                } else {
-                    // Fallback to reflection for PHP enum-backed properties
-                    try {
-                        $rp = new ReflectionClass($example);
-                        if ($rp->hasProperty($propName)) {
-                            $prop = $rp->getProperty($propName);
-                            $type = $prop->getType();
-                            if ($type instanceof ReflectionUnionType) {
-                                foreach ($type->getTypes() as $t) {
-                                    if (enum_exists($t->getName())) {
-                                        $choices = array_map(fn ($c) => $c->value, $t->getName()::cases());
-                                        $tsType = implode(' | ', array_map(fn ($c) => "'{$c}'", $choices));
-                                        break;
-                                    }
-                                    if ($t->getName() === 'int') {
-                                        $tsType = 'number';
-                                    } elseif ($t->getName() === 'bool') {
-                                        $tsType = 'boolean';
-                                    }
-                                }
-                            } elseif ($type && $type instanceof ReflectionNamedType) {
-                                if (enum_exists($type->getName())) {
-                                    $choices = array_map(fn ($c) => $c->value, $type->getName()::cases());
+                // Use reflection for PHP enum-backed properties
+                try {
+                    $rp = new ReflectionClass($example);
+                    if ($rp->hasProperty($propName)) {
+                        $prop = $rp->getProperty($propName);
+                        $type = $prop->getType();
+                        if ($type instanceof ReflectionUnionType) {
+                            foreach ($type->getTypes() as $t) {
+                                if (enum_exists($t->getName())) {
+                                    $choices = array_map(fn ($c) => $c->value, $t->getName()::cases());
                                     $tsType = implode(' | ', array_map(fn ($c) => "'{$c}'", $choices));
-                                } elseif ($type->getName() === 'int') {
+                                    break;
+                                }
+                                if ($t->getName() === 'int') {
                                     $tsType = 'number';
-                                } elseif ($type->getName() === 'bool') {
+                                } elseif ($t->getName() === 'bool') {
                                     $tsType = 'boolean';
                                 }
                             }
+                        } elseif ($type && $type instanceof ReflectionNamedType) {
+                            if (enum_exists($type->getName())) {
+                                $choices = array_map(fn ($c) => $c->value, $type->getName()::cases());
+                                $tsType = implode(' | ', array_map(fn ($c) => "'{$c}'", $choices));
+                            } elseif ($type->getName() === 'int') {
+                                $tsType = 'number';
+                            } elseif ($type->getName() === 'bool') {
+                                $tsType = 'boolean';
+                            }
                         }
-                    } catch (Throwable $e) {
-                        // ignore reflection errors and treat as string
                     }
+                } catch (Throwable $e) {
+                    // ignore reflection errors and treat as string
                 }
 
                 $props[$jsVarName] = [
@@ -396,21 +369,6 @@ class NextJSGenerator implements TemplateGeneratorInterface
                     }
                 }
 
-                // Get attribute details from YAML
-                $attrDetails = $meta['attributes'][$this->camelToKebab($propName)] ??
-                              $meta['attributes'][$propName] ?? [];
-
-                // Check if YAML defines enum|string type with choices
-                $yamlType = $attrDetails['type'] ?? null;
-                if (($yamlType === 'enum|string' || $yamlType === 'string|enum') &&
-                    isset($attrDetails['choices']) &&
-                    is_array($attrDetails['choices']) &&
-                    count($attrDetails['choices']) > 0) {
-                    // Generate union type: 'value1' | 'value2' | string
-                    $enumValues = array_map(fn ($c) => "'{$c}'", $attrDetails['choices']);
-                    $tsType = implode(' | ', $enumValues) . ' | string';
-                }
-
                 // Handle JS reserved words by appending 'Prop'
                 $jsVarName = in_array($propName, self::JS_RESERVED_WORDS, true) ? 'html' . ucfirst(
                     $propName
@@ -419,8 +377,8 @@ class NextJSGenerator implements TemplateGeneratorInterface
                 $props[$jsVarName] = [
                     'name' => $jsVarName,
                     'type' => $tsType,
-                    'optional' => ! ($attrDetails['required'] ?? false),
-                    'description' => $attrDetails['description'] ?? '',
+                    'optional' => true,
+                    'description' => '',
                     'htmlAttr' => $this->camelToKebab($propName),
                 ];
             }

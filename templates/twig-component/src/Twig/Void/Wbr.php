@@ -2,13 +2,15 @@
 
 namespace Html\TwigComponentBundle\Twig\Void;
 
-use Html\Enum\DirectionEnum;
+use Html\Enum\{
+    DirectionEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Word Break Opportunity - The wbr element represents a word break opportunity.
+ * Wbr - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -18,7 +20,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class Wbr
 {
     public ?DirectionEnum $dir = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $hidden = null;
     public ?string $id = null;
     public ?string $class = null;
 

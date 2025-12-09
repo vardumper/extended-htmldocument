@@ -2,16 +2,18 @@
 
 namespace Html\TwigComponentBundle\Twig\Void;
 
-use Html\Enum\CrossoriginEnum;
-use Html\Enum\ReferrerpolicyEnum;
-use Html\Enum\LinkRelEnum;
-use Html\Enum\DirectionEnum;
+use Html\Enum\{
+    CrossoriginEnum,
+    ReferrerpolicyEnum,
+    LinkRelEnum,
+    DirectionEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Link - The link element defines a link between a document and an external resource. It is used to link to external stylesheets.
+ * Link - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -30,7 +32,7 @@ class Link
     public ?string $sizes = null;
     public ?string $type = null;
     public ?DirectionEnum $dir = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $hidden = null;
     public ?string $lang = null;
     public ?string $style = null;
     public ?string $title = null;

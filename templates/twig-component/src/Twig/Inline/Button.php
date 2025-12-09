@@ -2,35 +2,37 @@
 
 namespace Html\TwigComponentBundle\Twig\Inline;
 
-use Html\Enum\AutocorrectEnum;
-use Html\Enum\ButtonTypeEnum;
-use Html\Enum\FormenctypeEnum;
-use Html\Enum\FormmethodEnum;
-use Html\Enum\FormtargetEnum;
-use Html\Enum\PopovertargetactionEnum;
-use Html\Enum\RoleEnum;
-use Html\Enum\AriaCurrentEnum;
-use Html\Enum\AriaBusyEnum;
-use Html\Enum\AriaDisabledEnum;
-use Html\Enum\AriaLiveEnum;
-use Html\Enum\AriaRelevantEnum;
-use Html\Enum\AriaAtomicEnum;
-use Html\Enum\AriaExpandedEnum;
-use Html\Enum\AriaHaspopupEnum;
-use Html\Enum\AriaPressedEnum;
-use Html\Enum\AriaCheckedEnum;
-use Html\Enum\AutoCapitalizeEnum;
-use Html\Enum\ContentEditableEnum;
-use Html\Enum\DirectionEnum;
-use Html\Enum\InputModeEnum;
-use Html\Enum\SpellCheckEnum;
-use Html\Enum\TranslateEnum;
+use Html\Enum\{
+    AutocorrectEnum,
+    ButtonTypeEnum,
+    FormenctypeEnum,
+    FormmethodEnum,
+    FormtargetEnum,
+    PopovertargetactionEnum,
+    RoleEnum,
+    AriaCurrentEnum,
+    AriaBusyEnum,
+    AriaDisabledEnum,
+    AriaLiveEnum,
+    AriaRelevantEnum,
+    AriaAtomicEnum,
+    AriaExpandedEnum,
+    AriaHaspopupEnum,
+    AriaPressedEnum,
+    AriaCheckedEnum,
+    AutoCapitalizeEnum,
+    ContentEditableEnum,
+    DirectionEnum,
+    InputModeEnum,
+    SpellCheckEnum,
+    TranslateEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Button - The button element represents a clickable button, used to submit forms or anywhere in a document for accessible, standard button functionality.
+ * Button - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -77,8 +79,8 @@ class Button
     public ?bool $autofocus = null;
     public ?ContentEditableEnum $contenteditable = null;
     public ?DirectionEnum $dir = null;
-    public ?string|bool $draggable = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $draggable = null;
+    public null|string|bool $hidden = null;
     public ?InputModeEnum $inputmode = null;
     public ?string $lang = null;
     public ?string $slot = null;

@@ -7,7 +7,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Column - The col element represents a column in a table.
+ * Col - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle

@@ -2,35 +2,37 @@
 
 namespace Html\TwigComponentBundle\Twig\Inline;
 
-use Html\Enum\AutocompleteEnum;
-use Html\Enum\AutocorrectEnum;
-use Html\Enum\RoleEnum;
-use Html\Enum\AriaInvalidEnum;
-use Html\Enum\AriaDisabledEnum;
-use Html\Enum\AriaLiveEnum;
-use Html\Enum\AriaRelevantEnum;
-use Html\Enum\AriaAtomicEnum;
-use Html\Enum\AriaExpandedEnum;
-use Html\Enum\AriaHaspopupEnum;
-use Html\Enum\AriaPressedEnum;
-use Html\Enum\AriaAutocompleteEnum;
-use Html\Enum\AriaReadonlyEnum;
-use Html\Enum\AriaRequiredEnum;
-use Html\Enum\AriaMultiselectableEnum;
-use Html\Enum\AriaOrientationEnum;
-use Html\Enum\AutoCapitalizeEnum;
-use Html\Enum\ContentEditableEnum;
-use Html\Enum\DirectionEnum;
-use Html\Enum\InputModeEnum;
-use Html\Enum\SpellCheckEnum;
-use Html\Enum\TranslateEnum;
-use Html\Enum\PopoverEnum;
+use Html\Enum\{
+    AutocompleteEnum,
+    AutocorrectEnum,
+    RoleEnum,
+    AriaInvalidEnum,
+    AriaDisabledEnum,
+    AriaLiveEnum,
+    AriaRelevantEnum,
+    AriaAtomicEnum,
+    AriaExpandedEnum,
+    AriaHaspopupEnum,
+    AriaPressedEnum,
+    AriaAutocompleteEnum,
+    AriaReadonlyEnum,
+    AriaRequiredEnum,
+    AriaMultiselectableEnum,
+    AriaOrientationEnum,
+    AutoCapitalizeEnum,
+    ContentEditableEnum,
+    DirectionEnum,
+    InputModeEnum,
+    SpellCheckEnum,
+    TranslateEnum,
+    PopoverEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Select - The select element represents a control for selecting amongst a set of options.
+ * Select - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -72,11 +74,11 @@ class Select
     public ?AriaOrientationEnum $ariaOrientation = null;
     public ?string $accesskey = null;
     public ?AutoCapitalizeEnum $autocapitalize = null;
-    public ?string|bool $autofocus = null;
+    public null|string|bool $autofocus = null;
     public ?ContentEditableEnum $contenteditable = null;
     public ?DirectionEnum $dir = null;
-    public ?string|bool $draggable = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $draggable = null;
+    public null|string|bool $hidden = null;
     public ?InputModeEnum $inputmode = null;
     public ?string $lang = null;
     public ?string $slot = null;

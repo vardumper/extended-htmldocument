@@ -2,13 +2,15 @@
 
 namespace Html\TwigComponentBundle\Twig\Void;
 
-use Html\Enum\KindEnum;
+use Html\Enum\{
+    KindEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Track - The track element is used as a child of the media elements—audio and video. It lets you specify timed text tracks (or time-based data), for example to automatically handle subtitles. The tracks are formatted in WebVTT format (.vtt files) — Web Video Text Tracks.
+ * Track - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -22,7 +24,7 @@ class Track
     public ?string $label = null;
     public ?string $src = null;
     public ?string $srclang = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $hidden = null;
     public ?string $lang = null;
     public ?string $style = null;
     public ?string $id = null;

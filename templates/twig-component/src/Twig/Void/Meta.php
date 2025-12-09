@@ -2,13 +2,15 @@
 
 namespace Html\TwigComponentBundle\Twig\Void;
 
-use Html\Enum\HttpEquivEnum;
+use Html\Enum\{
+    HttpEquivEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Meta - The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.
+ * Meta - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -22,7 +24,7 @@ class Meta
     public ?HttpEquivEnum $httpEquiv = null;
     public ?string $name = null;
     public ?string $scheme = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $hidden = null;
     public ?string $lang = null;
     public ?string $title = null;
     public ?string $id = null;

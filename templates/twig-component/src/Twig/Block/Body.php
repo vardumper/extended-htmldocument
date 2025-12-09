@@ -2,14 +2,16 @@
 
 namespace Html\TwigComponentBundle\Twig\Block;
 
-use Html\Enum\DirectionEnum;
-use Html\Enum\TranslateEnum;
+use Html\Enum\{
+    DirectionEnum,
+    TranslateEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Body - The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
+ * Body - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -36,8 +38,8 @@ class Body
     public ?string $onunload = null;
     public ?string $accesskey = null;
     public ?DirectionEnum $dir = null;
-    public ?string|bool $draggable = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $draggable = null;
+    public null|string|bool $hidden = null;
     public ?string $lang = null;
     public ?string $style = null;
     public ?int $tabindex = null;

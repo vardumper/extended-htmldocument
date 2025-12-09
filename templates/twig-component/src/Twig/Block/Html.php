@@ -2,13 +2,15 @@
 
 namespace Html\TwigComponentBundle\Twig\Block;
 
-use Html\Enum\DirectionEnum;
+use Html\Enum\{
+    DirectionEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * HTML - The root element of an HTML document. It represents the top-level of the HTML structure.
+ * Html - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle

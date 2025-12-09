@@ -7,7 +7,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Source - The source element allows authors to specify multiple media resources for media elements. It is an empty element. It is commonly used within the picture element.
+ * Source - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -21,7 +21,7 @@ class Source
     public ?string $src = null;
     public ?string $srcset = null;
     public ?string $type = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $hidden = null;
     public ?string $id = null;
     public ?string $class = null;
 

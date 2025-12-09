@@ -2,21 +2,23 @@
 
 namespace Html\TwigComponentBundle\Twig\Block;
 
-use Html\Enum\CrossoriginEnum;
-use Html\Enum\PreloadEnum;
-use Html\Enum\RoleEnum;
-use Html\Enum\AriaBusyEnum;
-use Html\Enum\AriaLiveEnum;
-use Html\Enum\AriaRelevantEnum;
-use Html\Enum\AriaAtomicEnum;
-use Html\Enum\TranslateEnum;
-use Html\Enum\PopoverEnum;
+use Html\Enum\{
+    CrossoriginEnum,
+    PreloadEnum,
+    RoleEnum,
+    AriaBusyEnum,
+    AriaLiveEnum,
+    AriaRelevantEnum,
+    AriaAtomicEnum,
+    TranslateEnum,
+    PopoverEnum,
+};
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Audio - The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.
+ * Audio - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -44,8 +46,8 @@ class Audio
     public ?AriaRelevantEnum $ariaRelevant = null;
     public ?AriaAtomicEnum $ariaAtomic = null;
     public ?string $accesskey = null;
-    public ?string|bool $draggable = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $draggable = null;
+    public null|string|bool $hidden = null;
     public ?string $lang = null;
     public ?string $slot = null;
     public ?string $style = null;

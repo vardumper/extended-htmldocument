@@ -7,7 +7,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Parameter - The param element defines parameters for an object element.
+ * Param - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
@@ -19,7 +19,7 @@ class Param
     public ?string $name = null;
     public ?string $value = null;
     public ?string $style = null;
-    public ?string|bool $hidden = null;
+    public null|string|bool $hidden = null;
     public ?string $id = null;
     public ?string $class = null;
 

@@ -7,7 +7,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Title - The title element defines the title of the document, shown in a browser's title bar or a page's tab. It is only text, not meant to be displayed.
+ * Title - 
  *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
