@@ -1,31 +1,32 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * @generated 2025-12-09 15:32:40
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output
  */
+
 namespace Html\Element\Inline;
 
-use Html\Element\InlineElement;
 use Html\Element\Block\{
     Body,
     Fieldset,
     Form,
     Paragraph,
 };
+use Html\Element\InlineElement;
 use Html\Enum\{
     AriaAtomicEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
     AutocorrectEnum,
 };
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 /**
  * The output element represents the result of a calculation or user action.
@@ -51,6 +52,7 @@ class Output extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
+
     /**
      * The HTML element name
      */
@@ -75,66 +77,64 @@ class Output extends InlineElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        Body::class,
-        Fieldset::class,
-        Form::class,
-        Paragraph::class,
-    ];
+    public static array $childOf = [Body::class, Fieldset::class, Form::class, Paragraph::class];
 
     /**
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** 
+    /**
      * Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.
-     * @category HTML attribute
      * @example on
      */
     protected ?AutocorrectEnum $autocorrect = null;
 
-    /** Refers to the <datalist> element that contains the options for an input element. */
+    /**
+     * Refers to the <datalist> element that contains the options for an input element.
+     */
     protected ?string $for = null;
 
-    /** References an element that provides additional details about the current element. */
+    /**
+     * References an element that provides additional details about the current element.
+     */
     protected ?string $ariaDetails = null;
 
-    /** Defines keyboard shortcuts available for the element. */
+    /**
+     * Defines keyboard shortcuts available for the element.
+     */
     protected ?string $ariaKeyshortcuts = null;
 
-    /** Provides a human-readable custom role description for assistive technologies. */
+    /**
+     * Provides a human-readable custom role description for assistive technologies.
+     */
     protected ?string $ariaRoledescription = null;
 
-    /** 
+    /**
      * Defines how updates to the element should be announced to screen readers.
-     * @category HTML attribute
      * @example off
      */
     protected ?AriaLiveEnum $ariaLive = null;
 
-    /** 
+    /**
      * Indicates what content changes should be announced in a live region.
-     * @category HTML attribute
      * @example additions text
      */
     protected ?AriaRelevantEnum $ariaRelevant = null;
 
-    /** 
+    /**
      * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
-     * @category HTML attribute
      * @example false
      */
     protected ?AriaAtomicEnum $ariaAtomic = null;
 
-
     public function setAutocorrect(string|AutocorrectEnum $autocorrect): static
     {
         if (\is_string($autocorrect)) {
-            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new \InvalidArgumentException("Invalid value for \$autocorrect.");
+            $autocorrect = AutocorrectEnum::tryFrom($autocorrect) ?? throw new InvalidArgumentException(
+                'Invalid value for $autocorrect.'
+            );
         }
         $this->autocorrect = $autocorrect;
         $this->delegated->setAttribute('autocorrect', (string) $autocorrect->value);
@@ -198,7 +198,9 @@ class Output extends InlineElement
     public function setAriaLive(string|AriaLiveEnum $ariaLive): static
     {
         if (\is_string($ariaLive)) {
-            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
+            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaLive.'
+            );
         }
         $this->ariaLive = $ariaLive;
         $this->delegated->setAttribute('aria-live', (string) $ariaLive->value);
@@ -214,7 +216,9 @@ class Output extends InlineElement
     public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
     {
         if (\is_string($ariaRelevant)) {
-            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
+            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaRelevant.'
+            );
         }
         $this->ariaRelevant = $ariaRelevant;
         $this->delegated->setAttribute('aria-relevant', (string) $ariaRelevant->value);
@@ -230,7 +234,9 @@ class Output extends InlineElement
     public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
     {
         if (\is_string($ariaAtomic)) {
-            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
+            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaAtomic.'
+            );
         }
         $this->ariaAtomic = $ariaAtomic;
         $this->delegated->setAttribute('aria-atomic', (string) $ariaAtomic->value);
@@ -242,5 +248,4 @@ class Output extends InlineElement
     {
         return $this->ariaAtomic;
     }
-
 }

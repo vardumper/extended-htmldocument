@@ -1,17 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * @generated 2025-12-09 15:32:40
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source
  */
+
 namespace Html\Element\Void;
 
-use Html\Element\VoidElement;
 use Html\Element\Block\{
     Aside,
     DefinitionDescription,
@@ -23,8 +22,9 @@ use Html\Element\Block\{
     Section,
 };
 use Html\Element\Inline\MarkedText;
-use Html\Trait\GlobalAttribute;
+use Html\Element\VoidElement;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 /**
  * The source element allows authors to specify multiple media resources for media elements. It is an empty element. It is commonly used within the picture element.
@@ -36,6 +36,7 @@ class Source extends VoidElement
     use GlobalAttribute\DataTrait;
     use GlobalAttribute\HiddenTrait;
     use GlobalAttribute\IdTrait;
+
     /**
      * The HTML element name
      */
@@ -74,31 +75,35 @@ class Source extends VoidElement
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-    /** Specifies the media type for which the linked resource or style sheet is intended. */
+    /**
+     * Specifies the media type for which the linked resource or style sheet is intended.
+     */
     protected ?string $media = null;
 
-    /** Specifies the sizes of the images or icons for different display/window sizes. */
+    /**
+     * Specifies the sizes of the images or icons for different display/window sizes.
+     */
     protected ?string $sizes = null;
 
-    /** 
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
-     * @category HTML attribute
      * @required
      */
     protected ?string $src = null;
 
-    /** Specifies a list of possible image sources for the browser to use. */
+    /**
+     * Specifies a list of possible image sources for the browser to use.
+     */
     protected ?string $srcset = null;
 
-    /** Specifies the media type of the linked resource. */
+    /**
+     * Specifies the media type of the linked resource.
+     */
     protected ?string $type = null;
-
 
     public function setMedia(string $media): static
     {
@@ -159,5 +164,4 @@ class Source extends VoidElement
     {
         return $this->type;
     }
-
 }

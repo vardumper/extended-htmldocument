@@ -199,7 +199,7 @@ final class CreateClassCommand extends Command
         }
 
         // Sort trait names alphabetically
-        sort($traitNames, SORT_STRING);
+        sort($traitNames, \SORT_STRING);
 
         // Generate individual trait use statements (traits cannot use grouped syntax)
         $traits = '';
@@ -538,7 +538,7 @@ final class CreateClassCommand extends Command
             $className = array_pop($parts);
             $namespace = implode('\\', $parts);
 
-            if (!isset($grouped[$namespace])) {
+            if (! isset($grouped[$namespace])) {
                 $grouped[$namespace] = [];
             }
             $grouped[$namespace][] = $className;
@@ -547,7 +547,7 @@ final class CreateClassCommand extends Command
         // Sort namespaces and classes within each namespace
         ksort($grouped);
         foreach ($grouped as $namespace => &$classes) {
-            sort($classes, SORT_STRING);
+            sort($classes, \SORT_STRING);
         }
         unset($classes);
 
@@ -561,7 +561,7 @@ final class CreateClassCommand extends Command
                 // Grouped use statement
                 $useStatements .= sprintf("use %s\\{\n", $namespace);
                 foreach ($classes as $i => $class) {
-                    $useStatements .= sprintf("    %s", $class);
+                    $useStatements .= sprintf('    %s', $class);
                     $useStatements .= ($i < count($classes) - 1) ? ",\n" : ",\n};\n";
                 }
             }

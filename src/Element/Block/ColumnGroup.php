@@ -1,21 +1,20 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * @generated 2025-12-09 15:32:40
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Table;
 use Html\Element\Void\Column;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 /**
  * The colgroup element represents a group of one or more columns in the table that is its parent, if it has a parent and that is a table element.
@@ -31,6 +30,7 @@ class ColumnGroup extends BlockElement
     use GlobalAttribute\LangTrait;
     use GlobalAttribute\SlotTrait;
     use GlobalAttribute\StyleTrait;
+
     /**
      * The HTML element name
      */
@@ -55,22 +55,18 @@ class ColumnGroup extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        Table::class,
-    ];
+    public static array $childOf = [Table::class];
 
     /**
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [
-        Column::class,
-    ];
+    public static array $parentOf = [Column::class];
 
-
-    /** Specifies the number of columns the <col> element should span in a table. */
+    /**
+     * Specifies the number of columns the <col> element should span in a table.
+     */
     protected ?int $span = null;
-
 
     public function setSpan(int $span): static
     {
@@ -83,6 +79,4 @@ class ColumnGroup extends BlockElement
     {
         return $this->span;
     }
-
-
 }

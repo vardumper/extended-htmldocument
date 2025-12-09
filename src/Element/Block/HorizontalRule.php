@@ -1,24 +1,21 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * @generated 2025-12-09 15:32:40
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hr
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\{
-    Body,
-    Paragraph,
-};
 use Html\Enum\HrAlignEnum;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 /**
  * The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.
@@ -34,6 +31,7 @@ class HorizontalRule extends BlockElement
     use GlobalAttribute\LangTrait;
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\TitleTrait;
+
     /**
      * The HTML element name
      */
@@ -58,55 +56,45 @@ class HorizontalRule extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        Body::class,
-        Paragraph::class,
-    ];
+    public static array $childOf = [Body::class, Paragraph::class];
 
     /**
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** 
+    /**
      * Specifies the horizontal alignment of the element.
-     * @category HTML attribute
      * @deprecated
      */
     protected ?HrAlignEnum $align = null;
 
-    /** 
-     * 
-     * @category HTML attribute
+    /**
      * @deprecated
      */
     protected ?string $color = null;
 
-    /** 
-     * 
-     * @category HTML attribute
+    /**
      * @deprecated
      */
     protected ?bool $noshade = null;
 
-    /** 
+    /**
      * Specifies the height of a hr element in pixels.
-     * @category HTML attribute
      * @deprecated
      */
     protected ?int $size = null;
 
-    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /**
+     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     */
     protected ?string $width = null;
-
 
     public function setAlign(string|HrAlignEnum $align): static
     {
         if (\is_string($align)) {
-            $align = HrAlignEnum::tryFrom($align) ?? throw new \InvalidArgumentException("Invalid value for \$align.");
+            $align = HrAlignEnum::tryFrom($align) ?? throw new InvalidArgumentException('Invalid value for $align.');
         }
         $this->align = $align;
         $this->delegated->setAttribute('align', (string) $align->value);
@@ -166,6 +154,4 @@ class HorizontalRule extends BlockElement
     {
         return $this->width;
     }
-
-
 }

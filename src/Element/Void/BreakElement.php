@@ -1,17 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * @generated 2025-12-09 15:32:40
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/br
  */
+
 namespace Html\Element\Void;
 
-use Html\Element\VoidElement;
 use Html\Element\Block\{
     Article,
     Aside,
@@ -25,8 +24,9 @@ use Html\Element\Block\{
     Section,
 };
 use Html\Element\Inline\MarkedText;
-use Html\Trait\GlobalAttribute;
+use Html\Element\VoidElement;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 /**
  * The br element represents a line break.
@@ -40,6 +40,7 @@ class BreakElement extends VoidElement
     use GlobalAttribute\HiddenTrait;
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\StyleTrait;
+
     /**
      * The HTML element name
      */
@@ -80,11 +81,7 @@ class BreakElement extends VoidElement
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
-
-
+    public static array $parentOf = [];
 }
