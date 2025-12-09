@@ -1,0 +1,67 @@
+name: Publish subpackages to npm
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Get release version
+        id: release
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Detect changed packages
+        id: changes
+        run: |
+          CHANGED=""
+          for dir in templates/*; do
+            # skip if folder does not contain a package.json
+            if [ ! -f "$dir/package.json" ]; then
+               echo "Skipping $dir (no package.json)"
+               continue
+            fi
+
+            if git diff --quiet HEAD~1 -- "$dir"; then
+              continue
+            fi
+
+            CHANGED="$CHANGED $dir"
+          done
+          echo "dirs=$CHANGED" >> "$GITHUB_OUTPUT"
+
+      - name: Publish changed packages
+        if: steps.changes.outputs.dirs != ''
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          VERSION="${{ steps.release.outputs.version }}"
+          
+          for dir in ${{ steps.changes.outputs.dirs }}; do
+            echo "Publishing $dir"
+
+            # update version number
+            jq --arg v "$VERSION" '.version=$v' "$dir/package.json" \
+              > "$dir/package.json.tmp"
+            mv "$dir/package.json.tmp" "$dir/package.json"
+
+            cd "$dir"
+            npm publish --access public
+            cd -
+          done
