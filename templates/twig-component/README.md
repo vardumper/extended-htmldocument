@@ -6,7 +6,7 @@ It provides auto-completion in your IDE of choice, so all available attributes c
 ## Installation
 
 ```bash
-composer require html/component-bundle
+composer require vardumper/html5-twig-component-bundle
 ```
 
 ## Configuration
