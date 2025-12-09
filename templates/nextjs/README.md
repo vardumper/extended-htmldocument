@@ -1,4 +1,4 @@
-# Extended HTML Document - React/Next.js Components
+# React/Next.js Components for all HTML5 elements
 
 Type-safe, auto-generated React components for all HTML5 elements with full ARIA support.
 
@@ -18,15 +18,14 @@ Type-safe, auto-generated React components for all HTML5 elements with full ARIA
 - **Data Attributes**: Support for custom `data-*` attributes via object syntax
 
 ## Installation
-
-If this were published as a package:
+This is a static NPM package, providing just the Blade templates.
 
 ```bash
-npm install @vardumper/extended-htmldocument-nextjs
+npm install @typesafe-html5/react
 # or
-yarn add @vardumper/extended-htmldocument-nextjs
+yarn add @typesafe-html5/react
 # or
-pnpm add @vardumper/extended-htmldocument-nextjs
+pnpm add @typesafe-html5/react
 ```
 
 ## Quick Start
@@ -121,17 +120,6 @@ export default function Navigation() {
   );
 }
 ```
-
-## Component Categories
-
-### Block Elements
-Article, Aside, Audio, Blockquote, Body, Canvas, Caption, Colgroup, Datalist, Dd, Del, Details, Dialog, Div, Dl, Dt, Embed, Fieldset, Figcaption, Figure, Footer, Form, H1-H6, Header, Hgroup, Hr, Html, Iframe, Ins, Legend, Li, Main, Map, Menu, Nav, Noscript, Object, Ol, Optgroup, Option, P, Picture, Pre, Section, Summary, Table, Tbody, Td, Template, Tfoot, Th, Thead, Tr, Ul, Video
-
-### Inline Elements
-A, Abbr, Address, B, Bdi, Bdo, Button, Cite, Code, Data, Dfn, Em, I, Img, Input, Kbd, Label, Mark, Meter, Output, Progress, Q, Rp, Rt, Ruby, S, Samp, Select, Slot, Small, Span, Strong, Sub, Sup, Svg, Textarea, Time, U, Var
-
-### Void Elements
-Area, Base, Br, Col, Head, Link, Meta, Param, Script, Source, Style, Title, Track, Wbr
 
 ## TypeScript Support
 
@@ -260,13 +248,17 @@ These components are **framework-agnostic** and work in:
 
 ## Generation
 
-These components are auto-generated using:
+These components are auto-generated from the HTML5 schema. 
+You can write your own PHP-based generators or use the pre-made ones for:
+* Blade
+* Twig
+* Twig Components
+* Storybook
+* etc.
 
-```bash
-php bin/ext-html generate:all nextjs templates/nextjs --overwrite-existing=true
-```
-
-**Note**: Do not manually edit these files as they will be overwritten on regeneration.
+### Read More
+* [Extended HTMLDocument Documentation](https://vardumper.github.io/extended-htmldocument/)
+* [Github Repository](https://github.com/vardumper/extended-htmldocument)
 
 ## TypeScript Configuration
 
@@ -285,7 +277,3 @@ Ensure your `tsconfig.json` includes:
 ## Browser Compatibility
 
 These components generate standard HTML elements and are compatible with all modern browsers that support React.
-
-## License
-
-Auto-generated from ExtendedHTMLDocument package.
