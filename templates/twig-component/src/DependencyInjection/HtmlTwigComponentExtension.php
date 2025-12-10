@@ -20,17 +20,21 @@ class HtmlTwigComponentExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $loader = new PhpFileLoader(
-            $container,
-            new FileLocator(\dirname(__DIR__) . '/Resources/config')
-        );
-
-        // Load services configuration
-        $loader->load('services.php');
     }
 
     public function getAlias(): string
     {
         return 'html_twig_component';
+    }
+
+    public function prepend(ContainerBuilder $container): void
+    {
+        $bundlePath = dirname(__DIR__); // Gets the bundle's root directory
+    
+        $container->prependExtensionConfig('twig', [
+            'paths' => [
+                $bundlePath . '/Resources' => 'HtmlTwigComponent'
+            ]
+        ]);
     }
 }
