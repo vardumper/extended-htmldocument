@@ -3,6 +3,11 @@ services:
         autowire: true
         autoconfigure: true
 
-    Html\TwigComponentBundle\Twig\:
-        resource: './../../Twig/'
-        tags: ['controller.service_arguments']
+    Html\TwigComponentBundle\Twig\Block\:
+        resource: '../../Twig/Block/'
+    
+    Html\TwigComponentBundle\Twig\Inline\:
+        resource: '../../Twig/Inline/'
+    
+    Html\TwigComponentBundle\Twig\Void\:
+        resource: '../../Twig/Void/'
