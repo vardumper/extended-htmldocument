@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * @author vardumper <info@erikpoehler.com>
  * @package Html\TwigComponentBundle
  */
-class HtmlTwigComponentBundle extends Bundle
+class TwigComponentBundle extends Bundle
 {
     public function getPath(): string
     {
