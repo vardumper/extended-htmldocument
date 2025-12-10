@@ -1,18 +1,18 @@
 <?php
 
-namespace Html\ComponentBundle;
+namespace Html\TwigComponentBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * HTML Component Bundle
- * 
+ *
  * Provides Symfony UX Twig Components for all HTML5 elements with ARIA support.
- * 
+ *
  * @author vardumper <info@erikpoehler.com>
- * @package Html\ComponentBundle
+ * @package Html\TwigComponentBundle
  */
-class HtmlComponentBundle extends Bundle
+class HtmlTwigComponentBundle extends Bundle
 {
     public function getPath(): string
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Html\TwigComponentBundle\Twig\Inline;
+namespace Html\TwigTwigComponentBundle\Twig\Inline;
 
 use Html\Enum\{
     ARoleEnum,

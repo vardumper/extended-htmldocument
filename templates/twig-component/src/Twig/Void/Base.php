@@ -1,6 +1,6 @@
 <?php
 
-namespace Html\TwigComponentBundle\Twig\Void;
+namespace Html\TwigTwigComponentBundle\Twig\Void;
 
 use Html\Enum\{
     TargetEnum,

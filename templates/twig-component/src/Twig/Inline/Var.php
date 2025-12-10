@@ -1,6 +1,6 @@
 <?php
 
-namespace Html\TwigComponentBundle\Twig\Inline;
+namespace Html\TwigTwigComponentBundle\Twig\Inline;
 
 use Html\Enum\{
     RoleEnum,
@@ -25,7 +25,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * Var - The var element represents the name of a variable in a mathematical expression or a programming context.
  *
  * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
+ * @package Html\TwigTwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Var', template: '@HtmlTwigComponent/inline/var/var.html.twig')]

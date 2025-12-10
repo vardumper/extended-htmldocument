@@ -1,6 +1,6 @@
 <?php
 
-namespace Html\TwigComponentBundle\Twig\Block;
+namespace Html\TwigTwigComponentBundle\Twig\Block;
 
 use Html\Enum\{
     DirectionEnum,
