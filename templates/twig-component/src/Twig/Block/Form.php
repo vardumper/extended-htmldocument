@@ -1,88 +1,62 @@
 <?php
 
-namespace Html\TwigTwigComponentBundle\Twig\Block;
+namespace Html\TwigComponentBundle\Twig\Block;
 
 use Html\Enum\{
-    AriaAtomicEnum,
-    AriaInvalidEnum,
-    AriaLiveEnum,
-    AriaRelevantEnum,
     AutocompleteEnum,
     AutocorrectEnum,
-    DirectionEnum,
     FormEnctypeEnum,
     FormMethodEnum,
     FormTargetEnum,
+    AriaInvalidEnum,
+    AriaLiveEnum,
+    AriaRelevantEnum,
+    AriaAtomicEnum,
+    DirectionEnum,
     TranslateEnum,
 };
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Form - The form element represents a section of a document containing interactive controls for submitting information to a web server.
  *
+ * @author vardumper <info@erikpoehler.com>
+ * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Form', template: '@HtmlTwigComponent/block/form/form.html.twig')]
 class Form
 {
     public ?string $acceptCharset = null;
-
     public ?string $action = null;
-
     public ?AutocompleteEnum $autocomplete = null;
-
     public ?AutocorrectEnum $autocorrect = null;
-
     public ?FormEnctypeEnum $enctype = null;
-
     public ?FormMethodEnum $method = null;
-
     public ?string $name = null;
-
     public ?bool $novalidate = null;
-
     public ?FormTargetEnum $target = null;
-
     public ?AriaInvalidEnum $ariaInvalid = null;
-
     public ?string $ariaLabel = null;
-
     public ?string $ariaDetails = null;
-
     public ?string $ariaKeyshortcuts = null;
-
     public ?string $ariaRoledescription = null;
-
     public ?AriaLiveEnum $ariaLive = null;
-
     public ?AriaRelevantEnum $ariaRelevant = null;
-
     public ?AriaAtomicEnum $ariaAtomic = null;
-
     public ?string $accesskey = null;
-
     public ?DirectionEnum $dir = null;
-
     public null|string|bool $draggable = null;
-
     public null|string|bool $hidden = null;
-
     public ?string $lang = null;
-
     public ?string $slot = null;
-
     public ?string $style = null;
-
     public ?int $tabindex = null;
-
     public ?string $title = null;
-
     public ?TranslateEnum $translate = null;
-
     public ?string $id = null;
-
     public ?string $class = null;
 
     #[PreMount]
@@ -93,6 +67,7 @@ class Form
 
         $resolver->setAllowedTypes('acceptCharset', ['string']);
         $resolver->setAllowedTypes('action', ['string']);
+        $resolver->setDefaults(['autocomplete' => null]);
         $resolver->setAllowedTypes('autocomplete', ['null', 'string', AutocompleteEnum::class]);
         $resolver->setNormalizer('autocomplete', function ($options, $value) {
             if (is_string($value)) {
@@ -100,6 +75,7 @@ class Form
             }
             return $value;
         });
+        $resolver->setDefaults(['autocorrect' => null]);
         $resolver->setAllowedTypes('autocorrect', ['null', 'string', AutocorrectEnum::class]);
         $resolver->setNormalizer('autocorrect', function ($options, $value) {
             if (is_string($value)) {
@@ -107,6 +83,7 @@ class Form
             }
             return $value;
         });
+        $resolver->setDefaults(['enctype' => null]);
         $resolver->setAllowedTypes('enctype', ['null', 'string', FormEnctypeEnum::class]);
         $resolver->setNormalizer('enctype', function ($options, $value) {
             if (is_string($value)) {
@@ -114,6 +91,7 @@ class Form
             }
             return $value;
         });
+        $resolver->setDefaults(['method' => null]);
         $resolver->setAllowedTypes('method', ['null', 'string', FormMethodEnum::class]);
         $resolver->setNormalizer('method', function ($options, $value) {
             if (is_string($value)) {
@@ -123,6 +101,7 @@ class Form
         });
         $resolver->setAllowedTypes('name', ['string']);
         $resolver->setAllowedTypes('novalidate', ['bool']);
+        $resolver->setDefaults(['target' => null]);
         $resolver->setAllowedTypes('target', ['null', 'string', FormTargetEnum::class]);
         $resolver->setNormalizer('target', function ($options, $value) {
             if (is_string($value)) {
@@ -130,6 +109,7 @@ class Form
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaInvalid' => null]);
         $resolver->setAllowedTypes('ariaInvalid', ['null', 'string', AriaInvalidEnum::class]);
         $resolver->setNormalizer('ariaInvalid', function ($options, $value) {
             if (is_string($value)) {
@@ -141,6 +121,7 @@ class Form
         $resolver->setAllowedTypes('ariaDetails', ['string']);
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
+        $resolver->setDefaults(['ariaLive' => null]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
         $resolver->setNormalizer('ariaLive', function ($options, $value) {
             if (is_string($value)) {
@@ -148,6 +129,7 @@ class Form
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaRelevant' => null]);
         $resolver->setAllowedTypes('ariaRelevant', ['null', 'string', AriaRelevantEnum::class]);
         $resolver->setNormalizer('ariaRelevant', function ($options, $value) {
             if (is_string($value)) {
@@ -155,6 +137,7 @@ class Form
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaAtomic' => null]);
         $resolver->setAllowedTypes('ariaAtomic', ['null', 'string', AriaAtomicEnum::class]);
         $resolver->setNormalizer('ariaAtomic', function ($options, $value) {
             if (is_string($value)) {
@@ -163,6 +146,7 @@ class Form
             return $value;
         });
         $resolver->setAllowedTypes('accesskey', ['string']);
+        $resolver->setDefaults(['dir' => null]);
         $resolver->setAllowedTypes('dir', ['null', 'string', DirectionEnum::class]);
         $resolver->setNormalizer('dir', function ($options, $value) {
             if (is_string($value)) {
@@ -170,13 +154,16 @@ class Form
             }
             return $value;
         });
+        $resolver->setDefaults(['draggable' => null]);
         $resolver->setAllowedTypes('draggable', ['null', 'string', 'bool']);
+        $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
         $resolver->setAllowedTypes('lang', ['string']);
         $resolver->setAllowedTypes('slot', ['string']);
         $resolver->setAllowedTypes('style', ['string']);
         $resolver->setAllowedTypes('tabindex', ['int']);
         $resolver->setAllowedTypes('title', ['string']);
+        $resolver->setDefaults(['translate' => null]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);
         $resolver->setNormalizer('translate', function ($options, $value) {
             if (is_string($value)) {
@@ -184,7 +171,9 @@ class Form
             }
             return $value;
         });
+        $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
+        $resolver->setDefaults(['class' => null]);
         $resolver->setAllowedTypes('class', ['null', 'string']);
 
         return $resolver->resolve($data) + $data;

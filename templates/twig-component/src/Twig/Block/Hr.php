@@ -1,45 +1,36 @@
 <?php
 
-namespace Html\TwigTwigComponentBundle\Twig\Block;
+namespace Html\TwigComponentBundle\Twig\Block;
 
 use Html\Enum\{
-    DirectionEnum,
     HrAlignEnum,
+    DirectionEnum,
 };
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Hr - The hr element represents a thematic break between paragraph-level elements. It is typically a horizontal rule or line.
  *
+ * @author vardumper <info@erikpoehler.com>
+ * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Hr', template: '@HtmlTwigComponent/block/hr/hr.html.twig')]
 class Hr
 {
     public ?HrAlignEnum $align = null;
-
     public ?string $color = null;
-
     public ?bool $noshade = null;
-
     public ?int $size = null;
-
     public ?string $width = null;
-
     public ?DirectionEnum $dir = null;
-
     public null|string|bool $hidden = null;
-
     public ?string $lang = null;
-
     public ?string $style = null;
-
     public ?string $title = null;
-
     public ?string $id = null;
-
     public ?string $class = null;
 
     #[PreMount]
@@ -48,6 +39,7 @@ class Hr
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefaults(['align' => null]);
         $resolver->setAllowedTypes('align', ['null', 'string', HrAlignEnum::class]);
         $resolver->setNormalizer('align', function ($options, $value) {
             if (is_string($value)) {
@@ -59,6 +51,7 @@ class Hr
         $resolver->setAllowedTypes('noshade', ['bool']);
         $resolver->setAllowedTypes('size', ['int']);
         $resolver->setAllowedTypes('width', ['string']);
+        $resolver->setDefaults(['dir' => null]);
         $resolver->setAllowedTypes('dir', ['null', 'string', DirectionEnum::class]);
         $resolver->setNormalizer('dir', function ($options, $value) {
             if (is_string($value)) {
@@ -66,11 +59,14 @@ class Hr
             }
             return $value;
         });
+        $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
         $resolver->setAllowedTypes('lang', ['string']);
         $resolver->setAllowedTypes('style', ['string']);
         $resolver->setAllowedTypes('title', ['string']);
+        $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
+        $resolver->setDefaults(['class' => null]);
         $resolver->setAllowedTypes('class', ['null', 'string']);
 
         return $resolver->resolve($data) + $data;

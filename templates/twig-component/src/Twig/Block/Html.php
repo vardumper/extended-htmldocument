@@ -1,27 +1,27 @@
 <?php
 
-namespace Html\TwigTwigComponentBundle\Twig\Block;
+namespace Html\TwigComponentBundle\Twig\Block;
 
 use Html\Enum\{
     DirectionEnum,
 };
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Html - The root element of an HTML document. It represents the top-level of the HTML structure.
  *
+ * @author vardumper <info@erikpoehler.com>
+ * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Html', template: '@HtmlTwigComponent/block/html/html.html.twig')]
 class Html
 {
     public ?string $manifest = null;
-
-    public ?string $lang = null;
-
     public ?DirectionEnum $dir = null;
+    public ?string $lang = null;
 
     #[PreMount]
     public function preMount(array $data): array
@@ -30,7 +30,7 @@ class Html
         $resolver->setIgnoreUndefined(true);
 
         $resolver->setAllowedTypes('manifest', ['string']);
-        $resolver->setAllowedTypes('lang', ['string']);
+        $resolver->setDefaults(['dir' => null]);
         $resolver->setAllowedTypes('dir', ['null', 'string', DirectionEnum::class]);
         $resolver->setNormalizer('dir', function ($options, $value) {
             if (is_string($value)) {
@@ -38,6 +38,7 @@ class Html
             }
             return $value;
         });
+        $resolver->setAllowedTypes('lang', ['string']);
 
         return $resolver->resolve($data) + $data;
     }

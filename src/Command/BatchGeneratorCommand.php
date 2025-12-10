@@ -13,6 +13,7 @@ use Html\Delegator\HTMLDocumentDelegator;
 use Html\Element\BlockElement;
 use Html\Element\InlineElement;
 use Html\Element\VoidElement;
+use Html\Helper\Helper;
 use Html\Trait\ClassResolverTrait;
 use Html\Trait\GeneratorResolverTrait;
 use ReflectionClass;
@@ -114,7 +115,7 @@ class BatchGeneratorCommand extends Command
                 // Generate PHP component class for twig-component generator
                 if ($name === 'twig-component' && method_exists($generatorInstance, 'renderComponentClass')) {
                     $componentClass = $generatorInstance->renderComponentClass($elementInstance);
-                    $componentName = ucfirst($elementInstance::QUALIFIED_NAME);
+                    $componentName = $this->getSafeComponentClassName(ucfirst($elementInstance::QUALIFIED_NAME));
 
                     // PHP classes go in src/Twig/{Block|Inline|Void}
                     $levelCap = ucfirst($level);
@@ -227,9 +228,9 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * HTML Component Bundle
- * 
+ *
  * Provides Symfony UX Twig Components for all HTML5 elements with ARIA support.
- * 
+ *
  * @author vardumper <info@erikpoehler.com>
  * @package Html\ComponentBundle
  */
@@ -318,5 +319,17 @@ MD;
             file_put_contents($readmeFile, $readme);
             $this->io->success("Generated: {$readmeFile}");
         }
+    }
+
+    /**
+     * Get safe component class name, avoiding PHP reserved words
+     */
+    private function getSafeComponentClassName(string $className): string
+    {
+        $reserved = Helper::getReservedWords();
+        if (in_array(strtolower($className), $reserved, true)) {
+            return $className . 'Element';
+        }
+        return $className;
     }
 }

@@ -1,105 +1,73 @@
 <?php
 
-namespace Html\TwigTwigComponentBundle\Twig\Block;
+namespace Html\TwigComponentBundle\Twig\Block;
 
 use Html\Enum\{
-    AriaAtomicEnum,
+    RoleEnum,
     AriaBusyEnum,
-    AriaExpandedEnum,
-    AriaHaspopupEnum,
     AriaHiddenEnum,
     AriaLiveEnum,
-    AriaPressedEnum,
     AriaRelevantEnum,
+    AriaAtomicEnum,
+    AriaExpandedEnum,
+    AriaHaspopupEnum,
+    AriaPressedEnum,
     AutoCapitalizeEnum,
     ContentEditableEnum,
     DirectionEnum,
     InputModeEnum,
     PopoverEnum,
-    RoleEnum,
     SpellCheckEnum,
     TranslateEnum,
 };
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Details - The details element represents a disclosure widget from which the user can obtain additional information or controls.
  *
+ * @author vardumper <info@erikpoehler.com>
+ * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Details', template: '@HtmlTwigComponent/block/details/details.html.twig')]
 class Details
 {
     public ?bool $open = null;
-
     public ?RoleEnum $role = null;
-
     public ?string $ariaControls = null;
-
     public ?string $ariaDescribedby = null;
-
     public ?string $ariaLabelledby = null;
-
     public ?AriaBusyEnum $ariaBusy = null;
-
     public ?AriaHiddenEnum $ariaHidden = null;
-
     public ?string $ariaLabel = null;
-
     public ?string $ariaDetails = null;
-
     public ?string $ariaKeyshortcuts = null;
-
     public ?string $ariaRoledescription = null;
-
     public ?AriaLiveEnum $ariaLive = null;
-
     public ?AriaRelevantEnum $ariaRelevant = null;
-
     public ?AriaAtomicEnum $ariaAtomic = null;
-
     public ?AriaExpandedEnum $ariaExpanded = null;
-
     public ?AriaHaspopupEnum $ariaHaspopup = null;
-
     public ?AriaPressedEnum $ariaPressed = null;
-
     public ?string $accesskey = null;
-
     public ?AutoCapitalizeEnum $autocapitalize = null;
-
     public null|string|bool $autofocus = null;
-
     public ?ContentEditableEnum $contenteditable = null;
-
     public ?DirectionEnum $dir = null;
-
     public null|string|bool $draggable = null;
-
     public null|string|bool $hidden = null;
-
     public ?InputModeEnum $inputmode = null;
-
     public ?string $lang = null;
-
-    public ?string $slot = null;
-
-    public ?SpellCheckEnum $spellcheck = null;
-
-    public ?string $style = null;
-
-    public ?int $tabindex = null;
-
-    public ?string $title = null;
-
-    public ?TranslateEnum $translate = null;
-
     public ?PopoverEnum $popover = null;
-
+    public ?string $slot = null;
+    public ?SpellCheckEnum $spellcheck = null;
+    public ?string $style = null;
+    public ?int $tabindex = null;
+    public ?string $title = null;
+    public ?TranslateEnum $translate = null;
     public ?string $id = null;
-
     public ?string $class = null;
 
     #[PreMount]
@@ -109,6 +77,7 @@ class Details
         $resolver->setIgnoreUndefined(true);
 
         $resolver->setAllowedTypes('open', ['bool']);
+        $resolver->setDefaults(['role' => null]);
         $resolver->setAllowedTypes('role', ['null', 'string', RoleEnum::class]);
         $resolver->setNormalizer('role', function ($options, $value) {
             if (is_string($value)) {
@@ -119,6 +88,7 @@ class Details
         $resolver->setAllowedTypes('ariaControls', ['string']);
         $resolver->setAllowedTypes('ariaDescribedby', ['string']);
         $resolver->setAllowedTypes('ariaLabelledby', ['string']);
+        $resolver->setDefaults(['ariaBusy' => null]);
         $resolver->setAllowedTypes('ariaBusy', ['null', 'string', AriaBusyEnum::class]);
         $resolver->setNormalizer('ariaBusy', function ($options, $value) {
             if (is_string($value)) {
@@ -126,6 +96,7 @@ class Details
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaHidden' => null]);
         $resolver->setAllowedTypes('ariaHidden', ['null', 'string', AriaHiddenEnum::class]);
         $resolver->setNormalizer('ariaHidden', function ($options, $value) {
             if (is_string($value)) {
@@ -137,6 +108,7 @@ class Details
         $resolver->setAllowedTypes('ariaDetails', ['string']);
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
+        $resolver->setDefaults(['ariaLive' => null]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
         $resolver->setNormalizer('ariaLive', function ($options, $value) {
             if (is_string($value)) {
@@ -144,6 +116,7 @@ class Details
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaRelevant' => null]);
         $resolver->setAllowedTypes('ariaRelevant', ['null', 'string', AriaRelevantEnum::class]);
         $resolver->setNormalizer('ariaRelevant', function ($options, $value) {
             if (is_string($value)) {
@@ -151,6 +124,7 @@ class Details
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaAtomic' => null]);
         $resolver->setAllowedTypes('ariaAtomic', ['null', 'string', AriaAtomicEnum::class]);
         $resolver->setNormalizer('ariaAtomic', function ($options, $value) {
             if (is_string($value)) {
@@ -158,6 +132,7 @@ class Details
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaExpanded' => null]);
         $resolver->setAllowedTypes('ariaExpanded', ['null', 'string', AriaExpandedEnum::class]);
         $resolver->setNormalizer('ariaExpanded', function ($options, $value) {
             if (is_string($value)) {
@@ -165,6 +140,7 @@ class Details
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaHaspopup' => null]);
         $resolver->setAllowedTypes('ariaHaspopup', ['null', 'string', AriaHaspopupEnum::class]);
         $resolver->setNormalizer('ariaHaspopup', function ($options, $value) {
             if (is_string($value)) {
@@ -172,6 +148,7 @@ class Details
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaPressed' => null]);
         $resolver->setAllowedTypes('ariaPressed', ['null', 'string', AriaPressedEnum::class]);
         $resolver->setNormalizer('ariaPressed', function ($options, $value) {
             if (is_string($value)) {
@@ -180,6 +157,7 @@ class Details
             return $value;
         });
         $resolver->setAllowedTypes('accesskey', ['string']);
+        $resolver->setDefaults(['autocapitalize' => null]);
         $resolver->setAllowedTypes('autocapitalize', ['null', 'string', AutoCapitalizeEnum::class]);
         $resolver->setNormalizer('autocapitalize', function ($options, $value) {
             if (is_string($value)) {
@@ -187,7 +165,9 @@ class Details
             }
             return $value;
         });
+        $resolver->setDefaults(['autofocus' => null]);
         $resolver->setAllowedTypes('autofocus', ['null', 'string', 'bool']);
+        $resolver->setDefaults(['contenteditable' => null]);
         $resolver->setAllowedTypes('contenteditable', ['null', 'string', ContentEditableEnum::class]);
         $resolver->setNormalizer('contenteditable', function ($options, $value) {
             if (is_string($value)) {
@@ -195,6 +175,7 @@ class Details
             }
             return $value;
         });
+        $resolver->setDefaults(['dir' => null]);
         $resolver->setAllowedTypes('dir', ['null', 'string', DirectionEnum::class]);
         $resolver->setNormalizer('dir', function ($options, $value) {
             if (is_string($value)) {
@@ -202,8 +183,11 @@ class Details
             }
             return $value;
         });
+        $resolver->setDefaults(['draggable' => null]);
         $resolver->setAllowedTypes('draggable', ['null', 'string', 'bool']);
+        $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
+        $resolver->setDefaults(['inputmode' => null]);
         $resolver->setAllowedTypes('inputmode', ['null', 'string', InputModeEnum::class]);
         $resolver->setNormalizer('inputmode', function ($options, $value) {
             if (is_string($value)) {
@@ -212,7 +196,16 @@ class Details
             return $value;
         });
         $resolver->setAllowedTypes('lang', ['string']);
+        $resolver->setDefaults(['popover' => null]);
+        $resolver->setAllowedTypes('popover', ['null', 'string', PopoverEnum::class]);
+        $resolver->setNormalizer('popover', function ($options, $value) {
+            if (is_string($value)) {
+                return PopoverEnum::tryFrom($value);
+            }
+            return $value;
+        });
         $resolver->setAllowedTypes('slot', ['string']);
+        $resolver->setDefaults(['spellcheck' => null]);
         $resolver->setAllowedTypes('spellcheck', ['null', 'string', SpellCheckEnum::class]);
         $resolver->setNormalizer('spellcheck', function ($options, $value) {
             if (is_string($value)) {
@@ -223,6 +216,7 @@ class Details
         $resolver->setAllowedTypes('style', ['string']);
         $resolver->setAllowedTypes('tabindex', ['int']);
         $resolver->setAllowedTypes('title', ['string']);
+        $resolver->setDefaults(['translate' => null]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);
         $resolver->setNormalizer('translate', function ($options, $value) {
             if (is_string($value)) {
@@ -230,14 +224,9 @@ class Details
             }
             return $value;
         });
-        $resolver->setAllowedTypes('popover', ['null', 'string', PopoverEnum::class]);
-        $resolver->setNormalizer('popover', function ($options, $value) {
-            if (is_string($value)) {
-                return PopoverEnum::tryFrom($value);
-            }
-            return $value;
-        });
+        $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
+        $resolver->setDefaults(['class' => null]);
         $resolver->setAllowedTypes('class', ['null', 'string']);
 
         return $resolver->resolve($data) + $data;

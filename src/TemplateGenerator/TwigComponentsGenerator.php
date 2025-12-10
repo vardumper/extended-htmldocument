@@ -2,6 +2,7 @@
 
 namespace Html\TemplateGenerator;
 
+use Html\Helper\Helper;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
@@ -101,7 +102,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             ? $ref->getConstant('QUALIFIED_NAME')
             : strtolower($ref->getShortName());
 
-        $componentName = ucfirst($elementName);
+        $componentName = $this->getComponentClassName(ucfirst($elementName));
 
         // Determine the level (Block, Inline, or Void)
         $level = $this->determineComponentLevel($ref->getName());
@@ -282,6 +283,9 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
                 return "'{$type}'";
             }, $propData['allowedTypes']);
 
+            if (in_array('null', $propData['allowedTypes'])) {
+                $php .= "        \$resolver->setDefaults(['{$propName}' => null]);\n";
+            }
             $php .= "        \$resolver->setAllowedTypes('{$propName}', [" . implode(
                 ', ',
                 $allowedTypesFormatted
@@ -416,6 +420,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             }
         }
         $name = ucfirst($elementName);
+        $componentName = $this->getComponentClassName(ucfirst($elementName));
 
         // Build Twig Component template
         $twig = "{#\n";
@@ -424,7 +429,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         $twig .= "  Symfony UX Twig Component (Anonymous)\n";
         $twig .= "  @see https://symfony.com/bundles/ux-twig-component/current/index.html\n\n";
         $twig .= "  Usage:\n";
-        $twig .= '    <twig:' . ucfirst($elementName);
+        $twig .= '    <twig:' . $componentName;
 
         // Add example usage
         $exampleProps = [];
@@ -447,7 +452,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         } else {
             $twig .= ">\n";
             $twig .= "      Content goes here\n";
-            $twig .= '    </twig:' . ucfirst($elementName) . ">\n";
+            $twig .= '    </twig:' . $componentName . ">\n";
         }
 
         $twig .= "\n  @author vardumper <info@erikpoehler.com>\n";
@@ -495,7 +500,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         string $description,
         array $parentOf
     ): string {
-        $componentName = ucfirst($elementName);
+        $componentName = $this->getComponentClassName(ucfirst($elementName));
 
         $twig = "{#\n";
         $twig .= "  This file is auto-generated.\n\n";
@@ -550,7 +555,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
                 ? $childRef->getConstant('QUALIFIED_NAME')
                 : strtolower($childRef->getShortName());
 
-            $childComponentName = ucfirst($childElementName);
+            $childComponentName = $this->getComponentClassName(ucfirst($childElementName));
             $isSelfClosing = $childRef->hasConstant('SELF_CLOSING') && $childRef->getConstant('SELF_CLOSING');
 
             $twigCode = '';
@@ -605,5 +610,17 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             return 'void';
         }
         return 'block';
+    }
+
+    /**
+     * Get safe component class name, avoiding PHP reserved words
+     */
+    private function getComponentClassName(string $className): string
+    {
+        $reserved = Helper::getReservedWords();
+        if (in_array(strtolower($className), $reserved, true)) {
+            return $className . 'Element';
+        }
+        return $className;
     }
 }

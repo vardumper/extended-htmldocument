@@ -1,5 +1,5 @@
 {
-    "name": "vardumper/html5-twig-component-bundle",
+    "name": "vardumper/html5-ux-twig-component-bundle",
     "description": "Symfony UX Twig Components for typesafe HTML5 elements with ARIA support & enum validation",
     "type": "symfony-bundle",
     "license": "MIT",
@@ -9,7 +9,7 @@
         "components",
         "html5",
         "aria",
-        "symfony-ux"
+        "ux"
     ],
     "authors": [
         {
@@ -18,7 +18,7 @@
         }
     ],
     "require": {
-        "php": "^8.4",
+        "php": "^8.2",
         "symfony/twig-bundle": "^6.0|^7.0",
         "symfony/ux-twig-component": "^2.0",
         "vardumper/extended-htmldocument": "^0.2"

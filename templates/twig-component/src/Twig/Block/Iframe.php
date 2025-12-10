@@ -1,92 +1,63 @@
 <?php
 
-namespace Html\TwigTwigComponentBundle\Twig\Block;
+namespace Html\TwigComponentBundle\Twig\Block;
 
 use Html\Enum\{
-    AriaAtomicEnum,
+    ReferrerpolicyEnum,
+    RoleEnum,
     AriaBusyEnum,
     AriaHiddenEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
+    AriaAtomicEnum,
     DirectionEnum,
     PopoverEnum,
-    ReferrerpolicyEnum,
-    RoleEnum,
 };
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Iframe - The iframe element represents a nested browsing context, effectively embedding another HTML page into the current page.
  *
+ * @author vardumper <info@erikpoehler.com>
+ * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Iframe', template: '@HtmlTwigComponent/block/iframe/iframe.html.twig')]
 class Iframe
 {
     public ?bool $allowfullscreen = null;
-
     public ?string $height = null;
-
     public ?string $name = null;
-
     public ?ReferrerpolicyEnum $referrerpolicy = null;
-
     public ?string $sandbox = null;
-
     public ?bool $seamless = null;
-
     public ?string $src = null;
-
     public ?string $srcdoc = null;
-
     public ?string $width = null;
-
     public ?RoleEnum $role = null;
-
     public ?string $ariaControls = null;
-
     public ?string $ariaDescribedby = null;
-
     public ?string $ariaLabelledby = null;
-
     public ?AriaBusyEnum $ariaBusy = null;
-
     public ?AriaHiddenEnum $ariaHidden = null;
-
     public ?string $ariaLabel = null;
-
     public ?string $ariaDetails = null;
-
     public ?string $ariaKeyshortcuts = null;
-
     public ?string $ariaRoledescription = null;
-
     public ?AriaLiveEnum $ariaLive = null;
-
     public ?AriaRelevantEnum $ariaRelevant = null;
-
     public ?AriaAtomicEnum $ariaAtomic = null;
-
     public ?DirectionEnum $dir = null;
-
     public null|string|bool $hidden = null;
-
     public ?string $lang = null;
-
-    public ?string $slot = null;
-
-    public ?string $style = null;
-
-    public ?int $tabindex = null;
-
-    public ?string $title = null;
-
     public ?PopoverEnum $popover = null;
-
+    public ?string $slot = null;
+    public ?string $style = null;
+    public ?int $tabindex = null;
+    public ?string $title = null;
     public ?string $id = null;
-
     public ?string $class = null;
 
     #[PreMount]
@@ -98,6 +69,7 @@ class Iframe
         $resolver->setAllowedTypes('allowfullscreen', ['bool']);
         $resolver->setAllowedTypes('height', ['string']);
         $resolver->setAllowedTypes('name', ['string']);
+        $resolver->setDefaults(['referrerpolicy' => null]);
         $resolver->setAllowedTypes('referrerpolicy', ['null', 'string', ReferrerpolicyEnum::class]);
         $resolver->setNormalizer('referrerpolicy', function ($options, $value) {
             if (is_string($value)) {
@@ -110,6 +82,7 @@ class Iframe
         $resolver->setAllowedTypes('src', ['string']);
         $resolver->setAllowedTypes('srcdoc', ['string']);
         $resolver->setAllowedTypes('width', ['string']);
+        $resolver->setDefaults(['role' => null]);
         $resolver->setAllowedTypes('role', ['null', 'string', RoleEnum::class]);
         $resolver->setNormalizer('role', function ($options, $value) {
             if (is_string($value)) {
@@ -120,6 +93,7 @@ class Iframe
         $resolver->setAllowedTypes('ariaControls', ['string']);
         $resolver->setAllowedTypes('ariaDescribedby', ['string']);
         $resolver->setAllowedTypes('ariaLabelledby', ['string']);
+        $resolver->setDefaults(['ariaBusy' => null]);
         $resolver->setAllowedTypes('ariaBusy', ['null', 'string', AriaBusyEnum::class]);
         $resolver->setNormalizer('ariaBusy', function ($options, $value) {
             if (is_string($value)) {
@@ -127,6 +101,7 @@ class Iframe
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaHidden' => null]);
         $resolver->setAllowedTypes('ariaHidden', ['null', 'string', AriaHiddenEnum::class]);
         $resolver->setNormalizer('ariaHidden', function ($options, $value) {
             if (is_string($value)) {
@@ -138,6 +113,7 @@ class Iframe
         $resolver->setAllowedTypes('ariaDetails', ['string']);
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
+        $resolver->setDefaults(['ariaLive' => null]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
         $resolver->setNormalizer('ariaLive', function ($options, $value) {
             if (is_string($value)) {
@@ -145,6 +121,7 @@ class Iframe
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaRelevant' => null]);
         $resolver->setAllowedTypes('ariaRelevant', ['null', 'string', AriaRelevantEnum::class]);
         $resolver->setNormalizer('ariaRelevant', function ($options, $value) {
             if (is_string($value)) {
@@ -152,6 +129,7 @@ class Iframe
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaAtomic' => null]);
         $resolver->setAllowedTypes('ariaAtomic', ['null', 'string', AriaAtomicEnum::class]);
         $resolver->setNormalizer('ariaAtomic', function ($options, $value) {
             if (is_string($value)) {
@@ -159,6 +137,7 @@ class Iframe
             }
             return $value;
         });
+        $resolver->setDefaults(['dir' => null]);
         $resolver->setAllowedTypes('dir', ['null', 'string', DirectionEnum::class]);
         $resolver->setNormalizer('dir', function ($options, $value) {
             if (is_string($value)) {
@@ -166,12 +145,10 @@ class Iframe
             }
             return $value;
         });
+        $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
         $resolver->setAllowedTypes('lang', ['string']);
-        $resolver->setAllowedTypes('slot', ['string']);
-        $resolver->setAllowedTypes('style', ['string']);
-        $resolver->setAllowedTypes('tabindex', ['int']);
-        $resolver->setAllowedTypes('title', ['string']);
+        $resolver->setDefaults(['popover' => null]);
         $resolver->setAllowedTypes('popover', ['null', 'string', PopoverEnum::class]);
         $resolver->setNormalizer('popover', function ($options, $value) {
             if (is_string($value)) {
@@ -179,7 +156,13 @@ class Iframe
             }
             return $value;
         });
+        $resolver->setAllowedTypes('slot', ['string']);
+        $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setAllowedTypes('tabindex', ['int']);
+        $resolver->setAllowedTypes('title', ['string']);
+        $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
+        $resolver->setDefaults(['class' => null]);
         $resolver->setAllowedTypes('class', ['null', 'string']);
 
         return $resolver->resolve($data) + $data;

@@ -1,196 +1,124 @@
 <?php
 
-namespace Html\TwigTwigComponentBundle\Twig\Inline;
+namespace Html\TwigComponentBundle\Twig\Inline;
 
 use Html\Enum\{
-    AriaAtomicEnum,
-    AriaAutocompleteEnum,
-    AriaCheckedEnum,
-    AriaCurrentEnum,
-    AriaDisabledEnum,
-    AriaExpandedEnum,
-    AriaHaspopupEnum,
-    AriaInvalidEnum,
-    AriaLiveEnum,
-    AriaPressedEnum,
-    AriaReadonlyEnum,
-    AriaRelevantEnum,
-    AriaRequiredEnum,
-    AutoCapitalizeEnum,
-    AutocompleteEnum,
     AutocorrectEnum,
-    ContentEditableEnum,
-    DirectionEnum,
+    AutocompleteEnum,
+    InputTypeEnum,
     FormenctypeEnum,
     FormmethodEnum,
     FormtargetEnum,
-    InputModeEnum,
-    InputTypeEnum,
     PopovertargetactionEnum,
     RoleEnum,
+    AriaCurrentEnum,
+    AriaInvalidEnum,
+    AriaDisabledEnum,
+    AriaLiveEnum,
+    AriaRelevantEnum,
+    AriaAtomicEnum,
+    AriaExpandedEnum,
+    AriaHaspopupEnum,
+    AriaPressedEnum,
+    AriaCheckedEnum,
+    AriaAutocompleteEnum,
+    AriaReadonlyEnum,
+    AriaRequiredEnum,
+    AutoCapitalizeEnum,
+    ContentEditableEnum,
+    DirectionEnum,
+    InputModeEnum,
     SpellCheckEnum,
     TranslateEnum,
 };
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Input - The input element represents a typed data field, usually with a form control to allow user input.
  *
+ * @author vardumper <info@erikpoehler.com>
+ * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Input', template: '@HtmlTwigComponent/inline/input/input.html.twig')]
 class Input
 {
     public ?string $accept = null;
-
     public ?AutocorrectEnum $autocorrect = null;
-
     public ?string $alt = null;
-
     public ?AutocompleteEnum $autocomplete = null;
-
     public ?bool $checked = null;
-
     public ?string $dirname = null;
-
     public ?bool $disabled = null;
-
     public ?string $height = null;
-
     public ?string $list = null;
-
     public ?int $max = null;
-
     public ?int $maxlength = null;
-
     public ?string $min = null;
-
     public ?int $minlength = null;
-
     public ?bool $multiple = null;
-
     public ?string $name = null;
-
     public ?string $pattern = null;
-
     public ?string $placeholder = null;
-
     public ?bool $readonly = null;
-
     public ?bool $required = null;
-
     public ?int $size = null;
-
     public ?string $src = null;
-
     public ?string $step = null;
-
     public ?InputTypeEnum $type = null;
-
     public ?string $value = null;
-
     public ?string $width = null;
-
     public ?string $form = null;
-
     public ?string $formaction = null;
-
     public ?FormenctypeEnum $formenctype = null;
-
     public ?FormmethodEnum $formmethod = null;
-
     public ?bool $formnovalidate = null;
-
     public ?FormtargetEnum $formtarget = null;
-
     public ?string $popovertarget = null;
-
     public ?PopovertargetactionEnum $popovertargetaction = null;
-
     public ?RoleEnum $role = null;
-
     public ?string $ariaControls = null;
-
     public ?string $ariaDescribedby = null;
-
     public ?string $ariaLabelledby = null;
-
     public ?AriaCurrentEnum $ariaCurrent = null;
-
     public ?AriaInvalidEnum $ariaInvalid = null;
-
     public ?string $ariaLabel = null;
-
     public ?AriaDisabledEnum $ariaDisabled = null;
-
     public ?string $ariaDetails = null;
-
     public ?string $ariaKeyshortcuts = null;
-
     public ?string $ariaRoledescription = null;
-
     public ?AriaLiveEnum $ariaLive = null;
-
     public ?AriaRelevantEnum $ariaRelevant = null;
-
     public ?AriaAtomicEnum $ariaAtomic = null;
-
     public ?AriaExpandedEnum $ariaExpanded = null;
-
     public ?AriaHaspopupEnum $ariaHaspopup = null;
-
     public ?AriaPressedEnum $ariaPressed = null;
-
     public ?AriaCheckedEnum $ariaChecked = null;
-
     public ?AriaAutocompleteEnum $ariaAutocomplete = null;
-
     public ?string $ariaPlaceholder = null;
-
     public ?AriaReadonlyEnum $ariaReadonly = null;
-
     public ?AriaRequiredEnum $ariaRequired = null;
-
     public ?int $ariaValuemax = null;
-
     public ?int $ariaValuemin = null;
-
     public ?int $ariaValuenow = null;
-
     public ?string $ariaValuetext = null;
-
     public ?string $accesskey = null;
-
     public ?AutoCapitalizeEnum $autocapitalize = null;
-
     public null|string|bool $autofocus = null;
-
     public ?ContentEditableEnum $contenteditable = null;
-
     public ?DirectionEnum $dir = null;
-
     public null|string|bool $draggable = null;
-
     public null|string|bool $hidden = null;
-
     public ?InputModeEnum $inputmode = null;
-
     public ?string $lang = null;
-
     public ?SpellCheckEnum $spellcheck = null;
-
     public ?string $style = null;
-
     public ?int $tabindex = null;
-
     public ?string $title = null;
-
     public ?TranslateEnum $translate = null;
-
     public ?string $id = null;
-
     public ?string $class = null;
 
     #[PreMount]
@@ -200,6 +128,7 @@ class Input
         $resolver->setIgnoreUndefined(true);
 
         $resolver->setAllowedTypes('accept', ['string']);
+        $resolver->setDefaults(['autocorrect' => null]);
         $resolver->setAllowedTypes('autocorrect', ['null', 'string', AutocorrectEnum::class]);
         $resolver->setNormalizer('autocorrect', function ($options, $value) {
             if (is_string($value)) {
@@ -208,6 +137,7 @@ class Input
             return $value;
         });
         $resolver->setAllowedTypes('alt', ['string']);
+        $resolver->setDefaults(['autocomplete' => null]);
         $resolver->setAllowedTypes('autocomplete', ['null', 'string', AutocompleteEnum::class]);
         $resolver->setNormalizer('autocomplete', function ($options, $value) {
             if (is_string($value)) {
@@ -233,6 +163,7 @@ class Input
         $resolver->setAllowedTypes('size', ['int']);
         $resolver->setAllowedTypes('src', ['string']);
         $resolver->setAllowedTypes('step', ['string']);
+        $resolver->setDefaults(['type' => null]);
         $resolver->setAllowedTypes('type', ['null', 'string', InputTypeEnum::class]);
         $resolver->setNormalizer('type', function ($options, $value) {
             if (is_string($value)) {
@@ -244,6 +175,7 @@ class Input
         $resolver->setAllowedTypes('width', ['string']);
         $resolver->setAllowedTypes('form', ['string']);
         $resolver->setAllowedTypes('formaction', ['string']);
+        $resolver->setDefaults(['formenctype' => null]);
         $resolver->setAllowedTypes('formenctype', ['null', 'string', FormenctypeEnum::class]);
         $resolver->setNormalizer('formenctype', function ($options, $value) {
             if (is_string($value)) {
@@ -251,6 +183,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefaults(['formmethod' => null]);
         $resolver->setAllowedTypes('formmethod', ['null', 'string', FormmethodEnum::class]);
         $resolver->setNormalizer('formmethod', function ($options, $value) {
             if (is_string($value)) {
@@ -259,6 +192,7 @@ class Input
             return $value;
         });
         $resolver->setAllowedTypes('formnovalidate', ['bool']);
+        $resolver->setDefaults(['formtarget' => null]);
         $resolver->setAllowedTypes('formtarget', ['null', 'string', FormtargetEnum::class]);
         $resolver->setNormalizer('formtarget', function ($options, $value) {
             if (is_string($value)) {
@@ -267,6 +201,7 @@ class Input
             return $value;
         });
         $resolver->setAllowedTypes('popovertarget', ['string']);
+        $resolver->setDefaults(['popovertargetaction' => null]);
         $resolver->setAllowedTypes('popovertargetaction', ['null', 'string', PopovertargetactionEnum::class]);
         $resolver->setNormalizer('popovertargetaction', function ($options, $value) {
             if (is_string($value)) {
@@ -274,6 +209,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefaults(['role' => null]);
         $resolver->setAllowedTypes('role', ['null', 'string', RoleEnum::class]);
         $resolver->setNormalizer('role', function ($options, $value) {
             if (is_string($value)) {
@@ -284,6 +220,7 @@ class Input
         $resolver->setAllowedTypes('ariaControls', ['string']);
         $resolver->setAllowedTypes('ariaDescribedby', ['string']);
         $resolver->setAllowedTypes('ariaLabelledby', ['string']);
+        $resolver->setDefaults(['ariaCurrent' => null]);
         $resolver->setAllowedTypes('ariaCurrent', ['null', 'string', AriaCurrentEnum::class]);
         $resolver->setNormalizer('ariaCurrent', function ($options, $value) {
             if (is_string($value)) {
@@ -291,6 +228,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaInvalid' => null]);
         $resolver->setAllowedTypes('ariaInvalid', ['null', 'string', AriaInvalidEnum::class]);
         $resolver->setNormalizer('ariaInvalid', function ($options, $value) {
             if (is_string($value)) {
@@ -299,6 +237,7 @@ class Input
             return $value;
         });
         $resolver->setAllowedTypes('ariaLabel', ['string']);
+        $resolver->setDefaults(['ariaDisabled' => null]);
         $resolver->setAllowedTypes('ariaDisabled', ['null', 'string', AriaDisabledEnum::class]);
         $resolver->setNormalizer('ariaDisabled', function ($options, $value) {
             if (is_string($value)) {
@@ -309,6 +248,7 @@ class Input
         $resolver->setAllowedTypes('ariaDetails', ['string']);
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
+        $resolver->setDefaults(['ariaLive' => null]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
         $resolver->setNormalizer('ariaLive', function ($options, $value) {
             if (is_string($value)) {
@@ -316,6 +256,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaRelevant' => null]);
         $resolver->setAllowedTypes('ariaRelevant', ['null', 'string', AriaRelevantEnum::class]);
         $resolver->setNormalizer('ariaRelevant', function ($options, $value) {
             if (is_string($value)) {
@@ -323,6 +264,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaAtomic' => null]);
         $resolver->setAllowedTypes('ariaAtomic', ['null', 'string', AriaAtomicEnum::class]);
         $resolver->setNormalizer('ariaAtomic', function ($options, $value) {
             if (is_string($value)) {
@@ -330,6 +272,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaExpanded' => null]);
         $resolver->setAllowedTypes('ariaExpanded', ['null', 'string', AriaExpandedEnum::class]);
         $resolver->setNormalizer('ariaExpanded', function ($options, $value) {
             if (is_string($value)) {
@@ -337,6 +280,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaHaspopup' => null]);
         $resolver->setAllowedTypes('ariaHaspopup', ['null', 'string', AriaHaspopupEnum::class]);
         $resolver->setNormalizer('ariaHaspopup', function ($options, $value) {
             if (is_string($value)) {
@@ -344,6 +288,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaPressed' => null]);
         $resolver->setAllowedTypes('ariaPressed', ['null', 'string', AriaPressedEnum::class]);
         $resolver->setNormalizer('ariaPressed', function ($options, $value) {
             if (is_string($value)) {
@@ -351,6 +296,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaChecked' => null]);
         $resolver->setAllowedTypes('ariaChecked', ['null', 'string', AriaCheckedEnum::class]);
         $resolver->setNormalizer('ariaChecked', function ($options, $value) {
             if (is_string($value)) {
@@ -358,6 +304,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaAutocomplete' => null]);
         $resolver->setAllowedTypes('ariaAutocomplete', ['null', 'string', AriaAutocompleteEnum::class]);
         $resolver->setNormalizer('ariaAutocomplete', function ($options, $value) {
             if (is_string($value)) {
@@ -366,6 +313,7 @@ class Input
             return $value;
         });
         $resolver->setAllowedTypes('ariaPlaceholder', ['string']);
+        $resolver->setDefaults(['ariaReadonly' => null]);
         $resolver->setAllowedTypes('ariaReadonly', ['null', 'string', AriaReadonlyEnum::class]);
         $resolver->setNormalizer('ariaReadonly', function ($options, $value) {
             if (is_string($value)) {
@@ -373,6 +321,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefaults(['ariaRequired' => null]);
         $resolver->setAllowedTypes('ariaRequired', ['null', 'string', AriaRequiredEnum::class]);
         $resolver->setNormalizer('ariaRequired', function ($options, $value) {
             if (is_string($value)) {
@@ -385,6 +334,7 @@ class Input
         $resolver->setAllowedTypes('ariaValuenow', ['int']);
         $resolver->setAllowedTypes('ariaValuetext', ['string']);
         $resolver->setAllowedTypes('accesskey', ['string']);
+        $resolver->setDefaults(['autocapitalize' => null]);
         $resolver->setAllowedTypes('autocapitalize', ['null', 'string', AutoCapitalizeEnum::class]);
         $resolver->setNormalizer('autocapitalize', function ($options, $value) {
             if (is_string($value)) {
@@ -392,7 +342,9 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefaults(['autofocus' => null]);
         $resolver->setAllowedTypes('autofocus', ['null', 'string', 'bool']);
+        $resolver->setDefaults(['contenteditable' => null]);
         $resolver->setAllowedTypes('contenteditable', ['null', 'string', ContentEditableEnum::class]);
         $resolver->setNormalizer('contenteditable', function ($options, $value) {
             if (is_string($value)) {
@@ -400,6 +352,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefaults(['dir' => null]);
         $resolver->setAllowedTypes('dir', ['null', 'string', DirectionEnum::class]);
         $resolver->setNormalizer('dir', function ($options, $value) {
             if (is_string($value)) {
@@ -407,8 +360,11 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefaults(['draggable' => null]);
         $resolver->setAllowedTypes('draggable', ['null', 'string', 'bool']);
+        $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
+        $resolver->setDefaults(['inputmode' => null]);
         $resolver->setAllowedTypes('inputmode', ['null', 'string', InputModeEnum::class]);
         $resolver->setNormalizer('inputmode', function ($options, $value) {
             if (is_string($value)) {
@@ -417,6 +373,7 @@ class Input
             return $value;
         });
         $resolver->setAllowedTypes('lang', ['string']);
+        $resolver->setDefaults(['spellcheck' => null]);
         $resolver->setAllowedTypes('spellcheck', ['null', 'string', SpellCheckEnum::class]);
         $resolver->setNormalizer('spellcheck', function ($options, $value) {
             if (is_string($value)) {
@@ -427,6 +384,7 @@ class Input
         $resolver->setAllowedTypes('style', ['string']);
         $resolver->setAllowedTypes('tabindex', ['int']);
         $resolver->setAllowedTypes('title', ['string']);
+        $resolver->setDefaults(['translate' => null]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);
         $resolver->setNormalizer('translate', function ($options, $value) {
             if (is_string($value)) {
@@ -434,7 +392,9 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
+        $resolver->setDefaults(['class' => null]);
         $resolver->setAllowedTypes('class', ['null', 'string']);
 
         return $resolver->resolve($data) + $data;

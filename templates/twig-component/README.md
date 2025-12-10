@@ -1,12 +1,11 @@
-# Twig Component Bundle with all HTML5 elements
+# HTML Component Bundle
 
-Symfony UX Twig Components for all HTML5 elements with ARIA support and static attribute validation via Enums.
-It provides auto-completion in your IDE of choice, so all available attributes can be quickly accessed. 
+Symfony UX Twig Components for all HTML5 elements with ARIA support.
 
 ## Installation
 
 ```bash
-composer require vardumper/html5-twig-component-bundle
+composer require html/component-bundle
 ```
 
 ## Configuration
@@ -16,7 +15,7 @@ Register the bundle in `config/bundles.php`:
 ```php
 return [
     // ...
-    Html\TwigComponentBundle\HtmlTwigComponentBundle::class => ['all' => true],
+    Html\ComponentBundle\HtmlComponentBundle::class => ['all' => true],
 ];
 ```
 
@@ -51,8 +50,6 @@ Components are organized by type:
 - `Inline` - Inline elements (span, a, strong, etc.)
 - `Void` - Self-closing elements (img, input, br, etc.)
 
-## Read More
-* [Extended HTMLDocument Documentation](https://vardumper.github.io/extended-htmldocument/)
-* [Extended HTMLDocument Github Repository](https://github.com/vardumper/extended-htmldocument)
-* [Twig Components](https://symfony.com/bundles/ux-twig-component/current/index.html)
-* [Symfony UX](https://ux.symfony.com/)
+## License
+
+MIT
