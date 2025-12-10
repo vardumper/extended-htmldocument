@@ -16,7 +16,7 @@ Register the bundle in `config/bundles.php`:
 ```php
 return [
     // ...
-    Html\ComponentBundle\HtmlComponentBundle::class => ['all' => true],
+    Html\TwigComponentBundle\HtmlTwigComponentBundle::class => ['all' => true],
 ];
 ```
 
