@@ -5,19 +5,23 @@ Symfony UX Twig Components for all HTML5 elements with ARIA support.
 ## Installation
 
 ```bash
-composer require html/component-bundle
+composer require vardumper/html5-ux-twig-component-bundle
 ```
+
+The bundle includes automatic service registration - no additional configuration needed!
 
 ## Configuration
 
-Register the bundle in `config/bundles.php`:
+The bundle is automatically registered via Symfony Flex. If you need to register it manually, add to `config/bundles.php`:
 
 ```php
 return [
     // ...
-    Html\ComponentBundle\HtmlComponentBundle::class => ['all' => true],
+    Html\TwigComponentBundle\HtmlTwigComponentBundle::class => ['all' => true],
 ];
 ```
+
+All Twig Components are automatically discovered and registered through the bundle's DependencyInjection extension. No manual service configuration required!
 
 ## Usage
 
