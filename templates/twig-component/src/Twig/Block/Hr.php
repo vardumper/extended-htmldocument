@@ -47,9 +47,13 @@ class Hr
             }
             return $value;
         });
+        $resolver->setDefined('color');
         $resolver->setAllowedTypes('color', ['string']);
+        $resolver->setDefined('noshade');
         $resolver->setAllowedTypes('noshade', ['bool']);
+        $resolver->setDefined('size');
         $resolver->setAllowedTypes('size', ['int']);
+        $resolver->setDefined('width');
         $resolver->setAllowedTypes('width', ['string']);
         $resolver->setDefaults(['dir' => null]);
         $resolver->setAllowedTypes('dir', ['null', 'string', DirectionEnum::class]);
@@ -61,8 +65,11 @@ class Hr
         });
         $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);

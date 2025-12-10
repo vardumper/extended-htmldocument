@@ -29,10 +29,13 @@ class Param
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('name');
         $resolver->setAllowedTypes('name', ['string']);
+        $resolver->setDefined('value');
         $resolver->setAllowedTypes('value', ['string']);
         $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);

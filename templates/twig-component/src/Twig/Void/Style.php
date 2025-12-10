@@ -35,7 +35,9 @@ class Style
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('media');
         $resolver->setAllowedTypes('media', ['string']);
+        $resolver->setDefined('nonce');
         $resolver->setAllowedTypes('nonce', ['string']);
         $resolver->setDefaults(['type' => null]);
         $resolver->setAllowedTypes('type', ['null', 'string', StyleTypeEnum::class]);
@@ -53,7 +55,9 @@ class Style
             }
             return $value;
         });
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);

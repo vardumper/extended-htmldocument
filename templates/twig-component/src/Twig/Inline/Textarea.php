@@ -117,16 +117,27 @@ class Textarea
             }
             return $value;
         });
+        $resolver->setDefined('cols');
         $resolver->setAllowedTypes('cols', ['int']);
+        $resolver->setDefined('dirname');
         $resolver->setAllowedTypes('dirname', ['string']);
+        $resolver->setDefined('disabled');
         $resolver->setAllowedTypes('disabled', ['bool']);
+        $resolver->setDefined('form');
         $resolver->setAllowedTypes('form', ['string']);
+        $resolver->setDefined('maxlength');
         $resolver->setAllowedTypes('maxlength', ['int']);
+        $resolver->setDefined('minlength');
         $resolver->setAllowedTypes('minlength', ['int']);
+        $resolver->setDefined('name');
         $resolver->setAllowedTypes('name', ['string']);
+        $resolver->setDefined('placeholder');
         $resolver->setAllowedTypes('placeholder', ['string']);
+        $resolver->setDefined('readonly');
         $resolver->setAllowedTypes('readonly', ['bool']);
+        $resolver->setDefined('required');
         $resolver->setAllowedTypes('required', ['bool']);
+        $resolver->setDefined('rows');
         $resolver->setAllowedTypes('rows', ['int']);
         $resolver->setDefaults(['wrap' => null]);
         $resolver->setAllowedTypes('wrap', ['null', 'string', WrapEnum::class]);
@@ -144,8 +155,11 @@ class Textarea
             }
             return $value;
         });
+        $resolver->setDefined('ariaControls');
         $resolver->setAllowedTypes('ariaControls', ['string']);
+        $resolver->setDefined('ariaDescribedby');
         $resolver->setAllowedTypes('ariaDescribedby', ['string']);
+        $resolver->setDefined('ariaLabelledby');
         $resolver->setAllowedTypes('ariaLabelledby', ['string']);
         $resolver->setDefaults(['ariaInvalid' => null]);
         $resolver->setAllowedTypes('ariaInvalid', ['null', 'string', AriaInvalidEnum::class]);
@@ -155,6 +169,7 @@ class Textarea
             }
             return $value;
         });
+        $resolver->setDefined('ariaLabel');
         $resolver->setAllowedTypes('ariaLabel', ['string']);
         $resolver->setDefaults(['ariaDisabled' => null]);
         $resolver->setAllowedTypes('ariaDisabled', ['null', 'string', AriaDisabledEnum::class]);
@@ -164,8 +179,11 @@ class Textarea
             }
             return $value;
         });
+        $resolver->setDefined('ariaDetails');
         $resolver->setAllowedTypes('ariaDetails', ['string']);
+        $resolver->setDefined('ariaKeyshortcuts');
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
+        $resolver->setDefined('ariaRoledescription');
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
         $resolver->setDefaults(['ariaLive' => null]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
@@ -223,6 +241,7 @@ class Textarea
             }
             return $value;
         });
+        $resolver->setDefined('ariaPlaceholder');
         $resolver->setAllowedTypes('ariaPlaceholder', ['string']);
         $resolver->setDefaults(['ariaReadonly' => null]);
         $resolver->setAllowedTypes('ariaReadonly', ['null', 'string', AriaReadonlyEnum::class]);
@@ -248,6 +267,7 @@ class Textarea
             }
             return $value;
         });
+        $resolver->setDefined('accesskey');
         $resolver->setAllowedTypes('accesskey', ['string']);
         $resolver->setDefaults(['autocapitalize' => null]);
         $resolver->setAllowedTypes('autocapitalize', ['null', 'string', AutoCapitalizeEnum::class]);
@@ -287,6 +307,7 @@ class Textarea
             }
             return $value;
         });
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
         $resolver->setDefaults(['popover' => null]);
         $resolver->setAllowedTypes('popover', ['null', 'string', PopoverEnum::class]);
@@ -296,6 +317,7 @@ class Textarea
             }
             return $value;
         });
+        $resolver->setDefined('slot');
         $resolver->setAllowedTypes('slot', ['string']);
         $resolver->setDefaults(['spellcheck' => null]);
         $resolver->setAllowedTypes('spellcheck', ['null', 'string', SpellCheckEnum::class]);
@@ -305,8 +327,11 @@ class Textarea
             }
             return $value;
         });
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('tabindex');
         $resolver->setAllowedTypes('tabindex', ['int']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['translate' => null]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);

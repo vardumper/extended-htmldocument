@@ -48,7 +48,9 @@ class Header
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('ariaLabel');
         $resolver->setAllowedTypes('ariaLabel', ['string']);
+        $resolver->setDefined('accesskey');
         $resolver->setAllowedTypes('accesskey', ['string']);
         $resolver->setDefaults(['autocapitalize' => null]);
         $resolver->setAllowedTypes('autocapitalize', ['null', 'string', AutoCapitalizeEnum::class]);
@@ -88,6 +90,7 @@ class Header
             }
             return $value;
         });
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
         $resolver->setDefaults(['spellcheck' => null]);
         $resolver->setAllowedTypes('spellcheck', ['null', 'string', SpellCheckEnum::class]);
@@ -97,8 +100,11 @@ class Header
             }
             return $value;
         });
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('tabindex');
         $resolver->setAllowedTypes('tabindex', ['int']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['translate' => null]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);

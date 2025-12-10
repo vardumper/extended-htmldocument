@@ -68,9 +68,13 @@ class Output
             }
             return $value;
         });
+        $resolver->setDefined('for');
         $resolver->setAllowedTypes('for', ['string']);
+        $resolver->setDefined('ariaDetails');
         $resolver->setAllowedTypes('ariaDetails', ['string']);
+        $resolver->setDefined('ariaKeyshortcuts');
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
+        $resolver->setDefined('ariaRoledescription');
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
         $resolver->setDefaults(['ariaLive' => null]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
@@ -96,6 +100,7 @@ class Output
             }
             return $value;
         });
+        $resolver->setDefined('accesskey');
         $resolver->setAllowedTypes('accesskey', ['string']);
         $resolver->setDefaults(['autocapitalize' => null]);
         $resolver->setAllowedTypes('autocapitalize', ['null', 'string', AutoCapitalizeEnum::class]);
@@ -135,7 +140,9 @@ class Output
             }
             return $value;
         });
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
+        $resolver->setDefined('slot');
         $resolver->setAllowedTypes('slot', ['string']);
         $resolver->setDefaults(['spellcheck' => null]);
         $resolver->setAllowedTypes('spellcheck', ['null', 'string', SpellCheckEnum::class]);
@@ -145,8 +152,11 @@ class Output
             }
             return $value;
         });
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('tabindex');
         $resolver->setAllowedTypes('tabindex', ['int']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['translate' => null]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);

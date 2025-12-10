@@ -80,7 +80,9 @@ class Video
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('autoplay');
         $resolver->setAllowedTypes('autoplay', ['bool']);
+        $resolver->setDefined('controls');
         $resolver->setAllowedTypes('controls', ['bool']);
         $resolver->setDefaults(['crossorigin' => null]);
         $resolver->setAllowedTypes('crossorigin', ['null', 'string', CrossoriginEnum::class]);
@@ -90,9 +92,13 @@ class Video
             }
             return $value;
         });
+        $resolver->setDefined('height');
         $resolver->setAllowedTypes('height', ['string']);
+        $resolver->setDefined('loop');
         $resolver->setAllowedTypes('loop', ['bool']);
+        $resolver->setDefined('muted');
         $resolver->setAllowedTypes('muted', ['bool']);
+        $resolver->setDefined('poster');
         $resolver->setAllowedTypes('poster', ['string']);
         $resolver->setDefaults(['preload' => null]);
         $resolver->setAllowedTypes('preload', ['null', 'string', PreloadEnum::class]);
@@ -102,7 +108,9 @@ class Video
             }
             return $value;
         });
+        $resolver->setDefined('src');
         $resolver->setAllowedTypes('src', ['string']);
+        $resolver->setDefined('width');
         $resolver->setAllowedTypes('width', ['string']);
         $resolver->setDefaults(['role' => null]);
         $resolver->setAllowedTypes('role', ['null', 'string', RoleEnum::class]);
@@ -112,8 +120,11 @@ class Video
             }
             return $value;
         });
+        $resolver->setDefined('ariaControls');
         $resolver->setAllowedTypes('ariaControls', ['string']);
+        $resolver->setDefined('ariaDescribedby');
         $resolver->setAllowedTypes('ariaDescribedby', ['string']);
+        $resolver->setDefined('ariaLabelledby');
         $resolver->setAllowedTypes('ariaLabelledby', ['string']);
         $resolver->setDefaults(['ariaBusy' => null]);
         $resolver->setAllowedTypes('ariaBusy', ['null', 'string', AriaBusyEnum::class]);
@@ -131,8 +142,11 @@ class Video
             }
             return $value;
         });
+        $resolver->setDefined('ariaDetails');
         $resolver->setAllowedTypes('ariaDetails', ['string']);
+        $resolver->setDefined('ariaKeyshortcuts');
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
+        $resolver->setDefined('ariaRoledescription');
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
         $resolver->setDefaults(['ariaLive' => null]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
@@ -158,6 +172,7 @@ class Video
             }
             return $value;
         });
+        $resolver->setDefined('accesskey');
         $resolver->setAllowedTypes('accesskey', ['string']);
         $resolver->setDefaults(['autocapitalize' => null]);
         $resolver->setAllowedTypes('autocapitalize', ['null', 'string', AutoCapitalizeEnum::class]);
@@ -197,6 +212,7 @@ class Video
             }
             return $value;
         });
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
         $resolver->setDefaults(['popover' => null]);
         $resolver->setAllowedTypes('popover', ['null', 'string', PopoverEnum::class]);
@@ -206,6 +222,7 @@ class Video
             }
             return $value;
         });
+        $resolver->setDefined('slot');
         $resolver->setAllowedTypes('slot', ['string']);
         $resolver->setDefaults(['spellcheck' => null]);
         $resolver->setAllowedTypes('spellcheck', ['null', 'string', SpellCheckEnum::class]);
@@ -215,8 +232,11 @@ class Video
             }
             return $value;
         });
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('tabindex');
         $resolver->setAllowedTypes('tabindex', ['int']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['translate' => null]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);

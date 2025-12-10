@@ -31,10 +31,15 @@ class Source
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('media');
         $resolver->setAllowedTypes('media', ['string']);
+        $resolver->setDefined('sizes');
         $resolver->setAllowedTypes('sizes', ['string']);
+        $resolver->setDefined('src');
         $resolver->setAllowedTypes('src', ['string']);
+        $resolver->setDefined('srcset');
         $resolver->setAllowedTypes('srcset', ['string']);
+        $resolver->setDefined('type');
         $resolver->setAllowedTypes('type', ['string']);
         $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);

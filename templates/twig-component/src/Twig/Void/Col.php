@@ -28,8 +28,11 @@ class Col
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('span');
         $resolver->setAllowedTypes('span', ['int']);
+        $resolver->setDefined('width');
         $resolver->setAllowedTypes('width', ['string']);
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);

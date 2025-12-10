@@ -59,10 +59,15 @@ class Area
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('alt');
         $resolver->setAllowedTypes('alt', ['string']);
+        $resolver->setDefined('coords');
         $resolver->setAllowedTypes('coords', ['string']);
+        $resolver->setDefined('download');
         $resolver->setAllowedTypes('download', ['string']);
+        $resolver->setDefined('href');
         $resolver->setAllowedTypes('href', ['string']);
+        $resolver->setDefined('hreflang');
         $resolver->setAllowedTypes('hreflang', ['string']);
         $resolver->setDefaults(['rel' => null]);
         $resolver->setAllowedTypes('rel', ['null', 'string', RelEnum::class]);
@@ -88,7 +93,9 @@ class Area
             }
             return $value;
         });
+        $resolver->setDefined('type');
         $resolver->setAllowedTypes('type', ['string']);
+        $resolver->setDefined('accesskey');
         $resolver->setAllowedTypes('accesskey', ['string']);
         $resolver->setDefaults(['autocapitalize' => null]);
         $resolver->setAllowedTypes('autocapitalize', ['null', 'string', AutoCapitalizeEnum::class]);
@@ -128,6 +135,7 @@ class Area
             }
             return $value;
         });
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
         $resolver->setDefaults(['spellcheck' => null]);
         $resolver->setAllowedTypes('spellcheck', ['null', 'string', SpellCheckEnum::class]);
@@ -137,8 +145,11 @@ class Area
             }
             return $value;
         });
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('tabindex');
         $resolver->setAllowedTypes('tabindex', ['int']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['translate' => null]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);

@@ -61,6 +61,7 @@ class Img
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('alt');
         $resolver->setAllowedTypes('alt', ['string']);
         $resolver->setDefaults(['crossorigin' => null]);
         $resolver->setAllowedTypes('crossorigin', ['null', 'string', CrossoriginEnum::class]);
@@ -78,7 +79,9 @@ class Img
             }
             return $value;
         });
+        $resolver->setDefined('height');
         $resolver->setAllowedTypes('height', ['string']);
+        $resolver->setDefined('ismap');
         $resolver->setAllowedTypes('ismap', ['bool']);
         $resolver->setDefaults(['referrerpolicy' => null]);
         $resolver->setAllowedTypes('referrerpolicy', ['null', 'string', ReferrerpolicyEnum::class]);
@@ -88,10 +91,15 @@ class Img
             }
             return $value;
         });
+        $resolver->setDefined('sizes');
         $resolver->setAllowedTypes('sizes', ['string']);
+        $resolver->setDefined('src');
         $resolver->setAllowedTypes('src', ['string']);
+        $resolver->setDefined('srcset');
         $resolver->setAllowedTypes('srcset', ['string']);
+        $resolver->setDefined('usemap');
         $resolver->setAllowedTypes('usemap', ['string']);
+        $resolver->setDefined('width');
         $resolver->setAllowedTypes('width', ['string']);
         $resolver->setDefaults(['ariaHidden' => null]);
         $resolver->setAllowedTypes('ariaHidden', ['null', 'string', AriaHiddenEnum::class]);
@@ -101,9 +109,13 @@ class Img
             }
             return $value;
         });
+        $resolver->setDefined('ariaLabel');
         $resolver->setAllowedTypes('ariaLabel', ['string']);
+        $resolver->setDefined('ariaDetails');
         $resolver->setAllowedTypes('ariaDetails', ['string']);
+        $resolver->setDefined('ariaKeyshortcuts');
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
+        $resolver->setDefined('ariaRoledescription');
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
         $resolver->setDefaults(['ariaLive' => null]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
@@ -141,9 +153,13 @@ class Img
         $resolver->setAllowedTypes('draggable', ['null', 'string', 'bool']);
         $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('tabindex');
         $resolver->setAllowedTypes('tabindex', ['int']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);

@@ -106,7 +106,9 @@ class Button
             }
             return $value;
         });
+        $resolver->setDefined('disabled');
         $resolver->setAllowedTypes('disabled', ['bool']);
+        $resolver->setDefined('name');
         $resolver->setAllowedTypes('name', ['string']);
         $resolver->setDefaults(['type' => null]);
         $resolver->setAllowedTypes('type', ['null', 'string', ButtonTypeEnum::class]);
@@ -116,8 +118,11 @@ class Button
             }
             return $value;
         });
+        $resolver->setDefined('value');
         $resolver->setAllowedTypes('value', ['string']);
+        $resolver->setDefined('form');
         $resolver->setAllowedTypes('form', ['string']);
+        $resolver->setDefined('formaction');
         $resolver->setAllowedTypes('formaction', ['string']);
         $resolver->setDefaults(['formenctype' => null]);
         $resolver->setAllowedTypes('formenctype', ['null', 'string', FormenctypeEnum::class]);
@@ -135,6 +140,7 @@ class Button
             }
             return $value;
         });
+        $resolver->setDefined('formnovalidate');
         $resolver->setAllowedTypes('formnovalidate', ['bool']);
         $resolver->setDefaults(['formtarget' => null]);
         $resolver->setAllowedTypes('formtarget', ['null', 'string', FormtargetEnum::class]);
@@ -144,6 +150,7 @@ class Button
             }
             return $value;
         });
+        $resolver->setDefined('popovertarget');
         $resolver->setAllowedTypes('popovertarget', ['string']);
         $resolver->setDefaults(['popovertargetaction' => null]);
         $resolver->setAllowedTypes('popovertargetaction', ['null', 'string', PopovertargetactionEnum::class]);
@@ -153,7 +160,9 @@ class Button
             }
             return $value;
         });
+        $resolver->setDefined('command');
         $resolver->setAllowedTypes('command', ['string']);
+        $resolver->setDefined('commandfor');
         $resolver->setAllowedTypes('commandfor', ['string']);
         $resolver->setDefaults(['role' => null]);
         $resolver->setAllowedTypes('role', ['null', 'string', RoleEnum::class]);
@@ -163,8 +172,11 @@ class Button
             }
             return $value;
         });
+        $resolver->setDefined('ariaControls');
         $resolver->setAllowedTypes('ariaControls', ['string']);
+        $resolver->setDefined('ariaDescribedby');
         $resolver->setAllowedTypes('ariaDescribedby', ['string']);
+        $resolver->setDefined('ariaLabelledby');
         $resolver->setAllowedTypes('ariaLabelledby', ['string']);
         $resolver->setDefaults(['ariaCurrent' => null]);
         $resolver->setAllowedTypes('ariaCurrent', ['null', 'string', AriaCurrentEnum::class]);
@@ -182,6 +194,7 @@ class Button
             }
             return $value;
         });
+        $resolver->setDefined('ariaLabel');
         $resolver->setAllowedTypes('ariaLabel', ['string']);
         $resolver->setDefaults(['ariaDisabled' => null]);
         $resolver->setAllowedTypes('ariaDisabled', ['null', 'string', AriaDisabledEnum::class]);
@@ -191,8 +204,11 @@ class Button
             }
             return $value;
         });
+        $resolver->setDefined('ariaDetails');
         $resolver->setAllowedTypes('ariaDetails', ['string']);
+        $resolver->setDefined('ariaKeyshortcuts');
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
+        $resolver->setDefined('ariaRoledescription');
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
         $resolver->setDefaults(['ariaLive' => null]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
@@ -250,6 +266,7 @@ class Button
             }
             return $value;
         });
+        $resolver->setDefined('accesskey');
         $resolver->setAllowedTypes('accesskey', ['string']);
         $resolver->setDefaults(['autocapitalize' => null]);
         $resolver->setAllowedTypes('autocapitalize', ['null', 'string', AutoCapitalizeEnum::class]);
@@ -259,6 +276,7 @@ class Button
             }
             return $value;
         });
+        $resolver->setDefined('autofocus');
         $resolver->setAllowedTypes('autofocus', ['bool']);
         $resolver->setDefaults(['contenteditable' => null]);
         $resolver->setAllowedTypes('contenteditable', ['null', 'string', ContentEditableEnum::class]);
@@ -288,7 +306,9 @@ class Button
             }
             return $value;
         });
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
+        $resolver->setDefined('slot');
         $resolver->setAllowedTypes('slot', ['string']);
         $resolver->setDefaults(['spellcheck' => null]);
         $resolver->setAllowedTypes('spellcheck', ['null', 'string', SpellCheckEnum::class]);
@@ -298,8 +318,11 @@ class Button
             }
             return $value;
         });
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('tabindex');
         $resolver->setAllowedTypes('tabindex', ['int']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['translate' => null]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);

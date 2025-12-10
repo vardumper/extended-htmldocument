@@ -34,6 +34,7 @@ class Colgroup
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('span');
         $resolver->setAllowedTypes('span', ['int']);
         $resolver->setDefaults(['dir' => null]);
         $resolver->setAllowedTypes('dir', ['null', 'string', DirectionEnum::class]);
@@ -45,8 +46,11 @@ class Colgroup
         });
         $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
+        $resolver->setDefined('slot');
         $resolver->setAllowedTypes('slot', ['string']);
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);

@@ -29,6 +29,7 @@ class Html
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('manifest');
         $resolver->setAllowedTypes('manifest', ['string']);
         $resolver->setDefaults(['dir' => null]);
         $resolver->setAllowedTypes('dir', ['null', 'string', DirectionEnum::class]);
@@ -38,6 +39,7 @@ class Html
             }
             return $value;
         });
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
 
         return $resolver->resolve($data) + $data;

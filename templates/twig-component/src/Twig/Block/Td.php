@@ -79,8 +79,11 @@ class Td
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('colspan');
         $resolver->setAllowedTypes('colspan', ['int']);
+        $resolver->setDefined('headers');
         $resolver->setAllowedTypes('headers', ['string']);
+        $resolver->setDefined('rowspan');
         $resolver->setAllowedTypes('rowspan', ['int']);
         $resolver->setDefaults(['role' => null]);
         $resolver->setAllowedTypes('role', ['null', 'string', RoleEnum::class]);
@@ -90,8 +93,11 @@ class Td
             }
             return $value;
         });
+        $resolver->setDefined('ariaControls');
         $resolver->setAllowedTypes('ariaControls', ['string']);
+        $resolver->setDefined('ariaDescribedby');
         $resolver->setAllowedTypes('ariaDescribedby', ['string']);
+        $resolver->setDefined('ariaLabelledby');
         $resolver->setAllowedTypes('ariaLabelledby', ['string']);
         $resolver->setDefaults(['ariaBusy' => null]);
         $resolver->setAllowedTypes('ariaBusy', ['null', 'string', AriaBusyEnum::class]);
@@ -109,8 +115,11 @@ class Td
             }
             return $value;
         });
+        $resolver->setDefined('ariaDetails');
         $resolver->setAllowedTypes('ariaDetails', ['string']);
+        $resolver->setDefined('ariaKeyshortcuts');
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
+        $resolver->setDefined('ariaRoledescription');
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
         $resolver->setDefaults(['ariaLive' => null]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
@@ -136,7 +145,9 @@ class Td
             }
             return $value;
         });
+        $resolver->setDefined('ariaColcount');
         $resolver->setAllowedTypes('ariaColcount', ['int']);
+        $resolver->setDefined('ariaRowcount');
         $resolver->setAllowedTypes('ariaRowcount', ['int']);
         $resolver->setDefaults(['ariaSort' => null]);
         $resolver->setAllowedTypes('ariaSort', ['null', 'string', AriaSortEnum::class]);
@@ -146,10 +157,15 @@ class Td
             }
             return $value;
         });
+        $resolver->setDefined('ariaColindex');
         $resolver->setAllowedTypes('ariaColindex', ['int']);
+        $resolver->setDefined('ariaColspan');
         $resolver->setAllowedTypes('ariaColspan', ['int']);
+        $resolver->setDefined('ariaRowindex');
         $resolver->setAllowedTypes('ariaRowindex', ['int']);
+        $resolver->setDefined('ariaRowspan');
         $resolver->setAllowedTypes('ariaRowspan', ['int']);
+        $resolver->setDefined('accesskey');
         $resolver->setAllowedTypes('accesskey', ['string']);
         $resolver->setDefaults(['autocapitalize' => null]);
         $resolver->setAllowedTypes('autocapitalize', ['null', 'string', AutoCapitalizeEnum::class]);
@@ -189,6 +205,7 @@ class Td
             }
             return $value;
         });
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
         $resolver->setDefaults(['popover' => null]);
         $resolver->setAllowedTypes('popover', ['null', 'string', PopoverEnum::class]);
@@ -198,6 +215,7 @@ class Td
             }
             return $value;
         });
+        $resolver->setDefined('slot');
         $resolver->setAllowedTypes('slot', ['string']);
         $resolver->setDefaults(['spellcheck' => null]);
         $resolver->setAllowedTypes('spellcheck', ['null', 'string', SpellCheckEnum::class]);
@@ -207,8 +225,11 @@ class Td
             }
             return $value;
         });
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('tabindex');
         $resolver->setAllowedTypes('tabindex', ['int']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['translate' => null]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);

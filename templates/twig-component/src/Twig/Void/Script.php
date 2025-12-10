@@ -42,7 +42,9 @@ class Script
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('async');
         $resolver->setAllowedTypes('async', ['bool']);
+        $resolver->setDefined('charset');
         $resolver->setAllowedTypes('charset', ['string']);
         $resolver->setDefaults(['crossorigin' => null]);
         $resolver->setAllowedTypes('crossorigin', ['null', 'string', CrossoriginEnum::class]);
@@ -52,8 +54,11 @@ class Script
             }
             return $value;
         });
+        $resolver->setDefined('defer');
         $resolver->setAllowedTypes('defer', ['bool']);
+        $resolver->setDefined('integrity');
         $resolver->setAllowedTypes('integrity', ['string']);
+        $resolver->setDefined('nonce');
         $resolver->setAllowedTypes('nonce', ['string']);
         $resolver->setDefaults(['referrerpolicy' => null]);
         $resolver->setAllowedTypes('referrerpolicy', ['null', 'string', ReferrerpolicyEnum::class]);
@@ -63,6 +68,7 @@ class Script
             }
             return $value;
         });
+        $resolver->setDefined('src');
         $resolver->setAllowedTypes('src', ['string']);
         $resolver->setDefaults(['type' => null]);
         $resolver->setAllowedTypes('type', ['null', 'string', ScriptTypeEnum::class]);
@@ -74,7 +80,9 @@ class Script
         });
         $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);

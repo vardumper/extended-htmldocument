@@ -36,7 +36,9 @@ class Meta
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('charset');
         $resolver->setAllowedTypes('charset', ['string']);
+        $resolver->setDefined('content');
         $resolver->setAllowedTypes('content', ['string']);
         $resolver->setDefaults(['httpEquiv' => null]);
         $resolver->setAllowedTypes('httpEquiv', ['null', 'string', HttpEquivEnum::class]);
@@ -46,11 +48,15 @@ class Meta
             }
             return $value;
         });
+        $resolver->setDefined('name');
         $resolver->setAllowedTypes('name', ['string']);
+        $resolver->setDefined('scheme');
         $resolver->setAllowedTypes('scheme', ['string']);
         $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);

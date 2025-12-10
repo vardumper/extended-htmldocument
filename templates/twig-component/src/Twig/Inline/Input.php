@@ -127,6 +127,7 @@ class Input
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('accept');
         $resolver->setAllowedTypes('accept', ['string']);
         $resolver->setDefaults(['autocorrect' => null]);
         $resolver->setAllowedTypes('autocorrect', ['null', 'string', AutocorrectEnum::class]);
@@ -136,6 +137,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefined('alt');
         $resolver->setAllowedTypes('alt', ['string']);
         $resolver->setDefaults(['autocomplete' => null]);
         $resolver->setAllowedTypes('autocomplete', ['null', 'string', AutocompleteEnum::class]);
@@ -145,23 +147,41 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefined('checked');
         $resolver->setAllowedTypes('checked', ['bool']);
+        $resolver->setDefined('dirname');
         $resolver->setAllowedTypes('dirname', ['string']);
+        $resolver->setDefined('disabled');
         $resolver->setAllowedTypes('disabled', ['bool']);
+        $resolver->setDefined('height');
         $resolver->setAllowedTypes('height', ['string']);
+        $resolver->setDefined('list');
         $resolver->setAllowedTypes('list', ['string']);
+        $resolver->setDefined('max');
         $resolver->setAllowedTypes('max', ['int']);
+        $resolver->setDefined('maxlength');
         $resolver->setAllowedTypes('maxlength', ['int']);
+        $resolver->setDefined('min');
         $resolver->setAllowedTypes('min', ['string']);
+        $resolver->setDefined('minlength');
         $resolver->setAllowedTypes('minlength', ['int']);
+        $resolver->setDefined('multiple');
         $resolver->setAllowedTypes('multiple', ['bool']);
+        $resolver->setDefined('name');
         $resolver->setAllowedTypes('name', ['string']);
+        $resolver->setDefined('pattern');
         $resolver->setAllowedTypes('pattern', ['string']);
+        $resolver->setDefined('placeholder');
         $resolver->setAllowedTypes('placeholder', ['string']);
+        $resolver->setDefined('readonly');
         $resolver->setAllowedTypes('readonly', ['bool']);
+        $resolver->setDefined('required');
         $resolver->setAllowedTypes('required', ['bool']);
+        $resolver->setDefined('size');
         $resolver->setAllowedTypes('size', ['int']);
+        $resolver->setDefined('src');
         $resolver->setAllowedTypes('src', ['string']);
+        $resolver->setDefined('step');
         $resolver->setAllowedTypes('step', ['string']);
         $resolver->setDefaults(['type' => null]);
         $resolver->setAllowedTypes('type', ['null', 'string', InputTypeEnum::class]);
@@ -171,9 +191,13 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefined('value');
         $resolver->setAllowedTypes('value', ['string']);
+        $resolver->setDefined('width');
         $resolver->setAllowedTypes('width', ['string']);
+        $resolver->setDefined('form');
         $resolver->setAllowedTypes('form', ['string']);
+        $resolver->setDefined('formaction');
         $resolver->setAllowedTypes('formaction', ['string']);
         $resolver->setDefaults(['formenctype' => null]);
         $resolver->setAllowedTypes('formenctype', ['null', 'string', FormenctypeEnum::class]);
@@ -191,6 +215,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefined('formnovalidate');
         $resolver->setAllowedTypes('formnovalidate', ['bool']);
         $resolver->setDefaults(['formtarget' => null]);
         $resolver->setAllowedTypes('formtarget', ['null', 'string', FormtargetEnum::class]);
@@ -200,6 +225,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefined('popovertarget');
         $resolver->setAllowedTypes('popovertarget', ['string']);
         $resolver->setDefaults(['popovertargetaction' => null]);
         $resolver->setAllowedTypes('popovertargetaction', ['null', 'string', PopovertargetactionEnum::class]);
@@ -217,8 +243,11 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefined('ariaControls');
         $resolver->setAllowedTypes('ariaControls', ['string']);
+        $resolver->setDefined('ariaDescribedby');
         $resolver->setAllowedTypes('ariaDescribedby', ['string']);
+        $resolver->setDefined('ariaLabelledby');
         $resolver->setAllowedTypes('ariaLabelledby', ['string']);
         $resolver->setDefaults(['ariaCurrent' => null]);
         $resolver->setAllowedTypes('ariaCurrent', ['null', 'string', AriaCurrentEnum::class]);
@@ -236,6 +265,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefined('ariaLabel');
         $resolver->setAllowedTypes('ariaLabel', ['string']);
         $resolver->setDefaults(['ariaDisabled' => null]);
         $resolver->setAllowedTypes('ariaDisabled', ['null', 'string', AriaDisabledEnum::class]);
@@ -245,8 +275,11 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefined('ariaDetails');
         $resolver->setAllowedTypes('ariaDetails', ['string']);
+        $resolver->setDefined('ariaKeyshortcuts');
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
+        $resolver->setDefined('ariaRoledescription');
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
         $resolver->setDefaults(['ariaLive' => null]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
@@ -312,6 +345,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefined('ariaPlaceholder');
         $resolver->setAllowedTypes('ariaPlaceholder', ['string']);
         $resolver->setDefaults(['ariaReadonly' => null]);
         $resolver->setAllowedTypes('ariaReadonly', ['null', 'string', AriaReadonlyEnum::class]);
@@ -329,10 +363,15 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefined('ariaValuemax');
         $resolver->setAllowedTypes('ariaValuemax', ['int']);
+        $resolver->setDefined('ariaValuemin');
         $resolver->setAllowedTypes('ariaValuemin', ['int']);
+        $resolver->setDefined('ariaValuenow');
         $resolver->setAllowedTypes('ariaValuenow', ['int']);
+        $resolver->setDefined('ariaValuetext');
         $resolver->setAllowedTypes('ariaValuetext', ['string']);
+        $resolver->setDefined('accesskey');
         $resolver->setAllowedTypes('accesskey', ['string']);
         $resolver->setDefaults(['autocapitalize' => null]);
         $resolver->setAllowedTypes('autocapitalize', ['null', 'string', AutoCapitalizeEnum::class]);
@@ -372,6 +411,7 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
         $resolver->setDefaults(['spellcheck' => null]);
         $resolver->setAllowedTypes('spellcheck', ['null', 'string', SpellCheckEnum::class]);
@@ -381,8 +421,11 @@ class Input
             }
             return $value;
         });
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('tabindex');
         $resolver->setAllowedTypes('tabindex', ['int']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['translate' => null]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);

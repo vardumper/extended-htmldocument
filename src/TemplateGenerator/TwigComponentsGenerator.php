@@ -285,6 +285,8 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
 
             if (in_array('null', $propData['allowedTypes'])) {
                 $php .= "        \$resolver->setDefaults(['{$propName}' => null]);\n";
+            } else {
+                $php .= "        \$resolver->setDefined('{$propName}');\n";
             }
             $php .= "        \$resolver->setAllowedTypes('{$propName}', [" . implode(
                 ', ',

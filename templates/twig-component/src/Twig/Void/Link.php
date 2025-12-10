@@ -53,9 +53,13 @@ class Link
             }
             return $value;
         });
+        $resolver->setDefined('href');
         $resolver->setAllowedTypes('href', ['string']);
+        $resolver->setDefined('hreflang');
         $resolver->setAllowedTypes('hreflang', ['string']);
+        $resolver->setDefined('integrity');
         $resolver->setAllowedTypes('integrity', ['string']);
+        $resolver->setDefined('media');
         $resolver->setAllowedTypes('media', ['string']);
         $resolver->setDefaults(['referrerpolicy' => null]);
         $resolver->setAllowedTypes('referrerpolicy', ['null', 'string', ReferrerpolicyEnum::class]);
@@ -73,7 +77,9 @@ class Link
             }
             return $value;
         });
+        $resolver->setDefined('sizes');
         $resolver->setAllowedTypes('sizes', ['string']);
+        $resolver->setDefined('type');
         $resolver->setAllowedTypes('type', ['string']);
         $resolver->setDefaults(['dir' => null]);
         $resolver->setAllowedTypes('dir', ['null', 'string', DirectionEnum::class]);
@@ -85,8 +91,11 @@ class Link
         });
         $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);

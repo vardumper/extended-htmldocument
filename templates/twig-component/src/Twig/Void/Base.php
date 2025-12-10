@@ -28,6 +28,7 @@ class Base
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('href');
         $resolver->setAllowedTypes('href', ['string']);
         $resolver->setDefaults(['target' => null]);
         $resolver->setAllowedTypes('target', ['null', 'string', TargetEnum::class]);

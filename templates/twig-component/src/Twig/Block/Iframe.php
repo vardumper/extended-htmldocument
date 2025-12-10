@@ -66,8 +66,11 @@ class Iframe
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('allowfullscreen');
         $resolver->setAllowedTypes('allowfullscreen', ['bool']);
+        $resolver->setDefined('height');
         $resolver->setAllowedTypes('height', ['string']);
+        $resolver->setDefined('name');
         $resolver->setAllowedTypes('name', ['string']);
         $resolver->setDefaults(['referrerpolicy' => null]);
         $resolver->setAllowedTypes('referrerpolicy', ['null', 'string', ReferrerpolicyEnum::class]);
@@ -77,10 +80,15 @@ class Iframe
             }
             return $value;
         });
+        $resolver->setDefined('sandbox');
         $resolver->setAllowedTypes('sandbox', ['string']);
+        $resolver->setDefined('seamless');
         $resolver->setAllowedTypes('seamless', ['bool']);
+        $resolver->setDefined('src');
         $resolver->setAllowedTypes('src', ['string']);
+        $resolver->setDefined('srcdoc');
         $resolver->setAllowedTypes('srcdoc', ['string']);
+        $resolver->setDefined('width');
         $resolver->setAllowedTypes('width', ['string']);
         $resolver->setDefaults(['role' => null]);
         $resolver->setAllowedTypes('role', ['null', 'string', RoleEnum::class]);
@@ -90,8 +98,11 @@ class Iframe
             }
             return $value;
         });
+        $resolver->setDefined('ariaControls');
         $resolver->setAllowedTypes('ariaControls', ['string']);
+        $resolver->setDefined('ariaDescribedby');
         $resolver->setAllowedTypes('ariaDescribedby', ['string']);
+        $resolver->setDefined('ariaLabelledby');
         $resolver->setAllowedTypes('ariaLabelledby', ['string']);
         $resolver->setDefaults(['ariaBusy' => null]);
         $resolver->setAllowedTypes('ariaBusy', ['null', 'string', AriaBusyEnum::class]);
@@ -109,9 +120,13 @@ class Iframe
             }
             return $value;
         });
+        $resolver->setDefined('ariaLabel');
         $resolver->setAllowedTypes('ariaLabel', ['string']);
+        $resolver->setDefined('ariaDetails');
         $resolver->setAllowedTypes('ariaDetails', ['string']);
+        $resolver->setDefined('ariaKeyshortcuts');
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
+        $resolver->setDefined('ariaRoledescription');
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
         $resolver->setDefaults(['ariaLive' => null]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
@@ -147,6 +162,7 @@ class Iframe
         });
         $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
         $resolver->setDefaults(['popover' => null]);
         $resolver->setAllowedTypes('popover', ['null', 'string', PopoverEnum::class]);
@@ -156,9 +172,13 @@ class Iframe
             }
             return $value;
         });
+        $resolver->setDefined('slot');
         $resolver->setAllowedTypes('slot', ['string']);
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('tabindex');
         $resolver->setAllowedTypes('tabindex', ['int']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);

@@ -78,7 +78,9 @@ class Ol
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('reversed');
         $resolver->setAllowedTypes('reversed', ['bool']);
+        $resolver->setDefined('start');
         $resolver->setAllowedTypes('start', ['int']);
         $resolver->setDefaults(['type' => null]);
         $resolver->setAllowedTypes('type', ['null', 'string', OlTypeEnum::class]);
@@ -96,8 +98,11 @@ class Ol
             }
             return $value;
         });
+        $resolver->setDefined('ariaControls');
         $resolver->setAllowedTypes('ariaControls', ['string']);
+        $resolver->setDefined('ariaDescribedby');
         $resolver->setAllowedTypes('ariaDescribedby', ['string']);
+        $resolver->setDefined('ariaLabelledby');
         $resolver->setAllowedTypes('ariaLabelledby', ['string']);
         $resolver->setDefaults(['ariaBusy' => null]);
         $resolver->setAllowedTypes('ariaBusy', ['null', 'string', AriaBusyEnum::class]);
@@ -115,8 +120,11 @@ class Ol
             }
             return $value;
         });
+        $resolver->setDefined('ariaDetails');
         $resolver->setAllowedTypes('ariaDetails', ['string']);
+        $resolver->setDefined('ariaKeyshortcuts');
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
+        $resolver->setDefined('ariaRoledescription');
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
         $resolver->setDefaults(['ariaLive' => null]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
@@ -150,6 +158,7 @@ class Ol
             }
             return $value;
         });
+        $resolver->setDefined('ariaActivedescendant');
         $resolver->setAllowedTypes('ariaActivedescendant', ['string']);
         $resolver->setDefaults(['ariaOrientation' => null]);
         $resolver->setAllowedTypes('ariaOrientation', ['null', 'string', AriaOrientationEnum::class]);
@@ -159,7 +168,9 @@ class Ol
             }
             return $value;
         });
+        $resolver->setDefined('ariaOwns');
         $resolver->setAllowedTypes('ariaOwns', ['string']);
+        $resolver->setDefined('accesskey');
         $resolver->setAllowedTypes('accesskey', ['string']);
         $resolver->setDefaults(['autocapitalize' => null]);
         $resolver->setAllowedTypes('autocapitalize', ['null', 'string', AutoCapitalizeEnum::class]);
@@ -199,6 +210,7 @@ class Ol
             }
             return $value;
         });
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
         $resolver->setDefaults(['popover' => null]);
         $resolver->setAllowedTypes('popover', ['null', 'string', PopoverEnum::class]);
@@ -208,6 +220,7 @@ class Ol
             }
             return $value;
         });
+        $resolver->setDefined('slot');
         $resolver->setAllowedTypes('slot', ['string']);
         $resolver->setDefaults(['spellcheck' => null]);
         $resolver->setAllowedTypes('spellcheck', ['null', 'string', SpellCheckEnum::class]);
@@ -217,8 +230,11 @@ class Ol
             }
             return $value;
         });
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('tabindex');
         $resolver->setAllowedTypes('tabindex', ['int']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['translate' => null]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);

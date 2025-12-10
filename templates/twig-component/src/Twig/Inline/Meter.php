@@ -67,14 +67,23 @@ class Meter
         $resolver = new OptionsResolver();
         $resolver->setIgnoreUndefined(true);
 
+        $resolver->setDefined('high');
         $resolver->setAllowedTypes('high', ['string']);
+        $resolver->setDefined('low');
         $resolver->setAllowedTypes('low', ['string']);
+        $resolver->setDefined('max');
         $resolver->setAllowedTypes('max', ['int']);
+        $resolver->setDefined('min');
         $resolver->setAllowedTypes('min', ['string']);
+        $resolver->setDefined('optimum');
         $resolver->setAllowedTypes('optimum', ['string']);
+        $resolver->setDefined('value');
         $resolver->setAllowedTypes('value', ['string']);
+        $resolver->setDefined('ariaDetails');
         $resolver->setAllowedTypes('ariaDetails', ['string']);
+        $resolver->setDefined('ariaKeyshortcuts');
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
+        $resolver->setDefined('ariaRoledescription');
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
         $resolver->setDefaults(['ariaLive' => null]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
@@ -100,10 +109,15 @@ class Meter
             }
             return $value;
         });
+        $resolver->setDefined('ariaValuemax');
         $resolver->setAllowedTypes('ariaValuemax', ['int']);
+        $resolver->setDefined('ariaValuemin');
         $resolver->setAllowedTypes('ariaValuemin', ['int']);
+        $resolver->setDefined('ariaValuenow');
         $resolver->setAllowedTypes('ariaValuenow', ['int']);
+        $resolver->setDefined('ariaValuetext');
         $resolver->setAllowedTypes('ariaValuetext', ['string']);
+        $resolver->setDefined('accesskey');
         $resolver->setAllowedTypes('accesskey', ['string']);
         $resolver->setDefaults(['autocapitalize' => null]);
         $resolver->setAllowedTypes('autocapitalize', ['null', 'string', AutoCapitalizeEnum::class]);
@@ -143,7 +157,9 @@ class Meter
             }
             return $value;
         });
+        $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
+        $resolver->setDefined('slot');
         $resolver->setAllowedTypes('slot', ['string']);
         $resolver->setDefaults(['spellcheck' => null]);
         $resolver->setAllowedTypes('spellcheck', ['null', 'string', SpellCheckEnum::class]);
@@ -153,8 +169,11 @@ class Meter
             }
             return $value;
         });
+        $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('tabindex');
         $resolver->setAllowedTypes('tabindex', ['int']);
+        $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
         $resolver->setDefaults(['translate' => null]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);
