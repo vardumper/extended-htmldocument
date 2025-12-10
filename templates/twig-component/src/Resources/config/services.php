@@ -9,6 +9,6 @@ return static function (ContainerConfigurator $configurator): void {
             ->autoconfigure();
 
     // Auto-register all Twig Component classes
-    $services->load('Html\\TwigComponentBundle\\Twig\\', '../../../Twig')
+    $services->load('Html\\TwigComponentBundle\\Twig\\', './../../Twig')
         ->tag('controller.service_arguments');
 };
