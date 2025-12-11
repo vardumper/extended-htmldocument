@@ -275,9 +275,9 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             }
 
             // Content property should default to empty string
-            if ($propName === 'content') {
-                $defaultValue = "''";
-            }
+            // if ($propName === 'content') {
+            //     $defaultValue = "''";
+            // }
 
             $php .= "    public {$typeDeclaration} \${$propName} = {$defaultValue};\n";
         }
@@ -323,7 +323,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         }
 
         $php .= "\n";
-        $php .= "        return \$resolver->resolve(\$data);\n";
+        $php .= "        return \$resolver->resolve(\$data) + ['blocks' => \$data['blocks']];\n";
         $php .= "    }\n";
         $php .= "}\n";
 
@@ -502,7 +502,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             $twig .= "\n/>\n";
         } else {
             $twig .= "\n>\n";
-            $twig .= "  {%- block content %}{{- content|raw -}}{% endblock -%}\n";
+            $twig .= "  {%- block content %}{% endblock -%}\n";
             $twig .= "</{$elementName}>\n";
             $twig .= "{% endapply %}\n";
         }

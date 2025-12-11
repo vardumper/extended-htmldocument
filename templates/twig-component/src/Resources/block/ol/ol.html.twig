@@ -55,6 +55,6 @@
   {% if this.translate is not null %}translate="{{ this.translate.value }}"{% endif %}
   {% if this.type is not null %}type="{{ this.type.value }}"{% endif %}
 >
-  {%- block content %}{{- content|raw -}}{% endblock -%}
+  {%- block content %}{% endblock -%}
 </ol>
 {% endapply %}

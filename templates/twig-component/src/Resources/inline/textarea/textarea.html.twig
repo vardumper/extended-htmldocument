@@ -71,6 +71,6 @@
   {% if this.translate is not null %}translate="{{ this.translate.value }}"{% endif %}
   {% if this.wrap is not null %}wrap="{{ this.wrap.value }}"{% endif %}
 >
-  {%- block content %}{{- content|raw -}}{% endblock -%}
+  {%- block content %}{% endblock -%}
 </textarea>
 {% endapply %}

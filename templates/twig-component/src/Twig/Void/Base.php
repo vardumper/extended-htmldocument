@@ -39,6 +39,6 @@ class Base
             return $value;
         });
 
-        return $resolver->resolve($data) + $data;
+        return $resolver->resolve($data) + ['blocks' => $data['blocks']];
     }
 }

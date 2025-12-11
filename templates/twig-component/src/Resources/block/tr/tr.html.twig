@@ -59,6 +59,6 @@
   {% if this.translate is not null %}translate="{{ this.translate.value }}"{% endif %}
   {% if this.valign is not null %}valign="{{ this.valign.value }}"{% endif %}
 >
-  {%- block content %}{{- content|raw -}}{% endblock -%}
+  {%- block content %}{% endblock -%}
 </tr>
 {% endapply %}

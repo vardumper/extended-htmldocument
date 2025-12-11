@@ -26,6 +26,6 @@
   {% if this.span is defined and this.span is not null %}span="{{ this.span }}"{% endif %}
   {% if this.style is defined and this.style is not null %}style="{{ this.style }}"{% endif %}
 >
-  {%- block content %}{{- content|raw -}}{% endblock -%}
+  {%- block content %}{% endblock -%}
 </colgroup>
 {% endapply %}

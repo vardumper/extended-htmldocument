@@ -48,6 +48,6 @@ class Source
         $resolver->setDefaults(['class' => null]);
         $resolver->setAllowedTypes('class', ['null', 'string']);
 
-        return $resolver->resolve($data) + $data;
+        return $resolver->resolve($data) + ['blocks' => $data['blocks']];
     }
 }

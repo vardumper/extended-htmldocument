@@ -46,6 +46,6 @@
   {% if this.tabindex is defined and this.tabindex is not null %}tabindex="{{ this.tabindex }}"{% endif %}
   {% if this.translate is not null %}translate="{{ this.translate.value }}"{% endif %}
 >
-  {%- block content %}{{- content|raw -}}{% endblock -%}
+  {%- block content %}{% endblock -%}
 </address>
 {% endapply %}

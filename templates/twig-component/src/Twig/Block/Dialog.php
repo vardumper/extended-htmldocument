@@ -70,7 +70,7 @@ class Dialog
     public ?TranslateEnum $translate = null;
     public ?string $id = null;
     public ?string $class = null;
-    public string $content = '';
+    public string $content = null;
 
     #[PreMount]
     public function preMount(array $data): array
@@ -253,6 +253,6 @@ class Dialog
         $resolver->setDefined('content');
         $resolver->setAllowedTypes('content', ['string']);
 
-        return $resolver->resolve($data) + $data;
+        return $resolver->resolve($data) + ['blocks' => $data['blocks']];
     }
 }

@@ -22,7 +22,7 @@ class Html
     public ?string $manifest = null;
     public ?DirectionEnum $dir = null;
     public ?string $lang = null;
-    public string $content = '';
+    public string $content = null;
 
     #[PreMount]
     public function preMount(array $data): array
@@ -45,6 +45,6 @@ class Html
         $resolver->setDefined('content');
         $resolver->setAllowedTypes('content', ['string']);
 
-        return $resolver->resolve($data) + $data;
+        return $resolver->resolve($data) + ['blocks' => $data['blocks']];
     }
 }

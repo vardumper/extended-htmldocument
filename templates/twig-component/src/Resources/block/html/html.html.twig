@@ -21,6 +21,6 @@
   {% if this.lang is defined and this.lang is not null %}lang="{{ this.lang }}"{% endif %}
   {% if this.manifest is defined and this.manifest is not null %}manifest="{{ this.manifest }}"{% endif %}
 >
-  {%- block content %}{{- content|raw -}}{% endblock -%}
+  {%- block content %}{% endblock -%}
 </html>
 {% endapply %}

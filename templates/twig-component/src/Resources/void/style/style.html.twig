@@ -26,6 +26,6 @@
   {% if this.title is defined and this.title is not null %}title="{{ this.title }}"{% endif %}
   {% if this.type is not null %}type="{{ this.type.value }}"{% endif %}
 >
-  {%- block content %}{{- content|raw -}}{% endblock -%}
+  {%- block content %}{% endblock -%}
 </style>
 {% endapply %}

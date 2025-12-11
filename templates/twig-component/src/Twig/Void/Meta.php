@@ -20,7 +20,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class Meta
 {
     public ?string $charset = null;
-    public ?string $content = '';
+    public ?string $content = null;
     public ?HttpEquivEnum $httpEquiv = null;
     public ?string $name = null;
     public ?string $scheme = null;
@@ -63,6 +63,6 @@ class Meta
         $resolver->setDefaults(['class' => null]);
         $resolver->setAllowedTypes('class', ['null', 'string']);
 
-        return $resolver->resolve($data) + $data;
+        return $resolver->resolve($data) + ['blocks' => $data['blocks']];
     }
 }
