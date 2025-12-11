@@ -54,6 +54,29 @@ Use any HTML element as a Twig Component:
 <twig:Input type="email" name="email" required />
 ```
 
+### Use in anonymous Twig Components
+```twig
+{# templates/components/Teaser.html.twig #}
+<twig:Div class="teaser"> 
+    <twig:H3>{{ headline }}</twig:H3>
+    <twig:P>{{ content }}</twig:P>
+    <twig:A role="button" href="{{ buttonLink }}" title="{{ buttonText }}">{{ buttonText }}</twig:A>
+</twig:Div>
+```
+
+which can then be used in pages:
+```twig
+{# templates/page.html.twig #}
+{% for item in teasers %}
+    <twig:Teaser 
+        headline="{{ item.headline }}" 
+        content="{{ item.content }}" 
+        buttonLink="{{ item.buttonLink }}" 
+        buttonText="{{ item.buttonText }}">
+    </twig:Teaser>
+{% endfor %}
+```
+
 ## Features
 
 - ✅ All HTML5 elements supported
