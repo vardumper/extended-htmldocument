@@ -212,16 +212,6 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             }
         }
 
-        // Add content property for Block and Inline elements
-        if ($level === 'block' || $level === 'inline') {
-            $props['content'] = [
-                'type' => 'string',
-                'enumClass' => null,
-                'allowedTypes' => ['string'],
-                'needsNormalizer' => false,
-            ];
-        }
-
         // Get element metadata from class-level doc comment
         $docComment = $ref->getDocComment();
         $desc = '';
@@ -273,11 +263,6 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
                 $shortName = basename(str_replace('\\', '/', $propData['enumClass']));
                 $typeDeclaration = '?' . $shortName;
             }
-
-            // Content property should default to empty string
-            // if ($propName === 'content') {
-            //     $defaultValue = "''";
-            // }
 
             $php .= "    public {$typeDeclaration} \${$propName} = {$defaultValue};\n";
         }
