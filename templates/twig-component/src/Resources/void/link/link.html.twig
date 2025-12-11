@@ -13,6 +13,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
+{% apply spaceless %}
 <link
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
   {% if this.crossorigin is not null %}crossorigin="{{ this.crossorigin.value }}"{% endif %}
@@ -30,5 +31,4 @@
   {% if this.style is defined and this.style is not null %}style="{{ this.style }}"{% endif %}
   {% if this.title is defined and this.title is not null %}title="{{ this.title }}"{% endif %}
   {% if this.type is defined and this.type is not null %}type="{{ this.type }}"{% endif %}
-  {{ attributes }}
 />

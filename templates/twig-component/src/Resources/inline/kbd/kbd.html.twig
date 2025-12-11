@@ -15,6 +15,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
+{% apply spaceless %}
 <kbd
   {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
   {% if this.ariaAtomic is not null %}aria-atomic="{{ this.ariaAtomic.value }}"{% endif %}
@@ -46,7 +47,7 @@
   {% if this.tabindex is defined and this.tabindex is not null %}tabindex="{{ this.tabindex }}"{% endif %}
   {% if this.title is defined and this.title is not null %}title="{{ this.title }}"{% endif %}
   {% if this.translate is not null %}translate="{{ this.translate.value }}"{% endif %}
-  {{ attributes }}
 >
-  {% block content %}{% endblock %}
+  {%- block content %}{{- content|raw -}}{% endblock -%}
 </kbd>
+{% endapply %}

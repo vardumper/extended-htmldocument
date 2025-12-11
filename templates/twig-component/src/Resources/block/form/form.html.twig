@@ -15,6 +15,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
+{% apply spaceless %}
 <form
   {% if this.acceptCharset is defined and this.acceptCharset is not null %}accept-charset="{{ this.acceptCharset }}"{% endif %}
   {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
@@ -45,7 +46,7 @@
   {% if this.target is not null %}target="{{ this.target.value }}"{% endif %}
   {% if this.title is defined and this.title is not null %}title="{{ this.title }}"{% endif %}
   {% if this.translate is not null %}translate="{{ this.translate.value }}"{% endif %}
-  {{ attributes }}
 >
-  {% block content %}{% endblock %}
+  {%- block content %}{{- content|raw -}}{% endblock -%}
 </form>
+{% endapply %}

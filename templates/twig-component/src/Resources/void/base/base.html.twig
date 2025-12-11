@@ -13,8 +13,8 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
+{% apply spaceless %}
 <base
   {% if this.href is defined and this.href is not null %}href="{{ this.href }}"{% endif %}
   {% if this.target is not null %}target="{{ this.target.value }}"{% endif %}
-  {{ attributes }}
 />

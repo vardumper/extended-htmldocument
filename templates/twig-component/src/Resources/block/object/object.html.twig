@@ -15,6 +15,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
+{% apply spaceless %}
 <object
   {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
   {% if this.ariaAtomic is not null %}aria-atomic="{{ this.ariaAtomic.value }}"{% endif %}
@@ -53,7 +54,7 @@
   {% if this.type is defined and this.type is not null %}type="{{ this.type }}"{% endif %}
   {% if this.usemap is defined and this.usemap is not null %}usemap="{{ this.usemap }}"{% endif %}
   {% if this.width is defined and this.width is not null %}width="{{ this.width }}"{% endif %}
-  {{ attributes }}
 >
-  {% block content %}{% endblock %}
+  {%- block content %}{{- content|raw -}}{% endblock -%}
 </object>
+{% endapply %}

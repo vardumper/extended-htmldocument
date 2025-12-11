@@ -13,6 +13,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
+{% apply spaceless %}
 <meta
   {% if this.charset is defined and this.charset is not null %}charset="{{ this.charset }}"{% endif %}
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
@@ -24,5 +25,4 @@
   {% if this.name is defined and this.name is not null %}name="{{ this.name }}"{% endif %}
   {% if this.scheme is defined and this.scheme is not null %}scheme="{{ this.scheme }}"{% endif %}
   {% if this.title is defined and this.title is not null %}title="{{ this.title }}"{% endif %}
-  {{ attributes }}
 />

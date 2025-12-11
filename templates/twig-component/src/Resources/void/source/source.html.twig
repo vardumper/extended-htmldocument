@@ -13,6 +13,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
+{% apply spaceless %}
 <source
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
   {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}
@@ -22,5 +23,4 @@
   {% if this.src is defined and this.src is not null %}src="{{ this.src }}"{% endif %}
   {% if this.srcset is defined and this.srcset is not null %}srcset="{{ this.srcset }}"{% endif %}
   {% if this.type is defined and this.type is not null %}type="{{ this.type }}"{% endif %}
-  {{ attributes }}
 />

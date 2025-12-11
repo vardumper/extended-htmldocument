@@ -15,8 +15,9 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
+{% apply spaceless %}
 <title
-  {{ attributes }}
 >
-  {% block content %}{% endblock %}
+  {%- block content %}{{- content|raw -}}{% endblock -%}
 </title>
+{% endapply %}

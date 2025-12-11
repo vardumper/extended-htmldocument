@@ -13,6 +13,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
+{% apply spaceless %}
 <input
   {% if this.accept is defined and this.accept is not null %}accept="{{ this.accept }}"{% endif %}
   {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
@@ -89,5 +90,4 @@
   {% if this.type is not null %}type="{{ this.type.value }}"{% endif %}
   {% if this.value is defined and this.value is not null %}value="{{ this.value }}"{% endif %}
   {% if this.width is defined and this.width is not null %}width="{{ this.width }}"{% endif %}
-  {{ attributes }}
 />

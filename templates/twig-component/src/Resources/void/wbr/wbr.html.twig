@@ -13,10 +13,10 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
+{% apply spaceless %}
 <wbr
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
   {% if this.dir is not null %}dir="{{ this.dir.value }}"{% endif %}
   {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}
   {% if this.id is defined and this.id is not null %}id="{{ this.id }}"{% endif %}
-  {{ attributes }}
 />

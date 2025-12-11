@@ -13,6 +13,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
+{% apply spaceless %}
 <embed
   {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
   {% if this.autocapitalize is not null %}autocapitalize="{{ this.autocapitalize.value }}"{% endif %}
@@ -34,5 +35,4 @@
   {% if this.translate is not null %}translate="{{ this.translate.value }}"{% endif %}
   {% if this.type is defined and this.type is not null %}type="{{ this.type }}"{% endif %}
   {% if this.width is defined and this.width is not null %}width="{{ this.width }}"{% endif %}
-  {{ attributes }}
 />

@@ -15,6 +15,7 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
+{% apply spaceless %}
 <colgroup
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
   {% if this.dir is not null %}dir="{{ this.dir.value }}"{% endif %}
@@ -24,7 +25,7 @@
   {% if this.slot is defined and this.slot is not null %}slot="{{ this.slot }}"{% endif %}
   {% if this.span is defined and this.span is not null %}span="{{ this.span }}"{% endif %}
   {% if this.style is defined and this.style is not null %}style="{{ this.style }}"{% endif %}
-  {{ attributes }}
 >
-  {% block content %}{% endblock %}
+  {%- block content %}{{- content|raw -}}{% endblock -%}
 </colgroup>
+{% endapply %}

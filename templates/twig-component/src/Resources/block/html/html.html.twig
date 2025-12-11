@@ -15,11 +15,12 @@
   @package vardumper/extended-htmldocument
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
+{% apply spaceless %}
 <html
   {% if this.dir is not null %}dir="{{ this.dir.value }}"{% endif %}
   {% if this.lang is defined and this.lang is not null %}lang="{{ this.lang }}"{% endif %}
   {% if this.manifest is defined and this.manifest is not null %}manifest="{{ this.manifest }}"{% endif %}
-  {{ attributes }}
 >
-  {% block content %}{% endblock %}
+  {%- block content %}{{- content|raw -}}{% endblock -%}
 </html>
+{% endapply %}

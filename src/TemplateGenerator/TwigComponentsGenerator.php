@@ -212,6 +212,16 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             }
         }
 
+        // Add content property for Block and Inline elements
+        if ($level === 'block' || $level === 'inline') {
+            $props['content'] = [
+                'type' => 'string',
+                'enumClass' => null,
+                'allowedTypes' => ['string'],
+                'needsNormalizer' => false,
+            ];
+        }
+
         // Get element metadata from class-level doc comment
         $docComment = $ref->getDocComment();
         $desc = '';
@@ -257,11 +267,19 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         foreach ($props as $propName => $propData) {
             // Extract just the class name from the full type string
             $typeDeclaration = $propData['type'];
+            $defaultValue = 'null';
+
             if ($propData['enumClass']) {
                 $shortName = basename(str_replace('\\', '/', $propData['enumClass']));
                 $typeDeclaration = '?' . $shortName;
             }
-            $php .= "    public {$typeDeclaration} \${$propName} = null;\n";
+
+            // Content property should default to empty string
+            if ($propName === 'content') {
+                $defaultValue = "''";
+            }
+
+            $php .= "    public {$typeDeclaration} \${$propName} = {$defaultValue};\n";
         }
 
         $php .= "\n";
@@ -463,6 +481,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         $twig .= "#}\n";
 
         // Build the element - no props tag needed, component class handles it
+        $twig .= "{% apply spaceless %}\n";
         $twig .= "<{$elementName}";
 
         // Render attributes conditionally
@@ -479,15 +498,13 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             }
         }
 
-        // Add remaining attributes using the attributes variable
-        $twig .= "\n  {{ attributes }}";
-
         if ($isSelfClosing) {
             $twig .= "\n/>\n";
         } else {
             $twig .= "\n>\n";
-            $twig .= "  {% block content %}{% endblock %}\n";
+            $twig .= "  {%- block content %}{{- content|raw -}}{% endblock -%}\n";
             $twig .= "</{$elementName}>\n";
+            $twig .= "{% endapply %}\n";
         }
 
         return $twig;

@@ -64,6 +64,7 @@ class Label
     public ?TranslateEnum $translate = null;
     public ?string $id = null;
     public ?string $class = null;
+    public string $content = '';
 
     #[PreMount]
     public function preMount(array $data): array
@@ -219,6 +220,8 @@ class Label
         $resolver->setAllowedTypes('id', ['null', 'string']);
         $resolver->setDefaults(['class' => null]);
         $resolver->setAllowedTypes('class', ['null', 'string']);
+        $resolver->setDefined('content');
+        $resolver->setAllowedTypes('content', ['string']);
 
         return $resolver->resolve($data) + $data;
     }
