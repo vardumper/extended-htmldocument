@@ -323,7 +323,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         }
 
         $php .= "\n";
-        $php .= "        return \$resolver->resolve(\$data) + \$data;\n";
+        $php .= "        return \$resolver->resolve(\$data);\n";
         $php .= "    }\n";
         $php .= "}\n";
 
