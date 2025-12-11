@@ -24,6 +24,6 @@ class Title
         $resolver->setIgnoreUndefined(true);
 
 
-        return $resolver->resolve($data) + ['blocks' => $data['blocks']];
+        return $resolver->resolve($data) + ['blocks' => $data['blocks'] ?? null];
     }
 }

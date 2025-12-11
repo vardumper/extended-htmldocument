@@ -39,6 +39,6 @@ class Base
             return $value;
         });
 
-        return $resolver->resolve($data) + ['blocks' => $data['blocks']];
+        return $resolver->resolve($data) + ['blocks' => $data['blocks'] ?? null];
     }
 }

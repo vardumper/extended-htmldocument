@@ -210,6 +210,6 @@ class Optgroup
         $resolver->setDefaults(['class' => null]);
         $resolver->setAllowedTypes('class', ['null', 'string']);
 
-        return $resolver->resolve($data) + ['blocks' => $data['blocks']];
+        return $resolver->resolve($data) + ['blocks' => $data['blocks'] ?? null];
     }
 }
