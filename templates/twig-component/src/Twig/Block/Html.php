@@ -42,6 +42,10 @@ class Html
         $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
 
-        return $resolver->resolve($data) + ['blocks' => $data['blocks'] ?? null];
+        $resolved = $resolver->resolve($data);
+        if (isset($data['blocks'])) {
+            $resolved['blocks'] = $data['blocks'];
+        }
+        return $resolved;
     }
 }
