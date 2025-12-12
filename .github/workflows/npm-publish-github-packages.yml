@@ -31,6 +31,6 @@ jobs:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
       - run: cd templates/nextjs && yarn install --frozen-lockfile
-      - run: cd templates/nextjs && yarn publish
+      - run: cd templates/nextjs && npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
