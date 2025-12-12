@@ -263,8 +263,8 @@ class NextJSGenerator implements TemplateGeneratorInterface
 
                 // Special handling for DataTrait - it handles arbitrary data-* attributes
                 if ($propName === 'data') {
-                    $props['data'] = [
-                        'name' => 'data',
+                    $props['dataSet'] = [
+                        'name' => 'dataSet',
                         'type' => 'Record<string, string>',
                         'optional' => true,
                         'description' => 'Custom data attributes (data-*)',
