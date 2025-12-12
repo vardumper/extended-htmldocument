@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 20
       - run: cd templates/nextjs && yarn install --frozen-lockfile
-      - run: cd templates/nextjs && yarn test
+      - run: cd templates/nextjs && yarn typecheck
 
   publish-gpr:
     needs: build
