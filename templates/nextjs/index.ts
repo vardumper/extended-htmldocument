@@ -6,8 +6,6 @@
  * @package vardumper/extended-htmldocument
  */
 
-import { A } from './inline/a';
-
 // Block Elements
 export { Article, type ArticleProps } from './block/article/article';
 export { Aside, type AsideProps } from './block/aside/aside';
