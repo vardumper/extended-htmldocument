@@ -207,6 +207,10 @@ class NextJSGenerator implements TemplateGeneratorInterface
         $level = 'inline'; // Will be determined by class hierarchy
 
         $componentName = ucfirst($elementName);
+        // Avoid shadowing global Object in TS
+        if ($componentName === 'Object') {
+            $componentName = 'ObjectComponent';
+        }
 
         $props = [];
         $propsInterface = [];
@@ -498,12 +502,24 @@ class NextJSGenerator implements TemplateGeneratorInterface
         $tsx .= "  const elementProps: React.HTMLAttributes<HTMLElement> & Record<string, any> = {};\n\n";
 
         // Handle data attributes specially
-        if (isset($props['data'])) {
+        if (isset($props['dataSet'])) {
             $tsx .= "  // Handle data attributes specially\n";
-            $tsx .= "  if (data) {\n";
-            $tsx .= "    Object.entries(data).forEach(([key, value]) => {\n";
+            $tsx .= "  if (dataSet) {\n";
+            $tsx .= "    Object.entries(dataSet).forEach(([key, value]: [string, string]) => {\n";
             $tsx .= "      elementProps[`data-\${key}`] = value;\n";
             $tsx .= "    });\n";
+            $tsx .= "  }\n\n";
+        }
+
+        // Handle 'data' attribute (string) for <object data="...">
+        if (isset($props['data']) && !isset($props['dataSet'])) {
+            $tsx .= "  if (data !== undefined) {\n";
+            $tsx .= "    elementProps['data'] = data;\n";
+            $tsx .= "  }\n\n";
+        }
+        if (isset($props['data']) && isset($props['dataSet'])) {
+            $tsx .= "  if (data !== undefined) {\n";
+            $tsx .= "    elementProps['data'] = data;\n";
             $tsx .= "  }\n\n";
         }
 
@@ -516,7 +532,7 @@ class NextJSGenerator implements TemplateGeneratorInterface
         $tsx .= "  const excludedProps = new Set(['children', 'data']);\n\n";
 
         $tsx .= "  // Iterate over all props and map them to element attributes\n";
-        $tsx .= "  Object.entries(props).forEach(([key, value]) => {\n";
+        $tsx .= "  Object.entries(props).forEach(([key, value]: [string, any]) => {\n";
         $tsx .= "    if (excludedProps.has(key) || value === undefined) {\n";
         $tsx .= "      return;\n";
         $tsx .= "    }\n\n";

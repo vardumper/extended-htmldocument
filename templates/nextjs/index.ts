@@ -48,7 +48,7 @@ export { Map, type MapProps } from './block/map/map';
 export { Menu, type MenuProps } from './block/menu/menu';
 export { Nav, type NavProps } from './block/nav/nav';
 export { Noscript, type NoscriptProps } from './block/noscript/noscript';
-export { Object, type ObjectProps } from './block/object/object';
+export { ObjectComponent as Object, type ObjectComponentProps as ObjectProps } from './block/object/object';
 export { Ol, type OlProps } from './block/ol/ol';
 export { Optgroup, type OptgroupProps } from './block/optgroup/optgroup';
 export { Option, type OptionProps } from './block/option/option';
