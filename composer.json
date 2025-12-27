@@ -43,7 +43,7 @@
         "ext-dom": "*",
         "revolt/event-loop": "^1.0.8",
         "mnapoli/silly": "^1.9.1",
-        "symfony/yaml": "^7.4.1"
+        "symfony/yaml": "^5.4|^7.0|^8.0"
     },
     "config": {
         "sort-packages": true,
