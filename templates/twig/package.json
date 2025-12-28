@@ -1,6 +1,6 @@
 {
   "name": "@typesafe-html5/twig",
-  "version": "0.2.24",
+  "version": "0.2.61",
   "type": "module",
   "license": "MIT",
   "description": "Type-safe, auto-generated Twig templates for all HTML5 elements with full WCAG, ARIA support and validation. Part of Extended HTMLDocument - schema-first from HTML5 schema.",
