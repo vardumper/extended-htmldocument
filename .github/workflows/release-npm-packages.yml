@@ -38,6 +38,12 @@ jobs:
                continue
             fi
 
+            # skip storybook as it's not meant to be published
+            if [ "$(basename "$dir")" = "storybook" ]; then
+              echo "Skipping storybook (development tool, not for publishing)"
+              continue
+            fi
+
             if git diff --quiet HEAD~1 -- "$dir"; then
               continue
             fi
