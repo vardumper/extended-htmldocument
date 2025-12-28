@@ -10,7 +10,7 @@ This library allows me to auto-generate all the files, I need for HTML5 atoms, m
 All that should change between projects are styles, molecules and organisms, the actual components.
 
 ## High-Level Concept
-No matter which frontend technologies you use in a project ([Twig](https://twig.symfony.com/), [Blade](https://laravel.com/docs/12.x/blade), [Turbo](https://turbo.hotwired.dev/), [React](https://react.dev/), [Vue](https://vuejs.org/), [Svelte](https://svelte.dev/), [Next](https://nextjs.org/), plain [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), etc) - what they all have in common is **they all produce HTML**. While HTML5 evolves, it's steady if you compare it to changing project requirements, tech stacks or frontend technologies in general.
+No matter which frontend technologies you use in a project ([Twig](https://twig.symfony.com/), [Blade](https://laravel.com/docs/12.x/blade), [Turbo](https://turbo.hotwired.dev/), [React](https://react.dev/), [Vue](https://vuejs.org/), [Svelte](https://svelte.dev/), [Next](https://nextjs.org/), plain [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [Typescript](https://www.typescriptlang.org/), [Alpine.js](https://alpinejs.dev/), etc) - what they all have in common is **they all produce HTML**. While HTML5 evolves, it's steady if you compare it to changing project requirements, tech stacks or frontend technologies in general.
 
 **Reasons to standardize your HTML** from a web developers perspective:
 - **Less Code**: You write less code, because you don't have to write the same HTML5 elements over and over again.

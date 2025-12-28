@@ -27,7 +27,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/usage-examples' }
+      // { text: 'Examples', link: '/usage-examples' }
     ],
 
     sidebar: [
@@ -35,6 +35,7 @@ export default defineConfig({
         text: 'Getting Started',
         items: [
           { text: 'Introduction', link: '/introduction' },
+          { text: 'Releases', link: '/releases' },
           { text: 'Feature Overview', link: '/features' },
           { text: 'Getting Started', link: '/getting-started' },
           { text: 'Element Classes', link: '/elements' },
@@ -67,7 +68,10 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vardumper/extended-htmldocument' }
+      { icon: 'github', link: 'https://github.com/vardumper/extended-htmldocument' },
+      { icon: 'npm', link: 'https://www.npmjs.com/org/typesafe-html5' },
+      { icon: 'symfony', link: 'https://github.com/vardumper/html5-twig-component-bundle' },
+      { icon: 'storybook', link: 'https://github.com/vardumper/html5-twig-component-bundle' },
     ]
   }
 })
