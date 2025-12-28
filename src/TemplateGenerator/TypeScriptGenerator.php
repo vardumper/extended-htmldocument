@@ -634,10 +634,10 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
         $ts .= " *\n";
         $ts .= " * CONTENT MODEL:\n";
         if (!empty($childOf)) {
-            $ts .= " * - Can be child of: " . implode(', ', array_map(fn($c) => basename(str_replace('\\', '/', $c)), $childOf)) . "\n";
+            $ts .= " * - Can be child of: " . implode(', ', array_map(function($c) { return basename(str_replace('\\', '/', $c)); }, $childOf)) . "\n";
         }
         if (!empty($parentOf)) {
-            $ts .= " * - Can contain: " . implode(', ', array_map(fn($c) => basename(str_replace('\\', '/', $c)), $parentOf)) . "\n";
+            $ts .= " * - Can contain: " . implode(', ', array_map(function($c) { return basename(str_replace('\\', '/', $c)); }, $parentOf)) . "\n";
         }
         $ts .= " */\n";
         $ts .= "export class {$name}Example {\n";

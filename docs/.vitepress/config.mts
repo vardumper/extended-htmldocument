@@ -5,6 +5,23 @@ export default defineConfig({
   title: "Extended HTMLDocument",
   description: "Documentation",
   base: '/extended-htmldocument/',
+  cleanUrls: false,
+  mpa: true,
+
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: undefined,
+        }
+      }
+    },
+    server: {
+      fs: {
+        allow: ['../../templates/storybook/storybook-static']
+      }
+    }
+  },
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

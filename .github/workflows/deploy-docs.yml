@@ -53,8 +53,9 @@ jobs:
           yarn install
           yarn build-storybook
           cd ../..
-          mkdir -p docs/.vitepress/dist/storybook
-          cp -r templates/storybook/storybook-static/* docs/.vitepress/dist/storybook/
+          mkdir -p docs/.vitepress/dist/storybook-site
+          cp -r templates/storybook/storybook-static/* docs/.vitepress/dist/storybook-site/
+          ls -la docs/.vitepress/dist/storybook-site/ | head -10
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
