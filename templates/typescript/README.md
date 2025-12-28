@@ -19,19 +19,6 @@ yarn add @typesafe-html5/typescript
 pnpm add @typesafe-html5/typescript
 ```
 
-## Publishing to npm
-
-This package is ready to be published to npm. To publish:
-
-1. Ensure you have an npm account and are logged in (`npm login`)
-2. Run `npm publish` from this directory
-
-The package includes:
-- All generated TypeScript class files
-- Type definitions
-- Main entry point (`index.ts`)
-- Package metadata and dependencies
-
 ## Importing Elements
 
 You can import individual elements from their specific files:
