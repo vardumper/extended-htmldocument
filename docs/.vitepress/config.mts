@@ -71,7 +71,7 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/vardumper/extended-htmldocument' },
       { icon: 'npm', link: 'https://www.npmjs.com/org/typesafe-html5' },
       { icon: 'symfony', link: 'https://github.com/vardumper/html5-twig-component-bundle' },
-      { icon: 'storybook', link: 'https://github.com/vardumper/html5-twig-component-bundle' },
+      { icon: 'storybook', link: 'https://vardumper.github.io/extended-htmldocument/storybook-site/?path=/story/introduction--welcome' },
     ]
   }
 })
