@@ -3,6 +3,9 @@
 Schema-first auto-generated Storybook stories for all HTML5 elements with built-in validation for best consistency. 
 This Storybook uses Javascript for each story - not relying on MDX, Rect or other templating languages.
 
+## Demo
+There's a [Demo installation of this Storybook](https://vardumper.github.io/extended-htmldocument/storybook-site/) over at Github Pages.
+
 ## Setup
 
 ```bash

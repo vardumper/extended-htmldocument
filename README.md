@@ -23,68 +23,31 @@ echo (string) Anchor::create($dom)
     ->setClass('secondary')
     ->setRel(RelEnum::NOFOLLOW)
     ->setHref('https://google.com')
-    ->setTitle('Google it');
+    ->setTitle('Google it')
+    ->setContent('Click me');
 // output is:
-// <a class="secondary" href="https://google.com" rel="nofollow" title="Google it"></a>
+// <a class="secondary" href="https://google.com" rel="nofollow" title="Google it">Click me</a>
 ```
 ## Generated Templates
 Templates are generated from the HTML5 schema for every HTML element. These allow for better consistency in your design system(s), support all possible HTML attributes and have basic validations for enum attributes.
 Files are grouped into inline, block and void elements. For elements with a specific content model, a composed template is generated as well. (eg `<table><tr><td>Cell</td><tr></table>`)
 
-### Twig
-They are compatible with different ways of using Twig (`include`, `embed` and `use`).
-```php
-$twig->path('vendor/vardumper/extended-htmldocument/templates', 'html'); /** register template path with or without namespace */
-```
-Example 
-```twig
-{% include '@html/inline/a.twig' with {
-  href: 'https://example.com',
-  title: 'Some info about the link'
-  rel: 'nofollow',
-  role: 'button',
-  content: '<strong>Click here</strong>'
-} %}
-```
-
+### Blade
+Blade templates can be found in [`templates/blade`](https://github.com/vardumper/extended-htmldocument/tree/main/templates/blade). The [README](https://github.com/vardumper/extended-htmldocument/blob/main/templates/blade/README.md) has more infos and usage examples. Blade templates can also be installed via `npm` with the [@typesafe-html5/blade](https://www.npmjs.com/package/@typesafe-html5/blade) package.
 ### React & NextJS
-Type-safe, auto-generated React components for all HTML5 elements with full ARIA support. Work in both Next.js (Server Components, Client Components) and regular React applications (CRA, Vite, etc.). They use pure functional React patterns without hooks or browser-specific APIs.
-Example:
-```tsx
-import { Button, Div, H1 } from './index';
-
-export default function Page() {
-  return (
-    <Div className="container">
-      <H1>Welcome</H1>
-      <A
-        href="/contact"
-      >
-        Contact us
-      </A>
-    </Div>
-  );
-}
-```
-
-### Storybook
-Inside `templates/storybook` you can find a fully working Storybook boilerplate that includes all HTML5 elements.
-
-Start it with:
-```bash
-cd templates/storybook
-yarn && yarn storybook
-```
-
-It is supposed to help you as a starting point - helpful when creating a design system. Instead of starting from scratch, you would use the pre-made 'atoms' and thus ensure great consistrncy.
-
-## Twig Components Bundle
-
-Symnfony introduced [Twig Components](https://symfony.com/bundles/ux-twig-component/current/index.html) as part of the much larger Symfony UX ecosystem.
-
-While maintained and published from the `templates/twig-components` directory, there is a separate package to install it from. 
-
-You will find a Symfony Bundle that brings typesafe, schema-first 
+React and NextJS templates can be found in `templates/blade`. See the Blade-specific [README](https://github.com/vardumper/extended-htmldocument/blob/main/templates/blade/README.md) file for details. Blade templates can also be installed via `npm` with the [@typesafe-html5/react](https://www.npmjs.com/package/@typesafe-html5/react) package.
+### Storybook 
+Storybook with atoms for all HTML5 elements can be [seen in the Demo](https://vardumper.github.io/extended-htmldocument/storybook-site/). Files can be found in [`templates/storybook`](https://github.com/vardumper/extended-htmldocument/tree/main/templates/storybook). There's also a [README](https://github.com/vardumper/extended-htmldocument/blob/main/templates/storybook/README.md) with more details.
+### Storybook for Twig
+TBD
+### Storybook for React/NextJS
+TBD
+### Twig
+Twig templates for flexible and performant use with `include`, `embed`, and `use` can be found in [`templates/twig`](https://github.com/vardumper/extended-htmldocument/tree/main/templates/twig). See the [README](https://github.com/vardumper/extended-htmldocument/blob/main/templates/twig/README.md) for more details and usage examples. Twig templates can also be installed via `npm` with the [@typesafe-html5/twig](https://www.npmjs.com/package/@typesafe-html5/twig) package.
+### Twig Components Bundle
+Generated, typesafe Twig Components for use with Symfony UXs Twig Components can be found in [`templates/twig-component`](https://github.com/vardumper/extended-htmldocument/tree/main/templates/twig-component). See the [README](https://github.com/vardumper/extended-htmldocument/blob/main/templates/twig-component/README.md) for more details and usage examples. Twig templates can also be installed via the Symfony Bundle [vardumper/html5-twig-component-bundle](https://github.com/vardumper/html5-twig-component-bundle) package.
+### Typescript
+Typescript templates can be found in [`templates/typescript`](https://github.com/vardumper/extended-htmldocument/tree/main/templates/typescript). See the [README](https://github.com/vardumper/extended-htmldocument/blob/main/templates/typescript/README.md) for more details and usage examples. Typescript templates can also be installed via `npm` with the [@typesafe-html5/typescript](https://www.npmjs.com/package/@typesafe-html5/typescript) package.
 
 ## Documentation
 See the [Documentation](https://vardumper.github.io/extended-htmldocument/) for more.
