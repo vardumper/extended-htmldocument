@@ -1,6 +1,14 @@
-# HTML5 Elements as Twig Components
+# Twig Components for HTML5 Elements
 
-Symfony UX Twig Components for all HTML5 elements with ARIA support, Enum validation for consistency and enforcing valid HTML5. Classes and templates as generated from the HTML5 specifications. This bundle is part of the [Extended HTMLDocument](https://github.com/vardumper/extended-htmldocument) library built ontop of PHP's DOM\HTMLDocument.
+Type-safe, auto-generated Twig components for all HTML5 elements with full WCAG, ARIA support and validation. Part of Extended HTMLDocument - schema-first from HTML5 schema.
+
+## Features
+
+- **Symfony UX Integration**: Native Symfony Twig Component support
+- **ARIA Compliant**: Complete ARIA attribute support with proper validation
+- **Auto-Generated**: Consistent API across all HTML5 elements via schema-first approach
+- **Enum Validation**: Static attribute validation for HTML compliance
+- **Modern PHP**: Requires PHP 8.4+ for DOM\HTMLDocument features
 
 ## Requirements
 * PHP 8.4 – the underlying Extended HTMLDocument library is built upon PHPs DOM\HTMLDocument which is available since PHP 8.4+

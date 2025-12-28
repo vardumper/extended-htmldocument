@@ -1,6 +1,14 @@
-# Twig Templates
+# Twig Templates for HTML5 Elements
 
-Auto-generated Twig templates for HTML elements with built-in validation and best consistency.
+Type-safe, auto-generated Twig templates for all HTML5 elements with full WCAG, ARIA support and validation. Part of Extended HTMLDocument - schema-first from HTML5 schema.
+
+## Features
+
+- **Type-Safe**: Full Twig type support with comprehensive validation
+- **ARIA Compliant**: Complete ARIA attribute support with proper validation
+- **Framework Agnostic**: Works with any Twig-based framework
+- **Auto-Generated**: Consistent API across all HTML5 elements via schema-first approach
+- **Template Integration**: Native Twig syntax and features
 
 ## Installation
 This package is part of the Extended HTMLDocument library. There's several ways you can install and use it.

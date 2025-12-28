@@ -1,7 +1,14 @@
-# Storybook pre-set with all HTML5 elements as atoms
+# Storybook for HTML5 Elements
 
-Schema-first auto-generated Storybook stories for all HTML5 elements with built-in validation for best consistency. 
-This Storybook uses Javascript for each story - not relying on MDX, Rect or other templating languages.
+Type-safe, auto-generated Storybook stories for all HTML5 elements with full WCAG, ARIA support and validation. Part of Extended HTMLDocument - schema-first from HTML5 schema.
+
+## Features
+
+- **Interactive Documentation**: Live Storybook interface for all HTML5 elements
+- **ARIA Compliant**: Complete ARIA attribute support with proper validation
+- **Auto-Generated**: Consistent stories across all HTML5 elements via schema-first approach
+- **JavaScript Stories**: Pure JavaScript implementation (no MDX dependencies)
+- **Design System Ready**: Perfect for component library documentation
 
 ## Demo
 There's a [Demo installation of this Storybook](https://vardumper.github.io/extended-htmldocument/storybook-site/) over at Github Pages.

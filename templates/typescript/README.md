@@ -1,11 +1,15 @@
-# TypeScript HTML Element Classes
+# TypeScript Classes for HTML5 Elements
 
-This directory contains auto-generated TypeScript classes for creating HTML elements with a fluent, type-safe API. Each class provides:
+Type-safe, auto-generated TypeScript classes for all HTML5 elements with full WCAG, ARIA support and validation. Part of Extended HTMLDocument - schema-first from HTML5 schema.
 
-- Constructor with optional props
-- Chainable setter methods for all attributes
-- Type-safe property interfaces
-- Automatic attribute handling (including null/undefined removal)
+## Features
+
+- **Type-Safe**: Full TypeScript support with comprehensive type definitions
+- **Fluent API**: Chainable setter methods for all attributes
+- **ARIA Compliant**: Complete ARIA attribute support with proper types
+- **Auto-Generated**: Consistent API across all HTML5 elements via schema-first approach
+- **Null/Undefined Handling**: Automatic attribute removal for null/undefined values
+- **Framework Agnostic**: Works in any JavaScript/TypeScript environment
 
 ## Installation
 

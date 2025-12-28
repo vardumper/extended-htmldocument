@@ -1,6 +1,6 @@
-# React/Next.js Components for all HTML5 elements
+# React Components for HTML5 Elements
 
-Type-safe, auto-generated React components for all HTML5 elements with full ARIA support.
+Type-safe, auto-generated React components for all HTML5 elements with full WCAG, ARIA support and validation. Part of Extended HTMLDocument - schema-first from HTML5 schema.
 
 > **Universal Compatibility**: These components work in both Next.js (Server Components, Client Components) and regular React applications (CRA, Vite, etc.). They use pure functional React patterns without hooks or browser-specific APIs.
 
@@ -18,7 +18,7 @@ Type-safe, auto-generated React components for all HTML5 elements with full ARIA
 - **Data Attributes**: Support for custom `data-*` attributes via object syntax
 
 ## Installation
-This is a static NPM package, providing just the Blade templates.
+This is a static NPM package, providing just the React components.
 
 ```bash
 npm install @typesafe-html5/react

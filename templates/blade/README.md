@@ -1,7 +1,14 @@
-# Blade Templates for all HTML5 elements
+# Blade Templates for HTML5 Elements
 
-Fully-typesafe Laravel Blade templates for all HTML5 elements. Provides validation for static HTML attributes (enums). Supports ARIA, WCAG by design.
-These templates are compiled from the HTML5 schema.
+Type-safe, auto-generated Blade templates for all HTML5 elements with full WCAG, ARIA support and validation. Part of Extended HTMLDocument - schema-first from HTML5 schema.
+
+## Features
+
+- **Type-Safe**: Full PHP/Laravel type support with comprehensive validation
+- **ARIA Compliant**: Complete ARIA attribute support with proper validation
+- **Laravel Integration**: Native Blade syntax and Laravel features
+- **Auto-Generated**: Consistent API across all HTML5 elements via schema-first approach
+- **Enum Validation**: Static attribute validation for HTML compliance
 
 ## Installation
 
