@@ -3,7 +3,7 @@
   "version": "0.2.24",
   "type": "module",
   "license": "MIT",
-  "description": "Fully Type-Safe, WCAG and ARIA compliant, HTML5 components for use in more consistent Twig templates. Has static attribute (enums) validation.",
+  "description": "Type-safe, auto-generated Twig templates for all HTML5 elements with full WCAG, ARIA support and validation. Part of Extended HTMLDocument - schema-first from HTML5 schema.",
   "repository": "https://github.com/vardumper/extended-htmldocument/tree/main/templates/twig",
   "author": "Erik Poehler",
   "bugs": {

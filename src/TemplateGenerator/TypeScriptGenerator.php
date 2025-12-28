@@ -282,23 +282,55 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
             } elseif ($typeName === 'bool') {
                 return $allowsNull ? 'boolean | null | undefined' : 'boolean | undefined';
             } elseif (str_ends_with($typeName, 'Enum')) {
-                return $allowsNull ? 'string | boolean | null | undefined' : 'string | boolean | undefined';
+                $enumClass = basename(str_replace('\\', '/', $typeName));
+                $enumType = $this->getEnumType($enumClass);
+                // Check if enum has true/false values, if so, allow boolean
+                $fullClassName = "Html\\Enum\\{$enumClass}";
+                if (enum_exists($fullClassName)) {
+                    try {
+                        $cases = $fullClassName::cases();
+                        $values = array_map(fn($case) => $case->value, $cases);
+                        if (in_array('true', $values) && in_array('false', $values)) {
+                            $enumType .= ' | boolean';
+                        }
+                    } catch (\Throwable $e) {
+                        // Ignore
+                    }
+                }
+                return $allowsNull ? $enumType . ' | null | undefined' : $enumType . ' | undefined';
             } else {
                 return $allowsNull ? 'string | null | undefined' : 'string | undefined'; // Default fallback
             }
         } elseif ($type instanceof ReflectionUnionType) {
             $types = [];
+            $allowsNull = false;
             foreach ($type->getTypes() as $unionType) {
                 $unionTypeName = $unionType->getName();
                 if ($unionTypeName === 'null') {
-                    continue; // Handle nullability separately
+                    $allowsNull = true;
+                    continue;
                 } elseif (str_ends_with($unionTypeName, 'Enum')) {
-                    $types[] = 'string | boolean | null | undefined';
+                    $enumType = $this->getEnumType(basename(str_replace('\\', '/', $unionTypeName)));
+                    // Check if enum has true/false values, if so, allow boolean
+                    $fullClassName = "Html\\Enum\\{$unionTypeName}";
+                    if (enum_exists($fullClassName)) {
+                        try {
+                            $cases = $fullClassName::cases();
+                            $values = array_map(fn($case) => $case->value, $cases);
+                            if (in_array('true', $values) && in_array('false', $values)) {
+                                $enumType .= ' | boolean';
+                            }
+                        } catch (\Throwable $e) {
+                            // Ignore
+                        }
+                    }
+                    $types[] = $enumType;
                 } else {
                     $types[] = $this->getTypeName($unionTypeName);
                 }
             }
-            return implode(' | ', $types);
+            $baseType = implode(' | ', $types);
+            return $allowsNull ? $baseType . ' | null | undefined' : $baseType . ' | undefined';
         }
         return 'any';
     }
@@ -507,7 +539,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
             $methodName = $this->toPascalCase($propName);
             $valueType = $propData['type'];
             $ts .= "  set{$methodName}(value: {$valueType}): this {\n";
-            if ($valueType === 'string | boolean | null | undefined') {
+            if ($propData['isEnum'] ?? false) {
                 $ts .= "    if (value === null || value === undefined) {\n";
                 $ts .= "      this.element.removeAttribute('{$propName}');\n";
                 $ts .= "    } else {\n";

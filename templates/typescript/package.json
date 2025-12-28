@@ -1,0 +1,32 @@
+{
+  "name": "@typesafe-html5/typescript",
+  "version": "0.2.24",
+  "description": "Type-safe, auto-generated TypeScript classes for all HTML5 elements with full WCAG, ARIA support and validation. Part of Extended HTMLDocument - schema-first from HTML5 schema.",
+  "main": "index.ts",
+  "types": "index.ts",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "typescript",
+    "html5",
+    "aria",
+    "accessibility",
+    "dom",
+    "elements"
+  ],
+  "author": "Erik Poehler",
+  "license": "MIT",
+  "repository": "https://github.com/vardumper/extended-htmldocument/tree/main/templates/typescript",
+  "bugs": {
+    "url": "https://github.com/vardumper/extended-htmldocument/issues"
+  },
+  "homepage": "https://vardumper.github.io/extended-htmldocument/",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

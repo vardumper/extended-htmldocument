@@ -9,7 +9,43 @@ This directory contains auto-generated TypeScript classes for creating HTML elem
 
 ## Installation
 
-Copy the generated TypeScript files to your project and import them as needed.
+This is a static NPM package, providing just the TypeScript classes.
+
+```bash
+npm install @typesafe-html5/typescript
+# or
+yarn add @typesafe-html5/typescript
+# or
+pnpm add @typesafe-html5/typescript
+```
+
+## Publishing to npm
+
+This package is ready to be published to npm. To publish:
+
+1. Ensure you have an npm account and are logged in (`npm login`)
+2. Run `npm publish` from this directory
+
+The package includes:
+- All generated TypeScript class files
+- Type definitions
+- Main entry point (`index.ts`)
+- Package metadata and dependencies
+
+## Importing Elements
+
+You can import individual elements from their specific files:
+
+```typescript
+import { Input } from './inline/input/input';
+import { Button } from './inline/button/button';
+```
+
+Or import all elements from the main index file for convenience:
+
+```typescript
+import { Input, Button, Div, Form } from './index';
+```
 
 ## Usage Examples
 

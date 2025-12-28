@@ -3,7 +3,7 @@
   "version": "0.2.24",
   "type": "module",
   "license": "MIT",
-  "description": "Fully Type-Safe, WCAG and ARIA compliant, HTML5 components for use in more consistent Blade templates. Has static attribute enum validation.",
+  "description": "Type-safe, auto-generated Blade templates for all HTML5 elements with full WCAG, ARIA support and validation. Part of Extended HTMLDocument - schema-first from HTML5 schema.",
   "repository": "https://github.com/vardumper/extended-htmldocument/tree/main/templates/blade",
   "author": "Erik Poehler",
   "bugs": {

@@ -1,7 +1,7 @@
 {
   "name": "@typesafe-html5/react",
   "version": "0.2.24",
-  "description": "Type-safe, framework-agnostic, auto-generated React components for all HTML5 elements with full WCAG, ARIA support and validation.",
+  "description": "Type-safe, auto-generated React components for all HTML5 elements with full WCAG, ARIA support and validation. Part of Extended HTMLDocument - schema-first from HTML5 schema.",
   "main": "index.ts",
   "types": "index.ts",
   "type": "module",
