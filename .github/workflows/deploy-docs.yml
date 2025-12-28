@@ -1,11 +1,12 @@
-# Workflow for building and deploying a VitePress site to GitHub Pages
-name: Deploy VitePress site to Pages
+# Workflow for building and deploying VitePress docs and Storybook to GitHub Pages
+name: Deploy Docs & Storybook to Pages
 
 on:
   push:
-    # only trigger if theres a change in docs/ directory
+    # trigger if there are changes in docs/ or templates/storybook/ directories
     paths:
       - 'docs/**'
+      - 'templates/storybook/**'
     branches: [main]
   workflow_dispatch:
 
@@ -45,6 +46,15 @@ jobs:
 
       - name: Build with VitePress
         run: yarn docs:build # or pnpm docs:build / yarn docs:build / bun run docs:build
+
+      - name: Build Storybook
+        run: |
+          cd templates/storybook
+          yarn install
+          yarn build-storybook
+          cd ../..
+          mkdir -p docs/.vitepress/dist/storybook
+          cp -r templates/storybook/storybook-static/* docs/.vitepress/dist/storybook/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
