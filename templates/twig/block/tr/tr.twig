@@ -28,6 +28,7 @@
 <tr
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
   {% if align is defined and align|length > 0 and align_choices[align] is defined %}align="{{ align }}"{% endif %}
+  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
   {% if ariaAtomic is defined and ariaAtomic|length > 0 and ariaAtomic_choices[ariaAtomic] is defined %}aria-atomic="{{ ariaAtomic }}"{% endif %}
   {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy_choices[ariaBusy] is defined %}aria-busy="{{ ariaBusy }}"{% endif %}
   {% if ariaColcount is defined and ariaColcount|length > 0 %}aria-colcount="{{ ariaColcount }}"{% endif %}

@@ -38,6 +38,7 @@
 <input
   {% if accept is defined and accept|length > 0 %}accept="{{ accept }}"{% endif %}
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
+  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
   {% if alt is defined and alt|length > 0 %}alt="{{ alt }}"{% endif %}
   {% if ariaAtomic is defined and ariaAtomic|length > 0 and ariaAtomic_choices[ariaAtomic] is defined %}aria-atomic="{{ ariaAtomic }}"{% endif %}
   {% if ariaAutocomplete is defined and ariaAutocomplete|length > 0 and ariaAutocomplete_choices[ariaAutocomplete] is defined %}aria-autocomplete="{{ ariaAutocomplete }}"{% endif %}

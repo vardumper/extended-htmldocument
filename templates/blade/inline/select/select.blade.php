@@ -34,6 +34,7 @@ $spellcheckChoices = ['true' => true, 'false' => true];
 $translateChoices = ['yes' => true, 'no' => true];
 $attrs = [];
 if (isset($accesskey)) $attrs[] = 'accesskey="' . e($accesskey) . '"';
+if (isset($alpineAttributes)) $attrs[] = 'alpine-attributes="' . e($alpineAttributes) . '"';
 if (isset($ariaActivedescendant)) $attrs[] = 'aria-activedescendant="' . e($ariaActivedescendant) . '"';
 if (isset($ariaAtomic) && isset($ariaAtomicChoices[$ariaAtomic])) $attrs[] = 'aria-atomic="' . e($ariaAtomic) . '"';
 if (isset($ariaAutocomplete) && isset($ariaAutocompleteChoices[$ariaAutocomplete])) $attrs[] = 'aria-autocomplete="' . e($ariaAutocomplete) . '"';

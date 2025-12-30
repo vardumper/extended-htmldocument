@@ -12,8 +12,8 @@
 $autocompleteChoices = ['off' => true, 'on' => true];
 $autocorrectChoices = ['off' => true, 'on' => true];
 $enctypeChoices = ['application/x-www-form-urlencoded' => true, 'multipart/form-data' => true, 'text/plain' => true];
-$methodChoices = ['get' => true, 'post' => true, 'dialog' => true];
-$targetChoices = ['_self' => true, '_blank' => true, '_parent' => true, '_top' => true];
+$methodChoices = ['get' => true, 'post' => true];
+$targetChoices = ['_blank' => true, '_parent' => true, '_self' => true, '_top' => true];
 $ariaInvalidChoices = ['false' => true, 'true' => true, 'grammar' => true, 'spelling' => true];
 $ariaLiveChoices = ['off' => true, 'polite' => true, 'assertive' => true];
 $ariaRelevantChoices = ['additions' => true, 'removals' => true, 'text' => true, 'all' => true, 'additions text' => true];
@@ -24,6 +24,7 @@ $attrs = [];
 if (isset($acceptCharset)) $attrs[] = 'accept-charset="' . e($acceptCharset) . '"';
 if (isset($accesskey)) $attrs[] = 'accesskey="' . e($accesskey) . '"';
 if (isset($action)) $attrs[] = 'action="' . e($action) . '"';
+if (isset($alpineAttributes)) $attrs[] = 'alpine-attributes="' . e($alpineAttributes) . '"';
 if (isset($ariaAtomic) && isset($ariaAtomicChoices[$ariaAtomic])) $attrs[] = 'aria-atomic="' . e($ariaAtomic) . '"';
 if (isset($ariaDetails)) $attrs[] = 'aria-details="' . e($ariaDetails) . '"';
 if (isset($ariaInvalid) && isset($ariaInvalidChoices[$ariaInvalid])) $attrs[] = 'aria-invalid="' . e($ariaInvalid) . '"';

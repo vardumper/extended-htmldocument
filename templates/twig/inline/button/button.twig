@@ -33,6 +33,7 @@
 {% set type_choices = {'submit': true, 'reset': true, 'button': true} %}
 <button
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
+  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
   {% if ariaAtomic is defined and ariaAtomic|length > 0 and ariaAtomic_choices[ariaAtomic] is defined %}aria-atomic="{{ ariaAtomic }}"{% endif %}
   {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy_choices[ariaBusy] is defined %}aria-busy="{{ ariaBusy }}"{% endif %}
   {% if ariaChecked is defined and ariaChecked|length > 0 and ariaChecked_choices[ariaChecked] is defined %}aria-checked="{{ ariaChecked }}"{% endif %}

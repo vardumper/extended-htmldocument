@@ -11,6 +11,7 @@
 @php
 $dirChoices = ['ltr' => true, 'rtl' => true, 'auto' => true];
 $attrs = [];
+if (isset($alpineAttributes)) $attrs[] = 'alpine-attributes="' . e($alpineAttributes) . '"';
 if (isset($class)) $attrs[] = 'class="' . e($class) . '"';
 if (isset($dir) && isset($dirChoices[$dir])) $attrs[] = 'dir="' . e($dir) . '"';
 if (isset($hidden) && $hidden) $attrs[] = 'hidden';

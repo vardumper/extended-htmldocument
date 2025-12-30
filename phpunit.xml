@@ -5,7 +5,7 @@
       <directory suffix="Test.php">./tests</directory>
     </testsuite>
   </testsuites>
-  <coverage includeUncoveredFiles="false" processUncoveredFiles="false">
+  <coverage includeUncoveredFiles="false" processUncoveredFiles="false" discoverUnusedFiles="false">
     <report>
       <clover outputFile="clover.xml"/>
     </report>

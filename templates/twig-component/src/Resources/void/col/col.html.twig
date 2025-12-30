@@ -15,6 +15,7 @@
 #}
 {% apply spaceless %}
 <col
+  {% if this.alpineAttributes is defined and this.alpineAttributes is not null %}alpine-attributes="{{ this.alpineAttributes }}"{% endif %}
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
   {% if this.id is defined and this.id is not null %}id="{{ this.id }}"{% endif %}
   {% if this.span is defined and this.span is not null %}span="{{ this.span }}"{% endif %}

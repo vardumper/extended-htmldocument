@@ -18,6 +18,7 @@ $ariaRelevantChoices = ['additions' => true, 'removals' => true, 'text' => true,
 $ariaAtomicChoices = ['false' => true, 'true' => true];
 $dirChoices = ['ltr' => true, 'rtl' => true, 'auto' => true];
 $attrs = [];
+if (isset($alpineAttributes)) $attrs[] = 'alpine-attributes="' . e($alpineAttributes) . '"';
 if (isset($alt)) $attrs[] = 'alt="' . e($alt) . '"';
 if (isset($ariaAtomic) && isset($ariaAtomicChoices[$ariaAtomic])) $attrs[] = 'aria-atomic="' . e($ariaAtomic) . '"';
 if (isset($ariaDetails)) $attrs[] = 'aria-details="' . e($ariaDetails) . '"';

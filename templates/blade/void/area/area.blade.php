@@ -20,6 +20,7 @@ $spellcheckChoices = ['true' => true, 'false' => true];
 $translateChoices = ['yes' => true, 'no' => true];
 $attrs = [];
 if (isset($accesskey)) $attrs[] = 'accesskey="' . e($accesskey) . '"';
+if (isset($alpineAttributes)) $attrs[] = 'alpine-attributes="' . e($alpineAttributes) . '"';
 if (isset($alt)) $attrs[] = 'alt="' . e($alt) . '"';
 if (isset($autocapitalize) && isset($autocapitalizeChoices[$autocapitalize])) $attrs[] = 'autocapitalize="' . e($autocapitalize) . '"';
 if (isset($autofocus) && $autofocus) $attrs[] = 'autofocus';

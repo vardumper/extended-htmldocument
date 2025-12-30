@@ -19,6 +19,7 @@
 <tr
   {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
   {% if this.align is not null %}align="{{ this.align.value }}"{% endif %}
+  {% if this.alpineAttributes is defined and this.alpineAttributes is not null %}alpine-attributes="{{ this.alpineAttributes }}"{% endif %}
   {% if this.ariaAtomic is not null %}aria-atomic="{{ this.ariaAtomic.value }}"{% endif %}
   {% if this.ariaBusy is not null %}aria-busy="{{ this.ariaBusy.value }}"{% endif %}
   {% if this.ariaColcount is defined and this.ariaColcount is not null %}aria-colcount="{{ this.ariaColcount }}"{% endif %}

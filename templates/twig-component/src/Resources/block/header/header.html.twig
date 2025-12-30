@@ -18,6 +18,7 @@
 {% apply spaceless %}
 <header
   {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
+  {% if this.alpineAttributes is defined and this.alpineAttributes is not null %}alpine-attributes="{{ this.alpineAttributes }}"{% endif %}
   {% if this.ariaLabel is defined and this.ariaLabel is not null %}aria-label="{{ this.ariaLabel }}"{% endif %}
   {% if this.autocapitalize is not null %}autocapitalize="{{ this.autocapitalize.value }}"{% endif %}
   {% if this.autofocus is defined and this.autofocus is not null %}autofocus="{{ this.autofocus }}"{% endif %}

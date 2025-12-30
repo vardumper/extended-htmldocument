@@ -22,6 +22,7 @@ class Source
     public ?string $srcset = null;
     public ?string $type = null;
     public null|string|bool $hidden = null;
+    public ?array $alpineAttributes = null;
     public ?string $id = null;
     public ?string $class = null;
 
@@ -43,6 +44,8 @@ class Source
         $resolver->setAllowedTypes('type', ['string']);
         $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
+        $resolver->setDefined('alpineAttributes');
+        $resolver->setAllowedTypes('alpineAttributes', ['array']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
         $resolver->setDefaults(['class' => null]);

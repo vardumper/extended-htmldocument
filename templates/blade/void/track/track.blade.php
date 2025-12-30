@@ -11,6 +11,7 @@
 @php
 $kindChoices = ['captions' => true, 'chapters' => true, 'descriptions' => true, 'metadata' => true, 'subtitles' => true];
 $attrs = [];
+if (isset($alpineAttributes)) $attrs[] = 'alpine-attributes="' . e($alpineAttributes) . '"';
 if (isset($class)) $attrs[] = 'class="' . e($class) . '"';
 if (isset($default)) $attrs[] = 'default="' . e($default) . '"';
 if (isset($hidden) && $hidden) $attrs[] = 'hidden';

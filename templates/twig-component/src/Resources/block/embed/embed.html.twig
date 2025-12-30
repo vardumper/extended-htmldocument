@@ -16,6 +16,7 @@
 {% apply spaceless %}
 <embed
   {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
+  {% if this.alpineAttributes is defined and this.alpineAttributes is not null %}alpine-attributes="{{ this.alpineAttributes }}"{% endif %}
   {% if this.autocapitalize is not null %}autocapitalize="{{ this.autocapitalize.value }}"{% endif %}
   {% if this.autofocus is defined and this.autofocus is not null %}autofocus="{{ this.autofocus }}"{% endif %}
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}

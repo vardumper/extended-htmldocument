@@ -19,6 +19,7 @@ class Col
     public ?int $span = null;
     public ?string $width = null;
     public ?string $style = null;
+    public ?array $alpineAttributes = null;
     public ?string $id = null;
     public ?string $class = null;
 
@@ -34,6 +35,8 @@ class Col
         $resolver->setAllowedTypes('width', ['string']);
         $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('alpineAttributes');
+        $resolver->setAllowedTypes('alpineAttributes', ['array']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
         $resolver->setDefaults(['class' => null]);

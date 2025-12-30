@@ -21,6 +21,7 @@ class Wbr
 {
     public ?DirectionEnum $dir = null;
     public null|string|bool $hidden = null;
+    public ?array $alpineAttributes = null;
     public ?string $id = null;
     public ?string $class = null;
 
@@ -40,6 +41,8 @@ class Wbr
         });
         $resolver->setDefaults(['hidden' => null]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
+        $resolver->setDefined('alpineAttributes');
+        $resolver->setAllowedTypes('alpineAttributes', ['array']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
         $resolver->setDefaults(['class' => null]);

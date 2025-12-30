@@ -10,6 +10,7 @@
 {% block track %}
 {% set kind_choices = {'captions': true, 'chapters': true, 'descriptions': true, 'metadata': true, 'subtitles': true} %}
 <track
+  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if default is defined and default|length > 0 %}default="{{ default }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}

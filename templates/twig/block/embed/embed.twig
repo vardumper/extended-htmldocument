@@ -16,6 +16,7 @@
 {% set translate_choices = {'yes': true, 'no': true} %}
 <embed
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
+  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
   {% if autocapitalize is defined and autocapitalize|length > 0 and autocapitalize_choices[autocapitalize] is defined %}autocapitalize="{{ autocapitalize }}"{% endif %}
   {% if autofocus is defined and autofocus|length > 0 %}autofocus="{{ autofocus }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}

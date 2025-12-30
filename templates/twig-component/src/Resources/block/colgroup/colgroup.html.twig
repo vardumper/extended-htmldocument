@@ -17,6 +17,7 @@
 #}
 {% apply spaceless %}
 <colgroup
+  {% if this.alpineAttributes is defined and this.alpineAttributes is not null %}alpine-attributes="{{ this.alpineAttributes }}"{% endif %}
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
   {% if this.dir is not null %}dir="{{ this.dir.value }}"{% endif %}
   {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}

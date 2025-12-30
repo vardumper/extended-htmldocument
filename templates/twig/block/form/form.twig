@@ -16,13 +16,14 @@
 {% set autocorrect_choices = {'off': true, 'on': true} %}
 {% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
 {% set enctype_choices = {'application/x-www-form-urlencoded': true, 'multipart/form-data': true, 'text/plain': true} %}
-{% set method_choices = {'get': true, 'post': true, 'dialog': true} %}
-{% set target_choices = {'_self': true, '_blank': true, '_parent': true, '_top': true} %}
+{% set method_choices = {'get': true, 'post': true} %}
+{% set target_choices = {'_blank': true, '_parent': true, '_self': true, '_top': true} %}
 {% set translate_choices = {'yes': true, 'no': true} %}
 <form
   {% if acceptCharset is defined and acceptCharset|length > 0 %}accept-charset="{{ acceptCharset }}"{% endif %}
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
   {% if action is defined and action|length > 0 %}action="{{ action }}"{% endif %}
+  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
   {% if ariaAtomic is defined and ariaAtomic|length > 0 and ariaAtomic_choices[ariaAtomic] is defined %}aria-atomic="{{ ariaAtomic }}"{% endif %}
   {% if ariaDetails is defined and ariaDetails|length > 0 %}aria-details="{{ ariaDetails }}"{% endif %}
   {% if ariaInvalid is defined and ariaInvalid|length > 0 and ariaInvalid_choices[ariaInvalid] is defined %}aria-invalid="{{ ariaInvalid }}"{% endif %}

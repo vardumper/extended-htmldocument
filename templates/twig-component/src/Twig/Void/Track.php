@@ -27,6 +27,7 @@ class Track
     public null|string|bool $hidden = null;
     public ?string $lang = null;
     public ?string $style = null;
+    public ?array $alpineAttributes = null;
     public ?string $id = null;
     public ?string $class = null;
 
@@ -58,6 +59,8 @@ class Track
         $resolver->setAllowedTypes('lang', ['string']);
         $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('alpineAttributes');
+        $resolver->setAllowedTypes('alpineAttributes', ['array']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
         $resolver->setDefaults(['class' => null]);

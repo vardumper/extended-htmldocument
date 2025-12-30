@@ -15,6 +15,7 @@
 #}
 {% apply spaceless %}
 <track
+  {% if this.alpineAttributes is defined and this.alpineAttributes is not null %}alpine-attributes="{{ this.alpineAttributes }}"{% endif %}
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
   {% if this.default is defined and this.default is not null %}default="{{ this.default }}"{% endif %}
   {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}

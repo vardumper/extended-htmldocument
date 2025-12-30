@@ -17,6 +17,7 @@
 <input
   {% if this.accept is defined and this.accept is not null %}accept="{{ this.accept }}"{% endif %}
   {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
+  {% if this.alpineAttributes is defined and this.alpineAttributes is not null %}alpine-attributes="{{ this.alpineAttributes }}"{% endif %}
   {% if this.alt is defined and this.alt is not null %}alt="{{ this.alt }}"{% endif %}
   {% if this.ariaAtomic is not null %}aria-atomic="{{ this.ariaAtomic.value }}"{% endif %}
   {% if this.ariaAutocomplete is not null %}aria-autocomplete="{{ this.ariaAutocomplete.value }}"{% endif %}

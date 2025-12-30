@@ -15,6 +15,7 @@
 #}
 {% apply spaceless %}
 <source
+  {% if this.alpineAttributes is defined and this.alpineAttributes is not null %}alpine-attributes="{{ this.alpineAttributes }}"{% endif %}
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
   {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}
   {% if this.id is defined and this.id is not null %}id="{{ this.id }}"{% endif %}

@@ -26,6 +26,7 @@
 {% set type_choices = {'a': true, 'A': true, 'i': true, 'I': true, '1': true} %}
 <ol
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
+  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
   {% if ariaActivedescendant is defined and ariaActivedescendant|length > 0 %}aria-activedescendant="{{ ariaActivedescendant }}"{% endif %}
   {% if ariaAtomic is defined and ariaAtomic|length > 0 and ariaAtomic_choices[ariaAtomic] is defined %}aria-atomic="{{ ariaAtomic }}"{% endif %}
   {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy_choices[ariaBusy] is defined %}aria-busy="{{ ariaBusy }}"{% endif %}

@@ -70,6 +70,7 @@ class Td
     public ?int $tabindex = null;
     public ?string $title = null;
     public ?TranslateEnum $translate = null;
+    public ?array $alpineAttributes = null;
     public ?string $id = null;
     public ?string $class = null;
 
@@ -239,6 +240,8 @@ class Td
             }
             return $value;
         });
+        $resolver->setDefined('alpineAttributes');
+        $resolver->setAllowedTypes('alpineAttributes', ['array']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
         $resolver->setDefaults(['class' => null]);

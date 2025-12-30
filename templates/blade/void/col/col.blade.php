@@ -10,6 +10,7 @@
 --}}
 @php
 $attrs = [];
+if (isset($alpineAttributes)) $attrs[] = 'alpine-attributes="' . e($alpineAttributes) . '"';
 if (isset($class)) $attrs[] = 'class="' . e($class) . '"';
 if (isset($id)) $attrs[] = 'id="' . e($id) . '"';
 if (isset($span)) $attrs[] = 'span="' . e($span) . '"';

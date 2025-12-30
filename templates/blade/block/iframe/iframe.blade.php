@@ -20,6 +20,7 @@ $dirChoices = ['ltr' => true, 'rtl' => true, 'auto' => true];
 $popoverChoices = ['auto' => true, 'hint' => true, 'manual' => true];
 $attrs = [];
 if (isset($allowfullscreen)) $attrs[] = 'allowfullscreen="' . e($allowfullscreen) . '"';
+if (isset($alpineAttributes)) $attrs[] = 'alpine-attributes="' . e($alpineAttributes) . '"';
 if (isset($ariaAtomic) && isset($ariaAtomicChoices[$ariaAtomic])) $attrs[] = 'aria-atomic="' . e($ariaAtomic) . '"';
 if (isset($ariaBusy) && isset($ariaBusyChoices[$ariaBusy])) $attrs[] = 'aria-busy="' . e($ariaBusy) . '"';
 if (isset($ariaControls)) $attrs[] = 'aria-controls="' . e($ariaControls) . '"';

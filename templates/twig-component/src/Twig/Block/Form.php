@@ -5,9 +5,9 @@ namespace Html\TwigComponentBundle\Twig\Block;
 use Html\Enum\{
     AutocompleteEnum,
     AutocorrectEnum,
-    FormEnctypeEnum,
-    FormMethodEnum,
-    FormTargetEnum,
+    EnctypeEnum,
+    MethodEnum,
+    TargetEnum,
     AriaInvalidEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
@@ -33,11 +33,11 @@ class Form
     public ?string $action = null;
     public ?AutocompleteEnum $autocomplete = null;
     public ?AutocorrectEnum $autocorrect = null;
-    public ?FormEnctypeEnum $enctype = null;
-    public ?FormMethodEnum $method = null;
+    public ?EnctypeEnum $enctype = null;
+    public ?MethodEnum $method = null;
     public ?string $name = null;
     public ?bool $novalidate = null;
-    public ?FormTargetEnum $target = null;
+    public ?TargetEnum $target = null;
     public ?AriaInvalidEnum $ariaInvalid = null;
     public ?string $ariaLabel = null;
     public ?string $ariaDetails = null;
@@ -56,6 +56,7 @@ class Form
     public ?int $tabindex = null;
     public ?string $title = null;
     public ?TranslateEnum $translate = null;
+    public ?array $alpineAttributes = null;
     public ?string $id = null;
     public ?string $class = null;
 
@@ -86,18 +87,18 @@ class Form
             return $value;
         });
         $resolver->setDefaults(['enctype' => null]);
-        $resolver->setAllowedTypes('enctype', ['null', 'string', FormEnctypeEnum::class]);
+        $resolver->setAllowedTypes('enctype', ['null', 'string', EnctypeEnum::class]);
         $resolver->setNormalizer('enctype', function ($options, $value) {
             if (is_string($value)) {
-                return FormEnctypeEnum::tryFrom($value);
+                return EnctypeEnum::tryFrom($value);
             }
             return $value;
         });
         $resolver->setDefaults(['method' => null]);
-        $resolver->setAllowedTypes('method', ['null', 'string', FormMethodEnum::class]);
+        $resolver->setAllowedTypes('method', ['null', 'string', MethodEnum::class]);
         $resolver->setNormalizer('method', function ($options, $value) {
             if (is_string($value)) {
-                return FormMethodEnum::tryFrom($value);
+                return MethodEnum::tryFrom($value);
             }
             return $value;
         });
@@ -106,10 +107,10 @@ class Form
         $resolver->setDefined('novalidate');
         $resolver->setAllowedTypes('novalidate', ['bool']);
         $resolver->setDefaults(['target' => null]);
-        $resolver->setAllowedTypes('target', ['null', 'string', FormTargetEnum::class]);
+        $resolver->setAllowedTypes('target', ['null', 'string', TargetEnum::class]);
         $resolver->setNormalizer('target', function ($options, $value) {
             if (is_string($value)) {
-                return FormTargetEnum::tryFrom($value);
+                return TargetEnum::tryFrom($value);
             }
             return $value;
         });
@@ -185,6 +186,8 @@ class Form
             }
             return $value;
         });
+        $resolver->setDefined('alpineAttributes');
+        $resolver->setAllowedTypes('alpineAttributes', ['array']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
         $resolver->setDefaults(['class' => null]);

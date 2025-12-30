@@ -17,6 +17,7 @@ $spellcheckChoices = ['true' => true, 'false' => true];
 $translateChoices = ['yes' => true, 'no' => true];
 $attrs = [];
 if (isset($accesskey)) $attrs[] = 'accesskey="' . e($accesskey) . '"';
+if (isset($alpineAttributes)) $attrs[] = 'alpine-attributes="' . e($alpineAttributes) . '"';
 if (isset($autocapitalize) && isset($autocapitalizeChoices[$autocapitalize])) $attrs[] = 'autocapitalize="' . e($autocapitalize) . '"';
 if (isset($autofocus) && $autofocus) $attrs[] = 'autofocus';
 if (isset($class)) $attrs[] = 'class="' . e($class) . '"';

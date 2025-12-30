@@ -9,6 +9,7 @@
 #}
 {% block col %}
 <col
+  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
   {% if span is defined and span|length > 0 %}span="{{ span }}"{% endif %}

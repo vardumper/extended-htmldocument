@@ -25,6 +25,7 @@ class Colgroup
     public ?string $lang = null;
     public ?string $slot = null;
     public ?string $style = null;
+    public ?array $alpineAttributes = null;
     public ?string $id = null;
     public ?string $class = null;
 
@@ -52,6 +53,8 @@ class Colgroup
         $resolver->setAllowedTypes('slot', ['string']);
         $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('alpineAttributes');
+        $resolver->setAllowedTypes('alpineAttributes', ['array']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
         $resolver->setDefaults(['class' => null]);

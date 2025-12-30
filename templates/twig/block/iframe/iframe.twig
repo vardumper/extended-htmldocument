@@ -19,6 +19,7 @@
 {% set role_choices = {'alert': true, 'application': true, 'article': true, 'banner': true, 'button': true, 'checkbox': true, 'complementary': true, 'contentinfo': true, 'dialog': true, 'form': true, 'grid': true, 'group': true, 'heading': true, 'img': true, 'link': true, 'list': true, 'listbox': true, 'listitem': true, 'main': true, 'menu': true, 'menubar': true, 'menuitem': true, 'navigation': true, 'none': true, 'presentation': true, 'radio': true, 'region': true, 'search': true, 'status': true, 'tab': true, 'tablist': true, 'tabpanel': true, 'textbox': true, 'toolbar': true, 'tooltip': true} %}
 <iframe
   {% if allowfullscreen is defined and allowfullscreen|length > 0 %}allowfullscreen="{{ allowfullscreen }}"{% endif %}
+  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
   {% if ariaAtomic is defined and ariaAtomic|length > 0 and ariaAtomic_choices[ariaAtomic] is defined %}aria-atomic="{{ ariaAtomic }}"{% endif %}
   {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy_choices[ariaBusy] is defined %}aria-busy="{{ ariaBusy }}"{% endif %}
   {% if ariaControls is defined and ariaControls|length > 0 %}aria-controls="{{ ariaControls }}"{% endif %}

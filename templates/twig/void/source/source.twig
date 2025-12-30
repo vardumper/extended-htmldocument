@@ -9,6 +9,7 @@
 #}
 {% block source %}
 <source
+  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}

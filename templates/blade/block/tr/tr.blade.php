@@ -29,6 +29,7 @@ $translateChoices = ['yes' => true, 'no' => true];
 $attrs = [];
 if (isset($accesskey)) $attrs[] = 'accesskey="' . e($accesskey) . '"';
 if (isset($align) && isset($alignChoices[$align])) $attrs[] = 'align="' . e($align) . '"';
+if (isset($alpineAttributes)) $attrs[] = 'alpine-attributes="' . e($alpineAttributes) . '"';
 if (isset($ariaAtomic) && isset($ariaAtomicChoices[$ariaAtomic])) $attrs[] = 'aria-atomic="' . e($ariaAtomic) . '"';
 if (isset($ariaBusy) && isset($ariaBusyChoices[$ariaBusy])) $attrs[] = 'aria-busy="' . e($ariaBusy) . '"';
 if (isset($ariaColcount)) $attrs[] = 'aria-colcount="' . e($ariaColcount) . '"';

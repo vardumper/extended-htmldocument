@@ -17,6 +17,7 @@
 {% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
 {% set referrerpolicy_choices = {'no-referrer': true, 'no-referrer-when-downgrade': true, 'origin': true, 'origin-when-cross-origin': true, 'same-origin': true, 'strict-origin': true, 'strict-origin-when-cross-origin': true, 'unsafe-url': true} %}
 <img
+  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
   {% if alt is defined and alt|length > 0 %}alt="{{ alt }}"{% endif %}
   {% if ariaAtomic is defined and ariaAtomic|length > 0 and ariaAtomic_choices[ariaAtomic] is defined %}aria-atomic="{{ ariaAtomic }}"{% endif %}
   {% if ariaDetails is defined and ariaDetails|length > 0 %}aria-details="{{ ariaDetails }}"{% endif %}

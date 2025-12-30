@@ -10,6 +10,7 @@
 {% block wbr %}
 {% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
 <wbr
+  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if dir is defined and dir|length > 0 and dir_choices[dir] is defined %}dir="{{ dir }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}

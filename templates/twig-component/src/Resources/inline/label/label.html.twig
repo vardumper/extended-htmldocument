@@ -18,6 +18,7 @@
 {% apply spaceless %}
 <label
   {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
+  {% if this.alpineAttributes is defined and this.alpineAttributes is not null %}alpine-attributes="{{ this.alpineAttributes }}"{% endif %}
   {% if this.ariaAtomic is not null %}aria-atomic="{{ this.ariaAtomic.value }}"{% endif %}
   {% if this.ariaBusy is not null %}aria-busy="{{ this.ariaBusy.value }}"{% endif %}
   {% if this.ariaControls is defined and this.ariaControls is not null %}aria-controls="{{ this.ariaControls }}"{% endif %}

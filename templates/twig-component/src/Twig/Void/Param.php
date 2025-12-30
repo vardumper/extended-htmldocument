@@ -20,6 +20,7 @@ class Param
     public ?string $value = null;
     public null|string|bool $hidden = null;
     public ?string $style = null;
+    public ?array $alpineAttributes = null;
     public ?string $id = null;
     public ?string $class = null;
 
@@ -37,6 +38,8 @@ class Param
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
         $resolver->setDefined('style');
         $resolver->setAllowedTypes('style', ['string']);
+        $resolver->setDefined('alpineAttributes');
+        $resolver->setAllowedTypes('alpineAttributes', ['array']);
         $resolver->setDefaults(['id' => null]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
         $resolver->setDefaults(['class' => null]);
