@@ -3,6 +3,7 @@
 namespace Html\TemplateGenerator;
 
 use Exception;
+use Html\Delegator\HTMLElementDelegator;
 use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
@@ -136,9 +137,7 @@ class TwigGenerator implements TemplateGeneratorInterface
             return null;
         }
 
-        $elementName = $ref->hasConstant('QUALIFIED_NAME') ? $ref->getConstant('QUALIFIED_NAME') : strtolower(
-            $ref->getShortName()
-        );
+        $elementName = strtolower($element->tagName);
 
         // Skip generic containers that don't have meaningful composition patterns
         $excludedElements = [
@@ -175,9 +174,7 @@ class TwigGenerator implements TemplateGeneratorInterface
     public function renderElement(HTMLElementDelegatorInterface $element): string
     {
         $ref = new ReflectionClass($element);
-        $elementName = $ref->hasConstant('QUALIFIED_NAME') ? $ref->getConstant('QUALIFIED_NAME') : strtolower(
-            $ref->getShortName()
-        );
+        $elementName = strtolower($element->tagName);
         $props = [];
         $enums = [];
         // Collect all properties with getter and setter
@@ -566,13 +563,8 @@ Ok, I'm ready to generate my response:</think>" . $head;
     private function renderBody(HTMLDocumentDelegatorInterface $document): ?string
     {
         $bodyContent = '';
-        foreach ($document->getChildren() as $child) {
-            if ($child instanceof HTMLElementDelegatorInterface) {
-                $elementHtml = $this->renderElement($child);
-                if ($elementHtml !== null) {
-                    $bodyContent .= $elementHtml;
-                }
-            }
+        if ($document->body !== null) {
+            $bodyContent = $this->renderElement(new HTMLElementDelegator($document->body, $this));
         }
 
         return $bodyContent === '' ? null : $bodyContent;
