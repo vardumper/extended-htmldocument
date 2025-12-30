@@ -32,8 +32,8 @@ class NodeDelegator implements NodeDelegatorInterface
         return $this->delegated;
     }
 
-    public static function getOwnerDocument(): HTMLDocumentDelegator
+    public function getOwnerDocument(): HTMLDocumentDelegator
     {
-        return static::$ownerDocument;
+        return HTMLDocumentDelegator::getInstance($this->delegated->ownerDocument);
     }
 }

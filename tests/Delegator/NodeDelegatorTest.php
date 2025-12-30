@@ -109,3 +109,8 @@ test('call with htmlelement delegator argument', function () {
     expect($anchor->contains($other->delegated))
         ->toBeTrue();
 });
+
+test('get owner document', function () {
+    expect($this->delegator->getOwnerDocument())
+        ->toBe($this->document);
+});

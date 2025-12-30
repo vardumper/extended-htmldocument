@@ -54,8 +54,8 @@ test('buildComponent with valid single component does not throw', function () {
 
     // This test verifies that the method doesn't throw exceptions with valid structure
     // The actual DOM building would require more complex setup with real element classes
-    expect(fn() => $this->builder->buildComponent($document, $data))
-        ->toThrow(InvalidArgumentException::class, "Element class for tag 'div' not found.");
+    $this->builder->buildComponent($document, $data);
+    expect(true)->toBeTrue(); // Just to have an assertion
 });
 
 test('buildComponent throws exception for unknown element', function () {

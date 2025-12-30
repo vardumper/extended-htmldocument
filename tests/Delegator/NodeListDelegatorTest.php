@@ -105,3 +105,20 @@ test('get node list', function () {
     expect($delegator->getNodeList())
         ->toBe($nodeList);
 });
+
+test('get invalid property', function () {
+    $this->expectException(InvalidArgumentException::class);
+    test()->delegator->nonExistentProperty;
+});
+
+test('call invalid method', function () {
+    $this->expectException(BadMethodCallException::class);
+    test()->delegator->nonExistentMethod();
+});
+
+test('item returns null for out of bounds', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $delegator = new NodeListDelegator($document->childNodes);
+    expect($delegator->item(0))
+        ->toBeNull();
+});

@@ -373,6 +373,43 @@ test('can use querySelectorAll element', function () {
         ->toBe('Updated Paragraph Text');
 });
 
+test('querySelectorAll returns null for non-existent selector', function () {
+    $html = '<!DOCTYPE html><html><head><title>Test</title></head><body><div></div></body></html>';
+    $delegator = HTMLDocumentDelegator::createFromString($html);
+
+    $elements = $delegator->querySelectorAll('.non-existent-class');
+    expect($elements)->toBeInstanceOf(NodeListDelegator::class);
+    expect(count($elements))->toBe(0);
+});
+
+test('constructor with invalid renderer', function () {
+    $mockRenderer = new class implements \Html\Interface\TemplateGeneratorInterface {
+        public function getExtension(): string {
+            return 'html';
+        }
+        public function getNamePattern(): string {
+            return '*.html';
+        }
+        public function canRenderElements(): bool {
+            return false;
+        }
+        public function canRenderDocuments(): bool {
+            return true;
+        }
+        public function isTemplated(): bool {
+            return false;
+        }
+        public function render($elementOrDocument): ?string {
+            return '';
+        }
+    };
+
+    $this->expectException(InvalidArgumentException::class);
+    $this->expectExceptionMessage('The given renderer cannot render elements.');
+    
+    new HTMLDocumentDelegator($this->document, $mockRenderer);
+});
+
 test('create text node', function () {
     $textNode = $this->delegator->createTextNode('Hello World');
     expect($textNode)

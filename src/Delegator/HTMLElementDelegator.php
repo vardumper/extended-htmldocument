@@ -11,6 +11,7 @@ use Exception;
 use Html\Helper\Helper;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
+use Html\Interface\TextDelegatorInterface;
 use Html\TemplateGenerator\HTMLGenerator;
 use Html\Trait\DelegatorTrait;
 // use Html\Trait\GlobalAttributesTrait;
@@ -137,7 +138,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         return $this;
     }
 
-    public function removeChild(HTMLElementDelegatorInterface|Text $child): static
+    public function removeChild(HTMLElementDelegatorInterface|TextDelegatorInterface|Text $child): static
     {
         if (! \property_exists($child, 'ownerDocument')) {
             throw new Exception('The child element must be an instance of HTMLElementDelegatorInterface or Text.');
@@ -150,6 +151,10 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             );
         }
         if ($child instanceof HTMLElementDelegatorInterface) {
+            $this->delegated->removeChild($child->delegated);
+            return $this;
+        }
+        if ($child instanceof TextDelegatorInterface) {
             $this->delegated->removeChild($child->delegated);
             return $this;
         }
@@ -171,6 +176,12 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             /** @todo the node could be imported here */
             throw new InvalidArgumentException(
                 'The node element must belong to the same document as the parent element.'
+            );
+        }
+        if ($child->getOwnerDocument() !== $this->getOwnerDocument()) {
+            /** @todo the child could be imported here */
+            throw new InvalidArgumentException(
+                'The child element must belong to the same document as the parent element.'
             );
         }
         $this->delegated->replaceChild($node->delegated, $child->delegated);
@@ -307,8 +318,8 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         return static::$parentOf;
     }
 
-    public static function getOwnerDocument(): HTMLDocumentDelegator
+    public function getOwnerDocument(): HTMLDocumentDelegator
     {
-        return static::$ownerDocument;
+        return HTMLDocumentDelegator::getInstance($this->delegated->ownerDocument);
     }
 }

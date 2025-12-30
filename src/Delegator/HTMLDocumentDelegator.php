@@ -60,6 +60,9 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
     use DelegatorTrait;
     use ClassResolverTrait;
 
+    /** @var array<string, self> */
+    private static array $instances = [];
+
     public bool $formatOutput;
 
     public function __construct(
@@ -72,6 +75,7 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
         if ($renderer === null) {
             $this->renderer = new HTMLGenerator();
         }
+        self::$instances[spl_object_hash($this->delegated)] = $this;
     }
 
     public function __toString(): string
@@ -82,6 +86,12 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
     public function setRenderer(TemplateGeneratorInterface $renderer): void
     {
         $this->renderer = $renderer;
+    }
+
+    public static function getInstance(HTMLDocument $document): self
+    {
+        $key = spl_object_hash($document);
+        return self::$instances[$key] ?? new self($document);
     }
 
     public static function createEmpty(): self
