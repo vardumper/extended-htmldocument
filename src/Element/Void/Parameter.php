@@ -1,16 +1,17 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-09 15:32:40
+ * @generated 2025-12-30 13:44:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param
  */
-
 namespace Html\Element\Void;
 
+use Html\Element\VoidElement;
 use Html\Element\Block\{
     Aside,
     DefinitionDescription,
@@ -21,9 +22,8 @@ use Html\Element\Block\{
     Section,
 };
 use Html\Element\Inline\MarkedText;
-use Html\Element\VoidElement;
-use Html\Mapping\Element;
 use Html\Trait\GlobalAttribute;
+use Html\Mapping\Element;
 
 /**
  * The param element defines parameters for an object element.
@@ -36,7 +36,7 @@ class Parameter extends VoidElement
     use GlobalAttribute\HiddenTrait;
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\StyleTrait;
-
+    use GlobalAttribute\AlpineJsTrait;
     /**
      * The HTML element name
      */
@@ -74,19 +74,18 @@ class Parameter extends VoidElement
 
     /**
      * The list of allowed direct children. Any if empty.
+     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
 
-    /**
-     * Specifies the name associated with the element. The meaning may vary depending on the context.
-     */
+    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
     protected ?string $name = null;
 
-    /**
-     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
-     */
+    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
     protected ?string $value = null;
+
 
     public function setName(string $name): static
     {
@@ -111,4 +110,5 @@ class Parameter extends VoidElement
     {
         return $this->value;
     }
+
 }

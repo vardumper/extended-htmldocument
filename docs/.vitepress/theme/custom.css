@@ -37,3 +37,18 @@ td > span.prio3 {
   --vp-badge-danger-text: var(--vp-c-danger-1);
   --vp-badge-danger-bg: var(--vp-c-danger-soft);
 **/
+
+.VPHome div.image {
+  width: 700px;
+  height: auto;
+}
+.VPHome .VPImage img {
+  width: 520px;
+  height: auto;
+}
+@media (min-width: 960px) {
+    [data-v-72cc4481] .image-src {
+        max-width: 520px;
+        max-height: 480px;
+    }
+}

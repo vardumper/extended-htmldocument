@@ -4,7 +4,7 @@
  *
  * AriaAutocompleteEnum - Specifies autocomplete behavior for input fields.
  * 
- * @generated 2025-11-07 17:10:16
+ * @generated 2025-12-30 13:44:50
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

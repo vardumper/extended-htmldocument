@@ -1,18 +1,19 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-09 15:32:40
+ * @generated 2025-12-30 13:44:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
  */
-
 namespace Html\Element\Void;
 
-use Html\Element\Inline\ScalableVectorGraphics;
 use Html\Element\VoidElement;
+use Html\Element\Inline\ScalableVectorGraphics;
+use Html\Element\Void\Head;
 use Html\Mapping\Element;
 
 /**
@@ -40,11 +41,18 @@ class Title extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [Head::class, ScalableVectorGraphics::class];
+    public static array $childOf = [
+        Head::class,
+        ScalableVectorGraphics::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
+     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [];
+    public static array $parentOf = [
+    ];
+
+
 }

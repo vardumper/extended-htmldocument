@@ -1,21 +1,29 @@
 <?php
-
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-09 15:32:40
+ * @generated 2025-12-30 13:44:50
+ * @category HTML
+ * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head
  */
-
 namespace Html\Element\Void;
 
+use Html\Element\VoidElement;
 use Html\Element\Block\{
     HTML,
     NoScript,
 };
-use Html\Element\VoidElement;
+use Html\Element\Void\{
+    Base,
+    Link,
+    Meta,
+    Script,
+    Style,
+    Title,
+};
 use Html\Mapping\Element;
 
 /**
@@ -43,10 +51,13 @@ class Head extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [HTML::class];
+    public static array $childOf = [
+        HTML::class,
+    ];
 
     /**
      * The list of allowed direct children. Any if empty.
+     * @category HTML element property
      * @var array<string>
      */
     public static array $parentOf = [
@@ -58,4 +69,6 @@ class Head extends VoidElement
         Style::class,
         Title::class,
     ];
+
+
 }

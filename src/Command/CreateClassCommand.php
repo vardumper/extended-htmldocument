@@ -21,7 +21,7 @@ use Symfony\Component\Yaml\Yaml;
  */
 final class CreateClassCommand extends Command
 {
-    private const HTML_DEFINITION_PATH = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
+    private const HTML_DEFINITION_PATH = __DIR__ . '/../Resources/specifications/html5-with-aria-and-alpine.yaml';
 
     private const TEMPLATE_PATH = __DIR__ . '/../Resources/templates/';
 
@@ -156,6 +156,10 @@ final class CreateClassCommand extends Command
         $parents = $this->resolveParents($element, explode(' | ', $elementData['parent'] ?? ''));
         $children = $this->resolveChildren($elementData['children'] ?? []);
         $global_attribute_traits = $this->getGlobalAttributes($elementData['allowed_global_attributes'] ?? []);
+
+        if ($elementData['alpine_support'] ?? false) {
+            $global_attribute_traits .= "    use GlobalAttribute\\AlpineJsTrait;\n";
+        }
 
         return [
             'class_name' => $className,
