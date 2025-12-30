@@ -372,3 +372,31 @@ test('can use querySelectorAll element', function () {
     expect($elements->item(1)->getTextContent())
         ->toBe('Updated Paragraph Text');
 });
+
+test('create text node', function () {
+    $textNode = $this->delegator->createTextNode('Hello World');
+    expect($textNode)
+        ->toBeInstanceOf(\Html\Delegator\TextDelegator::class);
+    expect($textNode->getText()->data)
+        ->toBe('Hello World');
+});
+
+test('append child', function () {
+    $element = $this->delegator->createElement('div');
+    $this->delegator->appendChild($element);
+    expect($this->delegator->documentElement->childNodes->length)
+        ->toBe(1);
+    expect($this->delegator->documentElement->firstChild)
+        ->toBe($element->delegated);
+});
+
+test('remove child', function () {
+    $element = $this->delegator->createElement('div');
+    $this->delegator->appendChild($element);
+    expect($this->delegator->documentElement->childNodes->length)
+        ->toBe(1);
+    
+    $this->delegator->removeChild($element);
+    expect($this->delegator->documentElement->childNodes->length)
+        ->toBe(0);
+});

@@ -9,6 +9,7 @@ use DOM\HTMLDocument;
 use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\TemplateGenerator\HTMLGenerator;
+use Html\Trait\ClassResolverTrait;
 use Html\Trait\DelegatorTrait;
 use InvalidArgumentException;
 
@@ -57,6 +58,7 @@ use InvalidArgumentException;
 class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
 {
     use DelegatorTrait;
+    use ClassResolverTrait;
 
     public bool $formatOutput;
 

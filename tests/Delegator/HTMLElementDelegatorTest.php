@@ -357,3 +357,47 @@ test('set renderer test', function () {
     expect($this->delegator->renderer)
         ->toBe($renderer);
 });
+
+test('append child', function () {
+    $child = $this->document->createElement('span');
+    $this->delegator->appendChild($child);
+    expect($this->delegator->delegated->childNodes->length)
+        ->toBe(1);
+    expect($this->delegator->delegated->firstChild)
+        ->toBe($child->delegated);
+});
+
+test('remove child', function () {
+    $child = Anchor::create($this->document);
+    $this->delegator->appendChild($child);
+    expect($this->delegator->delegated->childNodes->length)
+        ->toBe(1);
+    
+    $this->delegator->removeChild($child);
+    expect($this->delegator->delegated->childNodes->length)
+        ->toBe(0);
+});
+
+test('replace child', function () {
+    $child1 = Anchor::create($this->document);
+    $child1->setTextContent('Original');
+    $child2 = Anchor::create($this->document);
+    $child2->setTextContent('Replacement');
+    
+    $this->delegator->appendChild($child1);
+    expect($this->delegator->delegated->childNodes->length)
+        ->toBe(1);
+    expect($this->delegator->delegated->firstChild->textContent)
+        ->toBe('Original');
+    
+    $this->delegator->replaceChild($child2, $child1);
+    expect($this->delegator->delegated->childNodes->length)
+        ->toBe(1);
+    expect($this->delegator->delegated->firstChild->textContent)
+        ->toBe('Replacement');
+});
+
+test('get owner document', function () {
+    expect($this->delegator->getOwnerDocument())
+        ->toBe($this->document);
+});

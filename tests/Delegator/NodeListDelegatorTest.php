@@ -95,3 +95,13 @@ test('forEach applies callback to all elements', function () {
     expect($ids)
         ->toBe(['id-0', 'id-1']);
 });
+
+test('get node list', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $element = $document->createElement('div');
+    $document->appendChild($element);
+    $nodeList = $document->documentElement->childNodes;
+    $delegator = new NodeListDelegator($nodeList);
+    expect($delegator->getNodeList())
+        ->toBe($nodeList);
+});

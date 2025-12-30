@@ -143,7 +143,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             throw new Exception('The child element must be an instance of HTMLElementDelegatorInterface or Text.');
         }
 
-        if ($child->ownerDocument !== self::$ownerDocument) {
+        if ($child->getOwnerDocument() !== $this->getOwnerDocument()) {
             /** @todo the child could be imported here */
             throw new InvalidArgumentException(
                 'The child element must belong to the same document as the parent element.'
@@ -167,7 +167,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         if (! \property_exists($node, 'ownerDocument')) {
             throw new Exception('The node element must be an instance of HTMLElementDelegatorInterface or Text.');
         }
-        if ($node->ownerDocument !== self::$ownerDocument) {
+        if ($node->getOwnerDocument() !== $this->getOwnerDocument()) {
             /** @todo the node could be imported here */
             throw new InvalidArgumentException(
                 'The node element must belong to the same document as the parent element.'
