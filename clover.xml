@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1767136293">
-  <project timestamp="1767136293" name="Clover Coverage">
+<coverage generated="1767136474">
+  <project timestamp="1767136474" name="Clover Coverage">
     <package name="Html\Delegator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/HTMLDocumentDelegator.php">
         <class name="Html\Delegator\HTMLDocumentDelegator" namespace="Html\Delegator">
@@ -747,8 +747,8 @@
         <class name="Html\Enum\SpellCheckEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
         </class>
-        <line num="18" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="20" type="stmt" count="2"/>
+        <line num="18" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="20" type="stmt" count="4"/>
         <metrics loc="23" ncloc="16" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/StyleTypeEnum.php">
@@ -3915,29 +3915,29 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/PopoverTrait.php">
         <class name="Html\Trait\GlobalAttribute\PopoverTrait" namespace="Html\Trait\GlobalAttribute">
-          <metrics complexity="12" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="11" elements="20" coveredelements="12"/>
+          <metrics complexity="12" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="16" elements="20" coveredelements="17"/>
         </class>
-        <line num="16" type="method" name="setPopover" visibility="public" complexity="11" crap="19.45" count="1"/>
-        <line num="19" type="stmt" count="1"/>
-        <line num="20" type="stmt" count="0"/>
-        <line num="21" type="stmt" count="0"/>
-        <line num="26" type="stmt" count="1"/>
-        <line num="27" type="stmt" count="1"/>
+        <line num="16" type="method" name="setPopover" visibility="public" complexity="11" crap="11.20" count="5"/>
+        <line num="19" type="stmt" count="5"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="26" type="stmt" count="5"/>
+        <line num="27" type="stmt" count="4"/>
         <line num="28" type="stmt" count="0"/>
-        <line num="29" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="1"/>
         <line num="30" type="stmt" count="1"/>
         <line num="31" type="stmt" count="0"/>
-        <line num="32" type="stmt" count="0"/>
-        <line num="33" type="stmt" count="0"/>
-        <line num="34" type="stmt" count="1"/>
-        <line num="37" type="stmt" count="1"/>
-        <line num="38" type="stmt" count="1"/>
-        <line num="39" type="stmt" count="1"/>
-        <line num="40" type="stmt" count="1"/>
-        <line num="42" type="stmt" count="1"/>
-        <line num="45" type="method" name="getPopover" visibility="public" complexity="1" crap="1" count="3"/>
-        <line num="47" type="stmt" count="3"/>
-        <metrics loc="50" ncloc="45" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="11" elements="20" coveredelements="12"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="34" type="stmt" count="4"/>
+        <line num="37" type="stmt" count="4"/>
+        <line num="38" type="stmt" count="3"/>
+        <line num="39" type="stmt" count="3"/>
+        <line num="40" type="stmt" count="3"/>
+        <line num="42" type="stmt" count="4"/>
+        <line num="45" type="method" name="getPopover" visibility="public" complexity="1" crap="1" count="6"/>
+        <line num="47" type="stmt" count="6"/>
+        <metrics loc="50" ncloc="45" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="18" coveredstatements="16" elements="20" coveredelements="17"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/RoleTrait.php">
         <class name="Html\Trait\GlobalAttribute\RoleTrait" namespace="Html\Trait\GlobalAttribute">
@@ -3963,21 +3963,21 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/SpellcheckTrait.php">
         <class name="Html\Trait\GlobalAttribute\SpellcheckTrait" namespace="Html\Trait\GlobalAttribute">
-          <metrics complexity="6" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="9" elements="12" coveredelements="10"/>
+          <metrics complexity="6" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="12" coveredelements="12"/>
         </class>
-        <line num="19" type="method" name="setSpellcheck" visibility="public" complexity="5" crap="5.03" count="1"/>
-        <line num="21" type="stmt" count="1"/>
-        <line num="22" type="stmt" count="1"/>
-        <line num="24" type="stmt" count="1"/>
-        <line num="25" type="stmt" count="1"/>
-        <line num="26" type="stmt" count="1"/>
-        <line num="28" type="stmt" count="0"/>
-        <line num="30" type="stmt" count="1"/>
-        <line num="31" type="stmt" count="1"/>
-        <line num="32" type="stmt" count="1"/>
-        <line num="35" type="method" name="getSpellcheck" visibility="public" complexity="1" crap="1" count="4"/>
-        <line num="37" type="stmt" count="4"/>
-        <metrics loc="40" ncloc="34" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="9" elements="12" coveredelements="10"/>
+        <line num="19" type="method" name="setSpellcheck" visibility="public" complexity="5" crap="5" count="4"/>
+        <line num="21" type="stmt" count="4"/>
+        <line num="22" type="stmt" count="2"/>
+        <line num="24" type="stmt" count="4"/>
+        <line num="25" type="stmt" count="3"/>
+        <line num="26" type="stmt" count="2"/>
+        <line num="28" type="stmt" count="1"/>
+        <line num="30" type="stmt" count="3"/>
+        <line num="31" type="stmt" count="3"/>
+        <line num="32" type="stmt" count="3"/>
+        <line num="35" type="method" name="getSpellcheck" visibility="public" complexity="1" crap="1" count="6"/>
+        <line num="37" type="stmt" count="6"/>
+        <metrics loc="40" ncloc="34" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="12" coveredelements="12"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/StyleTrait.php">
         <class name="Html\Trait\GlobalAttribute\StyleTrait" namespace="Html\Trait\GlobalAttribute">
@@ -4014,26 +4014,26 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/TranslateTrait.php">
         <class name="Html\Trait\GlobalAttribute\TranslateTrait" namespace="Html\Trait\GlobalAttribute">
-          <metrics complexity="6" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="11" elements="15" coveredelements="12"/>
+          <metrics complexity="6" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="15" coveredelements="15"/>
         </class>
-        <line num="19" type="method" name="setTranslate" visibility="public" complexity="5" crap="5.12" count="1"/>
-        <line num="21" type="stmt" count="1"/>
-        <line num="22" type="stmt" count="1"/>
-        <line num="23" type="stmt" count="1"/>
-        <line num="24" type="stmt" count="1"/>
-        <line num="25" type="stmt" count="1"/>
-        <line num="26" type="stmt" count="0"/>
-        <line num="28" type="stmt" count="1"/>
-        <line num="30" type="stmt" count="1"/>
-        <line num="31" type="stmt" count="0"/>
-        <line num="33" type="stmt" count="1"/>
-        <line num="34" type="stmt" count="1"/>
-        <line num="35" type="stmt" count="1"/>
-        <line num="38" type="method" name="getTranslate" visibility="public" complexity="1" crap="1" count="4"/>
-        <line num="40" type="stmt" count="4"/>
-        <metrics loc="43" ncloc="37" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="11" elements="15" coveredelements="12"/>
+        <line num="19" type="method" name="setTranslate" visibility="public" complexity="5" crap="5" count="5"/>
+        <line num="21" type="stmt" count="5"/>
+        <line num="22" type="stmt" count="3"/>
+        <line num="23" type="stmt" count="3"/>
+        <line num="24" type="stmt" count="3"/>
+        <line num="25" type="stmt" count="3"/>
+        <line num="26" type="stmt" count="1"/>
+        <line num="28" type="stmt" count="2"/>
+        <line num="30" type="stmt" count="4"/>
+        <line num="31" type="stmt" count="2"/>
+        <line num="33" type="stmt" count="4"/>
+        <line num="34" type="stmt" count="4"/>
+        <line num="35" type="stmt" count="4"/>
+        <line num="38" type="method" name="getTranslate" visibility="public" complexity="1" crap="1" count="7"/>
+        <line num="40" type="stmt" count="7"/>
+        <metrics loc="43" ncloc="37" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="15" coveredelements="15"/>
       </file>
     </package>
-    <metrics files="116" loc="8736" ncloc="6874" classes="110" methods="342" coveredmethods="292" conditionals="0" coveredconditionals="0" statements="2997" coveredstatements="2754" elements="3339" coveredelements="3046"/>
+    <metrics files="116" loc="8736" ncloc="6874" classes="110" methods="342" coveredmethods="294" conditionals="0" coveredconditionals="0" statements="2997" coveredstatements="2762" elements="3339" coveredelements="3056"/>
   </project>
 </coverage>
