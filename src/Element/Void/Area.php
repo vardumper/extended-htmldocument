@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -112,10 +112,14 @@ class Area extends VoidElement
      */
     protected ?string $alt = null;
 
-    /** Specifies the coordinates of the shape in a rectangular area or a polygonal area on an image map. */
+    /** 
+     * Specifies the coordinates of the shape in a rectangular area or a polygonal area on an image map.
+     * @category HTML attribute */
     protected ?string $coords = null;
 
-    /** Indicates that the linked content should be downloaded rather than displayed. */
+    /** 
+     * Indicates that the linked content should be downloaded rather than displayed.
+     * @category HTML attribute */
     protected ?string $download = null;
 
     /** 
@@ -125,13 +129,19 @@ class Area extends VoidElement
      */
     protected ?string $href = null;
 
-    /** Specifies the language of the linked resource. */
+    /** 
+     * Specifies the language of the linked resource.
+     * @category HTML attribute */
     protected ?string $hreflang = null;
 
-    /** Specifies the relationship between the current document and the linked document. */
+    /** 
+     * Specifies the relationship between the current document and the linked document.
+     * @category HTML attribute */
     protected ?RelEnum $rel = null;
 
-    /**  */
+    /** 
+     * 
+     * @category HTML attribute */
     protected ?ShapeEnum $shape = null;
 
     /** 
@@ -141,7 +151,9 @@ class Area extends VoidElement
      */
     protected ?TargetEnum $target = null;
 
-    /** Specifies the media type of the linked resource. */
+    /** 
+     * Specifies the media type of the linked resource.
+     * @category HTML attribute */
     protected ?string $type = null;
 
 

@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Html\Command;
 
 use Html\Helper\Helper;
+use Html\Helper\NamingHelper;
+use Html\Helper\TypeMapper;
+use Html\Helper\CommentHelper;
 use Silly\Input\InputArgument;
 use Silly\Input\InputOption;
 use Symfony\Component\Console\Command\Command;
@@ -590,81 +593,27 @@ final class CreateClassCommand extends Command
     // String manipulation utilities
     private function toVariableName(string $string): string
     {
-        $string = str_replace(['-', '_'], ' ', $string);
-        $words = explode(' ', $string);
-        $string = implode('', array_map('ucfirst', $words));
-        return lcfirst($string);
+        return NamingHelper::toVariableName($string);
     }
 
     private function toKebapCase(string $string): string
     {
-        $string = str_replace(['-', '_'], ' ', $string);
-        $string = ucwords($string);
-        return str_replace(' ', '', $string);
+        return NamingHelper::toKebapCase($string);
     }
 
     private function getClassName(string $classname): string
     {
-        $reserved = Helper::getReservedWords();
-        if (in_array(strtolower($classname), $reserved, true)) {
-            return $classname . 'Element';
-        }
-        return $classname;
+        return NamingHelper::getClassName($classname);
     }
 
     private function getAttributeComment(array $details): string
     {
-        $lines = [];
-        $lines[] = $details['description'] ?? '';
-        $lines[] = '@category HTML attribute';
-
-        if (isset($details['deprecated']) && $details['deprecated']) {
-            $lines[] = '@deprecated' . \PHP_EOL . '    ';
-        }
-        if (isset($details['defaultValue'])) {
-            $lines[] = '@example ' . $details['defaultValue'] . \PHP_EOL . '    ';
-        }
-        if (isset($details['required']) && $details['required']) {
-            $lines[] = '@required' . \PHP_EOL . '    ';
-        }
-
-        $comment = '/** ';
-        if (count($lines) > 2) {
-            $comment .= \PHP_EOL . '     * ' . implode(\PHP_EOL . '     * ', $lines);
-        } else {
-            $comment .= $lines[0];
-        }
-
-        return $comment . ' */' . \PHP_EOL;
+        return CommentHelper::getAttributeComment($details);
     }
 
     private function mapToPhpType(string $string): string
     {
-        return match ($string) {
-            'string' => 'string',
-            'integer' => 'int',
-            'boolean' => 'bool',
-            'uri' => 'string',
-            'language_iso' => 'string',
-            'color' => 'string',
-            'datetime' => 'string',
-            'datetime-local' => 'string',
-            'date' => 'string',
-            'time' => 'string',
-            'month' => 'string',
-            'week' => 'string',
-            'number' => 'int',
-            'float' => 'float',
-            'script' => 'string',
-            'url' => 'string',
-            'email' => 'string',
-            'tel' => 'string',
-            'password' => 'string',
-            'hidden' => 'bool|string',
-            'image' => 'string',
-            'file' => 'string',
-            default => $string,
-        };
+        return TypeMapper::mapToPhpType($string);
     }
 
     // Method signature templates

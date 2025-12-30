@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -98,16 +98,24 @@ class Output extends InlineElement
      */
     protected ?AutocorrectEnum $autocorrect = null;
 
-    /** Refers to the <datalist> element that contains the options for an input element. */
+    /** 
+     * Refers to the <datalist> element that contains the options for an input element.
+     * @category HTML attribute */
     protected ?string $for = null;
 
-    /** References an element that provides additional details about the current element. */
+    /** 
+     * References an element that provides additional details about the current element.
+     * @category HTML attribute */
     protected ?string $ariaDetails = null;
 
-    /** Defines keyboard shortcuts available for the element. */
+    /** 
+     * Defines keyboard shortcuts available for the element.
+     * @category HTML attribute */
     protected ?string $ariaKeyshortcuts = null;
 
-    /** Provides a human-readable custom role description for assistive technologies. */
+    /** 
+     * Provides a human-readable custom role description for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaRoledescription = null;
 
     /** 

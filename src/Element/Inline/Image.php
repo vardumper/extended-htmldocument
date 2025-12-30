@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -111,22 +111,34 @@ class Image extends InlineElement
      */
     protected ?string $alt = null;
 
-    /**  */
+    /** 
+     * 
+     * @category HTML attribute */
     protected ?CrossoriginEnum $crossorigin = null;
 
-    /** Specifies the decoding process applied to the image. */
+    /** 
+     * Specifies the decoding process applied to the image.
+     * @category HTML attribute */
     protected ?DecodingEnum $decoding = null;
 
-    /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /** 
+     * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     * @category HTML attribute */
     protected ?string $height = null;
 
-    /** Specifies that an area should be part of an image map. */
+    /** 
+     * Specifies that an area should be part of an image map.
+     * @category HTML attribute */
     protected ?bool $ismap = null;
 
-    /** Specifies the referrer policy for fetches initiated by the element. */
+    /** 
+     * Specifies the referrer policy for fetches initiated by the element.
+     * @category HTML attribute */
     protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
-    /** Specifies the sizes of the images or icons for different display/window sizes. */
+    /** 
+     * Specifies the sizes of the images or icons for different display/window sizes.
+     * @category HTML attribute */
     protected ?string $sizes = null;
 
     /** 
@@ -136,13 +148,19 @@ class Image extends InlineElement
      */
     protected ?string $src = null;
 
-    /** Specifies a set of image candidate URLs and descriptors for responsive images. */
+    /** 
+     * Specifies a set of image candidate URLs and descriptors for responsive images.
+     * @category HTML attribute */
     protected ?string $srcset = null;
 
-    /** Specifies a client-side image map to be used with the element. */
+    /** 
+     * Specifies a client-side image map to be used with the element.
+     * @category HTML attribute */
     protected ?string $usemap = null;
 
-    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /** 
+     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     * @category HTML attribute */
     protected ?string $width = null;
 
     /** 
@@ -152,16 +170,24 @@ class Image extends InlineElement
      */
     protected ?AriaHiddenEnum $ariaHidden = null;
 
-    /** Defines a string value that labels the current element for assistive technologies. */
+    /** 
+     * Defines a string value that labels the current element for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaLabel = null;
 
-    /** References an element that provides additional details about the current element. */
+    /** 
+     * References an element that provides additional details about the current element.
+     * @category HTML attribute */
     protected ?string $ariaDetails = null;
 
-    /** Defines keyboard shortcuts available for the element. */
+    /** 
+     * Defines keyboard shortcuts available for the element.
+     * @category HTML attribute */
     protected ?string $ariaKeyshortcuts = null;
 
-    /** Provides a human-readable custom role description for assistive technologies. */
+    /** 
+     * Provides a human-readable custom role description for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaRoledescription = null;
 
     /** 

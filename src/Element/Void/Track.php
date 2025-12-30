@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -82,7 +82,9 @@ class Track extends VoidElement
     public static array $parentOf = [
     ];
 
-    /** Specifies that the track should be enabled by default when the page loads. */
+    /** 
+     * Specifies that the track should be enabled by default when the page loads.
+     * @category HTML attribute */
     protected ?bool $default = null;
 
     /** 
@@ -92,7 +94,9 @@ class Track extends VoidElement
      */
     protected ?KindEnum $kind = null;
 
-    /** Specifies a label for the associated form control, option group, or option. */
+    /** 
+     * Specifies a label for the associated form control, option group, or option.
+     * @category HTML attribute */
     protected ?string $label = null;
 
     /** 
@@ -102,7 +106,9 @@ class Track extends VoidElement
      */
     protected ?string $src = null;
 
-    /** Specifies the language of the track text data. */
+    /** 
+     * Specifies the language of the track text data.
+     * @category HTML attribute */
     protected ?string $srclang = null;
 
 

@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -87,25 +87,39 @@ class TableData extends BlockElement
     ];
 
 
-    /** Specifies the number of columns a table cell should span. */
+    /** 
+     * Specifies the number of columns a table cell should span.
+     * @category HTML attribute */
     protected ?int $colspan = null;
 
-    /** Specifies a list of header cells that represent the header for the cell. */
+    /** 
+     * Specifies a list of header cells that represent the header for the cell.
+     * @category HTML attribute */
     protected ?string $headers = null;
 
-    /** Specifies the number of rows a table cell should span. */
+    /** 
+     * Specifies the number of rows a table cell should span.
+     * @category HTML attribute */
     protected ?int $rowspan = null;
 
-    /** Defines the semantic purpose of an element for assistive technologies. */
+    /** 
+     * Defines the semantic purpose of an element for assistive technologies.
+     * @category HTML attribute */
     protected ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaLabelledby = null;
 
     /** 
@@ -122,13 +136,19 @@ class TableData extends BlockElement
      */
     protected ?AriaHiddenEnum $ariaHidden = null;
 
-    /** References an element that provides additional details about the current element. */
+    /** 
+     * References an element that provides additional details about the current element.
+     * @category HTML attribute */
     protected ?string $ariaDetails = null;
 
-    /** Defines keyboard shortcuts available for the element. */
+    /** 
+     * Defines keyboard shortcuts available for the element.
+     * @category HTML attribute */
     protected ?string $ariaKeyshortcuts = null;
 
-    /** Provides a human-readable custom role description for assistive technologies. */
+    /** 
+     * Provides a human-readable custom role description for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaRoledescription = null;
 
     /** 
@@ -152,10 +172,14 @@ class TableData extends BlockElement
      */
     protected ?AriaAtomicEnum $ariaAtomic = null;
 
-    /** Defines the total number of columns in a table or grid. */
+    /** 
+     * Defines the total number of columns in a table or grid.
+     * @category HTML attribute */
     protected ?int $ariaColcount = null;
 
-    /** Defines the total number of rows in a table or grid. */
+    /** 
+     * Defines the total number of rows in a table or grid.
+     * @category HTML attribute */
     protected ?int $ariaRowcount = null;
 
     /** 
@@ -165,16 +189,24 @@ class TableData extends BlockElement
      */
     protected ?AriaSortEnum $ariaSort = null;
 
-    /** Specifies the column index of a cell in a table or grid. */
+    /** 
+     * Specifies the column index of a cell in a table or grid.
+     * @category HTML attribute */
     protected ?int $ariaColindex = null;
 
-    /** Specifies how many columns a cell spans. */
+    /** 
+     * Specifies how many columns a cell spans.
+     * @category HTML attribute */
     protected ?int $ariaColspan = null;
 
-    /** Specifies the row index of a cell in a table or grid. */
+    /** 
+     * Specifies the row index of a cell in a table or grid.
+     * @category HTML attribute */
     protected ?int $ariaRowindex = null;
 
-    /** Specifies how many rows a cell spans. */
+    /** 
+     * Specifies how many rows a cell spans.
+     * @category HTML attribute */
     protected ?int $ariaRowspan = null;
 
 

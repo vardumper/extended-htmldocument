@@ -1,36 +1,12 @@
 <?php
 
+namespace Tests\Trait;
+
 use Html\Trait\DelegatorTrait;
 use BadMethodCallException;
 use InvalidArgumentException;
 
-class DummyDelegated {
-    public string $fooProp = 'bar';
 
-    public function sum(int $a, int $b): int {
-        return $a + $b;
-    }
-
-    public function methodTakesObject(\stdClass $obj): string {
-        return $obj->name ?? 'none';
-    }
-
-    public function typeStrict(int $x): int {
-        return $x * 2;
-    }
-}
-
-class TestDelegator
-{
-    use DelegatorTrait;
-
-    public object $delegated;
-
-    public function __construct()
-    {
-        $this->delegated = new DummyDelegated();
-    }
-}
 
 test('__call delegates method calls and returns result', function () {
     $t = new TestDelegator();

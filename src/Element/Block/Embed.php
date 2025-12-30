@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -98,7 +98,9 @@ class Embed extends BlockElement
     ];
 
 
-    /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /** 
+     * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     * @category HTML attribute */
     protected ?string $height = null;
 
     /** 
@@ -108,10 +110,14 @@ class Embed extends BlockElement
      */
     protected ?string $src = null;
 
-    /** Specifies the media type of the linked resource. */
+    /** 
+     * Specifies the media type of the linked resource.
+     * @category HTML attribute */
     protected ?string $type = null;
 
-    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /** 
+     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     * @category HTML attribute */
     protected ?string $width = null;
 
 

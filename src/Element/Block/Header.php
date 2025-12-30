@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -219,7 +219,9 @@ class Header extends BlockElement
     ];
 
 
-    /** Defines a string value that labels the current element for assistive technologies. */
+    /** 
+     * Defines a string value that labels the current element for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaLabel = null;
 
 

@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -147,10 +147,14 @@ class Form extends BlockElement
     ];
 
 
-    /** Specifies the character encodings that are to be used for form submission. */
+    /** 
+     * Specifies the character encodings that are to be used for form submission.
+     * @category HTML attribute */
     protected ?string $acceptCharset = null;
 
-    /** Specifies the URL where the form data should be submitted when the form is submitted. */
+    /** 
+     * Specifies the URL where the form data should be submitted when the form is submitted.
+     * @category HTML attribute */
     protected ?string $action = null;
 
     /** 
@@ -167,7 +171,9 @@ class Form extends BlockElement
      */
     protected ?AutocorrectEnum $autocorrect = null;
 
-    /** Specifies how form data should be encoded before sending it to a server. Only used if the method attribute is set to post. Default is application/x-www-form-urlencoded. */
+    /** 
+     * Specifies how form data should be encoded before sending it to a server. Only used if the method attribute is set to post. Default is application/x-www-form-urlencoded.
+     * @category HTML attribute */
     protected ?EnctypeEnum $enctype = null;
 
     /** 
@@ -177,10 +183,14 @@ class Form extends BlockElement
      */
     protected ?MethodEnum $method = null;
 
-    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /** 
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     * @category HTML attribute */
     protected ?string $name = null;
 
-    /** When present, it specifies that a form should not be validated when submitted. */
+    /** 
+     * When present, it specifies that a form should not be validated when submitted.
+     * @category HTML attribute */
     protected ?bool $novalidate = null;
 
     /** 
@@ -197,16 +207,24 @@ class Form extends BlockElement
      */
     protected ?AriaInvalidEnum $ariaInvalid = null;
 
-    /** Defines a string value that labels the current element for assistive technologies. */
+    /** 
+     * Defines a string value that labels the current element for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaLabel = null;
 
-    /** References an element that provides additional details about the current element. */
+    /** 
+     * References an element that provides additional details about the current element.
+     * @category HTML attribute */
     protected ?string $ariaDetails = null;
 
-    /** Defines keyboard shortcuts available for the element. */
+    /** 
+     * Defines keyboard shortcuts available for the element.
+     * @category HTML attribute */
     protected ?string $ariaKeyshortcuts = null;
 
-    /** Provides a human-readable custom role description for assistive technologies. */
+    /** 
+     * Provides a human-readable custom role description for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaRoledescription = null;
 
     /** 

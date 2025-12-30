@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -142,37 +142,59 @@ class Textarea extends InlineElement
      */
     protected ?AutocorrectEnum $autocorrect = null;
 
-    /** Specifies the visible width of a text area, in average character widths. */
+    /** 
+     * Specifies the visible width of a text area, in average character widths.
+     * @category HTML attribute */
     protected ?int $cols = null;
 
-    /** Specifies the name of the field that will contain the text direction (ltr or rtl) of the input or textarea when the form is submitted */
+    /** 
+     * Specifies the name of the field that will contain the text direction (ltr or rtl) of the input or textarea when the form is submitted
+     * @category HTML attribute */
     protected ?string $dirname = null;
 
-    /** When present, it specifies that an input element should be disabled. */
+    /** 
+     * When present, it specifies that an input element should be disabled.
+     * @category HTML attribute */
     protected ?bool $disabled = null;
 
-    /** Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset. */
+    /** 
+     * Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.
+     * @category HTML attribute */
     protected ?string $form = null;
 
-    /** Specifies the maximum number of characters allowed in an input field. */
+    /** 
+     * Specifies the maximum number of characters allowed in an input field.
+     * @category HTML attribute */
     protected ?int $maxlength = null;
 
-    /** Specifies the minimum number of characters required in an input field. */
+    /** 
+     * Specifies the minimum number of characters required in an input field.
+     * @category HTML attribute */
     protected ?int $minlength = null;
 
-    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /** 
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     * @category HTML attribute */
     protected ?string $name = null;
 
-    /** Specifies a short hint that describes the expected value of an input field. */
+    /** 
+     * Specifies a short hint that describes the expected value of an input field.
+     * @category HTML attribute */
     protected ?string $placeholder = null;
 
-    /** When present, it specifies that an input element is read-only. */
+    /** 
+     * When present, it specifies that an input element is read-only.
+     * @category HTML attribute */
     protected ?bool $readonly = null;
 
-    /** When present, it specifies that an input field must be filled out before submitting the form. */
+    /** 
+     * When present, it specifies that an input field must be filled out before submitting the form.
+     * @category HTML attribute */
     protected ?bool $required = null;
 
-    /** Specifies the visible number of lines in a text area. */
+    /** 
+     * Specifies the visible number of lines in a text area.
+     * @category HTML attribute */
     protected ?int $rows = null;
 
     /** 
@@ -182,16 +204,24 @@ class Textarea extends InlineElement
      */
     protected ?WrapEnum $wrap = null;
 
-    /** Defines the semantic purpose of an element for assistive technologies. */
+    /** 
+     * Defines the semantic purpose of an element for assistive technologies.
+     * @category HTML attribute */
     protected ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaLabelledby = null;
 
     /** 
@@ -201,7 +231,9 @@ class Textarea extends InlineElement
      */
     protected ?AriaInvalidEnum $ariaInvalid = null;
 
-    /** Defines a string value that labels the current element for assistive technologies. */
+    /** 
+     * Defines a string value that labels the current element for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaLabel = null;
 
     /** 
@@ -211,13 +243,19 @@ class Textarea extends InlineElement
      */
     protected ?AriaDisabledEnum $ariaDisabled = null;
 
-    /** References an element that provides additional details about the current element. */
+    /** 
+     * References an element that provides additional details about the current element.
+     * @category HTML attribute */
     protected ?string $ariaDetails = null;
 
-    /** Defines keyboard shortcuts available for the element. */
+    /** 
+     * Defines keyboard shortcuts available for the element.
+     * @category HTML attribute */
     protected ?string $ariaKeyshortcuts = null;
 
-    /** Provides a human-readable custom role description for assistive technologies. */
+    /** 
+     * Provides a human-readable custom role description for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaRoledescription = null;
 
     /** 
@@ -241,7 +279,9 @@ class Textarea extends InlineElement
      */
     protected ?AriaAtomicEnum $ariaAtomic = null;
 
-    /** Indicates whether a collapsible UI element is expanded (true) or collapsed (false). */
+    /** 
+     * Indicates whether a collapsible UI element is expanded (true) or collapsed (false).
+     * @category HTML attribute */
     protected ?AriaExpandedEnum $ariaExpanded = null;
 
     /** 
@@ -251,7 +291,9 @@ class Textarea extends InlineElement
      */
     protected ?AriaHaspopupEnum $ariaHaspopup = null;
 
-    /** Indicates whether a toggle button is pressed (true, false, or mixed). */
+    /** 
+     * Indicates whether a toggle button is pressed (true, false, or mixed).
+     * @category HTML attribute */
     protected ?AriaPressedEnum $ariaPressed = null;
 
     /** 
@@ -261,7 +303,9 @@ class Textarea extends InlineElement
      */
     protected ?AriaAutocompleteEnum $ariaAutocomplete = null;
 
-    /** Provides a placeholder hint for an input field. */
+    /** 
+     * Provides a placeholder hint for an input field.
+     * @category HTML attribute */
     protected ?string $ariaPlaceholder = null;
 
     /** 

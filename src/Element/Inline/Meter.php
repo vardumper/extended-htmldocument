@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -90,31 +90,49 @@ class Meter extends InlineElement
     ];
 
 
-    /** Specifies the high value for a range input or a meter element. */
+    /** 
+     * Specifies the high value for a range input or a meter element.
+     * @category HTML attribute */
     protected ?string $high = null;
 
-    /** Specifies the low value for a range input. */
+    /** 
+     * Specifies the low value for a range input.
+     * @category HTML attribute */
     protected ?string $low = null;
 
-    /** Specifies the maximum value for an input element, meter, or progress element. */
+    /** 
+     * Specifies the maximum value for an input element, meter, or progress element.
+     * @category HTML attribute */
     protected ?int $max = null;
 
-    /** Specifies the minimum value for an input element or a meter element. */
+    /** 
+     * Specifies the minimum value for an input element or a meter element.
+     * @category HTML attribute */
     protected ?string $min = null;
 
-    /** Specifies the optimal value for a gauge or progress element. */
+    /** 
+     * Specifies the optimal value for a gauge or progress element.
+     * @category HTML attribute */
     protected ?string $optimum = null;
 
-    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
+    /** 
+     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
+     * @category HTML attribute */
     protected ?string $value = null;
 
-    /** References an element that provides additional details about the current element. */
+    /** 
+     * References an element that provides additional details about the current element.
+     * @category HTML attribute */
     protected ?string $ariaDetails = null;
 
-    /** Defines keyboard shortcuts available for the element. */
+    /** 
+     * Defines keyboard shortcuts available for the element.
+     * @category HTML attribute */
     protected ?string $ariaKeyshortcuts = null;
 
-    /** Provides a human-readable custom role description for assistive technologies. */
+    /** 
+     * Provides a human-readable custom role description for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaRoledescription = null;
 
     /** 
@@ -138,16 +156,24 @@ class Meter extends InlineElement
      */
     protected ?AriaAtomicEnum $ariaAtomic = null;
 
-    /** Defines the maximum value for a range input. */
+    /** 
+     * Defines the maximum value for a range input.
+     * @category HTML attribute */
     protected ?int $ariaValuemax = null;
 
-    /** Defines the minimum value for a range input. */
+    /** 
+     * Defines the minimum value for a range input.
+     * @category HTML attribute */
     protected ?int $ariaValuemin = null;
 
-    /** Specifies the current value for a range input. */
+    /** 
+     * Specifies the current value for a range input.
+     * @category HTML attribute */
     protected ?int $ariaValuenow = null;
 
-    /** Provides a human-readable representation of the current value. */
+    /** 
+     * Provides a human-readable representation of the current value.
+     * @category HTML attribute */
     protected ?string $ariaValuetext = null;
 
 
