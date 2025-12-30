@@ -21,7 +21,7 @@ hero:
 
 features:
    - title: HTML Elements as PHP Classes
-     details: '![PHP Icon](/file_type_php.svg) HTML5 elements as PHP classes with descriptive names. Added semantics and meta information such as allowed direct children, allowed direct parents and helper methods such as <samp>__toString()</samp> or <samp>setAttributes()</samp>'
+     details: '![An image](./public/file_type_php.svg) HTML5 elements as PHP classes with descriptive names. Added semantics and meta information such as allowed direct children, allowed direct parents and helper methods such as <samp>__toString()</samp> or <samp>setAttributes()</samp>'
    - title: Built to generate Code
      details: 'This library was created in order to use it for automated code generation. Whether you could have PHP transform HTML into templates for Twig, React, or Vue or generate Atoms and Molecules for a Design System such as Storybook.'
    - title: Autocompletion in your IDE

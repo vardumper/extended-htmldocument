@@ -433,15 +433,20 @@ test('constructor with invalid renderer', function () {
 test('set with union type enum handling', function () {
     // This test should trigger the union type enum handling in __set
     // We need a property that has a union type with BackedEnum
-    $element = Body::create($this->document);
-    
-    // Try to set a property that doesn't exist to trigger the union type handling
-    $element->nonExistentProperty = 'test';
-    expect($element->getAttribute('nonexistentproperty'))
-        ->toBe('test');
+    // The 'target' property on Anchor has union type: TargetEnum|string
+    $this->delegator->target = '_blank'; // This should trigger the union type handling
+    expect($this->delegator->target)
+        ->toEqual(TargetEnum::BLANK);
 });
 
-test('append child with different owner document throws exception', function () {
+test('set attribute with union type enum handling', function () {
+    // This should trigger the union type handling in setAttribute
+    $this->delegator->setAttribute('rel', 'nofollow');
+    expect($this->delegator->rel)
+        ->toEqual(RelEnum::NOFOLLOW);
+});
+
+test('append child throws exception for different document', function () {
     $otherDocument = HTMLDocumentDelegator::createEmpty();
     $child = Anchor::create($otherDocument);
     
@@ -451,7 +456,7 @@ test('append child with different owner document throws exception', function () 
     $this->delegator->appendChild($child);
 });
 
-test('remove child with different owner document throws exception', function () {
+test('remove child throws exception for different document', function () {
     $otherDocument = HTMLDocumentDelegator::createEmpty();
     $child = Anchor::create($otherDocument);
     
@@ -461,26 +466,24 @@ test('remove child with different owner document throws exception', function () 
     $this->delegator->removeChild($child);
 });
 
-test('remove child with DOM Text', function () {
-    $textNode = $this->document->createTextNode('test text');
-    $element = $this->document->createElement('div');
-    $element->appendChild($textNode);
-    
-    expect($element->childNodes->length)->toBe(1);
-    
-    $element->removeChild($textNode);
-    expect($element->childNodes->length)->toBe(0);
-});
-
-test('replace child with different owner document throws exception', function () {
+test('replace child throws exception for different document node', function () {
     $otherDocument = HTMLDocumentDelegator::createEmpty();
-    $child1 = Anchor::create($this->document);
-    $child2 = Anchor::create($otherDocument);
-    
-    $this->delegator->appendChild($child1);
+    $node = Anchor::create($otherDocument);
+    $child = Anchor::create($this->document);
     
     $this->expectException(InvalidArgumentException::class);
     $this->expectExceptionMessage('The node element must belong to the same document as the parent element.');
     
-    $this->delegator->replaceChild($child2, $child1);
+    $this->delegator->replaceChild($node, $child);
+});
+
+test('replace child throws exception for different document child', function () {
+    $otherDocument = HTMLDocumentDelegator::createEmpty();
+    $node = Anchor::create($this->document);
+    $child = Anchor::create($otherDocument);
+    
+    $this->expectException(InvalidArgumentException::class);
+    $this->expectExceptionMessage('The child element must belong to the same document as the parent element.');
+    
+    $this->delegator->replaceChild($node, $child);
 });

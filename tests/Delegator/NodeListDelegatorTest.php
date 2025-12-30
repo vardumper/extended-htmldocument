@@ -122,3 +122,16 @@ test('item returns null for out of bounds', function () {
     expect($delegator->item(0))
         ->toBeNull();
 });
+
+test('item returns NodeDelegator for text node', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $element = $document->createElement('div');
+    $document->appendChild($element);
+    $text = $document->createTextNode('test');
+    $element->appendChild($text);
+    
+    $delegator = new NodeListDelegator($element->childNodes);
+    $item = $delegator->item(0);
+    expect($item)
+        ->toBeInstanceOf(NodeDelegator::class);
+});
