@@ -236,6 +236,53 @@ test('load twig template', function () {
     expect($result)->toBeNull();
 });
 
+test('render document method directly', function () {
+    $reflection = new ReflectionClass($this->generator);
+    $method = $reflection->getMethod('renderDocument');
+    $method->setAccessible(true);
+
+    $document = HTMLDocumentDelegator::createEmpty();
+    $body = Body::create($document);
+    $document->appendChild($body);
+
+    $result = $method->invoke($this->generator, $document);
+
+    expect($result)->toBeString();
+    expect($result)->toContain('<?xml version="1.0" encoding="UTF-8"?>');
+    expect($result)->toContain('<!DOCTYPE html>');
+    expect($result)->toContain('<html lang="en">');
+    expect($result)->toContain('<body>');
+    expect($result)->toContain('</body>');
+    expect($result)->toContain('</html>');
+});
+
+test('render head with metadata', function () {
+    $reflection = new ReflectionClass($this->generator);
+    
+    // Mock getDocumentMetadata to return data
+    $metadataMethod = $reflection->getMethod('getDocumentMetadata');
+    $metadataMethod->setAccessible(true);
+    
+    // Create a document with a title
+    $document = HTMLDocumentDelegator::createEmpty();
+    $title = $document->createElement('title');
+    $title->textContent = 'Test Document';
+    $head = $document->createElement('head');
+    $head->appendChild($title);
+    $document->appendChild($head);
+    
+    // Test getDocumentMetadata
+    $metadata = $metadataMethod->invoke($this->generator, $document);
+    expect($metadata)->toBeArray();
+    
+    // Test renderHead - it will still return null since renderTwigTemplate returns null
+    $headMethod = $reflection->getMethod('renderHead');
+    $headMethod->setAccessible(true);
+    
+    $result = $headMethod->invoke($this->generator, $document);
+    expect($result)->toBeNull();
+});
+
 test('camel to kebab', function () {
     $reflection = new ReflectionClass($this->generator);
     $method = $reflection->getMethod('camelToKebab');

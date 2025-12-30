@@ -38,6 +38,11 @@ test('can render documents', function () {
         ->toBeTrue();
 });
 
+test('is templated', function () {
+    expect($this->generator->isTemplated())
+        ->toBeFalse();
+});
+
 test('render element', function () {
     $document = HTMLDocumentDelegator::createEmpty();
     $element = Anchor::create($document);
