@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -253,16 +253,24 @@ class Division extends BlockElement
     ];
 
 
-    /** The role attribute is used to define the purpose of an element. */
+    /** 
+     * The role attribute is used to define the purpose of an element.
+     * @category HTML attribute */
     protected ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaLabelledby = null;
 
     /** 
@@ -279,16 +287,24 @@ class Division extends BlockElement
      */
     protected ?AriaHiddenEnum $ariaHidden = null;
 
-    /** Defines a string value that labels the current element for assistive technologies. */
+    /** 
+     * Defines a string value that labels the current element for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaLabel = null;
 
-    /** References an element that provides additional details about the current element. */
+    /** 
+     * References an element that provides additional details about the current element.
+     * @category HTML attribute */
     protected ?string $ariaDetails = null;
 
-    /** Defines keyboard shortcuts available for the element. */
+    /** 
+     * Defines keyboard shortcuts available for the element.
+     * @category HTML attribute */
     protected ?string $ariaKeyshortcuts = null;
 
-    /** Provides a human-readable custom role description for assistive technologies. */
+    /** 
+     * Provides a human-readable custom role description for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaRoledescription = null;
 
     /** 
@@ -319,13 +335,19 @@ class Division extends BlockElement
      */
     protected ?AriaMultiselectableEnum $ariaMultiselectable = null;
 
-    /** Identifies the currently active child element (e.g., for autocomplete suggestions or composite widgets). */
+    /** 
+     * Identifies the currently active child element (e.g., for autocomplete suggestions or composite widgets).
+     * @category HTML attribute */
     protected ?string $ariaActivedescendant = null;
 
-    /** Specifies whether an element is horizontal or vertical. */
+    /** 
+     * Specifies whether an element is horizontal or vertical.
+     * @category HTML attribute */
     protected ?AriaOrientationEnum $ariaOrientation = null;
 
-    /** Establishes ownership relationships between elements. Value is a space-separated list of IDs. */
+    /** 
+     * Establishes ownership relationships between elements. Value is a space-separated list of IDs.
+     * @category HTML attribute */
     protected ?string $ariaOwns = null;
 
 

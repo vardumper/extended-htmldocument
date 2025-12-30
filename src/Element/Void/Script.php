@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -74,28 +74,44 @@ class Script extends VoidElement
     public static array $parentOf = [
     ];
 
-    /** When present, it specifies that the script will be executed asynchronously as soon as it is available. */
+    /** 
+     * When present, it specifies that the script will be executed asynchronously as soon as it is available.
+     * @category HTML attribute */
     protected ?bool $async = null;
 
-    /** Specifies the character encoding for the resource. */
+    /** 
+     * Specifies the character encoding for the resource.
+     * @category HTML attribute */
     protected ?string $charset = null;
 
-    /**  */
+    /** 
+     * 
+     * @category HTML attribute */
     protected ?CrossoriginEnum $crossorigin = null;
 
-    /** When present, it specifies that the script should be executed after the page has been parsed. */
+    /** 
+     * When present, it specifies that the script should be executed after the page has been parsed.
+     * @category HTML attribute */
     protected ?bool $defer = null;
 
-    /** Specifies the integrity value of a resource. */
+    /** 
+     * Specifies the integrity value of a resource.
+     * @category HTML attribute */
     protected ?string $integrity = null;
 
-    /** Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks. */
+    /** 
+     * Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks.
+     * @category HTML attribute */
     protected ?string $nonce = null;
 
-    /** Specifies the referrer policy for fetches initiated by the element. */
+    /** 
+     * Specifies the referrer policy for fetches initiated by the element.
+     * @category HTML attribute */
     protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
-    /** Specifies the URL of the external resource to be embedded or referenced. */
+    /** 
+     * Specifies the URL of the external resource to be embedded or referenced.
+     * @category HTML attribute */
     protected ?string $src = null;
 
     /** 

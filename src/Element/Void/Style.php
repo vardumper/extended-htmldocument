@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -62,10 +62,14 @@ class Style extends VoidElement
     public static array $parentOf = [
     ];
 
-    /** Specifies the media type for which the linked resource or style sheet is intended. */
+    /** 
+     * Specifies the media type for which the linked resource or style sheet is intended.
+     * @category HTML attribute */
     protected ?string $media = null;
 
-    /** Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks. */
+    /** 
+     * Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks.
+     * @category HTML attribute */
     protected ?string $nonce = null;
 
     /** 

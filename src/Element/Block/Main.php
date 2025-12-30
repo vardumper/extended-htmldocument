@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -231,16 +231,24 @@ class Main extends BlockElement
     ];
 
 
-    /** Defines the semantic purpose of an element for assistive technologies. */
+    /** 
+     * Defines the semantic purpose of an element for assistive technologies.
+     * @category HTML attribute */
     protected ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaLabelledby = null;
 
     /** 
@@ -257,16 +265,24 @@ class Main extends BlockElement
      */
     protected ?AriaHiddenEnum $ariaHidden = null;
 
-    /** Defines a string value that labels the current element for assistive technologies. */
+    /** 
+     * Defines a string value that labels the current element for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaLabel = null;
 
-    /** References an element that provides additional details about the current element. */
+    /** 
+     * References an element that provides additional details about the current element.
+     * @category HTML attribute */
     protected ?string $ariaDetails = null;
 
-    /** Defines keyboard shortcuts available for the element. */
+    /** 
+     * Defines keyboard shortcuts available for the element.
+     * @category HTML attribute */
     protected ?string $ariaKeyshortcuts = null;
 
-    /** Provides a human-readable custom role description for assistive technologies. */
+    /** 
+     * Provides a human-readable custom role description for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaRoledescription = null;
 
     /** 
@@ -290,7 +306,9 @@ class Main extends BlockElement
      */
     protected ?AriaAtomicEnum $ariaAtomic = null;
 
-    /** Establishes ownership relationships between elements. Value is a space-separated list of IDs. */
+    /** 
+     * Establishes ownership relationships between elements. Value is a space-separated list of IDs.
+     * @category HTML attribute */
     protected ?string $ariaOwns = null;
 
 

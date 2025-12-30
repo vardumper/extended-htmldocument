@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -63,10 +63,14 @@ class Column extends VoidElement
     public static array $parentOf = [
     ];
 
-    /** Specifies the number of columns the <col> element should span in a table. */
+    /** 
+     * Specifies the number of columns the <col> element should span in a table.
+     * @category HTML attribute */
     protected ?int $span = null;
 
-    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /** 
+     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     * @category HTML attribute */
     protected ?string $width = null;
 
 

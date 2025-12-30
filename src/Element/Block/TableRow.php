@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -136,16 +136,24 @@ class TableRow extends BlockElement
      */
     protected ?ValignEnum $valign = null;
 
-    /** Defines the semantic purpose of an element for assistive technologies. */
+    /** 
+     * Defines the semantic purpose of an element for assistive technologies.
+     * @category HTML attribute */
     protected ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaLabelledby = null;
 
     /** 
@@ -162,13 +170,19 @@ class TableRow extends BlockElement
      */
     protected ?AriaHiddenEnum $ariaHidden = null;
 
-    /** References an element that provides additional details about the current element. */
+    /** 
+     * References an element that provides additional details about the current element.
+     * @category HTML attribute */
     protected ?string $ariaDetails = null;
 
-    /** Defines keyboard shortcuts available for the element. */
+    /** 
+     * Defines keyboard shortcuts available for the element.
+     * @category HTML attribute */
     protected ?string $ariaKeyshortcuts = null;
 
-    /** Provides a human-readable custom role description for assistive technologies. */
+    /** 
+     * Provides a human-readable custom role description for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaRoledescription = null;
 
     /** 
@@ -192,22 +206,34 @@ class TableRow extends BlockElement
      */
     protected ?AriaAtomicEnum $ariaAtomic = null;
 
-    /** Indicates whether an item is selected (e.g., in a list, table, or tree). */
+    /** 
+     * Indicates whether an item is selected (e.g., in a list, table, or tree).
+     * @category HTML attribute */
     protected ?AriaSelectedEnum $ariaSelected = null;
 
-    /** Defines an element's position within a set (1-based index). */
+    /** 
+     * Defines an element's position within a set (1-based index).
+     * @category HTML attribute */
     protected ?int $ariaPosinset = null;
 
-    /** Specifies the total number of items in a set. */
+    /** 
+     * Specifies the total number of items in a set.
+     * @category HTML attribute */
     protected ?int $ariaSetsize = null;
 
-    /** Defines the hierarchical level of an element (e.g., headings, tree items). */
+    /** 
+     * Defines the hierarchical level of an element (e.g., headings, tree items).
+     * @category HTML attribute */
     protected ?int $ariaLevel = null;
 
-    /** Defines the total number of columns in a table or grid. */
+    /** 
+     * Defines the total number of columns in a table or grid.
+     * @category HTML attribute */
     protected ?int $ariaColcount = null;
 
-    /** Defines the total number of rows in a table or grid. */
+    /** 
+     * Defines the total number of rows in a table or grid.
+     * @category HTML attribute */
     protected ?int $ariaRowcount = null;
 
     /** 

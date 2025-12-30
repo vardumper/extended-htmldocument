@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -81,10 +81,14 @@ class Source extends VoidElement
     public static array $parentOf = [
     ];
 
-    /** Specifies the media type for which the linked resource or style sheet is intended. */
+    /** 
+     * Specifies the media type for which the linked resource or style sheet is intended.
+     * @category HTML attribute */
     protected ?string $media = null;
 
-    /** Specifies the sizes of the images or icons for different display/window sizes. */
+    /** 
+     * Specifies the sizes of the images or icons for different display/window sizes.
+     * @category HTML attribute */
     protected ?string $sizes = null;
 
     /** 
@@ -94,10 +98,14 @@ class Source extends VoidElement
      */
     protected ?string $src = null;
 
-    /** Specifies a list of possible image sources for the browser to use. */
+    /** 
+     * Specifies a list of possible image sources for the browser to use.
+     * @category HTML attribute */
     protected ?string $srcset = null;
 
-    /** Specifies the media type of the linked resource. */
+    /** 
+     * Specifies the media type of the linked resource.
+     * @category HTML attribute */
     protected ?string $type = null;
 
 

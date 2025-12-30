@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
@@ -120,10 +120,14 @@ class OrderedList extends BlockElement
     ];
 
 
-    /** When present, it specifies that the list order should be descending (9,8,7...). */
+    /** 
+     * When present, it specifies that the list order should be descending (9,8,7...).
+     * @category HTML attribute */
     protected ?bool $reversed = null;
 
-    /** Specifies the starting value of an ordered list. */
+    /** 
+     * Specifies the starting value of an ordered list.
+     * @category HTML attribute */
     protected ?int $start = null;
 
     /** 
@@ -133,16 +137,24 @@ class OrderedList extends BlockElement
      */
     protected ?OlTypeEnum $type = null;
 
-    /** Defines the semantic purpose of an element for assistive technologies. */
+    /** 
+     * Defines the semantic purpose of an element for assistive technologies.
+     * @category HTML attribute */
     protected ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaLabelledby = null;
 
     /** 
@@ -159,13 +171,19 @@ class OrderedList extends BlockElement
      */
     protected ?AriaHiddenEnum $ariaHidden = null;
 
-    /** References an element that provides additional details about the current element. */
+    /** 
+     * References an element that provides additional details about the current element.
+     * @category HTML attribute */
     protected ?string $ariaDetails = null;
 
-    /** Defines keyboard shortcuts available for the element. */
+    /** 
+     * Defines keyboard shortcuts available for the element.
+     * @category HTML attribute */
     protected ?string $ariaKeyshortcuts = null;
 
-    /** Provides a human-readable custom role description for assistive technologies. */
+    /** 
+     * Provides a human-readable custom role description for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaRoledescription = null;
 
     /** 
@@ -196,13 +214,19 @@ class OrderedList extends BlockElement
      */
     protected ?AriaMultiselectableEnum $ariaMultiselectable = null;
 
-    /** Identifies the currently active child element (e.g., for autocomplete suggestions or composite widgets). */
+    /** 
+     * Identifies the currently active child element (e.g., for autocomplete suggestions or composite widgets).
+     * @category HTML attribute */
     protected ?string $ariaActivedescendant = null;
 
-    /** Specifies whether an element is horizontal or vertical. */
+    /** 
+     * Specifies whether an element is horizontal or vertical.
+     * @category HTML attribute */
     protected ?AriaOrientationEnum $ariaOrientation = null;
 
-    /** Establishes ownership relationships between elements. Value is a space-separated list of IDs. */
+    /** 
+     * Establishes ownership relationships between elements. Value is a space-separated list of IDs.
+     * @category HTML attribute */
     protected ?string $ariaOwns = null;
 
 

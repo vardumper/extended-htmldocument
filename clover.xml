@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1767138196">
-  <project timestamp="1767138196" name="Clover Coverage">
+<coverage generated="1767138812">
+  <project timestamp="1767138812" name="Clover Coverage">
     <package name="Html\Delegator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/HTMLDocumentDelegator.php">
         <class name="Html\Delegator\HTMLDocumentDelegator" namespace="Html\Delegator">

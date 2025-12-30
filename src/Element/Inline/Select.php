@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -146,34 +146,54 @@ class Select extends InlineElement
      */
     protected ?AutocorrectEnum $autocorrect = null;
 
-    /** When present, it specifies that an input element should be disabled. */
+    /** 
+     * When present, it specifies that an input element should be disabled.
+     * @category HTML attribute */
     protected ?bool $disabled = null;
 
-    /** When present, it specifies that the user is allowed to enter more than one value in an input element. */
+    /** 
+     * When present, it specifies that the user is allowed to enter more than one value in an input element.
+     * @category HTML attribute */
     protected ?bool $multiple = null;
 
-    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /** 
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     * @category HTML attribute */
     protected ?string $name = null;
 
-    /** When present, it specifies that an input field must be filled out before submitting the form. */
+    /** 
+     * When present, it specifies that an input field must be filled out before submitting the form.
+     * @category HTML attribute */
     protected ?bool $required = null;
 
-    /** Specifies the height of a hr element in pixels. */
+    /** 
+     * Specifies the height of a hr element in pixels.
+     * @category HTML attribute */
     protected ?int $size = null;
 
-    /** Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset. */
+    /** 
+     * Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.
+     * @category HTML attribute */
     protected ?string $form = null;
 
-    /** Defines the semantic purpose of an element for assistive technologies. */
+    /** 
+     * Defines the semantic purpose of an element for assistive technologies.
+     * @category HTML attribute */
     protected ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaLabelledby = null;
 
     /** 
@@ -183,7 +203,9 @@ class Select extends InlineElement
      */
     protected ?AriaInvalidEnum $ariaInvalid = null;
 
-    /** Defines a string value that labels the current element for assistive technologies. */
+    /** 
+     * Defines a string value that labels the current element for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaLabel = null;
 
     /** 
@@ -193,13 +215,19 @@ class Select extends InlineElement
      */
     protected ?AriaDisabledEnum $ariaDisabled = null;
 
-    /** References an element that provides additional details about the current element. */
+    /** 
+     * References an element that provides additional details about the current element.
+     * @category HTML attribute */
     protected ?string $ariaDetails = null;
 
-    /** Defines keyboard shortcuts available for the element. */
+    /** 
+     * Defines keyboard shortcuts available for the element.
+     * @category HTML attribute */
     protected ?string $ariaKeyshortcuts = null;
 
-    /** Provides a human-readable custom role description for assistive technologies. */
+    /** 
+     * Provides a human-readable custom role description for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaRoledescription = null;
 
     /** 
@@ -223,7 +251,9 @@ class Select extends InlineElement
      */
     protected ?AriaAtomicEnum $ariaAtomic = null;
 
-    /** Indicates whether a collapsible UI element is expanded (true) or collapsed (false). */
+    /** 
+     * Indicates whether a collapsible UI element is expanded (true) or collapsed (false).
+     * @category HTML attribute */
     protected ?AriaExpandedEnum $ariaExpanded = null;
 
     /** 
@@ -233,7 +263,9 @@ class Select extends InlineElement
      */
     protected ?AriaHaspopupEnum $ariaHaspopup = null;
 
-    /** Indicates whether a toggle button is pressed (true, false, or mixed). */
+    /** 
+     * Indicates whether a toggle button is pressed (true, false, or mixed).
+     * @category HTML attribute */
     protected ?AriaPressedEnum $ariaPressed = null;
 
     /** 
@@ -243,7 +275,9 @@ class Select extends InlineElement
      */
     protected ?AriaAutocompleteEnum $ariaAutocomplete = null;
 
-    /** Provides a placeholder hint for an input field. */
+    /** 
+     * Provides a placeholder hint for an input field.
+     * @category HTML attribute */
     protected ?string $ariaPlaceholder = null;
 
     /** 
@@ -267,10 +301,14 @@ class Select extends InlineElement
      */
     protected ?AriaMultiselectableEnum $ariaMultiselectable = null;
 
-    /** Identifies the currently active child element (e.g., for autocomplete suggestions or composite widgets). */
+    /** 
+     * Identifies the currently active child element (e.g., for autocomplete suggestions or composite widgets).
+     * @category HTML attribute */
     protected ?string $ariaActivedescendant = null;
 
-    /** Specifies whether an element is horizontal or vertical. */
+    /** 
+     * Specifies whether an element is horizontal or vertical.
+     * @category HTML attribute */
     protected ?AriaOrientationEnum $ariaOrientation = null;
 
 

@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -71,7 +71,9 @@ class Link extends VoidElement
     public static array $parentOf = [
     ];
 
-    /**  */
+    /** 
+     * 
+     * @category HTML attribute */
     protected ?CrossoriginEnum $crossorigin = null;
 
     /** 
@@ -81,25 +83,39 @@ class Link extends VoidElement
      */
     protected ?string $href = null;
 
-    /** Specifies the language of the linked resource. */
+    /** 
+     * Specifies the language of the linked resource.
+     * @category HTML attribute */
     protected ?string $hreflang = null;
 
-    /** Specifies the integrity value of a resource. */
+    /** 
+     * Specifies the integrity value of a resource.
+     * @category HTML attribute */
     protected ?string $integrity = null;
 
-    /** Specifies the media type for which the linked resource or style sheet is intended. */
+    /** 
+     * Specifies the media type for which the linked resource or style sheet is intended.
+     * @category HTML attribute */
     protected ?string $media = null;
 
-    /** Specifies the referrer policy for fetches initiated by the element. */
+    /** 
+     * Specifies the referrer policy for fetches initiated by the element.
+     * @category HTML attribute */
     protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
-    /** Specifies the relationship between the current document and the linked document. */
+    /** 
+     * Specifies the relationship between the current document and the linked document.
+     * @category HTML attribute */
     protected ?LinkRelEnum $rel = null;
 
-    /** Specifies the sizes of the images or icons for different display/window sizes. */
+    /** 
+     * Specifies the sizes of the images or icons for different display/window sizes.
+     * @category HTML attribute */
     protected ?string $sizes = null;
 
-    /** Specifies the media type of the linked resource. */
+    /** 
+     * Specifies the media type of the linked resource.
+     * @category HTML attribute */
     protected ?string $type = null;
 
 

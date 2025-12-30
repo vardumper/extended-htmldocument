@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
@@ -65,19 +65,29 @@ class Meta extends VoidElement
     public static array $parentOf = [
     ];
 
-    /** Specifies the character encoding for the resource. */
+    /** 
+     * Specifies the character encoding for the resource.
+     * @category HTML attribute */
     protected ?string $charset = null;
 
-    /** Specifies the value associated with the http-equiv or name attribute. */
+    /** 
+     * Specifies the value associated with the http-equiv or name attribute.
+     * @category HTML attribute */
     protected ?string $content = null;
 
-    /** Provides an HTTP header for the information/value of the content attribute. */
+    /** 
+     * Provides an HTTP header for the information/value of the content attribute.
+     * @category HTML attribute */
     protected ?HttpEquivEnum $httpEquiv = null;
 
-    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /** 
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     * @category HTML attribute */
     protected ?string $name = null;
 
-    /** Specifies the content type of the value attribute when the http-equiv attribute is used. */
+    /** 
+     * Specifies the content type of the value attribute when the http-equiv attribute is used.
+     * @category HTML attribute */
     protected ?string $scheme = null;
 
 

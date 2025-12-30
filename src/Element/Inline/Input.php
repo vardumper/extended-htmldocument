@@ -2,7 +2,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-30 23:54:09
  * @category HTML
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
@@ -131,7 +131,9 @@ class Input extends InlineElement
     ];
 
 
-    /** Specifies a comma-separated list of file types that the server accepts. */
+    /** 
+     * Specifies a comma-separated list of file types that the server accepts.
+     * @category HTML attribute */
     protected ?string $accept = null;
 
     /** 
@@ -141,7 +143,9 @@ class Input extends InlineElement
      */
     protected ?AutocorrectEnum $autocorrect = null;
 
-    /** Specifies alternative text to be displayed when the image cannot be rendered. */
+    /** 
+     * Specifies alternative text to be displayed when the image cannot be rendered.
+     * @category HTML attribute */
     protected ?string $alt = null;
 
     /** 
@@ -151,58 +155,94 @@ class Input extends InlineElement
      */
     protected ?AutocompleteEnum $autocomplete = null;
 
-    /** When present, it indicates that an input element should be pre-selected (checked) when the page loads. */
+    /** 
+     * When present, it indicates that an input element should be pre-selected (checked) when the page loads.
+     * @category HTML attribute */
     protected ?bool $checked = null;
 
-    /** Specifies the direction of the text. */
+    /** 
+     * Specifies the direction of the text.
+     * @category HTML attribute */
     protected ?string $dirname = null;
 
-    /** When present, it specifies that an input element should be disabled. */
+    /** 
+     * When present, it specifies that an input element should be disabled.
+     * @category HTML attribute */
     protected ?bool $disabled = null;
 
-    /** Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /** 
+     * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     * @category HTML attribute */
     protected ?string $height = null;
 
-    /** Refers to a <datalist> element that contains pre-defined options for an input element. */
+    /** 
+     * Refers to a <datalist> element that contains pre-defined options for an input element.
+     * @category HTML attribute */
     protected ?string $list = null;
 
-    /** Specifies the maximum value for an input element, meter, or progress element. */
+    /** 
+     * Specifies the maximum value for an input element, meter, or progress element.
+     * @category HTML attribute */
     protected ?int $max = null;
 
-    /** Specifies the maximum number of characters allowed in an input field. */
+    /** 
+     * Specifies the maximum number of characters allowed in an input field.
+     * @category HTML attribute */
     protected ?int $maxlength = null;
 
-    /** Specifies the minimum value for an input element or a meter element. */
+    /** 
+     * Specifies the minimum value for an input element or a meter element.
+     * @category HTML attribute */
     protected ?string $min = null;
 
-    /** Specifies the minimum number of characters required in an input field. */
+    /** 
+     * Specifies the minimum number of characters required in an input field.
+     * @category HTML attribute */
     protected ?int $minlength = null;
 
-    /** When present, it specifies that the user is allowed to enter more than one value in an input element. */
+    /** 
+     * When present, it specifies that the user is allowed to enter more than one value in an input element.
+     * @category HTML attribute */
     protected ?bool $multiple = null;
 
-    /** Specifies the name associated with the element. The meaning may vary depending on the context. */
+    /** 
+     * Specifies the name associated with the element. The meaning may vary depending on the context.
+     * @category HTML attribute */
     protected ?string $name = null;
 
-    /** Specifies a regular expression that the <input> element's value is checked against. */
+    /** 
+     * Specifies a regular expression that the <input> element's value is checked against.
+     * @category HTML attribute */
     protected ?string $pattern = null;
 
-    /** Specifies a short hint that describes the expected value of an input field. */
+    /** 
+     * Specifies a short hint that describes the expected value of an input field.
+     * @category HTML attribute */
     protected ?string $placeholder = null;
 
-    /** When present, it specifies that an input element is read-only. */
+    /** 
+     * When present, it specifies that an input element is read-only.
+     * @category HTML attribute */
     protected ?bool $readonly = null;
 
-    /** When present, it specifies that an input field must be filled out before submitting the form. */
+    /** 
+     * When present, it specifies that an input field must be filled out before submitting the form.
+     * @category HTML attribute */
     protected ?bool $required = null;
 
-    /** Specifies the height of a hr element in pixels. */
+    /** 
+     * Specifies the height of a hr element in pixels.
+     * @category HTML attribute */
     protected ?int $size = null;
 
-    /** Specifies the URL of the external resource to be embedded or referenced. Required if input type is image */
+    /** 
+     * Specifies the URL of the external resource to be embedded or referenced. Required if input type is image
+     * @category HTML attribute */
     protected ?string $src = null;
 
-    /** Specifies the legal number intervals for an input element. */
+    /** 
+     * Specifies the legal number intervals for an input element.
+     * @category HTML attribute */
     protected ?string $step = null;
 
     /** 
@@ -212,16 +252,24 @@ class Input extends InlineElement
      */
     protected ?InputTypeEnum $type = null;
 
-    /** Specifies the value associated with the element. The meaning and usage may vary depending on the element type. */
+    /** 
+     * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
+     * @category HTML attribute */
     protected ?string $value = null;
 
-    /** Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%). */
+    /** 
+     * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
+     * @category HTML attribute */
     protected ?string $width = null;
 
-    /** Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset. */
+    /** 
+     * Associates the button with a form element by ID. Allows buttons to be associated with forms anywhere in the document, not just inside a form element. Can override ancestor form association. Element-specific to button, input, object, select, textarea, and fieldset.
+     * @category HTML attribute */
     protected ?string $form = null;
 
-    /** The URL that processes the form submission. Overrides the action attribute of the button's form owner. Only applies to submit buttons. Element-specific to button and input elements with type submit or image. */
+    /** 
+     * The URL that processes the form submission. Overrides the action attribute of the button's form owner. Only applies to submit buttons. Element-specific to button and input elements with type submit or image.
+     * @category HTML attribute */
     protected ?string $formaction = null;
 
     /** 
@@ -238,13 +286,19 @@ class Input extends InlineElement
      */
     protected ?FormmethodEnum $formmethod = null;
 
-    /** When present, specifies that the form should not be validated when submitted. Only applies to submit buttons. Overrides the form's novalidate attribute. Element-specific to button and input elements with type submit or image. */
+    /** 
+     * When present, specifies that the form should not be validated when submitted. Only applies to submit buttons. Overrides the form's novalidate attribute. Element-specific to button and input elements with type submit or image.
+     * @category HTML attribute */
     protected ?bool $formnovalidate = null;
 
-    /** Specifies where to display the response after form submission. Can be a browsing context name or keyword (_self, _blank, _parent, _top). Only for submit buttons. Overrides the form's target attribute. Element-specific to button and input elements with type submit or image. */
+    /** 
+     * Specifies where to display the response after form submission. Can be a browsing context name or keyword (_self, _blank, _parent, _top). Only for submit buttons. Overrides the form's target attribute. Element-specific to button and input elements with type submit or image.
+     * @category HTML attribute */
     protected null|string|FormtargetEnum $formtarget = null;
 
-    /** Turns the button into a popover control by specifying the ID of the popover element to control. Creates implicit aria-details and aria-expanded relationships, establishes anchor positioning reference, and improves accessibility. Part of the Popover API. Element-specific to button and input elements. */
+    /** 
+     * Turns the button into a popover control by specifying the ID of the popover element to control. Creates implicit aria-details and aria-expanded relationships, establishes anchor positioning reference, and improves accessibility. Part of the Popover API. Element-specific to button and input elements.
+     * @category HTML attribute */
     protected ?string $popovertarget = null;
 
     /** 
@@ -254,16 +308,24 @@ class Input extends InlineElement
      */
     protected ?PopovertargetactionEnum $popovertargetaction = null;
 
-    /** The role attribute is used to define the purpose of an element. */
+    /** 
+     * The role attribute is used to define the purpose of an element.
+     * @category HTML attribute */
     protected ?RoleEnum $role = null;
 
-    /** Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) whose contents or presence are controlled by this element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaControls = null;
 
-    /** Identifies the element(s) that describes the object. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that describes the object. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaDescribedby = null;
 
-    /** Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space */
+    /** 
+     * Identifies the element(s) that labels the current element. Value is a list of IDs separated by a space
+     * @category HTML attribute */
     protected ?string $ariaLabelledby = null;
 
     /** 
@@ -280,7 +342,9 @@ class Input extends InlineElement
      */
     protected ?AriaInvalidEnum $ariaInvalid = null;
 
-    /** Defines a string value that labels the current element for assistive technologies. */
+    /** 
+     * Defines a string value that labels the current element for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaLabel = null;
 
     /** 
@@ -290,13 +354,19 @@ class Input extends InlineElement
      */
     protected ?AriaDisabledEnum $ariaDisabled = null;
 
-    /** References an element that provides additional details about the current element. */
+    /** 
+     * References an element that provides additional details about the current element.
+     * @category HTML attribute */
     protected ?string $ariaDetails = null;
 
-    /** Defines keyboard shortcuts available for the element. */
+    /** 
+     * Defines keyboard shortcuts available for the element.
+     * @category HTML attribute */
     protected ?string $ariaKeyshortcuts = null;
 
-    /** Provides a human-readable custom role description for assistive technologies. */
+    /** 
+     * Provides a human-readable custom role description for assistive technologies.
+     * @category HTML attribute */
     protected ?string $ariaRoledescription = null;
 
     /** 
@@ -320,7 +390,9 @@ class Input extends InlineElement
      */
     protected ?AriaAtomicEnum $ariaAtomic = null;
 
-    /** Indicates whether a collapsible UI element is expanded (true) or collapsed (false). */
+    /** 
+     * Indicates whether a collapsible UI element is expanded (true) or collapsed (false).
+     * @category HTML attribute */
     protected ?AriaExpandedEnum $ariaExpanded = null;
 
     /** 
@@ -330,10 +402,14 @@ class Input extends InlineElement
      */
     protected ?AriaHaspopupEnum $ariaHaspopup = null;
 
-    /** Indicates whether a toggle button is pressed (true, false, or mixed). */
+    /** 
+     * Indicates whether a toggle button is pressed (true, false, or mixed).
+     * @category HTML attribute */
     protected ?AriaPressedEnum $ariaPressed = null;
 
-    /** Defines the checked state for checkboxes, radio buttons, or toggle switches. */
+    /** 
+     * Defines the checked state for checkboxes, radio buttons, or toggle switches.
+     * @category HTML attribute */
     protected ?AriaCheckedEnum $ariaChecked = null;
 
     /** 
@@ -343,7 +419,9 @@ class Input extends InlineElement
      */
     protected ?AriaAutocompleteEnum $ariaAutocomplete = null;
 
-    /** Provides a placeholder hint for an input field. */
+    /** 
+     * Provides a placeholder hint for an input field.
+     * @category HTML attribute */
     protected ?string $ariaPlaceholder = null;
 
     /** 
@@ -360,16 +438,24 @@ class Input extends InlineElement
      */
     protected ?AriaRequiredEnum $ariaRequired = null;
 
-    /** Defines the maximum value for a range input. */
+    /** 
+     * Defines the maximum value for a range input.
+     * @category HTML attribute */
     protected ?int $ariaValuemax = null;
 
-    /** Defines the minimum value for a range input. */
+    /** 
+     * Defines the minimum value for a range input.
+     * @category HTML attribute */
     protected ?int $ariaValuemin = null;
 
-    /** Specifies the current value for a range input. */
+    /** 
+     * Specifies the current value for a range input.
+     * @category HTML attribute */
     protected ?int $ariaValuenow = null;
 
-    /** Provides a human-readable representation of the current value. */
+    /** 
+     * Provides a human-readable representation of the current value.
+     * @category HTML attribute */
     protected ?string $ariaValuetext = null;
 
 
