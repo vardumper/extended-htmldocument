@@ -1,68 +1,38 @@
 <?php
 
+namespace Tests\Trait;
+
 use Html\Trait\ClassResolverTrait;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
 
-class TestClassResolverExtra
-{
-    use ClassResolverTrait;
 
-    public function callGetClassesExtendingClass(string $base): array
-    {
-        return $this->getClassesExtendingClass($base);
-    }
-
-    public function callGetClassesImplementingInterface(string $interface): array
-    {
-        return $this->getClassesImplementingInterface($interface);
-    }
-
-    public function callGetElementByQualifiedName(string $name): ?string
-    {
-        return $this->getElementByQualifiedName($name);
-    }
-
-    public function callGetDelegatorFromElement(\DOM\Element $element): ?HTMLElementDelegator
-    {
-        return $this->getDelegatorFromElement($element);
-    }
-}
-
-// Simple classes for testing inheritance/interface discovery
-class BaseForResolverTest {}
-class SubForResolverTest extends BaseForResolverTest {}
-interface InterfaceForResolver {}
-class ImplementsResolverTest implements InterfaceForResolver {}
-
-// Test element delegator with Element attribute
-#[\Html\Mapping\Element('x-foo')]
-class TestElementDelegator extends HTMLElementDelegator {
-    public static string $QUALIFIED_NAME = 'x-foo';
-}
 
 test('getClassesExtendingClass finds subclasses', function () {
     $resolver = new TestClassResolverExtra();
 
-    $result = $resolver->callGetClassesExtendingClass(BaseForResolverTest::class);
+    $result = $resolver->callGetClassesExtendingClass(\Tests\Trait\ClassResolver\BaseForResolverTest::class);
 
-    expect(in_array(SubForResolverTest::class, $result))->toBeTrue();
+    expect(in_array(\Tests\Trait\ClassResolver\SubForResolverTest::class, $result))->toBeTrue();
 });
 
 test('getClassesImplementingInterface finds implementations', function () {
     $resolver = new TestClassResolverExtra();
 
-    $result = $resolver->callGetClassesImplementingInterface(InterfaceForResolver::class);
+    $result = $resolver->callGetClassesImplementingInterface(\Tests\Trait\ClassResolver\InterfaceForResolver::class);
 
-    expect(in_array(ImplementsResolverTest::class, $result))->toBeTrue();
+    expect(in_array(\Tests\Trait\ClassResolver\ImplementsResolverTest::class, $result))->toBeTrue();
 });
 
 test('getElementByQualifiedName finds class by attribute', function () {
     $resolver = new TestClassResolverExtra();
 
+    // ensure test element delegator class is autoloaded
+    class_exists(\Tests\Trait\ClassResolver\TestElementDelegator::class);
+
     $class = $resolver->callGetElementByQualifiedName('x-foo');
 
-    expect($class)->toBe(TestElementDelegator::class);
+    expect($class)->toBe(\Tests\Trait\ClassResolver\TestElementDelegator::class);
 });
 
 test('getDelegatorFromElement returns instance of the configured class', function () {
@@ -72,5 +42,5 @@ test('getDelegatorFromElement returns instance of the configured class', functio
     $resolver = new TestClassResolverExtra();
     $delegator = $resolver->callGetDelegatorFromElement($element);
 
-    expect($delegator)->toBeInstanceOf(TestElementDelegator::class);
+    expect($delegator)->toBeInstanceOf(\Tests\Trait\ClassResolver\TestElementDelegator::class);
 });

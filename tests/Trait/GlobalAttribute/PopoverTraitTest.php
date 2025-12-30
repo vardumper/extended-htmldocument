@@ -1,26 +1,10 @@
 <?php
 
+namespace Tests\Trait\GlobalAttribute;
+
 use Html\Trait\GlobalAttribute\PopoverTrait;
 use Html\Enum\PopoverEnum;
-
-class TestPopover
-{
-    use PopoverTrait;
-
-    public array $attributes = [];
-    public $delegated;
-
-    public function __construct()
-    {
-        $this->delegated = $this;
-    }
-
-    public function setAttribute(string $name, string $value)
-    {
-        $this->attributes[$name] = $value;
-        return $this;
-    }
-}
+use InvalidArgumentException;
 
 test('setPopover true sets AUTO and attribute', function () {
     $obj = new TestPopover();

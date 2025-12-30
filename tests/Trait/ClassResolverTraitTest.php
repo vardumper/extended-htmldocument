@@ -1,25 +1,12 @@
 <?php
 
+namespace Tests\Trait;
+
 use Html\Trait\ClassResolverTrait;
 
-// Create a test class that uses the trait
-class TestClassResolver
-{
-    use ClassResolverTrait;
-
-    public function callGetProjectRoot()
-    {
-        return $this->getProjectRoot();
-    }
-
-    public function callLoadAllRelevantPhpFiles()
-    {
-        return $this->loadAllRelevantPhpFiles();
-    }
-}
 
 test('can get project root directory', function () {
-    $testResolver = new TestClassResolver();
+    $testResolver = new \Tests\Trait\TestClassResolver();
 
     $projectRoot = $testResolver->callGetProjectRoot();
 
@@ -32,14 +19,14 @@ test('can get project root directory', function () {
 });
 
 test('can load all relevant PHP files without throwing exception', function () {
-    $testResolver = new TestClassResolver();
+    $testResolver = new \Tests\Trait\TestClassResolver();
 
     expect(fn () => $testResolver->callLoadAllRelevantPhpFiles())
         ->not->toThrow(Exception::class);
 });
 
 test('project root contains vendor directory', function () {
-    $testResolver = new TestClassResolver();
+    $testResolver = new \Tests\Trait\TestClassResolver();
 
     $vendorPath = $testResolver->callGetProjectRoot();
     expect(is_dir($vendorPath))
@@ -47,7 +34,7 @@ test('project root contains vendor directory', function () {
 });
 
 test('project root contains autoload.php', function () {
-    $testResolver = new TestClassResolver();
+    $testResolver = new \Tests\Trait\TestClassResolver();
 
     $projectRoot = $testResolver->callGetProjectRoot();
     $autoloadPath = $projectRoot . '/autoload.php';
