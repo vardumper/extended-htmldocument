@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1767121717">
-  <project timestamp="1767121717" name="Clover Coverage">
+<coverage generated="1767123343">
+  <project timestamp="1767123343" name="Clover Coverage">
     <package name="Html\Delegator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/HTMLDocumentDelegator.php">
         <class name="Html\Delegator\HTMLDocumentDelegator" namespace="Html\Delegator">
@@ -3693,72 +3693,71 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/AutocorrectTrait.php">
         <class name="Html\Trait\GlobalAttribute\AutocorrectTrait" namespace="Html\Trait\GlobalAttribute">
-          <metrics complexity="8" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="15" coveredelements="0"/>
+          <metrics complexity="8" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="12" elements="15" coveredelements="13"/>
         </class>
-        <line num="17" type="method" name="setAutocorrect" visibility="public" complexity="7" crap="56" count="0"/>
-        <line num="20" type="stmt" count="0"/>
-        <line num="21" type="stmt" count="0"/>
+        <line num="17" type="method" name="setAutocorrect" visibility="public" complexity="7" crap="7.03" count="3"/>
+        <line num="20" type="stmt" count="3"/>
+        <line num="21" type="stmt" count="2"/>
         <line num="22" type="stmt" count="0"/>
-        <line num="23" type="stmt" count="0"/>
-        <line num="24" type="stmt" count="0"/>
-        <line num="25" type="stmt" count="0"/>
-        <line num="28" type="stmt" count="0"/>
-        <line num="29" type="stmt" count="0"/>
-        <line num="31" type="stmt" count="0"/>
-        <line num="32" type="stmt" count="0"/>
-        <line num="33" type="stmt" count="0"/>
-        <line num="34" type="stmt" count="0"/>
-        <line num="37" type="method" name="getAutocorrect" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="39" type="stmt" count="0"/>
-        <metrics loc="42" ncloc="34" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="0" elements="15" coveredelements="0"/>
+        <line num="23" type="stmt" count="1"/>
+        <line num="24" type="stmt" count="1"/>
+        <line num="25" type="stmt" count="2"/>
+        <line num="28" type="stmt" count="2"/>
+        <line num="29" type="stmt" count="1"/>
+        <line num="31" type="stmt" count="2"/>
+        <line num="32" type="stmt" count="2"/>
+        <line num="33" type="stmt" count="2"/>
+        <line num="34" type="stmt" count="2"/>
+        <line num="37" type="method" name="getAutocorrect" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="39" type="stmt" count="2"/>
+        <metrics loc="42" ncloc="34" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="12" elements="15" coveredelements="13"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/AutofocusTrait.php">
         <class name="Html\Trait\GlobalAttribute\AutofocusTrait" namespace="Html\Trait\GlobalAttribute">
-          <metrics complexity="8" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="1" elements="13" coveredelements="2"/>
+          <metrics complexity="8" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="10" elements="13" coveredelements="11"/>
         </class>
-        <line num="18" type="method" name="setAutofocus" visibility="public" complexity="7" crap="56" count="0"/>
-        <line num="21" type="stmt" count="0"/>
-        <line num="22" type="stmt" count="0"/>
-        <line num="23" type="stmt" count="0"/>
+        <line num="18" type="method" name="setAutofocus" visibility="public" complexity="7" crap="7.05" count="4"/>
+        <line num="21" type="stmt" count="4"/>
+        <line num="22" type="stmt" count="2"/>
+        <line num="23" type="stmt" count="1"/>
         <line num="24" type="stmt" count="0"/>
-        <line num="25" type="stmt" count="0"/>
-        <line num="26" type="stmt" count="0"/>
-        <line num="28" type="stmt" count="0"/>
-        <line num="29" type="stmt" count="0"/>
-        <line num="30" type="stmt" count="0"/>
-        <line num="32" type="stmt" count="0"/>
-        <line num="35" type="method" name="getAutofocus" visibility="public" complexity="1" crap="1" count="3"/>
-        <line num="37" type="stmt" count="3"/>
-        <metrics loc="40" ncloc="33" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="1" elements="13" coveredelements="2"/>
+        <line num="25" type="stmt" count="1"/>
+        <line num="26" type="stmt" count="2"/>
+        <line num="28" type="stmt" count="3"/>
+        <line num="29" type="stmt" count="2"/>
+        <line num="30" type="stmt" count="2"/>
+        <line num="32" type="stmt" count="3"/>
+        <line num="35" type="method" name="getAutofocus" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="37" type="stmt" count="5"/>
+        <metrics loc="40" ncloc="33" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="10" elements="13" coveredelements="11"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/ClassTrait.php">
         <class name="Html\Trait\GlobalAttribute\ClassTrait" namespace="Html\Trait\GlobalAttribute">
-          <metrics complexity="10" methods="6" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="8" elements="23" coveredelements="11"/>
+          <metrics complexity="10" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="15" elements="22" coveredelements="20"/>
         </class>
-        <line num="15" type="method" name="setClass" visibility="public" complexity="5" crap="9.96" count="3"/>
-        <line num="18" type="stmt" count="3"/>
-        <line num="20" type="stmt" count="0"/>
-        <line num="21" type="stmt" count="0"/>
-        <line num="22" type="stmt" count="0"/>
-        <line num="23" type="stmt" count="0"/>
-        <line num="24" type="stmt" count="0"/>
-        <line num="25" type="stmt" count="0"/>
-        <line num="27" type="stmt" count="0"/>
-        <line num="31" type="stmt" count="3"/>
-        <line num="32" type="stmt" count="3"/>
-        <line num="33" type="stmt" count="3"/>
-        <line num="35" type="stmt" count="3"/>
-        <line num="38" type="method" name="getClass" visibility="public" complexity="1" crap="1" count="2"/>
-        <line num="40" type="stmt" count="2"/>
-        <line num="46" type="method" name="getClassName" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="48" type="stmt" count="1"/>
+        <line num="15" type="method" name="setClass" visibility="public" complexity="5" crap="5" count="7"/>
+        <line num="18" type="stmt" count="7"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <line num="24" type="stmt" count="1"/>
+        <line num="25" type="stmt" count="1"/>
+        <line num="27" type="stmt" count="1"/>
+        <line num="31" type="stmt" count="7"/>
+        <line num="32" type="stmt" count="6"/>
+        <line num="33" type="stmt" count="6"/>
+        <line num="35" type="stmt" count="7"/>
+        <line num="38" type="method" name="getClass" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="40" type="stmt" count="5"/>
+        <line num="46" type="method" name="getClassName" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="48" type="stmt" count="2"/>
         <line num="54" type="method" name="setClassName" visibility="public" complexity="1" crap="1" count="3"/>
         <line num="56" type="stmt" count="3"/>
-        <line num="62" type="method" name="getClasses" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="64" type="stmt" count="0"/>
+        <line num="62" type="method" name="getClasses" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="64" type="stmt" count="1"/>
         <line num="70" type="method" name="setClasses" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="72" type="stmt" count="0"/>
-        <metrics loc="75" ncloc="53" classes="1" methods="6" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="8" elements="23" coveredelements="11"/>
+        <metrics loc="75" ncloc="52" classes="1" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="15" elements="22" coveredelements="20"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/ContenteditableTrait.php">
         <class name="Html\Trait\GlobalAttribute\ContenteditableTrait" namespace="Html\Trait\GlobalAttribute">
@@ -3828,22 +3827,22 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/HiddenTrait.php">
         <class name="Html\Trait\GlobalAttribute\HiddenTrait" namespace="Html\Trait\GlobalAttribute">
-          <metrics complexity="7" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="6" elements="13" coveredelements="7"/>
+          <metrics complexity="7" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="9" elements="13" coveredelements="10"/>
         </class>
-        <line num="19" type="method" name="setHidden" visibility="public" complexity="6" crap="10.50" count="1"/>
-        <line num="22" type="stmt" count="1"/>
-        <line num="23" type="stmt" count="0"/>
+        <line num="19" type="method" name="setHidden" visibility="public" complexity="6" crap="6.29" count="4"/>
+        <line num="22" type="stmt" count="4"/>
+        <line num="23" type="stmt" count="1"/>
         <line num="24" type="stmt" count="0"/>
         <line num="25" type="stmt" count="0"/>
-        <line num="26" type="stmt" count="0"/>
-        <line num="27" type="stmt" count="0"/>
-        <line num="29" type="stmt" count="1"/>
-        <line num="30" type="stmt" count="1"/>
-        <line num="31" type="stmt" count="1"/>
-        <line num="33" type="stmt" count="1"/>
-        <line num="36" type="method" name="getHidden" visibility="public" complexity="1" crap="1" count="4"/>
-        <line num="38" type="stmt" count="4"/>
-        <metrics loc="41" ncloc="34" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="6" elements="13" coveredelements="7"/>
+        <line num="26" type="stmt" count="1"/>
+        <line num="27" type="stmt" count="1"/>
+        <line num="29" type="stmt" count="3"/>
+        <line num="30" type="stmt" count="2"/>
+        <line num="31" type="stmt" count="2"/>
+        <line num="33" type="stmt" count="3"/>
+        <line num="36" type="method" name="getHidden" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="38" type="stmt" count="5"/>
+        <metrics loc="41" ncloc="34" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="9" elements="13" coveredelements="10"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/IdTrait.php">
         <class name="Html\Trait\GlobalAttribute\IdTrait" namespace="Html\Trait\GlobalAttribute">
@@ -3863,15 +3862,15 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/InertTrait.php">
         <class name="Html\Trait\GlobalAttribute\InertTrait" namespace="Html\Trait\GlobalAttribute">
-          <metrics complexity="3" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
+          <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
         </class>
-        <line num="17" type="method" name="setInert" visibility="public" complexity="2" crap="6" count="0"/>
-        <line num="19" type="stmt" count="0"/>
-        <line num="20" type="stmt" count="0"/>
-        <line num="21" type="stmt" count="0"/>
-        <line num="24" type="method" name="getInert" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="26" type="stmt" count="0"/>
-        <metrics loc="29" ncloc="23" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
+        <line num="17" type="method" name="setInert" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="19" type="stmt" count="2"/>
+        <line num="20" type="stmt" count="2"/>
+        <line num="21" type="stmt" count="2"/>
+        <line num="24" type="method" name="getInert" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="26" type="stmt" count="2"/>
+        <metrics loc="29" ncloc="23" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/InputmodeTrait.php">
         <class name="Html\Trait\GlobalAttribute\InputmodeTrait" namespace="Html\Trait\GlobalAttribute">
@@ -3889,14 +3888,14 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/IsTrait.php">
         <class name="Html\Trait\GlobalAttribute\IsTrait" namespace="Html\Trait\GlobalAttribute">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
         </class>
-        <line num="17" type="method" name="setIs" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="19" type="stmt" count="0"/>
-        <line num="21" type="stmt" count="0"/>
-        <line num="24" type="method" name="getIs" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="26" type="stmt" count="0"/>
-        <metrics loc="29" ncloc="22" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+        <line num="17" type="method" name="setIs" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="19" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="24" type="method" name="getIs" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="26" type="stmt" count="1"/>
+        <metrics loc="29" ncloc="22" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/LangTrait.php">
         <class name="Html\Trait\GlobalAttribute\LangTrait" namespace="Html\Trait\GlobalAttribute">
@@ -3911,14 +3910,14 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/PartTrait.php">
         <class name="Html\Trait\GlobalAttribute\PartTrait" namespace="Html\Trait\GlobalAttribute">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
         </class>
-        <line num="17" type="method" name="setPart" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="19" type="stmt" count="0"/>
-        <line num="21" type="stmt" count="0"/>
-        <line num="24" type="method" name="getPart" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="26" type="stmt" count="0"/>
-        <metrics loc="29" ncloc="22" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+        <line num="17" type="method" name="setPart" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="19" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="24" type="method" name="getPart" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="26" type="stmt" count="1"/>
+        <metrics loc="29" ncloc="22" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/PopoverTrait.php">
         <class name="Html\Trait\GlobalAttribute\PopoverTrait" namespace="Html\Trait\GlobalAttribute">
@@ -3948,14 +3947,14 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/RoleTrait.php">
         <class name="Html\Trait\GlobalAttribute\RoleTrait" namespace="Html\Trait\GlobalAttribute">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
         </class>
-        <line num="17" type="method" name="setRole" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="19" type="stmt" count="0"/>
-        <line num="21" type="stmt" count="0"/>
-        <line num="24" type="method" name="getRole" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="26" type="stmt" count="0"/>
-        <metrics loc="29" ncloc="22" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
+        <line num="17" type="method" name="setRole" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="19" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="24" type="method" name="getRole" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="26" type="stmt" count="1"/>
+        <metrics loc="29" ncloc="22" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/SlotTrait.php">
         <class name="Html\Trait\GlobalAttribute\SlotTrait" namespace="Html\Trait\GlobalAttribute">
@@ -4041,6 +4040,6 @@
         <metrics loc="43" ncloc="37" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="11" elements="15" coveredelements="12"/>
       </file>
     </package>
-    <metrics files="118" loc="8817" ncloc="6949" classes="110" methods="342" coveredmethods="276" conditionals="0" coveredconditionals="0" statements="2998" coveredstatements="2676" elements="3340" coveredelements="2952"/>
+    <metrics files="118" loc="8817" ncloc="6948" classes="110" methods="342" coveredmethods="287" conditionals="0" coveredconditionals="0" statements="2997" coveredstatements="2720" elements="3339" coveredelements="3007"/>
   </project>
 </coverage>

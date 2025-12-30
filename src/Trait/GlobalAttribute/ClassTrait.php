@@ -19,10 +19,10 @@ trait ClassTrait
             /** @todo be more permissive here? or stricter (as is) for max css compatbility */
             $className = array_filter($className, 'strlen'); // remove empty values
             foreach ($className as &$name) {
-                $name = preg_replace('/[^a-zA-Z0-9_-]+/', '', $name);
-                $className = preg_replace('/[^a-zA-Z0-9_-]+/', ' ', $className);
-                $className = preg_replace('/\s+/', ' ', $className);
-                $className = trim($className);
+                // sanitize individual class name and normalize whitespace
+                $name = preg_replace('/[^a-zA-Z0-9_-]+/', ' ', $name);
+                $name = preg_replace('/\s+/', ' ', $name);
+                $name = trim($name);
             }
             $className = implode(' ', $className);
         }
