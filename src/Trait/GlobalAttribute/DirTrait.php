@@ -12,7 +12,7 @@ trait DirTrait
     /**
      * Represents the text direction of the element
      */
-    private ?DirectionEnum $dir = null;
+    protected ?DirectionEnum $dir = null;
 
     /**
      * @todo sounds like enum

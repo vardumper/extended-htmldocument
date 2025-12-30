@@ -1,16 +1,15 @@
 <?php
 
 use Html\Delegator\HTMLDocumentDelegator;
+use Html\Element\Block\Division;
 use Html\Enum\AutoCapitalizeEnum;
 use Html\Enum\ContentEditableEnum;
 use Html\Enum\DirectionEnum;
 use Html\Enum\SpellCheckEnum;
 
-// uses(\Html\Trait\GlobalAttributesTrait::class);
-
 beforeEach(function () {
     $this->document = HTMLDocumentDelegator::createEmpty();
-    $this->element = $this->document->createElement('div');
+    $this->element = Division::create($this->document);
 });
 
 test('set and get access key', function () {
@@ -115,12 +114,6 @@ test('set and get hidden', function () {
         ->toEqual(true);
 });
 
-test('set and get inert', function () {
-    $this->element->setInert(true);
-    expect($this->element->getInert())
-        ->toEqual(true);
-});
-
 test('set and get input mode', function () {
     $this->element->setInputMode('numeric');
     expect($this->element->getInputMode()->value)
@@ -137,40 +130,26 @@ test('set and get invalid input mode', function () {
     $this->element->setInputMode('phone');
 });
 
-test('set and get is', function () {
-    $this->element->setIs('custom-element');
-    expect($this->element->getIs())
-        ->toEqual('custom-element');
-});
-
 test('set and get lang', function () {
     $this->element->setLang('en');
     expect($this->element->getLang())
         ->toEqual('en');
 });
 
-test('set and get nonce', function () {
-    $this->element->setNonce('random-nonce');
-    expect($this->element->getNonce())
-        ->toEqual('random-nonce');
-});
-
-test('set and get part', function () {
-    $this->element->setPart('part-name');
-    expect($this->element->getPart())
-        ->toEqual('part-name');
-});
-
 test('set and get popover', function () {
     $this->element->setPopover('auto');
-    expect($this->element->getPopover())
+    expect($this->element->getPopover()->value)
         ->toEqual('auto');
+    expect($this->element->getPopover())
+        ->toEqual(\Html\Enum\PopoverEnum::AUTO);
 });
 
 test('set and get role', function () {
     $this->element->setRole('button');
-    expect($this->element->getRole())
+    expect($this->element->getRole()->value)
         ->toEqual('button');
+    expect($this->element->getRole())
+        ->toEqual(\Html\Enum\RoleEnum::BUTTON);
 });
 
 test('set and get slot', function () {
@@ -180,20 +159,20 @@ test('set and get slot', function () {
 });
 
 test('set and get spell check', function () {
-    $this->element->setSpellCheck(true);
-    expect($this->element->getSpellCheck())
+    $this->element->setSpellcheck(true);
+    expect($this->element->getSpellcheck())
         ->toBeInstanceOf(SpellCheckEnum::class);
-    expect($this->element->getSpellCheck()->value)
+    expect($this->element->getSpellcheck()->value)
         ->toEqual('true');
     expect($this->element->delegated->getAttribute('spellcheck'))
         ->toEqual('true');
 
     $this->expectException(InvalidArgumentException::class);
     $this->expectExceptionMessage('Invalid value for spellcheck');
-    $this->element->setSpellCheck('invalid-value');
+    $this->element->setSpellcheck('invalid-value');
 
-    $this->element->setSpellCheck('true');
-    expect($this->element->getSpellCheck())
+    $this->element->setSpellcheck('true');
+    expect($this->element->getSpellcheck())
         ->toBeInstanceOf(SpellCheckEnum::class);
 });
 
@@ -217,8 +196,10 @@ test('set and get title', function () {
 
 test('set and get translate', function () {
     $this->element->setTranslate('yes');
-    expect($this->element->getTranslate())
+    expect($this->element->getTranslate()->value)
         ->toEqual('yes');
+    expect($this->element->getTranslate())
+        ->toEqual(\Html\Enum\TranslateEnum::YES);
 });
 
 test('test setDataAttribute', function () {

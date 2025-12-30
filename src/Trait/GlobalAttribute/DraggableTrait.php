@@ -19,11 +19,8 @@ trait DraggableTrait
         if (is_string($draggable) && in_array($draggable, ['true', 'false'])) {
             $draggable = $draggable === 'true' ? true : false;
         }
-        if ($draggable) {
-            $this->draggable = $draggable;
-            $this->setAttribute('draggable', $draggable);
-            $this->delegated->setAttribute('draggable', $draggable);
-        }
+        $this->draggable = $draggable;
+        $this->setAttribute('draggable', $draggable ? 'true' : 'false');
         return $this;
     }
 
