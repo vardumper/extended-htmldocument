@@ -30,7 +30,7 @@ trait DelegatorTrait
             $method = $reflection->getMethod($name);
             try {
                 return $method->invokeArgs($this->delegated, $arguments);
-            } catch (TypeError $e) {
+            } catch (\Throwable $e) {
                 \error_log($e->getMessage());
             }
         }

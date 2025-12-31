@@ -1,31 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * This file is auto-generated. Do not edit manually.
+ * This file is retained for backward compatibility and will be removed in a
+ * future release. Use `ScriptTypeEnum` instead.
  *
- * TypeScriptEnum - Specifies the media type of the linked resource.
- *
- * @generated 2025-11-01 14:18:41
- * @subpackage Html\Enum
- * @link https://vardumper.github.io/extended-htmldocument/index
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/type/
- * @tutorial an example value can be text/javascript
+ * @deprecated Use Html\Enum\ScriptTypeEnum
  */
 
 namespace Html\Enum;
 
-enum TypeScriptEnum: string
-{
-    case TEXT_JAVASCRIPT = 'text/javascript'; // default
-    case MODULE = 'module';
-
-    public static function getQualifiedName(): string
-    {
-        return 'type';
-    }
-
-    public static function getDefault(): self
-    {
-        return self::TEXT_JAVASCRIPT;
-    }
+if (!\class_exists(__NAMESPACE__ . '\\TypeScriptEnum')) {
+    \class_alias(__NAMESPACE__ . '\\ScriptTypeEnum', __NAMESPACE__ . '\\TypeScriptEnum');
 }

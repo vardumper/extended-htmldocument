@@ -28,4 +28,6 @@ interface HTMLDocumentDelegatorInterface
     public function createElement(string $qualifiedName): HTMLElementDelegator;
 
     public function getElementsByTagName(string $name): NodeListDelegator;
+
+    public function appendChild(HTMLElementDelegator $child): void;
 }

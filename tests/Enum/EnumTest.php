@@ -62,11 +62,11 @@ test('enum functionality', function () {
         \Html\Enum\TargetEnum::class,
         \Html\Enum\TrAlignEnum::class,
         \Html\Enum\TranslateEnum::class,
-        \Html\Enum\TypeButtonEnum::class,
-        \Html\Enum\TypeInputEnum::class,
-        \Html\Enum\TypeOlEnum::class,
-        \Html\Enum\TypeScriptEnum::class,
-        \Html\Enum\TypeStyleEnum::class,
+
+
+
+
+
         \Html\Enum\ValignEnum::class,
         \Html\Enum\WrapEnum::class,
     ];

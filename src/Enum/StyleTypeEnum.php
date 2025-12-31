@@ -4,7 +4,7 @@
  *
  * StyleTypeEnum - Specifies the media type of the inline styles.
  * 
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-31 00:08:48
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

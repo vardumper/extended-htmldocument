@@ -17,7 +17,7 @@ trait ClassTrait
         // cast to string
         if (is_array($className)) {
             /** @todo be more permissive here? or stricter (as is) for max css compatbility */
-            $className = array_filter($className, 'strlen'); // remove empty values
+            $className = array_filter($className, fn ($v) => strlen((string) $v) > 0); // remove empty values
             foreach ($className as &$name) {
                 // sanitize individual class name and normalize whitespace
                 $name = preg_replace('/[^a-zA-Z0-9_-]+/', ' ', $name);
@@ -28,7 +28,7 @@ trait ClassTrait
         }
 
         // not empty? set it
-        if (is_string($className) && ! empty($className)) {
+        if (! empty($className)) {
             $this->className = $className;
             $this->delegated->className = $className;
         }

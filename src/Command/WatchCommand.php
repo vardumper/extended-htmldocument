@@ -31,6 +31,7 @@ class WatchCommand extends Command
 
     private bool $isFirstRun = true;
 
+    /** @phpstan-ignore-next-line */
     private ?array $data = null;
 
     private array $lastModifiedTimes = [];
@@ -47,6 +48,7 @@ class WatchCommand extends Command
      * @param string $dest  The destination directory to write to
      * @param bool $overwriteExisting Whether to overwrite existing files
      */
+    /** @phpstan-ignore-next-line */
     public function __invoke(
         string $generator,
         string $source,

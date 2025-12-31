@@ -4,7 +4,7 @@
  *
  * EnctypeEnum - Specifies how form data should be encoded before sending it to a server. Only used if the method attribute is set to post. Default is application/x-www-form-urlencoded.
  * 
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-31 00:08:48
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

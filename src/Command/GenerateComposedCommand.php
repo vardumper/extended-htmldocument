@@ -33,7 +33,9 @@ class GenerateComposedCommand extends Command
 
     private const HTML_DEFINITION_PATH = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
 
+    /** @phpstan-ignore-next-line */
     private ?array $data = null;
+    private SymfonyStyle $io;
 
     public function __invoke(
         string $generator,
@@ -43,7 +45,8 @@ class GenerateComposedCommand extends Command
         bool $overwriteExisting = false,
         ?string $specification = null
     ): int {
-        $io = new SymfonyStyle($input, $output);
+        $this->io = new SymfonyStyle($input, $output);
+        $io = $this->io;
 
         if (! is_dir($dest)) {
             $io->error("The destination path '{$dest}' is not a valid directory.");
@@ -62,6 +65,8 @@ class GenerateComposedCommand extends Command
         }
 
         $templateGenerators = $this->getGenerators($generators);
+        $generatedCount = 0;
+        $skippedCount = 0;
         foreach ($templateGenerators as $generator => $generatorInstance) {
 
             // Check if generator supports composed element rendering
@@ -77,8 +82,6 @@ class GenerateComposedCommand extends Command
             }
 
             $dom = HTMLDocumentDelegator::createEmpty();
-            $generatedCount = 0;
-            $skippedCount = 0;
 
             // Create content directory
             $contentDir = rtrim($dest, \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR . $generator . \DIRECTORY_SEPARATOR . 'composed';
@@ -87,7 +90,7 @@ class GenerateComposedCommand extends Command
             }
 
             foreach ($elements as $className) {
-                /** @var class-string<\Html\Interface\HTMLElementInterface> $className */
+                /** @var class-string<\Html\Interface\HTMLElementDelegatorInterface> $className */
                 $elementInstance = $className::create($dom);
 
                 // Check if element has SPECIFIC child requirements (not empty $parentOf)
@@ -106,8 +109,8 @@ class GenerateComposedCommand extends Command
                     continue;
                 }
 
-                $fileName = $elementInstance::QUALIFIED_NAME . '.composed.' . $generatorInstance->getExtension();
-                $outFile = $contentDir . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME . \DIRECTORY_SEPARATOR . $fileName;
+                $fileName = $elementInstance::getQualifiedName() . '.composed.' . $generatorInstance->getExtension();
+                $outFile = $contentDir . \DIRECTORY_SEPARATOR . $elementInstance::getQualifiedName() . \DIRECTORY_SEPARATOR . $fileName;
                 $outDir = dirname($outFile);
 
                 if (! is_dir($outDir)) {

@@ -1,51 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * This file is auto-generated. Do not edit manually.
+ * This file is retained for backward compatibility and will be removed in a
+ * future release. Use `InputTypeEnum` instead.
  *
- * TypeInputEnum - Specifies the type of the input. Defaults to text if the attribute is omitted
- *
- * @generated 2025-11-01 14:18:41
- * @subpackage Html\Enum
- * @link https://vardumper.github.io/extended-htmldocument/index
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/type/
- * @tutorial an example value can be text
+ * @deprecated Use Html\Enum\InputTypeEnum
  */
 
 namespace Html\Enum;
 
-enum TypeInputEnum: string
-{
-    case BUTTON = 'button';
-    case CHECKBOX = 'checkbox';
-    case COLOR = 'color';
-    case DATE = 'date';
-    case DATETIME_LOCAL = 'datetime-local';
-    case EMAIL = 'email';
-    case FILE = 'file';
-    case HIDDEN = 'hidden';
-    case IMAGE = 'image';
-    case MONTH = 'month';
-    case NUMBER = 'number';
-    case PASSWORD = 'password';
-    case RADIO = 'radio';
-    case RANGE = 'range';
-    case RESET = 'reset';
-    case SEARCH = 'search';
-    case SUBMIT = 'submit';
-    case TEL = 'tel';
-    case TEXT = 'text'; // default
-    case TIME = 'time';
-    case URL = 'url';
-    case WEEK = 'week';
-
-    public static function getQualifiedName(): string
-    {
-        return 'type';
-    }
-
-    public static function getDefault(): self
-    {
-        return self::TEXT;
-    }
+if (!\class_exists(__NAMESPACE__ . '\\TypeInputEnum')) {
+    \class_alias(__NAMESPACE__ . '\\InputTypeEnum', __NAMESPACE__ . '\\TypeInputEnum');
 }

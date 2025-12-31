@@ -27,7 +27,7 @@ trait AutofocusTrait
       }
       if ($autofocus) {
          $this->autofocus = $autofocus;
-         $this->delegated->setAttribute('autofocus', $autofocus ? 'true' : 'false');
+         $this->delegated->setAttribute('autofocus', 'true');
       }
       return $this;
    }

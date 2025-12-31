@@ -193,12 +193,10 @@ final class CreateClassCommand extends Command
         $traitNames = [];
         foreach ($allowedGlobalAttributes as $attribute) {
             $traitName = \ucwords(\str_replace(['-', '*'], '', $attribute)) . 'Trait';
-            if ($traitName !== null) {
-                if (! in_array("Html\Trait\GlobalAttribute", $this->uses, true)) {
-                    $this->uses[] = "Html\Trait\GlobalAttribute";
-                }
-                $traitNames[] = $traitName;
+            if (! in_array("Html\Trait\GlobalAttribute", $this->uses, true)) {
+                $this->uses[] = "Html\Trait\GlobalAttribute";
             }
+            $traitNames[] = $traitName;
         }
 
         if (empty($traitNames)) {

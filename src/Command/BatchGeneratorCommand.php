@@ -30,6 +30,7 @@ class BatchGeneratorCommand extends Command
 
     private const HTML_DEFINITION_PATH = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
 
+    /** @phpstan-ignore-next-line */
     private ?array $data = null;
 
     private SymfonyStyle $io;
@@ -74,7 +75,7 @@ class BatchGeneratorCommand extends Command
         $templateGenerators = $this->getGenerators($generators);
         foreach ($templateGenerators as $name => $generatorInstance) {
             foreach ($elements as $className) {
-                /** @var class-string<\Html\Interface\HTMLElementInterface> $className */
+                /** @var class-string<\Html\Interface\HTMLElementDelegatorInterface> $className */
                 $elementInstance = $className::create($dom);
                 $output = $generatorInstance->render($elementInstance);
                 if ($output === null) {
@@ -82,7 +83,7 @@ class BatchGeneratorCommand extends Command
                     continue;
                 }
                 $elementShortName = (new ReflectionClass($className))->getShortName();
-                $fileName = $elementInstance::QUALIFIED_NAME . '.' . $generatorInstance->getExtension();
+                $fileName = $elementInstance::getQualifiedName() . '.' . $generatorInstance->getExtension();
                 $level = $this->determineLevel($className);
 
                 // For twig-component, use bundle structure: src/{Twig|Resources}/{Block|Inline|Void}
@@ -92,12 +93,12 @@ class BatchGeneratorCommand extends Command
                         . \DIRECTORY_SEPARATOR . 'src'
                         . \DIRECTORY_SEPARATOR . 'Resources'
                         . \DIRECTORY_SEPARATOR . $level
-                        . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME;
+                        . \DIRECTORY_SEPARATOR . $elementInstance::getQualifiedName();
                 } else {
                     $componentDir = rtrim($dest, \DIRECTORY_SEPARATOR)
                         . \DIRECTORY_SEPARATOR . $name
                         . \DIRECTORY_SEPARATOR . $level
-                        . \DIRECTORY_SEPARATOR . $elementInstance::QUALIFIED_NAME;
+                        . \DIRECTORY_SEPARATOR . $elementInstance::getQualifiedName();
                 }
 
                 if (! is_dir($componentDir)) {
@@ -115,7 +116,7 @@ class BatchGeneratorCommand extends Command
                 // Generate PHP component class for twig-component generator
                 if ($name === 'twig-component' && method_exists($generatorInstance, 'renderComponentClass')) {
                     $componentClass = $generatorInstance->renderComponentClass($elementInstance);
-                    $componentName = $this->getSafeComponentClassName(ucfirst($elementInstance::QUALIFIED_NAME));
+                    $componentName = $this->getSafeComponentClassName(ucfirst($elementInstance::getQualifiedName()));
 
                     // PHP classes go in src/Twig/{Block|Inline|Void}
                     $levelCap = ucfirst($level);

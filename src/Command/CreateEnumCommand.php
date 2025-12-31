@@ -71,50 +71,48 @@ final class CreateEnumCommand extends Command
                     }
                     $attributes['elements'] = $elementsWithAttribute;
                 }
-                // throw new Exception(
-                //     'An enum attribute must have elements. Add elements or change type to string.'
-                // );
-            }
-            // Reset cases for each enum
-            $cases = '';
-            $className = ucfirst($element);
 
-            // If this is a generic enum (most common, >50% usage), don't prefix with element name
-            if (isset($attributes['_is_generic']) && $attributes['_is_generic']) {
-                // Keep generic name like "RoleEnum"
+                // Reset cases for each enum
+                $cases = '';
                 $className = ucfirst($element);
-            } elseif (isset($attributes['_element_specific']) && $attributes['_element_specific']) {
-                // Element-specific enum for less common cases, prefix with element name
-                $className = ucfirst($attributes['elements'][0]) . $className;
-            } elseif ($this->manyElementsHaveAttribute($element) && count($attributes['elements']) === 1) {
-                $className .= ucfirst($attributes['elements'][0]);
+
+                // If this is a generic enum (most common, >50% usage), don't prefix with element name
+                if (isset($attributes['_is_generic']) && $attributes['_is_generic']) {
+                    // Keep generic name like "RoleEnum"
+                    $className = ucfirst($element);
+                } elseif (isset($attributes['_element_specific']) && $attributes['_element_specific']) {
+                    // Element-specific enum for less common cases, prefix with element name
+                    $className = ucfirst($attributes['elements'][0]) . $className;
+                } elseif ($this->manyElementsHaveAttribute($element) && count($attributes['elements']) === 1) {
+                    $className .= ucfirst($attributes['elements'][0]);
+                }
+
+                $defaultCase = $this->getCaseName((string) ($attributes['defaultValue'] ?? ''));
+                // Deduplicate choices to avoid duplicate enum cases
+                $uniqueChoices = array_unique($attributes['choices']);
+                foreach ($uniqueChoices as $option) {
+                    $caseName = $this->getCaseName($option);
+                    $default = $caseName === $defaultCase ? ' // default' : '';
+                    $cases .= sprintf("    case %s = '%s';%s", $caseName, $option, $default) . \PHP_EOL;
+                }
+
+                $className = $this->getClassName($className . 'Enum');
+                $parameters = [
+                    'namespace' => 'Html\Enum',
+                    'class_name' => $className,
+                    'cases' => rtrim($cases),
+                    'description' => $attributes['description'] ?? '',
+                    'element_name' => $element,
+                    'defaultValue' => $attributes['defaultValue'] ?? '',
+                    'defaultCase' => $defaultCase,
+                    'generatedAt' => $generatedAt,
+                ];
+
+                $path = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Enum' . \DIRECTORY_SEPARATOR . "{$className}.php";
+                $templatePath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'templates' . \DIRECTORY_SEPARATOR . 'Enum.tpl.php';
+                $this->createEnumFile($templatePath, $parameters, $path);
+                $io->success("Enumeration class for '{$element}' created successfully.");
             }
-
-            $defaultCase = $this->getCaseName((string) $attributes['defaultValue'] ?? '');
-            // Deduplicate choices to avoid duplicate enum cases
-            $uniqueChoices = array_unique($attributes['choices']);
-            foreach ($uniqueChoices as $option) {
-                $caseName = $this->getCaseName($option);
-                $default = $caseName === $defaultCase ? ' // default' : '';
-                $cases .= sprintf("    case %s = '%s';%s", $caseName, $option, $default) . \PHP_EOL;
-            }
-
-            $className = $this->getClassName($className . 'Enum');
-            $parameters = [
-                'namespace' => 'Html\Enum',
-                'class_name' => $className,
-                'cases' => rtrim($cases),
-                'description' => $attributes['description'] ?? '',
-                'element_name' => $element,
-                'defaultValue' => $attributes['defaultValue'] ?? '',
-                'defaultCase' => $defaultCase,
-                'generatedAt' => $generatedAt,
-            ];
-
-            $path = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Enum' . \DIRECTORY_SEPARATOR . "{$className}.php";
-            $templatePath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'templates' . \DIRECTORY_SEPARATOR . 'Enum.tpl.php';
-            $this->createEnumFile($templatePath, $parameters, $path);
-            $io->success("Enumeration class for '{$element}' created successfully.");
         }
 
         return Command::SUCCESS;
@@ -138,6 +136,7 @@ final class CreateEnumCommand extends Command
     {
         // special case single chars
         if (strlen($option) === 1) {
+            $ret = '';
             if (strtolower($option) === $option) {
                 $ret = 'L' . $option;
             }

@@ -1,34 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * This file is auto-generated. Do not edit manually.
+ * This file is retained for backward compatibility and will be removed in a
+ * future release. Use `OlTypeEnum` instead.
  *
- * TypeOlEnum - Specifies the numbering type of the ordered list.
- *
- * @generated 2025-11-01 14:18:41
- * @subpackage Html\Enum
- * @link https://vardumper.github.io/extended-htmldocument/index
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/type/
- * @tutorial an example value can be 1
+ * @deprecated Use Html\Enum\OlTypeEnum
  */
 
 namespace Html\Enum;
 
-enum TypeOlEnum: string
-{
-    case LA = 'a';
-    case UA = 'A';
-    case LI = 'i';
-    case UI = 'I';
-    case N1 = '1'; // default
-
-    public static function getQualifiedName(): string
-    {
-        return 'type';
-    }
-
-    public static function getDefault(): self
-    {
-        return self::N1;
-    }
+if (!\class_exists(__NAMESPACE__ . '\\TypeOlEnum')) {
+    \class_alias(__NAMESPACE__ . '\\OlTypeEnum', __NAMESPACE__ . '\\TypeOlEnum');
 }

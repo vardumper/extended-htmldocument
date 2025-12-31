@@ -1,30 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * This file is auto-generated. Do not edit manually.
+ * This file is retained for backward compatibility and will be removed in a
+ * future release. Use `StyleTypeEnum` instead.
  *
- * TypeStyleEnum - Specifies the media type of the inline styles.
- *
- * @generated 2025-11-01 14:18:41
- * @subpackage Html\Enum
- * @link https://vardumper.github.io/extended-htmldocument/index
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/type/
- * @tutorial an example value can be text/css
+ * @deprecated Use Html\Enum\StyleTypeEnum
  */
 
 namespace Html\Enum;
 
-enum TypeStyleEnum: string
-{
-    case TEXT_CSS = 'text/css'; // default
-
-    public static function getQualifiedName(): string
-    {
-        return 'type';
-    }
-
-    public static function getDefault(): self
-    {
-        return self::TEXT_CSS;
-    }
+if (!\class_exists(__NAMESPACE__ . '\\TypeStyleEnum')) {
+    \class_alias(__NAMESPACE__ . '\\StyleTypeEnum', __NAMESPACE__ . '\\TypeStyleEnum');
 }

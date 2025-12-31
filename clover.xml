@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1767138812">
-  <project timestamp="1767138812" name="Clover Coverage">
+<coverage generated="1767140032">
+  <project timestamp="1767140032" name="Clover Coverage">
     <package name="Html\Delegator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/HTMLDocumentDelegator.php">
         <class name="Html\Delegator\HTMLDocumentDelegator" namespace="Html\Delegator">
@@ -787,54 +787,6 @@
         <line num="20" type="stmt" count="1"/>
         <metrics loc="23" ncloc="16" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
       </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeButtonEnum.php">
-        <class name="Html\Enum\TypeButtonEnum" namespace="Html\Enum">
-          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
-        </class>
-        <line num="22" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="24" type="stmt" count="1"/>
-        <metrics loc="27" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
-      </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeInputEnum.php">
-        <class name="Html\Enum\TypeInputEnum" namespace="Html\Enum">
-          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
-        </class>
-        <line num="42" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="44" type="stmt" count="1"/>
-        <line num="47" type="method" name="getDefault" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="49" type="stmt" count="1"/>
-        <metrics loc="52" ncloc="40" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
-      </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeOlEnum.php">
-        <class name="Html\Enum\TypeOlEnum" namespace="Html\Enum">
-          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
-        </class>
-        <line num="25" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="27" type="stmt" count="1"/>
-        <line num="30" type="method" name="getDefault" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="32" type="stmt" count="1"/>
-        <metrics loc="35" ncloc="23" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
-      </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeScriptEnum.php">
-        <class name="Html\Enum\TypeScriptEnum" namespace="Html\Enum">
-          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
-        </class>
-        <line num="22" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="24" type="stmt" count="1"/>
-        <line num="27" type="method" name="getDefault" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="29" type="stmt" count="1"/>
-        <metrics loc="32" ncloc="20" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
-      </file>
-      <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeStyleEnum.php">
-        <class name="Html\Enum\TypeStyleEnum" namespace="Html\Enum">
-          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
-        </class>
-        <line num="21" type="method" name="getQualifiedName" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="23" type="stmt" count="1"/>
-        <line num="26" type="method" name="getDefault" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="28" type="stmt" count="1"/>
-        <metrics loc="31" ncloc="19" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
-      </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/ValignEnum.php">
         <class name="Html\Enum\ValignEnum" namespace="Html\Enum">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
@@ -854,6 +806,31 @@
         <metrics loc="33" ncloc="19" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
     </package>
+    <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeButtonEnum.php">
+      <line num="17" type="stmt" count="1"/>
+      <line num="18" type="stmt" count="1"/>
+      <metrics loc="20" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="2" coveredelements="2"/>
+    </file>
+    <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeInputEnum.php">
+      <line num="14" type="stmt" count="1"/>
+      <line num="15" type="stmt" count="1"/>
+      <metrics loc="17" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="2" coveredelements="2"/>
+    </file>
+    <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeOlEnum.php">
+      <line num="14" type="stmt" count="1"/>
+      <line num="15" type="stmt" count="1"/>
+      <metrics loc="17" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="2" coveredelements="2"/>
+    </file>
+    <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeScriptEnum.php">
+      <line num="14" type="stmt" count="1"/>
+      <line num="15" type="stmt" count="1"/>
+      <metrics loc="17" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="2" coveredelements="2"/>
+    </file>
+    <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Enum/TypeStyleEnum.php">
+      <line num="14" type="stmt" count="1"/>
+      <line num="15" type="stmt" count="1"/>
+      <metrics loc="17" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="2" coveredelements="2"/>
+    </file>
     <package name="Html\Helper">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Helper/CommentHelper.php">
         <class name="Html\Helper\CommentHelper" namespace="Html\Helper">
@@ -1035,7 +1012,7 @@
       <metrics loc="1" ncloc="1" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
     <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Interface/HTMLDocumentDelegatorInterface.php">
-      <metrics loc="32" ncloc="29" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      <metrics loc="34" ncloc="31" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
     <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Interface/HTMLElementDelegatorInterface.php">
       <metrics loc="55" ncloc="52" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
@@ -3787,9 +3764,9 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/AutofocusTrait.php">
         <class name="Html\Trait\GlobalAttribute\AutofocusTrait" namespace="Html\Trait\GlobalAttribute">
-          <metrics complexity="8" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="10" elements="13" coveredelements="11"/>
+          <metrics complexity="7" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="10" elements="13" coveredelements="11"/>
         </class>
-        <line num="18" type="method" name="setAutofocus" visibility="public" complexity="7" crap="7.05" count="4"/>
+        <line num="18" type="method" name="setAutofocus" visibility="public" complexity="6" crap="6.04" count="4"/>
         <line num="21" type="stmt" count="4"/>
         <line num="22" type="stmt" count="2"/>
         <line num="23" type="stmt" count="1"/>
@@ -3806,9 +3783,9 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Trait/GlobalAttribute/ClassTrait.php">
         <class name="Html\Trait\GlobalAttribute\ClassTrait" namespace="Html\Trait\GlobalAttribute">
-          <metrics complexity="10" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="15" elements="22" coveredelements="20"/>
+          <metrics complexity="9" methods="6" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="15" elements="22" coveredelements="20"/>
         </class>
-        <line num="15" type="method" name="setClass" visibility="public" complexity="5" crap="5" count="7"/>
+        <line num="15" type="method" name="setClass" visibility="public" complexity="4" crap="4" count="7"/>
         <line num="18" type="stmt" count="7"/>
         <line num="20" type="stmt" count="1"/>
         <line num="21" type="stmt" count="1"/>
@@ -4113,6 +4090,6 @@
         <metrics loc="43" ncloc="37" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="13" coveredstatements="13" elements="15" coveredelements="15"/>
       </file>
     </package>
-    <metrics files="121" loc="8923" ncloc="7054" classes="113" methods="347" coveredmethods="299" conditionals="0" coveredconditionals="0" statements="3047" coveredstatements="2801" elements="3394" coveredelements="3100"/>
+    <metrics files="121" loc="8836" ncloc="6992" classes="108" methods="338" coveredmethods="290" conditionals="0" coveredconditionals="0" statements="3048" coveredstatements="2802" elements="3386" coveredelements="3092"/>
   </project>
 </coverage>

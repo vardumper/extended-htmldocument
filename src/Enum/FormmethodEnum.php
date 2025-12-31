@@ -4,7 +4,7 @@
  *
  * FormmethodEnum - Specifies the HTTP method to use when submitting the form. Only for submit buttons. Overrides the form's method attribute. Use "post" for sensitive data, "get" for idempotent operations, "dialog" to close dialog without submission. Element-specific to button and input elements with type submit or image.
  * 
- * @generated 2025-12-30 13:44:50
+ * @generated 2025-12-31 00:08:48
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum
