@@ -23,7 +23,7 @@ final class NamingHelper
 
     public static function getClassName(string $classname): string
     {
-        $reserved = Helper::getReservedWords();
+        $reserved = (new Helper())->getReservedWords();
         if (in_array(strtolower($classname), $reserved, true)) {
             return $classname . 'Element';
         }

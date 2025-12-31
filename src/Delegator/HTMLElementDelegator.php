@@ -20,6 +20,7 @@ use InvalidArgumentException;
 use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionUnionType;
+use RuntimeException;
 use TypeError;
 
 /**
@@ -74,7 +75,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             $name = 'className';
         }
 
-        if (Helper::isBackedEnum($value)) {
+        if ((new Helper())->isBackedEnum($value)) {
             $value = $value->value;
         }
 
@@ -113,7 +114,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
             $property->setValue($this->delegated, $value);
             return;
         }
-        $value = Helper::isBackedEnum($value) ? (string) $value->value : (string) $value;
+        $value = (new Helper())->isBackedEnum($value) ? (string) $value->value : (string) $value;
         $this->delegated->setAttribute($name, $value);
         return;
     }
@@ -209,7 +210,10 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
                 $enumClass = null;
                 if ($propertyType instanceof ReflectionUnionType) {
                     foreach ($propertyType->getTypes() as $type) {
-                        if ($type instanceof ReflectionNamedType && \is_subclass_of($type->getName(), BackedEnum::class)) {
+                        if ($type instanceof ReflectionNamedType && \is_subclass_of(
+                            $type->getName(),
+                            BackedEnum::class
+                        )) {
                             $enumClass = $type->getName();
                             continue;
                         }
@@ -326,7 +330,7 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
     {
         $owner = $this->delegated->ownerDocument;
         if (! $owner instanceof \DOM\HTMLDocument) {
-            throw new \RuntimeException('No owner document available for this element.');
+            throw new RuntimeException('No owner document available for this element.');
         }
         return HTMLDocumentDelegator::getInstance($owner);
     }

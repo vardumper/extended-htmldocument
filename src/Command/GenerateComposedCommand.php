@@ -8,6 +8,7 @@ use Html\Delegator\HTMLDocumentDelegator;
 use Html\Element\BlockElement;
 use Html\Element\InlineElement;
 use Html\Element\VoidElement;
+use Html\Helper\YamlHelper;
 use Html\Trait\ClassResolverTrait;
 use Html\Trait\GeneratorResolverTrait;
 use ReflectionClass;
@@ -17,7 +18,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Yaml\Yaml;
 
 /**
  * Generate composed component templates showing valid parent-child relationships
@@ -33,9 +33,20 @@ class GenerateComposedCommand extends Command
 
     private const HTML_DEFINITION_PATH = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
 
-    /** @phpstan-ignore-next-line */
+    private YamlHelper $yaml;
+
+    /**
+     * @phpstan-ignore-next-line
+     */
     private ?array $data = null;
+
     private SymfonyStyle $io;
+
+    public function __construct(?YamlHelper $yaml = null)
+    {
+        parent::__construct();
+        $this->yaml = $yaml ?? new YamlHelper();
+    }
 
     public function __invoke(
         string $generator,
@@ -68,9 +79,8 @@ class GenerateComposedCommand extends Command
         $generatedCount = 0;
         $skippedCount = 0;
         foreach ($templateGenerators as $generator => $generatorInstance) {
-
             // Check if generator supports composed element rendering
-            if (!method_exists($generatorInstance, 'renderComposedElement')) {
+            if (! method_exists($generatorInstance, 'renderComposedElement')) {
                 $io->error("Generator '{$generator}' does not support composed element rendering.");
                 return Command::FAILURE;
             }
@@ -84,7 +94,10 @@ class GenerateComposedCommand extends Command
             $dom = HTMLDocumentDelegator::createEmpty();
 
             // Create content directory
-            $contentDir = rtrim($dest, \DIRECTORY_SEPARATOR) . \DIRECTORY_SEPARATOR . $generator . \DIRECTORY_SEPARATOR . 'composed';
+            $contentDir = rtrim(
+                $dest,
+                \DIRECTORY_SEPARATOR
+            ) . \DIRECTORY_SEPARATOR . $generator . \DIRECTORY_SEPARATOR . 'composed';
             if (! is_dir($contentDir)) {
                 mkdir($contentDir, 0755, true);
             }
@@ -129,7 +142,9 @@ class GenerateComposedCommand extends Command
             }
         }
 
-        $io->success("Generated {$generatedCount} composed templates (specific composition patterns only). Skipped {$skippedCount} elements.");
+        $io->success(
+            "Generated {$generatedCount} composed templates (specific composition patterns only). Skipped {$skippedCount} elements."
+        );
         return Command::SUCCESS;
     }
 
@@ -138,11 +153,7 @@ class GenerateComposedCommand extends Command
         $this
             ->setName('generate:composed')
             ->setDescription('Generate composed component templates showing valid content model relationships')
-            ->addArgument(
-                'generator',
-                InputArgument::REQUIRED,
-                'The generator to use (nextjs, storybook, twig)'
-            )
+            ->addArgument('generator', InputArgument::REQUIRED, 'The generator to use (nextjs, storybook, twig)')
             ->addArgument(
                 'dest',
                 InputArgument::REQUIRED,
@@ -164,7 +175,7 @@ class GenerateComposedCommand extends Command
                 $this->io->error('Specification file not found at ' . $specificationPath);
                 return false;
             }
-            $this->data = Yaml::parseFile($specificationPath);
+            $this->data = $this->yaml->parseFile($specificationPath);
             return true;
         }
 
@@ -173,7 +184,7 @@ class GenerateComposedCommand extends Command
             return false;
         }
 
-        $this->data = Yaml::parseFile(self::HTML_DEFINITION_PATH);
+        $this->data = $this->yaml->parseFile(self::HTML_DEFINITION_PATH);
         return true;
     }
 }

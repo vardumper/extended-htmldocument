@@ -6,6 +6,7 @@ use AllowDynamicProperties;
 use DOM\Node;
 use Html\Interface\NodeDelegatorInterface;
 use Html\Trait\DelegatorTrait;
+use RuntimeException;
 
 /**
  * @property-read string $nodeName
@@ -36,7 +37,7 @@ class NodeDelegator implements NodeDelegatorInterface
     {
         $owner = $this->delegated->ownerDocument;
         if (! $owner instanceof \DOM\HTMLDocument) {
-            throw new \RuntimeException('No owner document available for this node.');
+            throw new RuntimeException('No owner document available for this node.');
         }
         return HTMLDocumentDelegator::getInstance($owner);
     }

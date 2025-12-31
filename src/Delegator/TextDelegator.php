@@ -6,6 +6,7 @@ use AllowDynamicProperties;
 use DOM\Text;
 use Html\Interface\TextDelegatorInterface;
 use Html\Trait\DelegatorTrait;
+use RuntimeException;
 
 #[AllowDynamicProperties]
 class TextDelegator implements TextDelegatorInterface
@@ -36,7 +37,7 @@ class TextDelegator implements TextDelegatorInterface
     {
         $owner = $this->delegated->ownerDocument;
         if (! $owner instanceof \DOM\HTMLDocument) {
-            throw new \RuntimeException('No owner document available for this text node.');
+            throw new RuntimeException('No owner document available for this text node.');
         }
         return HTMLDocumentDelegator::getInstance($owner);
     }

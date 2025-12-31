@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace Html\Command;
 
-use Html\Helper\Helper;
+use Html\Helper\CommentHelper;
 use Html\Helper\NamingHelper;
 use Html\Helper\TypeMapper;
-use Html\Helper\CommentHelper;
+use Html\Helper\YamlHelper;
 use Silly\Input\InputArgument;
 use Silly\Input\InputOption;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Yaml\Yaml;
 
 /**
  * @usage make:classes [element]
@@ -30,11 +29,19 @@ final class CreateClassCommand extends Command
 
     private const OUTPUT_PATH = __DIR__ . '/../';
 
+    private YamlHelper $yaml;
+
     private array $uses = [];
 
     private array $data = [];
 
     private SymfonyStyle $io;
+
+    public function __construct(?YamlHelper $yaml = null)
+    {
+        parent::__construct();
+        $this->yaml = $yaml ?? new YamlHelper();
+    }
 
     public function __invoke($element, InputInterface $input, OutputInterface $output): int
     {
@@ -100,7 +107,7 @@ final class CreateClassCommand extends Command
                 $this->io->error('Specification file not found at ' . $specificationPath);
                 return false;
             }
-            $this->data = Yaml::parseFile($specificationPath);
+            $this->data = $this->yaml->parseFile($specificationPath);
             return true;
         }
 
@@ -109,7 +116,7 @@ final class CreateClassCommand extends Command
             return false;
         }
 
-        $this->data = Yaml::parseFile(self::HTML_DEFINITION_PATH);
+        $this->data = $this->yaml->parseFile(self::HTML_DEFINITION_PATH);
         return true;
     }
 
@@ -333,15 +340,16 @@ final class CreateClassCommand extends Command
 
         // Check if element-specific enum file exists
         $elementSpecificPath = __DIR__ . '/../Enum/' . $elementSpecificEnumName . '.php';
+        $enumName = $genericEnumName;
         if (file_exists($elementSpecificPath)) {
             $enumName = $elementSpecificEnumName;
-        } else {
-            // Fall back to generic enum or old logic for single-element attributes
-            if ($this->manyElementsHaveAttribute($attribute) && count($details['elements']) === 1) {
-                $enumName = $kebapCase . ucfirst($element) . 'Enum';
-            } else {
-                $enumName = $genericEnumName;
-            }
+        }
+
+        // Fall back to element-prefixed enum when many elements have the attribute but only one element in details
+        if ($this->manyElementsHaveAttribute($attribute) && count(
+            $details['elements']
+        ) === 1 && $enumName === $genericEnumName) {
+            $enumName = $kebapCase . ucfirst($element) . 'Enum';
         }
 
         $isUnionType = str_replace('enum', '', $type) !== '';
@@ -495,15 +503,16 @@ final class CreateClassCommand extends Command
 
         // Check if element-specific enum file exists
         $elementSpecificPath = __DIR__ . '/../Enum/' . $elementSpecificEnumName . '.php';
+        $enumName = $genericEnumName;
         if (file_exists($elementSpecificPath)) {
             $enumName = $elementSpecificEnumName;
-        } else {
-            // Fall back to generic enum or old logic for single-element attributes
-            if ($this->manyElementsHaveAttribute($attribute) && count($details['elements']) === 1) {
-                $enumName = $kebapCase . ucfirst($element) . 'Enum';
-            } else {
-                $enumName = $genericEnumName;
-            }
+        }
+
+        // Fall back to element-prefixed enum when many elements have the attribute but only one element in details
+        if ($this->manyElementsHaveAttribute($attribute) && count(
+            $details['elements']
+        ) === 1 && $enumName === $genericEnumName) {
+            $enumName = $kebapCase . ucfirst($element) . 'Enum';
         }
 
         $this->uses[] = sprintf("Html\Enum\%s", $enumName);
@@ -562,13 +571,14 @@ final class CreateClassCommand extends Command
             if (count($classes) === 1) {
                 // Single use statement
                 $useStatements .= sprintf("use %s\\%s;\n", $namespace, $classes[0]);
-            } else {
-                // Grouped use statement
-                $useStatements .= sprintf("use %s\\{\n", $namespace);
-                foreach ($classes as $i => $class) {
-                    $useStatements .= sprintf('    %s', $class);
-                    $useStatements .= ($i < count($classes) - 1) ? ",\n" : ",\n};\n";
-                }
+                continue;
+            }
+
+            // Grouped use statement
+            $useStatements .= sprintf("use %s\\{\n", $namespace);
+            foreach ($classes as $i => $class) {
+                $useStatements .= sprintf('    %s', $class);
+                $useStatements .= ($i < count($classes) - 1) ? ",\n" : ",\n};\n";
             }
         }
 
@@ -591,27 +601,27 @@ final class CreateClassCommand extends Command
     // String manipulation utilities
     private function toVariableName(string $string): string
     {
-        return NamingHelper::toVariableName($string);
+        return (new NamingHelper())->toVariableName($string);
     }
 
     private function toKebapCase(string $string): string
     {
-        return NamingHelper::toKebapCase($string);
+        return (new NamingHelper())->toKebapCase($string);
     }
 
     private function getClassName(string $classname): string
     {
-        return NamingHelper::getClassName($classname);
+        return (new NamingHelper())->getClassName($classname);
     }
 
     private function getAttributeComment(array $details): string
     {
-        return CommentHelper::getAttributeComment($details);
+        return (new CommentHelper())->getAttributeComment($details);
     }
 
     private function mapToPhpType(string $string): string
     {
-        return TypeMapper::mapToPhpType($string);
+        return (new TypeMapper())->mapToPhpType($string);
     }
 
     // Method signature templates

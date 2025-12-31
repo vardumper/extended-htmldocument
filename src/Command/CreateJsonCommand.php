@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Html\Command;
 
+use Html\Helper\YamlHelper;
 use Silly\Input\InputOption;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,6 +18,14 @@ use Symfony\Component\Yaml\Yaml;
  */
 final class CreateJsonCommand extends Command
 {
+    private YamlHelper $yaml;
+
+    public function __construct(?YamlHelper $yaml = null)
+    {
+        parent::__construct();
+        $this->yaml = $yaml ?? new YamlHelper();
+    }
+
     public function __invoke(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
@@ -33,10 +42,7 @@ final class CreateJsonCommand extends Command
             $htmlDefinitionPathJson = \pathinfo(
                 $specificationPath,
                 \PATHINFO_DIRNAME
-            ) . \DIRECTORY_SEPARATOR . \pathinfo(
-                $specificationPath,
-                \PATHINFO_FILENAME
-            ) . '.json';
+            ) . \DIRECTORY_SEPARATOR . \pathinfo($specificationPath, \PATHINFO_FILENAME) . '.json';
         }
 
         if (! file_exists($htmlDefinitionPath)) {
@@ -44,7 +50,7 @@ final class CreateJsonCommand extends Command
             return Command::FAILURE;
         }
 
-        $htmlDefinition = Yaml::parseFile($htmlDefinitionPath);
+        $htmlDefinition = $this->yaml->parseFile($htmlDefinitionPath);
         \file_put_contents($htmlDefinitionPathJson, json_encode($htmlDefinition, \JSON_PRETTY_PRINT));
 
         $io->success('JSON output generated successfully.');

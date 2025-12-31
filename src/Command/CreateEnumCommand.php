@@ -9,13 +9,13 @@ declare(strict_types=1);
 namespace Html\Command;
 
 use Exception;
+use Html\Helper\YamlHelper;
 use Silly\Input\InputArgument;
 use Silly\Input\InputOption;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Yaml\Yaml;
 
 /**
  * @usage create:enum
@@ -24,6 +24,14 @@ use Symfony\Component\Yaml\Yaml;
 final class CreateEnumCommand extends Command
 {
     private array $data;
+
+    private YamlHelper $yaml;
+
+    public function __construct(?YamlHelper $yaml = null)
+    {
+        parent::__construct();
+        $this->yaml = $yaml ?? new YamlHelper();
+    }
 
     public function __invoke(InputInterface $input, OutputInterface $output): int
     {
@@ -36,7 +44,7 @@ final class CreateEnumCommand extends Command
                 $io->error('The provided specification file does not exist.');
                 return Command::FAILURE;
             }
-            $this->data = Yaml::parseFile($specificationPath);
+            $this->data = $this->yaml->parseFile($specificationPath);
         } else {
             // load default specs
             $htmlDefinitionPath = __DIR__ . \DIRECTORY_SEPARATOR . '..' . \DIRECTORY_SEPARATOR . 'Resources' . \DIRECTORY_SEPARATOR . 'specifications' . \DIRECTORY_SEPARATOR . 'html5-with-aria.yaml';
@@ -45,7 +53,7 @@ final class CreateEnumCommand extends Command
                 return Command::FAILURE;
             }
 
-            $this->data = Yaml::parseFile($htmlDefinitionPath);
+            $this->data = $this->yaml->parseFile($htmlDefinitionPath);
         }
 
 

@@ -14,6 +14,7 @@ use Html\Element\BlockElement;
 use Html\Element\InlineElement;
 use Html\Element\VoidElement;
 use Html\Helper\Helper;
+use Html\Helper\YamlHelper;
 use Html\Trait\ClassResolverTrait;
 use Html\Trait\GeneratorResolverTrait;
 use ReflectionClass;
@@ -21,7 +22,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Yaml\Yaml;
 
 class BatchGeneratorCommand extends Command
 {
@@ -30,10 +30,20 @@ class BatchGeneratorCommand extends Command
 
     private const HTML_DEFINITION_PATH = __DIR__ . '/../Resources/specifications/html5-with-aria.yaml';
 
-    /** @phpstan-ignore-next-line */
+    private YamlHelper $yaml;
+
+    /**
+     * @phpstan-ignore-next-line
+     */
     private ?array $data = null;
 
     private SymfonyStyle $io;
+
+    public function __construct(?YamlHelper $yaml = null)
+    {
+        parent::__construct();
+        $this->yaml = $yaml ?? new YamlHelper();
+    }
 
     /**
      * @param string $generator The generator(s) to use
@@ -159,7 +169,7 @@ class BatchGeneratorCommand extends Command
                 $this->io->error('Specification file not found at ' . $specificationPath);
                 return false;
             }
-            $this->data = Yaml::parseFile($specificationPath);
+            $this->data = $this->yaml->parseFile($specificationPath);
             return true;
         }
 
@@ -168,7 +178,7 @@ class BatchGeneratorCommand extends Command
             return false;
         }
 
-        $this->data = Yaml::parseFile(self::HTML_DEFINITION_PATH);
+        $this->data = $this->yaml->parseFile(self::HTML_DEFINITION_PATH);
         return true;
     }
 
@@ -177,7 +187,7 @@ class BatchGeneratorCommand extends Command
      */
     private function getSafeComponentClassName(string $className): string
     {
-        $reserved = Helper::getReservedWords();
+        $reserved = (new Helper())->getReservedWords();
         if (in_array(strtolower($className), $reserved, true)) {
             return $className . 'Element';
         }

@@ -6,6 +6,7 @@ namespace Html\Delegator;
 
 use AllowDynamicProperties;
 use DOM\HTMLDocument;
+use Html\Helper\DomHelper;
 use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\TemplateGenerator\HTMLGenerator;
@@ -60,10 +61,12 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
     use DelegatorTrait;
     use ClassResolverTrait;
 
-    /** @var array<string, self> */
-    private static array $instances = [];
-
     public bool $formatOutput;
+
+    /**
+     * @var array<string, self>
+     */
+    private static array $instances = [];
 
     public function __construct(
         public readonly HTMLDocument $delegated,
@@ -96,17 +99,17 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
 
     public static function createEmpty(): self
     {
-        return new self(HTMLDocument::createEmpty());
+        return new self((new DomHelper())->createEmpty());
     }
 
     public static function createFromString(string $html): self
     {
-        return new self(HTMLDocument::createFromString($html));
+        return new self((new DomHelper())->createFromString($html));
     }
 
     public static function createFromFile(string $path): self
     {
-        return new self(HTMLDocument::createFromFile($path));
+        return new self((new DomHelper())->createFromFile($path));
     }
 
     public function createElement(string $qualifiedName, ?string $nodeValue = null): HTMLElementDelegator

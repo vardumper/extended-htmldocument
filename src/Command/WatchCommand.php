@@ -12,15 +12,15 @@ namespace Html\Command;
 use DOMDocument;
 use Edent\PrettyPrintHtml\PrettyPrintHtml;
 use Html\Delegator\HTMLDocumentDelegator;
+use Html\Helper\EventLoopHelper;
+use Html\Helper\YamlHelper;
 use Html\Interface\ComponentBuilderInterface;
 use Html\Trait\ClassResolverTrait;
 use Html\Trait\GeneratorResolverTrait;
-use Revolt\EventLoop;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Yaml\Yaml;
 
 class WatchCommand extends Command
 {
@@ -31,15 +31,28 @@ class WatchCommand extends Command
 
     private bool $isFirstRun = true;
 
-    /** @phpstan-ignore-next-line */
+    /**
+     * @phpstan-ignore-next-line
+     */
     private ?array $data = null;
+
+    private YamlHelper $yaml;
+
+    /**
+     * Event loop helper wrapper — typed property prevents PHPStan "property not found".
+     */
+    private EventLoopHelper $loop;
 
     private array $lastModifiedTimes = [];
 
     public function __construct(
-        private readonly ComponentBuilderInterface $componentBuilder
+        private readonly ComponentBuilderInterface $componentBuilder,
+        ?YamlHelper $yaml = null,
+        ?EventLoopHelper $loop = null
     ) {
         parent::__construct();
+        $this->yaml = $yaml ?? new YamlHelper();
+        $this->loop = $loop ?? new EventLoopHelper();
     }
 
     /**
@@ -48,7 +61,9 @@ class WatchCommand extends Command
      * @param string $dest  The destination directory to write to
      * @param bool $overwriteExisting Whether to overwrite existing files
      */
-    /** @phpstan-ignore-next-line */
+    /**
+     * @phpstan-ignore-next-line
+     */
     public function __invoke(
         string $generator,
         string $source,
@@ -111,16 +126,16 @@ class WatchCommand extends Command
 
         $io->info(sprintf('Starting to watch: %s', $source));
 
-        EventLoop::repeat(self::INTERVAL, function () use ($generators, $sourceFiles, $dest, $io): void {
+        $this->loop->repeat(self::INTERVAL, function () use ($generators, $sourceFiles, $dest, $io): void {
             $this->processFiles($generators, $sourceFiles, $dest, $io);
         });
 
-        EventLoop::onSignal(\SIGINT, function (): void {
+        $this->loop->onSignal(\SIGINT, function (): void {
             echo "Caught SIGINT! exiting ...\n";
             exit;
         });
 
-        EventLoop::run();
+        $this->loop->run();
     }
 
     /**
@@ -150,10 +165,8 @@ class WatchCommand extends Command
         string $dest,
         SymfonyStyle $io
     ): void {
-        $yaml = new Yaml();
-
         try {
-            $data = $yaml->parseFile($sourceFile);
+            $data = $this->yaml->parseFile($sourceFile);
             $componentHandle = array_key_first($data);
             $templateGenerators = $this->getGenerators($generators);
             foreach ($templateGenerators as $name => $templateGenerator) {
@@ -197,20 +210,33 @@ class WatchCommand extends Command
 
     // getGenerators now provided by GeneratorResolverTrait
 
-    /** @phpstan-ignore-next-line - helper not (yet) used but kept for future features */
+    /**
+     * @phpstan-ignore-next-line - helper not (yet) used but kept for future features
+     */
     private function parseFile(string $generator, string $sourceFile, string $dest, SymfonyStyle $io): void
     {
         // @todo
     }
 
-    /** @phpstan-ignore-next-line - helper not (yet) used but kept for future features */
+    /**
+     * @phpstan-ignore-next-line - helper not (yet) used but kept for future features
+     */
     private function formatHtml(string $html): string
     {
         $dom = new DOMDocument('1.0', 'utf-8');
         $dom->preserveWhiteSpace = false;
         $dom->formatOutput = true;
         $dom->validateOnParse = false;
-        @$dom->loadXML($html);
+
+        $previous = libxml_use_internal_errors(true);
+        $loaded = $dom->loadXML($html);
+        libxml_clear_errors();
+        libxml_use_internal_errors($previous);
+
+        if (! $loaded) {
+            return $html;
+        }
+
         return $dom->saveXML($dom->documentElement);
     }
 
