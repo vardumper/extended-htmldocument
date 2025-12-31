@@ -70,6 +70,7 @@
         "phpmd/phpmd": "^2.15",
         "phpstan/phpstan": "^2.1.33",
         "rector/swiss-knife": "^2.3.3",
+        "symfony/http-kernel": "^5.4|^6.0|^7.0|^8.0.2",
         "symfony/ux-twig-component": "^2.31",
         "symplify/easy-coding-standard": "^12.6.2"
     },
