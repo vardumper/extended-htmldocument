@@ -4,7 +4,7 @@
  *
  * AriaPressedEnum - Indicates whether a toggle button is pressed (true, false, or mixed).
  * 
- * @generated 2025-12-31 00:08:48
+ * @generated 2025-12-31 00:30:17
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

@@ -87,12 +87,12 @@ class BladeGenerator implements TemplateGeneratorInterface
                 if ($type instanceof ReflectionUnionType) {
                     foreach ($type->getTypes() as $unionType) {
                         if ($unionType instanceof ReflectionNamedType && enum_exists($unionType->getName())) {
-                            $choices = array_map(fn ($case) => $case->value, $unionType->getName()::cases());
+                            $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $unionType->getName()::cases());
                             $enums[$name] = $choices;
                         }
                     }
                 } elseif ($type && $type instanceof ReflectionNamedType && enum_exists($type->getName())) {
-                    $choices = array_map(fn ($case) => $case->value, $type->getName()::cases());
+                    $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $type->getName()::cases());
                     $enums[$name] = $choices;
                 }
                 $props[] = $name;
@@ -349,19 +349,31 @@ class BladeGenerator implements TemplateGeneratorInterface
                         $bladeCode .= "@include('blade.{$childLevel}.{$childName}.{$childName}')\n";
                     }
                 } elseif (in_array($childName, $textOnlyElements, true)) {
-                    $textContent = match ($childName) {
-                        'title' => 'Page Title',
-                        'option' => 'Option ' . ($i + 1),
-                        'li' => 'Item ' . ($i + 1),
-                        'dt' => 'Term ' . ($i + 1),
-                        'dd' => 'Definition ' . ($i + 1),
-                        'th', 'td' => 'Cell ' . ($i + 1),
-                        'label' => 'Label ' . ($i + 1),
-                        'button' => 'Button ' . ($i + 1),
-                        'legend' => 'Legend',
-                        'summary' => 'Summary',
-                        default => 'Example content',
-                    };
+                    if ($childName === 'title') {
+                        $textContent = 'Page Title';
+                    } elseif ($childName === 'option') {
+                        $textContent = 'Option ' . ($i + 1);
+                    } elseif ($childName === 'li') {
+                        $textContent = 'Item ' . ($i + 1);
+                    } elseif ($childName === 'dt') {
+                        $textContent = 'Term ' . ($i + 1);
+                    } elseif ($childName === 'dd') {
+                        $textContent = 'Definition ' . ($i + 1);
+                    } elseif ($childName === 'th' || $childName === 'td') {
+                        $textContent = 'Cell ' . ($i + 1);
+                    } elseif ($childName === 'label') {
+                        $textContent = 'Label ' . ($i + 1);
+                    } elseif ($childName === 'button') {
+                        $textContent = 'Button ' . ($i + 1);
+                    } elseif ($childName === 'legend') {
+                        $textContent = 'Legend';
+                    }
+                    // @phpstan-ignore-next-line - comparison may be flagged as tautological by static analysis
+                    elseif ($childName === 'summary') {
+                        $textContent = 'Summary';
+                    } else {
+                        $textContent = 'Example content';
+                    }
                     $bladeCode .= "@include('blade.{$childLevel}.{$childName}.{$childName}', ['content' => '{$textContent}'])\n";
                 } else {
                     $bladeCode .= "@include('blade.{$childLevel}.{$childName}.{$childName}', ['content' => 'Example content'])\n";

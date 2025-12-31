@@ -34,6 +34,7 @@ use ReflectionUnionType;
 #[TemplateGenerator('twig-component')]
 class TwigComponentsGenerator implements TemplateGeneratorInterface
 {
+    // @phpstan-ignore-next-line - reserved words constant is kept for future use
     private const TWIG_RESERVED_WORDS = [
         'is', 'in', 'for', 'if', 'true', 'false', 'none', 'and', 'or', 'not',
         'loop', 'else', 'as', 'empty', 'with', 'block', 'endblock', 'set',
@@ -142,7 +143,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
                                 $enumClass = $enumClassName;
                                 $shortEnumName = basename(str_replace('\\', '/', $enumClassName));
                                 $phpType = '?' . $shortEnumName;
-                                $choices = array_map(fn ($case) => $case->value, $enumClassName::cases());
+                                $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $enumClassName::cases());
                                 $enums[$name] = $choices;
                                 $enumClasses[$name] = $enumClassName;
                                 $hasEnum = true;
@@ -169,7 +170,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
                         $enumClass = $enumClassName;
                         $shortEnumName = basename(str_replace('\\', '/', $enumClassName));
                         $phpType = '?' . $shortEnumName;
-                        $choices = array_map(fn ($case) => $case->value, $enumClassName::cases());
+                        $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $enumClassName::cases());
                         $enums[$name] = $choices;
                         $enumClasses[$name] = $enumClassName;
                         $allowedTypes = ['null', 'string', $shortEnumName . '::class'];
@@ -387,7 +388,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
                 if ($type instanceof ReflectionUnionType) {
                     foreach ($type->getTypes() as $unionType) {
                         if ($unionType instanceof ReflectionNamedType && enum_exists($unionType->getName())) {
-                            $choices = array_map(fn ($case) => $case->value, $unionType->getName()::cases());
+                            $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $unionType->getName()::cases());
                             $enums[$name] = [
                                 'choices' => $choices,
                                 'default' => $choices[0] ?? null,
@@ -395,7 +396,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
                         }
                     }
                 } elseif ($type && $type instanceof ReflectionNamedType && enum_exists($type->getName())) {
-                    $choices = array_map(fn ($case) => $case->value, $type->getName()::cases());
+                    $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $type->getName()::cases());
                     $enums[$name] = [
                         'choices' => $choices,
                         'default' => $choices[0] ?? null,

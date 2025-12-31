@@ -34,6 +34,10 @@ class NodeDelegator implements NodeDelegatorInterface
 
     public function getOwnerDocument(): HTMLDocumentDelegator
     {
-        return HTMLDocumentDelegator::getInstance($this->delegated->ownerDocument);
+        $owner = $this->delegated->ownerDocument;
+        if (! $owner instanceof \DOM\HTMLDocument) {
+            throw new \RuntimeException('No owner document available for this node.');
+        }
+        return HTMLDocumentDelegator::getInstance($owner);
     }
 }

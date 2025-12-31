@@ -10,6 +10,7 @@ use Html\Delegator\NodeListDelegator;
 
 /**
  * @property HTMLDocument $delegated
+ * @property ?\DOM\HTMLElement $body
  */
 interface HTMLDocumentDelegatorInterface
 {

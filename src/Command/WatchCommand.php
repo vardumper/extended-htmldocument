@@ -53,9 +53,9 @@ class WatchCommand extends Command
         string $generator,
         string $source,
         string $dest,
-        bool $overwriteExisting = false,
         InputInterface $input,
-        OutputInterface $output
+        OutputInterface $output,
+        bool $overwriteExisting = false
     ): void {
         $io = new SymfonyStyle($input, $output);
 
@@ -197,11 +197,13 @@ class WatchCommand extends Command
 
     // getGenerators now provided by GeneratorResolverTrait
 
+    /** @phpstan-ignore-next-line - helper not (yet) used but kept for future features */
     private function parseFile(string $generator, string $sourceFile, string $dest, SymfonyStyle $io): void
     {
         // @todo
     }
 
+    /** @phpstan-ignore-next-line - helper not (yet) used but kept for future features */
     private function formatHtml(string $html): string
     {
         $dom = new DOMDocument('1.0', 'utf-8');

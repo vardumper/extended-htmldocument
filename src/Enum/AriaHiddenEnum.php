@@ -4,7 +4,7 @@
  *
  * AriaHiddenEnum - Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
  * 
- * @generated 2025-12-31 00:08:48
+ * @generated 2025-12-31 00:30:17
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

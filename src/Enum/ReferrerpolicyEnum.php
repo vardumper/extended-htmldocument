@@ -4,7 +4,7 @@
  *
  * ReferrerpolicyEnum - Specifies the referrer policy for fetches initiated by the element.
  * 
- * @generated 2025-12-31 00:08:48
+ * @generated 2025-12-31 00:30:17
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

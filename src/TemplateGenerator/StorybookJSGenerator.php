@@ -262,7 +262,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                             foreach ($type->getTypes() as $t) {
                                 if (enum_exists($t->getName())) {
                                     $phpType = 'enum';
-                                    $choices = array_map(fn ($c) => $c->value, $t->getName()::cases());
+                                    $choices = array_map(fn (\UnitEnum $c) => $c instanceof \BackedEnum ? $c->value : $c->name, $t->getName()::cases());
                                     break;
                                 }
                                 if ($t->getName() === 'int') {
@@ -272,7 +272,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                         } elseif ($type && $type instanceof ReflectionNamedType) {
                             if (enum_exists($type->getName())) {
                                 $phpType = 'enum';
-                                $choices = array_map(fn ($c) => $c->value, $type->getName()::cases());
+                                $choices = array_map(fn (\UnitEnum $c) => $c instanceof \BackedEnum ? $c->value : $c->name, $type->getName()::cases());
                             } elseif ($type->getName() === 'int') {
                                 $phpType = 'integer';
                             }
@@ -318,7 +318,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                         if ($unionType instanceof ReflectionNamedType && enum_exists($unionType->getName())) {
                             $phpType = 'enum';
                             $enumClass = $unionType->getName();
-                            $choices = array_map(fn ($case) => $case->value, $enumClass::cases());
+                            $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $enumClass::cases());
                             break;
                         }
                     }
@@ -326,7 +326,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                     if (enum_exists($type->getName())) {
                         $phpType = 'enum';
                         $enumClass = $type->getName();
-                        $choices = array_map(fn ($case) => $case->value, $enumClass::cases());
+                        $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $enumClass::cases());
                     } elseif ($type->getName() === 'bool') {
                         $phpType = 'boolean';
                     } elseif ($type->getName() === 'int') {

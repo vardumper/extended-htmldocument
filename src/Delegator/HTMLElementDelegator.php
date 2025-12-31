@@ -18,6 +18,7 @@ use Html\Trait\DelegatorTrait;
 use Html\Trait\NativePropertiesTrait;
 use InvalidArgumentException;
 use ReflectionClass;
+use ReflectionNamedType;
 use ReflectionUnionType;
 use TypeError;
 
@@ -31,8 +32,8 @@ use TypeError;
  * @property string $id
  * @property string $className
  * @property HTMLElement|Element $delegated
- * @property-read bool SELF_CLOSING
- * @property-read string QUALIFIED_NAME
+ * @property-read bool $SELF_CLOSING
+ * @property-read string $QUALIFIED_NAME
  */
 #[AllowDynamicProperties]
 class HTMLElementDelegator implements HTMLElementDelegatorInterface
@@ -90,8 +91,10 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
                         break;
                     }
                 }
-            } else {
+            } elseif ($propertyType instanceof ReflectionNamedType) {
                 $enumClass = $propertyType->getName();
+            } else {
+                $enumClass = null;
             }
             if ($enumClass && \is_subclass_of($enumClass, BackedEnum::class) && is_string($value)) {
                 $value = $enumClass::from($value);
@@ -203,17 +206,18 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
                 $property = $reflection->getProperty($qualifiedName);
                 $propertyType = $property->getType();
                 // find correct enum type form union type list
+                $enumClass = null;
                 if ($propertyType instanceof ReflectionUnionType) {
                     foreach ($propertyType->getTypes() as $type) {
-                        if (\is_subclass_of($type->getName(), BackedEnum::class)) {
+                        if ($type instanceof ReflectionNamedType && \is_subclass_of($type->getName(), BackedEnum::class)) {
                             $enumClass = $type->getName();
                             continue;
                         }
                     }
-                } else {
+                } elseif ($propertyType instanceof ReflectionNamedType) {
                     $enumClass = $propertyType->getName();
                 }
-                if (\is_subclass_of($enumClass, BackedEnum::class) && \is_string($value)) {
+                if ($enumClass !== null && \is_subclass_of($enumClass, BackedEnum::class) && \is_string($value)) {
                     $value = $enumClass::from($value);
                     $methodName = 'set' . $qualifiedName;
                     if (\method_exists($this, $methodName)) {
@@ -320,6 +324,10 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public function getOwnerDocument(): HTMLDocumentDelegator
     {
-        return HTMLDocumentDelegator::getInstance($this->delegated->ownerDocument);
+        $owner = $this->delegated->ownerDocument;
+        if (! $owner instanceof \DOM\HTMLDocument) {
+            throw new \RuntimeException('No owner document available for this element.');
+        }
+        return HTMLDocumentDelegator::getInstance($owner);
     }
 }

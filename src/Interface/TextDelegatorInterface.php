@@ -16,4 +16,9 @@ interface TextDelegatorInterface
     public function __set($name, $value): void;
 
     public function getText(): Text;
+
+    /**
+     * Get the document delegator owning this text node
+     */
+    public function getOwnerDocument(): \Html\Delegator\HTMLDocumentDelegator;
 }

@@ -36,6 +36,7 @@ use ReflectionUnionType;
 #[TemplateGenerator('typescript')]
 class TypeScriptGenerator implements TemplateGeneratorInterface
 {
+    // @phpstan-ignore-next-line - reserved words constant is kept for future use
     private const TS_RESERVED_WORDS = [
         'break', 'case', 'catch', 'class', 'const', 'continue', 'debugger', 'default',
         'delete', 'do', 'else', 'enum', 'export', 'extends', 'false', 'finally', 'for',
@@ -289,7 +290,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
                 if (enum_exists($fullClassName)) {
                     try {
                         $cases = $fullClassName::cases();
-                        $values = array_map(fn($case) => $case->value, $cases);
+                        $values = array_map(fn(\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $cases);
                         if (in_array('true', $values) && in_array('false', $values)) {
                             $enumType .= ' | boolean';
                         }
@@ -316,7 +317,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
                     if (enum_exists($fullClassName)) {
                         try {
                             $cases = $fullClassName::cases();
-                            $values = array_map(fn($case) => $case->value, $cases);
+                            $values = array_map(fn(\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $cases);
                             if (in_array('true', $values) && in_array('false', $values)) {
                                 $enumType .= ' | boolean';
                             }
@@ -352,7 +353,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
         if (enum_exists($fullClassName)) {
             try {
                 $cases = $fullClassName::cases();
-                $values = array_map(fn($case) => "'{$case->value}'", $cases);
+                $values = array_map(fn(\UnitEnum $case) => $case instanceof \BackedEnum ? "'{$case->value}'" : "'{$case->name}'", $cases);
                 return implode(' | ', $values);
             } catch (\Throwable $e) {
                 // Fallback

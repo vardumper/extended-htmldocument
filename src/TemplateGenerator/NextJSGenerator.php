@@ -318,7 +318,7 @@ class NextJSGenerator implements TemplateGeneratorInterface
                         if ($type instanceof ReflectionUnionType) {
                             foreach ($type->getTypes() as $t) {
                                 if (enum_exists($t->getName())) {
-                                    $choices = array_map(fn ($c) => $c->value, $t->getName()::cases());
+                                    $choices = array_map(fn (\UnitEnum $c) => $c instanceof \BackedEnum ? $c->value : $c->name, $t->getName()::cases());
                                     $tsType = implode(' | ', array_map(fn ($c) => "'{$c}'", $choices));
                                     break;
                                 }
@@ -330,7 +330,7 @@ class NextJSGenerator implements TemplateGeneratorInterface
                             }
                         } elseif ($type && $type instanceof ReflectionNamedType) {
                             if (enum_exists($type->getName())) {
-                                $choices = array_map(fn ($c) => $c->value, $type->getName()::cases());
+                                $choices = array_map(fn (\UnitEnum $c) => $c instanceof \BackedEnum ? $c->value : $c->name, $type->getName()::cases());
                                 $tsType = implode(' | ', array_map(fn ($c) => "'{$c}'", $choices));
                             } elseif ($type->getName() === 'int') {
                                 $tsType = 'number';
@@ -373,7 +373,7 @@ class NextJSGenerator implements TemplateGeneratorInterface
                     foreach ($type->getTypes() as $unionType) {
                         if ($unionType instanceof ReflectionNamedType && enum_exists($unionType->getName())) {
                             $enumClass = $unionType->getName();
-                            $choices = array_map(fn ($case) => $case->value, $enumClass::cases());
+                            $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $enumClass::cases());
                             $tsType = implode(' | ', array_map(fn ($c) => "'{$c}'", $choices));
                             break;
                         }
@@ -381,7 +381,7 @@ class NextJSGenerator implements TemplateGeneratorInterface
                 } elseif ($type && $type instanceof ReflectionNamedType) {
                     if (enum_exists($type->getName())) {
                         $enumClass = $type->getName();
-                        $choices = array_map(fn ($case) => $case->value, $enumClass::cases());
+                        $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $enumClass::cases());
                         $tsType = implode(' | ', array_map(fn ($c) => "'{$c}'", $choices));
                     } elseif ($type->getName() === 'bool') {
                         $tsType = 'boolean';

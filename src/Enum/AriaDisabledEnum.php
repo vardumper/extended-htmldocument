@@ -4,7 +4,7 @@
  *
  * AriaDisabledEnum - Indicates that the element is perceivable but disabled, so it is not editable or otherwise operable.
  * 
- * @generated 2025-12-31 00:08:48
+ * @generated 2025-12-31 00:30:17
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

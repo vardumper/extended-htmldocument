@@ -11,6 +11,8 @@ use Html\Delegator\HTMLElementDelegator;
 
 /**
  * @property HTMLDocument $delegated
+ * @property string $tagName
+ * @property string $className
  */
 interface HTMLElementDelegatorInterface
 {
@@ -41,6 +43,11 @@ interface HTMLElementDelegatorInterface
     public function getSubstitutedNodeValue(): ?string;
 
     public static function create(HTMLDocumentDelegator $dom): HTMLElementDelegator;
+
+    /**
+     * Get the document delegator that owns this element
+     */
+    public function getOwnerDocument(): \Html\Delegator\HTMLDocumentDelegator;
 
     public static function isUniquePerParent(): bool;
 

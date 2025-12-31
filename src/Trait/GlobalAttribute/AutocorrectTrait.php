@@ -4,6 +4,7 @@ namespace Html\Trait\GlobalAttribute;
 
 use Html\Enum\AutocorrectEnum;
 
+// @phpstan-ignore-next-line - trait may be used dynamically by code generation
 trait AutocorrectTrait
 {
    /**

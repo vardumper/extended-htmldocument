@@ -4,7 +4,7 @@
  *
  * AutocorrectEnum - Specifies controls whether autocorrection of editable text is enabled for spelling and/or punctuation errors. Default is on.
  * 
- * @generated 2025-12-31 00:08:48
+ * @generated 2025-12-31 00:30:17
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

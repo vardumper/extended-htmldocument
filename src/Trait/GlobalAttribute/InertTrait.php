@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Html\Trait\GlobalAttribute;
 
+// @phpstan-ignore-next-line - trait may be used dynamically by code generation
 trait InertTrait
 {
    /**

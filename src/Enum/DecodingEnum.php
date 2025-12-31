@@ -4,7 +4,7 @@
  *
  * DecodingEnum - Specifies the decoding process applied to the image.
  * 
- * @generated 2025-12-31 00:08:48
+ * @generated 2025-12-31 00:30:17
  * @category HTML Attribute
  * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum

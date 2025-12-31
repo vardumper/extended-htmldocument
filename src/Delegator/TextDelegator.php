@@ -34,6 +34,10 @@ class TextDelegator implements TextDelegatorInterface
 
     public function getOwnerDocument(): HTMLDocumentDelegator
     {
-        return HTMLDocumentDelegator::getInstance($this->delegated->ownerDocument);
+        $owner = $this->delegated->ownerDocument;
+        if (! $owner instanceof \DOM\HTMLDocument) {
+            throw new \RuntimeException('No owner document available for this text node.');
+        }
+        return HTMLDocumentDelegator::getInstance($owner);
     }
 }
