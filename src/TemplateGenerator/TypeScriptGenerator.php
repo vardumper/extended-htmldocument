@@ -2,12 +2,17 @@
 
 namespace Html\TemplateGenerator;
 
+use BackedEnum;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
 use ReflectionClass;
+use ReflectionMethod;
 use ReflectionNamedType;
+use ReflectionProperty;
 use ReflectionUnionType;
+use Throwable;
+use UnitEnum;
 
 /**
  * TypeScriptGenerator - Generates Pure TypeScript Classes
@@ -116,7 +121,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
             $lines = explode("\n", $docComment);
             foreach ($lines as $line) {
                 $line = trim($line, " \t/*");
-                if (str_starts_with($line, '*') && !str_starts_with($line, '*/') && !str_starts_with($line, '* @')) {
+                if (str_starts_with($line, '*') && ! str_starts_with($line, '*/') && ! str_starts_with($line, '* @')) {
                     $desc = trim(substr($line, 1));
                     break;
                 }
@@ -143,7 +148,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
             $lines = explode("\n", $docComment);
             foreach ($lines as $line) {
                 $line = trim($line, " \t/*");
-                if (str_starts_with($line, '*') && !str_starts_with($line, '*/') && !str_starts_with($line, '* @')) {
+                if (str_starts_with($line, '*') && ! str_starts_with($line, '*/') && ! str_starts_with($line, '* @')) {
                     $desc = trim(substr($line, 1));
                     break;
                 }
@@ -157,7 +162,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
         $enumImports = [];
 
         // Add children for non-self-closing elements
-        if (!$isSelfClosing) {
+        if (! $isSelfClosing) {
             $props['children'] = [
                 'type' => 'string | HTMLElement | (string | HTMLElement)[]',
                 'description' => 'Child content or elements',
@@ -170,7 +175,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
         $example = null;
         try {
             $example = $ref->newInstance();
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             // Ignore if we can't create an instance
         }
 
@@ -215,7 +220,9 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
                     foreach ($propType->getTypes() as $unionType) {
                         if (str_ends_with($unionType->getName(), 'Enum')) {
                             $isEnum = true;
-                            $enumClass = basename(str_replace('\\', '/', $unionType->getName())); // Extract just the enum name
+                            $enumClass = basename(
+                                str_replace('\\', '/', $unionType->getName())
+                            ); // Extract just the enum name
                             break;
                         }
                     }
@@ -242,8 +249,12 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
         $reserved = ['children'];
         $sortedKeys = array_keys($props);
         usort($sortedKeys, function ($a, $b) use ($reserved) {
-            if (in_array($a, $reserved)) return -1;
-            if (in_array($b, $reserved)) return 1;
+            if (in_array($a, $reserved)) {
+                return -1;
+            }
+            if (in_array($b, $reserved)) {
+                return 1;
+            }
             return strcasecmp($a, $b);
         });
 
@@ -252,14 +263,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
             $sortedProps[$key] = $props[$key];
         }
 
-        $ts = $this->buildTypeScriptClass(
-            $elementName,
-            $name,
-            $desc,
-            $sortedProps,
-            $enumImports,
-            $isSelfClosing
-        );
+        $ts = $this->buildTypeScriptClass($elementName, $name, $desc, $sortedProps, $enumImports, $isSelfClosing);
 
         return $ts;
     }
@@ -269,13 +273,13 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
         return strtolower(preg_replace('/([a-z])([A-Z])/', '$1-$2', $string));
     }
 
-    private function getPropertyType(\ReflectionProperty $prop, \ReflectionMethod $getter): string
+    private function getPropertyType(ReflectionProperty $prop, ReflectionMethod $getter): string
     {
         $type = $prop->getType();
         if ($type instanceof ReflectionNamedType) {
             $typeName = $type->getName();
             $allowsNull = $type->allowsNull();
-            
+
             if ($typeName === 'string') {
                 return $allowsNull ? 'string | null | undefined' : 'string | undefined';
             } elseif ($typeName === 'int') {
@@ -290,11 +294,14 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
                 if (enum_exists($fullClassName)) {
                     try {
                         $cases = $fullClassName::cases();
-                        $values = array_map(fn(\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $cases);
+                        $values = array_map(
+                            fn (UnitEnum $case) => $case instanceof BackedEnum ? $case->value : $case->name,
+                            $cases
+                        );
                         if (in_array('true', $values) && in_array('false', $values)) {
                             $enumType .= ' | boolean';
                         }
-                    } catch (\Throwable $e) {
+                    } catch (Throwable $e) {
                         // Ignore
                     }
                 }
@@ -317,11 +324,14 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
                     if (enum_exists($fullClassName)) {
                         try {
                             $cases = $fullClassName::cases();
-                            $values = array_map(fn(\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $cases);
+                            $values = array_map(
+                                fn (UnitEnum $case) => $case instanceof BackedEnum ? $case->value : $case->name,
+                                $cases
+                            );
                             if (in_array('true', $values) && in_array('false', $values)) {
                                 $enumType .= ' | boolean';
                             }
-                        } catch (\Throwable $e) {
+                        } catch (Throwable $e) {
                             // Ignore
                         }
                     }
@@ -342,7 +352,9 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
             'string' => 'string',
             'int' => 'number',
             'bool' => 'boolean',
-            default => str_ends_with($phpType, 'Enum') ? $this->getEnumType(basename(str_replace('\\', '/', $phpType))) : 'any',
+            default => str_ends_with($phpType, 'Enum') ? $this->getEnumType(
+                basename(str_replace('\\', '/', $phpType))
+            ) : 'any',
         };
     }
 
@@ -353,16 +365,19 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
         if (enum_exists($fullClassName)) {
             try {
                 $cases = $fullClassName::cases();
-                $values = array_map(fn(\UnitEnum $case) => $case instanceof \BackedEnum ? "'{$case->value}'" : "'{$case->name}'", $cases);
+                $values = array_map(
+                    fn (UnitEnum $case) => $case instanceof BackedEnum ? "'{$case->value}'" : "'{$case->name}'",
+                    $cases
+                );
                 return implode(' | ', $values);
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 // Fallback
             }
         }
         return 'string'; // Fallback to string if enum not found
     }
 
-    private function getPropertyDescription(\ReflectionProperty $prop): string
+    private function getPropertyDescription(ReflectionProperty $prop): string
     {
         $docComment = $prop->getDocComment();
         if ($docComment !== false) {
@@ -375,7 +390,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
                 $line = trim($line);
                 if (str_starts_with($line, '*')) {
                     $line = trim(substr($line, 1));
-                    if (!str_starts_with($line, '@') && !empty($line)) {
+                    if (! str_starts_with($line, '@') && ! empty($line)) {
                         $description .= $line . ' ';
                     }
                 }
@@ -392,25 +407,82 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
 
         // Check which global attribute traits are used
         $globalTraitClasses = [
-            'AccesskeyTrait' => ['type' => 'string', 'description' => 'Keyboard shortcut to activate or focus the element'],
-            'AutocapitalizeTrait' => ['type' => 'string', 'description' => 'Controls automatic capitalization'],
-            'AutofocusTrait' => ['type' => 'boolean', 'description' => 'Automatically focus the element when the page loads'],
-            'ClassTrait' => ['type' => 'string', 'description' => 'CSS class names'],
-            'ContenteditableTrait' => ['type' => 'boolean | "true" | "false" | "inherit"', 'description' => 'Whether the element is editable'],
-            'DataTrait' => ['type' => 'Record<string, string>', 'description' => 'Custom data attributes'],
-            'DirTrait' => ['type' => '"ltr" | "rtl" | "auto"', 'description' => 'Text direction'],
-            'DraggableTrait' => ['type' => 'boolean', 'description' => 'Whether the element can be dragged'],
-            'HiddenTrait' => ['type' => 'boolean', 'description' => 'Whether the element is hidden'],
-            'IdTrait' => ['type' => 'string', 'description' => 'Unique identifier'],
-            'InputmodeTrait' => ['type' => 'string', 'description' => 'Type of virtual keyboard to show'],
-            'LangTrait' => ['type' => 'string', 'description' => 'Language of the element'],
-            'PopoverTrait' => ['type' => 'string', 'description' => 'Controls popover behavior'],
-            'SlotTrait' => ['type' => 'string', 'description' => 'Shadow DOM slot name'],
-            'SpellcheckTrait' => ['type' => 'boolean', 'description' => 'Whether to check spelling'],
-            'StyleTrait' => ['type' => 'string | Partial<CSSStyleDeclaration>', 'description' => 'Inline CSS styles'],
-            'TabindexTrait' => ['type' => 'number', 'description' => 'Tab order position'],
-            'TitleTrait' => ['type' => 'string', 'description' => 'Tooltip text'],
-            'TranslateTrait' => ['type' => 'boolean', 'description' => 'Whether the element should be translated'],
+            'AccesskeyTrait' => [
+                'type' => 'string',
+                'description' => 'Keyboard shortcut to activate or focus the element',
+            ],
+            'AutocapitalizeTrait' => [
+                'type' => 'string',
+                'description' => 'Controls automatic capitalization',
+            ],
+            'AutofocusTrait' => [
+                'type' => 'boolean',
+                'description' => 'Automatically focus the element when the page loads',
+            ],
+            'ClassTrait' => [
+                'type' => 'string',
+                'description' => 'CSS class names',
+            ],
+            'ContenteditableTrait' => [
+                'type' => 'boolean | "true" | "false" | "inherit"',
+                'description' => 'Whether the element is editable',
+            ],
+            'DataTrait' => [
+                'type' => 'Record<string, string>',
+                'description' => 'Custom data attributes',
+            ],
+            'DirTrait' => [
+                'type' => '"ltr" | "rtl" | "auto"',
+                'description' => 'Text direction',
+            ],
+            'DraggableTrait' => [
+                'type' => 'boolean',
+                'description' => 'Whether the element can be dragged',
+            ],
+            'HiddenTrait' => [
+                'type' => 'boolean',
+                'description' => 'Whether the element is hidden',
+            ],
+            'IdTrait' => [
+                'type' => 'string',
+                'description' => 'Unique identifier',
+            ],
+            'InputmodeTrait' => [
+                'type' => 'string',
+                'description' => 'Type of virtual keyboard to show',
+            ],
+            'LangTrait' => [
+                'type' => 'string',
+                'description' => 'Language of the element',
+            ],
+            'PopoverTrait' => [
+                'type' => 'string',
+                'description' => 'Controls popover behavior',
+            ],
+            'SlotTrait' => [
+                'type' => 'string',
+                'description' => 'Shadow DOM slot name',
+            ],
+            'SpellcheckTrait' => [
+                'type' => 'boolean',
+                'description' => 'Whether to check spelling',
+            ],
+            'StyleTrait' => [
+                'type' => 'string | Partial<CSSStyleDeclaration>',
+                'description' => 'Inline CSS styles',
+            ],
+            'TabindexTrait' => [
+                'type' => 'number',
+                'description' => 'Tab order position',
+            ],
+            'TitleTrait' => [
+                'type' => 'string',
+                'description' => 'Tooltip text',
+            ],
+            'TranslateTrait' => [
+                'type' => 'boolean',
+                'description' => 'Whether the element should be translated',
+            ],
         ];
 
         foreach ($globalTraitClasses as $traitName => $traitInfo) {
@@ -475,12 +547,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
         $ts .= " * @description {$description}\n";
         $ts .= " */\n\n";
 
-        // Import statements - none needed for now since we use inline union types
-        // if (!empty($enumImports)) {
-        //     $ts .= "import { " . implode(', ', array_unique($enumImports)) . " } from './enums';\n\n";
-        // }
 
-        // Interface definition
         $ts .= "export interface {$className}Props {\n";
         foreach ($props as $propName => $propData) {
             $optional = $propData['required'] ? '' : '?';
@@ -492,7 +559,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
         }
         $ts .= "}\n\n";
 
-        // Class definition
+
         $ts .= "/**\n";
         $ts .= " * {$className} - {$description}\n";
         $ts .= " */\n";
@@ -511,7 +578,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
             $quotedPropName = $this->quotePropertyName($propName);
             $isQuoted = $quotedPropName !== $propName;
             $propAccess = $isQuoted ? "['{$propName}']" : ".{$propName}";
-            
+
             if ($propName === 'children') {
                 $ts .= "    if (props{$propAccess} !== undefined) {\n";
                 $ts .= "      this.setChildren(props{$propAccess});\n";
@@ -564,7 +631,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
         }
 
         // setChildren method
-        if (!$isSelfClosing) {
+        if (! $isSelfClosing) {
             $ts .= "  setChildren(children: string | HTMLElement | (string | HTMLElement)[]): this {\n";
             $ts .= "    // Clear existing children\n";
             $ts .= "    while (this.element.firstChild) {\n";
@@ -623,7 +690,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
         $ts = "/**\n";
         $ts .= " * THIS FILE IS AUTOGENERATED. DO NOT EDIT IT.\n";
         $ts .= " *\n";
-        $ts .= " * @generated " . date('F j, Y H:i:s') . "\n";
+        $ts .= ' * @generated ' . date('F j, Y H:i:s') . "\n";
         $ts .= " * @component {$name}Example\n";
         $ts .= " * @description {$description} - Composed Example\n";
         $ts .= " */\n\n";
@@ -634,11 +701,17 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
         $ts .= " * {$name}Example - Demonstrates valid parent-child relationships\n";
         $ts .= " *\n";
         $ts .= " * CONTENT MODEL:\n";
-        if (!empty($childOf)) {
-            $ts .= " * - Can be child of: " . implode(', ', array_map(function($c) { return basename(str_replace('\\', '/', $c)); }, $childOf)) . "\n";
+        if (! empty($childOf)) {
+            $ts .= ' * - Can be child of: ' . implode(
+                ', ',
+                array_map(function ($c) { return basename(str_replace('\\', '/', $c)); }, $childOf)
+            ) . "\n";
         }
-        if (!empty($parentOf)) {
-            $ts .= " * - Can contain: " . implode(', ', array_map(function($c) { return basename(str_replace('\\', '/', $c)); }, $parentOf)) . "\n";
+        if (! empty($parentOf)) {
+            $ts .= ' * - Can contain: ' . implode(
+                ', ',
+                array_map(function ($c) { return basename(str_replace('\\', '/', $c)); }, $parentOf)
+            ) . "\n";
         }
         $ts .= " */\n";
         $ts .= "export class {$name}Example {\n";
