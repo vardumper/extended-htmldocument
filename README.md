@@ -1,7 +1,6 @@
 [![Vulnerabilities for extended-htmldocument](https://dtrack.erikpoehler.us/api/v1/badge/vulns/project/37279553-0c47-476a-9efd-ed379fabca1a?apiKey=odt_J5OKz9JcWpKAnqz80whxTvwA3oQjGBGy)](https://dtrack.erikpoehler.us/projects/37279553-0c47-476a-9efd-ed379fabca1a)
 ![Static Badge](https://img.shields.io/badge/unit%20tests-passing-green?style=flat&color=%234c1)
 [![Code Coverage](https://github.com/vardumper/extended-htmldocument/blob/main/coverage.svg)](https://vardumper.github.io/extended-htmldocument/unit-tests)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/27b86977dba742e8b29bf4a604e3fc21)](https://app.codacy.com/gh/vardumper/extended-htmldocument/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 # Extended HTML Document Library
 
