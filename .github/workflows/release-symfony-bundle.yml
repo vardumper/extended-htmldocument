@@ -56,6 +56,10 @@ jobs:
       - name: Create release in target repo
         if: steps.diff.outputs.changed == 'true'
         run: |
-          gh release create ${{ github.ref_name }} \
+          if [ -z "${GITHUB_REF_NAME}" ]; then
+            echo "GITHUB_REF_NAME is empty; aborting release creation"
+            exit 1
+          fi
+          gh release create "${GITHUB_REF_NAME}" \
             --repo vardumper/html5-twig-component-bundle \
             --notes "Auto-synced from ${GITHUB_REPOSITORY} release ${GITHUB_REF_NAME}"
