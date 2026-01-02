@@ -85,6 +85,15 @@ which can then be used in pages:
 {% endfor %}
 ```
 
+### Passing arrays as component props
+You can pass associative arrays to component props using the `:` notation. For example to pass `data-*` attributes to the component:
+```twig
+<twig:Div :dataAttributes="{'role': 'article'}">
+    Hello world
+</twig:Div>
+```
+
+This will render a `data-role="article"` attribute on the generated component's root element.
 ## Features
 
 - ✅ All HTML5 elements supported
