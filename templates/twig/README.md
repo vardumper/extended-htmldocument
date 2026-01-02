@@ -114,3 +114,32 @@ twig:
 ## Notes
 
 Content can be passed in two ways: via the `content` parameter, or via a block override when using `embed`. Using block overrides allows you to nest other templates inside elements.
+
+### Data data-* and Alpine x-*: attributes 
+You can pass arbitrary `data-*` attributes via the `data-attributes` mapping. For example:
+
+```twig
+{% include '@html/block/article/article.twig' with {
+  content: 'Article body',
+  'data-attributes': {
+    'test': 'value',
+    'role': 'article'
+  }
+} %}
+```
+
+This renders `data-test="value"` and `data-role="article"` on the article element.
+
+Alpine.js attributes (like `x-on`) can be passed via an `alpine-attributes` map. Example:
+
+```twig
+{% include '@html/block/section/section.twig' with {
+  content: 'Interactive Element',
+  'alpine-attributes': {
+    '@click': 'handleClick()',
+    'x-show': 'open'
+  }
+} %}
+```
+
+This will render `@click="handleClick()"` and `x-show="open"` on the section element.
