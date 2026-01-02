@@ -168,7 +168,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
             ];
         }
 
-        // Create an example instance of the element to resolve global attributes
+        // Attempt to create an example instance of the element (not required for trait discovery)
         $example = null;
         try {
             $example = $ref->newInstance();
@@ -176,22 +176,19 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
             // Ignore if we can't create an instance
         }
 
-        // If we have an example instance, read available global attribute traits
-        if ($example !== null) {
-            $globalTraits = $this->getGlobalAttributeTraits($example);
-            foreach ($globalTraits as $traitName => $traitInfo) {
-                $propName = $this->camelToKebab($traitName);
-                if ($propName === 'class') {
-                    $propName = 'className';
-                }
-                $props[$propName] = [
-                    'type' => $traitInfo['type'],
-                    'description' => $traitInfo['description'],
-                    'required' => false,
-                    'defaultValue' => $traitInfo['default'],
-                    'isGlobal' => true,
-                ];
-            }
+        // Collect global attribute traits via reflection (do this regardless of instance creation)
+        $globalTraits = $this->getGlobalAttributeTraitsFromRef($ref);
+        foreach ($globalTraits as $traitName => $traitInfo) {
+            $propName = $this->traitToPropertyName($traitName) === 'class' ? 'className' : $this->traitToPropertyName(
+                $traitName
+            );
+            $props[$propName] = [
+                'type' => $traitInfo['type'],
+                'description' => $traitInfo['description'],
+                'required' => false,
+                'defaultValue' => $traitInfo['default'],
+                'isGlobal' => true,
+            ];
         }
 
         foreach ($ref->getProperties() as $prop) { /* Collect all properties with getter and setter (element-specific attributes) */
@@ -400,6 +397,14 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
         $traits = [];
         $ref = new ReflectionClass($element);
 
+        // Delegate to shared reflection-based discovery
+        return $this->getGlobalAttributeTraitsFromRef($ref);
+    }
+
+    private function getGlobalAttributeTraitsFromRef(ReflectionClass $ref): array
+    {
+        $traits = [];
+
         // Check which global attribute traits are used
         $globalTraitClasses = [
             'AccesskeyTrait' => [
@@ -519,7 +524,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
             'PopoverTrait' => 'popover',
             'SlotTrait' => 'slot',
             'TranslateTrait' => 'translate',
-            'DataTrait' => 'data',
+            'DataTrait' => 'data-attributes',
             default => lcfirst(str_replace('Trait', '', $traitName)),
         };
     }
@@ -547,10 +552,21 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
         foreach ($props as $propName => $propData) {
             $optional = $propData['required'] ? '' : '?';
             $ts .= "  /**\n";
-            $ts .= "   * {$propData['description']}\n";
+            $desc = $propData['description'];
+            // Provide clearer descriptions for complex attribute maps
+            if ($propName === 'data-attributes' || $propName === 'dataAttributes') {
+                $desc = 'Mapping of data-* attributes to their values (e.g., {"test":"value"} -> data-test="value")';
+            } elseif ($propName === 'alpine-attributes') {
+                $desc = 'Mapping of Alpine.js directives (shorthand or full) to their values (e.g., {@click: "do()"} or {"x-on:click":"do()"})';
+            }
+            $ts .= "   * {$desc}\n";
             $ts .= "   */\n";
             $quotedPropName = $this->quotePropertyName($propName);
-            $ts .= "  {$quotedPropName}{$optional}: {$propData['type']};\n";
+            $type = $propData['type'];
+            if ($propName === 'data-attributes' || $propName === 'dataAttributes' || $propName === 'alpine-attributes') {
+                $type = 'Record<string, string> | null | undefined';
+            }
+            $ts .= "  {$quotedPropName}{$optional}: {$type};\n";
         }
         $ts .= "}\n\n";
 
@@ -578,6 +594,30 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
                 $ts .= "    if (props{$propAccess} !== undefined) {\n";
                 $ts .= "      this.setChildren(props{$propAccess});\n";
                 $ts .= "    }\n";
+            } elseif ($propName === 'data-attributes' || $propName === 'dataAttributes') { /* Special-case data-* attributes: mapping of key->value rendered as data-KEY attributes */
+                $ts .= "    if (props{$propAccess} !== undefined) {\n";
+                $ts .= "      const __map = props{$propAccess};\n";
+                $ts .= "      if (__map !== null && __map !== undefined) {\n";
+                $ts .= "        for (const __k in __map) {\n";
+                $ts .= "          this.element.setAttribute(`data-\${__k}`, String((__map as any)[__k]));\n";
+                $ts .= "        }\n";
+                $ts .= "      }\n";
+                $ts .= "    }\n";
+            } elseif ($propName === 'alpine-attributes') { /* Special-case Alpine attributes: render per-key attributes with simple translation for shorthand */
+                $ts .= "    if (props{$propAccess} !== undefined) {\n";
+                $ts .= "      const __map = props{$propAccess};\n";
+                $ts .= "      if (__map !== null && __map !== undefined) {\n";
+                $ts .= "        for (const __k in __map) {\n";
+                $ts .= "          const __v = (__map as any)[__k];\n";
+                $ts .= "          let __attr = __k;\n";
+                $ts .= "          if (__k.startsWith('@')) { __attr = 'x-on:' + __k.slice(1); }\n";
+                $ts .= "          else if (__k.startsWith(':')) { __attr = 'x-bind:' + __k.slice(1); }\n";
+                $ts .= "          else if (__k.startsWith('.')) { __attr = 'x-model' + __k; }\n";
+                $ts .= "          else if (!__k.startsWith('x-') && ['show','text','html','if','for','cloak','init','data','effect','ignore','ref','transition','teleport'].includes(__k)) { __attr = 'x-' + __k; }\n";
+                $ts .= "          this.element.setAttribute(__attr, String(__v));\n";
+                $ts .= "        }\n";
+                $ts .= "      }\n";
+                $ts .= "    }\n";
             } elseif ($propData['type'] === 'boolean') {
                 $ts .= "    if (props{$propAccess} !== undefined) {\n";
                 $ts .= "      this.set{$this->toPascalCase($propName)}(props{$propAccess});\n";
@@ -602,7 +642,34 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
             $methodName = $this->toPascalCase($propName);
             $valueType = $propData['type'];
             $ts .= "  set{$methodName}(value: {$valueType}): this {\n";
-            if ($propData['isEnum'] ?? false) {
+            if ($propName === 'data-attributes' || $propName === 'dataAttributes') {
+                $ts .= "    if (value === null || value === undefined) {\n";
+                $ts .= "      // Remove all data-* attributes (best-effort)\n";
+                $ts .= "      for (const __a of Array.from(this.element.attributes)) {\n";
+                $ts .= "        if ((__a as Attr).name.startsWith('data-')) { (this.element as HTMLElement).removeAttribute((__a as Attr).name); }\n";
+                $ts .= "      }\n";
+                $ts .= "    } else {\n";
+                $ts .= "      for (const __k in value as Record<string, string>) {\n";
+                $ts .= "        this.element.setAttribute(`data-\${__k}`, String((value as any)[__k]));\n";
+                $ts .= "      }\n";
+                $ts .= "    }\n";
+            } elseif ($propName === 'alpine-attributes') {
+                $ts .= "    if (value === null || value === undefined) {\n";
+                $ts .= "      // Remove all x-* Alpine attributes (best-effort)\n";
+                $ts .= "      for (const __a of Array.from(this.element.attributes)) {\n";
+                $ts .= "        if ((__a as Attr).name.startsWith('x-')) { (this.element as HTMLElement).removeAttribute((__a as Attr).name); }\n";
+                $ts .= "      }\n";
+                $ts .= "    } else {\n";
+                $ts .= "      for (const __k in value as Record<string, string>) {\n";
+                $ts .= "        let __attr = __k;\n";
+                $ts .= "        if (__k.startsWith('@')) { __attr = 'x-on:' + __k.slice(1); }\n";
+                $ts .= "        else if (__k.startsWith(':')) { __attr = 'x-bind:' + __k.slice(1); }\n";
+                $ts .= "        else if (__k.startsWith('.')) { __attr = 'x-model' + __k; }\n";
+                $ts .= "        else if (!__k.startsWith('x-') && ['show','text','html','if','for','cloak','init','data','effect','ignore','ref','transition','teleport'].includes(__k)) { __attr = 'x-' + __k; }\n";
+                $ts .= "        this.element.setAttribute(__attr, String((value as any)[__k]));\n";
+                $ts .= "      }\n";
+                $ts .= "    }\n";
+            } elseif ($propData['isEnum'] ?? false) {
                 $ts .= "    if (value === null || value === undefined) {\n";
                 $ts .= "      this.element.removeAttribute('{$propName}');\n";
                 $ts .= "    } else {\n";

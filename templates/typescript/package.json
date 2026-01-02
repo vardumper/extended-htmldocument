@@ -2,11 +2,11 @@
   "name": "@typesafe-html5/typescript",
   "version": "0.2.61",
   "description": "Type-safe, auto-generated TypeScript classes for all HTML5 elements with full WCAG, ARIA support and validation. Part of Extended HTMLDocument - schema-first from HTML5 schema.",
-  "main": "index.ts",
-  "types": "index.ts",
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build": "node build-all.mjs"
   },
   "keywords": [
     "typescript",
