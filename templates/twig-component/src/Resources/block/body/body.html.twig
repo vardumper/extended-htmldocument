@@ -19,6 +19,9 @@
 <body
   {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
+  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
+    {% for __k, __v in this.dataAttributes %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if this.dir is not null %}dir="{{ this.dir.value }}"{% endif %}
   {% if this.draggable is defined and this.draggable is not null %}draggable="{{ this.draggable }}"{% endif %}
   {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}

@@ -18,7 +18,9 @@
 {% apply spaceless %}
 <button
   {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
-  {% if this.alpineAttributes is defined and this.alpineAttributes is not null %}alpine-attributes="{{ this.alpineAttributes }}"{% endif %}
+  {% if this.alpineAttributes is defined and this.alpineAttributes is not null and this.alpineAttributes|length > 0 %}
+    {% for __k, __v in this.alpineAttributes %} {{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if this.ariaAtomic is not null %}aria-atomic="{{ this.ariaAtomic.value }}"{% endif %}
   {% if this.ariaBusy is not null %}aria-busy="{{ this.ariaBusy.value }}"{% endif %}
   {% if this.ariaChecked is not null %}aria-checked="{{ this.ariaChecked.value }}"{% endif %}
@@ -43,6 +45,9 @@
   {% if this.command is defined and this.command is not null %}command="{{ this.command }}"{% endif %}
   {% if this.commandfor is defined and this.commandfor is not null %}commandfor="{{ this.commandfor }}"{% endif %}
   {% if this.contenteditable is not null %}contenteditable="{{ this.contenteditable.value }}"{% endif %}
+  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
+    {% for __k, __v in this.dataAttributes %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if this.dir is not null %}dir="{{ this.dir.value }}"{% endif %}
   {% if this.disabled is defined and this.disabled is not null %}disabled="{{ this.disabled }}"{% endif %}
   {% if this.draggable is defined and this.draggable is not null %}draggable="{{ this.draggable }}"{% endif %}

@@ -11,6 +11,6 @@ declare(strict_types=1);
 
 namespace Html\Enum;
 
-if (!\class_exists(__NAMESPACE__ . '\\TypeInputEnum')) {
+if (! \class_exists(__NAMESPACE__ . '\\TypeInputEnum')) {
     \class_alias(__NAMESPACE__ . '\\InputTypeEnum', __NAMESPACE__ . '\\TypeInputEnum');
 }

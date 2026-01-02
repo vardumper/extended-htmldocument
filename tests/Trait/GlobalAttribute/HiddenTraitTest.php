@@ -2,16 +2,15 @@
 
 namespace Tests\Trait\GlobalAttribute;
 
-use Html\Trait\GlobalAttribute\HiddenTrait;
 use InvalidArgumentException;
-
 
 test('setHidden true sets delegated attribute and getHidden returns true', function () {
     $obj = new TestHidden();
 
     $obj->setHidden(true);
 
-    expect($obj->getHidden())->toBeTrue()
+    expect($obj->getHidden())
+        ->toBeTrue()
         ->and($obj->attributes['hidden'])->toBe('true');
 });
 
@@ -20,7 +19,8 @@ test('setHidden false does not set attribute', function () {
 
     $obj->setHidden(false);
 
-    expect(array_key_exists('hidden', $obj->attributes))->toBeFalse();
+    expect(array_key_exists('hidden', $obj->attributes))
+        ->toBeFalse();
 });
 
 test('setHidden "true" string sets delegated attribute and getHidden returns true', function () {
@@ -28,7 +28,8 @@ test('setHidden "true" string sets delegated attribute and getHidden returns tru
 
     $obj->setHidden('true');
 
-    expect($obj->getHidden())->toBeTrue()
+    expect($obj->getHidden())
+        ->toBeTrue()
         ->and($obj->attributes['hidden'])->toBe('true');
 });
 
@@ -37,7 +38,8 @@ test('setHidden "false" string does not set attribute', function () {
 
     $obj->setHidden('false');
 
-    expect(array_key_exists('hidden', $obj->attributes))->toBeFalse();
+    expect(array_key_exists('hidden', $obj->attributes))
+        ->toBeFalse();
 });
 
 test('setHidden throws on invalid string', function () {

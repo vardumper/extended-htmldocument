@@ -2,11 +2,7 @@
 
 namespace Tests\Trait;
 
-use Html\Trait\ClassResolverTrait;
 use Html\Delegator\HTMLDocumentDelegator;
-use Html\Delegator\HTMLElementDelegator;
-
-
 
 test('getClassesExtendingClass finds subclasses', function () {
     $resolver = new TestClassResolverExtra();
@@ -32,7 +28,8 @@ test('getElementByQualifiedName finds class by attribute', function () {
 
     $class = $resolver->callGetElementByQualifiedName('x-foo');
 
-    expect($class)->toBe(\Tests\Trait\ClassResolver\TestElementDelegator::class);
+    expect($class)
+        ->toBe(\Tests\Trait\ClassResolver\TestElementDelegator::class);
 });
 
 test('getDelegatorFromElement returns instance of the configured class', function () {
@@ -42,5 +39,6 @@ test('getDelegatorFromElement returns instance of the configured class', functio
     $resolver = new TestClassResolverExtra();
     $delegator = $resolver->callGetDelegatorFromElement($element);
 
-    expect($delegator)->toBeInstanceOf(\Tests\Trait\ClassResolver\TestElementDelegator::class);
+    expect($delegator)
+        ->toBeInstanceOf(\Tests\Trait\ClassResolver\TestElementDelegator::class);
 });

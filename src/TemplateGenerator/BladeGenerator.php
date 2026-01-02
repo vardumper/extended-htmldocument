@@ -2,12 +2,14 @@
 
 namespace Html\TemplateGenerator;
 
+use BackedEnum;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
 use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionUnionType;
+use UnitEnum;
 
 /**
  * BladeGenerator - Generates Laravel Blade Templates
@@ -77,8 +79,7 @@ class BladeGenerator implements TemplateGeneratorInterface
         $props = [];
         $enums = [];
 
-        // Collect all properties with getter and setter
-        foreach ($ref->getProperties() as $prop) {
+        foreach ($ref->getProperties() as $prop) { /* Collect all properties with getter and setter */
             $name = $prop->getName();
             $getter = 'get' . ucfirst($name);
             $setter = 'set' . ucfirst($name);
@@ -87,20 +88,25 @@ class BladeGenerator implements TemplateGeneratorInterface
                 if ($type instanceof ReflectionUnionType) {
                     foreach ($type->getTypes() as $unionType) {
                         if ($unionType instanceof ReflectionNamedType && enum_exists($unionType->getName())) {
-                            $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $unionType->getName()::cases());
+                            $choices = array_map(
+                                fn (UnitEnum $case) => $case instanceof BackedEnum ? $case->value : $case->name,
+                                $unionType->getName()::cases()
+                            );
                             $enums[$name] = $choices;
                         }
                     }
                 } elseif ($type && $type instanceof ReflectionNamedType && enum_exists($type->getName())) {
-                    $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $type->getName()::cases());
+                    $choices = array_map(
+                        fn (UnitEnum $case) => $case instanceof BackedEnum ? $case->value : $case->name,
+                        $type->getName()::cases()
+                    );
                     $enums[$name] = $choices;
                 }
                 $props[] = $name;
             }
         }
 
-        // Add global attributes
-        $globalAttrs = ['id', 'class'];
+        $globalAttrs = ['id', 'class']; /* Add global attributes */
         foreach ($globalAttrs as $gAttr) {
             $getter = 'get' . ucfirst($gAttr);
             if (method_exists($element, $getter)) {
@@ -121,17 +127,15 @@ class BladeGenerator implements TemplateGeneratorInterface
         }
         $name = ucfirst($elementName);
 
-        // Avoid reserved words for section names
         $sectionName = in_array(
             $elementName,
             self::BLADE_RESERVED_WORDS,
             true
-        ) ? $elementName . '_section' : $elementName;
+        ) ? $elementName . '_section' : $elementName; /* Avoid reserved words for section names */
 
         $blade = "{{--\n  This file is auto-generated.\n\n  {$name} - {$desc}\n\n  @component {$elementName}\n  @author vardumper <info@erikpoehler.com>\n  @package vardumper/extended-htmldocument\n  @see src/TemplateGenerator/BladeGenerator.php\n--}}\n";
 
-        // Emit enum choices as Blade @php associative arrays
-        $blade .= "@php\n";
+        $blade .= "@php\n"; /* Emit enum choices as Blade @php associative arrays */
         foreach ($enums as $attr => $choices) {
             $assoc = [];
             foreach ($choices as $choice) {
@@ -140,8 +144,7 @@ class BladeGenerator implements TemplateGeneratorInterface
             $blade .= '$' . $attr . 'Choices = [' . implode(', ', $assoc) . '];' . "\n";
         }
 
-        // Attribute rendering logic
-        $blade .= '$attrs = [];' . "\n";
+        $blade .= '$attrs = [];' . "\n"; /* Attribute rendering logic */
         foreach ($props as $attr) {
             $htmlAttr = $this->camelToKebab($attr);
             if (array_key_exists($attr, $enums)) {
@@ -188,14 +191,13 @@ class BladeGenerator implements TemplateGeneratorInterface
             $ref->getShortName()
         );
 
-        // Skip generic containers that don't have meaningful composition patterns
         $excludedElements = [
             'div', 'article', 'aside', 'section', 'nav', 'header', 'footer', 'main',
             'blockquote', 'p', 'dialog', 'dd', 'legend', 'li', 'mark', 'slot',
             'svg', 'template', 'thead', 'tbody', 'tfoot', 'tr', 'td', 'th',
             'caption', 'colgroup', 'col', 'fieldset', 'dt', 'optgroup', 'option',
             'figcaption', 'summary', 'rt', 'rp',
-        ];
+        ]; /* Skip generic containers that don't have meaningful composition patterns */
         if (in_array($elementName, $excludedElements, true)) {
             return null;
         }

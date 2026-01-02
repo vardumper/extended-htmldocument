@@ -13,7 +13,7 @@ namespace Html\Trait;
 use BadMethodCallException;
 use InvalidArgumentException;
 use ReflectionClass;
-use TypeError;
+use Throwable;
 
 trait DelegatorTrait
 {
@@ -30,7 +30,7 @@ trait DelegatorTrait
             $method = $reflection->getMethod($name);
             try {
                 return $method->invokeArgs($this->delegated, $arguments);
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 \error_log($e->getMessage());
             }
         }

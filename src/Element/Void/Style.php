@@ -1,22 +1,22 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * @generated 2025-12-31 00:30:17
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
  */
+
 namespace Html\Element\Void;
 
-use Html\Element\VoidElement;
 use Html\Element\Inline\ScalableVectorGraphics;
-use Html\Element\Void\Head;
+use Html\Element\VoidElement;
 use Html\Enum\StyleTypeEnum;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 /**
  * The style element is used to embed CSS styles directly into an HTML document.
@@ -30,6 +30,7 @@ class Style extends VoidElement
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\LangTrait;
     use GlobalAttribute\TitleTrait;
+
     /**
      * The HTML element name
      */
@@ -49,38 +50,30 @@ class Style extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        Head::class,
-        ScalableVectorGraphics::class,
-    ];
+    public static array $childOf = [Head::class, ScalableVectorGraphics::class];
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-    /** 
+    /**
      * Specifies the media type for which the linked resource or style sheet is intended.
-     * @category HTML attribute */
+     */
     protected ?string $media = null;
 
-    /** 
+    /**
      * Specifies a cryptographic nonce that can be used in Content Security Policy (CSP) checks.
-     * @category HTML attribute */
+     */
     protected ?string $nonce = null;
 
-    /** 
+    /**
      * Specifies the media type of the inline styles.
-     * @category HTML attribute
      * @deprecated
-    
      * @example text/css
      */
     protected ?StyleTypeEnum $type = null;
-
 
     public function setMedia(string $media): static
     {
@@ -121,7 +114,7 @@ class Style extends VoidElement
     public function setType(string|StyleTypeEnum $type): static
     {
         if (\is_string($type)) {
-            $type = StyleTypeEnum::tryFrom($type) ?? throw new \InvalidArgumentException("Invalid value for \$type.");
+            $type = StyleTypeEnum::tryFrom($type) ?? throw new InvalidArgumentException('Invalid value for $type.');
         }
         $this->type = $type;
         $this->delegated->setAttribute('type', (string) $type->value);
@@ -133,5 +126,4 @@ class Style extends VoidElement
     {
         return $this->type;
     }
-
 }

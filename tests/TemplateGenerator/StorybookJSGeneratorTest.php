@@ -51,10 +51,14 @@ test('render element', function () {
     $element = Anchor::create($document);
     $element->setHref('https://example.com');
     $result = $this->generator->render($element);
-    expect($result)->toBeString();
-    expect($result)->toContain('export default');
-    expect($result)->toContain('href');
-    expect($result)->toContain('argTypes');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('export default');
+    expect($result)
+        ->toContain('href');
+    expect($result)
+        ->toContain('argTypes');
 });
 
 test('render document', function () {
@@ -62,7 +66,8 @@ test('render document', function () {
     $element = Body::create($document);
     $document->appendChild($element);
     $result = $this->generator->render($document);
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('render invalid', function () {
@@ -74,24 +79,30 @@ test('render composed element with empty parentOf returns null', function () {
     $document = HTMLDocumentDelegator::createEmpty();
     $element = Anchor::create($document);
     $result = $this->generator->renderComposedElement($element);
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('render composed element with excluded element returns null', function () {
     $document = HTMLDocumentDelegator::createEmpty();
     $element = Division::create($document); // div is in excluded list
     $result = $this->generator->renderComposedElement($element);
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('render composed element with valid element returns story', function () {
     $document = HTMLDocumentDelegator::createEmpty();
     $element = Form::create($document);
     $result = $this->generator->renderComposedElement($element);
-    expect($result)->toBeString();
-    expect($result)->toContain('Form - Composed');
-    expect($result)->toContain('export default');
-    expect($result)->toContain('import');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('Form - Composed');
+    expect($result)
+        ->toContain('export default');
+    expect($result)
+        ->toContain('import');
 });
 
 test('determine level for block element', function () {
@@ -99,7 +110,8 @@ test('determine level for block element', function () {
     $method = $reflection->getMethod('determineLevel');
     $method->setAccessible(true);
     $result = $method->invoke($this->generator, Body::class);
-    expect($result)->toBe('block');
+    expect($result)
+        ->toBe('block');
 });
 
 test('determine level for inline element', function () {
@@ -107,7 +119,8 @@ test('determine level for inline element', function () {
     $method = $reflection->getMethod('determineLevel');
     $method->setAccessible(true);
     $result = $method->invoke($this->generator, Anchor::class);
-    expect($result)->toBe('inline');
+    expect($result)
+        ->toBe('inline');
 });
 
 test('determine level for void element', function () {
@@ -115,7 +128,8 @@ test('determine level for void element', function () {
     $method = $reflection->getMethod('determineLevel');
     $method->setAccessible(true);
     $result = $method->invoke($this->generator, \Html\Element\Void\BreakElement::class);
-    expect($result)->toBe('void');
+    expect($result)
+        ->toBe('void');
 });
 
 test('generate render assignment for string attribute', function () {
@@ -123,9 +137,12 @@ test('generate render assignment for string attribute', function () {
     $method = $reflection->getMethod('generateRenderAssignment');
     $method->setAccessible(true);
     $result = $method->invoke($this->generator, 'className', 'class', 'string');
-    expect($result)->toBeString();
-    expect($result)->toContain('if (className)');
-    expect($result)->toContain('el.setAttribute(\'class\', className)');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('if (className)');
+    expect($result)
+        ->toContain('el.setAttribute(\'class\', className)');
 });
 
 test('generate render assignment for boolean attribute', function () {
@@ -133,9 +150,12 @@ test('generate render assignment for boolean attribute', function () {
     $method = $reflection->getMethod('generateRenderAssignment');
     $method->setAccessible(true);
     $result = $method->invoke($this->generator, 'disabled', 'disabled', 'boolean');
-    expect($result)->toBeString();
-    expect($result)->toContain('if (disabled)');
-    expect($result)->toContain('el.setAttribute(\'disabled\', disabled)');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('if (disabled)');
+    expect($result)
+        ->toContain('el.setAttribute(\'disabled\', disabled)');
 });
 
 test('generate render assignment for data-theme special case', function () {
@@ -143,39 +163,58 @@ test('generate render assignment for data-theme special case', function () {
     $method = $reflection->getMethod('generateRenderAssignment');
     $method->setAccessible(true);
     $result = $method->invoke($this->generator, 'dataTheme', 'data-theme', 'string');
-    expect($result)->toBeString();
-    expect($result)->toContain('data-theme');
-    expect($result)->toContain('storybook-root');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('data-theme');
+    expect($result)
+        ->toContain('storybook-root');
 });
 
 test('build composed story', function () {
     $reflection = new ReflectionClass($this->generator);
     $method = $reflection->getMethod('buildComposedStory');
     $method->setAccessible(true);
-    
+
     $formRef = new ReflectionClass(Form::class);
     $childOf = $formRef->getStaticPropertyValue('childOf', []);
     $parentOf = $formRef->getStaticPropertyValue('parentOf', []);
-    
-    $result = $method->invoke($this->generator, 'form', 'Form', 'Form description', 'block', $formRef, $childOf, $parentOf);
-    expect($result)->toBeString();
-    expect($result)->toContain('Form - Composed');
-    expect($result)->toContain('export default');
-    expect($result)->toContain('WithValidChildren');
+
+    $result = $method->invoke(
+        $this->generator,
+        'form',
+        'Form',
+        'Form description',
+        'block',
+        $formRef,
+        $childOf,
+        $parentOf
+    );
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('Form - Composed');
+    expect($result)
+        ->toContain('export default');
+    expect($result)
+        ->toContain('WithValidChildren');
 });
 
 test('collect imports for composed story', function () {
     $reflection = new ReflectionClass($this->generator);
     $method = $reflection->getMethod('collectImportsForComposedStory');
     $method->setAccessible(true);
-    
+
     $formRef = new ReflectionClass(Form::class);
     $parentOf = $formRef->getStaticPropertyValue('parentOf', []);
-    
+
     $result = $method->invoke($this->generator, 'form', $parentOf, $formRef);
-    expect($result)->toBeArray();
-    expect($result)->toHaveKey('imports');
-    expect($result)->toHaveKey('children');
+    expect($result)
+        ->toBeArray();
+    expect($result)
+        ->toHaveKey('imports');
+    expect($result)
+        ->toHaveKey('children');
     expect($result['imports'])->toBeArray();
     expect($result['children'])->toBeArray();
 });

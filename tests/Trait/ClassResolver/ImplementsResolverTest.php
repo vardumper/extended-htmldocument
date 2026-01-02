@@ -2,4 +2,6 @@
 
 namespace Tests\Trait\ClassResolver;
 
-class ImplementsResolverTest implements InterfaceForResolver {}
+class ImplementsResolverTest implements InterfaceForResolver
+{
+}

@@ -3,13 +3,13 @@
 namespace Tests\Trait\GlobalAttribute;
 
 use Html\Trait\GlobalAttribute\AutocorrectTrait;
-use Html\Enum\AutocorrectEnum;
 
 class TestAutocorrect
 {
     use AutocorrectTrait;
 
     public array $attributes = [];
+
     public $delegated;
 
     public function __construct()

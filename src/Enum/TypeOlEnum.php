@@ -11,6 +11,6 @@ declare(strict_types=1);
 
 namespace Html\Enum;
 
-if (!\class_exists(__NAMESPACE__ . '\\TypeOlEnum')) {
+if (! \class_exists(__NAMESPACE__ . '\\TypeOlEnum')) {
     \class_alias(__NAMESPACE__ . '\\OlTypeEnum', __NAMESPACE__ . '\\TypeOlEnum');
 }

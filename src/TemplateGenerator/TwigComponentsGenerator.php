@@ -90,8 +90,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
      */
     public function renderElement(HTMLElementDelegatorInterface $element): string
     {
-        // Generate the template
-        return $this->renderTemplate($element);
+        return $this->renderTemplate($element); /* Generate the template */
     }
 
     /**
@@ -106,8 +105,7 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
 
         $componentName = $this->getComponentClassName(ucfirst($elementName));
 
-        // Determine the level (Block, Inline, or Void)
-        $level = $this->determineComponentLevel($ref->getName());
+        $level = $this->determineComponentLevel($ref->getName()); /* Determine the level (Block, Inline, or Void) */
         $levelNamespace = ucfirst($level);
 
         $props = [];
@@ -121,12 +119,12 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             $setter = 'set' . ucfirst($name);
 
             if ($ref->hasMethod($getter) && $ref->hasMethod($setter)) {
-                // Get the setter method to check its parameter types (more accurate than property type)
-                $setterMethod = $ref->getMethod($setter);
+                $setterMethod = $ref->getMethod(
+                    $setter
+                ); /* Get the setter method to check its parameter types (more accurate than property type) */
                 $setterParams = $setterMethod->getParameters();
 
-                // Use setter's first parameter type if available, otherwise fall back to property type
-                $type = ! empty($setterParams) ? $setterParams[0]->getType() : $prop->getType();
+                $type = ! empty($setterParams) ? $setterParams[0]->getType() : $prop->getType(); /* Use setter's first parameter type if available, otherwise fall back to property type */
 
                 $phpType = '?string';
                 $enumClass = null;
@@ -159,12 +157,15 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
                     }
 
                     if ($hasEnum) {
-                        // If it's an enum, allow null, string, and the enum class
-                        $shortEnumName = basename(str_replace('\\', '/', $enumClass));
+                        $shortEnumName = basename(
+                            str_replace('\\', '/', $enumClass)
+                        ); /* If it's an enum, allow null, string, and the enum class */
                         $allowedTypes = ['null', 'string', $shortEnumName . '::class'];
                     } elseif (! empty($types)) {
-                        // Union type without enum - use the actual types with null as part of union
-                        $phpType = 'null|' . implode('|', $types);
+                        $phpType = 'null|' . implode(
+                            '|',
+                            $types
+                        ); /* Union type without enum - use the actual types with null as part of union */
                         $allowedTypes = array_merge(['null'], $types);
                     }
                 } elseif ($type && $type instanceof ReflectionNamedType) {
@@ -183,17 +184,16 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
                         $allowedTypes = ['null', 'string', $shortEnumName . '::class'];
                         $needsNormalizer = true;
                     } else {
-                        // Use the actual type from the setter parameter
-                        // For the property type, use the property's actual type (e.g., ?bool)
-                        $propType = $prop->getType();
+                        $propType = $prop->getType(); /* Use the actual property type (e.g., ?bool) */
                         if ($propType instanceof ReflectionNamedType) {
                             $phpType = ($propType->allowsNull() ? '?' : '') . $propType->getName();
                         } else {
                             $phpType = ($type->allowsNull() ? '?' : '') . $typeName;
                         }
 
-                        // For validation, use setter's accepted types
-                        $allowedTypes = $type->allowsNull() ? ['null', $typeName] : [$typeName];
+                        $allowedTypes = $type->allowsNull() ? ['null', $typeName] : [
+                            $typeName,
+                        ]; /* For validation, use setter's accepted types */
                     }
                 }
 
@@ -220,8 +220,33 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             }
         }
 
-        // Get element metadata from class-level doc comment
-        $docComment = $ref->getDocComment();
+        if (! isset($props['dataAttributes']) && ( /* Explicitly include dataAttributes when setter/getter names don't match reflection; DataTrait uses singular setDataAttribute/getDataAttribute. */
+            $ref->hasProperty('dataAttributes') || $ref->hasMethod('getDataAttribute') || $ref->hasMethod(
+                'setDataAttribute'
+            ) || $ref->hasMethod('getDataAttributes') || $ref->hasMethod('setDataAttributes')
+        )) {
+            $props['dataAttributes'] = [
+                'type' => '?array',
+                'enumClass' => null,
+                'allowedTypes' => ['array'],
+                'needsNormalizer' => false,
+            ];
+        }
+
+        if (! isset($props['alpineAttributes']) && ( /* Ensure Alpine attributes are present when trait provides them */
+            $ref->hasProperty('alpineAttributes') || $ref->hasMethod('getAlpineAttribute') || $ref->hasMethod(
+                'setAlpineAttribute'
+            ) || $ref->hasMethod('getAlpineAttributes') || $ref->hasMethod('setAlpineAttributes')
+        )) {
+            $props['alpineAttributes'] = [
+                'type' => '?array',
+                'enumClass' => null,
+                'allowedTypes' => ['array'],
+                'needsNormalizer' => false,
+            ];
+        }
+
+        $docComment = $ref->getDocComment(); /* Get element metadata from class-level doc comment */
         $desc = '';
         if ($docComment !== false) {
             // Extract description from class docblock (first line of content)
@@ -231,12 +256,12 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         }
         $name = ucfirst($elementName);
 
-        // Build PHP class
-        $php = "<?php\n\n";
+        $php = "<?php\n\n"; /* Build PHP class */
         $php .= "namespace Html\\TwigComponentBundle\\Twig\\{$levelNamespace};\n\n";
 
-        // Add use statements for enums (grouped)
-        $uniqueEnumClasses = array_unique(array_filter(array_column($props, 'enumClass')));
+        $uniqueEnumClasses = array_unique(
+            array_filter(array_column($props, 'enumClass'))
+        ); /* Add use statements for enums (grouped) */
         if (! empty($uniqueEnumClasses)) {
             $php .= "use Html\\Enum\\{\n";
             $enumShortNames = array_map(function ($enumClass) {
@@ -429,6 +454,22 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             }
         }
 
+        // Ensure DataTrait and AlpineJsTrait backed properties are included even when
+        // method naming does not match exact pluralization of the property name.
+        if ($ref->hasProperty('dataAttributes') || $ref->hasMethod('getDataAttribute') || $ref->hasMethod(
+            'getDataAttributes'
+        )) {
+            $props[] = 'dataAttributes';
+        }
+        if ($ref->hasProperty('alpineAttributes') || $ref->hasMethod('getAlpineAttribute') || $ref->hasMethod(
+            'getAlpineAttributes'
+        )) {
+            $props[] = 'alpineAttributes';
+        }
+
+        // Remove duplicates introduced by adding explicit fallbacks above
+        $props = array_values(array_unique($props));
+
         sort($props, \SORT_NATURAL | \SORT_FLAG_CASE);
 
         $isSelfClosing = $ref->hasConstant('SELF_CLOSING') && $ref->getConstant('SELF_CLOSING');
@@ -492,9 +533,20 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             $isEnum = isset($enums[$attr]);
             $htmlAttr = $this->camelToKebab($attr);
 
-            // All attributes are rendered via the component properties
-            // Enums will be validated and converted by PreMount
-            if ($isEnum) {
+            // Special-case Alpine attributes: render key/value pairs from this.alpineAttributes
+            if ($htmlAttr === 'alpine-attributes') {
+                $twig .= "\n  {% if this.alpineAttributes is defined and this.alpineAttributes is not null and this.alpineAttributes|length > 0 %}";
+                $twig .= "\n    {% for __k, __v in this.alpineAttributes %} {{ __k }}=\"{{ __v }}\"{% endfor %}";
+                $twig .= "\n  {% endif %}";
+
+                // Special-case data-* attributes: render each data-KEY attribute from this.dataAttributes
+            } elseif ($htmlAttr === 'data-attributes') {
+                $twig .= "\n  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}";
+                $twig .= "\n    {% for __k, __v in this.dataAttributes %} data-{{ __k }}=\"{{ __v }}\"{% endfor %}";
+                $twig .= "\n  {% endif %}";
+
+                // Default handling for normal attributes
+            } elseif ($isEnum) {
                 $twig .= "\n  {% if this.{$attr} is not null %}{$htmlAttr}=\"{{ this.{$attr}.value }}\"{% endif %}";
             } else {
                 $twig .= "\n  {% if this.{$attr} is defined and this.{$attr} is not null %}{$htmlAttr}=\"{{ this.{$attr} }}\"{% endif %}";
@@ -507,8 +559,10 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
             $twig .= "\n>\n";
             $twig .= "  {%- block content %}{% endblock -%}\n";
             $twig .= "</{$elementName}>\n";
-            $twig .= "{% endapply %}\n";
         }
+
+        // Close the spaceless apply wrapper
+        $twig .= "{% endapply %}\n";
 
         return $twig;
     }

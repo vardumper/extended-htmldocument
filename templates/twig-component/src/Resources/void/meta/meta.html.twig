@@ -18,6 +18,9 @@
   {% if this.charset is defined and this.charset is not null %}charset="{{ this.charset }}"{% endif %}
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
   {% if this.content is defined and this.content is not null %}content="{{ this.content }}"{% endif %}
+  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
+    {% for __k, __v in this.dataAttributes %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}
   {% if this.httpEquiv is not null %}http-equiv="{{ this.httpEquiv.value }}"{% endif %}
   {% if this.id is defined and this.id is not null %}id="{{ this.id }}"{% endif %}
@@ -26,3 +29,4 @@
   {% if this.scheme is defined and this.scheme is not null %}scheme="{{ this.scheme }}"{% endif %}
   {% if this.title is defined and this.title is not null %}title="{{ this.title }}"{% endif %}
 />
+{% endapply %}

@@ -8,6 +8,7 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block progress %}
+{% apply spaceless %}
 {% set ariaAtomic_choices = {'false': true, 'true': true} %}
 {% set ariaLive_choices = {'off': true, 'polite': true, 'assertive': true} %}
 {% set ariaRelevant_choices = {'additions': true, 'removals': true, 'text': true, 'all': true, 'additions text': true} %}
@@ -19,21 +20,26 @@
 {% set translate_choices = {'yes': true, 'no': true} %}
 <progress
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
-  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
-  {% if ariaAtomic is defined and ariaAtomic|length > 0 and ariaAtomic_choices[ariaAtomic] is defined %}aria-atomic="{{ ariaAtomic }}"{% endif %}
-  {% if ariaDetails is defined and ariaDetails|length > 0 %}aria-details="{{ ariaDetails }}"{% endif %}
-  {% if ariaKeyshortcuts is defined and ariaKeyshortcuts|length > 0 %}aria-keyshortcuts="{{ ariaKeyshortcuts }}"{% endif %}
-  {% if ariaLive is defined and ariaLive|length > 0 and ariaLive_choices[ariaLive] is defined %}aria-live="{{ ariaLive }}"{% endif %}
-  {% if ariaRelevant is defined and ariaRelevant|length > 0 and ariaRelevant_choices[ariaRelevant] is defined %}aria-relevant="{{ ariaRelevant }}"{% endif %}
-  {% if ariaRoledescription is defined and ariaRoledescription|length > 0 %}aria-roledescription="{{ ariaRoledescription }}"{% endif %}
-  {% if ariaValuemax is defined and ariaValuemax|length > 0 %}aria-valuemax="{{ ariaValuemax }}"{% endif %}
-  {% if ariaValuemin is defined and ariaValuemin|length > 0 %}aria-valuemin="{{ ariaValuemin }}"{% endif %}
-  {% if ariaValuenow is defined and ariaValuenow|length > 0 %}aria-valuenow="{{ ariaValuenow }}"{% endif %}
-  {% if ariaValuetext is defined and ariaValuetext|length > 0 %}aria-valuetext="{{ ariaValuetext }}"{% endif %}
+  {% if attribute(_context, 'alpine-attributes') is defined and attribute(_context, 'alpine-attributes')|length > 0 %}
+    {% for __k, __v in attribute(_context, 'alpine-attributes') %} {{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
+  {% if attribute(_context, 'aria-atomic') is defined and attribute(_context, 'aria-atomic')|length > 0 and ariaAtomic_choices[attribute(_context, 'aria-atomic')] is defined %}aria-atomic="{{ attribute(_context, 'aria-atomic') }}"{% endif %}
+  {% if attribute(_context, 'aria-details') is defined and attribute(_context, 'aria-details')|length > 0 %}aria-details="{{ attribute(_context, 'aria-details') }}"{% endif %}
+  {% if attribute(_context, 'aria-keyshortcuts') is defined and attribute(_context, 'aria-keyshortcuts')|length > 0 %}aria-keyshortcuts="{{ attribute(_context, 'aria-keyshortcuts') }}"{% endif %}
+  {% if attribute(_context, 'aria-live') is defined and attribute(_context, 'aria-live')|length > 0 and ariaLive_choices[attribute(_context, 'aria-live')] is defined %}aria-live="{{ attribute(_context, 'aria-live') }}"{% endif %}
+  {% if attribute(_context, 'aria-relevant') is defined and attribute(_context, 'aria-relevant')|length > 0 and ariaRelevant_choices[attribute(_context, 'aria-relevant')] is defined %}aria-relevant="{{ attribute(_context, 'aria-relevant') }}"{% endif %}
+  {% if attribute(_context, 'aria-roledescription') is defined and attribute(_context, 'aria-roledescription')|length > 0 %}aria-roledescription="{{ attribute(_context, 'aria-roledescription') }}"{% endif %}
+  {% if attribute(_context, 'aria-valuemax') is defined and attribute(_context, 'aria-valuemax')|length > 0 %}aria-valuemax="{{ attribute(_context, 'aria-valuemax') }}"{% endif %}
+  {% if attribute(_context, 'aria-valuemin') is defined and attribute(_context, 'aria-valuemin')|length > 0 %}aria-valuemin="{{ attribute(_context, 'aria-valuemin') }}"{% endif %}
+  {% if attribute(_context, 'aria-valuenow') is defined and attribute(_context, 'aria-valuenow')|length > 0 %}aria-valuenow="{{ attribute(_context, 'aria-valuenow') }}"{% endif %}
+  {% if attribute(_context, 'aria-valuetext') is defined and attribute(_context, 'aria-valuetext')|length > 0 %}aria-valuetext="{{ attribute(_context, 'aria-valuetext') }}"{% endif %}
   {% if autocapitalize is defined and autocapitalize|length > 0 and autocapitalize_choices[autocapitalize] is defined %}autocapitalize="{{ autocapitalize }}"{% endif %}
   {% if autofocus is defined and autofocus|length > 0 %}autofocus="{{ autofocus }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if contenteditable is defined and contenteditable|length > 0 and contenteditable_choices[contenteditable] is defined %}contenteditable="{{ contenteditable }}"{% endif %}
+  {% if attribute(_context, 'data-attributes') is defined and attribute(_context, 'data-attributes')|length > 0 %}
+    {% for __k, __v in attribute(_context, 'data-attributes') %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if dir is defined and dir|length > 0 and dir_choices[dir] is defined %}dir="{{ dir }}"{% endif %}
   {% if draggable is defined and draggable|length > 0 %}draggable="{{ draggable }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
@@ -50,4 +56,5 @@
   {% if value is defined and value|length > 0 %}value="{{ value }}"{% endif %}>
   {% block content %}{{- content|raw -}}{% endblock %}
 </progress>
+{% endapply %}
 {% endblock %}

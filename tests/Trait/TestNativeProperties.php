@@ -10,7 +10,10 @@ class TestNativeProperties
 
     // define properties that trait expects to exist
     public ?string $textContent = null;
+
     public string $innerHTML = '';
+
     public string $nodeValue = '';
+
     public string $substitutedNodeValue = '';
 }

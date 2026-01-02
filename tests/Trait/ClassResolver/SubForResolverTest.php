@@ -2,4 +2,6 @@
 
 namespace Tests\Trait\ClassResolver;
 
-class SubForResolverTest extends BaseForResolverTest {}
+class SubForResolverTest extends BaseForResolverTest
+{
+}

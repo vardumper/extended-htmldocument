@@ -8,8 +8,10 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block base %}
+{% apply spaceless %}
 {% set target_choices = {'_blank': true, '_parent': true, '_self': true, '_top': true} %}
 <base
   {% if href is defined and href|length > 0 %}href="{{ href }}"{% endif %}
   {% if target is defined and target|length > 0 and target_choices[target] is defined %}target="{{ target }}"{% endif %}/>
+{% endapply %}
 {% endblock %}

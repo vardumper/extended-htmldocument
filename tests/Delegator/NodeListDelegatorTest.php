@@ -108,12 +108,14 @@ test('get node list', function () {
 
 test('get invalid property', function () {
     $this->expectException(InvalidArgumentException::class);
-    test()->delegator->nonExistentProperty;
+    test()
+        ->delegator->nonExistentProperty;
 });
 
 test('call invalid method', function () {
     $this->expectException(BadMethodCallException::class);
-    test()->delegator->nonExistentMethod();
+    test()
+        ->delegator->nonExistentMethod();
 });
 
 test('item returns null for out of bounds', function () {
@@ -129,7 +131,7 @@ test('item returns NodeDelegator for text node', function () {
     $document->appendChild($element);
     $text = $document->createTextNode('test');
     $element->appendChild($text);
-    
+
     $delegator = new NodeListDelegator($element->childNodes);
     $item = $delegator->item(0);
     expect($item)

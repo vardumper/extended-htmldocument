@@ -16,4 +16,4 @@ return ECSConfig::configure()
         'vendor/symplify/easy-coding-standard/config/set/psr12.php',
         'vendor/symplify/easy-coding-standard/config/set/symplify.php',
     ])
-    ->withParallel(1);
+    ->withParallel(120);

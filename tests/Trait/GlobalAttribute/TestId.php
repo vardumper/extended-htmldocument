@@ -9,7 +9,9 @@ class TestId
     use IdTrait;
 
     public ?string $id = null;
+
     public array $attributes = [];
+
     public $delegated;
 
     public function __construct()

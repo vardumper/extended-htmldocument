@@ -1,21 +1,21 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * @generated 2025-12-31 00:30:17
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
  */
+
 namespace Html\Element\Void;
 
 use Html\Element\VoidElement;
-use Html\Element\Void\Head;
 use Html\Enum\HttpEquivEnum;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 /**
  * The meta element provides metadata about the HTML document. Metadata will not be displayed on the page, but is machine-readable. Mainly used in the head but allowed inside the body if itemprop attribute is set.
@@ -29,6 +29,7 @@ class Meta extends VoidElement
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\LangTrait;
     use GlobalAttribute\TitleTrait;
+
     /**
      * The HTML element name
      */
@@ -53,43 +54,38 @@ class Meta extends VoidElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        Head::class,
-    ];
+    public static array $childOf = [Head::class];
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-    /** 
+    /**
      * Specifies the character encoding for the resource.
-     * @category HTML attribute */
+     */
     protected ?string $charset = null;
 
-    /** 
+    /**
      * Specifies the value associated with the http-equiv or name attribute.
-     * @category HTML attribute */
+     */
     protected ?string $content = null;
 
-    /** 
+    /**
      * Provides an HTTP header for the information/value of the content attribute.
-     * @category HTML attribute */
+     */
     protected ?HttpEquivEnum $httpEquiv = null;
 
-    /** 
+    /**
      * Specifies the name associated with the element. The meaning may vary depending on the context.
-     * @category HTML attribute */
+     */
     protected ?string $name = null;
 
-    /** 
+    /**
      * Specifies the content type of the value attribute when the http-equiv attribute is used.
-     * @category HTML attribute */
+     */
     protected ?string $scheme = null;
-
 
     public function setCharset(string $charset): static
     {
@@ -118,7 +114,9 @@ class Meta extends VoidElement
     public function setHttpEquiv(string|HttpEquivEnum $httpEquiv): static
     {
         if (\is_string($httpEquiv)) {
-            $httpEquiv = HttpEquivEnum::tryFrom($httpEquiv) ?? throw new \InvalidArgumentException("Invalid value for \$httpEquiv.");
+            $httpEquiv = HttpEquivEnum::tryFrom($httpEquiv) ?? throw new InvalidArgumentException(
+                'Invalid value for $httpEquiv.'
+            );
         }
         $this->httpEquiv = $httpEquiv;
         $this->delegated->setAttribute('http-equiv', (string) $httpEquiv->value);
@@ -154,5 +152,4 @@ class Meta extends VoidElement
     {
         return $this->scheme;
     }
-
 }

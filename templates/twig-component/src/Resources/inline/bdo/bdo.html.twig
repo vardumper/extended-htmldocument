@@ -18,7 +18,9 @@
 {% apply spaceless %}
 <bdo
   {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
-  {% if this.alpineAttributes is defined and this.alpineAttributes is not null %}alpine-attributes="{{ this.alpineAttributes }}"{% endif %}
+  {% if this.alpineAttributes is defined and this.alpineAttributes is not null and this.alpineAttributes|length > 0 %}
+    {% for __k, __v in this.alpineAttributes %} {{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if this.ariaAtomic is not null %}aria-atomic="{{ this.ariaAtomic.value }}"{% endif %}
   {% if this.ariaBusy is not null %}aria-busy="{{ this.ariaBusy.value }}"{% endif %}
   {% if this.ariaControls is defined and this.ariaControls is not null %}aria-controls="{{ this.ariaControls }}"{% endif %}
@@ -34,6 +36,9 @@
   {% if this.autofocus is defined and this.autofocus is not null %}autofocus="{{ this.autofocus }}"{% endif %}
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
   {% if this.contenteditable is not null %}contenteditable="{{ this.contenteditable.value }}"{% endif %}
+  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
+    {% for __k, __v in this.dataAttributes %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if this.dir is not null %}dir="{{ this.dir.value }}"{% endif %}
   {% if this.draggable is defined and this.draggable is not null %}draggable="{{ this.draggable }}"{% endif %}
   {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}

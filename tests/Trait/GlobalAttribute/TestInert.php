@@ -9,6 +9,7 @@ class TestInert
     use InertTrait;
 
     public array $attributes = [];
+
     public $delegated;
 
     public function __construct()

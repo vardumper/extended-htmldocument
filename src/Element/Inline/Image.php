@@ -1,17 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * @generated 2025-12-31 00:30:17
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
  */
+
 namespace Html\Element\Inline;
 
-use Html\Element\InlineElement;
 use Html\Element\Block\{
     Article,
     Aside,
@@ -26,7 +25,7 @@ use Html\Element\Block\{
     Picture,
     Section,
 };
-use Html\Element\Inline\MarkedText;
+use Html\Element\InlineElement;
 use Html\Enum\{
     AriaAtomicEnum,
     AriaHiddenEnum,
@@ -36,8 +35,9 @@ use Html\Enum\{
     DecodingEnum,
     ReferrerpolicyEnum,
 };
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 /**
  * The img element represents an image.
@@ -56,6 +56,7 @@ class Image extends InlineElement
     use GlobalAttribute\TabindexTrait;
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\AlpineJsTrait;
+
     /**
      * The HTML element name
      */
@@ -100,117 +101,105 @@ class Image extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-
-    /** 
+    /**
      * Specifies alternative text to be displayed when the image cannot be rendered.
-     * @category HTML attribute
      * @required
      */
     protected ?string $alt = null;
 
-    /** 
-     * 
-     * @category HTML attribute */
     protected ?CrossoriginEnum $crossorigin = null;
 
-    /** 
+    /**
      * Specifies the decoding process applied to the image.
-     * @category HTML attribute */
+     */
     protected ?DecodingEnum $decoding = null;
 
-    /** 
+    /**
      * Specifies the height of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
-     * @category HTML attribute */
+     */
     protected ?string $height = null;
 
-    /** 
+    /**
      * Specifies that an area should be part of an image map.
-     * @category HTML attribute */
+     */
     protected ?bool $ismap = null;
 
-    /** 
+    /**
      * Specifies the referrer policy for fetches initiated by the element.
-     * @category HTML attribute */
+     */
     protected ?ReferrerpolicyEnum $referrerpolicy = null;
 
-    /** 
+    /**
      * Specifies the sizes of the images or icons for different display/window sizes.
-     * @category HTML attribute */
+     */
     protected ?string $sizes = null;
 
-    /** 
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
-     * @category HTML attribute
      * @required
      */
     protected ?string $src = null;
 
-    /** 
+    /**
      * Specifies a set of image candidate URLs and descriptors for responsive images.
-     * @category HTML attribute */
+     */
     protected ?string $srcset = null;
 
-    /** 
+    /**
      * Specifies a client-side image map to be used with the element.
-     * @category HTML attribute */
+     */
     protected ?string $usemap = null;
 
-    /** 
+    /**
      * Specifies the width of the element. The meaning may vary depending on the element type. Accepts integers, pixels (px), and percentages (%).
-     * @category HTML attribute */
+     */
     protected ?string $width = null;
 
-    /** 
+    /**
      * Indicates whether the element is exposed to an accessibility API. Use with caution on interactive elements. Set to true only on decorative elements such as icons, or when nav isnt visible
-     * @category HTML attribute
      * @example false
      */
     protected ?AriaHiddenEnum $ariaHidden = null;
 
-    /** 
+    /**
      * Defines a string value that labels the current element for assistive technologies.
-     * @category HTML attribute */
+     */
     protected ?string $ariaLabel = null;
 
-    /** 
+    /**
      * References an element that provides additional details about the current element.
-     * @category HTML attribute */
+     */
     protected ?string $ariaDetails = null;
 
-    /** 
+    /**
      * Defines keyboard shortcuts available for the element.
-     * @category HTML attribute */
+     */
     protected ?string $ariaKeyshortcuts = null;
 
-    /** 
+    /**
      * Provides a human-readable custom role description for assistive technologies.
-     * @category HTML attribute */
+     */
     protected ?string $ariaRoledescription = null;
 
-    /** 
+    /**
      * Defines how updates to the element should be announced to screen readers.
-     * @category HTML attribute
      * @example off
      */
     protected ?AriaLiveEnum $ariaLive = null;
 
-    /** 
+    /**
      * Indicates what content changes should be announced in a live region.
-     * @category HTML attribute
      * @example additions text
      */
     protected ?AriaRelevantEnum $ariaRelevant = null;
 
-    /** 
+    /**
      * Indicates whether assistive technologies should present the entire region as a whole when changes occur.
-     * @category HTML attribute
      * @example false
      */
     protected ?AriaAtomicEnum $ariaAtomic = null;
-
 
     public function setAlt(string $alt): static
     {
@@ -227,7 +216,9 @@ class Image extends InlineElement
     public function setCrossorigin(string|CrossoriginEnum $crossorigin): static
     {
         if (\is_string($crossorigin)) {
-            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new \InvalidArgumentException("Invalid value for \$crossorigin.");
+            $crossorigin = CrossoriginEnum::tryFrom($crossorigin) ?? throw new InvalidArgumentException(
+                'Invalid value for $crossorigin.'
+            );
         }
         $this->crossorigin = $crossorigin;
         $this->delegated->setAttribute('crossorigin', (string) $crossorigin->value);
@@ -243,7 +234,9 @@ class Image extends InlineElement
     public function setDecoding(string|DecodingEnum $decoding): static
     {
         if (\is_string($decoding)) {
-            $decoding = DecodingEnum::tryFrom($decoding) ?? throw new \InvalidArgumentException("Invalid value for \$decoding.");
+            $decoding = DecodingEnum::tryFrom($decoding) ?? throw new InvalidArgumentException(
+                'Invalid value for $decoding.'
+            );
         }
         $this->decoding = $decoding;
         $this->delegated->setAttribute('decoding', (string) $decoding->value);
@@ -283,7 +276,9 @@ class Image extends InlineElement
     public function setReferrerpolicy(string|ReferrerpolicyEnum $referrerpolicy): static
     {
         if (\is_string($referrerpolicy)) {
-            $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new \InvalidArgumentException("Invalid value for \$referrerpolicy.");
+            $referrerpolicy = ReferrerpolicyEnum::tryFrom($referrerpolicy) ?? throw new InvalidArgumentException(
+                'Invalid value for $referrerpolicy.'
+            );
         }
         $this->referrerpolicy = $referrerpolicy;
         $this->delegated->setAttribute('referrerpolicy', (string) $referrerpolicy->value);
@@ -359,7 +354,9 @@ class Image extends InlineElement
     public function setAriaHidden(string|AriaHiddenEnum $ariaHidden): static
     {
         if (\is_string($ariaHidden)) {
-            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new \InvalidArgumentException("Invalid value for \$ariaHidden.");
+            $ariaHidden = AriaHiddenEnum::tryFrom($ariaHidden) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaHidden.'
+            );
         }
         $this->ariaHidden = $ariaHidden;
         $this->delegated->setAttribute('aria-hidden', (string) $ariaHidden->value);
@@ -423,7 +420,9 @@ class Image extends InlineElement
     public function setAriaLive(string|AriaLiveEnum $ariaLive): static
     {
         if (\is_string($ariaLive)) {
-            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new \InvalidArgumentException("Invalid value for \$ariaLive.");
+            $ariaLive = AriaLiveEnum::tryFrom($ariaLive) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaLive.'
+            );
         }
         $this->ariaLive = $ariaLive;
         $this->delegated->setAttribute('aria-live', (string) $ariaLive->value);
@@ -439,7 +438,9 @@ class Image extends InlineElement
     public function setAriaRelevant(string|AriaRelevantEnum $ariaRelevant): static
     {
         if (\is_string($ariaRelevant)) {
-            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new \InvalidArgumentException("Invalid value for \$ariaRelevant.");
+            $ariaRelevant = AriaRelevantEnum::tryFrom($ariaRelevant) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaRelevant.'
+            );
         }
         $this->ariaRelevant = $ariaRelevant;
         $this->delegated->setAttribute('aria-relevant', (string) $ariaRelevant->value);
@@ -455,7 +456,9 @@ class Image extends InlineElement
     public function setAriaAtomic(string|AriaAtomicEnum $ariaAtomic): static
     {
         if (\is_string($ariaAtomic)) {
-            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new \InvalidArgumentException("Invalid value for \$ariaAtomic.");
+            $ariaAtomic = AriaAtomicEnum::tryFrom($ariaAtomic) ?? throw new InvalidArgumentException(
+                'Invalid value for $ariaAtomic.'
+            );
         }
         $this->ariaAtomic = $ariaAtomic;
         $this->delegated->setAttribute('aria-atomic', (string) $ariaAtomic->value);
@@ -467,5 +470,4 @@ class Image extends InlineElement
     {
         return $this->ariaAtomic;
     }
-
 }

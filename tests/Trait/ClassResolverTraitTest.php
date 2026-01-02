@@ -2,9 +2,6 @@
 
 namespace Tests\Trait;
 
-use Html\Trait\ClassResolverTrait;
-
-
 test('can get project root directory', function () {
     $testResolver = new \Tests\Trait\TestClassResolver();
 

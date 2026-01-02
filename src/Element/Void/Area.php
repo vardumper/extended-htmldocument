@@ -1,17 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * @generated 2025-12-31 00:30:17
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area
  */
+
 namespace Html\Element\Void;
 
-use Html\Element\VoidElement;
 use Html\Element\Block\{
     Article,
     Aside,
@@ -26,13 +25,15 @@ use Html\Element\Block\{
     Section,
 };
 use Html\Element\Inline\MarkedText;
+use Html\Element\VoidElement;
 use Html\Enum\{
     RelEnum,
     ShapeEnum,
     TargetEnum,
 };
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
+use InvalidArgumentException;
 
 /**
  * The area element represents either a hyperlink with some text and a corresponding area on an image map, or a dead area on an image map.
@@ -58,6 +59,7 @@ class Area extends VoidElement
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
     use GlobalAttribute\AlpineJsTrait;
+
     /**
      * The HTML element name
      */
@@ -99,63 +101,54 @@ class Area extends VoidElement
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-    /** 
+    /**
      * Specifies alternative text to be displayed when the image cannot be rendered.
-     * @category HTML attribute
      * @required
      */
     protected ?string $alt = null;
 
-    /** 
+    /**
      * Specifies the coordinates of the shape in a rectangular area or a polygonal area on an image map.
-     * @category HTML attribute */
+     */
     protected ?string $coords = null;
 
-    /** 
+    /**
      * Indicates that the linked content should be downloaded rather than displayed.
-     * @category HTML attribute */
+     */
     protected ?string $download = null;
 
-    /** 
+    /**
      * Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.
-     * @category HTML attribute
      * @required
      */
     protected ?string $href = null;
 
-    /** 
+    /**
      * Specifies the language of the linked resource.
-     * @category HTML attribute */
+     */
     protected ?string $hreflang = null;
 
-    /** 
+    /**
      * Specifies the relationship between the current document and the linked document.
-     * @category HTML attribute */
+     */
     protected ?RelEnum $rel = null;
 
-    /** 
-     * 
-     * @category HTML attribute */
     protected ?ShapeEnum $shape = null;
 
-    /** 
+    /**
      * Specifies where to open the linked document.
-     * @category HTML attribute
      * @example _self
      */
     protected ?TargetEnum $target = null;
 
-    /** 
+    /**
      * Specifies the media type of the linked resource.
-     * @category HTML attribute */
+     */
     protected ?string $type = null;
-
 
     public function setAlt(string $alt): static
     {
@@ -220,7 +213,7 @@ class Area extends VoidElement
     public function setRel(string|RelEnum $rel): static
     {
         if (\is_string($rel)) {
-            $rel = RelEnum::tryFrom($rel) ?? throw new \InvalidArgumentException("Invalid value for \$rel.");
+            $rel = RelEnum::tryFrom($rel) ?? throw new InvalidArgumentException('Invalid value for $rel.');
         }
         $this->rel = $rel;
         $this->delegated->setAttribute('rel', (string) $rel->value);
@@ -236,7 +229,7 @@ class Area extends VoidElement
     public function setShape(string|ShapeEnum $shape): static
     {
         if (\is_string($shape)) {
-            $shape = ShapeEnum::tryFrom($shape) ?? throw new \InvalidArgumentException("Invalid value for \$shape.");
+            $shape = ShapeEnum::tryFrom($shape) ?? throw new InvalidArgumentException('Invalid value for $shape.');
         }
         $this->shape = $shape;
         $this->delegated->setAttribute('shape', (string) $shape->value);
@@ -252,7 +245,7 @@ class Area extends VoidElement
     public function setTarget(string|TargetEnum $target): static
     {
         if (\is_string($target)) {
-            $target = TargetEnum::tryFrom($target) ?? throw new \InvalidArgumentException("Invalid value for \$target.");
+            $target = TargetEnum::tryFrom($target) ?? throw new InvalidArgumentException('Invalid value for $target.');
         }
         $this->target = $target;
         $this->delegated->setAttribute('target', (string) $target->value);
@@ -276,5 +269,4 @@ class Area extends VoidElement
     {
         return $this->type;
     }
-
 }

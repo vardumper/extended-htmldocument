@@ -8,12 +8,19 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block param %}
+{% apply spaceless %}
 <param
-  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
+  {% if attribute(_context, 'alpine-attributes') is defined and attribute(_context, 'alpine-attributes')|length > 0 %}
+    {% for __k, __v in attribute(_context, 'alpine-attributes') %} {{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
+  {% if attribute(_context, 'data-attributes') is defined and attribute(_context, 'data-attributes')|length > 0 %}
+    {% for __k, __v in attribute(_context, 'data-attributes') %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
   {% if name is defined and name|length > 0 %}name="{{ name }}"{% endif %}
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
   {% if value is defined and value|length > 0 %}value="{{ value }}"{% endif %}/>
+{% endapply %}
 {% endblock %}

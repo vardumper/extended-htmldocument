@@ -3,61 +3,91 @@
 namespace Html\TwigComponentBundle\Twig\Block;
 
 use Html\Enum\{
-    CrossoriginEnum,
-    PreloadEnum,
-    RoleEnum,
+    AriaAtomicEnum,
     AriaBusyEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
-    AriaAtomicEnum,
+    CrossoriginEnum,
     PopoverEnum,
+    PreloadEnum,
+    RoleEnum,
     TranslateEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Audio - The audio element is used to embed sound content in documents. It may contain one or more audio sources, represented using the src attribute or the source element.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Audio', template: '@HtmlTwigComponent/block/audio/audio.html.twig')]
 class Audio
 {
     public ?bool $autoplay = null;
+
     public ?bool $controls = null;
+
     public ?CrossoriginEnum $crossorigin = null;
+
     public ?bool $loop = null;
+
     public ?bool $muted = null;
+
     public ?PreloadEnum $preload = null;
+
     public ?string $src = null;
+
     public ?RoleEnum $role = null;
+
     public ?string $ariaControls = null;
+
     public ?string $ariaDescribedby = null;
+
     public ?string $ariaLabelledby = null;
+
     public ?AriaBusyEnum $ariaBusy = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?string $accesskey = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?string $lang = null;
+
     public ?PopoverEnum $popover = null;
+
     public ?string $slot = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?array $alpineAttributes = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
+
+    public ?array $dataAttributes = null;
 
     #[PreMount]
     public function preMount(array $data): array
@@ -69,7 +99,9 @@ class Audio
         $resolver->setAllowedTypes('autoplay', ['bool']);
         $resolver->setDefined('controls');
         $resolver->setAllowedTypes('controls', ['bool']);
-        $resolver->setDefaults(['crossorigin' => null]);
+        $resolver->setDefaults([
+            'crossorigin' => null,
+        ]);
         $resolver->setAllowedTypes('crossorigin', ['null', 'string', CrossoriginEnum::class]);
         $resolver->setNormalizer('crossorigin', function ($options, $value) {
             if (is_string($value)) {
@@ -81,7 +113,9 @@ class Audio
         $resolver->setAllowedTypes('loop', ['bool']);
         $resolver->setDefined('muted');
         $resolver->setAllowedTypes('muted', ['bool']);
-        $resolver->setDefaults(['preload' => null]);
+        $resolver->setDefaults([
+            'preload' => null,
+        ]);
         $resolver->setAllowedTypes('preload', ['null', 'string', PreloadEnum::class]);
         $resolver->setNormalizer('preload', function ($options, $value) {
             if (is_string($value)) {
@@ -91,7 +125,9 @@ class Audio
         });
         $resolver->setDefined('src');
         $resolver->setAllowedTypes('src', ['string']);
-        $resolver->setDefaults(['role' => null]);
+        $resolver->setDefaults([
+            'role' => null,
+        ]);
         $resolver->setAllowedTypes('role', ['null', 'string', RoleEnum::class]);
         $resolver->setNormalizer('role', function ($options, $value) {
             if (is_string($value)) {
@@ -105,7 +141,9 @@ class Audio
         $resolver->setAllowedTypes('ariaDescribedby', ['string']);
         $resolver->setDefined('ariaLabelledby');
         $resolver->setAllowedTypes('ariaLabelledby', ['string']);
-        $resolver->setDefaults(['ariaBusy' => null]);
+        $resolver->setDefaults([
+            'ariaBusy' => null,
+        ]);
         $resolver->setAllowedTypes('ariaBusy', ['null', 'string', AriaBusyEnum::class]);
         $resolver->setNormalizer('ariaBusy', function ($options, $value) {
             if (is_string($value)) {
@@ -119,7 +157,9 @@ class Audio
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
         $resolver->setDefined('ariaRoledescription');
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
-        $resolver->setDefaults(['ariaLive' => null]);
+        $resolver->setDefaults([
+            'ariaLive' => null,
+        ]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
         $resolver->setNormalizer('ariaLive', function ($options, $value) {
             if (is_string($value)) {
@@ -127,7 +167,9 @@ class Audio
             }
             return $value;
         });
-        $resolver->setDefaults(['ariaRelevant' => null]);
+        $resolver->setDefaults([
+            'ariaRelevant' => null,
+        ]);
         $resolver->setAllowedTypes('ariaRelevant', ['null', 'string', AriaRelevantEnum::class]);
         $resolver->setNormalizer('ariaRelevant', function ($options, $value) {
             if (is_string($value)) {
@@ -135,7 +177,9 @@ class Audio
             }
             return $value;
         });
-        $resolver->setDefaults(['ariaAtomic' => null]);
+        $resolver->setDefaults([
+            'ariaAtomic' => null,
+        ]);
         $resolver->setAllowedTypes('ariaAtomic', ['null', 'string', AriaAtomicEnum::class]);
         $resolver->setNormalizer('ariaAtomic', function ($options, $value) {
             if (is_string($value)) {
@@ -145,13 +189,19 @@ class Audio
         });
         $resolver->setDefined('accesskey');
         $resolver->setAllowedTypes('accesskey', ['string']);
-        $resolver->setDefaults(['draggable' => null]);
+        $resolver->setDefaults([
+            'draggable' => null,
+        ]);
         $resolver->setAllowedTypes('draggable', ['null', 'string', 'bool']);
-        $resolver->setDefaults(['hidden' => null]);
+        $resolver->setDefaults([
+            'hidden' => null,
+        ]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
         $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
-        $resolver->setDefaults(['popover' => null]);
+        $resolver->setDefaults([
+            'popover' => null,
+        ]);
         $resolver->setAllowedTypes('popover', ['null', 'string', PopoverEnum::class]);
         $resolver->setNormalizer('popover', function ($options, $value) {
             if (is_string($value)) {
@@ -167,7 +217,9 @@ class Audio
         $resolver->setAllowedTypes('tabindex', ['int']);
         $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
-        $resolver->setDefaults(['translate' => null]);
+        $resolver->setDefaults([
+            'translate' => null,
+        ]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);
         $resolver->setNormalizer('translate', function ($options, $value) {
             if (is_string($value)) {
@@ -177,10 +229,16 @@ class Audio
         });
         $resolver->setDefined('alpineAttributes');
         $resolver->setAllowedTypes('alpineAttributes', ['array']);
-        $resolver->setDefaults(['id' => null]);
+        $resolver->setDefaults([
+            'id' => null,
+        ]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
-        $resolver->setDefaults(['class' => null]);
+        $resolver->setDefaults([
+            'class' => null,
+        ]);
         $resolver->setAllowedTypes('class', ['null', 'string']);
+        $resolver->setDefined('dataAttributes');
+        $resolver->setAllowedTypes('dataAttributes', ['array']);
 
         $resolved = $resolver->resolve($data);
         if (isset($data['blocks'])) {

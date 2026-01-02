@@ -8,7 +8,9 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block title %}
+{% apply spaceless %}
 <title>
   {% block content %}{{- content|raw -}}{% endblock %}
 </title>
+{% endapply %}
 {% endblock %}

@@ -9,6 +9,7 @@ class TestClassTrait
     use ClassTrait;
 
     public ?string $className = null;
+
     public $delegated;
 
     public function __construct()

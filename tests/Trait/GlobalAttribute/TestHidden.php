@@ -9,6 +9,7 @@ class TestHidden
     use HiddenTrait;
 
     public array $attributes = [];
+
     public $delegated;
 
     public function __construct()

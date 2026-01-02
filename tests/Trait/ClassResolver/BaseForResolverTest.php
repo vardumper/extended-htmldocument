@@ -2,4 +2,6 @@
 
 namespace Tests\Trait\ClassResolver;
 
-class BaseForResolverTest {}
+class BaseForResolverTest
+{
+}

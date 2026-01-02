@@ -8,6 +8,7 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block img %}
+{% apply spaceless %}
 {% set ariaAtomic_choices = {'false': true, 'true': true} %}
 {% set ariaHidden_choices = {'false': true, 'true': true} %}
 {% set ariaLive_choices = {'off': true, 'polite': true, 'assertive': true} %}
@@ -17,18 +18,23 @@
 {% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
 {% set referrerpolicy_choices = {'no-referrer': true, 'no-referrer-when-downgrade': true, 'origin': true, 'origin-when-cross-origin': true, 'same-origin': true, 'strict-origin': true, 'strict-origin-when-cross-origin': true, 'unsafe-url': true} %}
 <img
-  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
+  {% if attribute(_context, 'alpine-attributes') is defined and attribute(_context, 'alpine-attributes')|length > 0 %}
+    {% for __k, __v in attribute(_context, 'alpine-attributes') %} {{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if alt is defined and alt|length > 0 %}alt="{{ alt }}"{% endif %}
-  {% if ariaAtomic is defined and ariaAtomic|length > 0 and ariaAtomic_choices[ariaAtomic] is defined %}aria-atomic="{{ ariaAtomic }}"{% endif %}
-  {% if ariaDetails is defined and ariaDetails|length > 0 %}aria-details="{{ ariaDetails }}"{% endif %}
-  {% if ariaHidden is defined and ariaHidden|length > 0 and ariaHidden_choices[ariaHidden] is defined %}aria-hidden="{{ ariaHidden }}"{% endif %}
-  {% if ariaKeyshortcuts is defined and ariaKeyshortcuts|length > 0 %}aria-keyshortcuts="{{ ariaKeyshortcuts }}"{% endif %}
-  {% if ariaLabel is defined and ariaLabel|length > 0 %}aria-label="{{ ariaLabel }}"{% endif %}
-  {% if ariaLive is defined and ariaLive|length > 0 and ariaLive_choices[ariaLive] is defined %}aria-live="{{ ariaLive }}"{% endif %}
-  {% if ariaRelevant is defined and ariaRelevant|length > 0 and ariaRelevant_choices[ariaRelevant] is defined %}aria-relevant="{{ ariaRelevant }}"{% endif %}
-  {% if ariaRoledescription is defined and ariaRoledescription|length > 0 %}aria-roledescription="{{ ariaRoledescription }}"{% endif %}
+  {% if attribute(_context, 'aria-atomic') is defined and attribute(_context, 'aria-atomic')|length > 0 and ariaAtomic_choices[attribute(_context, 'aria-atomic')] is defined %}aria-atomic="{{ attribute(_context, 'aria-atomic') }}"{% endif %}
+  {% if attribute(_context, 'aria-details') is defined and attribute(_context, 'aria-details')|length > 0 %}aria-details="{{ attribute(_context, 'aria-details') }}"{% endif %}
+  {% if attribute(_context, 'aria-hidden') is defined and attribute(_context, 'aria-hidden')|length > 0 and ariaHidden_choices[attribute(_context, 'aria-hidden')] is defined %}aria-hidden="{{ attribute(_context, 'aria-hidden') }}"{% endif %}
+  {% if attribute(_context, 'aria-keyshortcuts') is defined and attribute(_context, 'aria-keyshortcuts')|length > 0 %}aria-keyshortcuts="{{ attribute(_context, 'aria-keyshortcuts') }}"{% endif %}
+  {% if attribute(_context, 'aria-label') is defined and attribute(_context, 'aria-label')|length > 0 %}aria-label="{{ attribute(_context, 'aria-label') }}"{% endif %}
+  {% if attribute(_context, 'aria-live') is defined and attribute(_context, 'aria-live')|length > 0 and ariaLive_choices[attribute(_context, 'aria-live')] is defined %}aria-live="{{ attribute(_context, 'aria-live') }}"{% endif %}
+  {% if attribute(_context, 'aria-relevant') is defined and attribute(_context, 'aria-relevant')|length > 0 and ariaRelevant_choices[attribute(_context, 'aria-relevant')] is defined %}aria-relevant="{{ attribute(_context, 'aria-relevant') }}"{% endif %}
+  {% if attribute(_context, 'aria-roledescription') is defined and attribute(_context, 'aria-roledescription')|length > 0 %}aria-roledescription="{{ attribute(_context, 'aria-roledescription') }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if crossorigin is defined and crossorigin|length > 0 and crossorigin_choices[crossorigin] is defined %}crossorigin="{{ crossorigin }}"{% endif %}
+  {% if attribute(_context, 'data-attributes') is defined and attribute(_context, 'data-attributes')|length > 0 %}
+    {% for __k, __v in attribute(_context, 'data-attributes') %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if decoding is defined and decoding|length > 0 and decoding_choices[decoding] is defined %}decoding="{{ decoding }}"{% endif %}
   {% if dir is defined and dir|length > 0 and dir_choices[dir] is defined %}dir="{{ dir }}"{% endif %}
   {% if draggable is defined and draggable|length > 0 %}draggable="{{ draggable }}"{% endif %}
@@ -46,4 +52,5 @@
   {% if title is defined and title|length > 0 %}title="{{ title }}"{% endif %}
   {% if usemap is defined and usemap|length > 0 %}usemap="{{ usemap }}"{% endif %}
   {% if width is defined and width|length > 0 %}width="{{ width }}"{% endif %}/>
+{% endapply %}
 {% endblock %}

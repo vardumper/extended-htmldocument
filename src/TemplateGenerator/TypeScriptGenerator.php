@@ -92,12 +92,10 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
     {
         $ref = new ReflectionClass($element);
 
-        // Get content model metadata
-        $childOf = $ref->getStaticPropertyValue('childOf', []);
+        $childOf = $ref->getStaticPropertyValue('childOf', []); /* Get content model metadata */
         $parentOf = $ref->getStaticPropertyValue('parentOf', []);
 
-        // Only generate composed templates for elements with SPECIFIC allowed children
-        if (empty($parentOf)) {
+        if (empty($parentOf)) { /* Only generate composed templates for elements with SPECIFIC allowed children */
             return null;
         }
 
@@ -141,8 +139,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
 
         $isSelfClosing = $ref->hasConstant('SELF_CLOSING') && $ref->getConstant('SELF_CLOSING');
 
-        // Get element metadata from class doc comment
-        $docComment = $ref->getDocComment();
+        $docComment = $ref->getDocComment(); /* Get element metadata from class-level doc comment */
         $desc = '';
         if ($docComment !== false) {
             $lines = explode("\n", $docComment);
@@ -197,8 +194,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
             }
         }
 
-        // Collect all properties with getter and setter (element-specific attributes)
-        foreach ($ref->getProperties() as $prop) {
+        foreach ($ref->getProperties() as $prop) { /* Collect all properties with getter and setter (element-specific attributes) */
             $propName = $prop->getName();
             $getter = 'get' . ucfirst($propName);
             $setter = 'set' . ucfirst($propName);
@@ -231,8 +227,7 @@ class TypeScriptGenerator implements TemplateGeneratorInterface
                 // Get description from doc comment
                 $description = $this->getPropertyDescription($prop);
 
-                // Convert property name to attribute name
-                $attrName = $this->camelToKebab($propName);
+                $attrName = $this->camelToKebab($propName); /* Convert property name to attribute name */
 
                 $props[$attrName] = [
                     'type' => $type,

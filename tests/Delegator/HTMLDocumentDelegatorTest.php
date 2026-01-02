@@ -378,35 +378,48 @@ test('querySelectorAll returns null for non-existent selector', function () {
     $delegator = HTMLDocumentDelegator::createFromString($html);
 
     $elements = $delegator->querySelectorAll('.non-existent-class');
-    expect($elements)->toBeInstanceOf(NodeListDelegator::class);
-    expect(count($elements))->toBe(0);
+    expect($elements)
+        ->toBeInstanceOf(NodeListDelegator::class);
+    expect(count($elements))
+        ->toBe(0);
 });
 
 test('constructor with invalid renderer', function () {
-    $mockRenderer = new class implements \Html\Interface\TemplateGeneratorInterface {
-        public function getExtension(): string {
+    $mockRenderer = new class() implements \Html\Interface\TemplateGeneratorInterface {
+        public function getExtension(): string
+        {
             return 'html';
         }
-        public function getNamePattern(): string {
+
+        public function getNamePattern(): string
+        {
             return '*.html';
         }
-        public function canRenderElements(): bool {
+
+        public function canRenderElements(): bool
+        {
             return false;
         }
-        public function canRenderDocuments(): bool {
+
+        public function canRenderDocuments(): bool
+        {
             return true;
         }
-        public function isTemplated(): bool {
+
+        public function isTemplated(): bool
+        {
             return false;
         }
-        public function render($elementOrDocument): ?string {
+
+        public function render($elementOrDocument): ?string
+        {
             return '';
         }
     };
 
     $this->expectException(InvalidArgumentException::class);
     $this->expectExceptionMessage('The given renderer cannot render elements.');
-    
+
     new HTMLDocumentDelegator($this->document, $mockRenderer);
 });
 
@@ -432,7 +445,7 @@ test('remove child', function () {
     $this->delegator->appendChild($element);
     expect($this->delegator->documentElement->childNodes->length)
         ->toBe(1);
-    
+
     $this->delegator->removeChild($element);
     expect($this->delegator->documentElement->childNodes->length)
         ->toBe(0);

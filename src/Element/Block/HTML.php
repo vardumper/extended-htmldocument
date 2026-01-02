@@ -1,21 +1,20 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * @generated 2025-12-31 00:30:17
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\Body;
 use Html\Element\Void\Head;
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 /**
  * The root element of an HTML document. It represents the top-level of the HTML structure.
@@ -26,6 +25,7 @@ class HTML extends BlockElement
     use GlobalAttribute\DataTrait;
     use GlobalAttribute\DirTrait;
     use GlobalAttribute\LangTrait;
+
     /**
      * The HTML element name
      */
@@ -50,24 +50,18 @@ class HTML extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-    ];
+    public static array $childOf = [];
 
     /**
      * The list of allowed direct children. Any if empty.s
      * @var array<string>
      */
-    public static array $parentOf = [
-        Body::class,
-        Head::class,
-    ];
+    public static array $parentOf = [Body::class, Head::class];
 
-
-    /** 
+    /**
      * Specifies the address of the document's cache manifest.
-     * @category HTML attribute */
+     */
     protected ?string $manifest = null;
-
 
     public function setManifest(string $manifest): static
     {
@@ -80,6 +74,4 @@ class HTML extends BlockElement
     {
         return $this->manifest;
     }
-
-
 }

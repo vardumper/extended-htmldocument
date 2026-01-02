@@ -6,47 +6,73 @@ use Html\Enum\{
     DirectionEnum,
     TranslateEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Body - The body element represents the content of an HTML document. All the contents such as text, images, headings, links, tables, etc. are placed between the body tags.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Body', template: '@HtmlTwigComponent/block/body/body.html.twig')]
 class Body
 {
     public ?string $onafterprint = null;
+
     public ?string $onbeforeprint = null;
+
     public ?string $onbeforeunload = null;
+
     public ?string $onhashchange = null;
+
     public ?string $onlanguagechange = null;
+
     public ?string $onmessage = null;
+
     public ?string $onmessageerror = null;
+
     public ?string $onoffline = null;
+
     public ?string $ononline = null;
+
     public ?string $onpagehide = null;
+
     public ?string $onpageshow = null;
+
     public ?string $onpopstate = null;
+
     public ?string $onrejectionhandled = null;
+
     public ?string $onstorage = null;
+
     public ?string $onunhandledrejection = null;
+
     public ?string $onunload = null;
+
     public ?string $accesskey = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?string $lang = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
+
+    public ?array $dataAttributes = null;
 
     #[PreMount]
     public function preMount(array $data): array
@@ -88,7 +114,9 @@ class Body
         $resolver->setAllowedTypes('onunload', ['string']);
         $resolver->setDefined('accesskey');
         $resolver->setAllowedTypes('accesskey', ['string']);
-        $resolver->setDefaults(['dir' => null]);
+        $resolver->setDefaults([
+            'dir' => null,
+        ]);
         $resolver->setAllowedTypes('dir', ['null', 'string', DirectionEnum::class]);
         $resolver->setNormalizer('dir', function ($options, $value) {
             if (is_string($value)) {
@@ -96,9 +124,13 @@ class Body
             }
             return $value;
         });
-        $resolver->setDefaults(['draggable' => null]);
+        $resolver->setDefaults([
+            'draggable' => null,
+        ]);
         $resolver->setAllowedTypes('draggable', ['null', 'string', 'bool']);
-        $resolver->setDefaults(['hidden' => null]);
+        $resolver->setDefaults([
+            'hidden' => null,
+        ]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
         $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
@@ -108,7 +140,9 @@ class Body
         $resolver->setAllowedTypes('tabindex', ['int']);
         $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
-        $resolver->setDefaults(['translate' => null]);
+        $resolver->setDefaults([
+            'translate' => null,
+        ]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);
         $resolver->setNormalizer('translate', function ($options, $value) {
             if (is_string($value)) {
@@ -116,10 +150,16 @@ class Body
             }
             return $value;
         });
-        $resolver->setDefaults(['id' => null]);
+        $resolver->setDefaults([
+            'id' => null,
+        ]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
-        $resolver->setDefaults(['class' => null]);
+        $resolver->setDefaults([
+            'class' => null,
+        ]);
         $resolver->setAllowedTypes('class', ['null', 'string']);
+        $resolver->setDefined('dataAttributes');
+        $resolver->setAllowedTypes('dataAttributes', ['array']);
 
         $resolved = $resolver->resolve($data);
         if (isset($data['blocks'])) {

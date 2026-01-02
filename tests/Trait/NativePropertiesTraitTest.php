@@ -2,14 +2,13 @@
 
 namespace Tests\Trait;
 
-use Html\Trait\NativePropertiesTrait;
-
 test('textContent setter and getter', function () {
     $t = new TestNativeProperties();
 
     $t->setTextContent('hello');
 
-    expect($t->getTextContent())->toBe('hello');
+    expect($t->getTextContent())
+        ->toBe('hello');
 });
 
 test('innerHTML setter and getter', function () {
@@ -17,7 +16,8 @@ test('innerHTML setter and getter', function () {
 
     $t->setInnerHTML('<b>bold</b>');
 
-    expect($t->getInnerHTML())->toBe('<b>bold</b>');
+    expect($t->getInnerHTML())
+        ->toBe('<b>bold</b>');
 });
 
 test('nodeValue setter and getter', function () {
@@ -25,7 +25,8 @@ test('nodeValue setter and getter', function () {
 
     $t->setNodeValue('node');
 
-    expect($t->getNodeValue())->toBe('node');
+    expect($t->getNodeValue())
+        ->toBe('node');
 });
 
 test('substitutedNodeValue setter and getter', function () {
@@ -33,5 +34,6 @@ test('substitutedNodeValue setter and getter', function () {
 
     $t->setSubstitutedNodeValue('sub');
 
-    expect($t->getSubstitutedNodeValue())->toBe('sub');
+    expect($t->getSubstitutedNodeValue())
+        ->toBe('sub');
 });

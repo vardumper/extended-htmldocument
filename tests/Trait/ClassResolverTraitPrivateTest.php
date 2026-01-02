@@ -2,9 +2,6 @@
 
 namespace Tests\Trait;
 
-use Html\Trait\ClassResolverTrait;
-
-
 test('loadAllPhpFiles requires php files and loads classes', function () {
     $tmp = sys_get_temp_dir() . '/ehd_test_' . uniqid();
     mkdir($tmp . '/src', 0777, true);
@@ -13,9 +10,11 @@ test('loadAllPhpFiles requires php files and loads classes', function () {
 
     $t = new TestClassResolverPrivate();
 
-    expect(class_exists('TempLoadedClass'))->toBeFalse();
+    expect(class_exists('TempLoadedClass'))
+        ->toBeFalse();
     $t->callLoadAllPhpFiles($tmp . '/src');
-    expect(class_exists('TempLoadedClass'))->toBeTrue();
+    expect(class_exists('TempLoadedClass'))
+        ->toBeTrue();
 
     // cleanup
     @unlink($file);
@@ -34,7 +33,8 @@ test('findComposerRoot returns autoload path when composer.json and vendor/autol
 
     $found = $t->callFindComposerRoot($tmp . '/nested/dir');
 
-    expect($found)->toBe($tmp . '/vendor/autoload.php');
+    expect($found)
+        ->toBe($tmp . '/vendor/autoload.php');
 
     // cleanup
     @unlink($tmp . '/vendor/autoload.php');
@@ -50,6 +50,8 @@ test('getPackageRoot returns string and points to package root', function () {
 
     $pkg = $t->callGetPackageRoot();
 
-    expect(is_string($pkg))->toBeTrue();
-    expect(is_dir($pkg))->toBeTrue();
+    expect(is_string($pkg))
+        ->toBeTrue();
+    expect(is_dir($pkg))
+        ->toBeTrue();
 });

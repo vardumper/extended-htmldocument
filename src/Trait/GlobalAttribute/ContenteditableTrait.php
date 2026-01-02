@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Html\Trait\GlobalAttribute;
 
 use Html\Enum\ContentEditableEnum;
@@ -7,7 +9,7 @@ use InvalidArgumentException;
 
 trait ContenteditableTrait
 {
-   /**
+    /**
      * Indicates whether the element can be edited in place
      */
     protected ?ContentEditableEnum $contenteditable = null;

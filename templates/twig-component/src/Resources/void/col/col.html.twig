@@ -15,10 +15,16 @@
 #}
 {% apply spaceless %}
 <col
-  {% if this.alpineAttributes is defined and this.alpineAttributes is not null %}alpine-attributes="{{ this.alpineAttributes }}"{% endif %}
+  {% if this.alpineAttributes is defined and this.alpineAttributes is not null and this.alpineAttributes|length > 0 %}
+    {% for __k, __v in this.alpineAttributes %} {{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
+  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
+    {% for __k, __v in this.dataAttributes %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if this.id is defined and this.id is not null %}id="{{ this.id }}"{% endif %}
   {% if this.span is defined and this.span is not null %}span="{{ this.span }}"{% endif %}
   {% if this.style is defined and this.style is not null %}style="{{ this.style }}"{% endif %}
   {% if this.width is defined and this.width is not null %}width="{{ this.width }}"{% endif %}
 />
+{% endapply %}

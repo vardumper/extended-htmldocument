@@ -1,17 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * @generated 2025-12-31 00:30:17
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param
  */
+
 namespace Html\Element\Void;
 
-use Html\Element\VoidElement;
 use Html\Element\Block\{
     Aside,
     DefinitionDescription,
@@ -22,8 +21,9 @@ use Html\Element\Block\{
     Section,
 };
 use Html\Element\Inline\MarkedText;
-use Html\Trait\GlobalAttribute;
+use Html\Element\VoidElement;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 /**
  * The param element defines parameters for an object element.
@@ -37,6 +37,7 @@ class Parameter extends VoidElement
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\StyleTrait;
     use GlobalAttribute\AlpineJsTrait;
+
     /**
      * The HTML element name
      */
@@ -74,22 +75,19 @@ class Parameter extends VoidElement
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-    /** 
+    /**
      * Specifies the name associated with the element. The meaning may vary depending on the context.
-     * @category HTML attribute */
+     */
     protected ?string $name = null;
 
-    /** 
+    /**
      * Specifies the value associated with the element. The meaning and usage may vary depending on the element type.
-     * @category HTML attribute */
+     */
     protected ?string $value = null;
-
 
     public function setName(string $name): static
     {
@@ -114,5 +112,4 @@ class Parameter extends VoidElement
     {
         return $this->value;
     }
-
 }

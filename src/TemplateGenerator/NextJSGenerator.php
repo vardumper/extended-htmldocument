@@ -2,6 +2,7 @@
 
 namespace Html\TemplateGenerator;
 
+use BackedEnum;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
@@ -11,6 +12,7 @@ use ReflectionNamedType;
 use ReflectionUnionType;
 use Throwable;
 use TypeError;
+use UnitEnum;
 
 /**
  * NextJSGenerator - Generates TypeScript React Components (.tsx)
@@ -103,13 +105,10 @@ class NextJSGenerator implements TemplateGeneratorInterface
     {
         $ref = new ReflectionClass($element);
 
-        // Get content model metadata
-        $childOf = $ref->getStaticPropertyValue('childOf', []);
+        $childOf = $ref->getStaticPropertyValue('childOf', []); /* Get content model metadata */
         $parentOf = $ref->getStaticPropertyValue('parentOf', []);
 
-        // Only generate composed templates for elements with SPECIFIC allowed children
-        // Skip elements that can contain any content (empty $parentOf)
-        if (empty($parentOf)) {
+        if (empty($parentOf)) { /* Only generate composed templates for elements with SPECIFIC allowed children; skip elements that can contain any content (empty $parentOf) */
             return null;
         }
 
@@ -171,9 +170,8 @@ class NextJSGenerator implements TemplateGeneratorInterface
 
         $componentName = ucfirst($elementName);
 
-        // Get element metadata from class-level doc comment
         $desc = '';
-        $docComment = $ref->getDocComment();
+        $docComment = $ref->getDocComment(); /* Get element metadata from class-level doc comment */
         if ($docComment !== false) {
             // Extract description from class docblock (first line of content)
             if (preg_match('/\/\*\*\s*\n\s*\*\s*(.+?)\s*\n/s', $docComment, $matches)) {
@@ -194,8 +192,7 @@ class NextJSGenerator implements TemplateGeneratorInterface
 
         $isSelfClosing = $ref->hasConstant('SELF_CLOSING') && $ref->getConstant('SELF_CLOSING');
 
-        // Get element metadata from class doc comment
-        $docComment = $ref->getDocComment();
+        $docComment = $ref->getDocComment(); /* Get element metadata from class doc comment */
         $desc = '';
         if ($docComment !== false) {
             // Extract description from class docblock (first line of content)
@@ -236,7 +233,6 @@ class NextJSGenerator implements TemplateGeneratorInterface
             'description' => $classDescription,
         ];
 
-        // Create an example instance of the element to resolve global attributes
         try {
             $dom = HTMLDocumentDelegator::createEmpty();
             $className = $ref->getName();
@@ -247,7 +243,7 @@ class NextJSGenerator implements TemplateGeneratorInterface
             }
         } catch (Throwable $e) {
             $example = null;
-        }
+        } /* Create an example instance of the element to resolve global attributes */
 
         // If we have an example instance, read available global attribute traits
         if ($example !== null) {
@@ -318,7 +314,10 @@ class NextJSGenerator implements TemplateGeneratorInterface
                         if ($type instanceof ReflectionUnionType) {
                             foreach ($type->getTypes() as $t) {
                                 if (enum_exists($t->getName())) {
-                                    $choices = array_map(fn (\UnitEnum $c) => $c instanceof \BackedEnum ? $c->value : $c->name, $t->getName()::cases());
+                                    $choices = array_map(
+                                        fn (UnitEnum $c) => $c instanceof BackedEnum ? $c->value : $c->name,
+                                        $t->getName()::cases()
+                                    );
                                     $tsType = implode(' | ', array_map(fn ($c) => "'{$c}'", $choices));
                                     break;
                                 }
@@ -330,7 +329,10 @@ class NextJSGenerator implements TemplateGeneratorInterface
                             }
                         } elseif ($type && $type instanceof ReflectionNamedType) {
                             if (enum_exists($type->getName())) {
-                                $choices = array_map(fn (\UnitEnum $c) => $c instanceof \BackedEnum ? $c->value : $c->name, $type->getName()::cases());
+                                $choices = array_map(
+                                    fn (UnitEnum $c) => $c instanceof BackedEnum ? $c->value : $c->name,
+                                    $type->getName()::cases()
+                                );
                                 $tsType = implode(' | ', array_map(fn ($c) => "'{$c}'", $choices));
                             } elseif ($type->getName() === 'int') {
                                 $tsType = 'number';
@@ -373,7 +375,10 @@ class NextJSGenerator implements TemplateGeneratorInterface
                     foreach ($type->getTypes() as $unionType) {
                         if ($unionType instanceof ReflectionNamedType && enum_exists($unionType->getName())) {
                             $enumClass = $unionType->getName();
-                            $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $enumClass::cases());
+                            $choices = array_map(
+                                fn (UnitEnum $case) => $case instanceof BackedEnum ? $case->value : $case->name,
+                                $enumClass::cases()
+                            );
                             $tsType = implode(' | ', array_map(fn ($c) => "'{$c}'", $choices));
                             break;
                         }
@@ -381,7 +386,10 @@ class NextJSGenerator implements TemplateGeneratorInterface
                 } elseif ($type && $type instanceof ReflectionNamedType) {
                     if (enum_exists($type->getName())) {
                         $enumClass = $type->getName();
-                        $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $enumClass::cases());
+                        $choices = array_map(
+                            fn (UnitEnum $case) => $case instanceof BackedEnum ? $case->value : $case->name,
+                            $enumClass::cases()
+                        );
                         $tsType = implode(' | ', array_map(fn ($c) => "'{$c}'", $choices));
                     } elseif ($type->getName() === 'bool') {
                         $tsType = 'boolean';
@@ -512,7 +520,7 @@ class NextJSGenerator implements TemplateGeneratorInterface
         }
 
         // Handle 'data' attribute (string) for <object data="...">
-        if (isset($props['data']) && !isset($props['dataSet'])) {
+        if (isset($props['data']) && ! isset($props['dataSet'])) {
             $tsx .= "  if (data !== undefined) {\n";
             $tsx .= "    elementProps['data'] = data;\n";
             $tsx .= "  }\n\n";

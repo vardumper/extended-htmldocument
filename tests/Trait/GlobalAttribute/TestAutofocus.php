@@ -9,6 +9,7 @@ class TestAutofocus
     use AutofocusTrait;
 
     public array $attributes = [];
+
     public $delegated;
 
     public function __construct()

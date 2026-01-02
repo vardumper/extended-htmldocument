@@ -8,6 +8,7 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block script %}
+{% apply spaceless %}
 {% set crossorigin_choices = {'anonymous': true, 'use-credentials': true} %}
 {% set referrerpolicy_choices = {'no-referrer': true, 'no-referrer-when-downgrade': true, 'origin': true, 'origin-when-cross-origin': true, 'same-origin': true, 'strict-origin': true, 'strict-origin-when-cross-origin': true, 'unsafe-url': true} %}
 {% set type_choices = {'text/javascript': true, 'module': true} %}
@@ -16,6 +17,9 @@
   {% if charset is defined and charset|length > 0 %}charset="{{ charset }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if crossorigin is defined and crossorigin|length > 0 and crossorigin_choices[crossorigin] is defined %}crossorigin="{{ crossorigin }}"{% endif %}
+  {% if attribute(_context, 'data-attributes') is defined and attribute(_context, 'data-attributes')|length > 0 %}
+    {% for __k, __v in attribute(_context, 'data-attributes') %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if defer is defined and defer|length > 0 %}defer="{{ defer }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
@@ -28,4 +32,5 @@
   {% if type is defined and type|length > 0 and type_choices[type] is defined %}type="{{ type }}"{% endif %}>
   {% block content %}{{- content|raw -}}{% endblock %}
 </script>
+{% endapply %}
 {% endblock %}

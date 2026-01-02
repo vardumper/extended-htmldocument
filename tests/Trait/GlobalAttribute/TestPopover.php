@@ -3,13 +3,13 @@
 namespace Tests\Trait\GlobalAttribute;
 
 use Html\Trait\GlobalAttribute\PopoverTrait;
-use Html\Enum\PopoverEnum;
 
 class TestPopover
 {
     use PopoverTrait;
 
     public array $attributes = [];
+
     public $delegated;
 
     public function __construct()

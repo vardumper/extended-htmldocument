@@ -2,10 +2,8 @@
 
 namespace Tests\Trait\GlobalAttribute;
 
-use Html\Trait\GlobalAttribute\AutocorrectTrait;
 use Html\Enum\AutocorrectEnum;
 use InvalidArgumentException;
-
 
 test('setAutocorrect accepts boolean true and sets on', function () {
     $obj = new TestAutocorrect();
@@ -14,7 +12,8 @@ test('setAutocorrect accepts boolean true and sets on', function () {
 
     expect($obj->getAutocorrect())
         ->toBeInstanceOf(AutocorrectEnum::class)
-        ->and($obj->getAutocorrect()->value)->toBe(AutocorrectEnum::ON->value)
+        ->and($obj->getAutocorrect()->value)
+        ->toBe(AutocorrectEnum::ON->value)
         ->and($obj->attributes['autocorrect'])->toBe(AutocorrectEnum::ON->value);
 });
 
@@ -23,7 +22,8 @@ test('setAutocorrect accepts string "off" and sets off', function () {
 
     $obj->setAutocorrect('off');
 
-    expect($obj->getAutocorrect()->value)->toBe(AutocorrectEnum::OFF->value)
+    expect($obj->getAutocorrect()->value)
+        ->toBe(AutocorrectEnum::OFF->value)
         ->and($obj->attributes['autocorrect'])->toBe(AutocorrectEnum::OFF->value);
 });
 

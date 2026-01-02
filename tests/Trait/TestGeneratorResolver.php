@@ -2,8 +2,8 @@
 
 namespace Tests\Trait;
 
-use Html\Trait\GeneratorResolverTrait;
 use Html\Trait\ClassResolverTrait;
+use Html\Trait\GeneratorResolverTrait;
 
 class TestGeneratorResolver
 {

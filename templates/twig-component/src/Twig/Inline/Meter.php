@@ -3,9 +3,9 @@
 namespace Html\TwigComponentBundle\Twig\Inline;
 
 use Html\Enum\{
+    AriaAtomicEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
-    AriaAtomicEnum,
     AutoCapitalizeEnum,
     ContentEditableEnum,
     DirectionEnum,
@@ -13,54 +13,87 @@ use Html\Enum\{
     SpellCheckEnum,
     TranslateEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Meter - The meter element represents a scalar measurement within a known range, or a fractional value.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Meter', template: '@HtmlTwigComponent/inline/meter/meter.html.twig')]
 class Meter
 {
     public ?string $high = null;
+
     public ?string $low = null;
+
     public ?int $max = null;
+
     public ?string $min = null;
+
     public ?string $optimum = null;
+
     public ?string $value = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?int $ariaValuemax = null;
+
     public ?int $ariaValuemin = null;
+
     public ?int $ariaValuenow = null;
+
     public ?string $ariaValuetext = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public null|string|bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?string $slot = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?array $alpineAttributes = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
+
+    public ?array $dataAttributes = null;
 
     #[PreMount]
     public function preMount(array $data): array
@@ -86,7 +119,9 @@ class Meter
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
         $resolver->setDefined('ariaRoledescription');
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
-        $resolver->setDefaults(['ariaLive' => null]);
+        $resolver->setDefaults([
+            'ariaLive' => null,
+        ]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
         $resolver->setNormalizer('ariaLive', function ($options, $value) {
             if (is_string($value)) {
@@ -94,7 +129,9 @@ class Meter
             }
             return $value;
         });
-        $resolver->setDefaults(['ariaRelevant' => null]);
+        $resolver->setDefaults([
+            'ariaRelevant' => null,
+        ]);
         $resolver->setAllowedTypes('ariaRelevant', ['null', 'string', AriaRelevantEnum::class]);
         $resolver->setNormalizer('ariaRelevant', function ($options, $value) {
             if (is_string($value)) {
@@ -102,7 +139,9 @@ class Meter
             }
             return $value;
         });
-        $resolver->setDefaults(['ariaAtomic' => null]);
+        $resolver->setDefaults([
+            'ariaAtomic' => null,
+        ]);
         $resolver->setAllowedTypes('ariaAtomic', ['null', 'string', AriaAtomicEnum::class]);
         $resolver->setNormalizer('ariaAtomic', function ($options, $value) {
             if (is_string($value)) {
@@ -120,7 +159,9 @@ class Meter
         $resolver->setAllowedTypes('ariaValuetext', ['string']);
         $resolver->setDefined('accesskey');
         $resolver->setAllowedTypes('accesskey', ['string']);
-        $resolver->setDefaults(['autocapitalize' => null]);
+        $resolver->setDefaults([
+            'autocapitalize' => null,
+        ]);
         $resolver->setAllowedTypes('autocapitalize', ['null', 'string', AutoCapitalizeEnum::class]);
         $resolver->setNormalizer('autocapitalize', function ($options, $value) {
             if (is_string($value)) {
@@ -128,9 +169,13 @@ class Meter
             }
             return $value;
         });
-        $resolver->setDefaults(['autofocus' => null]);
+        $resolver->setDefaults([
+            'autofocus' => null,
+        ]);
         $resolver->setAllowedTypes('autofocus', ['null', 'string', 'bool']);
-        $resolver->setDefaults(['contenteditable' => null]);
+        $resolver->setDefaults([
+            'contenteditable' => null,
+        ]);
         $resolver->setAllowedTypes('contenteditable', ['null', 'string', ContentEditableEnum::class]);
         $resolver->setNormalizer('contenteditable', function ($options, $value) {
             if (is_string($value)) {
@@ -138,7 +183,9 @@ class Meter
             }
             return $value;
         });
-        $resolver->setDefaults(['dir' => null]);
+        $resolver->setDefaults([
+            'dir' => null,
+        ]);
         $resolver->setAllowedTypes('dir', ['null', 'string', DirectionEnum::class]);
         $resolver->setNormalizer('dir', function ($options, $value) {
             if (is_string($value)) {
@@ -146,11 +193,17 @@ class Meter
             }
             return $value;
         });
-        $resolver->setDefaults(['draggable' => null]);
+        $resolver->setDefaults([
+            'draggable' => null,
+        ]);
         $resolver->setAllowedTypes('draggable', ['null', 'string', 'bool']);
-        $resolver->setDefaults(['hidden' => null]);
+        $resolver->setDefaults([
+            'hidden' => null,
+        ]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
-        $resolver->setDefaults(['inputmode' => null]);
+        $resolver->setDefaults([
+            'inputmode' => null,
+        ]);
         $resolver->setAllowedTypes('inputmode', ['null', 'string', InputModeEnum::class]);
         $resolver->setNormalizer('inputmode', function ($options, $value) {
             if (is_string($value)) {
@@ -162,7 +215,9 @@ class Meter
         $resolver->setAllowedTypes('lang', ['string']);
         $resolver->setDefined('slot');
         $resolver->setAllowedTypes('slot', ['string']);
-        $resolver->setDefaults(['spellcheck' => null]);
+        $resolver->setDefaults([
+            'spellcheck' => null,
+        ]);
         $resolver->setAllowedTypes('spellcheck', ['null', 'string', SpellCheckEnum::class]);
         $resolver->setNormalizer('spellcheck', function ($options, $value) {
             if (is_string($value)) {
@@ -176,7 +231,9 @@ class Meter
         $resolver->setAllowedTypes('tabindex', ['int']);
         $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
-        $resolver->setDefaults(['translate' => null]);
+        $resolver->setDefaults([
+            'translate' => null,
+        ]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);
         $resolver->setNormalizer('translate', function ($options, $value) {
             if (is_string($value)) {
@@ -186,10 +243,16 @@ class Meter
         });
         $resolver->setDefined('alpineAttributes');
         $resolver->setAllowedTypes('alpineAttributes', ['array']);
-        $resolver->setDefaults(['id' => null]);
+        $resolver->setDefaults([
+            'id' => null,
+        ]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
-        $resolver->setDefaults(['class' => null]);
+        $resolver->setDefaults([
+            'class' => null,
+        ]);
         $resolver->setAllowedTypes('class', ['null', 'string']);
+        $resolver->setDefined('dataAttributes');
+        $resolver->setAllowedTypes('dataAttributes', ['array']);
 
         $resolved = $resolver->resolve($data);
         if (isset($data['blocks'])) {

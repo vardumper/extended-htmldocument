@@ -2,6 +2,7 @@
 
 namespace Html\TemplateGenerator;
 
+use BackedEnum;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
@@ -11,6 +12,7 @@ use ReflectionNamedType;
 use ReflectionUnionType;
 use Throwable;
 use TypeError;
+use UnitEnum;
 
 /**
  * StorybookJSGenerator - Generates Storybook Stories for HTML Elements
@@ -96,13 +98,10 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
     {
         $ref = new ReflectionClass($element);
 
-        // Get content model metadata
-        $childOf = $ref->getStaticPropertyValue('childOf', []);
+        $childOf = $ref->getStaticPropertyValue('childOf', []); /* Get content model metadata */
         $parentOf = $ref->getStaticPropertyValue('parentOf', []);
 
-        // Only generate composed templates for elements with SPECIFIC allowed children
-        // Skip elements that can contain any content (empty $parentOf)
-        if (empty($parentOf)) {
+        if (empty($parentOf)) { /* Only generate composed templates for elements with SPECIFIC allowed children; skip elements that can contain any content (empty $parentOf) */
             return null;
         }
 
@@ -110,22 +109,20 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
             $ref->getShortName()
         );
 
-        // Skip generic containers that don't have meaningful composition patterns
         $excludedElements = [
             'div', 'article', 'aside', 'section', 'nav', 'header', 'footer', 'main',
             'blockquote', 'p', 'dialog', 'dd', 'legend', 'li', 'mark', 'slot',
             'svg', 'template', 'thead', 'tbody', 'tfoot', 'tr', 'td', 'th',
             'caption', 'colgroup', 'col', 'fieldset', 'dt', 'optgroup', 'option',
             'figcaption', 'summary', 'rt', 'rp',
-        ];
+        ]; /* Skip generic containers that don't have meaningful composition patterns */
 
         if (in_array($elementName, $excludedElements, true)) {
             return null;
         }
 
-        // Get element metadata from class-level doc comment
         $desc = '';
-        $docComment = $ref->getDocComment();
+        $docComment = $ref->getDocComment(); /* Get element metadata from class-level doc comment */
         if ($docComment !== false) {
             // Extract description from class docblock (first line of content)
             if (preg_match('/\/\*\*\s*\n\s*\*\s*(.+?)\s*\n/s', $docComment, $matches)) {
@@ -177,8 +174,6 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
             // No render assignment for text - it's handled with el.innerHTML
         }
 
-        // Create an example instance of the element to resolve global attributes
-        // using the actual trait getters (e.g. getAccessKey, getAutofocus)
         try {
             $dom = HTMLDocumentDelegator::createEmpty();
             $className = $ref->getName();
@@ -189,7 +184,7 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
             }
         } catch (Throwable $e) {
             $example = null;
-        }
+        } /* Create an example instance of the element to resolve global attributes using the actual trait getters (e.g. getAccessKey, getAutofocus) */
 
         // If we have an example instance, read available global attribute traits
         if ($example !== null) {
@@ -262,7 +257,10 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                             foreach ($type->getTypes() as $t) {
                                 if (enum_exists($t->getName())) {
                                     $phpType = 'enum';
-                                    $choices = array_map(fn (\UnitEnum $c) => $c instanceof \BackedEnum ? $c->value : $c->name, $t->getName()::cases());
+                                    $choices = array_map(
+                                        fn (UnitEnum $c) => $c instanceof BackedEnum ? $c->value : $c->name,
+                                        $t->getName()::cases()
+                                    );
                                     break;
                                 }
                                 if ($t->getName() === 'int') {
@@ -272,7 +270,10 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                         } elseif ($type && $type instanceof ReflectionNamedType) {
                             if (enum_exists($type->getName())) {
                                 $phpType = 'enum';
-                                $choices = array_map(fn (\UnitEnum $c) => $c instanceof \BackedEnum ? $c->value : $c->name, $type->getName()::cases());
+                                $choices = array_map(
+                                    fn (UnitEnum $c) => $c instanceof BackedEnum ? $c->value : $c->name,
+                                    $type->getName()::cases()
+                                );
                             } elseif ($type->getName() === 'int') {
                                 $phpType = 'integer';
                             }
@@ -318,7 +319,10 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                         if ($unionType instanceof ReflectionNamedType && enum_exists($unionType->getName())) {
                             $phpType = 'enum';
                             $enumClass = $unionType->getName();
-                            $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $enumClass::cases());
+                            $choices = array_map(
+                                fn (UnitEnum $case) => $case instanceof BackedEnum ? $case->value : $case->name,
+                                $enumClass::cases()
+                            );
                             break;
                         }
                     }
@@ -326,7 +330,10 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                     if (enum_exists($type->getName())) {
                         $phpType = 'enum';
                         $enumClass = $type->getName();
-                        $choices = array_map(fn (\UnitEnum $case) => $case instanceof \BackedEnum ? $case->value : $case->name, $enumClass::cases());
+                        $choices = array_map(
+                            fn (UnitEnum $case) => $case instanceof BackedEnum ? $case->value : $case->name,
+                            $enumClass::cases()
+                        );
                     } elseif ($type->getName() === 'bool') {
                         $phpType = 'boolean';
                     } elseif ($type->getName() === 'int') {

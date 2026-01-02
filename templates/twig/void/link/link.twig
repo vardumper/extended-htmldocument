@@ -8,6 +8,7 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block link %}
+{% apply spaceless %}
 {% set crossorigin_choices = {'anonymous': true, 'use-credentials': true} %}
 {% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
 {% set referrerpolicy_choices = {'no-referrer': true, 'no-referrer-when-downgrade': true, 'origin': true, 'origin-when-cross-origin': true, 'same-origin': true, 'strict-origin': true, 'strict-origin-when-cross-origin': true, 'unsafe-url': true} %}
@@ -15,6 +16,9 @@
 <link
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if crossorigin is defined and crossorigin|length > 0 and crossorigin_choices[crossorigin] is defined %}crossorigin="{{ crossorigin }}"{% endif %}
+  {% if attribute(_context, 'data-attributes') is defined and attribute(_context, 'data-attributes')|length > 0 %}
+    {% for __k, __v in attribute(_context, 'data-attributes') %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if dir is defined and dir|length > 0 and dir_choices[dir] is defined %}dir="{{ dir }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
   {% if href is defined and href|length > 0 %}href="{{ href }}"{% endif %}
@@ -29,4 +33,5 @@
   {% if style is defined and style|length > 0 %}style="{{ style }}"{% endif %}
   {% if title is defined and title|length > 0 %}title="{{ title }}"{% endif %}
   {% if type is defined and type|length > 0 %}type="{{ type }}"{% endif %}/>
+{% endapply %}
 {% endblock %}

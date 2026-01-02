@@ -3,76 +3,116 @@
 namespace Html\TwigComponentBundle\Twig\Block;
 
 use Html\Enum\{
-    RoleEnum,
+    AriaAtomicEnum,
     AriaBusyEnum,
     AriaHiddenEnum,
     AriaLiveEnum,
     AriaRelevantEnum,
-    AriaAtomicEnum,
     AriaSortEnum,
     AutoCapitalizeEnum,
     ContentEditableEnum,
     DirectionEnum,
     InputModeEnum,
     PopoverEnum,
+    RoleEnum,
     SpellCheckEnum,
     TranslateEnum,
 };
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Td - The td element represents a data cell in a table.
  *
- * @author vardumper <info@erikpoehler.com>
- * @package Html\TwigComponentBundle
  * @see https://github.com/vardumper/extended-htmldocument
  */
 #[AsTwigComponent('Td', template: '@HtmlTwigComponent/block/td/td.html.twig')]
 class Td
 {
     public ?int $colspan = null;
+
     public ?string $headers = null;
+
     public ?int $rowspan = null;
+
     public ?RoleEnum $role = null;
+
     public ?string $ariaControls = null;
+
     public ?string $ariaDescribedby = null;
+
     public ?string $ariaLabelledby = null;
+
     public ?AriaBusyEnum $ariaBusy = null;
+
     public ?AriaHiddenEnum $ariaHidden = null;
+
     public ?string $ariaDetails = null;
+
     public ?string $ariaKeyshortcuts = null;
+
     public ?string $ariaRoledescription = null;
+
     public ?AriaLiveEnum $ariaLive = null;
+
     public ?AriaRelevantEnum $ariaRelevant = null;
+
     public ?AriaAtomicEnum $ariaAtomic = null;
+
     public ?int $ariaColcount = null;
+
     public ?int $ariaRowcount = null;
+
     public ?AriaSortEnum $ariaSort = null;
+
     public ?int $ariaColindex = null;
+
     public ?int $ariaColspan = null;
+
     public ?int $ariaRowindex = null;
+
     public ?int $ariaRowspan = null;
+
     public ?string $accesskey = null;
+
     public ?AutoCapitalizeEnum $autocapitalize = null;
+
     public null|string|bool $autofocus = null;
+
     public ?ContentEditableEnum $contenteditable = null;
+
     public ?DirectionEnum $dir = null;
+
     public null|string|bool $draggable = null;
+
     public null|string|bool $hidden = null;
+
     public ?InputModeEnum $inputmode = null;
+
     public ?string $lang = null;
+
     public ?PopoverEnum $popover = null;
+
     public ?string $slot = null;
+
     public ?SpellCheckEnum $spellcheck = null;
+
     public ?string $style = null;
+
     public ?int $tabindex = null;
+
     public ?string $title = null;
+
     public ?TranslateEnum $translate = null;
+
     public ?array $alpineAttributes = null;
+
     public ?string $id = null;
+
     public ?string $class = null;
+
+    public ?array $dataAttributes = null;
 
     #[PreMount]
     public function preMount(array $data): array
@@ -86,7 +126,9 @@ class Td
         $resolver->setAllowedTypes('headers', ['string']);
         $resolver->setDefined('rowspan');
         $resolver->setAllowedTypes('rowspan', ['int']);
-        $resolver->setDefaults(['role' => null]);
+        $resolver->setDefaults([
+            'role' => null,
+        ]);
         $resolver->setAllowedTypes('role', ['null', 'string', RoleEnum::class]);
         $resolver->setNormalizer('role', function ($options, $value) {
             if (is_string($value)) {
@@ -100,7 +142,9 @@ class Td
         $resolver->setAllowedTypes('ariaDescribedby', ['string']);
         $resolver->setDefined('ariaLabelledby');
         $resolver->setAllowedTypes('ariaLabelledby', ['string']);
-        $resolver->setDefaults(['ariaBusy' => null]);
+        $resolver->setDefaults([
+            'ariaBusy' => null,
+        ]);
         $resolver->setAllowedTypes('ariaBusy', ['null', 'string', AriaBusyEnum::class]);
         $resolver->setNormalizer('ariaBusy', function ($options, $value) {
             if (is_string($value)) {
@@ -108,7 +152,9 @@ class Td
             }
             return $value;
         });
-        $resolver->setDefaults(['ariaHidden' => null]);
+        $resolver->setDefaults([
+            'ariaHidden' => null,
+        ]);
         $resolver->setAllowedTypes('ariaHidden', ['null', 'string', AriaHiddenEnum::class]);
         $resolver->setNormalizer('ariaHidden', function ($options, $value) {
             if (is_string($value)) {
@@ -122,7 +168,9 @@ class Td
         $resolver->setAllowedTypes('ariaKeyshortcuts', ['string']);
         $resolver->setDefined('ariaRoledescription');
         $resolver->setAllowedTypes('ariaRoledescription', ['string']);
-        $resolver->setDefaults(['ariaLive' => null]);
+        $resolver->setDefaults([
+            'ariaLive' => null,
+        ]);
         $resolver->setAllowedTypes('ariaLive', ['null', 'string', AriaLiveEnum::class]);
         $resolver->setNormalizer('ariaLive', function ($options, $value) {
             if (is_string($value)) {
@@ -130,7 +178,9 @@ class Td
             }
             return $value;
         });
-        $resolver->setDefaults(['ariaRelevant' => null]);
+        $resolver->setDefaults([
+            'ariaRelevant' => null,
+        ]);
         $resolver->setAllowedTypes('ariaRelevant', ['null', 'string', AriaRelevantEnum::class]);
         $resolver->setNormalizer('ariaRelevant', function ($options, $value) {
             if (is_string($value)) {
@@ -138,7 +188,9 @@ class Td
             }
             return $value;
         });
-        $resolver->setDefaults(['ariaAtomic' => null]);
+        $resolver->setDefaults([
+            'ariaAtomic' => null,
+        ]);
         $resolver->setAllowedTypes('ariaAtomic', ['null', 'string', AriaAtomicEnum::class]);
         $resolver->setNormalizer('ariaAtomic', function ($options, $value) {
             if (is_string($value)) {
@@ -150,7 +202,9 @@ class Td
         $resolver->setAllowedTypes('ariaColcount', ['int']);
         $resolver->setDefined('ariaRowcount');
         $resolver->setAllowedTypes('ariaRowcount', ['int']);
-        $resolver->setDefaults(['ariaSort' => null]);
+        $resolver->setDefaults([
+            'ariaSort' => null,
+        ]);
         $resolver->setAllowedTypes('ariaSort', ['null', 'string', AriaSortEnum::class]);
         $resolver->setNormalizer('ariaSort', function ($options, $value) {
             if (is_string($value)) {
@@ -168,7 +222,9 @@ class Td
         $resolver->setAllowedTypes('ariaRowspan', ['int']);
         $resolver->setDefined('accesskey');
         $resolver->setAllowedTypes('accesskey', ['string']);
-        $resolver->setDefaults(['autocapitalize' => null]);
+        $resolver->setDefaults([
+            'autocapitalize' => null,
+        ]);
         $resolver->setAllowedTypes('autocapitalize', ['null', 'string', AutoCapitalizeEnum::class]);
         $resolver->setNormalizer('autocapitalize', function ($options, $value) {
             if (is_string($value)) {
@@ -176,9 +232,13 @@ class Td
             }
             return $value;
         });
-        $resolver->setDefaults(['autofocus' => null]);
+        $resolver->setDefaults([
+            'autofocus' => null,
+        ]);
         $resolver->setAllowedTypes('autofocus', ['null', 'string', 'bool']);
-        $resolver->setDefaults(['contenteditable' => null]);
+        $resolver->setDefaults([
+            'contenteditable' => null,
+        ]);
         $resolver->setAllowedTypes('contenteditable', ['null', 'string', ContentEditableEnum::class]);
         $resolver->setNormalizer('contenteditable', function ($options, $value) {
             if (is_string($value)) {
@@ -186,7 +246,9 @@ class Td
             }
             return $value;
         });
-        $resolver->setDefaults(['dir' => null]);
+        $resolver->setDefaults([
+            'dir' => null,
+        ]);
         $resolver->setAllowedTypes('dir', ['null', 'string', DirectionEnum::class]);
         $resolver->setNormalizer('dir', function ($options, $value) {
             if (is_string($value)) {
@@ -194,11 +256,17 @@ class Td
             }
             return $value;
         });
-        $resolver->setDefaults(['draggable' => null]);
+        $resolver->setDefaults([
+            'draggable' => null,
+        ]);
         $resolver->setAllowedTypes('draggable', ['null', 'string', 'bool']);
-        $resolver->setDefaults(['hidden' => null]);
+        $resolver->setDefaults([
+            'hidden' => null,
+        ]);
         $resolver->setAllowedTypes('hidden', ['null', 'string', 'bool']);
-        $resolver->setDefaults(['inputmode' => null]);
+        $resolver->setDefaults([
+            'inputmode' => null,
+        ]);
         $resolver->setAllowedTypes('inputmode', ['null', 'string', InputModeEnum::class]);
         $resolver->setNormalizer('inputmode', function ($options, $value) {
             if (is_string($value)) {
@@ -208,7 +276,9 @@ class Td
         });
         $resolver->setDefined('lang');
         $resolver->setAllowedTypes('lang', ['string']);
-        $resolver->setDefaults(['popover' => null]);
+        $resolver->setDefaults([
+            'popover' => null,
+        ]);
         $resolver->setAllowedTypes('popover', ['null', 'string', PopoverEnum::class]);
         $resolver->setNormalizer('popover', function ($options, $value) {
             if (is_string($value)) {
@@ -218,7 +288,9 @@ class Td
         });
         $resolver->setDefined('slot');
         $resolver->setAllowedTypes('slot', ['string']);
-        $resolver->setDefaults(['spellcheck' => null]);
+        $resolver->setDefaults([
+            'spellcheck' => null,
+        ]);
         $resolver->setAllowedTypes('spellcheck', ['null', 'string', SpellCheckEnum::class]);
         $resolver->setNormalizer('spellcheck', function ($options, $value) {
             if (is_string($value)) {
@@ -232,7 +304,9 @@ class Td
         $resolver->setAllowedTypes('tabindex', ['int']);
         $resolver->setDefined('title');
         $resolver->setAllowedTypes('title', ['string']);
-        $resolver->setDefaults(['translate' => null]);
+        $resolver->setDefaults([
+            'translate' => null,
+        ]);
         $resolver->setAllowedTypes('translate', ['null', 'string', TranslateEnum::class]);
         $resolver->setNormalizer('translate', function ($options, $value) {
             if (is_string($value)) {
@@ -242,10 +316,16 @@ class Td
         });
         $resolver->setDefined('alpineAttributes');
         $resolver->setAllowedTypes('alpineAttributes', ['array']);
-        $resolver->setDefaults(['id' => null]);
+        $resolver->setDefaults([
+            'id' => null,
+        ]);
         $resolver->setAllowedTypes('id', ['null', 'string']);
-        $resolver->setDefaults(['class' => null]);
+        $resolver->setDefaults([
+            'class' => null,
+        ]);
         $resolver->setAllowedTypes('class', ['null', 'string']);
+        $resolver->setDefined('dataAttributes');
+        $resolver->setAllowedTypes('dataAttributes', ['array']);
 
         $resolved = $resolver->resolve($data);
         if (isset($data['blocks'])) {

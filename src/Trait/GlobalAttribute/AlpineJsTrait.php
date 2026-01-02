@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Html\Trait\GlobalAttribute;
 
+use InvalidArgumentException;
+
 trait AlpineJsTrait
 {
     /**
@@ -12,8 +14,23 @@ trait AlpineJsTrait
     public ?array $alpineAttributes = null;
 
     /**
+     * Render the element as HTML string, converting Alpine.js full attribute names back to shorthand. Quite optional or opinionated.
+     */
+    public function __toString(): string
+    {
+        // Get the default HTML rendering
+        $html = parent::__toString();
+
+        // Replace full Alpine.js attribute names back to shorthand
+        $html = str_replace(' x-on:', ' @', $html);
+        $html = str_replace(' x-bind:', ' :', $html);
+
+        return $html;
+    }
+
+    /**
      * Sets Alpine.js attributes with support for shortcuts.
-     * 
+     *
      * Shortcuts:
      * - @event -> x-on:event
      * - :attribute -> x-bind:attribute
@@ -70,16 +87,32 @@ trait AlpineJsTrait
         } elseif (str_starts_with($name, '.')) {
             // .lazy -> x-model.lazy
             return 'x-model' . $name;
-        } elseif (in_array($name, ['show', 'text', 'html', 'if', 'for', 'cloak', 'init', 'data', 'effect', 'ignore', 'ref', 'transition', 'teleport'])) {
+        } elseif (in_array(
+            $name,
+            [
+                'show',
+                'text',
+                'html',
+                'if',
+                'for',
+                'cloak',
+                'init',
+                'data',
+                'effect',
+                'ignore',
+                'ref',
+                'transition',
+                'teleport',
+            ]
+        )) {
             // Standard directives
             return 'x-' . $name;
-        } else {
-            // Assume it's already a full x-* attribute or custom
-            if (!str_starts_with($name, 'x-')) {
-                return 'x-' . $name;
-            }
-            return $name;
         }
+        // Assume it's already a full x-* attribute or custom
+        if (! str_starts_with($name, 'x-')) {
+            return 'x-' . $name;
+        }
+        return $name;
     }
 
     /**
@@ -91,7 +124,7 @@ trait AlpineJsTrait
 
         if (in_array($translatedName, ['x-if', 'x-for'])) {
             if ($elementName !== 'template') {
-                throw new \InvalidArgumentException(
+                throw new InvalidArgumentException(
                     "Alpine directive '{$translatedName}' is only allowed on <template> elements, not on <{$elementName}>."
                 );
             }
@@ -99,20 +132,5 @@ trait AlpineJsTrait
 
         // Additional validations can be added here for other directives if needed
         // For example, x-model on non-form elements could issue a warning, but for now, allow it
-    }
-
-    /**
-     * Render the element as HTML string, converting Alpine.js full attribute names back to shorthand. Quite optional or opinionated.
-     */
-    public function __toString(): string
-    {
-        // Get the default HTML rendering
-        $html = parent::__toString();
-
-        // Replace full Alpine.js attribute names back to shorthand
-        $html = str_replace(' x-on:', ' @', $html);
-        $html = str_replace(' x-bind:', ' :', $html);
-
-        return $html;
     }
 }

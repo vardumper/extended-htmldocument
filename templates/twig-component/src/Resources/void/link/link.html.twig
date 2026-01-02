@@ -17,6 +17,9 @@
 <link
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
   {% if this.crossorigin is not null %}crossorigin="{{ this.crossorigin.value }}"{% endif %}
+  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
+    {% for __k, __v in this.dataAttributes %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if this.dir is not null %}dir="{{ this.dir.value }}"{% endif %}
   {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}
   {% if this.href is defined and this.href is not null %}href="{{ this.href }}"{% endif %}
@@ -32,3 +35,4 @@
   {% if this.title is defined and this.title is not null %}title="{{ this.title }}"{% endif %}
   {% if this.type is defined and this.type is not null %}type="{{ this.type }}"{% endif %}
 />
+{% endapply %}

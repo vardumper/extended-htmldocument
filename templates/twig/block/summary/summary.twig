@@ -8,6 +8,7 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block summary %}
+{% apply spaceless %}
 {% set ariaAtomic_choices = {'false': true, 'true': true} %}
 {% set ariaBusy_choices = {'true': true, 'false': true} %}
 {% set ariaExpanded_choices = {'false': true, 'true': true, 'undefined': true} %}
@@ -26,25 +27,28 @@
 {% set translate_choices = {'yes': true, 'no': true} %}
 <summary
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
-  {% if ariaAtomic is defined and ariaAtomic|length > 0 and ariaAtomic_choices[ariaAtomic] is defined %}aria-atomic="{{ ariaAtomic }}"{% endif %}
-  {% if ariaBusy is defined and ariaBusy|length > 0 and ariaBusy_choices[ariaBusy] is defined %}aria-busy="{{ ariaBusy }}"{% endif %}
-  {% if ariaControls is defined and ariaControls|length > 0 %}aria-controls="{{ ariaControls }}"{% endif %}
-  {% if ariaDescribedby is defined and ariaDescribedby|length > 0 %}aria-describedby="{{ ariaDescribedby }}"{% endif %}
-  {% if ariaDetails is defined and ariaDetails|length > 0 %}aria-details="{{ ariaDetails }}"{% endif %}
-  {% if ariaExpanded is defined and ariaExpanded|length > 0 and ariaExpanded_choices[ariaExpanded] is defined %}aria-expanded="{{ ariaExpanded }}"{% endif %}
-  {% if ariaHaspopup is defined and ariaHaspopup|length > 0 and ariaHaspopup_choices[ariaHaspopup] is defined %}aria-haspopup="{{ ariaHaspopup }}"{% endif %}
-  {% if ariaHidden is defined and ariaHidden|length > 0 and ariaHidden_choices[ariaHidden] is defined %}aria-hidden="{{ ariaHidden }}"{% endif %}
-  {% if ariaKeyshortcuts is defined and ariaKeyshortcuts|length > 0 %}aria-keyshortcuts="{{ ariaKeyshortcuts }}"{% endif %}
-  {% if ariaLabel is defined and ariaLabel|length > 0 %}aria-label="{{ ariaLabel }}"{% endif %}
-  {% if ariaLabelledby is defined and ariaLabelledby|length > 0 %}aria-labelledby="{{ ariaLabelledby }}"{% endif %}
-  {% if ariaLive is defined and ariaLive|length > 0 and ariaLive_choices[ariaLive] is defined %}aria-live="{{ ariaLive }}"{% endif %}
-  {% if ariaPressed is defined and ariaPressed|length > 0 and ariaPressed_choices[ariaPressed] is defined %}aria-pressed="{{ ariaPressed }}"{% endif %}
-  {% if ariaRelevant is defined and ariaRelevant|length > 0 and ariaRelevant_choices[ariaRelevant] is defined %}aria-relevant="{{ ariaRelevant }}"{% endif %}
-  {% if ariaRoledescription is defined and ariaRoledescription|length > 0 %}aria-roledescription="{{ ariaRoledescription }}"{% endif %}
+  {% if attribute(_context, 'aria-atomic') is defined and attribute(_context, 'aria-atomic')|length > 0 and ariaAtomic_choices[attribute(_context, 'aria-atomic')] is defined %}aria-atomic="{{ attribute(_context, 'aria-atomic') }}"{% endif %}
+  {% if attribute(_context, 'aria-busy') is defined and attribute(_context, 'aria-busy')|length > 0 and ariaBusy_choices[attribute(_context, 'aria-busy')] is defined %}aria-busy="{{ attribute(_context, 'aria-busy') }}"{% endif %}
+  {% if attribute(_context, 'aria-controls') is defined and attribute(_context, 'aria-controls')|length > 0 %}aria-controls="{{ attribute(_context, 'aria-controls') }}"{% endif %}
+  {% if attribute(_context, 'aria-describedby') is defined and attribute(_context, 'aria-describedby')|length > 0 %}aria-describedby="{{ attribute(_context, 'aria-describedby') }}"{% endif %}
+  {% if attribute(_context, 'aria-details') is defined and attribute(_context, 'aria-details')|length > 0 %}aria-details="{{ attribute(_context, 'aria-details') }}"{% endif %}
+  {% if attribute(_context, 'aria-expanded') is defined and attribute(_context, 'aria-expanded')|length > 0 and ariaExpanded_choices[attribute(_context, 'aria-expanded')] is defined %}aria-expanded="{{ attribute(_context, 'aria-expanded') }}"{% endif %}
+  {% if attribute(_context, 'aria-haspopup') is defined and attribute(_context, 'aria-haspopup')|length > 0 and ariaHaspopup_choices[attribute(_context, 'aria-haspopup')] is defined %}aria-haspopup="{{ attribute(_context, 'aria-haspopup') }}"{% endif %}
+  {% if attribute(_context, 'aria-hidden') is defined and attribute(_context, 'aria-hidden')|length > 0 and ariaHidden_choices[attribute(_context, 'aria-hidden')] is defined %}aria-hidden="{{ attribute(_context, 'aria-hidden') }}"{% endif %}
+  {% if attribute(_context, 'aria-keyshortcuts') is defined and attribute(_context, 'aria-keyshortcuts')|length > 0 %}aria-keyshortcuts="{{ attribute(_context, 'aria-keyshortcuts') }}"{% endif %}
+  {% if attribute(_context, 'aria-label') is defined and attribute(_context, 'aria-label')|length > 0 %}aria-label="{{ attribute(_context, 'aria-label') }}"{% endif %}
+  {% if attribute(_context, 'aria-labelledby') is defined and attribute(_context, 'aria-labelledby')|length > 0 %}aria-labelledby="{{ attribute(_context, 'aria-labelledby') }}"{% endif %}
+  {% if attribute(_context, 'aria-live') is defined and attribute(_context, 'aria-live')|length > 0 and ariaLive_choices[attribute(_context, 'aria-live')] is defined %}aria-live="{{ attribute(_context, 'aria-live') }}"{% endif %}
+  {% if attribute(_context, 'aria-pressed') is defined and attribute(_context, 'aria-pressed')|length > 0 and ariaPressed_choices[attribute(_context, 'aria-pressed')] is defined %}aria-pressed="{{ attribute(_context, 'aria-pressed') }}"{% endif %}
+  {% if attribute(_context, 'aria-relevant') is defined and attribute(_context, 'aria-relevant')|length > 0 and ariaRelevant_choices[attribute(_context, 'aria-relevant')] is defined %}aria-relevant="{{ attribute(_context, 'aria-relevant') }}"{% endif %}
+  {% if attribute(_context, 'aria-roledescription') is defined and attribute(_context, 'aria-roledescription')|length > 0 %}aria-roledescription="{{ attribute(_context, 'aria-roledescription') }}"{% endif %}
   {% if autocapitalize is defined and autocapitalize|length > 0 and autocapitalize_choices[autocapitalize] is defined %}autocapitalize="{{ autocapitalize }}"{% endif %}
   {% if autofocus is defined and autofocus|length > 0 %}autofocus="{{ autofocus }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if contenteditable is defined and contenteditable|length > 0 and contenteditable_choices[contenteditable] is defined %}contenteditable="{{ contenteditable }}"{% endif %}
+  {% if attribute(_context, 'data-attributes') is defined and attribute(_context, 'data-attributes')|length > 0 %}
+    {% for __k, __v in attribute(_context, 'data-attributes') %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if dir is defined and dir|length > 0 and dir_choices[dir] is defined %}dir="{{ dir }}"{% endif %}
   {% if draggable is defined and draggable|length > 0 %}draggable="{{ draggable }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
@@ -61,4 +65,5 @@
   {% if translate is defined and translate|length > 0 and translate_choices[translate] is defined %}translate="{{ translate }}"{% endif %}>
   {% block content %}{{- content|raw -}}{% endblock %}
 </summary>
+{% endapply %}
 {% endblock %}

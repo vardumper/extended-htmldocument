@@ -53,10 +53,14 @@ test('render element', function () {
     $element = Anchor::create($document);
     $element->setHref('https://example.com');
     $result = $this->generator->render($element);
-    expect($result)->toBeString();
-    expect($result)->toContain('<a');
-    expect($result)->toContain('href');
-    expect($result)->toContain('@section');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('<a');
+    expect($result)
+        ->toContain('href');
+    expect($result)
+        ->toContain('@section');
 });
 
 test('render document', function () {
@@ -64,7 +68,8 @@ test('render document', function () {
     $element = Body::create($document);
     $document->appendChild($element);
     $result = $this->generator->render($document);
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('render invalid', function () {
@@ -78,14 +83,22 @@ test('render composed element with parentOf', function () {
 
     $result = $this->generator->renderComposedElement($element);
 
-    expect($result)->toBeString();
-    expect($result)->toContain('{{--');
-    expect($result)->toContain('auto-generated');
-    expect($result)->toContain('Form');
-    expect($result)->toContain('Composed Example');
-    expect($result)->toContain('CONTENT MODEL');
-    expect($result)->toContain('@section');
-    expect($result)->toContain('<form');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('{{--');
+    expect($result)
+        ->toContain('auto-generated');
+    expect($result)
+        ->toContain('Form');
+    expect($result)
+        ->toContain('Composed Example');
+    expect($result)
+        ->toContain('CONTENT MODEL');
+    expect($result)
+        ->toContain('@section');
+    expect($result)
+        ->toContain('<form');
 });
 
 test('render composed element without parentOf', function () {
@@ -94,7 +107,8 @@ test('render composed element without parentOf', function () {
 
     $result = $this->generator->renderComposedElement($element);
 
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('render composed element with excluded element', function () {
@@ -103,7 +117,8 @@ test('render composed element with excluded element', function () {
 
     $result = $this->generator->renderComposedElement($element);
 
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('camel to kebab conversion', function () {
@@ -126,11 +141,16 @@ test('render element with self closing tag', function () {
     $element = Base::create($document);
     $element->setHref('https://example.com');
     $result = $this->generator->render($element);
-    expect($result)->toBeString();
-    expect($result)->toContain('<base');
-    expect($result)->toContain('href');
-    expect($result)->toContain('/>');
-    expect($result)->toContain('@section');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('<base');
+    expect($result)
+        ->toContain('href');
+    expect($result)
+        ->toContain('/>');
+    expect($result)
+        ->toContain('@section');
 });
 
 test('render composed element with empty parentOf', function () {
@@ -139,7 +159,8 @@ test('render composed element with empty parentOf', function () {
 
     $result = $this->generator->renderComposedElement($element);
 
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('determine level for void element', function () {
@@ -170,9 +191,10 @@ test('collect children for composed blade template with priority filtering', fun
     // Call the method
     $result = $method->invoke($this->generator, 'form', $parentOf, $formRef);
 
-    expect($result)->toBeArray();
+    expect($result)
+        ->toBeArray();
     // Should contain blade code for child elements
-    if (!empty($result)) {
+    if (! empty($result)) {
         expect($result[0])->toHaveKey('bladeCode');
         expect($result[0]['bladeCode'])->toContain('@include');
     }
@@ -191,9 +213,11 @@ test('collect children for composed blade template with head element', function 
 
     $result = $method->invoke($this->generator, 'head', $parentOf, $headRef);
 
-    expect($result)->toBeArray();
+    expect($result)
+        ->toBeArray();
     // Head should allow up to 6 children
-    expect(count($result))->toBeLessThanOrEqual(6);
+    expect(count($result))
+        ->toBeLessThanOrEqual(6);
 });
 
 test('collect children for composed blade template with many children', function () {
@@ -211,9 +235,11 @@ test('collect children for composed blade template with many children', function
 
     $result = $method->invoke($this->generator, 'div', $mockParentOf, $divRef);
 
-    expect($result)->toBeArray();
+    expect($result)
+        ->toBeArray();
     // Should limit to 4 children when >10 total
-    expect(count($result))->toBeLessThanOrEqual(4);
+    expect(count($result))
+        ->toBeLessThanOrEqual(4);
 });
 
 it('collects children for head element with specific self-closing handling', function () {
@@ -226,12 +252,17 @@ it('collects children for head element with specific self-closing handling', fun
     $head = Head::create($document);
     $result = $method->invoke($this->generator, 'head', $head::$parentOf, new ReflectionClass($head));
 
-    expect($result)->toBeArray();
+    expect($result)
+        ->toBeArray();
     // Head should allow up to 6 children
-    expect(count($result))->toBeLessThanOrEqual(6);
+    expect(count($result))
+        ->toBeLessThanOrEqual(6);
     // Should include specific handling for base, link, meta
     $bladeCodes = array_column($result, 'bladeCode');
-    expect($bladeCodes)->toContain("@include('blade.void.base.base', ['href' => '/'])\n");
-    expect($bladeCodes)->toContain("@include('blade.void.link.link', ['rel' => 'stylesheet', 'href' => '/styles.css'])\n");
-    expect($bladeCodes)->toContain("@include('blade.void.meta.meta', ['name' => 'description', 'content' => 'Example'])\n");
+    expect($bladeCodes)
+        ->toContain("@include('blade.void.base.base', ['href' => '/'])\n");
+    expect($bladeCodes)
+        ->toContain("@include('blade.void.link.link', ['rel' => 'stylesheet', 'href' => '/styles.css'])\n");
+    expect($bladeCodes)
+        ->toContain("@include('blade.void.meta.meta', ['name' => 'description', 'content' => 'Example'])\n");
 });

@@ -8,10 +8,14 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block style %}
+{% apply spaceless %}
 {% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
 {% set type_choices = {'text/css': true} %}
 <style
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
+  {% if attribute(_context, 'data-attributes') is defined and attribute(_context, 'data-attributes')|length > 0 %}
+    {% for __k, __v in attribute(_context, 'data-attributes') %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if dir is defined and dir|length > 0 and dir_choices[dir] is defined %}dir="{{ dir }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
   {% if lang is defined and lang|length > 0 %}lang="{{ lang }}"{% endif %}
@@ -21,4 +25,5 @@
   {% if type is defined and type|length > 0 and type_choices[type] is defined %}type="{{ type }}"{% endif %}>
   {% block content %}{{- content|raw -}}{% endblock %}
 </style>
+{% endapply %}
 {% endblock %}

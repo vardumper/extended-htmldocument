@@ -1,50 +1,17 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * @generated 2025-12-31 00:30:17
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Block
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
  */
+
 namespace Html\Element\Block;
 
 use Html\Element\BlockElement;
-use Html\Element\Block\{
-    Audio,
-    Body,
-    DefinitionDescription,
-    DefinitionList,
-    DefinitionTerm,
-    DeletedText,
-    Details,
-    Division,
-    Embed,
-    Figure,
-    FigureCaption,
-    Form,
-    Heading1,
-    Heading2,
-    Heading3,
-    Heading4,
-    Heading5,
-    Heading6,
-    InlineFrame,
-    InsertedText,
-    ListItem,
-    Map,
-    ObjectElement,
-    OrderedList,
-    Paragraph,
-    Picture,
-    PreformattedText,
-    Summary,
-    Table,
-    UnorderedList,
-    Video,
-};
 use Html\Element\Inline\{
     Abbreviation,
     Anchor,
@@ -87,8 +54,8 @@ use Html\Element\Void\{
     Track,
     WordBreakOpportunity,
 };
-use Html\Trait\GlobalAttribute;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 /**
  * The header element represents a container for introductory content or a set of navigational links. It typically contains the section's heading (an h1–h6 element or an hgroup element), but can also contain other content such as a table of contents, a search form, or any relevant logos.
@@ -114,6 +81,7 @@ class Header extends BlockElement
     use GlobalAttribute\TitleTrait;
     use GlobalAttribute\TranslateTrait;
     use GlobalAttribute\AlpineJsTrait;
+
     /**
      * The HTML element name
      */
@@ -138,10 +106,7 @@ class Header extends BlockElement
      * The list of allowed direct parents. Any if empty.
      * @var array<string>
      */
-    public static array $childOf = [
-        Body::class,
-        Paragraph::class,
-    ];
+    public static array $childOf = [Body::class, Paragraph::class];
 
     /**
      * The list of allowed direct children. Any if empty.s
@@ -218,12 +183,10 @@ class Header extends BlockElement
         WordBreakOpportunity::class,
     ];
 
-
-    /** 
+    /**
      * Defines a string value that labels the current element for assistive technologies.
-     * @category HTML attribute */
+     */
     protected ?string $ariaLabel = null;
-
 
     public function setAriaLabel(string $ariaLabel): static
     {
@@ -236,6 +199,4 @@ class Header extends BlockElement
     {
         return $this->ariaLabel;
     }
-
-
 }

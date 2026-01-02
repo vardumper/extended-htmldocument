@@ -8,6 +8,7 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block noscript %}
+{% apply spaceless %}
 {% set autocapitalize_choices = {'none': true, 'sentences': true, 'words': true, 'characters': true} %}
 {% set contenteditable_choices = {'true': true, 'false': true, 'inherit': true} %}
 {% set dir_choices = {'ltr': true, 'rtl': true, 'auto': true} %}
@@ -16,11 +17,16 @@
 {% set translate_choices = {'yes': true, 'no': true} %}
 <noscript
   {% if accesskey is defined and accesskey|length > 0 %}accesskey="{{ accesskey }}"{% endif %}
-  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
+  {% if attribute(_context, 'alpine-attributes') is defined and attribute(_context, 'alpine-attributes')|length > 0 %}
+    {% for __k, __v in attribute(_context, 'alpine-attributes') %} {{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if autocapitalize is defined and autocapitalize|length > 0 and autocapitalize_choices[autocapitalize] is defined %}autocapitalize="{{ autocapitalize }}"{% endif %}
   {% if autofocus is defined and autofocus|length > 0 %}autofocus="{{ autofocus }}"{% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
   {% if contenteditable is defined and contenteditable|length > 0 and contenteditable_choices[contenteditable] is defined %}contenteditable="{{ contenteditable }}"{% endif %}
+  {% if attribute(_context, 'data-attributes') is defined and attribute(_context, 'data-attributes')|length > 0 %}
+    {% for __k, __v in attribute(_context, 'data-attributes') %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if dir is defined and dir|length > 0 and dir_choices[dir] is defined %}dir="{{ dir }}"{% endif %}
   {% if draggable is defined and draggable|length > 0 %}draggable="{{ draggable }}"{% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
@@ -34,4 +40,5 @@
   {% if translate is defined and translate|length > 0 and translate_choices[translate] is defined %}translate="{{ translate }}"{% endif %}>
   {% block content %}{{- content|raw -}}{% endblock %}
 </noscript>
+{% endapply %}
 {% endblock %}

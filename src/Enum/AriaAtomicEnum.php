@@ -1,12 +1,11 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * AriaAtomicEnum - Indicates whether assistive technologies should present the entire region as a whole when changes occur.
- * 
+ *
  * @generated 2025-12-31 00:30:17
- * @category HTML Attribute
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/aria-atomic/
@@ -15,7 +14,8 @@
 
 namespace Html\Enum;
 
-enum AriaAtomicEnum: string {
+enum AriaAtomicEnum: string
+{
     case FALSE = 'false'; // default
     case TRUE = 'true';
 

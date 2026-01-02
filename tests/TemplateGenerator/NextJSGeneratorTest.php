@@ -54,12 +54,18 @@ test('render element with complex attributes', function () {
     $element->setDisabled(true);
     $element->setRequired(true);
     $result = $this->generator->render($element);
-    expect($result)->toBeString();
-    expect($result)->toContain('React');
-    expect($result)->toContain('type');
-    expect($result)->toContain('disabled');
-    expect($result)->toContain('required');
-    expect($result)->toContain('boolean');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('React');
+    expect($result)
+        ->toContain('type');
+    expect($result)
+        ->toContain('disabled');
+    expect($result)
+        ->toContain('required');
+    expect($result)
+        ->toContain('boolean');
 });
 
 test('render document', function () {
@@ -67,7 +73,8 @@ test('render document', function () {
     $element = Body::create($document);
     $document->appendChild($element);
     $result = $this->generator->render($document);
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('render invalid', function () {
@@ -79,24 +86,30 @@ test('render composed element with empty parentOf returns null', function () {
     $document = HTMLDocumentDelegator::createEmpty();
     $element = Anchor::create($document);
     $result = $this->generator->renderComposedElement($element);
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('render composed element with excluded element returns null', function () {
     $document = HTMLDocumentDelegator::createEmpty();
     $element = Division::create($document); // div is in excluded list
     $result = $this->generator->renderComposedElement($element);
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('render composed element with valid element returns component', function () {
     $document = HTMLDocumentDelegator::createEmpty();
     $element = Form::create($document);
     $result = $this->generator->renderComposedElement($element);
-    expect($result)->toBeString();
-    expect($result)->toContain('FormExample');
-    expect($result)->toContain('React');
-    expect($result)->toContain('import');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('FormExample');
+    expect($result)
+        ->toContain('React');
+    expect($result)
+        ->toContain('import');
 });
 
 test('determine level for block element', function () {
@@ -104,7 +117,8 @@ test('determine level for block element', function () {
     $method = $reflection->getMethod('determineLevel');
     $method->setAccessible(true);
     $result = $method->invoke($this->generator, Body::class);
-    expect($result)->toBe('block');
+    expect($result)
+        ->toBe('block');
 });
 
 test('determine level for inline element', function () {
@@ -112,7 +126,8 @@ test('determine level for inline element', function () {
     $method = $reflection->getMethod('determineLevel');
     $method->setAccessible(true);
     $result = $method->invoke($this->generator, Anchor::class);
-    expect($result)->toBe('inline');
+    expect($result)
+        ->toBe('inline');
 });
 
 test('determine level for void element', function () {
@@ -120,7 +135,8 @@ test('determine level for void element', function () {
     $method = $reflection->getMethod('determineLevel');
     $method->setAccessible(true);
     $result = $method->invoke($this->generator, \Html\Element\Void\BreakElement::class);
-    expect($result)->toBe('void');
+    expect($result)
+        ->toBe('void');
 });
 
 test('render element method', function () {
@@ -132,10 +148,14 @@ test('render element method', function () {
     $element = Anchor::create($document);
     $result = $method->invoke($this->generator, $element);
 
-    expect($result)->toBeString();
-    expect($result)->toContain('React');
-    expect($result)->toContain('A'); // Component name is 'A' from QUALIFIED_NAME
-    expect($result)->toContain('interface');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('React');
+    expect($result)
+        ->toContain('A'); // Component name is 'A' from QUALIFIED_NAME
+    expect($result)
+        ->toContain('interface');
 });
 
 test('build next js component method', function () {
@@ -160,11 +180,16 @@ test('build next js component method', function () {
 
     $result = $method->invoke($this->generator, 'TestComponent', 'div', 'Test', 'A test component', $props, false);
 
-    expect($result)->toBeString();
-    expect($result)->toContain('TestComponent');
-    expect($result)->toContain('React.FC');
-    expect($result)->toContain('interface TestComponentProps');
-    expect($result)->toContain('React.createElement');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('TestComponent');
+    expect($result)
+        ->toContain('React.FC');
+    expect($result)
+        ->toContain('interface TestComponentProps');
+    expect($result)
+        ->toContain('React.createElement');
 });
 
 test('build composed component method', function () {
@@ -173,12 +198,25 @@ test('build composed component method', function () {
     $method->setAccessible(true);
 
     $ref = new ReflectionClass(Form::class);
-    $result = $method->invoke($this->generator, 'FormExample', 'form', 'Form', 'A form element', $ref, [], [Anchor::class, Input::class]);
+    $result = $method->invoke(
+        $this->generator,
+        'FormExample',
+        'form',
+        'Form',
+        'A form element',
+        $ref,
+        [],
+        [Anchor::class, Input::class]
+    );
 
-    expect($result)->toBeString();
-    expect($result)->toContain('FormExample');
-    expect($result)->toContain('Composed Template');
-    expect($result)->toContain('React.FC');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('FormExample');
+    expect($result)
+        ->toContain('Composed Template');
+    expect($result)
+        ->toContain('React.FC');
 });
 
 test('collect imports recursively method', function () {
@@ -189,8 +227,10 @@ test('collect imports recursively method', function () {
     $collected = [];
     $result = $method->invokeArgs($this->generator, [[Anchor::class, Input::class], 'form', &$collected]);
 
-    expect($result)->toBeArray();
-    expect($result)->toHaveCount(2);
+    expect($result)
+        ->toBeArray();
+    expect($result)
+        ->toHaveCount(2);
     expect($result[0])->toHaveKey('componentName');
     expect($result[0])->toHaveKey('elementName');
     expect($result[0])->toHaveKey('level');
@@ -203,9 +243,12 @@ test('generate nested example from content model method', function () {
 
     $result = $method->invoke($this->generator, 'form', [Anchor::class, Input::class], 3, 0);
 
-    expect($result)->toBeString();
-    expect($result)->toContain('<A>'); // Component name is 'A' from QUALIFIED_NAME
-    expect($result)->toContain('Input'); // Input component is present
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('<A>'); // Component name is 'A' from QUALIFIED_NAME
+    expect($result)
+        ->toContain('Input'); // Input component is present
 });
 
 test('generate leaf example method', function () {
@@ -215,7 +258,10 @@ test('generate leaf example method', function () {
 
     $result = $method->invoke($this->generator, 'input', 'Input', '  ', 0);
 
-    expect($result)->toBeString();
-    expect($result)->toContain('<Input');
-    expect($result)->toContain('type="text"');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('<Input');
+    expect($result)
+        ->toContain('type="text"');
 });

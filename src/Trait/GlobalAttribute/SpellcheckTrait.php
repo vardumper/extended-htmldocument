@@ -7,7 +7,6 @@ use InvalidArgumentException;
 
 trait SpellcheckTrait
 {
-
     /**
      * Represents the spellchecking behavior of the element
      */

@@ -2,7 +2,6 @@
 
 namespace Tests\Trait\GlobalAttribute;
 
-use Html\Trait\GlobalAttribute\SpellcheckTrait;
 use Html\Enum\SpellCheckEnum;
 use InvalidArgumentException;
 
@@ -11,7 +10,8 @@ test('setSpellcheck true sets TRUE and delegated attr', function () {
 
     $obj->setSpellcheck(true);
 
-    expect($obj->getSpellcheck())->toBe(SpellCheckEnum::TRUE)
+    expect($obj->getSpellcheck())
+        ->toBe(SpellCheckEnum::TRUE)
         ->and($obj->attributes['spellcheck'])->toBe(SpellCheckEnum::TRUE->value);
 });
 
@@ -20,7 +20,8 @@ test('setSpellcheck "false" sets FALSE via string', function () {
 
     $obj->setSpellcheck('false');
 
-    expect($obj->getSpellcheck())->toBe(SpellCheckEnum::FALSE)
+    expect($obj->getSpellcheck())
+        ->toBe(SpellCheckEnum::FALSE)
         ->and($obj->attributes['spellcheck'])->toBe(SpellCheckEnum::FALSE->value);
 });
 

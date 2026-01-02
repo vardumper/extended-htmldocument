@@ -1,6 +1,7 @@
 <?php
 
 use Html\Delegator\HTMLDocumentDelegator;
+use Html\Element\Block\Article;
 use Html\Element\Block\Body;
 use Html\Element\Block\Division;
 use Html\Element\Block\Form;
@@ -50,18 +51,77 @@ test('render element', function () {
     $element = Anchor::create($document);
     $element->setHref('https://example.com');
     $result = $this->generator->render($element);
-    expect($result)->toBeString();
-    expect($result)->toContain('<a');
-    expect($result)->toContain('href');
-    expect($result)->toContain('{% block');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('<a');
+    expect($result)
+        ->toContain('href');
+    expect($result)
+        ->toContain('{% block');
 });
+
+test('render alpine attributes as key/value pairs', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $element = Article::create($document);
+
+    $result = $this->generator->render($element);
+
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain(
+            "{% if attribute(_context, 'alpine-attributes') is defined and attribute(_context, 'alpine-attributes')|length > 0 %}"
+        );
+    expect($result)
+        ->toContain("{% for __k, __v in attribute(_context, 'alpine-attributes') %}");
+    expect($result)
+        ->toContain('{{ __k }}="{{ __v }}"');
+    // ensure the block only appears once
+    expect(
+        substr_count(
+            $result,
+            "attribute(_context, 'alpine-attributes') is defined and attribute(_context, 'alpine-attributes')|length > 0"
+        )
+    )
+        ->toBe(1);
+});
+
+test('render data attributes as key/value pairs', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $element = Article::create($document);
+
+    $result = $this->generator->render($element);
+
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain(
+            "{% if attribute(_context, 'data-attributes') is defined and attribute(_context, 'data-attributes')|length > 0 %}"
+        );
+    expect($result)
+        ->toContain("{% for __k, __v in attribute(_context, 'data-attributes') %}");
+    expect($result)
+        ->toContain('data-{{ __k }}="{{ __v }}"');
+    // ensure the block only appears once
+    expect(
+        substr_count(
+            $result,
+            "attribute(_context, 'data-attributes') is defined and attribute(_context, 'data-attributes')|length > 0"
+        )
+    )
+        ->toBe(1);
+});
+
+
 
 test('render document', function () {
     $document = HTMLDocumentDelegator::createEmpty();
     $element = Body::create($document);
     $document->appendChild($element);
     $result = $this->generator->render($document);
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('render invalid', function () {
@@ -75,11 +135,13 @@ test('set component handle', function () {
     $property->setAccessible(true);
 
     // Initial value
-    expect($property->getValue($this->generator))->toBe('component');
+    expect($property->getValue($this->generator))
+        ->toBe('component');
 
     // Set new value
     $this->generator->setComponentHandle('custom');
-    expect($property->getValue($this->generator))->toBe('custom');
+    expect($property->getValue($this->generator))
+        ->toBe('custom');
 });
 
 test('render composed element with parentOf', function () {
@@ -87,10 +149,14 @@ test('render composed element with parentOf', function () {
     $element = Form::create($document);
 
     $result = $this->generator->renderComposedElement($element);
-    expect($result)->toBeString();
-    expect($result)->toContain('{% block form_composed %}');
-    expect($result)->toContain('{% embed \'../block/form.twig\'');
-    expect($result)->toContain('{% endblock %}');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('{% block form_composed %}');
+    expect($result)
+        ->toContain('{% embed \'../block/form.twig\'');
+    expect($result)
+        ->toContain('{% endblock %}');
 });
 
 test('render composed element without parentOf', function () {
@@ -98,7 +164,8 @@ test('render composed element without parentOf', function () {
     $element = Anchor::create($document);
 
     $result = $this->generator->renderComposedElement($element);
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('render composed element excluded', function () {
@@ -106,7 +173,8 @@ test('render composed element excluded', function () {
     $element = Division::create($document);
 
     $result = $this->generator->renderComposedElement($element);
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('build composed template', function () {
@@ -122,11 +190,16 @@ test('build composed template', function () {
 
     $result = $method->invoke($this->generator, 'form', 'Form', 'A form element', $ref, $childOf, $parentOf);
 
-    expect($result)->toBeString();
-    expect($result)->toContain('{% block form_composed %}');
-    expect($result)->toContain('{% embed \'../block/form.twig\'');
-    expect($result)->toContain('CONTENT MODEL:');
-    expect($result)->toContain('Can contain:');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('{% block form_composed %}');
+    expect($result)
+        ->toContain('{% embed \'../block/form.twig\'');
+    expect($result)
+        ->toContain('CONTENT MODEL:');
+    expect($result)
+        ->toContain('Can contain:');
 });
 
 test('determine level block', function () {
@@ -135,7 +208,8 @@ test('determine level block', function () {
     $method->setAccessible(true);
 
     $result = $method->invoke($this->generator, 'Html\\Element\\Block\\Form');
-    expect($result)->toBe('block');
+    expect($result)
+        ->toBe('block');
 });
 
 test('determine level inline', function () {
@@ -144,7 +218,8 @@ test('determine level inline', function () {
     $method->setAccessible(true);
 
     $result = $method->invoke($this->generator, 'Html\\Element\\Inline\\Anchor');
-    expect($result)->toBe('inline');
+    expect($result)
+        ->toBe('inline');
 });
 
 test('determine level void', function () {
@@ -153,7 +228,8 @@ test('determine level void', function () {
     $method->setAccessible(true);
 
     $result = $method->invoke($this->generator, 'Html\\Element\\Void\\Area');
-    expect($result)->toBe('void');
+    expect($result)
+        ->toBe('void');
 });
 
 test('collect children for composed template', function () {
@@ -168,8 +244,10 @@ test('collect children for composed template', function () {
 
     $result = $method->invoke($this->generator, 'form', $parentOf, $ref);
 
-    expect($result)->toBeArray();
-    expect(count($result))->toBeGreaterThan(0);
+    expect($result)
+        ->toBeArray();
+    expect(count($result))
+        ->toBeGreaterThan(0);
     foreach ($result as $child) {
         expect($child)->toHaveKey('twigCode');
         expect($child['twigCode'])->toBeString();
@@ -185,7 +263,8 @@ test('render head', function () {
     $result = $method->invoke($this->generator, $document);
 
     // Since getDocumentMetadata returns empty array, renderHead should return null
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('render body', function () {
@@ -199,8 +278,10 @@ test('render body', function () {
 
     $result = $method->invoke($this->generator, $document);
 
-    expect($result)->toBeString();
-    expect($result)->toContain('{% block body %}');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('{% block body %}');
 });
 
 test('get document metadata', function () {
@@ -211,8 +292,10 @@ test('get document metadata', function () {
     $document = HTMLDocumentDelegator::createEmpty();
     $result = $method->invoke($this->generator, $document);
 
-    expect($result)->toBeArray();
-    expect($result)->toBeEmpty();
+    expect($result)
+        ->toBeArray();
+    expect($result)
+        ->toBeEmpty();
 });
 
 test('render twig template', function () {
@@ -220,10 +303,13 @@ test('render twig template', function () {
     $method = $reflection->getMethod('renderTwigTemplate');
     $method->setAccessible(true);
 
-    $result = $method->invoke($this->generator, 'head', ['test' => 'data']);
+    $result = $method->invoke($this->generator, 'head', [
+        'test' => 'data',
+    ]);
 
     // Since loadTwigTemplate returns null, renderTwigTemplate should return null
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('load twig template', function () {
@@ -233,7 +319,8 @@ test('load twig template', function () {
 
     $result = $method->invoke($this->generator, 'head');
 
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('render document method directly', function () {
@@ -247,22 +334,29 @@ test('render document method directly', function () {
 
     $result = $method->invoke($this->generator, $document);
 
-    expect($result)->toBeString();
-    expect($result)->toContain('<?xml version="1.0" encoding="UTF-8"?>');
-    expect($result)->toContain('<!DOCTYPE html>');
-    expect($result)->toContain('<html lang="en">');
-    expect($result)->toContain('<body>');
-    expect($result)->toContain('</body>');
-    expect($result)->toContain('</html>');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('<?xml version="1.0" encoding="UTF-8"?>');
+    expect($result)
+        ->toContain('<!DOCTYPE html>');
+    expect($result)
+        ->toContain('<html lang="en">');
+    expect($result)
+        ->toContain('<body>');
+    expect($result)
+        ->toContain('</body>');
+    expect($result)
+        ->toContain('</html>');
 });
 
 test('render head with metadata', function () {
     $reflection = new ReflectionClass($this->generator);
-    
+
     // Mock getDocumentMetadata to return data
     $metadataMethod = $reflection->getMethod('getDocumentMetadata');
     $metadataMethod->setAccessible(true);
-    
+
     // Create a document with a title
     $document = HTMLDocumentDelegator::createEmpty();
     $title = $document->createElement('title');
@@ -270,17 +364,19 @@ test('render head with metadata', function () {
     $head = $document->createElement('head');
     $head->appendChild($title);
     $document->appendChild($head);
-    
+
     // Test getDocumentMetadata
     $metadata = $metadataMethod->invoke($this->generator, $document);
-    expect($metadata)->toBeArray();
-    
+    expect($metadata)
+        ->toBeArray();
+
     // Test renderHead - it will still return null since renderTwigTemplate returns null
     $headMethod = $reflection->getMethod('renderHead');
     $headMethod->setAccessible(true);
-    
+
     $result = $headMethod->invoke($this->generator, $document);
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('camel to kebab', function () {
@@ -288,7 +384,10 @@ test('camel to kebab', function () {
     $method = $reflection->getMethod('camelToKebab');
     $method->setAccessible(true);
 
-    expect($method->invoke($this->generator, 'camelCase'))->toBe('camel-case');
-    expect($method->invoke($this->generator, 'dataAttribute'))->toBe('data-attribute');
-    expect($method->invoke($this->generator, 'simple'))->toBe('simple');
+    expect($method->invoke($this->generator, 'camelCase'))
+        ->toBe('camel-case');
+    expect($method->invoke($this->generator, 'dataAttribute'))
+        ->toBe('data-attribute');
+    expect($method->invoke($this->generator, 'simple'))
+        ->toBe('simple');
 });

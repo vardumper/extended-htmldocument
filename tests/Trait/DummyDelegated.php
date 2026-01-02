@@ -2,6 +2,8 @@
 
 namespace Tests\Trait;
 
+use stdClass;
+
 class DummyDelegated
 {
     public string $fooProp = 'bar';
@@ -11,7 +13,7 @@ class DummyDelegated
         return $a + $b;
     }
 
-    public function methodTakesObject(\stdClass $obj): string
+    public function methodTakesObject(stdClass $obj): string
     {
         return $obj->name ?? 'none';
     }

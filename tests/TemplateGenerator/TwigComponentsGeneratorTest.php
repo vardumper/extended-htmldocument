@@ -54,10 +54,14 @@ test('render element', function () {
     $element = Anchor::create($document);
     $element->setHref('https://example.com');
     $result = $this->generator->render($element);
-    expect($result)->toBeString();
-    expect($result)->toContain('class');
-    expect($result)->toContain('href');
-    expect($result)->toContain('Component');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('class');
+    expect($result)
+        ->toContain('href');
+    expect($result)
+        ->toContain('Component');
 });
 
 test('render document', function () {
@@ -65,7 +69,8 @@ test('render document', function () {
     $element = Body::create($document);
     $document->appendChild($element);
     $result = $this->generator->render($document);
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('render invalid', function () {
@@ -81,15 +86,30 @@ test('render component class', function () {
 
     $result = $this->generator->renderComponentClass($element);
 
-    expect($result)->toBeString();
-    expect($result)->toContain('class A');
-    expect($result)->toContain('namespace Html\\TwigComponentBundle\\Twig\\Inline;');
-    expect($result)->toContain('use Symfony\\UX\\TwigComponent\\Attribute\\AsTwigComponent;');
-    expect($result)->toContain('#[AsTwigComponent(\'A\', template: \'@HtmlTwigComponent/inline/a/a.html.twig\')]');
-    expect($result)->toContain('public ?string $href = null;');
-    expect($result)->toContain('public ?string $id = null;');
-    expect($result)->toContain('#[PreMount]');
-    expect($result)->toContain('public function preMount');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('class A');
+    expect($result)
+        ->toContain('namespace Html\\TwigComponentBundle\\Twig\\Inline;');
+    expect($result)
+        ->toContain('use Symfony\\UX\\TwigComponent\\Attribute\\AsTwigComponent;');
+    expect($result)
+        ->toContain('#[AsTwigComponent(\'A\', template: \'@HtmlTwigComponent/inline/a/a.html.twig\')]');
+    expect($result)
+        ->toContain('public ?string $href = null;');
+    expect($result)
+        ->toContain('public ?string $id = null;');
+    expect($result)
+        ->toContain('#[PreMount]');
+    expect($result)
+        ->toContain('public function preMount');
+    // Data attributes should also be exposed on the component class
+    expect($result)
+        ->toContain('public ?array $dataAttributes = null;');
+    expect($result)
+        ->toContain('$resolver->setDefined(\'dataAttributes\')') || expect($result)
+        ->toContain('$resolver->setAllowedTypes(\'dataAttributes\', [\'array\'])');
 });
 
 test('render composed element with parentOf', function () {
@@ -98,10 +118,14 @@ test('render composed element with parentOf', function () {
 
     $result = $this->generator->renderComposedElement($element);
 
-    expect($result)->toBeString();
-    expect($result)->toContain('Form - Composed Example');
-    expect($result)->toContain('<twig:Form class="example">');
-    expect($result)->toContain('Can contain:');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('Form - Composed Example');
+    expect($result)
+        ->toContain('<twig:Form class="example">');
+    expect($result)
+        ->toContain('Can contain:');
 });
 
 test('render composed element without parentOf', function () {
@@ -110,7 +134,8 @@ test('render composed element without parentOf', function () {
 
     $result = $this->generator->renderComposedElement($element);
 
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('render composed element excluded element', function () {
@@ -119,7 +144,52 @@ test('render composed element excluded element', function () {
 
     $result = $this->generator->renderComposedElement($element);
 
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
+});
+
+test('render alpine attributes in component template', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $element = \Html\Element\Block\Article::create($document);
+
+    $result = $this->generator->render($element);
+
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain(
+            '{% if this.alpineAttributes is defined and this.alpineAttributes is not null and this.alpineAttributes|length > 0 %}'
+        );
+    expect($result)
+        ->toContain('{% for __k, __v in this.alpineAttributes %}');
+    expect($result)
+        ->toContain('{{ __k }}="{{ __v }}"');
+    // ensure the block only appears once
+    expect(
+        substr_count(
+            $result,
+            'this.alpineAttributes is defined and this.alpineAttributes is not null and this.alpineAttributes|length > 0'
+        )
+    )
+        ->toBe(1);
+});
+
+test('render data attributes in component template', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $element = \Html\Element\Block\Article::create($document);
+
+    $result = $this->generator->render($element);
+
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain(
+            '{% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}'
+        );
+    expect($result)
+        ->toContain('{% for __k, __v in this.dataAttributes %}');
+    expect($result)
+        ->toContain('data-{{ __k }}="{{ __v }}"');
 });
 
 test('determine component level block', function () {
@@ -172,17 +242,18 @@ test('build composed template', function () {
     $method = $reflection->getMethod('buildComposedTemplate');
     $method->setAccessible(true);
 
-    $parentOf = [
-        'Html\\Element\\Inline\\Input',
-        'Html\\Element\\Inline\\Label',
-    ];
+    $parentOf = ['Html\\Element\\Inline\\Input', 'Html\\Element\\Inline\\Label'];
 
     $result = $method->invoke($this->generator, 'form', 'Form', 'A form element', $parentOf);
 
-    expect($result)->toBeString();
-    expect($result)->toContain('Form - Composed Example');
-    expect($result)->toContain('<twig:Form class="example">');
-    expect($result)->toContain('Can contain: Input, Label');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('Form - Composed Example');
+    expect($result)
+        ->toContain('<twig:Form class="example">');
+    expect($result)
+        ->toContain('Can contain: Input, Label');
 });
 
 test('collect children for composed template', function () {
@@ -190,16 +261,14 @@ test('collect children for composed template', function () {
     $method = $reflection->getMethod('collectChildrenForComposedTemplate');
     $method->setAccessible(true);
 
-    $parentOf = [
-        'Html\\Element\\Inline\\Input',
-        'Html\\Element\\Inline\\Label',
-        'Html\\Element\\Void\\Area',
-    ];
+    $parentOf = ['Html\\Element\\Inline\\Input', 'Html\\Element\\Inline\\Label', 'Html\\Element\\Void\\Area'];
 
     $result = $method->invoke($this->generator, $parentOf);
 
-    expect($result)->toBeArray();
-    expect($result)->toHaveCount(3);
+    expect($result)
+        ->toBeArray();
+    expect($result)
+        ->toHaveCount(3);
     expect($result[0])->toHaveKey('twigCode');
     expect($result[0]['twigCode'])->toContain('<twig:Input');
 });
@@ -214,8 +283,10 @@ test('render component class with anchor', function () {
 
     $result = $method->invoke($this->generator, $element);
 
-    expect($result)->toContain('class A');
-    expect($result)->toContain('#[AsTwigComponent(\'A\', template:');
+    expect($result)
+        ->toContain('class A');
+    expect($result)
+        ->toContain('#[AsTwigComponent(\'A\', template:');
 });
 
 test('render composed element with form has parentOf', function () {
@@ -228,8 +299,10 @@ test('render composed element with form has parentOf', function () {
 
     $result = $method->invoke($this->generator, $element);
 
-    expect($result)->toBeString();
-    expect($result)->toContain('Form - Composed Example');
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('Form - Composed Example');
 });
 
 test('render composed element with anchor no parentOf', function () {
@@ -242,7 +315,8 @@ test('render composed element with anchor no parentOf', function () {
 
     $result = $method->invoke($this->generator, $element);
 
-    expect($result)->toBeNull();
+    expect($result)
+        ->toBeNull();
 });
 
 test('determine component level for block element', function () {
@@ -252,7 +326,8 @@ test('determine component level for block element', function () {
 
     $result = $method->invoke($this->generator, 'Html\\Element\\Block\\Division');
 
-    expect($result)->toBe('block');
+    expect($result)
+        ->toBe('block');
 });
 
 test('determine component level for inline element', function () {
@@ -262,7 +337,8 @@ test('determine component level for inline element', function () {
 
     $result = $method->invoke($this->generator, 'Html\\Element\\Inline\\Anchor');
 
-    expect($result)->toBe('inline');
+    expect($result)
+        ->toBe('inline');
 });
 
 test('determine component level for void element', function () {
@@ -272,7 +348,8 @@ test('determine component level for void element', function () {
 
     $result = $method->invoke($this->generator, 'Html\\Element\\Void\\Image');
 
-    expect($result)->toBe('void');
+    expect($result)
+        ->toBe('void');
 });
 
 test('get component class name for normal word', function () {
@@ -282,7 +359,8 @@ test('get component class name for normal word', function () {
 
     $result = $method->invoke($this->generator, 'Form');
 
-    expect($result)->toBe('Form');
+    expect($result)
+        ->toBe('Form');
 });
 
 test('get component class name for reserved word', function () {
@@ -292,7 +370,8 @@ test('get component class name for reserved word', function () {
 
     $result = $method->invoke($this->generator, 'for');
 
-    expect($result)->toBe('forElement');
+    expect($result)
+        ->toBe('forElement');
 });
 
 test('build composed template with mock data', function () {
@@ -304,8 +383,10 @@ test('build composed template with mock data', function () {
 
     $result = $method->invoke($this->generator, 'form', 'Form', 'A form element', $parentOf);
 
-    expect($result)->toContain('<twig:Form class="example">');
-    expect($result)->toContain('Can contain: Input');
+    expect($result)
+        ->toContain('<twig:Form class="example">');
+    expect($result)
+        ->toContain('Can contain: Input');
 });
 
 test('collect children for composed template with valid classes', function () {
@@ -317,6 +398,7 @@ test('collect children for composed template with valid classes', function () {
 
     $result = $method->invoke($this->generator, $parentOf);
 
-    expect($result)->toBeArray();
+    expect($result)
+        ->toBeArray();
     expect($result[0]['twigCode'])->toContain('<twig:Area');
 });

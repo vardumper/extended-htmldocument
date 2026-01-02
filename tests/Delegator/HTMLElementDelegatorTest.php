@@ -370,7 +370,7 @@ test('remove child', function () {
     $this->delegator->appendChild($child);
     expect($this->delegator->delegated->childNodes->length)
         ->toBe(1);
-    
+
     $this->delegator->removeChild($child);
     expect($this->delegator->delegated->childNodes->length)
         ->toBe(0);
@@ -381,13 +381,13 @@ test('replace child', function () {
     $child1->setTextContent('Original');
     $child2 = Anchor::create($this->document);
     $child2->setTextContent('Replacement');
-    
+
     $this->delegator->appendChild($child1);
     expect($this->delegator->delegated->childNodes->length)
         ->toBe(1);
     expect($this->delegator->delegated->firstChild->textContent)
         ->toBe('Original');
-    
+
     $this->delegator->replaceChild($child2, $child1);
     expect($this->delegator->delegated->childNodes->length)
         ->toBe(1);
@@ -401,32 +401,43 @@ test('get owner document', function () {
 });
 
 test('constructor with invalid renderer', function () {
-    $mockRenderer = new class implements \Html\Interface\TemplateGeneratorInterface {
-        public function getExtension(): string {
+    $mockRenderer = new class() implements \Html\Interface\TemplateGeneratorInterface {
+        public function getExtension(): string
+        {
             return 'html';
         }
-        public function getNamePattern(): string {
+
+        public function getNamePattern(): string
+        {
             return '*.html';
         }
-        public function canRenderElements(): bool {
+
+        public function canRenderElements(): bool
+        {
             return false;
         }
-        public function canRenderDocuments(): bool {
+
+        public function canRenderDocuments(): bool
+        {
             return true;
         }
-        public function isTemplated(): bool {
+
+        public function isTemplated(): bool
+        {
             return false;
         }
-        public function render($elementOrDocument): ?string {
+
+        public function render($elementOrDocument): ?string
+        {
             return '';
         }
     };
 
     $element = $this->document->createElement('div');
-    
+
     $this->expectException(InvalidArgumentException::class);
     $this->expectExceptionMessage('The given renderer cannot render elements.');
-    
+
     new HTMLElementDelegator($element->delegated, $mockRenderer);
 });
 
@@ -449,20 +460,20 @@ test('set attribute with union type enum handling', function () {
 test('append child throws exception for different document', function () {
     $otherDocument = HTMLDocumentDelegator::createEmpty();
     $child = Anchor::create($otherDocument);
-    
+
     $this->expectException(InvalidArgumentException::class);
     $this->expectExceptionMessage('The child element must belong to the same document as the parent element.');
-    
+
     $this->delegator->appendChild($child);
 });
 
 test('remove child throws exception for different document', function () {
     $otherDocument = HTMLDocumentDelegator::createEmpty();
     $child = Anchor::create($otherDocument);
-    
+
     $this->expectException(InvalidArgumentException::class);
     $this->expectExceptionMessage('The child element must belong to the same document as the parent element.');
-    
+
     $this->delegator->removeChild($child);
 });
 
@@ -470,10 +481,10 @@ test('replace child throws exception for different document node', function () {
     $otherDocument = HTMLDocumentDelegator::createEmpty();
     $node = Anchor::create($otherDocument);
     $child = Anchor::create($this->document);
-    
+
     $this->expectException(InvalidArgumentException::class);
     $this->expectExceptionMessage('The node element must belong to the same document as the parent element.');
-    
+
     $this->delegator->replaceChild($node, $child);
 });
 
@@ -481,9 +492,9 @@ test('replace child throws exception for different document child', function () 
     $otherDocument = HTMLDocumentDelegator::createEmpty();
     $node = Anchor::create($this->document);
     $child = Anchor::create($otherDocument);
-    
+
     $this->expectException(InvalidArgumentException::class);
     $this->expectExceptionMessage('The child element must belong to the same document as the parent element.');
-    
+
     $this->delegator->replaceChild($node, $child);
 });

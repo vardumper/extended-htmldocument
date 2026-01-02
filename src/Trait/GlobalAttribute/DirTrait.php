@@ -20,7 +20,7 @@ trait DirTrait
      */
     public function setDir(string|DirectionEnum $dir): static
     {
-        if (is_string($dir) && ! in_array($dir, array_map(fn($e) => $e->value, DirectionEnum::cases()))) {
+        if (is_string($dir) && ! in_array($dir, array_map(fn ($e) => $e->value, DirectionEnum::cases()))) {
             throw new InvalidArgumentException('Invalid value for dir');
         }
 

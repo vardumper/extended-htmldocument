@@ -8,9 +8,15 @@
   @see src/TemplateGenerator/TwigGenerator.php
 #}
 {% block source %}
+{% apply spaceless %}
 <source
-  {% if alpineAttributes is defined and alpineAttributes|length > 0 %}alpine-attributes="{{ alpineAttributes }}"{% endif %}
+  {% if attribute(_context, 'alpine-attributes') is defined and attribute(_context, 'alpine-attributes')|length > 0 %}
+    {% for __k, __v in attribute(_context, 'alpine-attributes') %} {{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if class is defined and class|length > 0 %}class="{{ class }}"{% endif %}
+  {% if attribute(_context, 'data-attributes') is defined and attribute(_context, 'data-attributes')|length > 0 %}
+    {% for __k, __v in attribute(_context, 'data-attributes') %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if hidden is defined and hidden|length > 0 %}hidden="{{ hidden }}"{% endif %}
   {% if id is defined and id|length > 0 %}id="{{ id }}"{% endif %}
   {% if media is defined and media|length > 0 %}media="{{ media }}"{% endif %}
@@ -18,4 +24,5 @@
   {% if src is defined and src|length > 0 %}src="{{ src }}"{% endif %}
   {% if srcset is defined and srcset|length > 0 %}srcset="{{ srcset }}"{% endif %}
   {% if type is defined and type|length > 0 %}type="{{ type }}"{% endif %}/>
+{% endapply %}
 {% endblock %}

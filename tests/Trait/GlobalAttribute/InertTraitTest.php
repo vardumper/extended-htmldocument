@@ -2,15 +2,13 @@
 
 namespace Tests\Trait\GlobalAttribute;
 
-use Html\Trait\GlobalAttribute\InertTrait;
-
-
 test('setInert true sets delegated attribute and getInert returns true', function () {
     $obj = new TestInert();
 
     $obj->setInert(true);
 
-    expect($obj->getInert())->toBeTrue()
+    expect($obj->getInert())
+        ->toBeTrue()
         ->and($obj->attributes['inert'])->toBe('true');
 });
 
@@ -19,6 +17,7 @@ test('setInert false sets delegated attribute and getInert returns false', funct
 
     $obj->setInert(false);
 
-    expect($obj->getInert())->toBeFalse()
+    expect($obj->getInert())
+        ->toBeFalse()
         ->and($obj->attributes['inert'])->toBe('false');
 });

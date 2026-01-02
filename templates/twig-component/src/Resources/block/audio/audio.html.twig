@@ -18,7 +18,9 @@
 {% apply spaceless %}
 <audio
   {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
-  {% if this.alpineAttributes is defined and this.alpineAttributes is not null %}alpine-attributes="{{ this.alpineAttributes }}"{% endif %}
+  {% if this.alpineAttributes is defined and this.alpineAttributes is not null and this.alpineAttributes|length > 0 %}
+    {% for __k, __v in this.alpineAttributes %} {{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if this.ariaAtomic is not null %}aria-atomic="{{ this.ariaAtomic.value }}"{% endif %}
   {% if this.ariaBusy is not null %}aria-busy="{{ this.ariaBusy.value }}"{% endif %}
   {% if this.ariaControls is defined and this.ariaControls is not null %}aria-controls="{{ this.ariaControls }}"{% endif %}
@@ -33,6 +35,9 @@
   {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
   {% if this.controls is defined and this.controls is not null %}controls="{{ this.controls }}"{% endif %}
   {% if this.crossorigin is not null %}crossorigin="{{ this.crossorigin.value }}"{% endif %}
+  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
+    {% for __k, __v in this.dataAttributes %} data-{{ __k }}="{{ __v }}"{% endfor %}
+  {% endif %}
   {% if this.draggable is defined and this.draggable is not null %}draggable="{{ this.draggable }}"{% endif %}
   {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}
   {% if this.id is defined and this.id is not null %}id="{{ this.id }}"{% endif %}

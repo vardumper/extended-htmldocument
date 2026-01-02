@@ -1,17 +1,16 @@
 <?php
+
 /**
  * This file is auto-generated. Do not edit manually.
  *
  * @generated 2025-12-31 00:30:17
- * @category HTML
- * @package vardumper/extended-htmldocument
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source
  */
+
 namespace Html\Element\Void;
 
-use Html\Element\VoidElement;
 use Html\Element\Block\{
     Aside,
     DefinitionDescription,
@@ -23,8 +22,9 @@ use Html\Element\Block\{
     Section,
 };
 use Html\Element\Inline\MarkedText;
-use Html\Trait\GlobalAttribute;
+use Html\Element\VoidElement;
 use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
 /**
  * The source element allows authors to specify multiple media resources for media elements. It is an empty element. It is commonly used within the picture element.
@@ -37,6 +37,7 @@ class Source extends VoidElement
     use GlobalAttribute\HiddenTrait;
     use GlobalAttribute\IdTrait;
     use GlobalAttribute\AlpineJsTrait;
+
     /**
      * The HTML element name
      */
@@ -75,39 +76,35 @@ class Source extends VoidElement
 
     /**
      * The list of allowed direct children. Any if empty.
-     * @category HTML element property
      * @var array<string>
      */
-    public static array $parentOf = [
-    ];
+    public static array $parentOf = [];
 
-    /** 
+    /**
      * Specifies the media type for which the linked resource or style sheet is intended.
-     * @category HTML attribute */
+     */
     protected ?string $media = null;
 
-    /** 
+    /**
      * Specifies the sizes of the images or icons for different display/window sizes.
-     * @category HTML attribute */
+     */
     protected ?string $sizes = null;
 
-    /** 
+    /**
      * Specifies the URL of the external resource to be embedded or referenced.
-     * @category HTML attribute
      * @required
      */
     protected ?string $src = null;
 
-    /** 
+    /**
      * Specifies a list of possible image sources for the browser to use.
-     * @category HTML attribute */
+     */
     protected ?string $srcset = null;
 
-    /** 
+    /**
      * Specifies the media type of the linked resource.
-     * @category HTML attribute */
+     */
     protected ?string $type = null;
-
 
     public function setMedia(string $media): static
     {
@@ -168,5 +165,4 @@ class Source extends VoidElement
     {
         return $this->type;
     }
-
 }

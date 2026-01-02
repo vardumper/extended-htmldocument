@@ -6,22 +6,22 @@ namespace Html\Trait\GlobalAttribute;
 
 trait TitleTrait
 {
-   /**
-    * Represents a title or tooltip for the element
-    */
-   public ?string $title = null;
+    /**
+     * Represents a title or tooltip for the element
+     */
+    public ?string $title = null;
 
-   /**
-    * @description Provides tooltip text when hovered.
-    */
-   public function setTitle(string $title): self
-   {
-      $this->title = $title;
-      return $this;
-   }
+    /**
+     * @description Provides tooltip text when hovered.
+     */
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+        return $this;
+    }
 
-   public function getTitle(): ?string
-   {
-      return $this->title;
-   }
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
 }
