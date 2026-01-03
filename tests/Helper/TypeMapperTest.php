@@ -2,14 +2,30 @@
 
 use Html\Helper\TypeMapper;
 
-it('maps types correctly', function () {
-    expect(TypeMapper::mapToPhpType('integer'))->toBe('int');
-    expect(TypeMapper::mapToPhpType('boolean'))->toBe('bool');
-    expect(TypeMapper::mapToPhpType('string'))->toBe('string');
-    expect(TypeMapper::mapToPhpType('uri'))->toBe('string');
-    expect(TypeMapper::mapToPhpType('number'))->toBe('int');
-    expect(TypeMapper::mapToPhpType('float'))->toBe('float');
-    expect(TypeMapper::mapToPhpType('hidden'))->toBe('bool|string');
-    expect(TypeMapper::mapToPhpType('email'))->toBe('string');
-    expect(TypeMapper::mapToPhpType('unknown'))->toBe('unknown');
-});
+it('maps types correctly', function ($input, $expected) {
+    expect(TypeMapper::mapToPhpType($input))->toBe($expected);
+})->with([
+    ['string', 'string'],
+    ['integer', 'int'],
+    ['boolean', 'bool'],
+    ['uri', 'string'],
+    ['language_iso', 'string'],
+    ['color', 'string'],
+    ['datetime', 'string'],
+    ['datetime-local', 'string'],
+    ['date', 'string'],
+    ['time', 'string'],
+    ['month', 'string'],
+    ['week', 'string'],
+    ['number', 'int'],
+    ['float', 'float'],
+    ['script', 'string'],
+    ['url', 'string'],
+    ['email', 'string'],
+    ['tel', 'string'],
+    ['password', 'string'],
+    ['hidden', 'bool|string'],
+    ['image', 'string'],
+    ['file', 'string'],
+    ['unknown-type', 'unknown-type'],
+]);

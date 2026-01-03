@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1767446611">
-  <project timestamp="1767446611" name="Clover Coverage">
+<coverage generated="1767447958">
+  <project timestamp="1767447958" name="Clover Coverage">
     <package name="Html\Delegator">
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Delegator/HTMLDocumentDelegator.php">
         <class name="Html\Delegator\HTMLDocumentDelegator" namespace="Html\Delegator">
@@ -883,15 +883,15 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Helper/EventLoopHelper.php">
         <class name="Html\Helper\EventLoopHelper" namespace="Html\Helper">
-          <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="6" coveredelements="0"/>
+          <metrics complexity="3" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="6" coveredelements="4"/>
         </class>
-        <line num="11" type="method" name="repeat" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="13" type="stmt" count="0"/>
+        <line num="11" type="method" name="repeat" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="13" type="stmt" count="1"/>
         <line num="16" type="method" name="onSignal" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="18" type="stmt" count="0"/>
-        <line num="21" type="method" name="run" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="23" type="stmt" count="0"/>
-        <metrics loc="26" ncloc="26" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="6" coveredelements="0"/>
+        <line num="21" type="method" name="run" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <metrics loc="26" ncloc="26" classes="1" methods="3" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="2" elements="6" coveredelements="4"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Helper/Helper.php">
         <class name="Html\Helper\Helper" namespace="Html\Helper">
@@ -1014,45 +1014,45 @@
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Helper/TypeMapper.php">
         <class name="Html\Helper\TypeMapper" namespace="Html\Helper">
-          <metrics complexity="24" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="11" elements="26" coveredelements="11"/>
+          <metrics complexity="24" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="25" elements="26" coveredelements="26"/>
         </class>
-        <line num="9" type="method" name="mapToPhpType" visibility="public" complexity="24" crap="125.15" count="1"/>
-        <line num="11" type="stmt" count="1"/>
+        <line num="9" type="method" name="mapToPhpType" visibility="public" complexity="24" crap="24" count="23"/>
+        <line num="11" type="stmt" count="23"/>
         <line num="12" type="stmt" count="1"/>
         <line num="13" type="stmt" count="1"/>
         <line num="14" type="stmt" count="1"/>
         <line num="15" type="stmt" count="1"/>
-        <line num="16" type="stmt" count="0"/>
-        <line num="17" type="stmt" count="0"/>
-        <line num="18" type="stmt" count="0"/>
-        <line num="19" type="stmt" count="0"/>
-        <line num="20" type="stmt" count="0"/>
-        <line num="21" type="stmt" count="0"/>
-        <line num="22" type="stmt" count="0"/>
-        <line num="23" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="1"/>
+        <line num="17" type="stmt" count="1"/>
+        <line num="18" type="stmt" count="1"/>
+        <line num="19" type="stmt" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="22" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="1"/>
         <line num="24" type="stmt" count="1"/>
         <line num="25" type="stmt" count="1"/>
-        <line num="26" type="stmt" count="0"/>
-        <line num="27" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="1"/>
+        <line num="27" type="stmt" count="1"/>
         <line num="28" type="stmt" count="1"/>
-        <line num="29" type="stmt" count="0"/>
-        <line num="30" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="1"/>
+        <line num="30" type="stmt" count="1"/>
         <line num="31" type="stmt" count="1"/>
-        <line num="32" type="stmt" count="0"/>
-        <line num="33" type="stmt" count="0"/>
-        <line num="34" type="stmt" count="1"/>
-        <line num="35" type="stmt" count="1"/>
-        <metrics loc="38" ncloc="38" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="11" elements="26" coveredelements="11"/>
+        <line num="32" type="stmt" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="34" type="stmt" count="23"/>
+        <line num="35" type="stmt" count="23"/>
+        <metrics loc="38" ncloc="38" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="25" elements="26" coveredelements="26"/>
       </file>
       <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Helper/YamlHelper.php">
         <class name="Html\Helper\YamlHelper" namespace="Html\Helper">
-          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
-        <line num="18" type="method" name="parseFile" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="20" type="stmt" count="0"/>
-        <line num="28" type="method" name="dump" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="30" type="stmt" count="0"/>
-        <metrics loc="33" ncloc="21" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="4" coveredelements="0"/>
+        <line num="18" type="method" name="parseFile" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="28" type="method" name="dump" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="30" type="stmt" count="1"/>
+        <metrics loc="33" ncloc="21" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
     </package>
     <file name="/home/erik-poehler/Sites/ExtendedHTMLDocument/src/Interface/ComponentBuilderInterface.php">
@@ -4463,6 +4463,6 @@
         <metrics loc="41" ncloc="35" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="12" coveredelements="12"/>
       </file>
     </package>
-    <metrics files="124" loc="9308" ncloc="7522" classes="111" methods="348" coveredmethods="290" conditionals="0" coveredconditionals="0" statements="3393" coveredstatements="3119" elements="3741" coveredelements="3409"/>
+    <metrics files="124" loc="9308" ncloc="7522" classes="111" methods="348" coveredmethods="295" conditionals="0" coveredconditionals="0" statements="3393" coveredstatements="3137" elements="3741" coveredelements="3432"/>
   </project>
 </coverage>

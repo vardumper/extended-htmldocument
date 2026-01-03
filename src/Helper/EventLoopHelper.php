@@ -8,7 +8,7 @@ use Revolt\EventLoop;
 
 final class EventLoopHelper
 {
-    public function repeat(int $interval, callable $callback): void
+    public function repeat(float $interval, callable $callback): void
     {
         EventLoop::repeat($interval, $callback);
     }
