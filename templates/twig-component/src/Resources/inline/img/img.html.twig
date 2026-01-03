@@ -14,40 +14,104 @@
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
 {% apply spaceless %}
-<img
+{%- set _attrs = {} -%}
   {% if this.alpineAttributes is defined and this.alpineAttributes is not null and this.alpineAttributes|length > 0 %}
-    {% for __k, __v in this.alpineAttributes %} {{ __k }}="{{ __v }}"{% endfor %}
+    {% for __k, __v in this.alpineAttributes %}
+      {% if __v is not null and __v != '' %}
+        {% set _attrs = _attrs|merge({(__k): __v}) %}
+      {% endif %}
+    {% endfor %}
   {% endif %}
-  {% if this.alt is defined and this.alt is not null %}alt="{{ this.alt }}"{% endif %}
-  {% if this.ariaAtomic is not null %}aria-atomic="{{ this.ariaAtomic.value }}"{% endif %}
-  {% if this.ariaDetails is defined and this.ariaDetails is not null %}aria-details="{{ this.ariaDetails }}"{% endif %}
-  {% if this.ariaHidden is not null %}aria-hidden="{{ this.ariaHidden.value }}"{% endif %}
-  {% if this.ariaKeyshortcuts is defined and this.ariaKeyshortcuts is not null %}aria-keyshortcuts="{{ this.ariaKeyshortcuts }}"{% endif %}
-  {% if this.ariaLabel is defined and this.ariaLabel is not null %}aria-label="{{ this.ariaLabel }}"{% endif %}
-  {% if this.ariaLive is not null %}aria-live="{{ this.ariaLive.value }}"{% endif %}
-  {% if this.ariaRelevant is not null %}aria-relevant="{{ this.ariaRelevant.value }}"{% endif %}
-  {% if this.ariaRoledescription is defined and this.ariaRoledescription is not null %}aria-roledescription="{{ this.ariaRoledescription }}"{% endif %}
-  {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
-  {% if this.crossorigin is not null %}crossorigin="{{ this.crossorigin.value }}"{% endif %}
+  {% if this.alt is defined and this.alt is not null and this.alt != '' %}
+    {% set _attrs = _attrs|merge({('alt'): this.alt}) %}
+  {% endif %}
+  {% if this.ariaAtomic is not null and this.ariaAtomic.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-atomic'): this.ariaAtomic.value}) %}
+  {% endif %}
+  {% if this.ariaDetails is defined and this.ariaDetails is not null and this.ariaDetails != '' %}
+    {% set _attrs = _attrs|merge({('aria-details'): this.ariaDetails}) %}
+  {% endif %}
+  {% if this.ariaHidden is not null and this.ariaHidden.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-hidden'): this.ariaHidden.value}) %}
+  {% endif %}
+  {% if this.ariaKeyshortcuts is defined and this.ariaKeyshortcuts is not null and this.ariaKeyshortcuts != '' %}
+    {% set _attrs = _attrs|merge({('aria-keyshortcuts'): this.ariaKeyshortcuts}) %}
+  {% endif %}
+  {% if this.ariaLabel is defined and this.ariaLabel is not null and this.ariaLabel != '' %}
+    {% set _attrs = _attrs|merge({('aria-label'): this.ariaLabel}) %}
+  {% endif %}
+  {% if this.ariaLive is not null and this.ariaLive.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-live'): this.ariaLive.value}) %}
+  {% endif %}
+  {% if this.ariaRelevant is not null and this.ariaRelevant.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-relevant'): this.ariaRelevant.value}) %}
+  {% endif %}
+  {% if this.ariaRoledescription is defined and this.ariaRoledescription is not null and this.ariaRoledescription != '' %}
+    {% set _attrs = _attrs|merge({('aria-roledescription'): this.ariaRoledescription}) %}
+  {% endif %}
+  {% if this.class is defined and this.class is not null and this.class != '' %}
+    {% set _attrs = _attrs|merge({('class'): this.class}) %}
+  {% endif %}
+  {% if this.crossorigin is not null and this.crossorigin.value != '' %}
+    {% set _attrs = _attrs|merge({('crossorigin'): this.crossorigin.value}) %}
+  {% endif %}
   {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
-    {% for __k, __v in this.dataAttributes %} data-{{ __k }}="{{ __v }}"{% endfor %}
+    {% for __k, __v in this.dataAttributes %}
+      {% if __v is not null and __v != '' %}
+        {% set _attrs = _attrs|merge({('data-' ~ __k): __v}) %}
+      {% endif %}
+    {% endfor %}
   {% endif %}
-  {% if this.decoding is not null %}decoding="{{ this.decoding.value }}"{% endif %}
-  {% if this.dir is not null %}dir="{{ this.dir.value }}"{% endif %}
-  {% if this.draggable is defined and this.draggable is not null %}draggable="{{ this.draggable }}"{% endif %}
-  {% if this.height is defined and this.height is not null %}height="{{ this.height }}"{% endif %}
-  {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}
-  {% if this.id is defined and this.id is not null %}id="{{ this.id }}"{% endif %}
-  {% if this.ismap is defined and this.ismap is not null %}ismap="{{ this.ismap }}"{% endif %}
-  {% if this.lang is defined and this.lang is not null %}lang="{{ this.lang }}"{% endif %}
-  {% if this.referrerpolicy is not null %}referrerpolicy="{{ this.referrerpolicy.value }}"{% endif %}
-  {% if this.sizes is defined and this.sizes is not null %}sizes="{{ this.sizes }}"{% endif %}
-  {% if this.src is defined and this.src is not null %}src="{{ this.src }}"{% endif %}
-  {% if this.srcset is defined and this.srcset is not null %}srcset="{{ this.srcset }}"{% endif %}
-  {% if this.style is defined and this.style is not null %}style="{{ this.style }}"{% endif %}
-  {% if this.tabindex is defined and this.tabindex is not null %}tabindex="{{ this.tabindex }}"{% endif %}
-  {% if this.title is defined and this.title is not null %}title="{{ this.title }}"{% endif %}
-  {% if this.usemap is defined and this.usemap is not null %}usemap="{{ this.usemap }}"{% endif %}
-  {% if this.width is defined and this.width is not null %}width="{{ this.width }}"{% endif %}
+  {% if this.decoding is not null and this.decoding.value != '' %}
+    {% set _attrs = _attrs|merge({('decoding'): this.decoding.value}) %}
+  {% endif %}
+  {% if this.dir is not null and this.dir.value != '' %}
+    {% set _attrs = _attrs|merge({('dir'): this.dir.value}) %}
+  {% endif %}
+  {% if this.draggable is defined and this.draggable is not null and this.draggable != '' %}
+    {% set _attrs = _attrs|merge({('draggable'): this.draggable}) %}
+  {% endif %}
+  {% if this.height is defined and this.height is not null and this.height != '' %}
+    {% set _attrs = _attrs|merge({('height'): this.height}) %}
+  {% endif %}
+  {% if this.hidden is defined and this.hidden is not null and this.hidden != '' %}
+    {% set _attrs = _attrs|merge({('hidden'): this.hidden}) %}
+  {% endif %}
+  {% if this.id is defined and this.id is not null and this.id != '' %}
+    {% set _attrs = _attrs|merge({('id'): this.id}) %}
+  {% endif %}
+  {% if this.ismap is defined and this.ismap is not null and this.ismap != '' %}
+    {% set _attrs = _attrs|merge({('ismap'): this.ismap}) %}
+  {% endif %}
+  {% if this.lang is defined and this.lang is not null and this.lang != '' %}
+    {% set _attrs = _attrs|merge({('lang'): this.lang}) %}
+  {% endif %}
+  {% if this.referrerpolicy is not null and this.referrerpolicy.value != '' %}
+    {% set _attrs = _attrs|merge({('referrerpolicy'): this.referrerpolicy.value}) %}
+  {% endif %}
+  {% if this.sizes is defined and this.sizes is not null and this.sizes != '' %}
+    {% set _attrs = _attrs|merge({('sizes'): this.sizes}) %}
+  {% endif %}
+  {% if this.src is defined and this.src is not null and this.src != '' %}
+    {% set _attrs = _attrs|merge({('src'): this.src}) %}
+  {% endif %}
+  {% if this.srcset is defined and this.srcset is not null and this.srcset != '' %}
+    {% set _attrs = _attrs|merge({('srcset'): this.srcset}) %}
+  {% endif %}
+  {% if this.style is defined and this.style is not null and this.style != '' %}
+    {% set _attrs = _attrs|merge({('style'): this.style}) %}
+  {% endif %}
+  {% if this.tabindex is defined and this.tabindex is not null and this.tabindex != '' %}
+    {% set _attrs = _attrs|merge({('tabindex'): this.tabindex}) %}
+  {% endif %}
+  {% if this.title is defined and this.title is not null and this.title != '' %}
+    {% set _attrs = _attrs|merge({('title'): this.title}) %}
+  {% endif %}
+  {% if this.usemap is defined and this.usemap is not null and this.usemap != '' %}
+    {% set _attrs = _attrs|merge({('usemap'): this.usemap}) %}
+  {% endif %}
+  {% if this.width is defined and this.width is not null and this.width != '' %}
+    {% set _attrs = _attrs|merge({('width'): this.width}) %}
+  {% endif %}<img{%- for __k, __v in _attrs -%}{% if __v is not null and __v != '' %}{{ (' ' ~ __k ~ '="' ~ __v|e('html_attr') ~ '"')|raw }}{% endif %}{%- endfor %}
 />
 {% endapply %}

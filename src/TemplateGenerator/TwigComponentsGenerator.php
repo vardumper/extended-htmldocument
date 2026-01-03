@@ -526,32 +526,58 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
 
         // Build the element - no props tag needed, component class handles it
         $twig .= "{% apply spaceless %}\n";
-        $twig .= "<{$elementName}";
+        // Build attributes map for consistent formatting and to avoid stray whitespace
+        $twig .= '{%- set _attrs = {} -%}';
 
-        // Render attributes conditionally
         foreach ($props as $attr) {
             $isEnum = isset($enums[$attr]);
             $htmlAttr = $this->camelToKebab($attr);
 
-            // Special-case Alpine attributes: render key/value pairs from this.alpineAttributes
+            // Alpine attributes: merge key/value pairs into _attrs
             if ($htmlAttr === 'alpine-attributes') {
-                $twig .= "\n  {% if this.alpineAttributes is defined and this.alpineAttributes is not null and this.alpineAttributes|length > 0 %}";
-                $twig .= "\n    {% for __k, __v in this.alpineAttributes %} {{ __k }}=\"{{ __v }}\"{% endfor %}";
-                $twig .= "\n  {% endif %}";
+                $twig .= <<<'TWIG'
 
-                // Special-case data-* attributes: render each data-KEY attribute from this.dataAttributes
+  {% if this.alpineAttributes is defined and this.alpineAttributes is not null and this.alpineAttributes|length > 0 %}
+    {% for __k, __v in this.alpineAttributes %}
+      {% if __v is not null and __v != '' %}
+        {% set _attrs = _attrs|merge({(__k): __v}) %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+TWIG;
+
+                // Data attributes: merge data-KEY pairs into _attrs
             } elseif ($htmlAttr === 'data-attributes') {
-                $twig .= "\n  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}";
-                $twig .= "\n    {% for __k, __v in this.dataAttributes %} data-{{ __k }}=\"{{ __v }}\"{% endfor %}";
+                $twig .= <<<'TWIG'
+
+  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
+    {% for __k, __v in this.dataAttributes %}
+      {% if __v is not null and __v != '' %}
+        {% set _attrs = _attrs|merge({('data-' ~ __k): __v}) %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+TWIG;
+
+                // Enum attributes: use .value and escape
+            } elseif ($isEnum) {
+                $twig .= "\n  {% if this." . $attr . ' is not null and this.' . $attr . ".value != '' %}";
+                $twig .= "\n    {% set _attrs = _attrs|merge({('" . $htmlAttr . "'): this." . $attr . '.value}) %}';
                 $twig .= "\n  {% endif %}";
 
-                // Default handling for normal attributes
-            } elseif ($isEnum) {
-                $twig .= "\n  {% if this.{$attr} is not null %}{$htmlAttr}=\"{{ this.{$attr}.value }}\"{% endif %}";
+                // Normal attributes
             } else {
-                $twig .= "\n  {% if this.{$attr} is defined and this.{$attr} is not null %}{$htmlAttr}=\"{{ this.{$attr} }}\"{% endif %}";
+                $twig .= "\n  {% if this." . $attr . ' is defined and this.' . $attr . ' is not null and this.' . $attr . " != '' %}";
+                $twig .= "\n    {% set _attrs = _attrs|merge({('" . $htmlAttr . "'): this." . $attr . '}) %}';
+                $twig .= "\n  {% endif %}";
             }
         }
+
+        // Print attributes from the map compactly (single space per attribute) and escape values at print time
+        $twig .= "<{$elementName}";
+        $twig .= <<<'TWIG'
+{%- for __k, __v in _attrs -%}{% if __v is not null and __v != '' %}{{ (' ' ~ __k ~ '="' ~ __v|e('html') ~ '"')|raw }}{% endif %}{%- endfor %}
+TWIG;
 
         if ($isSelfClosing) {
             $twig .= "\n/>\n";

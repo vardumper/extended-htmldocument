@@ -16,7 +16,7 @@
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
 {% apply spaceless %}
-<title
+{%- set _attrs = {} -%}<title{%- for __k, __v in _attrs -%}{% if __v is not null and __v != '' %}{{ (' ' ~ __k ~ '="' ~ __v|e('html_attr') ~ '"')|raw }}{% endif %}{%- endfor %}
 >
   {%- block content %}{% endblock -%}
 </title>

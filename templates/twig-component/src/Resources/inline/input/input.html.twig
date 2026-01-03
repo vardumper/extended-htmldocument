@@ -14,87 +14,245 @@
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
 {% apply spaceless %}
-<input
-  {% if this.accept is defined and this.accept is not null %}accept="{{ this.accept }}"{% endif %}
-  {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
+{%- set _attrs = {} -%}
+  {% if this.accept is defined and this.accept is not null and this.accept != '' %}
+    {% set _attrs = _attrs|merge({('accept'): this.accept}) %}
+  {% endif %}
+  {% if this.accesskey is defined and this.accesskey is not null and this.accesskey != '' %}
+    {% set _attrs = _attrs|merge({('accesskey'): this.accesskey}) %}
+  {% endif %}
   {% if this.alpineAttributes is defined and this.alpineAttributes is not null and this.alpineAttributes|length > 0 %}
-    {% for __k, __v in this.alpineAttributes %} {{ __k }}="{{ __v }}"{% endfor %}
+    {% for __k, __v in this.alpineAttributes %}
+      {% if __v is not null and __v != '' %}
+        {% set _attrs = _attrs|merge({(__k): __v}) %}
+      {% endif %}
+    {% endfor %}
   {% endif %}
-  {% if this.alt is defined and this.alt is not null %}alt="{{ this.alt }}"{% endif %}
-  {% if this.ariaAtomic is not null %}aria-atomic="{{ this.ariaAtomic.value }}"{% endif %}
-  {% if this.ariaAutocomplete is not null %}aria-autocomplete="{{ this.ariaAutocomplete.value }}"{% endif %}
-  {% if this.ariaChecked is not null %}aria-checked="{{ this.ariaChecked.value }}"{% endif %}
-  {% if this.ariaControls is defined and this.ariaControls is not null %}aria-controls="{{ this.ariaControls }}"{% endif %}
-  {% if this.ariaCurrent is not null %}aria-current="{{ this.ariaCurrent.value }}"{% endif %}
-  {% if this.ariaDescribedby is defined and this.ariaDescribedby is not null %}aria-describedby="{{ this.ariaDescribedby }}"{% endif %}
-  {% if this.ariaDetails is defined and this.ariaDetails is not null %}aria-details="{{ this.ariaDetails }}"{% endif %}
-  {% if this.ariaDisabled is not null %}aria-disabled="{{ this.ariaDisabled.value }}"{% endif %}
-  {% if this.ariaExpanded is not null %}aria-expanded="{{ this.ariaExpanded.value }}"{% endif %}
-  {% if this.ariaHaspopup is not null %}aria-haspopup="{{ this.ariaHaspopup.value }}"{% endif %}
-  {% if this.ariaInvalid is not null %}aria-invalid="{{ this.ariaInvalid.value }}"{% endif %}
-  {% if this.ariaKeyshortcuts is defined and this.ariaKeyshortcuts is not null %}aria-keyshortcuts="{{ this.ariaKeyshortcuts }}"{% endif %}
-  {% if this.ariaLabel is defined and this.ariaLabel is not null %}aria-label="{{ this.ariaLabel }}"{% endif %}
-  {% if this.ariaLabelledby is defined and this.ariaLabelledby is not null %}aria-labelledby="{{ this.ariaLabelledby }}"{% endif %}
-  {% if this.ariaLive is not null %}aria-live="{{ this.ariaLive.value }}"{% endif %}
-  {% if this.ariaPlaceholder is defined and this.ariaPlaceholder is not null %}aria-placeholder="{{ this.ariaPlaceholder }}"{% endif %}
-  {% if this.ariaPressed is not null %}aria-pressed="{{ this.ariaPressed.value }}"{% endif %}
-  {% if this.ariaReadonly is not null %}aria-readonly="{{ this.ariaReadonly.value }}"{% endif %}
-  {% if this.ariaRelevant is not null %}aria-relevant="{{ this.ariaRelevant.value }}"{% endif %}
-  {% if this.ariaRequired is not null %}aria-required="{{ this.ariaRequired.value }}"{% endif %}
-  {% if this.ariaRoledescription is defined and this.ariaRoledescription is not null %}aria-roledescription="{{ this.ariaRoledescription }}"{% endif %}
-  {% if this.ariaValuemax is defined and this.ariaValuemax is not null %}aria-valuemax="{{ this.ariaValuemax }}"{% endif %}
-  {% if this.ariaValuemin is defined and this.ariaValuemin is not null %}aria-valuemin="{{ this.ariaValuemin }}"{% endif %}
-  {% if this.ariaValuenow is defined and this.ariaValuenow is not null %}aria-valuenow="{{ this.ariaValuenow }}"{% endif %}
-  {% if this.ariaValuetext is defined and this.ariaValuetext is not null %}aria-valuetext="{{ this.ariaValuetext }}"{% endif %}
-  {% if this.autocapitalize is not null %}autocapitalize="{{ this.autocapitalize.value }}"{% endif %}
-  {% if this.autocomplete is not null %}autocomplete="{{ this.autocomplete.value }}"{% endif %}
-  {% if this.autocorrect is not null %}autocorrect="{{ this.autocorrect.value }}"{% endif %}
-  {% if this.autofocus is defined and this.autofocus is not null %}autofocus="{{ this.autofocus }}"{% endif %}
-  {% if this.checked is defined and this.checked is not null %}checked="{{ this.checked }}"{% endif %}
-  {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
-  {% if this.contenteditable is not null %}contenteditable="{{ this.contenteditable.value }}"{% endif %}
+  {% if this.alt is defined and this.alt is not null and this.alt != '' %}
+    {% set _attrs = _attrs|merge({('alt'): this.alt}) %}
+  {% endif %}
+  {% if this.ariaAtomic is not null and this.ariaAtomic.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-atomic'): this.ariaAtomic.value}) %}
+  {% endif %}
+  {% if this.ariaAutocomplete is not null and this.ariaAutocomplete.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-autocomplete'): this.ariaAutocomplete.value}) %}
+  {% endif %}
+  {% if this.ariaChecked is not null and this.ariaChecked.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-checked'): this.ariaChecked.value}) %}
+  {% endif %}
+  {% if this.ariaControls is defined and this.ariaControls is not null and this.ariaControls != '' %}
+    {% set _attrs = _attrs|merge({('aria-controls'): this.ariaControls}) %}
+  {% endif %}
+  {% if this.ariaCurrent is not null and this.ariaCurrent.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-current'): this.ariaCurrent.value}) %}
+  {% endif %}
+  {% if this.ariaDescribedby is defined and this.ariaDescribedby is not null and this.ariaDescribedby != '' %}
+    {% set _attrs = _attrs|merge({('aria-describedby'): this.ariaDescribedby}) %}
+  {% endif %}
+  {% if this.ariaDetails is defined and this.ariaDetails is not null and this.ariaDetails != '' %}
+    {% set _attrs = _attrs|merge({('aria-details'): this.ariaDetails}) %}
+  {% endif %}
+  {% if this.ariaDisabled is not null and this.ariaDisabled.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-disabled'): this.ariaDisabled.value}) %}
+  {% endif %}
+  {% if this.ariaExpanded is not null and this.ariaExpanded.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-expanded'): this.ariaExpanded.value}) %}
+  {% endif %}
+  {% if this.ariaHaspopup is not null and this.ariaHaspopup.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-haspopup'): this.ariaHaspopup.value}) %}
+  {% endif %}
+  {% if this.ariaInvalid is not null and this.ariaInvalid.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-invalid'): this.ariaInvalid.value}) %}
+  {% endif %}
+  {% if this.ariaKeyshortcuts is defined and this.ariaKeyshortcuts is not null and this.ariaKeyshortcuts != '' %}
+    {% set _attrs = _attrs|merge({('aria-keyshortcuts'): this.ariaKeyshortcuts}) %}
+  {% endif %}
+  {% if this.ariaLabel is defined and this.ariaLabel is not null and this.ariaLabel != '' %}
+    {% set _attrs = _attrs|merge({('aria-label'): this.ariaLabel}) %}
+  {% endif %}
+  {% if this.ariaLabelledby is defined and this.ariaLabelledby is not null and this.ariaLabelledby != '' %}
+    {% set _attrs = _attrs|merge({('aria-labelledby'): this.ariaLabelledby}) %}
+  {% endif %}
+  {% if this.ariaLive is not null and this.ariaLive.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-live'): this.ariaLive.value}) %}
+  {% endif %}
+  {% if this.ariaPlaceholder is defined and this.ariaPlaceholder is not null and this.ariaPlaceholder != '' %}
+    {% set _attrs = _attrs|merge({('aria-placeholder'): this.ariaPlaceholder}) %}
+  {% endif %}
+  {% if this.ariaPressed is not null and this.ariaPressed.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-pressed'): this.ariaPressed.value}) %}
+  {% endif %}
+  {% if this.ariaReadonly is not null and this.ariaReadonly.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-readonly'): this.ariaReadonly.value}) %}
+  {% endif %}
+  {% if this.ariaRelevant is not null and this.ariaRelevant.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-relevant'): this.ariaRelevant.value}) %}
+  {% endif %}
+  {% if this.ariaRequired is not null and this.ariaRequired.value != '' %}
+    {% set _attrs = _attrs|merge({('aria-required'): this.ariaRequired.value}) %}
+  {% endif %}
+  {% if this.ariaRoledescription is defined and this.ariaRoledescription is not null and this.ariaRoledescription != '' %}
+    {% set _attrs = _attrs|merge({('aria-roledescription'): this.ariaRoledescription}) %}
+  {% endif %}
+  {% if this.ariaValuemax is defined and this.ariaValuemax is not null and this.ariaValuemax != '' %}
+    {% set _attrs = _attrs|merge({('aria-valuemax'): this.ariaValuemax}) %}
+  {% endif %}
+  {% if this.ariaValuemin is defined and this.ariaValuemin is not null and this.ariaValuemin != '' %}
+    {% set _attrs = _attrs|merge({('aria-valuemin'): this.ariaValuemin}) %}
+  {% endif %}
+  {% if this.ariaValuenow is defined and this.ariaValuenow is not null and this.ariaValuenow != '' %}
+    {% set _attrs = _attrs|merge({('aria-valuenow'): this.ariaValuenow}) %}
+  {% endif %}
+  {% if this.ariaValuetext is defined and this.ariaValuetext is not null and this.ariaValuetext != '' %}
+    {% set _attrs = _attrs|merge({('aria-valuetext'): this.ariaValuetext}) %}
+  {% endif %}
+  {% if this.autocapitalize is not null and this.autocapitalize.value != '' %}
+    {% set _attrs = _attrs|merge({('autocapitalize'): this.autocapitalize.value}) %}
+  {% endif %}
+  {% if this.autocomplete is not null and this.autocomplete.value != '' %}
+    {% set _attrs = _attrs|merge({('autocomplete'): this.autocomplete.value}) %}
+  {% endif %}
+  {% if this.autocorrect is not null and this.autocorrect.value != '' %}
+    {% set _attrs = _attrs|merge({('autocorrect'): this.autocorrect.value}) %}
+  {% endif %}
+  {% if this.autofocus is defined and this.autofocus is not null and this.autofocus != '' %}
+    {% set _attrs = _attrs|merge({('autofocus'): this.autofocus}) %}
+  {% endif %}
+  {% if this.checked is defined and this.checked is not null and this.checked != '' %}
+    {% set _attrs = _attrs|merge({('checked'): this.checked}) %}
+  {% endif %}
+  {% if this.class is defined and this.class is not null and this.class != '' %}
+    {% set _attrs = _attrs|merge({('class'): this.class}) %}
+  {% endif %}
+  {% if this.contenteditable is not null and this.contenteditable.value != '' %}
+    {% set _attrs = _attrs|merge({('contenteditable'): this.contenteditable.value}) %}
+  {% endif %}
   {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
-    {% for __k, __v in this.dataAttributes %} data-{{ __k }}="{{ __v }}"{% endfor %}
+    {% for __k, __v in this.dataAttributes %}
+      {% if __v is not null and __v != '' %}
+        {% set _attrs = _attrs|merge({('data-' ~ __k): __v}) %}
+      {% endif %}
+    {% endfor %}
   {% endif %}
-  {% if this.dir is not null %}dir="{{ this.dir.value }}"{% endif %}
-  {% if this.dirname is defined and this.dirname is not null %}dirname="{{ this.dirname }}"{% endif %}
-  {% if this.disabled is defined and this.disabled is not null %}disabled="{{ this.disabled }}"{% endif %}
-  {% if this.draggable is defined and this.draggable is not null %}draggable="{{ this.draggable }}"{% endif %}
-  {% if this.form is defined and this.form is not null %}form="{{ this.form }}"{% endif %}
-  {% if this.formaction is defined and this.formaction is not null %}formaction="{{ this.formaction }}"{% endif %}
-  {% if this.formenctype is not null %}formenctype="{{ this.formenctype.value }}"{% endif %}
-  {% if this.formmethod is not null %}formmethod="{{ this.formmethod.value }}"{% endif %}
-  {% if this.formnovalidate is defined and this.formnovalidate is not null %}formnovalidate="{{ this.formnovalidate }}"{% endif %}
-  {% if this.formtarget is not null %}formtarget="{{ this.formtarget.value }}"{% endif %}
-  {% if this.height is defined and this.height is not null %}height="{{ this.height }}"{% endif %}
-  {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}
-  {% if this.id is defined and this.id is not null %}id="{{ this.id }}"{% endif %}
-  {% if this.inputmode is not null %}inputmode="{{ this.inputmode.value }}"{% endif %}
-  {% if this.lang is defined and this.lang is not null %}lang="{{ this.lang }}"{% endif %}
-  {% if this.list is defined and this.list is not null %}list="{{ this.list }}"{% endif %}
-  {% if this.max is defined and this.max is not null %}max="{{ this.max }}"{% endif %}
-  {% if this.maxlength is defined and this.maxlength is not null %}maxlength="{{ this.maxlength }}"{% endif %}
-  {% if this.min is defined and this.min is not null %}min="{{ this.min }}"{% endif %}
-  {% if this.minlength is defined and this.minlength is not null %}minlength="{{ this.minlength }}"{% endif %}
-  {% if this.multiple is defined and this.multiple is not null %}multiple="{{ this.multiple }}"{% endif %}
-  {% if this.name is defined and this.name is not null %}name="{{ this.name }}"{% endif %}
-  {% if this.pattern is defined and this.pattern is not null %}pattern="{{ this.pattern }}"{% endif %}
-  {% if this.placeholder is defined and this.placeholder is not null %}placeholder="{{ this.placeholder }}"{% endif %}
-  {% if this.popovertarget is defined and this.popovertarget is not null %}popovertarget="{{ this.popovertarget }}"{% endif %}
-  {% if this.popovertargetaction is not null %}popovertargetaction="{{ this.popovertargetaction.value }}"{% endif %}
-  {% if this.readonly is defined and this.readonly is not null %}readonly="{{ this.readonly }}"{% endif %}
-  {% if this.required is defined and this.required is not null %}required="{{ this.required }}"{% endif %}
-  {% if this.role is not null %}role="{{ this.role.value }}"{% endif %}
-  {% if this.size is defined and this.size is not null %}size="{{ this.size }}"{% endif %}
-  {% if this.spellcheck is not null %}spellcheck="{{ this.spellcheck.value }}"{% endif %}
-  {% if this.src is defined and this.src is not null %}src="{{ this.src }}"{% endif %}
-  {% if this.step is defined and this.step is not null %}step="{{ this.step }}"{% endif %}
-  {% if this.style is defined and this.style is not null %}style="{{ this.style }}"{% endif %}
-  {% if this.tabindex is defined and this.tabindex is not null %}tabindex="{{ this.tabindex }}"{% endif %}
-  {% if this.title is defined and this.title is not null %}title="{{ this.title }}"{% endif %}
-  {% if this.translate is not null %}translate="{{ this.translate.value }}"{% endif %}
-  {% if this.type is not null %}type="{{ this.type.value }}"{% endif %}
-  {% if this.value is defined and this.value is not null %}value="{{ this.value }}"{% endif %}
-  {% if this.width is defined and this.width is not null %}width="{{ this.width }}"{% endif %}
+  {% if this.dir is not null and this.dir.value != '' %}
+    {% set _attrs = _attrs|merge({('dir'): this.dir.value}) %}
+  {% endif %}
+  {% if this.dirname is defined and this.dirname is not null and this.dirname != '' %}
+    {% set _attrs = _attrs|merge({('dirname'): this.dirname}) %}
+  {% endif %}
+  {% if this.disabled is defined and this.disabled is not null and this.disabled != '' %}
+    {% set _attrs = _attrs|merge({('disabled'): this.disabled}) %}
+  {% endif %}
+  {% if this.draggable is defined and this.draggable is not null and this.draggable != '' %}
+    {% set _attrs = _attrs|merge({('draggable'): this.draggable}) %}
+  {% endif %}
+  {% if this.form is defined and this.form is not null and this.form != '' %}
+    {% set _attrs = _attrs|merge({('form'): this.form}) %}
+  {% endif %}
+  {% if this.formaction is defined and this.formaction is not null and this.formaction != '' %}
+    {% set _attrs = _attrs|merge({('formaction'): this.formaction}) %}
+  {% endif %}
+  {% if this.formenctype is not null and this.formenctype.value != '' %}
+    {% set _attrs = _attrs|merge({('formenctype'): this.formenctype.value}) %}
+  {% endif %}
+  {% if this.formmethod is not null and this.formmethod.value != '' %}
+    {% set _attrs = _attrs|merge({('formmethod'): this.formmethod.value}) %}
+  {% endif %}
+  {% if this.formnovalidate is defined and this.formnovalidate is not null and this.formnovalidate != '' %}
+    {% set _attrs = _attrs|merge({('formnovalidate'): this.formnovalidate}) %}
+  {% endif %}
+  {% if this.formtarget is not null and this.formtarget.value != '' %}
+    {% set _attrs = _attrs|merge({('formtarget'): this.formtarget.value}) %}
+  {% endif %}
+  {% if this.height is defined and this.height is not null and this.height != '' %}
+    {% set _attrs = _attrs|merge({('height'): this.height}) %}
+  {% endif %}
+  {% if this.hidden is defined and this.hidden is not null and this.hidden != '' %}
+    {% set _attrs = _attrs|merge({('hidden'): this.hidden}) %}
+  {% endif %}
+  {% if this.id is defined and this.id is not null and this.id != '' %}
+    {% set _attrs = _attrs|merge({('id'): this.id}) %}
+  {% endif %}
+  {% if this.inputmode is not null and this.inputmode.value != '' %}
+    {% set _attrs = _attrs|merge({('inputmode'): this.inputmode.value}) %}
+  {% endif %}
+  {% if this.lang is defined and this.lang is not null and this.lang != '' %}
+    {% set _attrs = _attrs|merge({('lang'): this.lang}) %}
+  {% endif %}
+  {% if this.list is defined and this.list is not null and this.list != '' %}
+    {% set _attrs = _attrs|merge({('list'): this.list}) %}
+  {% endif %}
+  {% if this.max is defined and this.max is not null and this.max != '' %}
+    {% set _attrs = _attrs|merge({('max'): this.max}) %}
+  {% endif %}
+  {% if this.maxlength is defined and this.maxlength is not null and this.maxlength != '' %}
+    {% set _attrs = _attrs|merge({('maxlength'): this.maxlength}) %}
+  {% endif %}
+  {% if this.min is defined and this.min is not null and this.min != '' %}
+    {% set _attrs = _attrs|merge({('min'): this.min}) %}
+  {% endif %}
+  {% if this.minlength is defined and this.minlength is not null and this.minlength != '' %}
+    {% set _attrs = _attrs|merge({('minlength'): this.minlength}) %}
+  {% endif %}
+  {% if this.multiple is defined and this.multiple is not null and this.multiple != '' %}
+    {% set _attrs = _attrs|merge({('multiple'): this.multiple}) %}
+  {% endif %}
+  {% if this.name is defined and this.name is not null and this.name != '' %}
+    {% set _attrs = _attrs|merge({('name'): this.name}) %}
+  {% endif %}
+  {% if this.pattern is defined and this.pattern is not null and this.pattern != '' %}
+    {% set _attrs = _attrs|merge({('pattern'): this.pattern}) %}
+  {% endif %}
+  {% if this.placeholder is defined and this.placeholder is not null and this.placeholder != '' %}
+    {% set _attrs = _attrs|merge({('placeholder'): this.placeholder}) %}
+  {% endif %}
+  {% if this.popovertarget is defined and this.popovertarget is not null and this.popovertarget != '' %}
+    {% set _attrs = _attrs|merge({('popovertarget'): this.popovertarget}) %}
+  {% endif %}
+  {% if this.popovertargetaction is not null and this.popovertargetaction.value != '' %}
+    {% set _attrs = _attrs|merge({('popovertargetaction'): this.popovertargetaction.value}) %}
+  {% endif %}
+  {% if this.readonly is defined and this.readonly is not null and this.readonly != '' %}
+    {% set _attrs = _attrs|merge({('readonly'): this.readonly}) %}
+  {% endif %}
+  {% if this.required is defined and this.required is not null and this.required != '' %}
+    {% set _attrs = _attrs|merge({('required'): this.required}) %}
+  {% endif %}
+  {% if this.role is not null and this.role.value != '' %}
+    {% set _attrs = _attrs|merge({('role'): this.role.value}) %}
+  {% endif %}
+  {% if this.size is defined and this.size is not null and this.size != '' %}
+    {% set _attrs = _attrs|merge({('size'): this.size}) %}
+  {% endif %}
+  {% if this.spellcheck is not null and this.spellcheck.value != '' %}
+    {% set _attrs = _attrs|merge({('spellcheck'): this.spellcheck.value}) %}
+  {% endif %}
+  {% if this.src is defined and this.src is not null and this.src != '' %}
+    {% set _attrs = _attrs|merge({('src'): this.src}) %}
+  {% endif %}
+  {% if this.step is defined and this.step is not null and this.step != '' %}
+    {% set _attrs = _attrs|merge({('step'): this.step}) %}
+  {% endif %}
+  {% if this.style is defined and this.style is not null and this.style != '' %}
+    {% set _attrs = _attrs|merge({('style'): this.style}) %}
+  {% endif %}
+  {% if this.tabindex is defined and this.tabindex is not null and this.tabindex != '' %}
+    {% set _attrs = _attrs|merge({('tabindex'): this.tabindex}) %}
+  {% endif %}
+  {% if this.title is defined and this.title is not null and this.title != '' %}
+    {% set _attrs = _attrs|merge({('title'): this.title}) %}
+  {% endif %}
+  {% if this.translate is not null and this.translate.value != '' %}
+    {% set _attrs = _attrs|merge({('translate'): this.translate.value}) %}
+  {% endif %}
+  {% if this.type is not null and this.type.value != '' %}
+    {% set _attrs = _attrs|merge({('type'): this.type.value}) %}
+  {% endif %}
+  {% if this.value is defined and this.value is not null and this.value != '' %}
+    {% set _attrs = _attrs|merge({('value'): this.value}) %}
+  {% endif %}
+  {% if this.width is defined and this.width is not null and this.width != '' %}
+    {% set _attrs = _attrs|merge({('width'): this.width}) %}
+  {% endif %}<input{%- for __k, __v in _attrs -%}{% if __v is not null and __v != '' %}{{ (' ' ~ __k ~ '="' ~ __v|e('html_attr') ~ '"')|raw }}{% endif %}{%- endfor %}
 />
 {% endapply %}

@@ -14,21 +14,49 @@
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
 {% apply spaceless %}
-<hr
-  {% if this.align is not null %}align="{{ this.align.value }}"{% endif %}
-  {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
-  {% if this.color is defined and this.color is not null %}color="{{ this.color }}"{% endif %}
-  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
-    {% for __k, __v in this.dataAttributes %} data-{{ __k }}="{{ __v }}"{% endfor %}
+{%- set _attrs = {} -%}
+  {% if this.align is not null and this.align.value != '' %}
+    {% set _attrs = _attrs|merge({('align'): this.align.value}) %}
   {% endif %}
-  {% if this.dir is not null %}dir="{{ this.dir.value }}"{% endif %}
-  {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}
-  {% if this.id is defined and this.id is not null %}id="{{ this.id }}"{% endif %}
-  {% if this.lang is defined and this.lang is not null %}lang="{{ this.lang }}"{% endif %}
-  {% if this.noshade is defined and this.noshade is not null %}noshade="{{ this.noshade }}"{% endif %}
-  {% if this.size is defined and this.size is not null %}size="{{ this.size }}"{% endif %}
-  {% if this.style is defined and this.style is not null %}style="{{ this.style }}"{% endif %}
-  {% if this.title is defined and this.title is not null %}title="{{ this.title }}"{% endif %}
-  {% if this.width is defined and this.width is not null %}width="{{ this.width }}"{% endif %}
+  {% if this.class is defined and this.class is not null and this.class != '' %}
+    {% set _attrs = _attrs|merge({('class'): this.class}) %}
+  {% endif %}
+  {% if this.color is defined and this.color is not null and this.color != '' %}
+    {% set _attrs = _attrs|merge({('color'): this.color}) %}
+  {% endif %}
+  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
+    {% for __k, __v in this.dataAttributes %}
+      {% if __v is not null and __v != '' %}
+        {% set _attrs = _attrs|merge({('data-' ~ __k): __v}) %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% if this.dir is not null and this.dir.value != '' %}
+    {% set _attrs = _attrs|merge({('dir'): this.dir.value}) %}
+  {% endif %}
+  {% if this.hidden is defined and this.hidden is not null and this.hidden != '' %}
+    {% set _attrs = _attrs|merge({('hidden'): this.hidden}) %}
+  {% endif %}
+  {% if this.id is defined and this.id is not null and this.id != '' %}
+    {% set _attrs = _attrs|merge({('id'): this.id}) %}
+  {% endif %}
+  {% if this.lang is defined and this.lang is not null and this.lang != '' %}
+    {% set _attrs = _attrs|merge({('lang'): this.lang}) %}
+  {% endif %}
+  {% if this.noshade is defined and this.noshade is not null and this.noshade != '' %}
+    {% set _attrs = _attrs|merge({('noshade'): this.noshade}) %}
+  {% endif %}
+  {% if this.size is defined and this.size is not null and this.size != '' %}
+    {% set _attrs = _attrs|merge({('size'): this.size}) %}
+  {% endif %}
+  {% if this.style is defined and this.style is not null and this.style != '' %}
+    {% set _attrs = _attrs|merge({('style'): this.style}) %}
+  {% endif %}
+  {% if this.title is defined and this.title is not null and this.title != '' %}
+    {% set _attrs = _attrs|merge({('title'): this.title}) %}
+  {% endif %}
+  {% if this.width is defined and this.width is not null and this.width != '' %}
+    {% set _attrs = _attrs|merge({('width'): this.width}) %}
+  {% endif %}<hr{%- for __k, __v in _attrs -%}{% if __v is not null and __v != '' %}{{ (' ' ~ __k ~ '="' ~ __v|e('html_attr') ~ '"')|raw }}{% endif %}{%- endfor %}
 />
 {% endapply %}

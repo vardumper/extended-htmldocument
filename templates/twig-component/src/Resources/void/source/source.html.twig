@@ -14,20 +14,44 @@
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
 {% apply spaceless %}
-<source
+{%- set _attrs = {} -%}
   {% if this.alpineAttributes is defined and this.alpineAttributes is not null and this.alpineAttributes|length > 0 %}
-    {% for __k, __v in this.alpineAttributes %} {{ __k }}="{{ __v }}"{% endfor %}
+    {% for __k, __v in this.alpineAttributes %}
+      {% if __v is not null and __v != '' %}
+        {% set _attrs = _attrs|merge({(__k): __v}) %}
+      {% endif %}
+    {% endfor %}
   {% endif %}
-  {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
+  {% if this.class is defined and this.class is not null and this.class != '' %}
+    {% set _attrs = _attrs|merge({('class'): this.class}) %}
+  {% endif %}
   {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
-    {% for __k, __v in this.dataAttributes %} data-{{ __k }}="{{ __v }}"{% endfor %}
+    {% for __k, __v in this.dataAttributes %}
+      {% if __v is not null and __v != '' %}
+        {% set _attrs = _attrs|merge({('data-' ~ __k): __v}) %}
+      {% endif %}
+    {% endfor %}
   {% endif %}
-  {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}
-  {% if this.id is defined and this.id is not null %}id="{{ this.id }}"{% endif %}
-  {% if this.media is defined and this.media is not null %}media="{{ this.media }}"{% endif %}
-  {% if this.sizes is defined and this.sizes is not null %}sizes="{{ this.sizes }}"{% endif %}
-  {% if this.src is defined and this.src is not null %}src="{{ this.src }}"{% endif %}
-  {% if this.srcset is defined and this.srcset is not null %}srcset="{{ this.srcset }}"{% endif %}
-  {% if this.type is defined and this.type is not null %}type="{{ this.type }}"{% endif %}
+  {% if this.hidden is defined and this.hidden is not null and this.hidden != '' %}
+    {% set _attrs = _attrs|merge({('hidden'): this.hidden}) %}
+  {% endif %}
+  {% if this.id is defined and this.id is not null and this.id != '' %}
+    {% set _attrs = _attrs|merge({('id'): this.id}) %}
+  {% endif %}
+  {% if this.media is defined and this.media is not null and this.media != '' %}
+    {% set _attrs = _attrs|merge({('media'): this.media}) %}
+  {% endif %}
+  {% if this.sizes is defined and this.sizes is not null and this.sizes != '' %}
+    {% set _attrs = _attrs|merge({('sizes'): this.sizes}) %}
+  {% endif %}
+  {% if this.src is defined and this.src is not null and this.src != '' %}
+    {% set _attrs = _attrs|merge({('src'): this.src}) %}
+  {% endif %}
+  {% if this.srcset is defined and this.srcset is not null and this.srcset != '' %}
+    {% set _attrs = _attrs|merge({('srcset'): this.srcset}) %}
+  {% endif %}
+  {% if this.type is defined and this.type is not null and this.type != '' %}
+    {% set _attrs = _attrs|merge({('type'): this.type}) %}
+  {% endif %}<source{%- for __k, __v in _attrs -%}{% if __v is not null and __v != '' %}{{ (' ' ~ __k ~ '="' ~ __v|e('html_attr') ~ '"')|raw }}{% endif %}{%- endfor %}
 />
 {% endapply %}

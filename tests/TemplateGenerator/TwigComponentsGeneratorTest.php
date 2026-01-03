@@ -161,9 +161,11 @@ test('render alpine attributes in component template', function () {
             '{% if this.alpineAttributes is defined and this.alpineAttributes is not null and this.alpineAttributes|length > 0 %}'
         );
     expect($result)
-        ->toContain('{% for __k, __v in this.alpineAttributes %}');
+        ->toContain('{% set _attrs = _attrs|merge({(__k): __v}) %}');
     expect($result)
-        ->toContain('{{ __k }}="{{ __v }}"');
+        ->toContain('{%- for __k, __v in _attrs -%}');
+    expect($result)
+        ->toContain("__v|e('html_attr')");
     // ensure the block only appears once
     expect(
         substr_count(
@@ -172,6 +174,12 @@ test('render alpine attributes in component template', function () {
         )
     )
         ->toBe(1);
+
+    // Ensure values are escaped correctly for attributes (merged into _attrs)
+    expect($result)
+        ->toContain("{% set _attrs = _attrs|merge({('class'): this.class}) %}");
+    expect($result)
+        ->toContain("{% set _attrs = _attrs|merge({('aria-atomic'): this.ariaAtomic.value}) %}");
 });
 
 test('render data attributes in component template', function () {
@@ -187,9 +195,11 @@ test('render data attributes in component template', function () {
             '{% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}'
         );
     expect($result)
-        ->toContain('{% for __k, __v in this.dataAttributes %}');
+        ->toContain("{% set _attrs = _attrs|merge({('data-' ~ __k): __v}) %}");
     expect($result)
-        ->toContain('data-{{ __k }}="{{ __v }}"');
+        ->toContain('{%- for __k, __v in _attrs -%}');
+    expect($result)
+        ->toContain("__v|e('html_attr')");
 });
 
 test('determine component level block', function () {

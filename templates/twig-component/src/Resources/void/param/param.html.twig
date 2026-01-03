@@ -14,18 +14,38 @@
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
 {% apply spaceless %}
-<param
+{%- set _attrs = {} -%}
   {% if this.alpineAttributes is defined and this.alpineAttributes is not null and this.alpineAttributes|length > 0 %}
-    {% for __k, __v in this.alpineAttributes %} {{ __k }}="{{ __v }}"{% endfor %}
+    {% for __k, __v in this.alpineAttributes %}
+      {% if __v is not null and __v != '' %}
+        {% set _attrs = _attrs|merge({(__k): __v}) %}
+      {% endif %}
+    {% endfor %}
   {% endif %}
-  {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
+  {% if this.class is defined and this.class is not null and this.class != '' %}
+    {% set _attrs = _attrs|merge({('class'): this.class}) %}
+  {% endif %}
   {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
-    {% for __k, __v in this.dataAttributes %} data-{{ __k }}="{{ __v }}"{% endfor %}
+    {% for __k, __v in this.dataAttributes %}
+      {% if __v is not null and __v != '' %}
+        {% set _attrs = _attrs|merge({('data-' ~ __k): __v}) %}
+      {% endif %}
+    {% endfor %}
   {% endif %}
-  {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}
-  {% if this.id is defined and this.id is not null %}id="{{ this.id }}"{% endif %}
-  {% if this.name is defined and this.name is not null %}name="{{ this.name }}"{% endif %}
-  {% if this.style is defined and this.style is not null %}style="{{ this.style }}"{% endif %}
-  {% if this.value is defined and this.value is not null %}value="{{ this.value }}"{% endif %}
+  {% if this.hidden is defined and this.hidden is not null and this.hidden != '' %}
+    {% set _attrs = _attrs|merge({('hidden'): this.hidden}) %}
+  {% endif %}
+  {% if this.id is defined and this.id is not null and this.id != '' %}
+    {% set _attrs = _attrs|merge({('id'): this.id}) %}
+  {% endif %}
+  {% if this.name is defined and this.name is not null and this.name != '' %}
+    {% set _attrs = _attrs|merge({('name'): this.name}) %}
+  {% endif %}
+  {% if this.style is defined and this.style is not null and this.style != '' %}
+    {% set _attrs = _attrs|merge({('style'): this.style}) %}
+  {% endif %}
+  {% if this.value is defined and this.value is not null and this.value != '' %}
+    {% set _attrs = _attrs|merge({('value'): this.value}) %}
+  {% endif %}<param{%- for __k, __v in _attrs -%}{% if __v is not null and __v != '' %}{{ (' ' ~ __k ~ '="' ~ __v|e('html_attr') ~ '"')|raw }}{% endif %}{%- endfor %}
 />
 {% endapply %}

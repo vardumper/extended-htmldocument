@@ -1,6 +1,8 @@
 # Twig Components for HTML5 Elements
 
-Type-safe, auto-generated Twig components for all HTML5 elements with full WCAG, ARIA support and validation. Part of Extended HTMLDocument - schema-first from HTML5 schema.
+This is a Symfony Bundle which adds pre-built, typesafe, auto-generated Twig Components for all HTML5 elements. It comes with full WCAG, ARIA support, also adds support for Alpine.js attributes. It makes use of [Extended HTMLDocument](https://github.com/vardumper/extended-htmldocument) which is a schema-first library that improves HTML5 support in PHP 8.4. Mainly used for validation of immutable enum attributes.
+
+This is especially useful when writing anonymous Twig Components enforcing standards-compliance, always-valid HTML5.
 
 ## Features
 

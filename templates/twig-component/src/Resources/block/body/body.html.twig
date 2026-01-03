@@ -16,37 +16,95 @@
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
 {% apply spaceless %}
-<body
-  {% if this.accesskey is defined and this.accesskey is not null %}accesskey="{{ this.accesskey }}"{% endif %}
-  {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
-  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
-    {% for __k, __v in this.dataAttributes %} data-{{ __k }}="{{ __v }}"{% endfor %}
+{%- set _attrs = {} -%}
+  {% if this.accesskey is defined and this.accesskey is not null and this.accesskey != '' %}
+    {% set _attrs = _attrs|merge({('accesskey'): this.accesskey}) %}
   {% endif %}
-  {% if this.dir is not null %}dir="{{ this.dir.value }}"{% endif %}
-  {% if this.draggable is defined and this.draggable is not null %}draggable="{{ this.draggable }}"{% endif %}
-  {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}
-  {% if this.id is defined and this.id is not null %}id="{{ this.id }}"{% endif %}
-  {% if this.lang is defined and this.lang is not null %}lang="{{ this.lang }}"{% endif %}
-  {% if this.onafterprint is defined and this.onafterprint is not null %}onafterprint="{{ this.onafterprint }}"{% endif %}
-  {% if this.onbeforeprint is defined and this.onbeforeprint is not null %}onbeforeprint="{{ this.onbeforeprint }}"{% endif %}
-  {% if this.onbeforeunload is defined and this.onbeforeunload is not null %}onbeforeunload="{{ this.onbeforeunload }}"{% endif %}
-  {% if this.onhashchange is defined and this.onhashchange is not null %}onhashchange="{{ this.onhashchange }}"{% endif %}
-  {% if this.onlanguagechange is defined and this.onlanguagechange is not null %}onlanguagechange="{{ this.onlanguagechange }}"{% endif %}
-  {% if this.onmessage is defined and this.onmessage is not null %}onmessage="{{ this.onmessage }}"{% endif %}
-  {% if this.onmessageerror is defined and this.onmessageerror is not null %}onmessageerror="{{ this.onmessageerror }}"{% endif %}
-  {% if this.onoffline is defined and this.onoffline is not null %}onoffline="{{ this.onoffline }}"{% endif %}
-  {% if this.ononline is defined and this.ononline is not null %}ononline="{{ this.ononline }}"{% endif %}
-  {% if this.onpagehide is defined and this.onpagehide is not null %}onpagehide="{{ this.onpagehide }}"{% endif %}
-  {% if this.onpageshow is defined and this.onpageshow is not null %}onpageshow="{{ this.onpageshow }}"{% endif %}
-  {% if this.onpopstate is defined and this.onpopstate is not null %}onpopstate="{{ this.onpopstate }}"{% endif %}
-  {% if this.onrejectionhandled is defined and this.onrejectionhandled is not null %}onrejectionhandled="{{ this.onrejectionhandled }}"{% endif %}
-  {% if this.onstorage is defined and this.onstorage is not null %}onstorage="{{ this.onstorage }}"{% endif %}
-  {% if this.onunhandledrejection is defined and this.onunhandledrejection is not null %}onunhandledrejection="{{ this.onunhandledrejection }}"{% endif %}
-  {% if this.onunload is defined and this.onunload is not null %}onunload="{{ this.onunload }}"{% endif %}
-  {% if this.style is defined and this.style is not null %}style="{{ this.style }}"{% endif %}
-  {% if this.tabindex is defined and this.tabindex is not null %}tabindex="{{ this.tabindex }}"{% endif %}
-  {% if this.title is defined and this.title is not null %}title="{{ this.title }}"{% endif %}
-  {% if this.translate is not null %}translate="{{ this.translate.value }}"{% endif %}
+  {% if this.class is defined and this.class is not null and this.class != '' %}
+    {% set _attrs = _attrs|merge({('class'): this.class}) %}
+  {% endif %}
+  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
+    {% for __k, __v in this.dataAttributes %}
+      {% if __v is not null and __v != '' %}
+        {% set _attrs = _attrs|merge({('data-' ~ __k): __v}) %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% if this.dir is not null and this.dir.value != '' %}
+    {% set _attrs = _attrs|merge({('dir'): this.dir.value}) %}
+  {% endif %}
+  {% if this.draggable is defined and this.draggable is not null and this.draggable != '' %}
+    {% set _attrs = _attrs|merge({('draggable'): this.draggable}) %}
+  {% endif %}
+  {% if this.hidden is defined and this.hidden is not null and this.hidden != '' %}
+    {% set _attrs = _attrs|merge({('hidden'): this.hidden}) %}
+  {% endif %}
+  {% if this.id is defined and this.id is not null and this.id != '' %}
+    {% set _attrs = _attrs|merge({('id'): this.id}) %}
+  {% endif %}
+  {% if this.lang is defined and this.lang is not null and this.lang != '' %}
+    {% set _attrs = _attrs|merge({('lang'): this.lang}) %}
+  {% endif %}
+  {% if this.onafterprint is defined and this.onafterprint is not null and this.onafterprint != '' %}
+    {% set _attrs = _attrs|merge({('onafterprint'): this.onafterprint}) %}
+  {% endif %}
+  {% if this.onbeforeprint is defined and this.onbeforeprint is not null and this.onbeforeprint != '' %}
+    {% set _attrs = _attrs|merge({('onbeforeprint'): this.onbeforeprint}) %}
+  {% endif %}
+  {% if this.onbeforeunload is defined and this.onbeforeunload is not null and this.onbeforeunload != '' %}
+    {% set _attrs = _attrs|merge({('onbeforeunload'): this.onbeforeunload}) %}
+  {% endif %}
+  {% if this.onhashchange is defined and this.onhashchange is not null and this.onhashchange != '' %}
+    {% set _attrs = _attrs|merge({('onhashchange'): this.onhashchange}) %}
+  {% endif %}
+  {% if this.onlanguagechange is defined and this.onlanguagechange is not null and this.onlanguagechange != '' %}
+    {% set _attrs = _attrs|merge({('onlanguagechange'): this.onlanguagechange}) %}
+  {% endif %}
+  {% if this.onmessage is defined and this.onmessage is not null and this.onmessage != '' %}
+    {% set _attrs = _attrs|merge({('onmessage'): this.onmessage}) %}
+  {% endif %}
+  {% if this.onmessageerror is defined and this.onmessageerror is not null and this.onmessageerror != '' %}
+    {% set _attrs = _attrs|merge({('onmessageerror'): this.onmessageerror}) %}
+  {% endif %}
+  {% if this.onoffline is defined and this.onoffline is not null and this.onoffline != '' %}
+    {% set _attrs = _attrs|merge({('onoffline'): this.onoffline}) %}
+  {% endif %}
+  {% if this.ononline is defined and this.ononline is not null and this.ononline != '' %}
+    {% set _attrs = _attrs|merge({('ononline'): this.ononline}) %}
+  {% endif %}
+  {% if this.onpagehide is defined and this.onpagehide is not null and this.onpagehide != '' %}
+    {% set _attrs = _attrs|merge({('onpagehide'): this.onpagehide}) %}
+  {% endif %}
+  {% if this.onpageshow is defined and this.onpageshow is not null and this.onpageshow != '' %}
+    {% set _attrs = _attrs|merge({('onpageshow'): this.onpageshow}) %}
+  {% endif %}
+  {% if this.onpopstate is defined and this.onpopstate is not null and this.onpopstate != '' %}
+    {% set _attrs = _attrs|merge({('onpopstate'): this.onpopstate}) %}
+  {% endif %}
+  {% if this.onrejectionhandled is defined and this.onrejectionhandled is not null and this.onrejectionhandled != '' %}
+    {% set _attrs = _attrs|merge({('onrejectionhandled'): this.onrejectionhandled}) %}
+  {% endif %}
+  {% if this.onstorage is defined and this.onstorage is not null and this.onstorage != '' %}
+    {% set _attrs = _attrs|merge({('onstorage'): this.onstorage}) %}
+  {% endif %}
+  {% if this.onunhandledrejection is defined and this.onunhandledrejection is not null and this.onunhandledrejection != '' %}
+    {% set _attrs = _attrs|merge({('onunhandledrejection'): this.onunhandledrejection}) %}
+  {% endif %}
+  {% if this.onunload is defined and this.onunload is not null and this.onunload != '' %}
+    {% set _attrs = _attrs|merge({('onunload'): this.onunload}) %}
+  {% endif %}
+  {% if this.style is defined and this.style is not null and this.style != '' %}
+    {% set _attrs = _attrs|merge({('style'): this.style}) %}
+  {% endif %}
+  {% if this.tabindex is defined and this.tabindex is not null and this.tabindex != '' %}
+    {% set _attrs = _attrs|merge({('tabindex'): this.tabindex}) %}
+  {% endif %}
+  {% if this.title is defined and this.title is not null and this.title != '' %}
+    {% set _attrs = _attrs|merge({('title'): this.title}) %}
+  {% endif %}
+  {% if this.translate is not null and this.translate.value != '' %}
+    {% set _attrs = _attrs|merge({('translate'): this.translate.value}) %}
+  {% endif %}<body{%- for __k, __v in _attrs -%}{% if __v is not null and __v != '' %}{{ (' ' ~ __k ~ '="' ~ __v|e('html_attr') ~ '"')|raw }}{% endif %}{%- endfor %}
 >
   {%- block content %}{% endblock -%}
 </body>

@@ -14,19 +14,43 @@
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
 {% apply spaceless %}
-<meta
-  {% if this.charset is defined and this.charset is not null %}charset="{{ this.charset }}"{% endif %}
-  {% if this.class is defined and this.class is not null %}class="{{ this.class }}"{% endif %}
-  {% if this.content is defined and this.content is not null %}content="{{ this.content }}"{% endif %}
-  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
-    {% for __k, __v in this.dataAttributes %} data-{{ __k }}="{{ __v }}"{% endfor %}
+{%- set _attrs = {} -%}
+  {% if this.charset is defined and this.charset is not null and this.charset != '' %}
+    {% set _attrs = _attrs|merge({('charset'): this.charset}) %}
   {% endif %}
-  {% if this.hidden is defined and this.hidden is not null %}hidden="{{ this.hidden }}"{% endif %}
-  {% if this.httpEquiv is not null %}http-equiv="{{ this.httpEquiv.value }}"{% endif %}
-  {% if this.id is defined and this.id is not null %}id="{{ this.id }}"{% endif %}
-  {% if this.lang is defined and this.lang is not null %}lang="{{ this.lang }}"{% endif %}
-  {% if this.name is defined and this.name is not null %}name="{{ this.name }}"{% endif %}
-  {% if this.scheme is defined and this.scheme is not null %}scheme="{{ this.scheme }}"{% endif %}
-  {% if this.title is defined and this.title is not null %}title="{{ this.title }}"{% endif %}
+  {% if this.class is defined and this.class is not null and this.class != '' %}
+    {% set _attrs = _attrs|merge({('class'): this.class}) %}
+  {% endif %}
+  {% if this.content is defined and this.content is not null and this.content != '' %}
+    {% set _attrs = _attrs|merge({('content'): this.content}) %}
+  {% endif %}
+  {% if this.dataAttributes is defined and this.dataAttributes is not null and this.dataAttributes|length > 0 %}
+    {% for __k, __v in this.dataAttributes %}
+      {% if __v is not null and __v != '' %}
+        {% set _attrs = _attrs|merge({('data-' ~ __k): __v}) %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% if this.hidden is defined and this.hidden is not null and this.hidden != '' %}
+    {% set _attrs = _attrs|merge({('hidden'): this.hidden}) %}
+  {% endif %}
+  {% if this.httpEquiv is not null and this.httpEquiv.value != '' %}
+    {% set _attrs = _attrs|merge({('http-equiv'): this.httpEquiv.value}) %}
+  {% endif %}
+  {% if this.id is defined and this.id is not null and this.id != '' %}
+    {% set _attrs = _attrs|merge({('id'): this.id}) %}
+  {% endif %}
+  {% if this.lang is defined and this.lang is not null and this.lang != '' %}
+    {% set _attrs = _attrs|merge({('lang'): this.lang}) %}
+  {% endif %}
+  {% if this.name is defined and this.name is not null and this.name != '' %}
+    {% set _attrs = _attrs|merge({('name'): this.name}) %}
+  {% endif %}
+  {% if this.scheme is defined and this.scheme is not null and this.scheme != '' %}
+    {% set _attrs = _attrs|merge({('scheme'): this.scheme}) %}
+  {% endif %}
+  {% if this.title is defined and this.title is not null and this.title != '' %}
+    {% set _attrs = _attrs|merge({('title'): this.title}) %}
+  {% endif %}<meta{%- for __k, __v in _attrs -%}{% if __v is not null and __v != '' %}{{ (' ' ~ __k ~ '="' ~ __v|e('html_attr') ~ '"')|raw }}{% endif %}{%- endfor %}
 />
 {% endapply %}

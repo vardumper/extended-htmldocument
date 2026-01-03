@@ -14,8 +14,12 @@
   @see src/TemplateGenerator/TwigComponentsGenerator.php
 #}
 {% apply spaceless %}
-<base
-  {% if this.href is defined and this.href is not null %}href="{{ this.href }}"{% endif %}
-  {% if this.target is not null %}target="{{ this.target.value }}"{% endif %}
+{%- set _attrs = {} -%}
+  {% if this.href is defined and this.href is not null and this.href != '' %}
+    {% set _attrs = _attrs|merge({('href'): this.href}) %}
+  {% endif %}
+  {% if this.target is not null and this.target.value != '' %}
+    {% set _attrs = _attrs|merge({('target'): this.target.value}) %}
+  {% endif %}<base{%- for __k, __v in _attrs -%}{% if __v is not null and __v != '' %}{{ (' ' ~ __k ~ '="' ~ __v|e('html_attr') ~ '"')|raw }}{% endif %}{%- endfor %}
 />
 {% endapply %}
