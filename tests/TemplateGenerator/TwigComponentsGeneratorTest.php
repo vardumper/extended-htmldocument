@@ -165,7 +165,7 @@ test('render alpine attributes in component template', function () {
     expect($result)
         ->toContain('{%- for __k, __v in _attrs -%}');
     expect($result)
-        ->toContain("__v|e('html_attr')");
+        ->toContain("__v|e('html')");
     // ensure the block only appears once
     expect(
         substr_count(
@@ -199,7 +199,7 @@ test('render data attributes in component template', function () {
     expect($result)
         ->toContain('{%- for __k, __v in _attrs -%}');
     expect($result)
-        ->toContain("__v|e('html_attr')");
+        ->toContain("__v|e('html')");
 });
 
 test('determine component level block', function () {
