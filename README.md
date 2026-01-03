@@ -9,6 +9,11 @@ It also provides a way to automatically transform HTML into different templating
 It also adds autocompletion to PHP for all HTML5 elements, which is especially useful when working with DOM Documents.
 It adds additional functionality and a stronger focus on HTML5 while being fully compatible with PHP's DOM\HTMLDocument and DOM\HTMLElement classes.
 
+## Installation
+```bash
+composer require --dev vardumper/extended-htmldocument
+```
+
 ## TL;DR
 
 This library adds the HTML5 specification to PHP and is fully compatible with `DOM\HTMLDocument`. You can create an `Anchor()` object and append it to any `DOM\Document`.
@@ -51,7 +56,3 @@ Typescript templates can be found in [`templates/typescript`](https://github.com
 ## Documentation
 See the [Documentation](https://vardumper.github.io/extended-htmldocument/) for more.
 
-## Installation
-```bash
-composer require --dev vardumper/extended-htmldocument
-```
