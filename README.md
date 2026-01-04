@@ -55,7 +55,7 @@ Typescript templates can be found in [`templates/typescript`](https://github.com
 I created a simple extension for Slim Framework which allows you to use Twig Components in Twig templates. It is based on this library and [available here](https://packagist.org/packages/vardumper/slim-ux-twig-component). Install it with `composer require vardumper/slim-ux-twig-component`.
 
 ### Symfony Bundle
-I also creaed a [HTML5 Twig Component Bundle](https://packagist.org/packages/vardumper/html5-twig-component-bundle) Symfony Bundle, which adds pre-made Twig Components for all HTLM5 elements to Twig.
+I also creaed a [HTML5 Twig Component Bundle](https://packagist.org/packages/vardumper/html5-twig-component-bundle) Symfony Bundle, which adds pre-made Twig Components for all HTLM5 elements to Twig. Install it with `composer require vardumper/html5-twig-component-bundle`.
 
 ## Documentation
 See the [Documentation](https://vardumper.github.io/extended-htmldocument/) for more.
