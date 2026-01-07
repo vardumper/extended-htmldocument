@@ -1,3 +1,8 @@
+[![Latest Stable Version](https://poser.pugx.org/vardumper/html5-twig-component-bundle/v/stable)](https://packagist.org/packages/vardumper/html5-twig-component-bundle) 
+[![Total Downloads](https://poser.pugx.org/vardumper/html5-twig-component-bundle/downloads)](https://packagist.org/packages/vardumper/html5-twig-component-bundle) 
+[![Vulnerabilities for html5-twig-component-bundle](https://dtrack.erikpoehler.us/api/v1/badge/vulns/project/404a3506-2b62-4a9e-8617-e80f3ebb1f03?apiKey=odt_J5OKz9JcWpKAnqz80whxTvwA3oQjGBGy)](https://dtrack.erikpoehler.us/projects/404a3506-2b62-4a9e-8617-e80f3ebb1f03)
+
+
 # Twig Components for HTML5 Elements
 
 This is a Symfony Bundle which adds pre-built, typesafe, auto-generated Twig Components for all HTML5 elements. It comes with full WCAG, ARIA support, also adds support for Alpine.js attributes. It makes use of [Extended HTMLDocument](https://github.com/vardumper/extended-htmldocument) which is a schema-first library that improves HTML5 support in PHP 8.4. Mainly used for validation of immutable enum attributes.
@@ -109,7 +114,7 @@ This will render a `data-role="article"` attribute on the generated component's 
 Components are organized by type:
 - `Block` - Block-level elements (div, section, article, etc.)
 - `Inline` - Inline elements (span, a, strong, etc.)
-- `Void` - Self-closing elements (img, input, br, etc.)
+- `Void` - non-rendered elements (head, wbr, meta, etc.)
 
 
 ## Read More
