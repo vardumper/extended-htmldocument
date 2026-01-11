@@ -52,6 +52,14 @@ export default defineConfig({
         ]
       },
       {
+        text: 'Frameworks',
+        items: [
+          { text: 'Symfony', link: '/frameworks/symfony' },
+          { text: 'Slim', link: '/frameworks/slim' },
+          { text: 'Yii', link: '/frameworks/yii' },
+        ]
+      },
+      {
         text: 'Development',
         items: [
           { text: 'Roadmap', link: '/roadmap' },
@@ -71,6 +79,8 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/vardumper/extended-htmldocument' },
       { icon: 'npm', link: 'https://www.npmjs.com/org/typesafe-html5' },
       { icon: 'symfony', link: 'https://github.com/vardumper/html5-twig-component-bundle' },
+      { icon: 'yii', link: '/extended-htmldocument/frameworks/yii.html' },
+      { icon: 'slim-php', link: '/extended-htmldocument/frameworks/slim.html' },
       { icon: 'storybook', link: 'https://vardumper.github.io/extended-htmldocument/storybook-site/?path=/story/introduction--welcome' },
     ]
   }

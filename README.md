@@ -1,9 +1,9 @@
 <p align="center">
     <a href="https://www.w3.org/TR/2011/WD-html5-20110405/" target="_blank">
-        <img width="100px" height="auto" style="max-width: 300px !important; max-height: 130px !important;" src="https://vardumper.github.io/extended-htmldocument/html5_logo-with-wordmark.svg" alt="HTML5 Logo" />
+        <img width="100px" height="auto" style="vertical-align: middle; max-width: 300px !important; max-height: 130px !important;" src="https://vardumper.github.io/extended-htmldocument/html5_logo-with-wordmark.svg" alt="HTML5 Logo" />
     </a>
     <a href="https://www.php.net/manual/de/class.dom-htmldocument.php" target="_blank">
-        <img width="180px" height="auto" style="max-width: 300px !important; max-height: 130px !important;" src="https://vardumper.github.io/extended-htmldocument/file_type_php3.svg" alt="PHP Logo">
+        <img width="180px" height="auto" style="vertical-align: middle; max-width: 300px !important; max-height: 130px !important;" src="https://vardumper.github.io/extended-htmldocument/file_type_php3.svg" alt="PHP Logo">
     </a>
     <h1 align="center">Extended HTML Document Library</h1>
     <br>
