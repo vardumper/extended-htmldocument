@@ -1,13 +1,18 @@
-<p align="center">
-    <a href="https://www.w3.org/TR/2011/WD-html5-20110405/" target="_blank">
-        <img width="100px" height="auto" style="vertical-align: middle; max-width: 300px !important; max-height: 130px !important;" src="https://vardumper.github.io/extended-htmldocument/html5_logo-with-wordmark.svg" alt="HTML5 Logo" />
-    </a>
-    <a href="https://www.php.net/manual/de/class.dom-htmldocument.php" target="_blank">
-        <img width="180px" height="auto" style="vertical-align: middle; max-width: 300px !important; max-height: 130px !important;" src="https://vardumper.github.io/extended-htmldocument/file_type_php3.svg" alt="PHP Logo">
-    </a>
-    <h1 align="center">Extended HTML Document Library</h1>
-    <br>
-</p>
+<table align="center" style="border-collapse:collapse !important; border:none !important;">
+  <tr style="border:0px none; border-top: 0px none !important;">
+    <td align="center" valign="middle" style="padding:0 1rem; border:none !important;">
+      <a href="https://www.w3.org/TR/2011/WD-html5-20110405/" target="_blank">
+        <img src="https://vardumper.github.io/extended-htmldocument/html5_logo-with-wordmark.svg" style="display:block; height:90px; width:auto; max-width:300px;" alt="HTML5 Logo" />
+      </a>
+    </td>
+    <td align="center" valign="middle" style="padding:0 1rem; border:none !important;">
+      <a href="https://www.php.net/manual/de/class.dom-htmldocument.php" target="_blank">
+        <img src="https://vardumper.github.io/extended-htmldocument/file_type_php3.svg" style="display:block; height:100px; width:auto; max-width:220px;" alt="PHP Logo" />
+      </a>
+    </td>
+  </tr>
+</table>
+<h1 align="center">Extended HTML Document Library</h1>
 
 [![Vulnerabilities for extended-htmldocument](https://dtrack.erikpoehler.us/api/v1/badge/vulns/project/37279553-0c47-476a-9efd-ed379fabca1a?apiKey=odt_J5OKz9JcWpKAnqz80whxTvwA3oQjGBGy)](https://dtrack.erikpoehler.us/projects/37279553-0c47-476a-9efd-ed379fabca1a)
 ![Static Badge](https://img.shields.io/badge/unit%20tests-passing-green?style=flat&color=%234c1)
