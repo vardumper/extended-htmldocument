@@ -43,3 +43,14 @@ test('aliases getClassName/getClasses return the same value', function () {
         ->and($obj->getClasses())
         ->toBe('alpha');
 });
+
+test('setClasses aliases setClass', function () {
+    $obj = new TestClassTrait();
+
+    $obj->setClasses(['one', 'two']);
+
+    expect($obj->getClassName())
+        ->toBe('one two')
+        ->and($obj->delegated->className)
+        ->toBe('one two');
+});

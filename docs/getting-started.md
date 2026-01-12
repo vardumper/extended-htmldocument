@@ -11,8 +11,7 @@ composer require --dev vardumper/extended-htmldocument
 
 ```php [This library]
 // Extended HTMLDocument library
-$dom = \Html\Delegator\HTMLDocumentDelegator::createEmpty();
-echo (string) (\Html\Element\Inline\Anchor::create($dom))
+echo (new \Html\Element\Inline\Anchor())
   ->setHref('https://example.com')
   ->setTitle('Some info about the link')
   ->setRel('nofollow')

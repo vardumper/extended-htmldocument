@@ -32,14 +32,13 @@ composer require --dev vardumper/extended-htmldocument
 
 ## TL;DR
 
-This library adds the HTML5 specification to PHP and is fully compatible with `DOM\HTMLDocument`. You can create an `Anchor()` object and append it to any `DOM\Document`.
+This library adds the HTML5 specification to PHP and is fully compatible with `DOM\HTMLDocument`. You can now instantiate an `Anchor` without passing a document.
 
 ```php
-use Html\Delegator\HTMLDocumentDelegator as HTMLDocument;
 use Html\Element\Inline\Anchor;
+use Html\Enum\RelEnum;
 
-$dom = HTMLDocument::createEmpty()
-echo (string) Anchor::create($dom)
+echo (new Anchor())
     ->setClass('secondary')
     ->setRel(RelEnum::NOFOLLOW)
     ->setHref('https://google.com')

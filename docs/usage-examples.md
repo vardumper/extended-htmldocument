@@ -12,12 +12,10 @@ tbd add a gif
 This part is currently work in progress. The information below might be outdated, incomplete or incorrect.
 :::
 
-### Creation via `create()` method
+### Creation via constructor
 
 ```php{4}
-$dom = Html\Delegator\HTMLDocumentDelegator::createEmpty();
-
-$anchor = Html\Element\Inline\Anchor::create($dom);
+$anchor = new Html\Element\Inline\Anchor();
 $anchor->textContent = 'This is a test link.';
 $anchor->setAttributes([
     'href' => 'https://www.example.com',
@@ -28,7 +26,7 @@ echo $anchor;
 // or: $anchor->__toString();
 ```
 
-In the example above, we're passing an instance of the HTMLDocumentDelegator to the create method, which  we make use of three new methods HTMLElementDelegator `create()`, `setAttributes()` and `__toString()` as well as BackedEnums for static values.
+In the example above, we instantiate the element directly and make use of `setAttributes()` and `__toString()` as well as BackedEnums for static values.
 
 The output will be this:
 ```html{4}

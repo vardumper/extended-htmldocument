@@ -144,6 +144,13 @@ test('set component handle', function () {
         ->toBe('custom');
 });
 
+test('get component handle', function () {
+    $this->generator->setComponentHandle('custom');
+
+    expect($this->generator->getComponentHandle())
+        ->toBe('custom');
+});
+
 test('render composed element with parentOf', function () {
     $document = HTMLDocumentDelegator::createEmpty();
     $element = Form::create($document);

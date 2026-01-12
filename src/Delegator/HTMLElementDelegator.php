@@ -57,10 +57,24 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public static array $parentOf = []; // Default value, change as needed
 
+    public HTMLElement|Element $delegated;
+
     public function __construct(
-        public readonly HTMLElement|Element $delegated,
+        HTMLElement|Element|null $delegated = null,
         public ?TemplateGeneratorInterface $renderer = null
     ) {
+        if ($delegated === null) {
+            if (! \defined(static::class . '::QUALIFIED_NAME')) {
+                throw new InvalidArgumentException(
+                    'Cannot instantiate ' . self::class . ' without a delegated node; instantiate a concrete Html\\Element\\* class instead.'
+                );
+            }
+            $document = HTMLDocumentDelegator::createEmpty();
+            static::$ownerDocument = $document;
+            $delegated = $document->delegated->createElement(static::getQualifiedName());
+        }
+
+        $this->delegated = $delegated;
         if ($renderer !== null && ! $renderer->canRenderElements()) {
             throw new InvalidArgumentException('The given renderer cannot render elements.');
         }
@@ -132,10 +146,19 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
         // }
 
         if ($child->getOwnerDocument() !== $this->getOwnerDocument()) {
-            /** @todo the child could be imported here */
-            throw new InvalidArgumentException(
-                'The child element must belong to the same document as the parent element.'
-            );
+            $owner = $this->delegated->ownerDocument;
+            if (! $owner instanceof \DOM\HTMLDocument) {
+                throw new RuntimeException('No owner document available for this element.');
+            }
+
+            $imported = $owner->importNode($child->delegated, true);
+            $this->delegated->appendChild($imported);
+
+            if ($child instanceof self && ($imported instanceof \DOM\HTMLElement || $imported instanceof Element)) {
+                $child->delegated = $imported;
+            }
+
+            return $this;
         }
 
         $this->delegated->appendChild($child->delegated);
@@ -144,8 +167,21 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
 
     public function removeChild(HTMLElementDelegatorInterface|TextDelegatorInterface|Text $child): static
     {
-        if (! \property_exists($child, 'ownerDocument')) {
-            throw new Exception('The child element must be an instance of HTMLElementDelegatorInterface or Text.');
+        if ($child instanceof Text) {
+            $owner = $child->ownerDocument;
+            if (! $owner instanceof \DOM\HTMLDocument) {
+                throw new RuntimeException('No owner document available for this text node.');
+            }
+
+            if (HTMLDocumentDelegator::getInstance($owner) !== $this->getOwnerDocument()) {
+                /** @todo the child could be imported here */
+                throw new InvalidArgumentException(
+                    'The child element must belong to the same document as the parent element.'
+                );
+            }
+
+            $this->delegated->removeChild($child);
+            return $this;
         }
 
         if ($child->getOwnerDocument() !== $this->getOwnerDocument()) {
@@ -154,15 +190,8 @@ class HTMLElementDelegator implements HTMLElementDelegatorInterface
                 'The child element must belong to the same document as the parent element.'
             );
         }
-        if ($child instanceof HTMLElementDelegatorInterface) {
-            $this->delegated->removeChild($child->delegated);
-            return $this;
-        }
-        if ($child instanceof TextDelegatorInterface) {
-            $this->delegated->removeChild($child->delegated);
-            return $this;
-        }
-        $this->delegated->removeChild($child);
+
+        $this->delegated->removeChild($child->delegated);
         return $this;
     }
 

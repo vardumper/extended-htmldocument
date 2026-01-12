@@ -12,12 +12,23 @@ use Html\Enum\TargetEnum;
 use Html\TemplateGenerator\HTMLGenerator;
 
 beforeEach(function () {
-    $this->document = HTMLDocumentDelegator::createEmpty();
-    $this->delegator = Anchor::create($this->document);
+    $this->delegator = new Anchor();
+    $this->document = $this->delegator->getOwnerDocument();
 });
 
 test('constructor', function () {
     expect($this->delegator)->toBeInstanceOf(HTMLElementDelegator::class);
+});
+
+test('can be instantiated without providing a document', function () {
+    $anchor = new Anchor();
+
+    expect($anchor)->toBeInstanceOf(Anchor::class);
+    expect(strtolower($anchor->delegated->tagName))->toBe('a');
+    expect($anchor->getOwnerDocument())->toBeInstanceOf(HTMLDocumentDelegator::class);
+
+    $anchor->setHref('https://example.com');
+    expect($anchor->getHref())->toBe('https://example.com');
 });
 
 test('call get global attribute', function () {
@@ -376,6 +387,27 @@ test('remove child', function () {
         ->toBe(0);
 });
 
+test('removeChild can remove TextDelegator', function () {
+    $text = $this->document->createTextNode('hello');
+
+    $this->delegator->appendChild($text);
+    expect($this->delegator->delegated->textContent)->toBe('hello');
+
+    $this->delegator->removeChild($text);
+    expect($this->delegator->delegated->textContent)->toBe('');
+});
+
+test('removeChild can remove native DOM\\Text', function () {
+    $textDelegator = $this->document->createTextNode('raw');
+    $nativeText = $textDelegator->delegated;
+
+    $this->delegator->delegated->appendChild($nativeText);
+    expect($this->delegator->delegated->textContent)->toBe('raw');
+
+    $this->delegator->removeChild($nativeText);
+    expect($this->delegator->delegated->textContent)->toBe('');
+});
+
 test('replace child', function () {
     $child1 = Anchor::create($this->document);
     $child1->setTextContent('Original');
@@ -457,14 +489,19 @@ test('set attribute with union type enum handling', function () {
         ->toEqual(RelEnum::NOFOLLOW);
 });
 
-test('append child throws exception for different document', function () {
+test('append child imports node for different document', function () {
     $otherDocument = HTMLDocumentDelegator::createEmpty();
-    $child = Anchor::create($otherDocument);
-
-    $this->expectException(InvalidArgumentException::class);
-    $this->expectExceptionMessage('The child element must belong to the same document as the parent element.');
+    $child = $otherDocument->createElement('span');
+    $child->setTextContent('import-me');
 
     $this->delegator->appendChild($child);
+
+    expect($child->getOwnerDocument())
+        ->toBe($this->document);
+    expect($this->delegator->delegated->childNodes->length)
+        ->toBe(1);
+    expect($this->delegator->delegated->firstChild)
+        ->toBe($child->delegated);
 });
 
 test('remove child throws exception for different document', function () {

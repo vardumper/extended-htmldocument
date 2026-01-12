@@ -8,11 +8,10 @@ composer require vardumper/extended-htmldocument
 ## Use in PHP DOM\HTMLDocument
 
 ```php
-use Html\Delegator\HTMLDocumentDelegator as HTMLDocument;
 use Html\Element\Inline\Anchor;
+use Html\Enum\RelEnum;
 
-$dom = HTMLDocument::createEmpty()
-echo (string) Anchor::create($dom)
+echo (new Anchor())
     ->setClass('secondary')
     ->setRel(RelEnum::NOFOLLOW)
     ->setHref('https://google.com')

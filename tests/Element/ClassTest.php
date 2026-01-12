@@ -4,6 +4,8 @@ use Dom\HTMLElement;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Delegator\HTMLElementDelegator;
 use Html\Delegator\NodeDelegator;
+use Html\Element\Block\ListItem;
+use Html\Element\Block\UnorderedList;
 use Html\Element\Inline\Anchor;
 use Html\Element\Inline\Input;
 use Html\Element\InlineElement;
@@ -80,6 +82,36 @@ test('append htmldocument create element', function () {
         ->toBeTrue();
     expect($node->delegated)
         ->toBeInstanceOf(HTMLElement::class);
+});
+
+test('appending an element created with its own document to a different document imports the node', function () {
+    $ul = UnorderedList::create($this->document);
+
+    $li = new ListItem();
+    $li->setTextContent('Item 1');
+
+    $ul->appendChild($li);
+
+    expect($li->getOwnerDocument())
+        ->toBe($this->document);
+    expect((string) $ul)
+        ->toBe('<ul><li>Item 1</li></ul>');
+});
+
+test('unordered list can accept list items from the same document', function () {
+    $ul = UnorderedList::create($this->document);
+
+    $li1 = ListItem::create($this->document);
+    $li1->setTextContent('One');
+    $li2 = ListItem::create($this->document);
+    $li2->setTextContent('Two');
+
+    $ul->appendChild($li1);
+    $ul->appendChild($li2);
+
+    expect($ul->delegated->childNodes->length)->toBe(2);
+    expect(strtolower($ul->delegated->firstChild->nodeName))->toBe('li');
+    expect((string) $ul)->toBe('<ul><li>One</li><li>Two</li></ul>');
 });
 
 test('setting properties via Setter', function () {
