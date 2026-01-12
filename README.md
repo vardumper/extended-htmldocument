@@ -1,19 +1,19 @@
-<table align="center" style="border-collapse:collapse; border:none;">
-  <tr>
-    <td align="center" valign="middle" style="padding:0 1rem; border:none;">
+<table align="center" style="border-collapse:collapse !important; border:none !important;">
+  <tr style="border:0px none; border-top: 0px none !important;">
+    <td align="center" valign="middle" style="padding:0 1rem; border:none !important;">
       <a href="https://www.w3.org/TR/2011/WD-html5-20110405/" target="_blank">
-        <img src="https://vardumper.github.io/extended-htmldocument/html5_logo-with-wordmark.svg" style="display:block; height:100px; width:auto; max-width:300px;" alt="HTML5 Logo" />
+        <img src="https://vardumper.github.io/extended-htmldocument/html5_logo-with-wordmark.svg" style="display:block; height:90px; width:auto; max-width:300px;" alt="HTML5 Logo" />
       </a>
     </td>
-    <td align="center" valign="middle" style="padding:0 1rem; border:none;">
+    <td align="center" valign="middle" style="padding:0 1rem; border:none !important;">
       <a href="https://www.php.net/manual/de/class.dom-htmldocument.php" target="_blank">
         <img src="https://vardumper.github.io/extended-htmldocument/file_type_php3.svg" style="display:block; height:100px; width:auto; max-width:220px;" alt="PHP Logo" />
       </a>
     </td>
   </tr>
 </table>
-
 <h1 align="center">Extended HTML Document Library</h1>
+
 <p dir="auto" align="center"><a href="https://dtrack.erikpoehler.us/projects/37279553-0c47-476a-9efd-ed379fabca1a" rel="nofollow"><img src="https://camo.githubusercontent.com/49e524a5f841859fb75ecc760a575cd189174dc7862b62cb97c23e121af0292f/68747470733a2f2f64747261636b2e6572696b706f65686c65722e75732f6170692f76312f62616467652f76756c6e732f70726f6a6563742f33373237393535332d306334372d343736612d396566642d6564333739666162636131613f6170694b65793d6f64745f4a354f4b7a394a6357704b416e717a383077687854767741336f516a47424779" alt="Vulnerabilities for extended-htmldocument" data-canonical-src="https://dtrack.erikpoehler.us/api/v1/badge/vulns/project/37279553-0c47-476a-9efd-ed379fabca1a?apiKey=odt_J5OKz9JcWpKAnqz80whxTvwA3oQjGBGy" style="max-width: 100%;"></a>
 <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0395833017ab75581633c6828b2a15a3e2b8146edfd2fc916b8c4dab59859441/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f756e697425323074657374732d70617373696e672d677265656e3f7374796c653d666c617426636f6c6f723d253233346331"><img src="https://camo.githubusercontent.com/0395833017ab75581633c6828b2a15a3e2b8146edfd2fc916b8c4dab59859441/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f756e697425323074657374732d70617373696e672d677265656e3f7374796c653d666c617426636f6c6f723d253233346331" alt="Static Badge" data-canonical-src="https://img.shields.io/badge/unit%20tests-passing-green?style=flat&amp;color=%234c1" style="max-width: 100%;"></a>
 <a href="https://vardumper.github.io/extended-htmldocument/unit-tests" rel="nofollow"><img src="https://github.com/vardumper/extended-htmldocument/raw/main/coverage.svg" alt="Code Coverage" style="max-width: 100%;"></a>
