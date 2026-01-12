@@ -217,6 +217,25 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                     continue;
                 }
 
+                // Special handling for Alpine attributes - treat like data-* but use x-* prefix
+                if ($propName === 'alpineAttributes') {
+                    $jsVarName = 'alpineAttributes';
+                    if (! in_array($jsVarName, $props, true)) {
+                        $props[] = $jsVarName;
+                        $argTypes[] = $this->generateArgType($jsVarName, [
+                            'type' => 'object',
+                            'description' => 'Alpine.js directive attributes (x-*). Provide an object with key-value pairs.',
+                            'required' => false,
+                            'defaultValue' => '{}',
+                            'choices' => null,
+                        ]);
+                        $defaultArgs[$jsVarName] = '{}';
+                        // Special render assignment for Alpine attributes
+                        $renderAssignmentsMap[$jsVarName] = $this->generateAlpineAttributesAssignment();
+                    }
+                    continue;
+                }
+
                 // some trait file names use camelcase that maps directly to attribute name
                 $getter = 'get' . ucfirst($propName);
                 if (! method_exists($example, $getter)) {
@@ -348,20 +367,41 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
                 $elementSpecificProps[] = $jsVarName;
 
                 $props[] = $jsVarName;
-                $argTypes[] = $this->generateArgType($jsVarName, [
-                    'type' => $phpType,
-                    'description' => '',
-                    'required' => false,
-                    'defaultValue' => $this->getDefaultValue($phpType, $choices),
-                    'choices' => $choices,
-                ]);
 
-                $defaultArgs[$jsVarName] = $this->getDefaultValueJs($phpType, $choices);
-                $renderAssignmentsMap[$jsVarName] = $this->generateRenderAssignment(
-                    $jsVarName,
-                    $this->camelToKebab($propName),
-                    $phpType
-                );
+                if ($propName === 'alpineAttributes') {
+                    // Force Alpine attributes to be treated as an object (x-* directives)
+                    $phpType = 'object';
+                    $choices = null;
+
+                    $argTypes[] = $this->generateArgType($jsVarName, [
+                        'type' => $phpType,
+                        'description' => 'Alpine.js directive attributes (x-*). Provide an object with key-value pairs.',
+                        'required' => false,
+                        'defaultValue' => '{}',
+                        'choices' => null,
+                    ]);
+
+                    // Use object default (unquoted) in generated args
+                    $defaultArgs[$jsVarName] = '{}';
+
+                    // Use the specialized Alpine assignment
+                    $renderAssignmentsMap[$jsVarName] = $this->generateAlpineAttributesAssignment();
+                } else {
+                    $argTypes[] = $this->generateArgType($jsVarName, [
+                        'type' => $phpType,
+                        'description' => '',
+                        'required' => false,
+                        'defaultValue' => $this->getDefaultValue($phpType, $choices),
+                        'choices' => $choices,
+                    ]);
+
+                    $defaultArgs[$jsVarName] = $this->getDefaultValueJs($phpType, $choices);
+                    $renderAssignmentsMap[$jsVarName] = $this->generateRenderAssignment(
+                        $jsVarName,
+                        $this->camelToKebab($propName),
+                        $phpType
+                    );
+                }
             }
         }
 
@@ -566,6 +606,17 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         return $assignment;
     }
 
+    private function generateAlpineAttributesAssignment(): string
+    {
+        $assignment = "    if (alpineAttributes && typeof alpineAttributes === 'object') {\n";
+        $assignment .= "      Object.keys(alpineAttributes).forEach(key => {\n";
+        $assignment .= "        el.setAttribute(`x-\${key}`, alpineAttributes[key]);\n";
+        $assignment .= "      });\n";
+        $assignment .= '    }';
+
+        return $assignment;
+    }
+
     private function buildStorybookJS(
         string $elementName,
         string $name,
@@ -630,6 +681,13 @@ class StorybookJSGenerator implements TemplateGeneratorInterface
         $js .= "    };\n";
         $js .= "    Object.entries(args).forEach(([key, value]) => {\n";
         $js .= "      if (key === 'text' || value === undefined || value === \"\") return;\n";
+        $js .= "      if (key === 'alpineAttributes' && typeof value === 'object') {\n";
+        $js .= "        Object.keys(value).forEach(attrKey => {\n";
+        $js .= "          el.setAttribute(`x-\${attrKey}`, value[attrKey]);\n";
+        $js .= "        });\n";
+        $js .= "        return;\n";
+        $js .= "      }\n";
+
         $js .= "      if (key === 'data' && typeof value === 'object') {\n";
         $js .= "        Object.keys(value).forEach(dataKey => {\n";
         $js .= "          el.setAttribute(`data-\${dataKey}`, value[dataKey]);\n";
