@@ -1,0 +1,28 @@
+my-counter:
+  name: MyCounter
+  description: 'A simple example custom element (web component) that displays and updates a counter.'
+  level: block
+  allowed_global_attributes:
+    - id
+    - class
+    - title
+    - style
+    - 'data-*'
+  unique: false
+  alpine_support: false
+  attributes:
+    value:
+      description: 'Current counter value.'
+      type: integer
+      defaultValue: 0
+    step:
+      description: 'Increment/decrement step.'
+      type: integer
+      defaultValue: 1
+    disabled:
+      description: 'Disable interaction.'
+      type: boolean
+    label:
+      description: 'Accessible label for screen readers.'
+      type: string
+  text: string
