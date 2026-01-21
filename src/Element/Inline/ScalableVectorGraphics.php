@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-31 00:30:17
+ * @generated 2026-01-21 20:32:04
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/svg
@@ -86,7 +86,13 @@ class ScalableVectorGraphics extends InlineElement
      * The list of allowed direct children. Any if empty.
      * @var array<string>
      */
-    public static array $parentOf = [Anchor::class, Script::class, Style::class, self::class, Title::class];
+    public static array $parentOf = [
+        Anchor::class,
+        Script::class,
+        Style::class,
+        self::class,
+        Title::class,
+    ];
 
     /**
      * Specifies the XML namespace for the SVG element.

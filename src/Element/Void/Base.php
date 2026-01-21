@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-31 00:30:17
+ * @generated 2026-01-21 20:32:04
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
@@ -14,7 +14,6 @@ namespace Html\Element\Void;
 use Html\Element\VoidElement;
 use Html\Enum\TargetEnum;
 use Html\Mapping\Element;
-use InvalidArgumentException;
 
 /**
  * The base element specifies the base URL to use for all relative URLs in a document. There can be at maximum one <base> element in a document, and it must be inside the <head> element.
@@ -64,7 +63,7 @@ class Base extends VoidElement
      * Specifies where to open the linked document.
      * @example _self
      */
-    protected ?TargetEnum $target = null;
+    protected null|string|TargetEnum $target = null;
 
     public function setHref(string $href): static
     {
@@ -80,17 +79,32 @@ class Base extends VoidElement
 
     public function setTarget(string|TargetEnum $target): static
     {
+        $value = $target;
         if (\is_string($target)) {
-            $target = TargetEnum::tryFrom($target) ?? throw new InvalidArgumentException('Invalid value for $target.');
+            if (trim($value) === '' || \preg_match('/\s/', $value) === 1) {
+                return $this;
+            }
+            $resolved = TargetEnum::tryFrom($target);
+            if ($resolved !== null) {
+                $target = $resolved;
+            } elseif (\str_starts_with($value, '_')) {
+                return $this;
+            }
+        }
+        if ($target instanceof TargetEnum) {
+            $value = $target->value;
         }
         $this->target = $target;
-        $this->delegated->setAttribute('target', (string) $target->value);
+        $this->delegated->setAttribute('target', (string) $value);
 
         return $this;
     }
 
-    public function getTarget(): ?TargetEnum
+    public function getTarget(): null|string|TargetEnum
     {
+        if (\is_string($this->target)) {
+            return TargetEnum::tryFrom($this->target) ?? $this->target;
+        }
         return $this->target;
     }
 }

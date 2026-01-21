@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-31 00:30:17
+ * @generated 2026-01-21 20:32:04
  * @subpackage Html\Element\Void
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
@@ -71,6 +71,7 @@ class Style extends VoidElement
     /**
      * Specifies the media type of the inline styles.
      * @deprecated
+
      * @example text/css
      */
     protected ?StyleTypeEnum $type = null;

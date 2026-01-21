@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-31 00:30:17
+ * @generated 2026-01-21 20:32:04
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
@@ -829,9 +829,14 @@ class Input extends InlineElement
     {
         $value = $formtarget;
         if (\is_string($formtarget)) {
+            if (trim($value) === '' || \preg_match('/\s/', $value) === 1) {
+                return $this;
+            }
             $resolved = FormtargetEnum::tryFrom($formtarget);
             if ($resolved !== null) {
                 $formtarget = $resolved;
+            } elseif (\str_starts_with($value, '_')) {
+                return $this;
             }
         }
         if ($formtarget instanceof FormtargetEnum) {
@@ -845,6 +850,9 @@ class Input extends InlineElement
 
     public function getFormtarget(): null|string|FormtargetEnum
     {
+        if (\is_string($this->formtarget)) {
+            return FormtargetEnum::tryFrom($this->formtarget) ?? $this->formtarget;
+        }
         return $this->formtarget;
     }
 
@@ -865,7 +873,9 @@ class Input extends InlineElement
         if (\is_string($popovertargetaction)) {
             $popovertargetaction = PopovertargetactionEnum::tryFrom(
                 $popovertargetaction
-            ) ?? throw new InvalidArgumentException('Invalid value for $popovertargetaction.');
+            ) ?? throw new InvalidArgumentException(
+                'Invalid value for $popovertargetaction.'
+            );
         }
         $this->popovertargetaction = $popovertargetaction;
         $this->delegated->setAttribute('popovertargetaction', (string) $popovertargetaction->value);

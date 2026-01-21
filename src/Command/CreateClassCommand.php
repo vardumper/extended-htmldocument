@@ -302,6 +302,9 @@ final class CreateClassCommand extends Command
     private function generateMethodForAttribute(string $attribute, array $details, string $element): string
     {
         $type = $this->mapToPhpType($details['type'] ?? '');
+        if (($attribute === 'target' || $attribute === 'formtarget') && $type === 'enum') {
+            $type = 'enum|string';
+        }
         $variableName = $this->toVariableName($attribute);
         $methodName = ucfirst($variableName);
 
@@ -444,6 +447,10 @@ final class CreateClassCommand extends Command
             $methodName,
             $returnType,
             $variableName,
+            $enumName,
+            $variableName,
+            $variableName,
+            $variableName,
         ]);
     }
 
@@ -469,6 +476,9 @@ final class CreateClassCommand extends Command
     private function generateAttributeDeclaration(string $attribute, array $details, string $element): string
     {
         $type = $this->mapToPhpType($details['type'] ?? '');
+        if (($attribute === 'target' || $attribute === 'formtarget') && $type === 'enum') {
+            $type = 'enum|string';
+        }
         $variableName = $this->toVariableName($attribute);
         $comment = $this->getAttributeComment($details);
         $visibility = 'protected';
@@ -665,9 +675,14 @@ final class CreateClassCommand extends Command
     {
         \$value = \$%s;
         if (\is_string(\$%s)) {
+            if (trim(\$value) === '' || \\preg_match('/\\s/', \$value) === 1) {
+                return \$this;
+            }
             \$resolved = %s::tryFrom(\$%s);
             if (!\is_null(\$resolved)) {
                 \$%s = \$resolved;
+            } elseif (\str_starts_with(\$value, '_')) {
+                return \$this;
             }
         }
         if (\$%s instanceof %s) {
@@ -681,6 +696,9 @@ final class CreateClassCommand extends Command
 
     public function get%s(): null|%s
     {
+        if (\is_string(\$this->%s)) {
+            return %s::tryFrom(\$this->%s) ?? \$this->%s;
+        }
         return \$this->%s;
     }\n\n";
     }

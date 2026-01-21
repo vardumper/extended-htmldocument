@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2025-12-31 00:30:17
+ * @generated 2026-01-21 20:32:04
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
@@ -303,9 +303,14 @@ class Anchor extends InlineElement
     {
         $value = $target;
         if (\is_string($target)) {
+            if (trim($value) === '' || \preg_match('/\s/', $value) === 1) {
+                return $this;
+            }
             $resolved = TargetEnum::tryFrom($target);
             if ($resolved !== null) {
                 $target = $resolved;
+            } elseif (\str_starts_with($value, '_')) {
+                return $this;
             }
         }
         if ($target instanceof TargetEnum) {
@@ -319,6 +324,9 @@ class Anchor extends InlineElement
 
     public function getTarget(): null|string|TargetEnum
     {
+        if (\is_string($this->target)) {
+            return TargetEnum::tryFrom($this->target) ?? $this->target;
+        }
         return $this->target;
     }
 
