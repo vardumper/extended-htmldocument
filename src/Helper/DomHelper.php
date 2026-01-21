@@ -8,18 +8,18 @@ use DOM\HTMLDocument;
 
 final class DomHelper
 {
-    public function createEmpty(): HTMLDocument
+    public function createEmpty(string $encoding = 'UTF-8'): HTMLDocument
     {
-        return HTMLDocument::createEmpty();
+        return HTMLDocument::createEmpty($encoding);
     }
 
-    public function createFromString(string $html): HTMLDocument
+    public function createFromString(string $html, int $options = 0, ?string $overrideEncoding = null): HTMLDocument
     {
-        return HTMLDocument::createFromString($html);
+        return HTMLDocument::createFromString($html, $options, $overrideEncoding);
     }
 
-    public function createFromFile(string $path): HTMLDocument
+    public function createFromFile(string $path, int $options = 0, ?string $overrideEncoding = null): HTMLDocument
     {
-        return HTMLDocument::createFromFile($path);
+        return HTMLDocument::createFromFile($path, $options, $overrideEncoding);
     }
 }

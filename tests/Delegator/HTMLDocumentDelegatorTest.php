@@ -264,6 +264,14 @@ test('create empty', function () {
     expect(HTMLDocumentDelegator::createEmpty())->toBeInstanceOf(HTMLDocumentDelegator::class);
 });
 
+test('create empty accepts encoding', function () {
+    $delegator = HTMLDocumentDelegator::createEmpty('ISO-8859-1');
+    expect($delegator)
+        ->toBeInstanceOf(HTMLDocumentDelegator::class);
+    expect($delegator->delegated->characterSet)
+        ->toBe('ISO-8859-1');
+});
+
 test('create from string', function () {
     $html = '<!DOCTYPE html><html><head><title>Test</title></head><body></body></html>';
     $delegator = HTMLDocumentDelegator::createFromString($html);
@@ -271,6 +279,19 @@ test('create from string', function () {
         ->toBeInstanceOf(HTMLDocumentDelegator::class);
     expect($delegator->saveHtml())
         ->toEqual($html);
+});
+
+test('create from string accepts options and overrideEncoding', function () {
+    $html = '<div>Hi</div>';
+    $options = \LIBXML_NOERROR | \LIBXML_HTML_NOIMPLIED;
+
+    $expected = HTMLDocument::createFromString($html, $options, 'UTF-8')->saveHTML();
+    $delegator = HTMLDocumentDelegator::createFromString($html, $options, 'UTF-8');
+
+    expect((string) $delegator)
+        ->toEqual($expected);
+    expect((string) $delegator)
+        ->toEqual('<div>Hi</div>');
 });
 
 test('create from file', function () {
@@ -281,6 +302,21 @@ test('create from file', function () {
     expect($delegator)
         ->toBeInstanceOf(HTMLDocumentDelegator::class);
     unlink('file.html');
+});
+
+test('create from file accepts options and overrideEncoding', function () {
+    $path = 'file.html';
+    file_put_contents($path, '<div>Hi</div>');
+    $options = \LIBXML_NOERROR | \LIBXML_HTML_NOIMPLIED;
+
+    $expected = HTMLDocument::createFromFile($path, $options, 'UTF-8')->saveHTML();
+    $delegator = HTMLDocumentDelegator::createFromFile($path, $options, 'UTF-8');
+
+    unlink($path);
+    expect((string) $delegator)
+        ->toEqual($expected);
+    expect((string) $delegator)
+        ->toEqual('<div>Hi</div>');
 });
 
 test('get elements by tag name', function () {

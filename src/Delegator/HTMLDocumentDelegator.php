@@ -97,19 +97,19 @@ class HTMLDocumentDelegator implements HTMLDocumentDelegatorInterface
         return self::$instances[$key] ?? new self($document);
     }
 
-    public static function createEmpty(): self
+    public static function createEmpty(string $encoding = 'UTF-8'): self
     {
-        return new self((new DomHelper())->createEmpty());
+        return new self((new DomHelper())->createEmpty($encoding));
     }
 
-    public static function createFromString(string $html): self
+    public static function createFromString(string $html, int $options = 0, ?string $overrideEncoding = null): self
     {
-        return new self((new DomHelper())->createFromString($html));
+        return new self((new DomHelper())->createFromString($html, $options, $overrideEncoding));
     }
 
-    public static function createFromFile(string $path): self
+    public static function createFromFile(string $path, int $options = 0, ?string $overrideEncoding = null): self
     {
-        return new self((new DomHelper())->createFromFile($path));
+        return new self((new DomHelper())->createFromFile($path, $options, $overrideEncoding));
     }
 
     public function createElement(string $qualifiedName, ?string $nodeValue = null): HTMLElementDelegator

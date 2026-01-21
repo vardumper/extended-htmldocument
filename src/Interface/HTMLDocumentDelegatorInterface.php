@@ -24,7 +24,7 @@ interface HTMLDocumentDelegatorInterface
 
     public function __toString(): string;
 
-    public static function createEmpty(): self;
+    public static function createEmpty(string $encoding = 'UTF-8'): self;
 
     public function createElement(string $qualifiedName): HTMLElementDelegator;
 
