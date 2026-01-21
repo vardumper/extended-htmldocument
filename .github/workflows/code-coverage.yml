@@ -20,11 +20,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Make code coverage badge
-        uses: timkrase/phpunit-coverage-badge@v1.2.1
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          coverage_badge_path: coverage.svg
-          push_badge: false
+          php-version: '8.4'
+
+      - name: Generate code coverage badge
+        run: php bin/generate-coverage-badge.php clover.xml coverage.svg
 
       - name: Commit badge
         run: |
