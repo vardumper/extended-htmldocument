@@ -1,0 +1,43 @@
+a:
+  name: Anchor
+  description: 'The a element represents a hyperlink, linking to another resource.'
+  level: inline
+  allowed_global_attributes:
+    - accesskey
+    - autocapitalize
+    - autofocus
+    - class
+    - contenteditable
+    - 'data-*'
+    - dir
+    - draggable
+    - hidden
+    - id
+    - inputmode
+    - lang
+    - slot
+    - spellcheck
+    - style
+    - tabindex
+    - title
+    - translate
+  unique: false
+  attributes:
+    href:
+      description: 'Specifies the URL of the linked resource.'
+      type: uri
+      required: true
+      elements:
+        - a
+    class:
+      description: 'The class attribute is used to define equal styles for multiple elements.'
+      required: true
+      defaultValue: ''
+      type: enum|string
+      choices:
+        - secondary
+        - contrast
+        - outline
+        - 'secondary outline'
+        - 'contrast outline'
+  text: string

@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2026-01-21 20:32:04
+ * @generated 2026-01-21 21:02:35
  * @subpackage Html\Element\Inline
  * @link https://vardumper.github.io/extended-htmldocument/
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
@@ -301,18 +301,6 @@ class Button extends InlineElement
      * Defines the checked state for checkboxes, radio buttons, or toggle switches.
      */
     protected ?AriaCheckedEnum $ariaChecked = null;
-
-    public function setAutofocus(bool $autofocus): static
-    {
-        $this->autofocus = $autofocus;
-        $this->delegated->setAttribute('autofocus', (string) $autofocus);
-        return $this;
-    }
-
-    public function getAutofocus(): ?bool
-    {
-        return $this->autofocus;
-    }
 
     public function setAutocorrect(string|AutocorrectEnum $autocorrect): static
     {

@@ -293,7 +293,19 @@ final class CreateClassCommand extends Command
     private function getMethods(array $attributes, string $element): string
     {
         $methods = '';
+
+        // Skip generating methods that would override global-attribute traits.
+        // This allows framework specifications to define metadata (e.g. enum choices)
+        // without changing runtime behavior provided by global traits.
+        $elementData = $this->data[$element] ?? [];
+        $globalAttributes = $elementData['allowed_global_attributes'] ?? [];
+        $globalAttributeVariableNames = array_map(fn ($attr) => $this->toVariableName($attr), $globalAttributes);
+
         foreach ($attributes as $attribute => $details) {
+            $variableName = $this->toVariableName($attribute);
+            if (in_array($variableName, $globalAttributeVariableNames, true)) {
+                continue;
+            }
             $methods .= $this->generateMethodForAttribute($attribute, $details, $element);
         }
         return $methods;

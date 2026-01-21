@@ -5,7 +5,7 @@
  *
  * HttpEquivEnum - Provides an HTTP header for the information/value of the content attribute.
  *
- * @generated 2025-12-31 00:30:17
+ * @generated 2026-01-21 21:02:30
  * @subpackage Html\Enum
  * @link https://vardumper.github.io/extended-htmldocument/index
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/http-equiv/
