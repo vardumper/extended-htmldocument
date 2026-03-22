@@ -19,10 +19,10 @@
   ],
   "require": {
     "php": "^8.4",
-    "symfony/twig-bundle": "^5.4|^6.0|^7.0|^8.0",
-    "symfony/ux-twig-component": "^2.0",
+    "symfony/twig-bundle": "^5.4|^6.0|^7.0|^8.0.4",
+    "symfony/ux-twig-component": "^2.33",
     "symfony/options-resolver": "^5.4|^6.0|^7.0|^8.0",
-    "vardumper/extended-htmldocument": "^0.2"
+    "vardumper/extended-htmldocument": "^0.2.82"
   },
   "autoload": {
     "psr-4": {

@@ -43,7 +43,7 @@
         "ext-dom": "*",
         "revolt/event-loop": "^1.0.8",
         "mnapoli/silly": "^1.9.1",
-        "symfony/yaml": "^5.4|^7.0|^8.0.1"
+        "symfony/yaml": "^5.4|^7.0|^8.0.6"
     },
     "config": {
         "sort-packages": true,
@@ -63,15 +63,15 @@
         "amphp/file": ">=3.2",
         "brainmaestro/composer-git-hooks": "dev-master",
         "edent/pretty-print-html": "2025-04-18",
-        "friendsofphp/php-cs-fixer": "^3.94.1",
-        "pestphp/pest": "^3.8.5",
+        "friendsofphp/php-cs-fixer": "^3.94.2",
+        "pestphp/pest": "^3.8.6",
         "pestphp/pest-plugin-drift": "^3.0",
         "pestphp/pest-plugin-type-coverage": "^3.6.1",
         "phpmd/phpmd": "^2.15",
-        "phpstan/phpstan": "^2.1.39",
+        "phpstan/phpstan": "^2.1.42",
         "rector/swiss-knife": "^2.3.5",
-        "symfony/http-kernel": "^5.4|^6.0|^7.0|^8.0.5",
-        "symfony/ux-twig-component": "^2.32",
+        "symfony/http-kernel": "^5.4|^6.0|^7.0|^8.0.7",
+        "symfony/ux-twig-component": "^2.33",
         "symplify/easy-coding-standard": "^12.6.2"
     },
     "extra": {
