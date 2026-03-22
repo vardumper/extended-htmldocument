@@ -38,10 +38,11 @@ jobs:
         run: |
           ls -lart composer.lock
 
-      - name: Install trivy
-        uses: aquasecurity/setup-trivy@v0.2.3
+      - name: Install Trivy
+        uses: aquasecurity/setup-trivy@v0.2.6
         with:
           version: v0.69.3
+
       - name: Create CycloneDX SBOM with Trivy
         run: trivy fs --skip-files vendor/rector/swiss-knife/vendor/composer/installed.json,vendor/symplify/easy-coding-standard/vendor/composer/installed.json --format cyclonedx --include-dev-deps --output sbom.json --severity HIGH,CRITICAL,MEDIUM --scanners vuln,license,secret --debug ./
 
