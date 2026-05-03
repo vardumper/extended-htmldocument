@@ -54,8 +54,6 @@ jobs:
 
       - name: Publish changed packages
         if: steps.changes.outputs.dirs != ''
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           VERSION="${{ steps.release.outputs.version }}"
           
@@ -68,6 +66,6 @@ jobs:
             mv "$dir/package.json.tmp" "$dir/package.json"
 
             cd "$dir"
-            npm publish --access public
+            npm publish --access public --provenance
             cd -
           done
