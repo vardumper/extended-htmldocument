@@ -17,6 +17,8 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     permissions:
       contents: read
       id-token: write
@@ -30,7 +32,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           registry-url: "https://registry.npmjs.org"
 
       - name: Get release version
@@ -68,6 +70,9 @@ jobs:
           echo "dirs=$CHANGED" >> "$GITHUB_OUTPUT"
 
       - name: Publish changed packages
+        # Requires npm Trusted Publishing configured on npmjs.com for each package:
+        # Package Settings → Publishing → Trusted Publishers → Add GitHub Actions publisher
+        # (owner: vardumper, repo: extended-htmldocument, workflow: release-npm-packages.yml)
         if: steps.changes.outputs.dirs != ''
         run: |
           VERSION="${{ steps.release.outputs.version }}"
