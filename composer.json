@@ -87,6 +87,24 @@
             ]
         }
     },
+    "archive": {
+        "exclude": [
+            "templates/*/node_modules",
+            "templates/*/yarn.lock",
+            "templates/*/package-lock.json",
+            "templates/storybook",
+            "docs",
+            "examples",
+            "tests",
+            "bin",
+            ".github",
+            ".githooks",
+            "*.neon",
+            "*.xml",
+            "ecs.php",
+            "Makefile"
+        ]
+    },
     "bin": [
         "bin/ext-html"
     ],
