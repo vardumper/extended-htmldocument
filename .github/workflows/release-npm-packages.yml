@@ -3,6 +3,12 @@ name: Publish subpackages to npm
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      publish_all:
+        description: 'Publish all packages (ignore change detection)'
+        type: boolean
+        default: false
 
 jobs:
   publish:
@@ -44,7 +50,7 @@ jobs:
               continue
             fi
 
-            if git diff --quiet HEAD~1 -- "$dir"; then
+            if [ "${{ inputs.publish_all }}" != "true" ] && git diff --quiet HEAD~1 -- "$dir"; then
               continue
             fi
 
