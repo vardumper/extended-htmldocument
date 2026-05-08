@@ -20,7 +20,8 @@
     "support": {
         "issues": "https://github.com/vardumper/extended-htmldocument/issues",
         "docs": "https://vardumper.github.io/extended-htmldocument/",
-        "source": "https://github.com/vardumper/extended-htmldocument"
+        "source": "https://github.com/vardumper/extended-htmldocument",
+        "security": "https://github.com/vardumper/extended-htmldocument/security/dependabot"
     },
     "autoload": {
         "psr-4": {
