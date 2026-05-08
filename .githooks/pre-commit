@@ -120,32 +120,37 @@ if [ -x $PEST ]; then
     HAS_PEST=true
 fi
 
-# printf "${YELLOW}PEST Unit Tests${NC} "
-# if $HAS_PEST; then
-#   # execute coverage tests
-#   PEST_OUTPUT=$(XDEBUG_MODE=coverage $PEST --color=always --coverage-clover=clover.xml --coverage-html=coverage-report 2>&1)
-#   if [ $? -eq 0 ]; then
-#     printf "${GREEN}PASSED${NC}\n"
-#   else
-#     if [[ " ${protectedBranches[@]} " =~ " ${currentBranch} " ]] && [ "$allowFailuresInProtectedBranches" = false ]; then
-#         printf "\n${PEST_OUTPUT}\n"
-#         printf "${RED}Committing to protected branch ${currentBranch} is not allowed with failures.${NC}\n"
-#         PASS=false
-#     fi
-#     if [[ ! " ${protectedBranches[@]} " =~ " ${currentBranch} " ]] && [ "$allowFailuresInOtherBranches" = false ]; then
-#         printf "\n${PEST_OUTPUT}\n"
-#         printf "${RED}Committing to ${currentBranch} is not allowed.${NC}\n"
-#         PASS=false
-#     fi
-#     if [[ ! " ${protectedBranches[@]} " =~ " ${currentBranch} " ]] && [ "$allowFailuresInOtherBranches" = true ]; then
-#         printf "${ORANGE}Committing to ${currentBranch} with test errors or failures.${NC}\n"
-#     fi
-#   fi
-#   # add coverage report to current commit
-#   git add clover.xml
-# else
-#   printf "\npest is required. Install it with:\n\n  composer require --dev pestphp/pest\n\n"
-# fi
+# add pest unit tests. stopping the commit if they fail
+HAS_PEST=false
+PEST="./vendor/bin/pest"
+if [ -x $PEST ]; then
+    HAS_PEST=true
+fi
+printf "${YELLOW}Pest Unit Tests${NC}\n"
+if $HAS_PEST; then
+  if [ -z "$CHANGED_FILES" ]; then
+    printf "\nNo PHP file in this commit. Skipping Pest and Clover refresh.\n"
+    printf "${YELLOW}Clover reports unchanged (no staged PHP files) at $(date '+%Y-%m-%d %H:%M:%S')${NC}\n"
+  else
+    if RUN $PEST tests/Unit --exclude-group=benchmark --exclude-group=external-bin --testdox --colors=always; then
+      printf "${GREEN}Unit tests passed${NC}\n"
+
+      if RUN composer run test:coverage:unit \
+        && RUN composer run test:coverage:integration \
+        && RUN php bin/merge-clover.php clover.xml clover.unit.xml clover.integration.xml; then
+        git add clover.unit.xml clover.integration.xml clover.xml
+        printf "${GREEN}Clover reports updated (unit, integration, merged) at $(date '+%Y-%m-%d %H:%M:%S')${NC}\n"
+      else
+        printf "${RED}Coverage generation/merge failed${NC}\n"
+        PASS=false
+      fi
+    else
+      PASS=false
+    fi
+  fi
+else
+  printf "\npest is required. Install it with:\n\n composer require --dev pestphp/pest\n\n"
+fi
 
 # PHPMD - PHP Mess Detector
 source ./.githooks/pre-commit.d/phpmd.sh
