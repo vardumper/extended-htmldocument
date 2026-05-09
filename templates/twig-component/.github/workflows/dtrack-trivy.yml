@@ -1,6 +1,6 @@
 name: Workflow for Depency Track and Trivy
 env:
-  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+  BRANCH_NAME: ${{ github.head_ref || (github.ref_type == 'branch' && github.ref_name) || github.event.repository.default_branch }}
 on:
   push:
     paths:
@@ -58,7 +58,7 @@ jobs:
               exit 0
             fi
             git commit -m "chore: update sbom.json" --no-verify
-            git push origin HEAD:${BRANCH_NAME}
+            git push origin HEAD:refs/heads/${BRANCH_NAME}
         continue-on-error: false
 
       - name: Push SBOM to Dependency Track

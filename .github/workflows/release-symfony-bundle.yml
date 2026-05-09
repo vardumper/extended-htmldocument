@@ -36,7 +36,11 @@ jobs:
           git config --global url."https://${GH_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
 
           git clone https://github.com/vardumper/html5-twig-component-bundle.git target
-          rsync -a --delete --exclude='.git/' templates/twig-component/ target/
+          # Sync dotfiles as well, but skip workflow files unless PAT has workflow scope.
+          rsync -a --delete \
+            --exclude='.git/' \
+            --exclude='.github/workflows/' \
+            templates/twig-component/ target/
           cd target
 
           # Update version in composer.json
