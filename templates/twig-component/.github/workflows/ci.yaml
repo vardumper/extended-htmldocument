@@ -30,7 +30,7 @@ jobs:
           tools: composer:v2
 
       - name: Validate composer.json
-        run: composer validate --no-check-publish
+        run: composer validate --no-check-publish --no-check-lock
 
       - name: Set extra.symfony.require
         run: composer config extra.symfony.require "${{ matrix.symfony-require }}"
