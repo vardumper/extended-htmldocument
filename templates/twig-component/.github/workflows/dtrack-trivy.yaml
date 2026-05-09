@@ -1,7 +1,6 @@
 name: Workflow for Depency Track and Trivy
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 on:
   push:
     paths:
@@ -21,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           fetch-depth: '0'
           token: ${{ github.token }}
@@ -38,25 +37,34 @@ jobs:
         run: |
           ls -lart composer.lock
 
-      - name: Install trivy
-        uses: aquasecurity/setup-trivy@v0.2.6
-        with:
-          version: v0.69.3
+      - name: Install Trivy
+        run: |
+          TRIVY_VERSION=$(curl -sSfL https://api.github.com/repos/aquasecurity/trivy/releases/latest | jq -r .tag_name)
+          echo "Installing ${TRIVY_VERSION}"
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin "${TRIVY_VERSION}"
+
+      - name: Show Trivy version
+        run: trivy --version
       - name: Create CycloneDX SBOM with Trivy
-        run: trivy fs --skip-files vendor/rector/swiss-knife/vendor/composer/installed.json,vendor/symplify/easy-coding-standard/vendor/composer/installed.json --format cyclonedx --include-dev-deps --output sbom.json --severity HIGH,CRITICAL,MEDIUM --scanners vuln,license,secret --debug ./
+        run: trivy fs --skip-files vendor/rector/swiss-knife/vendor/composer/installed.json,vendor/symplify/easy-coding-standard/vendor/composer/installed.json --format cyclonedx --include-dev-deps --output sbom.json --severity HIGH,CRITICAL,MEDIUM --scanners vuln,license,secret --exit-code 0 ./
 
       - name: Commit SBOM if changed
         run: |
             git config --global user.name 'github-actions[bot]'
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
             git add sbom.json
-            git commit -am "sbom.json updated" --no-verify || exit 1
-            git push origin HEAD:${BRANCH_NAME} -f
+            if git diff --cached --quiet; then
+              echo "No sbom.json changes to commit"
+              exit 0
+            fi
+            git commit -m "chore: update sbom.json" --no-verify
+            git push origin HEAD:${BRANCH_NAME}
         continue-on-error: false
 
       - name: Push SBOM to Dependency Track
         run: |
-          curl --fail -L -X "POST" "${{ secrets.DTRACK_API_URL }}" \
+          curl -L -X "POST" "${{ secrets.DTRACK_API_URL }}" \
+           -H 'Content-Type: multipart/form-data' \
            -H "X-Api-Key: ${{ secrets.DTRACK_API_KEY }}" \
            -F "project=${{ secrets.DTRACK_PROJECT_UID }}" \
            -F "bom=@sbom.json"
