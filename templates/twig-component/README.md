@@ -32,7 +32,9 @@ The bundle includes automatic service registration - no additional configuration
 
 ## Configuration
 
-The bundle is automatically registered via Symfony Flex. If you need to register it manually, add to `config/bundles.php`:
+When installed via Symfony Flex, this bundle is automatically configured by the recipe in `flex/recipe`.
+
+If you are not using Symfony Flex, register the bundle manually in `config/bundles.php`:
 
 ```php
 # config/bundles.php
@@ -42,7 +44,7 @@ return [
 ];
 ```
 
-Next, tell Symfony that Twig Components can be found in a new path. Edit `config/packages/twig_component.yaml` and add the following:
+Then tell Symfony where the Twig Components are located. Edit `config/packages/twig_component.yaml` and add the following:
 
 ```yaml
 # config/packages/twig_component.yaml

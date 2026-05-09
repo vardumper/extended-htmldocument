@@ -1,0 +1,8 @@
+{
+  "bundles": {
+    "Html\\TwigComponentBundle\\HtmlTwigComponentBundle": ["all"]
+  },
+  "copy-from-package": {
+    "flex/recipe/config/": "%CONFIG_DIR%/"
+  }
+}

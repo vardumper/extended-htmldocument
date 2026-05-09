@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # Commit message must be in correct format
-# https://semver.org/
 # https://www.conventionalcommits.org/
-# https://youtu.be/nOVZxZX5dx8
 
 # Colors
 RED='\033[0;31m'
@@ -39,9 +37,7 @@ ${YELLOW}<type>${NC}(${YELLOW}<scope>${NC}): ${YELLOW}<subject>${NC}
     ${YELLOW}<subject>${NC} there must be a description of the change
 
     Find more on this topic here:
-    - ${GREEN}https://semver.org/${NC}
     - ${GREEN}https://www.conventionalcommits.org/${NC}
-    - ${GREEN}https://youtu.be/nOVZxZX5dx8${NC}
 "
     exit 1
   fi

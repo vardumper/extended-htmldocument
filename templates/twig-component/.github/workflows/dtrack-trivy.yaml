@@ -1,0 +1,62 @@
+name: Workflow for Depency Track and Trivy
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+on:
+  push:
+    paths:
+      - .github/workflows/dtrack-trivy.yml
+      - 'composer.json'
+      - 'composer.lock'
+  pull_request:
+    paths:
+      - .github/workflows/dtrack-trivy.yml
+      - 'composer.json'
+      - 'composer.lock'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: '0'
+          token: ${{ github.token }}
+
+      - name: Set up php 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      - name: Install dependencies
+        run: composer self-update && composer install && composer dump-autoload -o -a
+
+      - name: Show that Composer Lockfile exists
+        run: |
+          ls -lart composer.lock
+
+      - name: Install trivy
+        uses: aquasecurity/setup-trivy@v0.2.6
+        with:
+          version: v0.69.3
+      - name: Create CycloneDX SBOM with Trivy
+        run: trivy fs --skip-files vendor/rector/swiss-knife/vendor/composer/installed.json,vendor/symplify/easy-coding-standard/vendor/composer/installed.json --format cyclonedx --include-dev-deps --output sbom.json --severity HIGH,CRITICAL,MEDIUM --scanners vuln,license,secret --debug ./
+
+      - name: Commit SBOM if changed
+        run: |
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            git add sbom.json
+            git commit -am "sbom.json updated" --no-verify || exit 1
+            git push origin HEAD:${BRANCH_NAME} -f
+        continue-on-error: false
+
+      - name: Push SBOM to Dependency Track
+        run: |
+          curl --fail -L -X "POST" "${{ secrets.DTRACK_API_URL }}" \
+           -H "X-Api-Key: ${{ secrets.DTRACK_API_KEY }}" \
+           -F "project=${{ secrets.DTRACK_PROJECT_UID }}" \
+           -F "bom=@sbom.json"

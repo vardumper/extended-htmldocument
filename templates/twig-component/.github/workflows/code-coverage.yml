@@ -1,0 +1,71 @@
+name: Code Coverage
+on:
+    push:
+    # only trigger if theres a change in src/ directory
+        paths:
+            - '.github/workflows/code-coverage.yml'
+            - 'clover.xml'
+    pull_request:
+        paths:
+            - '.github/workflows/code-coverage.yml'
+            - 'clover.xml'
+    workflow_dispatch:
+
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      - name: Generate code coverage badge
+        run: php bin/generate-coverage-badge.php clover.xml coverage.svg
+
+      - name: Commit badge
+        if: github.event_name != 'pull_request'
+        env:
+          SSH_SIGNING_PRIVATE_KEY: ${{ secrets.SSH_SIGNING_KEY }}
+        run: |
+            git config --global user.name 'Erik Pöhler'
+            git config --global user.email 'admin@teuton.mx'
+
+            if [ -n "$SSH_SIGNING_PRIVATE_KEY" ]; then
+              KEY_PATH="$RUNNER_TEMP/sign_key"
+              PUB_KEY_PATH="$RUNNER_TEMP/sign_key.pub"
+
+              printf '%s\n' "$SSH_SIGNING_PRIVATE_KEY" > "$KEY_PATH"
+              chmod 600 "$KEY_PATH"
+
+              # Derive public key and use it as signing identity for Git SSH signatures.
+              ssh-keygen -y -f "$KEY_PATH" > "$PUB_KEY_PATH"
+              chmod 644 "$PUB_KEY_PATH"
+
+              eval "$(ssh-agent -s)"
+              ssh-add "$KEY_PATH"
+
+              git config --global gpg.format ssh
+              git config --global user.signingkey "$PUB_KEY_PATH"
+              git config --global commit.gpgsign true
+            else
+              echo "SSH_SIGNING_KEY is not set; committing without signing."
+              git config --global --unset-all user.signingkey || true
+              git config --global commit.gpgsign false
+            fi
+
+            git add coverage.svg
+
+            if git diff --staged --quiet; then
+              echo "No badge changes to commit."
+              exit 0
+            fi
+
+            git commit -m "chore: coverage.svg badge updated" --no-verify
+            git push --no-verify
+        continue-on-error: true # do not fail if nothing changed

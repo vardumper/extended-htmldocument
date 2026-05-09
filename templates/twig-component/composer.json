@@ -3,6 +3,12 @@
   "description": "Symfony UX Twig Components for typesafe HTML5 elements with ARIA support & enum validation",
   "type": "symfony-bundle",
   "license": "MIT",
+  "support": {
+        "docs": "https://vardumper.github.io/extended-htmldocument/",
+        "source": "https://github.com/vardumper/html5-twig-component-bundle",
+        "issues": "https://github.com/vardumper/extended-htmldocument/issues",
+        "security": "https://github.com/vardumper/extended-htmldocument/security/dependabot"
+  },
   "keywords": [
     "symfony",
     "twig",
@@ -24,9 +30,24 @@
     "symfony/options-resolver": "^5.4|^6.0|^7.0|^8.0",
     "vardumper/extended-htmldocument": "^0.2.82"
   },
+  "require-dev": {
+    "pestphp/pest": "^4.6.2",
+    "phpunit/phpunit": "^12.5.22",
+    "phpstan/phpstan": "^1.12.33",
+    "friendsofphp/php-cs-fixer": "^3.95.1",
+    "symplify/easy-coding-standard": "^12.6.2",
+    "brainmaestro/composer-git-hooks": "@dev",
+    "rector/swiss-knife": "^2.3.5",
+    "phpmd/phpmd": "^2.15"
+  },
   "autoload": {
     "psr-4": {
       "Html\\TwigComponentBundle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
     }
   },
   "extra": {
@@ -34,5 +55,43 @@
       "require": "^5.4|^6.0|^7.0|^8.0"
     }
   },
-  "version": "0.2.69"
+  "version": "0.2.69",
+  "scripts": {
+    "test": "XDEBUG_MODE=off vendor/bin/pest --exclude-group=benchmark",
+    "test:coverage": "composer run test:coverage:unit",
+    "test:coverage:unit": "XDEBUG_MODE=coverage vendor/bin/pest tests/Unit --exclude-group=external-bin --coverage-clover=clover.xml",
+    "test:coverage:html": "composer run test:coverage:html:unit && composer run test:coverage:html:integration",
+    "test:coverage:html:unit": "XDEBUG_MODE=coverage vendor/bin/pest tests/Unit --exclude-group=external-bin --coverage-html=coverage-report",
+    "check-cs": "vendor/bin/ecs check --ansi",
+    "fix-cs": "vendor/bin/ecs check --no-ansi --fix",
+    "phpstan": "phpstan --memory-limit=1G",
+    "phpmd": "@php -d memory_limit=1G -d error_reporting='E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED' vendor/bin/phpmd ./src text phpmd.xml",
+    "post-install-cmd": "@git-hooks-init",
+    "post-update-cmd": "@git-hooks-update",
+    "swiss-knife-check-conflicts": "vendor/bin/swiss-knife check-conflicts ./src --ansi",
+    "swiss-knife-check-commented-code": "vendor/bin/swiss-knife check-commented-code ./src --line-limit 4 --no-ansi",
+    "swiss-knife-find-multi-classes": "vendor/bin/swiss-knife find-multi-classes ./src --ansi",
+    "swiss-knife-finalize-classes": "vendor/bin/swiss-knife finalize-classes ./src --ansi",
+    "swiss-knife-privatize-constants": "vendor/bin/swiss-knife privatize-constants ./src --ansi"
+  },
+  "minimum-stability": "stable",
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/vardumper"
+    },
+    {
+      "type": "buymeacoffee",
+      "url": "https://www.buymeacoffee.com/vardumper"
+    },
+    {
+      "type": "custom",
+      "url": "https://www.patreon.com/vardumper"
+    }
+  ]
 }
