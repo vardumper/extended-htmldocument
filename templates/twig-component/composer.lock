@@ -2777,16 +2777,16 @@
         },
         {
             "name": "vardumper/extended-htmldocument",
-            "version": "0.2.88",
+            "version": "0.2.96",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vardumper/extended-htmldocument.git",
-                "reference": "a0698025664564d8e65e04984232266ded996af8"
+                "reference": "ab448d861c1eae0da01eecf688e2304562d1ca8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vardumper/extended-htmldocument/zipball/a0698025664564d8e65e04984232266ded996af8",
-                "reference": "a0698025664564d8e65e04984232266ded996af8",
+                "url": "https://api.github.com/repos/vardumper/extended-htmldocument/zipball/ab448d861c1eae0da01eecf688e2304562d1ca8f",
+                "reference": "ab448d861c1eae0da01eecf688e2304562d1ca8f",
                 "shasum": ""
             },
             "require": {
@@ -2881,7 +2881,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-05-08T21:32:58+00:00"
+            "time": "2026-05-09T11:31:31+00:00"
         }
     ],
     "packages-dev": [
