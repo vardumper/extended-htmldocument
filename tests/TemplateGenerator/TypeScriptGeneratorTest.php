@@ -35,12 +35,12 @@ test('can render elements', function () {
 
 test('can render documents', function () {
     expect($this->generator->canRenderDocuments())
-        ->toBeFalse();
+        ->toBeTrue();
 });
 
 test('is templated', function () {
     expect($this->generator->isTemplated())
-        ->toBeFalse();
+        ->toBeTrue();
 });
 
 test('render element', function () {
@@ -58,11 +58,43 @@ test('render element', function () {
 
 test('render document', function () {
     $document = HTMLDocumentDelegator::createEmpty();
-    $element = Body::create($document);
-    $document->appendChild($element);
+    $body = Body::create($document);
+    $anchor = Anchor::create($document);
+    $anchor->textContent = 'Hello';
+    $body->appendChild($anchor);
+    $document->appendChild($body);
     $result = $this->generator->render($document);
     expect($result)
-        ->toBeNull();
+        ->toBeString();
+    expect($result)
+        ->toContain("from '@typesafe-html5/typescript'");
+    expect($result)
+        ->toContain('export interface renderDocumentParams');
+    expect($result)
+        ->toContain('new A().getElement()');
+    expect($result)
+        ->toContain('node1.append(values.content1)');
+    expect($result)
+        ->toContain("content1: 'Hello'");
+    expect($result)
+        ->toContain('export function renderDocument(');
+});
+
+test('render document uses component handle names', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $body = Body::create($document);
+    $anchor = Anchor::create($document);
+    $anchor->textContent = 'Hello';
+    $body->appendChild($anchor);
+    $document->appendChild($body);
+
+    $this->generator->setComponentHandle('teaser-example');
+
+    $result = $this->generator->render($document);
+    expect($result)
+        ->toContain('export interface teaserExampleParams');
+    expect($result)
+        ->toContain('export function teaserExample(');
 });
 
 test('render invalid', function () {
