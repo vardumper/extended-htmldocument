@@ -1,0 +1,37 @@
+{#
+  This file is auto-generated.
+
+  Component: teaser-example
+  Strict mode: embed
+
+  @see src/TemplateGenerator/TwigGenerator.php
+#}
+{% embed 'block/div/div.twig' with { class: 'teaser' } %}
+  {% block content %}
+    {% embed 'block/hgroup/hgroup.twig' %}
+      {% block content %}
+        {% embed 'block/h3/h3.twig' %}
+          {% block content %}
+            {{ title }}
+          {% endblock %}
+        {% endembed %}
+        {% embed 'block/h4/h4.twig' %}
+          {% block content %}
+            {{ subtitle }}
+          {% endblock %}
+        {% endembed %}
+      {% endblock %}
+    {% endembed %}
+    {% embed 'block/p/p.twig' %}
+      {% block content %}
+        {{ description }}
+      {% endblock %}
+    {% endembed %}
+    {% include 'inline/img/img.twig' with { src: image_url, alt: image_alt } %}
+    {% embed 'inline/a/a.twig' with { role: 'button', href: url } %}
+      {% block content %}
+        {{ 'Read more'|t }}
+      {% endblock %}
+    {% endembed %}
+  {% endblock %}
+{% endembed %}

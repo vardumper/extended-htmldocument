@@ -9,7 +9,10 @@ declare(strict_types=1);
 
 namespace Html\Command;
 
+use DOMComment;
 use DOMDocument;
+use DOMElement;
+use DOMText;
 use Edent\PrettyPrintHtml\PrettyPrintHtml;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Helper\EventLoopHelper;
@@ -70,9 +73,11 @@ class WatchCommand extends Command
         string $dest,
         InputInterface $input,
         OutputInterface $output,
-        bool $overwriteExisting = false
+        bool $overwriteExisting = false,
+        bool|string $strict = false
     ): void {
         $io = new SymfonyStyle($input, $output);
+        $strictMode = $this->resolveStrictMode($strict);
 
         if (! \str_contains($generator, ',')) {
             $generators = [$generator];
@@ -126,8 +131,8 @@ class WatchCommand extends Command
 
         $io->info(sprintf('Starting to watch: %s', $source));
 
-        $this->loop->repeat(self::INTERVAL, function () use ($generators, $sourceFiles, $dest, $io): void {
-            $this->processFiles($generators, $sourceFiles, $dest, $io);
+        $this->loop->repeat(self::INTERVAL, function () use ($generators, $sourceFiles, $dest, $io, $strictMode): void {
+            $this->processFiles($generators, $sourceFiles, $dest, $io, $strictMode);
         });
 
         $this->loop->onSignal(\SIGINT, function (): void {
@@ -141,8 +146,13 @@ class WatchCommand extends Command
     /**
      * on first iteration, all source files will be processed (since they will be older than our interval
      */
-    private function processFiles(array $generators, array $sourceFiles, string $dest, SymfonyStyle $io): void
-    {
+    private function processFiles(
+        array $generators,
+        array $sourceFiles,
+        string $dest,
+        SymfonyStyle $io,
+        string $strictMode
+    ): void {
         foreach ($sourceFiles as $sourceFile) {
             $lastMod = \filemtime($sourceFile) ?: 0;
 
@@ -152,7 +162,7 @@ class WatchCommand extends Command
                 $lastMod > $this->lastModifiedTimes[$sourceFile]
             ) {
                 $io->info(sprintf('Processing file: %s', $sourceFile));
-                $this->processSingleFile($generators, $sourceFile, $dest, $io);
+                $this->processSingleFile($generators, $sourceFile, $dest, $io, $strictMode);
                 $this->lastModifiedTimes[$sourceFile] = $lastMod;
             }
         }
@@ -163,7 +173,8 @@ class WatchCommand extends Command
         array $generators,
         string $sourceFile,
         string $dest,
-        SymfonyStyle $io
+        SymfonyStyle $io,
+        string $strictMode
     ): void {
         try {
             $data = $this->yaml->parseFile($sourceFile);
@@ -180,6 +191,15 @@ class WatchCommand extends Command
                     $templateGenerator->setComponentHandle($componentHandle);
                 }
 
+                if (method_exists($templateGenerator, 'setDocumentRenderMode')) {
+                    $templateGenerator->setDocumentRenderMode($strictMode);
+                }
+
+                if (! $templateGenerator->canRenderDocuments()) {
+                    $io->warning(sprintf('Generator "%s" does not support rendering documents. Skipping.', $name));
+                    continue;
+                }
+
                 $document = HTMLDocumentDelegator::createEmpty();
                 $document->formatOutput = true;
                 $document->setRenderer($templateGenerator);
@@ -187,8 +207,9 @@ class WatchCommand extends Command
                 $destinationPath = sprintf(
                     '%s/%s',
                     $dest,
-                    str_replace(['{component}', '{extension}'], [
+                    str_replace(['{component}', '{Component}', '{extension}'], [
                         $componentHandle,
+                        ucfirst((string) $componentHandle),
                         $templateGenerator->getExtension(),
                     ], $templateGenerator->getNamePattern())
                 );
@@ -197,7 +218,32 @@ class WatchCommand extends Command
                 // Only pretty-print if not templated (HTML output)
                 if ($document->formatOutput && ! $templateGenerator->isTemplated()) {
                     $formatter = new PrettyPrintHtml();
-                    $output = $formatter->serializeHtml($document->delegated, rawAttributes: false);
+                    $html = '';
+
+                    if ($document->delegated->documentElement !== null) {
+                        $body = $document->delegated->getElementsByTagName('body')
+                            ->item(0);
+                        $container = $body ?? $document->delegated->documentElement;
+
+                        foreach ($container->childNodes as $child) {
+                            if ($child instanceof DOMElement) {
+                                if ($body === null && strtolower($child->tagName) === 'head') {
+                                    continue;
+                                }
+
+                                $html .= $formatter->serializeHtml($child, 0, false, true, false);
+                                continue;
+                            }
+
+                            if ($child instanceof DOMText || $child instanceof DOMComment) {
+                                $html .= $formatter->serializeHtml($child, 0, false, true, false);
+                            }
+                        }
+                    } else {
+                        $html = $formatter->serializeHtml($document->delegated, rawAttributes: false);
+                    }
+
+                    $output = $html;
                 }
 
                 file_put_contents($destinationPath, $output);
@@ -270,5 +316,23 @@ class WatchCommand extends Command
         }
 
         return 'unknown';
+    }
+
+    private function resolveStrictMode(bool|string $strict): string
+    {
+        if ($strict === false || $strict === '' || $strict === '0' || $strict === 'false') {
+            return 'raw';
+        }
+
+        if ($strict === true || $strict === '1' || $strict === 'true') {
+            return 'embed';
+        }
+
+        $mode = strtolower(trim((string) $strict));
+        if (in_array($mode, ['include', 'embed', 'use'], true)) {
+            return $mode;
+        }
+
+        return 'embed';
     }
 }

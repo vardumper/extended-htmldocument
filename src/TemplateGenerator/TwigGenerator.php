@@ -3,12 +3,11 @@
 namespace Html\TemplateGenerator;
 
 use BackedEnum;
-use Exception;
-use Html\Delegator\HTMLElementDelegator;
 use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
+use Html\Trait\ClassResolverTrait;
 use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionUnionType;
@@ -46,6 +45,8 @@ use UnitEnum;
 #[TemplateGenerator('twig')]
 class TwigGenerator implements TemplateGeneratorInterface
 {
+    use ClassResolverTrait;
+
     private const TWIG_RESERVED_WORDS = [
         'is',
         'in',
@@ -86,6 +87,8 @@ class TwigGenerator implements TemplateGeneratorInterface
 
     private string $componentHandle = 'component';
 
+    private string $documentRenderMode = 'raw';
+
     public function getExtension(): string
     {
         return 'twig';
@@ -103,16 +106,20 @@ class TwigGenerator implements TemplateGeneratorInterface
 
     public function canRenderDocuments(): bool
     {
-        return false;
+        return true;
     }
 
     public function isTemplated(): bool
     {
-        return false;
+        return true;
     }
 
     public function render($elementOrDocument): ?string
     {
+        if ($elementOrDocument instanceof HTMLDocumentDelegatorInterface) {
+            return $this->renderDocument($elementOrDocument);
+        }
+
         if ($elementOrDocument instanceof HTMLElementDelegatorInterface && $this->canRenderElements()) {
             return $this->renderElement($elementOrDocument);
         }
@@ -171,6 +178,13 @@ class TwigGenerator implements TemplateGeneratorInterface
     public function getComponentHandle(): string
     {
         return $this->componentHandle;
+    }
+
+    public function setDocumentRenderMode(string $mode): void
+    {
+        $normalized = strtolower(trim($mode));
+        $supported = ['raw', 'include', 'embed', 'use'];
+        $this->documentRenderMode = in_array($normalized, $supported, true) ? $normalized : 'raw';
     }
 
     public function renderElement(HTMLElementDelegatorInterface $element): string
@@ -327,22 +341,288 @@ class TwigGenerator implements TemplateGeneratorInterface
 
     public function renderDocument(HTMLDocumentDelegatorInterface $document): string
     {
-        $head = $this->renderHead($document); /* Render the document head and body */
-        $bodyContent = $this->renderBody($document) ?? ''; /* Compose final HTML */
-        $finalHtml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
-        $finalHtml .= "<!DOCTYPE html>\n";
-        $finalHtml .= "<html lang=\"en\">\n";
-
-        if ($head !== null) {
-            $finalHtml .= $head . "\n";
+        if ($this->documentRenderMode === 'raw') {
+            return $this->renderDocumentRaw($document);
         }
 
-        $finalHtml .= "<body>\n";
-        $finalHtml .= $bodyContent;
-        $finalHtml .= "\n</body>\n";
-        $finalHtml .= "</html>\n";
+        return $this->renderDocumentFromTemplates($document);
+    }
 
-        return $finalHtml;
+    private function renderDocumentRaw(HTMLDocumentDelegatorInterface $document): string
+    {
+        $handle = $this->componentHandle;
+        $twig = "{#\n";
+        $twig .= "  This file is auto-generated.\n\n";
+        $twig .= "  Component: {$handle}\n\n";
+        $twig .= "  @see src/TemplateGenerator/TwigGenerator.php\n";
+        $twig .= "#}\n";
+
+        // Prefer body children; fall back to html element children (skip the html/head wrappers)
+        $dom = $document->delegated;
+        if ($dom->body !== null && $dom->body->childNodes->length > 0) {
+            $twig .= $this->serializeNodeChildrenRaw($dom->body, 0);
+        } elseif ($dom->documentElement !== null) {
+            $twig .= $this->serializeNodeChildrenRaw($dom->documentElement, 0);
+        } else {
+            $twig .= $this->serializeNodeChildrenRaw($dom, 0);
+        }
+
+        return $twig;
+    }
+
+    private function serializeNodeChildrenRaw(\DOM\Node $node, int $depth): string
+    {
+        $output = '';
+        foreach ($node->childNodes as $child) {
+            $output .= $this->serializeNodeRaw($child, $depth);
+        }
+        return $output;
+    }
+
+    private function serializeNodeRaw(\DOM\Node $node, int $depth): string
+    {
+        $indent = str_repeat('  ', $depth);
+
+        if ($node instanceof \DOM\Element) {
+            $tag = strtolower($node->tagName);
+
+            // Skip html/head wrappers — recurse directly into their children
+            if ($tag === 'html' || $tag === 'head') {
+                return $this->serializeNodeChildrenRaw($node, $depth);
+            }
+
+            // For body, skip the wrapper but preserve indentation
+            if ($tag === 'body') {
+                return $this->serializeNodeChildrenRaw($node, $depth);
+            }
+
+            $attrs = '';
+            foreach ($node->attributes as $attr) {
+                $attrs .= ' ' . $attr->name . '="' . $attr->value . '"';
+            }
+
+            $voidElements = [
+                'area',
+                'base',
+                'br',
+                'col',
+                'embed',
+                'hr',
+                'img',
+                'input',
+                'link',
+                'meta',
+                'param',
+                'source',
+                'track',
+                'wbr',
+            ];
+            if (in_array($tag, $voidElements, true)) {
+                return $indent . "<{$tag}{$attrs}>\n";
+            }
+
+            // Single inline text child — render on one line
+            if ($node->childNodes->length === 1 && $node->firstChild instanceof \DOM\Text) {
+                $text = $node->firstChild->nodeValue ?? '';
+                return $indent . "<{$tag}{$attrs}>{$text}</{$tag}>\n";
+            }
+
+            $inner = $this->serializeNodeChildrenRaw($node, $depth + 1);
+
+            if ($inner === '') {
+                return $indent . "<{$tag}{$attrs}></{$tag}>\n";
+            }
+
+            return $indent . "<{$tag}{$attrs}>\n" . $inner . $indent . "</{$tag}>\n";
+        }
+
+        if ($node instanceof \DOM\Text) {
+            $text = trim($node->nodeValue ?? '');
+            if ($text === '') {
+                return '';
+            }
+            return $indent . $text . "\n";
+        }
+
+        return '';
+    }
+
+    private function renderDocumentFromTemplates(HTMLDocumentDelegatorInterface $document): string
+    {
+        $handle = $this->componentHandle;
+        $mode = $this->documentRenderMode;
+        $twig = "{#\n";
+        $twig .= "  This file is auto-generated.\n\n";
+        $twig .= "  Component: {$handle}\n";
+        $twig .= "  Strict mode: {$mode}\n\n";
+        $twig .= "  @see src/TemplateGenerator/TwigGenerator.php\n";
+        $twig .= "#}\n";
+
+        $root = $document->delegated->body ?? $document->delegated;
+        foreach ($root->childNodes as $child) {
+            $twig .= $this->renderNodeWithTemplates($child, 0, $mode);
+        }
+
+        return $twig;
+    }
+
+    private function renderNodeWithTemplates(\DOM\Node $node, int $depth, string $mode): string
+    {
+        $indent = str_repeat('  ', $depth);
+
+        if ($node instanceof \DOM\Text) {
+            $text = trim($node->nodeValue ?? '');
+            if ($text === '') {
+                return '';
+            }
+
+            $expression = $this->extractTwigExpression($text);
+            if ($expression !== null) {
+                return $indent . '{{ ' . $expression . " }}\n";
+            }
+
+            return $indent . $text . "\n";
+        }
+
+        if (! ($node instanceof \DOM\Element)) {
+            return '';
+        }
+
+        $tag = strtolower($node->tagName);
+        if ($tag === 'html' || $tag === 'head' || $tag === 'body') {
+            $output = '';
+            foreach ($node->childNodes as $child) {
+                $output .= $this->renderNodeWithTemplates($child, $depth, $mode);
+            }
+            return $output;
+        }
+
+        $templatePath = $this->resolveTwigTemplatePath($tag);
+        if ($templatePath === null) {
+            // Fallback to raw rendering when no matching generated template exists.
+            return $this->serializeNodeRaw($node, $depth);
+        }
+
+        $params = $this->buildTwigTemplateParams($node);
+        $paramString = $this->buildTwigMapString($params);
+        $children = $this->renderChildrenWithTemplates($node, $depth + 2, $mode);
+        $hasChildren = trim($children) !== '';
+
+        if ($hasChildren && array_key_exists('content', $params)) {
+            unset($params['content']);
+            $paramString = $this->buildTwigMapString($params);
+        }
+
+        if ($this->isVoidElementTag($tag)) {
+            return $indent . "{% include '{$templatePath}'" . ($paramString === '{}' ? '' : " with {$paramString}") . " %}\n";
+        }
+
+        if ($mode === 'include' && ! $hasChildren) {
+            return $indent . "{% include '{$templatePath}'" . ($paramString === '{}' ? '' : " with {$paramString}") . " %}\n";
+        }
+
+        $effectiveMode = $mode === 'use' ? 'embed' : $mode;
+        if ($effectiveMode === 'embed' || ($mode === 'include' && $hasChildren)) {
+            $output = $indent . "{% embed '{$templatePath}'" . ($paramString === '{}' ? '' : " with {$paramString}") . " %}\n";
+            if ($hasChildren) {
+                $output .= $indent . "  {% block content %}\n";
+                $output .= $children;
+                $output .= $indent . "  {% endblock %}\n";
+            }
+            $output .= $indent . "{% endembed %}\n";
+            return $output;
+        }
+
+        return $indent . "{% include '{$templatePath}'" . ($paramString === '{}' ? '' : " with {$paramString}") . " %}\n";
+    }
+
+    private function renderChildrenWithTemplates(\DOM\Element $element, int $depth, string $mode): string
+    {
+        $output = '';
+        foreach ($element->childNodes as $child) {
+            $output .= $this->renderNodeWithTemplates($child, $depth, $mode);
+        }
+        return $output;
+    }
+
+    private function buildTwigTemplateParams(\DOM\Element $element): array
+    {
+        $params = [];
+        foreach ($element->attributes as $attribute) {
+            $params[$attribute->name] = $this->convertAttributeValueToTwigLiteral($attribute->value);
+        }
+
+        if ($element->childNodes->length === 1 && $element->firstChild instanceof \DOM\Text) {
+            $text = trim($element->firstChild->nodeValue ?? '');
+            if ($text !== '') {
+                $expression = $this->extractTwigExpression($text);
+                $params['content'] = $expression !== null ? [
+                    '__twig_expr' => $expression,
+                ] : $text;
+            }
+        }
+
+        return $params;
+    }
+
+    private function convertAttributeValueToTwigLiteral(string $value): mixed
+    {
+        $expression = $this->extractTwigExpression($value);
+        if ($expression !== null) {
+            return [
+                '__twig_expr' => $expression,
+            ];
+        }
+
+        return $value;
+    }
+
+    private function buildTwigMapString(array $params): string
+    {
+        if ($params === []) {
+            return '{}';
+        }
+
+        $parts = [];
+        foreach ($params as $key => $value) {
+            $twigKey = preg_match('/^[A-Za-z_][A-Za-z0-9_]*$/', $key) ? $key : "'{$key}'";
+            if (is_array($value) && array_key_exists('__twig_expr', $value)) {
+                $twigValue = (string) $value['__twig_expr'];
+            } else {
+                $twigValue = var_export($value, true);
+            }
+            $parts[] = "{$twigKey}: {$twigValue}";
+        }
+
+        return '{ ' . implode(', ', $parts) . ' }';
+    }
+
+    private function extractTwigExpression(string $value): ?string
+    {
+        if (preg_match('/^\s*\{\{\s*(.+?)\s*\}\}\s*$/s', $value, $matches) === 1) {
+            return $matches[1];
+        }
+
+        return null;
+    }
+
+    private function resolveTwigTemplatePath(string $tagName): ?string
+    {
+        $className = $this->getElementByQualifiedName($tagName);
+        if ($className === null) {
+            return null;
+        }
+
+        $level = $this->determineLevel($className);
+        return $level . '/' . $tagName . '/' . $tagName . '.twig';
+    }
+
+    private function isVoidElementTag(string $tagName): bool
+    {
+        return in_array($tagName, [
+            'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link',
+            'meta', 'param', 'source', 'track', 'wbr',
+        ], true);
     }
 
     private function camelToKebab(string $string): string
@@ -587,75 +867,5 @@ class TwigGenerator implements TemplateGeneratorInterface
         }
 
         return $childrenTwigCode;
-    }
-
-    /**
-     * Render the HTML head section using Twig
-     */
-    private function renderHead(HTMLDocumentDelegatorInterface $document): ?string
-    {
-        $metadata = $this->getDocumentMetadata(
-            $document
-        ); /* Get document metadata (title, meta tags) from somewhere - needs implementation */
-
-        if (empty($metadata)) {
-            return null; // Or return a default head if preferred
-        }
-
-        return $this->renderTwigTemplate('head', [
-            'metadata' => $metadata,
-        ]); /* Render the head using a Twig template */
-    }
-
-    /**
-     * Render the body content of the document
-     */
-    private function renderBody(HTMLDocumentDelegatorInterface $document): ?string
-    {
-        $bodyContent = '';
-        if ($document->body !== null) {
-            $bodyContent = $this->renderElement(new HTMLElementDelegator($document->body, $this));
-        }
-
-        return $bodyContent === '' ? null : $bodyContent;
-    }
-
-    /**
-     * Get document metadata (title, meta tags, etc.) - needs implementation
-     */
-    private function getDocumentMetadata(HTMLDocumentDelegatorInterface $document): array
-    {
-        return []; /* This is a placeholder - implement logic to extract metadata from the document */
-    }
-
-    /**
-     * Render a Twig template with provided variables
-     */
-    private function renderTwigTemplate(string $templateName, array $context = []): ?string
-    {
-        $template = $this->loadTwigTemplate(
-            $templateName
-        ); /* Load the template (implementation needed - where are templates stored?) */
-
-        if ($template === null) {
-            return null; // Or return a default template if preferred
-        }
-
-        try {
-            return $template->render($context); /* Render the template with context variables */
-        } catch (Exception $e) {
-            error_log('Twig rendering error: ' . $e->getMessage());
-            return null; // Or return an error message
-        }
-    }
-
-    /**
-     * Load a Twig template - implementation needed
-     *
-     * @phpstan-ignore-next-line - placeholder implementation returns null until real loader is implemented
-     */
-    private function loadTwigTemplate(string $templateName): ?\Twig\TemplateWrapper
-    {
-        return null; /* This is a placeholder - implement logic to load the Twig template */
     }
 }

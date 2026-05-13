@@ -1,4 +1,4 @@
-teaser-example-two:
+teaser-example:
   label: Teaser Component
   description: This is an example component.
   structure:
@@ -8,15 +8,15 @@ teaser-example-two:
         - hgroup:
             children:
               - h3:
-                  text: "{{ entry.title }}"
+                  text: "{{ title }}"
               - h4:
-                  text: "{{ entry.subtitle }}"
+                  text: "{{ subtitle }}"
         - p:
-            text: "{{ entry.description }}"
+            text: "{{ description }}"
         - img:
-            src: "{{ entry.image.url }}"
-            alt: "{{ entry.image.alt }}"
+            src: "{{ image_url }}"
+            alt: "{{ image_alt }}"
         - a:
             role: button
             text: "{{ 'Read more'|t }}"
-            href: "{{ entry.url }}"
+            href: "{{ url }}"

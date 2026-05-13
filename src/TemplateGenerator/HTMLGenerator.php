@@ -2,6 +2,7 @@
 
 namespace Html\TemplateGenerator;
 
+use DOMElement;
 use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
@@ -58,6 +59,24 @@ class HTMLGenerator implements TemplateGeneratorInterface
     {
         /** @var \DOM\HTMLDocument $doc */
         $doc = $document->delegated;
-        return (string) $doc->saveHTML($document->delegated);
+
+        if ($doc->documentElement === null) {
+            return '';
+        }
+
+        $body = $doc->getElementsByTagName('body')
+            ->item(0);
+        $container = $body ?? $doc->documentElement;
+        $html = '';
+
+        foreach ($container->childNodes as $child) {
+            if ($body === null && $child instanceof DOMElement && strtolower($child->tagName) === 'head') {
+                continue;
+            }
+
+            $html .= $doc->saveHTML($child);
+        }
+
+        return $html;
     }
 }

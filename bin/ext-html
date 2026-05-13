@@ -50,11 +50,11 @@ $app->command('merge:specs [import] [dest]', function ($import, $dest, InputInte
 $sourceDefault = realpath(__DIR__ . '/../examples/template-generator/source');
 $destDefault = realpath(__DIR__ . '/../examples/template-generator/dest');
 $app
-    ->command('watch [generator] [source] [dest] [--overwrite-existing=]', function ($generator, $source, $dest, InputInterface $input, OutputInterface $output, $overwriteExisting = false) {
-        (new WatchCommand(new ComponentBuilder()))($generator, $source, $dest, $overwriteExisting, $input, $output);
+    ->command('watch [generator] [source] [dest] [--overwrite-existing=] [--strict=]', function ($generator, $source, $dest, InputInterface $input, OutputInterface $output, $overwriteExisting = false, $strict = false) {
+        (new WatchCommand(new ComponentBuilder()))($generator, $source, $dest, $input, $output, (bool) $overwriteExisting, $strict);
     })
     ->descriptions('Observes a directory or file for changes, and generates templates for HTML Elements', ['generator' => 'name of the generator', 'source' => 'source path', 'dest' => 'destination path'])
-    ->defaults(['generator' => 'html', 'source' => $sourceDefault, 'dest' => $destDefault, 'overwrite-existing' => false]);
+    ->defaults(['generator' => 'html', 'source' => $sourceDefault, 'dest' => $destDefault, 'overwrite-existing' => false, 'strict' => false]);
 
 // $app->setDefaultCommand('make:all');
 $app->run();

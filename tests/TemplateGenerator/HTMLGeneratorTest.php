@@ -2,6 +2,7 @@
 
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Element\Block\Body;
+use Html\Element\Block\Division;
 use Html\Element\Inline\Anchor;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\TemplateGenerator\HTMLGenerator;
@@ -53,10 +54,23 @@ test('render element', function () {
 
 test('render document', function () {
     $document = HTMLDocumentDelegator::createEmpty();
-    $element = Body::create($document);
-    $document->appendChild($element);
+    $body = Body::create($document);
+    $document->appendChild($body);
+    $element = Division::create($document);
+    $element->setAttribute('id', 'component');
+    $body->appendChild($element);
+
     expect($this->generator->render($document))
-        ->toBe('<html><body></body></html>');
+        ->toBe('<div id="component"></div>');
+});
+
+test('render document with html wrapper only', function () {
+    $document = HTMLDocumentDelegator::createFromString(
+        '<!doctype html><html><head></head><body><div id="component"></div></body></html>'
+    );
+
+    expect($this->generator->render($document))
+        ->toBe('<div id="component"></div>');
 });
 
 test('render invalid', function () {
