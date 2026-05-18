@@ -2,7 +2,11 @@
 
 namespace Html\TemplateGenerator;
 
-use DOMElement;
+use Dom\Comment;
+use Dom\Element;
+use Dom\Text;
+use Edent\PrettyPrintHtml\PrettyPrintHtml;
+use Html\Delegator\HTMLDocumentDelegator;
 use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
@@ -70,13 +74,44 @@ class HTMLGenerator implements TemplateGeneratorInterface
         $html = '';
 
         foreach ($container->childNodes as $child) {
-            if ($body === null && $child instanceof DOMElement && strtolower($child->tagName) === 'head') {
+            if ($body === null && $child instanceof Element && strtolower($child->tagName) === 'head') {
                 continue;
             }
 
             $html .= $doc->saveHTML($child);
         }
 
-        return $html;
+        return $this->formatHtml($html);
+    }
+
+    private function formatHtml(string $html): string
+    {
+        if ($html === '') {
+            return '';
+        }
+
+        $formatted = $html;
+        $document = HTMLDocumentDelegator::createFromString(
+            '<!doctype html><html><body><div id="__html_generator_fragment__">' . $html . '</div></body></html>'
+        );
+        $wrapper = $document->delegated->getElementById('__html_generator_fragment__');
+
+        if ($wrapper !== null) {
+            $formatter = new PrettyPrintHtml();
+            $fragments = [];
+            foreach ($wrapper->childNodes as $child) {
+                // Only serialize nodes that PrettyPrintHtml accepts
+                if ($child instanceof Element || $child instanceof Text || $child instanceof Comment) {
+                    $fragments[] = rtrim($formatter->serializeHtml($child, 0, false, true, false), "\r\n");
+                }
+            }
+
+            $formatted = implode(
+                "\n",
+                array_filter($fragments, static fn (string $fragment): bool => $fragment !== '')
+            );
+        }
+
+        return $formatted;
     }
 }

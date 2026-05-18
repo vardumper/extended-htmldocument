@@ -9,15 +9,16 @@ declare(strict_types=1);
 
 namespace Html\Command;
 
-use DOMComment;
+use Dom\Comment;
+use Dom\Element;
+use Dom\Text;
 use DOMDocument;
-use DOMElement;
-use DOMText;
 use Edent\PrettyPrintHtml\PrettyPrintHtml;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Helper\EventLoopHelper;
 use Html\Helper\YamlHelper;
 use Html\Interface\ComponentBuilderInterface;
+use Html\TemplateGenerator\HTMLGenerator;
 use Html\Trait\ClassResolverTrait;
 use Html\Trait\GeneratorResolverTrait;
 use Symfony\Component\Console\Command\Command;
@@ -217,33 +218,52 @@ class WatchCommand extends Command
                 $output = (string) $document;
                 // Only pretty-print if not templated (HTML output)
                 if ($document->formatOutput && ! $templateGenerator->isTemplated()) {
-                    $formatter = new PrettyPrintHtml();
-                    $html = '';
+                    if ($templateGenerator instanceof HTMLGenerator) {
+                        $rendered = $templateGenerator->render($document);
+                        if ($rendered !== null) {
+                            $output = $rendered;
+                        }
+                    } else {
+                        $formatter = new PrettyPrintHtml();
+                        $htmlFragments = [];
 
-                    if ($document->delegated->documentElement !== null) {
-                        $body = $document->delegated->getElementsByTagName('body')
-                            ->item(0);
-                        $container = $body ?? $document->delegated->documentElement;
+                        if ($document->delegated->documentElement !== null) {
+                            $body = $document->delegated->getElementsByTagName('body')
+                                ->item(0);
+                            $container = $body ?? $document->delegated->documentElement;
 
-                        foreach ($container->childNodes as $child) {
-                            if ($child instanceof DOMElement) {
-                                if ($body === null && strtolower($child->tagName) === 'head') {
+                            foreach ($container->childNodes as $child) {
+                                if ($child instanceof Element) {
+                                    if ($body === null && strtolower($child->tagName) === 'head') {
+                                        continue;
+                                    }
+
+                                    $htmlFragments[] = rtrim(
+                                        $formatter->serializeHtml($child, 0, false, true, false),
+                                        "\r\n"
+                                    );
                                     continue;
                                 }
 
-                                $html .= $formatter->serializeHtml($child, 0, false, true, false);
-                                continue;
+                                if ($child instanceof Text || $child instanceof Comment) {
+                                    $htmlFragments[] = rtrim(
+                                        $formatter->serializeHtml($child, 0, false, true, false),
+                                        "\r\n"
+                                    );
+                                }
                             }
-
-                            if ($child instanceof DOMText || $child instanceof DOMComment) {
-                                $html .= $formatter->serializeHtml($child, 0, false, true, false);
-                            }
+                        } else {
+                            $htmlFragments[] = rtrim(
+                                $formatter->serializeHtml($document->delegated, rawAttributes: false),
+                                "\r\n"
+                            );
                         }
-                    } else {
-                        $html = $formatter->serializeHtml($document->delegated, rawAttributes: false);
-                    }
 
-                    $output = $html;
+                        $output = implode(
+                            "\n",
+                            array_filter($htmlFragments, static fn (string $fragment): bool => $fragment !== '')
+                        );
+                    }
                 }
 
                 file_put_contents($destinationPath, $output);

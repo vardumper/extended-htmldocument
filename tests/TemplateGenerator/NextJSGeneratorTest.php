@@ -39,12 +39,12 @@ test('can render elements', function () {
 
 test('can render documents', function () {
     expect($this->generator->canRenderDocuments())
-        ->toBeFalse();
+        ->toBeTrue();
 });
 
 test('is templated', function () {
     expect($this->generator->isTemplated())
-        ->toBeFalse();
+        ->toBeTrue();
 });
 
 test('render element with complex attributes', function () {
@@ -70,11 +70,44 @@ test('render element with complex attributes', function () {
 
 test('render document', function () {
     $document = HTMLDocumentDelegator::createEmpty();
-    $element = Body::create($document);
-    $document->appendChild($element);
+    $body = Body::create($document);
+    $anchor = Anchor::create($document);
+    $anchor->textContent = 'Hello';
+    $body->appendChild($anchor);
+    $document->appendChild($body);
+    $result = $this->generator->render($document);
+
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain("from '@typesafe-html5/react'");
+    expect($result)
+        ->toContain('export interface RenderDocumentParams');
+    expect($result)
+        ->toContain('export const RenderDocument: React.FC<RenderDocumentParams> = (params) => {');
+    expect($result)
+        ->toContain('<A>');
+    expect($result)
+        ->toContain('{values.content1}');
+    expect($result)
+        ->toContain("content1: 'Hello'");
+});
+
+test('render document uses component handle names', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $body = Body::create($document);
+    $anchor = Anchor::create($document);
+    $anchor->textContent = 'Hello';
+    $body->appendChild($anchor);
+    $document->appendChild($body);
+
+    $this->generator->setComponentHandle('teaser-example');
+
     $result = $this->generator->render($document);
     expect($result)
-        ->toBeNull();
+        ->toContain('export interface TeaserExampleParams')
+        ->toContain('const values = { ...defaults, ...params };')
+        ->toContain('export const TeaserExample: React.FC<TeaserExampleParams> = (params) => {');
 });
 
 test('render invalid', function () {

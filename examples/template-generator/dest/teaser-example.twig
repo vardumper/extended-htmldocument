@@ -12,25 +12,25 @@
       {% block content %}
         {% embed 'block/h3/h3.twig' %}
           {% block content %}
-            {{ title }}
+            Headline
           {% endblock %}
         {% endembed %}
         {% embed 'block/h4/h4.twig' %}
           {% block content %}
-            {{ subtitle }}
+            Subheadline
           {% endblock %}
         {% endembed %}
       {% endblock %}
     {% endembed %}
     {% embed 'block/p/p.twig' %}
       {% block content %}
-        {{ description }}
+        Description
       {% endblock %}
     {% endembed %}
-    {% include 'inline/img/img.twig' with { src: image_url, alt: image_alt } %}
-    {% embed 'inline/a/a.twig' with { role: 'button', href: url } %}
+    {% include 'inline/img/img.twig' with { src: 'https://picsum.photos/340/140', alt: 'Image description', width: '340', height: '140' } %}
+    {% embed 'inline/a/a.twig' with { role: 'button', href: '#' } %}
       {% block content %}
-        {{ 'Read more'|t }}
+        Read more
       {% endblock %}
     {% endembed %}
   {% endblock %}
