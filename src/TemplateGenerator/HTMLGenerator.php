@@ -68,20 +68,7 @@ class HTMLGenerator implements TemplateGeneratorInterface
             return '';
         }
 
-        $body = $doc->getElementsByTagName('body')
-            ->item(0);
-        $container = $body ?? $doc->documentElement;
-        $html = '';
-
-        foreach ($container->childNodes as $child) {
-            if ($body === null && $child instanceof Element && strtolower($child->tagName) === 'head') {
-                continue;
-            }
-
-            $html .= $doc->saveHTML($child);
-        }
-
-        return $this->formatHtml($html);
+        return (string) $doc->saveHTML();
     }
 
     private function formatHtml(string $html): string

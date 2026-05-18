@@ -41,12 +41,12 @@ test('can render elements', function () {
 
 test('can render documents', function () {
     expect($this->generator->canRenderDocuments())
-        ->toBeFalse();
+    ->toBeTrue();
 });
 
 test('is templated', function () {
     expect($this->generator->isTemplated())
-        ->toBeFalse();
+    ->toBeTrue();
 });
 
 test('render element', function () {
@@ -70,7 +70,9 @@ test('render document', function () {
     $document->appendChild($element);
     $result = $this->generator->render($document);
     expect($result)
-        ->toBeNull();
+        ->toBeString();
+    expect($result)
+        ->toContain('Strict mode: component');
 });
 
 test('render invalid', function () {

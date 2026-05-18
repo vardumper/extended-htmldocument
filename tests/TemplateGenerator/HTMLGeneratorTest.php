@@ -61,7 +61,7 @@ test('render document', function () {
     $body->appendChild($element);
 
     expect($this->generator->render($document))
-        ->toBe('<div id="component"></div>');
+        ->toBe('<html><body><div id="component"></div></body></html>');
 });
 
 test('render document with html wrapper only', function () {
@@ -70,7 +70,7 @@ test('render document with html wrapper only', function () {
     );
 
     expect($this->generator->render($document))
-        ->toBe('<div id="component"></div>');
+        ->toBe('<!DOCTYPE html><html><head></head><body><div id="component"></div></body></html>');
 });
 
 test('render invalid', function () {
