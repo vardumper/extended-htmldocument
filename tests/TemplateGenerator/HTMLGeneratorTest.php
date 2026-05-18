@@ -54,6 +54,29 @@ test('render element', function () {
 
 test('render document', function () {
     $document = HTMLDocumentDelegator::createEmpty();
+    $document->formatOutput = true;
+    $body = Body::create($document);
+    $document->appendChild($body);
+    $element = Division::create($document);
+    $element->setAttribute('id', 'component');
+    $body->appendChild($element);
+
+    expect($this->generator->render($document))
+        ->toBe('<div id="component"></div>');
+});
+
+test('render document with html wrapper only', function () {
+    $document = HTMLDocumentDelegator::createFromString(
+        '<!doctype html><html><head></head><body><div id="component"></div></body></html>'
+    );
+    $document->formatOutput = true;
+
+    expect($this->generator->render($document))
+        ->toBe('<div id="component"></div>');
+});
+
+test('render document defaults to full document when formatOutput is not enabled', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
     $body = Body::create($document);
     $document->appendChild($body);
     $element = Division::create($document);
@@ -62,15 +85,6 @@ test('render document', function () {
 
     expect($this->generator->render($document))
         ->toBe('<html><body><div id="component"></div></body></html>');
-});
-
-test('render document with html wrapper only', function () {
-    $document = HTMLDocumentDelegator::createFromString(
-        '<!doctype html><html><head></head><body><div id="component"></div></body></html>'
-    );
-
-    expect($this->generator->render($document))
-        ->toBe('<!DOCTYPE html><html><head></head><body><div id="component"></div></body></html>');
 });
 
 test('render invalid', function () {

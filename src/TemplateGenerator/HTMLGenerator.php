@@ -68,6 +68,24 @@ class HTMLGenerator implements TemplateGeneratorInterface
             return '';
         }
 
+        // Watch mode enables formatOutput and expects body fragments without html/head wrappers.
+        if ($document instanceof HTMLDocumentDelegator && isset($document->formatOutput) && $document->formatOutput) {
+            $body = $doc->getElementsByTagName('body')
+                ->item(0);
+            $container = $body ?? $doc->documentElement;
+            $html = '';
+
+            foreach ($container->childNodes as $child) {
+                if ($body === null && $child instanceof Element && strtolower($child->tagName) === 'head') {
+                    continue;
+                }
+
+                $html .= $doc->saveHTML($child);
+            }
+
+            return $this->formatHtml($html);
+        }
+
         return (string) $doc->saveHTML();
     }
 
