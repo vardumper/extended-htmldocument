@@ -31,25 +31,6 @@ public function boot(): void
 }
 ```
 
-### Via the extended-htmldocument monorepo
-
-```bash
-composer require vardumper/extended-htmldocument
-```
-
-Then register the path:
-
-```php
-use Illuminate\Support\Facades\Blade;
-
-public function boot(): void
-{
-    Blade::componentPath(
-        base_path('vendor/vardumper/extended-htmldocument/templates/blade')
-    );
-}
-```
-
 ### NPM, Yarn, PNPM, etc
 
 This is a static NPM package, providing just the Blade templates.
@@ -92,22 +73,9 @@ Or via `@include` (note: Blade resolves `inline/a/index.blade.php` as `blade.inl
 </x-inline.a>
 ```
 
-### Blade Component Generator
-
-The `blade-component` generator converts a full HTML document (built from a YAML component definition) into a Blade file using `<x-block.*>`, `<x-inline.*>`, and `<x-void.*>` component tags. Use it with the `watch` command:
-
-```bash
-php vendor/bin/ext-html watch blade-component source/my-component.yaml dest/
-```
-
-Example output for a teaser component:
+### Usage in Example Component
 
 ```blade
-{{--
-  This file is auto-generated.
-
-  @see src/TemplateGenerator/BladeComponentGenerator.php
---}}
 <x-block.div class="teaser">
   <x-block.hgroup>
     <x-block.h3>
