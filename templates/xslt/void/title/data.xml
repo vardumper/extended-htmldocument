@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <title> element.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="title" id="example-title">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+</item>

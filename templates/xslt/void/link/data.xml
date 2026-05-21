@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <link> element.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="link" id="example-link">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="crossorigin"><![CDATA[example-crossorigin]]></fragment>
+    <fragment name="href"><![CDATA[https://example.com]]></fragment>
+    <fragment name="hreflang"><![CDATA[example-hreflang]]></fragment>
+    <fragment name="integrity"><![CDATA[example-integrity]]></fragment>
+    <fragment name="media"><![CDATA[example-media]]></fragment>
+    <fragment name="referrerpolicy"><![CDATA[example-referrerpolicy]]></fragment>
+    <fragment name="rel"><![CDATA[example-rel]]></fragment>
+    <fragment name="sizes"><![CDATA[example-sizes]]></fragment>
+    <fragment name="type"><![CDATA[text]]></fragment>
+    <fragment name="dir"><![CDATA[ltr]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+    <fragment name="lang"><![CDATA[en]]></fragment>
+    <fragment name="style"><![CDATA[color: inherit]]></fragment>
+    <fragment name="title"><![CDATA[example-title]]></fragment>
+</item>

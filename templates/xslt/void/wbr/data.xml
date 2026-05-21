@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <wbr> element.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="wbr" id="example-wbr">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="dir"><![CDATA[ltr]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+</item>

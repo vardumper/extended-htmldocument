@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <param> element.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="param" id="example-param">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="name"><![CDATA[example-name]]></fragment>
+    <fragment name="value"><![CDATA[example-value]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+    <fragment name="style"><![CDATA[color: inherit]]></fragment>
+</item>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <progress> element.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="progress" id="example-progress">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="max"><![CDATA[example-max]]></fragment>
+    <fragment name="value"><![CDATA[example-value]]></fragment>
+    <fragment name="ariaDetails"><![CDATA[example-aria-details]]></fragment>
+    <fragment name="ariaKeyshortcuts"><![CDATA[example-aria-keyshortcuts]]></fragment>
+    <fragment name="ariaRoledescription"><![CDATA[example-aria-roledescription]]></fragment>
+    <fragment name="ariaLive"><![CDATA[example-aria-live]]></fragment>
+    <fragment name="ariaRelevant"><![CDATA[example-aria-relevant]]></fragment>
+    <fragment name="ariaAtomic"><![CDATA[example-aria-atomic]]></fragment>
+    <fragment name="ariaValuemax"><![CDATA[example-aria-valuemax]]></fragment>
+    <fragment name="ariaValuemin"><![CDATA[example-aria-valuemin]]></fragment>
+    <fragment name="ariaValuenow"><![CDATA[example-aria-valuenow]]></fragment>
+    <fragment name="ariaValuetext"><![CDATA[example-aria-valuetext]]></fragment>
+    <fragment name="accesskey"><![CDATA[example-accesskey]]></fragment>
+    <fragment name="autocapitalize"><![CDATA[example-autocapitalize]]></fragment>
+    <fragment name="autofocus"><![CDATA[example-autofocus]]></fragment>
+    <fragment name="contenteditable"><![CDATA[example-contenteditable]]></fragment>
+    <fragment name="dir"><![CDATA[ltr]]></fragment>
+    <fragment name="draggable"><![CDATA[example-draggable]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+    <fragment name="inputmode"><![CDATA[example-inputmode]]></fragment>
+    <fragment name="lang"><![CDATA[en]]></fragment>
+    <fragment name="slot"><![CDATA[example-slot]]></fragment>
+    <fragment name="spellcheck"><![CDATA[example-spellcheck]]></fragment>
+    <fragment name="style"><![CDATA[color: inherit]]></fragment>
+    <fragment name="tabindex"><![CDATA[example-tabindex]]></fragment>
+    <fragment name="title"><![CDATA[example-title]]></fragment>
+    <fragment name="translate"><![CDATA[example-translate]]></fragment>
+</item>

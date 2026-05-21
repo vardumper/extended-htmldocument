@@ -42,9 +42,10 @@
     "require": {
         "php": "^8.4",
         "ext-dom": "*",
-        "revolt/event-loop": "^1.0.9",
         "mnapoli/silly": "^1.10.0",
-        "symfony/yaml": "^5.4|^7.0|^8.0.12"
+        "revolt/event-loop": "^1.0.9",
+        "symfony/yaml": "^5.4|^7.0|^8.0.12",
+        "vardumper/dom-orm": "^1.4.4"
     },
     "config": {
         "sort-packages": true,

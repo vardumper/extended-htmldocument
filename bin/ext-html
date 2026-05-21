@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 use Html\Command\BatchGeneratorCommand;
 use Html\Command\CreateClassCommand;
+use Html\Command\CreateEntityCommand;
 use Html\Command\CreateEnumCommand;
 use Html\Command\CreateJsonCommand;
 use Html\Command\GenerateComposedCommand;
@@ -29,6 +30,9 @@ $app->command('make:classes [element] [--specification=]', function ($element, I
 })->descriptions('Creates a new PHP class for all or for a given HTML Element');
 $app->command('make:enums [--specification=]', new CreateEnumCommand())->descriptions('Creates backed enums for all HTML attributes with a static set of options');
 $app->command('make:json-specs [--specification=]', new CreateJsonCommand())->descriptions('Simply transforms the YAML specs into JSON');
+$app->command('make:entity [element]', function ($element, InputInterface $input, OutputInterface $output) {
+    return (new CreateEntityCommand())($element, $input, $output);
+})->descriptions('Creates DOM-ORM entity classes for all or for a given HTML element', ['element' => 'HTML tag name or class name (e.g. div, Division)']);
 $app->command('make:all [--specification=]', function (InputInterface $input, OutputInterface $output) {
     (new CreateEnumCommand())($input, $output);
     (new CreateClassCommand())(null, $input, $output);

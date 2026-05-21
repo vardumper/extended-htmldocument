@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <style> element.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="style" id="example-style">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="media"><![CDATA[example-media]]></fragment>
+    <fragment name="nonce"><![CDATA[example-nonce]]></fragment>
+    <fragment name="type"><![CDATA[text]]></fragment>
+    <fragment name="dir"><![CDATA[ltr]]></fragment>
+    <fragment name="lang"><![CDATA[en]]></fragment>
+    <fragment name="title"><![CDATA[example-title]]></fragment>
+</item>

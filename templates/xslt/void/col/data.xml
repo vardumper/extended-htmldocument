@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <col> element.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="col" id="example-col">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="span"><![CDATA[example-span]]></fragment>
+    <fragment name="width"><![CDATA[example-width]]></fragment>
+    <fragment name="style"><![CDATA[color: inherit]]></fragment>
+</item>

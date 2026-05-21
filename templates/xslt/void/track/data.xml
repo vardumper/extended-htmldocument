@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <track> element.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="track" id="example-track">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="default"><![CDATA[example-default]]></fragment>
+    <fragment name="kind"><![CDATA[example-kind]]></fragment>
+    <fragment name="label"><![CDATA[example-label]]></fragment>
+    <fragment name="src"><![CDATA[https://example.com/image.jpg]]></fragment>
+    <fragment name="srclang"><![CDATA[example-srclang]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+    <fragment name="lang"><![CDATA[en]]></fragment>
+    <fragment name="style"><![CDATA[color: inherit]]></fragment>
+</item>

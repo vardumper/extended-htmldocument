@@ -120,12 +120,12 @@ class BatchGeneratorCommand extends Command
                 }
 
                 $outFile = $componentDir . \DIRECTORY_SEPARATOR . $fileName;
-                if (file_exists($outFile) && ! $overwriteExisting) {
+                if (! file_exists($outFile) || $overwriteExisting) {
+                    file_put_contents($outFile, $output);
+                    $this->io->success("Generated: {$outFile}");
+                } else {
                     $this->io->warning("File '{$outFile}' already exists. Skipping generation.");
-                    continue;
                 }
-                file_put_contents($outFile, $output);
-                $this->io->success("Generated: {$outFile}");
 
                 // Generate PHP component class for twig-component generator
                 if ($name === 'twig-component' && method_exists($generatorInstance, 'renderComponentClass')) {
@@ -154,6 +154,28 @@ class BatchGeneratorCommand extends Command
                     file_put_contents($componentFile, $componentClass);
                     $this->io->success("Generated component class: {$componentFile}");
                 }
+
+                // Generate data.xml for generators that support it (e.g. XSLTGenerator)
+                if (method_exists($generatorInstance, 'renderDataXml')) {
+                    $dataXml = $generatorInstance->renderDataXml($elementInstance);
+                    if ($dataXml !== null) {
+                        $dataXmlFile = $componentDir . \DIRECTORY_SEPARATOR . 'data.xml';
+                        if (! file_exists($dataXmlFile) || $overwriteExisting) {
+                            file_put_contents($dataXmlFile, $dataXml);
+                            $this->io->success("Generated: {$dataXmlFile}");
+                        }
+                    }
+                }
+            }
+
+            // Generate a master import file after all elements (e.g. XSLTGenerator's main.xsl)
+            if (method_exists($generatorInstance, 'renderMainXsl')) {
+                $mainXsl = $generatorInstance->renderMainXsl();
+                $mainXslPath = rtrim($dest, \DIRECTORY_SEPARATOR)
+                    . \DIRECTORY_SEPARATOR . $name
+                    . \DIRECTORY_SEPARATOR . 'main.xsl';
+                file_put_contents($mainXslPath, $mainXsl);
+                $this->io->success("Generated: {$mainXslPath}");
             }
         }
         return Command::SUCCESS;

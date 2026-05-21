@@ -8,17 +8,17 @@ teaser-example:
         - hgroup:
             children:
               - h3:
-                  text: "Headline"
+                  text: "{{ entry.title }}"
               - h4:
-                  text: "Subheadline"
+                  text: "{{ entry.subtitle }}"
         - p:
-            text: "Description"
+            text: "{{ entry.description }}"
         - img:
-            src: "https://picsum.photos/340/140"
-            alt: "Image description"
-            width: 340
-            height: 140
+            src: "{{ entry.image.src }}"
+            alt: "{{ entry.image.alt }}"
+            width: "{{ entry.image.width }}"
+            height: "{{ entry.image.height }}"
         - a:
             role: button
-            text: "Read more"
-            href: "#"
+            text: "{{ entry.button.text }}"
+            href: "{{ entry.button.href }}"

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <header> element.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="header" id="example-header">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="ariaLabel"><![CDATA[example-aria-label]]></fragment>
+    <fragment name="accesskey"><![CDATA[example-accesskey]]></fragment>
+    <fragment name="autocapitalize"><![CDATA[example-autocapitalize]]></fragment>
+    <fragment name="autofocus"><![CDATA[example-autofocus]]></fragment>
+    <fragment name="contenteditable"><![CDATA[example-contenteditable]]></fragment>
+    <fragment name="dir"><![CDATA[ltr]]></fragment>
+    <fragment name="draggable"><![CDATA[example-draggable]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+    <fragment name="inputmode"><![CDATA[example-inputmode]]></fragment>
+    <fragment name="lang"><![CDATA[en]]></fragment>
+    <fragment name="spellcheck"><![CDATA[example-spellcheck]]></fragment>
+    <fragment name="style"><![CDATA[color: inherit]]></fragment>
+    <fragment name="tabindex"><![CDATA[example-tabindex]]></fragment>
+    <fragment name="title"><![CDATA[example-title]]></fragment>
+    <fragment name="translate"><![CDATA[example-translate]]></fragment>
+</item>

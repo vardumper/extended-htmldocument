@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <select> element.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="select" id="example-select">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="autocomplete"><![CDATA[example-autocomplete]]></fragment>
+    <fragment name="autocorrect"><![CDATA[example-autocorrect]]></fragment>
+    <fragment name="disabled"><![CDATA[example-disabled]]></fragment>
+    <fragment name="multiple"><![CDATA[example-multiple]]></fragment>
+    <fragment name="name"><![CDATA[example-name]]></fragment>
+    <fragment name="required"><![CDATA[example-required]]></fragment>
+    <fragment name="size"><![CDATA[example-size]]></fragment>
+    <fragment name="form"><![CDATA[example-form]]></fragment>
+    <fragment name="role"><![CDATA[main]]></fragment>
+    <fragment name="ariaControls"><![CDATA[example-aria-controls]]></fragment>
+    <fragment name="ariaDescribedby"><![CDATA[example-aria-describedby]]></fragment>
+    <fragment name="ariaLabelledby"><![CDATA[example-aria-labelledby]]></fragment>
+    <fragment name="ariaInvalid"><![CDATA[example-aria-invalid]]></fragment>
+    <fragment name="ariaLabel"><![CDATA[example-aria-label]]></fragment>
+    <fragment name="ariaDisabled"><![CDATA[example-aria-disabled]]></fragment>
+    <fragment name="ariaDetails"><![CDATA[example-aria-details]]></fragment>
+    <fragment name="ariaKeyshortcuts"><![CDATA[example-aria-keyshortcuts]]></fragment>
+    <fragment name="ariaRoledescription"><![CDATA[example-aria-roledescription]]></fragment>
+    <fragment name="ariaLive"><![CDATA[example-aria-live]]></fragment>
+    <fragment name="ariaRelevant"><![CDATA[example-aria-relevant]]></fragment>
+    <fragment name="ariaAtomic"><![CDATA[example-aria-atomic]]></fragment>
+    <fragment name="ariaExpanded"><![CDATA[example-aria-expanded]]></fragment>
+    <fragment name="ariaHaspopup"><![CDATA[example-aria-haspopup]]></fragment>
+    <fragment name="ariaPressed"><![CDATA[example-aria-pressed]]></fragment>
+    <fragment name="ariaAutocomplete"><![CDATA[example-aria-autocomplete]]></fragment>
+    <fragment name="ariaPlaceholder"><![CDATA[example-aria-placeholder]]></fragment>
+    <fragment name="ariaReadonly"><![CDATA[example-aria-readonly]]></fragment>
+    <fragment name="ariaRequired"><![CDATA[example-aria-required]]></fragment>
+    <fragment name="ariaMultiselectable"><![CDATA[example-aria-multiselectable]]></fragment>
+    <fragment name="ariaActivedescendant"><![CDATA[example-aria-activedescendant]]></fragment>
+    <fragment name="ariaOrientation"><![CDATA[example-aria-orientation]]></fragment>
+    <fragment name="accesskey"><![CDATA[example-accesskey]]></fragment>
+    <fragment name="autocapitalize"><![CDATA[example-autocapitalize]]></fragment>
+    <fragment name="autofocus"><![CDATA[example-autofocus]]></fragment>
+    <fragment name="contenteditable"><![CDATA[example-contenteditable]]></fragment>
+    <fragment name="dir"><![CDATA[ltr]]></fragment>
+    <fragment name="draggable"><![CDATA[example-draggable]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+    <fragment name="inputmode"><![CDATA[example-inputmode]]></fragment>
+    <fragment name="lang"><![CDATA[en]]></fragment>
+    <fragment name="popover"><![CDATA[example-popover]]></fragment>
+    <fragment name="slot"><![CDATA[example-slot]]></fragment>
+    <fragment name="spellcheck"><![CDATA[example-spellcheck]]></fragment>
+    <fragment name="style"><![CDATA[color: inherit]]></fragment>
+    <fragment name="tabindex"><![CDATA[example-tabindex]]></fragment>
+    <fragment name="title"><![CDATA[example-title]]></fragment>
+    <fragment name="translate"><![CDATA[example-translate]]></fragment>
+</item>

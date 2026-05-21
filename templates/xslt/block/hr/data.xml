@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <hr> element.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="hr" id="example-hr">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="align"><![CDATA[example-align]]></fragment>
+    <fragment name="color"><![CDATA[example-color]]></fragment>
+    <fragment name="noshade"><![CDATA[example-noshade]]></fragment>
+    <fragment name="size"><![CDATA[example-size]]></fragment>
+    <fragment name="width"><![CDATA[example-width]]></fragment>
+    <fragment name="dir"><![CDATA[ltr]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+    <fragment name="lang"><![CDATA[en]]></fragment>
+    <fragment name="style"><![CDATA[color: inherit]]></fragment>
+    <fragment name="title"><![CDATA[example-title]]></fragment>
+</item>

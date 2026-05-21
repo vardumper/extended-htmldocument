@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <br> element.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="br" id="example-br">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="dir"><![CDATA[ltr]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+    <fragment name="style"><![CDATA[color: inherit]]></fragment>
+</item>

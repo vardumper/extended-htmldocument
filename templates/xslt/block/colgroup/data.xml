@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <colgroup> element.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="colgroup" id="example-colgroup">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="span"><![CDATA[example-span]]></fragment>
+    <fragment name="dir"><![CDATA[ltr]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+    <fragment name="lang"><![CDATA[en]]></fragment>
+    <fragment name="slot"><![CDATA[example-slot]]></fragment>
+    <fragment name="style"><![CDATA[color: inherit]]></fragment>
+</item>

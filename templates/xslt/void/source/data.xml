@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <source> element.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="source" id="example-source">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="media"><![CDATA[example-media]]></fragment>
+    <fragment name="sizes"><![CDATA[example-sizes]]></fragment>
+    <fragment name="src"><![CDATA[https://example.com/image.jpg]]></fragment>
+    <fragment name="srcset"><![CDATA[example-srcset]]></fragment>
+    <fragment name="type"><![CDATA[text]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+</item>

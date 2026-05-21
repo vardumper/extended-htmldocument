@@ -8,17 +8,17 @@
 <twig:Div class="teaser">
   <twig:Hgroup>
     <twig:H3>
-      Headline
+      {{ entry.title }}
     </twig:H3>
     <twig:H4>
-      Subheadline
+      {{ entry.subtitle }}
     </twig:H4>
   </twig:Hgroup>
   <twig:P>
-    Description
+    {{ entry.description }}
   </twig:P>
-  <twig:Img src="https://picsum.photos/340/140" alt="Image description" width="340" height="140" />
-  <twig:A role="button" href="#">
-    Read more
+  <twig:Img src="{{ entry.image.src }}" alt="{{ entry.image.alt }}" width="{{ entry.image.width }}" height="{{ entry.image.height }}" />
+  <twig:A role="button" href="{{ entry.button.href }}">
+    {{ entry.button.text }}
   </twig:A>
 </twig:Div>

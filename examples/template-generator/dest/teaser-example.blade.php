@@ -6,17 +6,17 @@
 <x-block.div class="teaser">
   <x-block.hgroup>
     <x-block.h3>
-      Headline
+      {{ entry.title }}
     </x-block.h3>
     <x-block.h4>
-      Subheadline
+      {{ entry.subtitle }}
     </x-block.h4>
   </x-block.hgroup>
   <x-block.p>
-    Description
+    {{ entry.description }}
   </x-block.p>
-  <x-inline.img src="https://picsum.photos/340/140" alt="Image description" width="340" height="140" />
-  <x-inline.a role="button" href="#">
-    Read more
+  <x-inline.img src="{{ entry.image.src }}" alt="{{ entry.image.alt }}" width="{{ entry.image.width }}" height="{{ entry.image.height }}" />
+  <x-inline.a role="button" href="{{ entry.button.href }}">
+    {{ entry.button.text }}
   </x-inline.a>
 </x-block.div>
