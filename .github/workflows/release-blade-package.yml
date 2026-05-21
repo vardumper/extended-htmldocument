@@ -3,6 +3,12 @@ name: Sync Blade Templates Package upon Release
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g. 1.2.3). Required for manual runs.'
+        type: string
+        required: true
 
 jobs:
   sync:
@@ -15,6 +21,15 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Get release version
+        id: release
+        run: |
+          if [ -n "${{ inputs.version }}" ]; then
+            echo "version=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Get previous tag
         id: previoustag
         run: |
@@ -23,7 +38,9 @@ jobs:
       - name: Check if subfolder changed
         id: diff
         run: |
-          if git diff --quiet ${{ steps.previoustag.outputs.tag }} HEAD -- templates/blade; then
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          elif git diff --quiet ${{ steps.previoustag.outputs.tag }} HEAD -- templates/blade; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
@@ -41,7 +58,7 @@ jobs:
             templates/blade/ target/
           cd target
 
-          release_version="${GITHUB_REF_NAME#v}"
+          release_version="${{ steps.release.outputs.version }}"
 
           jq --arg v "$release_version" '.version = $v' composer.json > composer.json.tmp
           mv composer.json.tmp composer.json
