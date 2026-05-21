@@ -16,7 +16,7 @@
                     <xsl:value-of select="fragment[@name='class']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='dir']">
+            <xsl:if test="fragment[@name='dir'] and contains('|ltr|rtl|auto|', concat('|', fragment[@name='dir'], '|'))">
                 <xsl:attribute name="dir">
                     <xsl:value-of select="fragment[@name='dir']"/>
                 </xsl:attribute>

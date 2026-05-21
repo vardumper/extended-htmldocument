@@ -9,6 +9,8 @@ use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
 use ReflectionClass;
+use ReflectionEnum;
+use ReflectionNamedType;
 
 /**
  * XSLTGenerator — Generates XSLT 1.0 stylesheets for DOM-ORM XML entities.
@@ -93,22 +95,24 @@ class XSLTGenerator implements TemplateGeneratorInterface
         $lines[] = '-->';
         $lines[] = '<item type="' . $elementName . '" id="example-' . $elementName . '">';
 
-        foreach ($attrMap as $propName => $htmlAttr) {
-            $exampleValue = match ($htmlAttr) {
-                'id' => 'example-' . $elementName . '-id',
-                'class' => 'example-class',
-                'style' => 'color: inherit',
-                'href' => 'https://example.com',
-                'src' => 'https://example.com/image.jpg',
-                'alt' => 'Example image',
-                'type' => 'text',
-                'name' => 'example-name',
-                'value' => 'example-value',
-                'role' => 'main',
-                'lang' => 'en',
-                'dir' => 'ltr',
-                default => 'example-' . $htmlAttr,
-            };
+        foreach ($attrMap as $propName => $info) {
+            $htmlAttr = $info['attr'];
+            $enumValues = $info['enumValues'];
+            $exampleValue = $enumValues !== null
+                ? $enumValues[0]
+                : match ($htmlAttr) {
+                    'id' => 'example-' . $elementName . '-id',
+                    'class' => 'example-class',
+                    'style' => 'color: inherit',
+                    'href' => 'https://example.com',
+                    'src' => 'https://example.com/image.jpg',
+                    'alt' => 'Example image',
+                    'type' => 'text',
+                    'name' => 'example-name',
+                    'value' => 'example-value',
+                    'lang' => 'en',
+                    default => 'example-' . $htmlAttr,
+                };
             $lines[] = '    <fragment name="' . $propName . '"><![CDATA[' . $exampleValue . ']]></fragment>';
         }
 
@@ -173,11 +177,24 @@ class XSLTGenerator implements TemplateGeneratorInterface
 
         $attrMap = $this->buildAttributeMap($reflection);
 
-        return $this->buildStylesXsl($elementName, $attrMap, $isSelfClosing);
+        // Resolve allowed child tag names from $parentOf class list.
+        $parentOfTypes = [];
+        foreach ($element::$parentOf as $childClass) {
+            if (is_string($childClass) && class_exists($childClass) && defined($childClass . '::QUALIFIED_NAME')) {
+                $parentOfTypes[] = $childClass::QUALIFIED_NAME;
+            }
+        }
+        $parentOfTypes = array_values(array_unique($parentOfTypes));
+
+        return $this->buildStylesXsl($elementName, $attrMap, $isSelfClosing, $parentOfTypes);
     }
 
-    private function buildStylesXsl(string $elementName, array $attrMap, bool $isSelfClosing): string
-    {
+    private function buildStylesXsl(
+        string $elementName,
+        array $attrMap,
+        bool $isSelfClosing,
+        array $parentOfTypes = []
+    ): string {
         $lines = [];
         $lines[] = '<?xml version="1.0" encoding="UTF-8"?>';
         $lines[] = '<!--';
@@ -195,8 +212,19 @@ class XSLTGenerator implements TemplateGeneratorInterface
         $lines[] = '                <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>';
         $lines[] = '            </xsl:if>';
 
-        foreach ($attrMap as $propName => $htmlAttr) {
-            $lines[] = '            <xsl:if test="fragment[@name=\'' . $propName . '\']">';
+        foreach ($attrMap as $propName => $info) {
+            $htmlAttr = $info['attr'];
+            $enumValues = $info['enumValues'];
+
+            if ($enumValues !== null) {
+                // XSLT 1.0 allow-list check via contains() on a pipe-delimited string.
+                $allowList = '|' . implode('|', $enumValues) . '|';
+                $test = "fragment[@name='{$propName}'] and contains('{$allowList}', concat('|', fragment[@name='{$propName}'], '|'))";
+            } else {
+                $test = "fragment[@name='{$propName}']";
+            }
+
+            $lines[] = '            <xsl:if test="' . $test . '">';
             $lines[] = '                <xsl:attribute name="' . $htmlAttr . '">';
             $lines[] = '                    <xsl:value-of select="fragment[@name=\'' . $propName . '\']"/>';
             $lines[] = '                </xsl:attribute>';
@@ -204,7 +232,13 @@ class XSLTGenerator implements TemplateGeneratorInterface
         }
 
         if (! $isSelfClosing) {
-            $lines[] = '            <xsl:apply-templates select="item"/>';
+            if (! empty($parentOfTypes)) {
+                // Restrict to declared allowed child types only.
+                $typeTests = implode(' or ', array_map(fn ($t) => "@type='{$t}'", $parentOfTypes));
+                $lines[] = '            <xsl:apply-templates select="item[' . $typeTests . ']"/>';
+            } else {
+                $lines[] = '            <xsl:apply-templates select="item"/>';
+            }
         }
 
         $lines[] = '        </xsl:element>';
@@ -216,16 +250,20 @@ class XSLTGenerator implements TemplateGeneratorInterface
     }
 
     /**
-     * Build a map of [phpPropertyName => htmlAttributeName] for the given element class.
+     * Build a map of [phpPropertyName => ['attr' => htmlAttrName, 'enumValues' => string[]|null]].
+     * When enumValues is non-null the generated XSL validates against those allowed values.
      *
-     * @return array<string, string>
+     * @return array<string, array{attr: string, enumValues: string[]|null}>
      */
     private function buildAttributeMap(ReflectionClass $reflection): array
     {
         // 'class' is a native PHP DOM property; add it first.
         // 'id' is excluded — it maps from <item @id> directly in the XSL template.
         $map = [
-            'class' => 'class',
+            'class' => [
+                'attr' => 'class',
+                'enumValues' => null,
+            ],
         ];
 
         $properties = array_filter(
@@ -240,7 +278,24 @@ class XSLTGenerator implements TemplateGeneratorInterface
             if (isset($map[$propName])) {
                 continue;
             }
-            $map[$propName] = $this->propertyToAttr($propName);
+
+            $enumValues = null;
+            $type = $property->getType();
+            if ($type instanceof ReflectionNamedType && ! $type->isBuiltin()) {
+                $typeName = $type->getName();
+                if (enum_exists($typeName)) {
+                    $enumValues = array_map(
+                        fn ($case) => $case->getValue()
+                            ->value,
+                        (new ReflectionEnum($typeName))->getCases()
+                    );
+                }
+            }
+
+            $map[$propName] = [
+                'attr' => $this->propertyToAttr($propName),
+                'enumValues' => $enumValues,
+            ];
         }
 
         return $map;

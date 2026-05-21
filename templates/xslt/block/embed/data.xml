@@ -11,17 +11,17 @@
     <fragment name="type"><![CDATA[text]]></fragment>
     <fragment name="width"><![CDATA[example-width]]></fragment>
     <fragment name="accesskey"><![CDATA[example-accesskey]]></fragment>
-    <fragment name="autocapitalize"><![CDATA[example-autocapitalize]]></fragment>
+    <fragment name="autocapitalize"><![CDATA[none]]></fragment>
     <fragment name="autofocus"><![CDATA[example-autofocus]]></fragment>
-    <fragment name="contenteditable"><![CDATA[example-contenteditable]]></fragment>
+    <fragment name="contenteditable"><![CDATA[true]]></fragment>
     <fragment name="dir"><![CDATA[ltr]]></fragment>
     <fragment name="draggable"><![CDATA[example-draggable]]></fragment>
     <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
-    <fragment name="inputmode"><![CDATA[example-inputmode]]></fragment>
+    <fragment name="inputmode"><![CDATA[none]]></fragment>
     <fragment name="lang"><![CDATA[en]]></fragment>
-    <fragment name="spellcheck"><![CDATA[example-spellcheck]]></fragment>
+    <fragment name="spellcheck"><![CDATA[true]]></fragment>
     <fragment name="style"><![CDATA[color: inherit]]></fragment>
     <fragment name="tabindex"><![CDATA[example-tabindex]]></fragment>
     <fragment name="title"><![CDATA[example-title]]></fragment>
-    <fragment name="translate"><![CDATA[example-translate]]></fragment>
+    <fragment name="translate"><![CDATA[yes]]></fragment>
 </item>

@@ -30,5 +30,5 @@
     <fragment name="style"><![CDATA[color: inherit]]></fragment>
     <fragment name="tabindex"><![CDATA[example-tabindex]]></fragment>
     <fragment name="title"><![CDATA[example-title]]></fragment>
-    <fragment name="translate"><![CDATA[example-translate]]></fragment>
+    <fragment name="translate"><![CDATA[yes]]></fragment>
 </item>

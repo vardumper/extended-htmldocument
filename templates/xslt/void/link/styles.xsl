@@ -16,7 +16,7 @@
                     <xsl:value-of select="fragment[@name='class']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='crossorigin']">
+            <xsl:if test="fragment[@name='crossorigin'] and contains('|anonymous|use-credentials|', concat('|', fragment[@name='crossorigin'], '|'))">
                 <xsl:attribute name="crossorigin">
                     <xsl:value-of select="fragment[@name='crossorigin']"/>
                 </xsl:attribute>
@@ -41,12 +41,12 @@
                     <xsl:value-of select="fragment[@name='media']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='referrerpolicy']">
+            <xsl:if test="fragment[@name='referrerpolicy'] and contains('|no-referrer|no-referrer-when-downgrade|origin|origin-when-cross-origin|same-origin|strict-origin|strict-origin-when-cross-origin|unsafe-url|', concat('|', fragment[@name='referrerpolicy'], '|'))">
                 <xsl:attribute name="referrerpolicy">
                     <xsl:value-of select="fragment[@name='referrerpolicy']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='rel']">
+            <xsl:if test="fragment[@name='rel'] and contains('|alternate|author|bookmark|canonical|help|icon|license|manifest|next|nofollow|noreferrer|prefetch|prev|search|stylesheet|tag|', concat('|', fragment[@name='rel'], '|'))">
                 <xsl:attribute name="rel">
                     <xsl:value-of select="fragment[@name='rel']"/>
                 </xsl:attribute>
@@ -61,7 +61,7 @@
                     <xsl:value-of select="fragment[@name='type']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='dir']">
+            <xsl:if test="fragment[@name='dir'] and contains('|ltr|rtl|auto|', concat('|', fragment[@name='dir'], '|'))">
                 <xsl:attribute name="dir">
                     <xsl:value-of select="fragment[@name='dir']"/>
                 </xsl:attribute>

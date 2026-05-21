@@ -8,7 +8,7 @@
     <fragment name="class"><![CDATA[example-class]]></fragment>
     <fragment name="charset"><![CDATA[example-charset]]></fragment>
     <fragment name="content"><![CDATA[example-content]]></fragment>
-    <fragment name="httpEquiv"><![CDATA[example-http-equiv]]></fragment>
+    <fragment name="httpEquiv"><![CDATA[content-language]]></fragment>
     <fragment name="name"><![CDATA[example-name]]></fragment>
     <fragment name="scheme"><![CDATA[example-scheme]]></fragment>
     <fragment name="hidden"><![CDATA[example-hidden]]></fragment>

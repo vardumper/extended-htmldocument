@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2026-05-21 10:50:05
+ * @generated 2026-05-21 11:39:20
  * @subpackage Html\Entity\Block
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html
  */
@@ -13,6 +13,7 @@ namespace Html\Entity\Block;
 use DateTimeInterface;
 use DOM\ORM\Entity\AbstractEntity;
 use DOM\ORM\Mapping as ORM;
+use Html\Enum\DirectionEnum;
 
 /**
  * html entity — persists as XML via DOM-ORM.
@@ -38,7 +39,7 @@ class HTMLEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $manifest = null,
         #[ORM\Fragment]
-        protected ?string $dir = null,
+        protected ?DirectionEnum $dir = null,
         #[ORM\Fragment]
         protected ?string $lang = null,
         ?string $entityId = null,
@@ -69,13 +70,13 @@ class HTMLEntity extends AbstractEntity
         return $this->manifest;
     }
 
-    public function setDir(?string $value): static
+    public function setDir(?DirectionEnum $value): static
     {
         $this->dir = $value;
         return $this;
     }
 
-    public function getDir(): ?string
+    public function getDir(): ?DirectionEnum
     {
         return $this->dir;
     }

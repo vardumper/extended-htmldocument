@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2026-05-21 10:50:05
+ * @generated 2026-05-21 11:39:20
  * @subpackage Html\Entity\Void
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
  */
@@ -13,6 +13,7 @@ namespace Html\Entity\Void;
 use DateTimeInterface;
 use DOM\ORM\Entity\AbstractEntity;
 use DOM\ORM\Mapping as ORM;
+use Html\Enum\HttpEquivEnum;
 
 /**
  * meta entity — persists as XML via DOM-ORM.
@@ -40,7 +41,7 @@ class MetaEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $content = null,
         #[ORM\Fragment]
-        protected ?string $httpEquiv = null,
+        protected ?HttpEquivEnum $httpEquiv = null,
         #[ORM\Fragment]
         protected ?string $name = null,
         #[ORM\Fragment]
@@ -90,13 +91,13 @@ class MetaEntity extends AbstractEntity
         return $this->content;
     }
 
-    public function setHttpEquiv(?string $value): static
+    public function setHttpEquiv(?HttpEquivEnum $value): static
     {
         $this->httpEquiv = $value;
         return $this;
     }
 
-    public function getHttpEquiv(): ?string
+    public function getHttpEquiv(): ?HttpEquivEnum
     {
         return $this->httpEquiv;
     }

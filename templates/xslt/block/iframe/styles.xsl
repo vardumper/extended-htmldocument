@@ -31,7 +31,7 @@
                     <xsl:value-of select="fragment[@name='name']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='referrerpolicy']">
+            <xsl:if test="fragment[@name='referrerpolicy'] and contains('|no-referrer|no-referrer-when-downgrade|origin|origin-when-cross-origin|same-origin|strict-origin|strict-origin-when-cross-origin|unsafe-url|', concat('|', fragment[@name='referrerpolicy'], '|'))">
                 <xsl:attribute name="referrerpolicy">
                     <xsl:value-of select="fragment[@name='referrerpolicy']"/>
                 </xsl:attribute>
@@ -61,7 +61,7 @@
                     <xsl:value-of select="fragment[@name='width']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='role']">
+            <xsl:if test="fragment[@name='role'] and contains('|alert|application|article|banner|button|checkbox|complementary|contentinfo|dialog|form|grid|group|heading|img|link|list|listbox|listitem|main|menu|menubar|menuitem|navigation|none|presentation|radio|region|search|status|tab|tablist|tabpanel|textbox|toolbar|tooltip|', concat('|', fragment[@name='role'], '|'))">
                 <xsl:attribute name="role">
                     <xsl:value-of select="fragment[@name='role']"/>
                 </xsl:attribute>
@@ -81,12 +81,12 @@
                     <xsl:value-of select="fragment[@name='ariaLabelledby']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='ariaBusy']">
+            <xsl:if test="fragment[@name='ariaBusy'] and contains('|true|false|', concat('|', fragment[@name='ariaBusy'], '|'))">
                 <xsl:attribute name="aria-busy">
                     <xsl:value-of select="fragment[@name='ariaBusy']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='ariaHidden']">
+            <xsl:if test="fragment[@name='ariaHidden'] and contains('|false|true|', concat('|', fragment[@name='ariaHidden'], '|'))">
                 <xsl:attribute name="aria-hidden">
                     <xsl:value-of select="fragment[@name='ariaHidden']"/>
                 </xsl:attribute>
@@ -111,22 +111,22 @@
                     <xsl:value-of select="fragment[@name='ariaRoledescription']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='ariaLive']">
+            <xsl:if test="fragment[@name='ariaLive'] and contains('|off|polite|assertive|', concat('|', fragment[@name='ariaLive'], '|'))">
                 <xsl:attribute name="aria-live">
                     <xsl:value-of select="fragment[@name='ariaLive']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='ariaRelevant']">
+            <xsl:if test="fragment[@name='ariaRelevant'] and contains('|additions|removals|text|all|additions text|', concat('|', fragment[@name='ariaRelevant'], '|'))">
                 <xsl:attribute name="aria-relevant">
                     <xsl:value-of select="fragment[@name='ariaRelevant']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='ariaAtomic']">
+            <xsl:if test="fragment[@name='ariaAtomic'] and contains('|false|true|', concat('|', fragment[@name='ariaAtomic'], '|'))">
                 <xsl:attribute name="aria-atomic">
                     <xsl:value-of select="fragment[@name='ariaAtomic']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='dir']">
+            <xsl:if test="fragment[@name='dir'] and contains('|ltr|rtl|auto|', concat('|', fragment[@name='dir'], '|'))">
                 <xsl:attribute name="dir">
                     <xsl:value-of select="fragment[@name='dir']"/>
                 </xsl:attribute>
@@ -141,7 +141,7 @@
                     <xsl:value-of select="fragment[@name='lang']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='popover']">
+            <xsl:if test="fragment[@name='popover'] and contains('|auto|hint|manual|', concat('|', fragment[@name='popover'], '|'))">
                 <xsl:attribute name="popover">
                     <xsl:value-of select="fragment[@name='popover']"/>
                 </xsl:attribute>

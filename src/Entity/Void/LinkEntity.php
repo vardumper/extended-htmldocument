@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2026-05-21 10:50:05
+ * @generated 2026-05-21 11:39:20
  * @subpackage Html\Entity\Void
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
  */
@@ -13,6 +13,10 @@ namespace Html\Entity\Void;
 use DateTimeInterface;
 use DOM\ORM\Entity\AbstractEntity;
 use DOM\ORM\Mapping as ORM;
+use Html\Enum\CrossoriginEnum;
+use Html\Enum\DirectionEnum;
+use Html\Enum\LinkRelEnum;
+use Html\Enum\ReferrerpolicyEnum;
 
 /**
  * link entity — persists as XML via DOM-ORM.
@@ -36,7 +40,7 @@ class LinkEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $class = null,
         #[ORM\Fragment]
-        protected ?string $crossorigin = null,
+        protected ?CrossoriginEnum $crossorigin = null,
         #[ORM\Fragment]
         protected ?string $href = null,
         #[ORM\Fragment]
@@ -46,15 +50,15 @@ class LinkEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $media = null,
         #[ORM\Fragment]
-        protected ?string $referrerpolicy = null,
+        protected ?ReferrerpolicyEnum $referrerpolicy = null,
         #[ORM\Fragment]
-        protected ?string $rel = null,
+        protected ?LinkRelEnum $rel = null,
         #[ORM\Fragment]
         protected ?string $sizes = null,
         #[ORM\Fragment]
         protected ?string $type = null,
         #[ORM\Fragment]
-        protected ?string $dir = null,
+        protected ?DirectionEnum $dir = null,
         #[ORM\Fragment]
         protected ?string $hidden = null,
         #[ORM\Fragment]
@@ -80,13 +84,13 @@ class LinkEntity extends AbstractEntity
         return $this->class;
     }
 
-    public function setCrossorigin(?string $value): static
+    public function setCrossorigin(?CrossoriginEnum $value): static
     {
         $this->crossorigin = $value;
         return $this;
     }
 
-    public function getCrossorigin(): ?string
+    public function getCrossorigin(): ?CrossoriginEnum
     {
         return $this->crossorigin;
     }
@@ -135,24 +139,24 @@ class LinkEntity extends AbstractEntity
         return $this->media;
     }
 
-    public function setReferrerpolicy(?string $value): static
+    public function setReferrerpolicy(?ReferrerpolicyEnum $value): static
     {
         $this->referrerpolicy = $value;
         return $this;
     }
 
-    public function getReferrerpolicy(): ?string
+    public function getReferrerpolicy(): ?ReferrerpolicyEnum
     {
         return $this->referrerpolicy;
     }
 
-    public function setRel(?string $value): static
+    public function setRel(?LinkRelEnum $value): static
     {
         $this->rel = $value;
         return $this;
     }
 
-    public function getRel(): ?string
+    public function getRel(): ?LinkRelEnum
     {
         return $this->rel;
     }
@@ -179,13 +183,13 @@ class LinkEntity extends AbstractEntity
         return $this->type;
     }
 
-    public function setDir(?string $value): static
+    public function setDir(?DirectionEnum $value): static
     {
         $this->dir = $value;
         return $this;
     }
 
-    public function getDir(): ?string
+    public function getDir(): ?DirectionEnum
     {
         return $this->dir;
     }

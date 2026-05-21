@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2026-05-21 10:50:05
+ * @generated 2026-05-21 11:39:20
  * @subpackage Html\Entity\Void
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script
  */
@@ -13,6 +13,9 @@ namespace Html\Entity\Void;
 use DateTimeInterface;
 use DOM\ORM\Entity\AbstractEntity;
 use DOM\ORM\Mapping as ORM;
+use Html\Enum\CrossoriginEnum;
+use Html\Enum\ReferrerpolicyEnum;
+use Html\Enum\ScriptTypeEnum;
 
 /**
  * script entity — persists as XML via DOM-ORM.
@@ -40,7 +43,7 @@ class ScriptEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $charset = null,
         #[ORM\Fragment]
-        protected ?string $crossorigin = null,
+        protected ?CrossoriginEnum $crossorigin = null,
         #[ORM\Fragment]
         protected ?string $defer = null,
         #[ORM\Fragment]
@@ -48,11 +51,11 @@ class ScriptEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $nonce = null,
         #[ORM\Fragment]
-        protected ?string $referrerpolicy = null,
+        protected ?ReferrerpolicyEnum $referrerpolicy = null,
         #[ORM\Fragment]
         protected ?string $src = null,
         #[ORM\Fragment]
-        protected ?string $type = null,
+        protected ?ScriptTypeEnum $type = null,
         #[ORM\Fragment]
         protected ?string $hidden = null,
         #[ORM\Fragment]
@@ -98,13 +101,13 @@ class ScriptEntity extends AbstractEntity
         return $this->charset;
     }
 
-    public function setCrossorigin(?string $value): static
+    public function setCrossorigin(?CrossoriginEnum $value): static
     {
         $this->crossorigin = $value;
         return $this;
     }
 
-    public function getCrossorigin(): ?string
+    public function getCrossorigin(): ?CrossoriginEnum
     {
         return $this->crossorigin;
     }
@@ -142,13 +145,13 @@ class ScriptEntity extends AbstractEntity
         return $this->nonce;
     }
 
-    public function setReferrerpolicy(?string $value): static
+    public function setReferrerpolicy(?ReferrerpolicyEnum $value): static
     {
         $this->referrerpolicy = $value;
         return $this;
     }
 
-    public function getReferrerpolicy(): ?string
+    public function getReferrerpolicy(): ?ReferrerpolicyEnum
     {
         return $this->referrerpolicy;
     }
@@ -164,13 +167,13 @@ class ScriptEntity extends AbstractEntity
         return $this->src;
     }
 
-    public function setType(?string $value): static
+    public function setType(?ScriptTypeEnum $value): static
     {
         $this->type = $value;
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?ScriptTypeEnum
     {
         return $this->type;
     }

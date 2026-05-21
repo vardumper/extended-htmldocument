@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2026-05-21 10:50:05
+ * @generated 2026-05-21 11:39:20
  * @subpackage Html\Entity\Void
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area
  */
@@ -13,6 +13,14 @@ namespace Html\Entity\Void;
 use DateTimeInterface;
 use DOM\ORM\Entity\AbstractEntity;
 use DOM\ORM\Mapping as ORM;
+use Html\Enum\AutoCapitalizeEnum;
+use Html\Enum\ContentEditableEnum;
+use Html\Enum\DirectionEnum;
+use Html\Enum\InputModeEnum;
+use Html\Enum\RelEnum;
+use Html\Enum\ShapeEnum;
+use Html\Enum\SpellCheckEnum;
+use Html\Enum\TranslateEnum;
 
 /**
  * area entity — persists as XML via DOM-ORM.
@@ -59,9 +67,9 @@ class AreaEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $hreflang = null,
         #[ORM\Fragment]
-        protected ?string $rel = null,
+        protected ?RelEnum $rel = null,
         #[ORM\Fragment]
-        protected ?string $shape = null,
+        protected ?ShapeEnum $shape = null,
         #[ORM\Fragment]
         protected ?string $target = null,
         #[ORM\Fragment]
@@ -69,23 +77,23 @@ class AreaEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $accesskey = null,
         #[ORM\Fragment]
-        protected ?string $autocapitalize = null,
+        protected ?AutoCapitalizeEnum $autocapitalize = null,
         #[ORM\Fragment]
         protected ?string $autofocus = null,
         #[ORM\Fragment]
-        protected ?string $contenteditable = null,
+        protected ?ContentEditableEnum $contenteditable = null,
         #[ORM\Fragment]
-        protected ?string $dir = null,
+        protected ?DirectionEnum $dir = null,
         #[ORM\Fragment]
         protected ?string $draggable = null,
         #[ORM\Fragment]
         protected ?string $hidden = null,
         #[ORM\Fragment]
-        protected ?string $inputmode = null,
+        protected ?InputModeEnum $inputmode = null,
         #[ORM\Fragment]
         protected ?string $lang = null,
         #[ORM\Fragment]
-        protected ?string $spellcheck = null,
+        protected ?SpellCheckEnum $spellcheck = null,
         #[ORM\Fragment]
         protected ?string $style = null,
         #[ORM\Fragment]
@@ -93,7 +101,7 @@ class AreaEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $title = null,
         #[ORM\Fragment]
-        protected ?string $translate = null,
+        protected ?TranslateEnum $translate = null,
         ?string $entityId = null,
         ?DateTimeInterface $createdAt = null,
     ) {
@@ -166,24 +174,24 @@ class AreaEntity extends AbstractEntity
         return $this->hreflang;
     }
 
-    public function setRel(?string $value): static
+    public function setRel(?RelEnum $value): static
     {
         $this->rel = $value;
         return $this;
     }
 
-    public function getRel(): ?string
+    public function getRel(): ?RelEnum
     {
         return $this->rel;
     }
 
-    public function setShape(?string $value): static
+    public function setShape(?ShapeEnum $value): static
     {
         $this->shape = $value;
         return $this;
     }
 
-    public function getShape(): ?string
+    public function getShape(): ?ShapeEnum
     {
         return $this->shape;
     }
@@ -221,13 +229,13 @@ class AreaEntity extends AbstractEntity
         return $this->accesskey;
     }
 
-    public function setAutocapitalize(?string $value): static
+    public function setAutocapitalize(?AutoCapitalizeEnum $value): static
     {
         $this->autocapitalize = $value;
         return $this;
     }
 
-    public function getAutocapitalize(): ?string
+    public function getAutocapitalize(): ?AutoCapitalizeEnum
     {
         return $this->autocapitalize;
     }
@@ -243,24 +251,24 @@ class AreaEntity extends AbstractEntity
         return $this->autofocus;
     }
 
-    public function setContenteditable(?string $value): static
+    public function setContenteditable(?ContentEditableEnum $value): static
     {
         $this->contenteditable = $value;
         return $this;
     }
 
-    public function getContenteditable(): ?string
+    public function getContenteditable(): ?ContentEditableEnum
     {
         return $this->contenteditable;
     }
 
-    public function setDir(?string $value): static
+    public function setDir(?DirectionEnum $value): static
     {
         $this->dir = $value;
         return $this;
     }
 
-    public function getDir(): ?string
+    public function getDir(): ?DirectionEnum
     {
         return $this->dir;
     }
@@ -287,13 +295,13 @@ class AreaEntity extends AbstractEntity
         return $this->hidden;
     }
 
-    public function setInputmode(?string $value): static
+    public function setInputmode(?InputModeEnum $value): static
     {
         $this->inputmode = $value;
         return $this;
     }
 
-    public function getInputmode(): ?string
+    public function getInputmode(): ?InputModeEnum
     {
         return $this->inputmode;
     }
@@ -309,13 +317,13 @@ class AreaEntity extends AbstractEntity
         return $this->lang;
     }
 
-    public function setSpellcheck(?string $value): static
+    public function setSpellcheck(?SpellCheckEnum $value): static
     {
         $this->spellcheck = $value;
         return $this;
     }
 
-    public function getSpellcheck(): ?string
+    public function getSpellcheck(): ?SpellCheckEnum
     {
         return $this->spellcheck;
     }
@@ -353,13 +361,13 @@ class AreaEntity extends AbstractEntity
         return $this->title;
     }
 
-    public function setTranslate(?string $value): static
+    public function setTranslate(?TranslateEnum $value): static
     {
         $this->translate = $value;
         return $this;
     }
 
-    public function getTranslate(): ?string
+    public function getTranslate(): ?TranslateEnum
     {
         return $this->translate;
     }

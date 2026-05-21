@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2026-05-21 10:50:05
+ * @generated 2026-05-21 11:39:20
  * @subpackage Html\Entity\Inline
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
  */
@@ -13,6 +13,14 @@ namespace Html\Entity\Inline;
 use DateTimeInterface;
 use DOM\ORM\Entity\AbstractEntity;
 use DOM\ORM\Mapping as ORM;
+use Html\Enum\AriaAtomicEnum;
+use Html\Enum\AriaHiddenEnum;
+use Html\Enum\AriaLiveEnum;
+use Html\Enum\AriaRelevantEnum;
+use Html\Enum\CrossoriginEnum;
+use Html\Enum\DecodingEnum;
+use Html\Enum\DirectionEnum;
+use Html\Enum\ReferrerpolicyEnum;
 
 /**
  * img entity — persists as XML via DOM-ORM.
@@ -52,15 +60,15 @@ class ImageEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $alt = null,
         #[ORM\Fragment]
-        protected ?string $crossorigin = null,
+        protected ?CrossoriginEnum $crossorigin = null,
         #[ORM\Fragment]
-        protected ?string $decoding = null,
+        protected ?DecodingEnum $decoding = null,
         #[ORM\Fragment]
         protected ?string $height = null,
         #[ORM\Fragment]
         protected ?string $ismap = null,
         #[ORM\Fragment]
-        protected ?string $referrerpolicy = null,
+        protected ?ReferrerpolicyEnum $referrerpolicy = null,
         #[ORM\Fragment]
         protected ?string $sizes = null,
         #[ORM\Fragment]
@@ -72,7 +80,7 @@ class ImageEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $width = null,
         #[ORM\Fragment]
-        protected ?string $ariaHidden = null,
+        protected ?AriaHiddenEnum $ariaHidden = null,
         #[ORM\Fragment]
         protected ?string $ariaLabel = null,
         #[ORM\Fragment]
@@ -82,13 +90,13 @@ class ImageEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $ariaRoledescription = null,
         #[ORM\Fragment]
-        protected ?string $ariaLive = null,
+        protected ?AriaLiveEnum $ariaLive = null,
         #[ORM\Fragment]
-        protected ?string $ariaRelevant = null,
+        protected ?AriaRelevantEnum $ariaRelevant = null,
         #[ORM\Fragment]
-        protected ?string $ariaAtomic = null,
+        protected ?AriaAtomicEnum $ariaAtomic = null,
         #[ORM\Fragment]
-        protected ?string $dir = null,
+        protected ?DirectionEnum $dir = null,
         #[ORM\Fragment]
         protected ?string $draggable = null,
         #[ORM\Fragment]
@@ -129,24 +137,24 @@ class ImageEntity extends AbstractEntity
         return $this->alt;
     }
 
-    public function setCrossorigin(?string $value): static
+    public function setCrossorigin(?CrossoriginEnum $value): static
     {
         $this->crossorigin = $value;
         return $this;
     }
 
-    public function getCrossorigin(): ?string
+    public function getCrossorigin(): ?CrossoriginEnum
     {
         return $this->crossorigin;
     }
 
-    public function setDecoding(?string $value): static
+    public function setDecoding(?DecodingEnum $value): static
     {
         $this->decoding = $value;
         return $this;
     }
 
-    public function getDecoding(): ?string
+    public function getDecoding(): ?DecodingEnum
     {
         return $this->decoding;
     }
@@ -173,13 +181,13 @@ class ImageEntity extends AbstractEntity
         return $this->ismap;
     }
 
-    public function setReferrerpolicy(?string $value): static
+    public function setReferrerpolicy(?ReferrerpolicyEnum $value): static
     {
         $this->referrerpolicy = $value;
         return $this;
     }
 
-    public function getReferrerpolicy(): ?string
+    public function getReferrerpolicy(): ?ReferrerpolicyEnum
     {
         return $this->referrerpolicy;
     }
@@ -239,13 +247,13 @@ class ImageEntity extends AbstractEntity
         return $this->width;
     }
 
-    public function setAriaHidden(?string $value): static
+    public function setAriaHidden(?AriaHiddenEnum $value): static
     {
         $this->ariaHidden = $value;
         return $this;
     }
 
-    public function getAriaHidden(): ?string
+    public function getAriaHidden(): ?AriaHiddenEnum
     {
         return $this->ariaHidden;
     }
@@ -294,46 +302,46 @@ class ImageEntity extends AbstractEntity
         return $this->ariaRoledescription;
     }
 
-    public function setAriaLive(?string $value): static
+    public function setAriaLive(?AriaLiveEnum $value): static
     {
         $this->ariaLive = $value;
         return $this;
     }
 
-    public function getAriaLive(): ?string
+    public function getAriaLive(): ?AriaLiveEnum
     {
         return $this->ariaLive;
     }
 
-    public function setAriaRelevant(?string $value): static
+    public function setAriaRelevant(?AriaRelevantEnum $value): static
     {
         $this->ariaRelevant = $value;
         return $this;
     }
 
-    public function getAriaRelevant(): ?string
+    public function getAriaRelevant(): ?AriaRelevantEnum
     {
         return $this->ariaRelevant;
     }
 
-    public function setAriaAtomic(?string $value): static
+    public function setAriaAtomic(?AriaAtomicEnum $value): static
     {
         $this->ariaAtomic = $value;
         return $this;
     }
 
-    public function getAriaAtomic(): ?string
+    public function getAriaAtomic(): ?AriaAtomicEnum
     {
         return $this->ariaAtomic;
     }
 
-    public function setDir(?string $value): static
+    public function setDir(?DirectionEnum $value): static
     {
         $this->dir = $value;
         return $this;
     }
 
-    public function getDir(): ?string
+    public function getDir(): ?DirectionEnum
     {
         return $this->dir;
     }

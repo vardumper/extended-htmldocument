@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2026-05-21 10:50:05
+ * @generated 2026-05-21 11:39:20
  * @subpackage Html\Entity\Inline
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/bdi
  */
@@ -13,6 +13,19 @@ namespace Html\Entity\Inline;
 use DateTimeInterface;
 use DOM\ORM\Entity\AbstractEntity;
 use DOM\ORM\Mapping as ORM;
+use Html\Enum\AriaAtomicEnum;
+use Html\Enum\AriaBusyEnum;
+use Html\Enum\AriaHiddenEnum;
+use Html\Enum\AriaLiveEnum;
+use Html\Enum\AriaRelevantEnum;
+use Html\Enum\AutoCapitalizeEnum;
+use Html\Enum\ContentEditableEnum;
+use Html\Enum\DirectionEnum;
+use Html\Enum\InputModeEnum;
+use Html\Enum\PopoverEnum;
+use Html\Enum\RoleEnum;
+use Html\Enum\SpellCheckEnum;
+use Html\Enum\TranslateEnum;
 
 /**
  * bdi entity — persists as XML via DOM-ORM.
@@ -48,7 +61,7 @@ class BidirectionalIsolationEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $class = null,
         #[ORM\Fragment]
-        protected ?string $role = null,
+        protected ?RoleEnum $role = null,
         #[ORM\Fragment]
         protected ?string $ariaControls = null,
         #[ORM\Fragment]
@@ -56,9 +69,9 @@ class BidirectionalIsolationEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $ariaLabelledby = null,
         #[ORM\Fragment]
-        protected ?string $ariaBusy = null,
+        protected ?AriaBusyEnum $ariaBusy = null,
         #[ORM\Fragment]
-        protected ?string $ariaHidden = null,
+        protected ?AriaHiddenEnum $ariaHidden = null,
         #[ORM\Fragment]
         protected ?string $ariaDetails = null,
         #[ORM\Fragment]
@@ -66,33 +79,33 @@ class BidirectionalIsolationEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $ariaRoledescription = null,
         #[ORM\Fragment]
-        protected ?string $ariaLive = null,
+        protected ?AriaLiveEnum $ariaLive = null,
         #[ORM\Fragment]
-        protected ?string $ariaRelevant = null,
+        protected ?AriaRelevantEnum $ariaRelevant = null,
         #[ORM\Fragment]
-        protected ?string $ariaAtomic = null,
+        protected ?AriaAtomicEnum $ariaAtomic = null,
         #[ORM\Fragment]
         protected ?string $accesskey = null,
         #[ORM\Fragment]
-        protected ?string $autocapitalize = null,
+        protected ?AutoCapitalizeEnum $autocapitalize = null,
         #[ORM\Fragment]
         protected ?string $autofocus = null,
         #[ORM\Fragment]
-        protected ?string $contenteditable = null,
+        protected ?ContentEditableEnum $contenteditable = null,
         #[ORM\Fragment]
-        protected ?string $dir = null,
+        protected ?DirectionEnum $dir = null,
         #[ORM\Fragment]
         protected ?string $draggable = null,
         #[ORM\Fragment]
         protected ?string $hidden = null,
         #[ORM\Fragment]
-        protected ?string $inputmode = null,
+        protected ?InputModeEnum $inputmode = null,
         #[ORM\Fragment]
         protected ?string $lang = null,
         #[ORM\Fragment]
-        protected ?string $popover = null,
+        protected ?PopoverEnum $popover = null,
         #[ORM\Fragment]
-        protected ?string $spellcheck = null,
+        protected ?SpellCheckEnum $spellcheck = null,
         #[ORM\Fragment]
         protected ?string $style = null,
         #[ORM\Fragment]
@@ -100,7 +113,7 @@ class BidirectionalIsolationEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $title = null,
         #[ORM\Fragment]
-        protected ?string $translate = null,
+        protected ?TranslateEnum $translate = null,
         ?string $entityId = null,
         ?DateTimeInterface $createdAt = null,
     ) {
@@ -118,13 +131,13 @@ class BidirectionalIsolationEntity extends AbstractEntity
         return $this->class;
     }
 
-    public function setRole(?string $value): static
+    public function setRole(?RoleEnum $value): static
     {
         $this->role = $value;
         return $this;
     }
 
-    public function getRole(): ?string
+    public function getRole(): ?RoleEnum
     {
         return $this->role;
     }
@@ -162,24 +175,24 @@ class BidirectionalIsolationEntity extends AbstractEntity
         return $this->ariaLabelledby;
     }
 
-    public function setAriaBusy(?string $value): static
+    public function setAriaBusy(?AriaBusyEnum $value): static
     {
         $this->ariaBusy = $value;
         return $this;
     }
 
-    public function getAriaBusy(): ?string
+    public function getAriaBusy(): ?AriaBusyEnum
     {
         return $this->ariaBusy;
     }
 
-    public function setAriaHidden(?string $value): static
+    public function setAriaHidden(?AriaHiddenEnum $value): static
     {
         $this->ariaHidden = $value;
         return $this;
     }
 
-    public function getAriaHidden(): ?string
+    public function getAriaHidden(): ?AriaHiddenEnum
     {
         return $this->ariaHidden;
     }
@@ -217,35 +230,35 @@ class BidirectionalIsolationEntity extends AbstractEntity
         return $this->ariaRoledescription;
     }
 
-    public function setAriaLive(?string $value): static
+    public function setAriaLive(?AriaLiveEnum $value): static
     {
         $this->ariaLive = $value;
         return $this;
     }
 
-    public function getAriaLive(): ?string
+    public function getAriaLive(): ?AriaLiveEnum
     {
         return $this->ariaLive;
     }
 
-    public function setAriaRelevant(?string $value): static
+    public function setAriaRelevant(?AriaRelevantEnum $value): static
     {
         $this->ariaRelevant = $value;
         return $this;
     }
 
-    public function getAriaRelevant(): ?string
+    public function getAriaRelevant(): ?AriaRelevantEnum
     {
         return $this->ariaRelevant;
     }
 
-    public function setAriaAtomic(?string $value): static
+    public function setAriaAtomic(?AriaAtomicEnum $value): static
     {
         $this->ariaAtomic = $value;
         return $this;
     }
 
-    public function getAriaAtomic(): ?string
+    public function getAriaAtomic(): ?AriaAtomicEnum
     {
         return $this->ariaAtomic;
     }
@@ -261,13 +274,13 @@ class BidirectionalIsolationEntity extends AbstractEntity
         return $this->accesskey;
     }
 
-    public function setAutocapitalize(?string $value): static
+    public function setAutocapitalize(?AutoCapitalizeEnum $value): static
     {
         $this->autocapitalize = $value;
         return $this;
     }
 
-    public function getAutocapitalize(): ?string
+    public function getAutocapitalize(): ?AutoCapitalizeEnum
     {
         return $this->autocapitalize;
     }
@@ -283,24 +296,24 @@ class BidirectionalIsolationEntity extends AbstractEntity
         return $this->autofocus;
     }
 
-    public function setContenteditable(?string $value): static
+    public function setContenteditable(?ContentEditableEnum $value): static
     {
         $this->contenteditable = $value;
         return $this;
     }
 
-    public function getContenteditable(): ?string
+    public function getContenteditable(): ?ContentEditableEnum
     {
         return $this->contenteditable;
     }
 
-    public function setDir(?string $value): static
+    public function setDir(?DirectionEnum $value): static
     {
         $this->dir = $value;
         return $this;
     }
 
-    public function getDir(): ?string
+    public function getDir(): ?DirectionEnum
     {
         return $this->dir;
     }
@@ -327,13 +340,13 @@ class BidirectionalIsolationEntity extends AbstractEntity
         return $this->hidden;
     }
 
-    public function setInputmode(?string $value): static
+    public function setInputmode(?InputModeEnum $value): static
     {
         $this->inputmode = $value;
         return $this;
     }
 
-    public function getInputmode(): ?string
+    public function getInputmode(): ?InputModeEnum
     {
         return $this->inputmode;
     }
@@ -349,24 +362,24 @@ class BidirectionalIsolationEntity extends AbstractEntity
         return $this->lang;
     }
 
-    public function setPopover(?string $value): static
+    public function setPopover(?PopoverEnum $value): static
     {
         $this->popover = $value;
         return $this;
     }
 
-    public function getPopover(): ?string
+    public function getPopover(): ?PopoverEnum
     {
         return $this->popover;
     }
 
-    public function setSpellcheck(?string $value): static
+    public function setSpellcheck(?SpellCheckEnum $value): static
     {
         $this->spellcheck = $value;
         return $this;
     }
 
-    public function getSpellcheck(): ?string
+    public function getSpellcheck(): ?SpellCheckEnum
     {
         return $this->spellcheck;
     }
@@ -404,13 +417,13 @@ class BidirectionalIsolationEntity extends AbstractEntity
         return $this->title;
     }
 
-    public function setTranslate(?string $value): static
+    public function setTranslate(?TranslateEnum $value): static
     {
         $this->translate = $value;
         return $this;
     }
 
-    public function getTranslate(): ?string
+    public function getTranslate(): ?TranslateEnum
     {
         return $this->translate;
     }

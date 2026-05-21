@@ -21,7 +21,7 @@
                     <xsl:value-of select="fragment[@name='default']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='kind']">
+            <xsl:if test="fragment[@name='kind'] and contains('|captions|chapters|descriptions|metadata|subtitles|', concat('|', fragment[@name='kind'], '|'))">
                 <xsl:attribute name="kind">
                     <xsl:value-of select="fragment[@name='kind']"/>
                 </xsl:attribute>

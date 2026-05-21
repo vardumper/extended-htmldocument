@@ -6,7 +6,7 @@
 -->
 <item type="hr" id="example-hr">
     <fragment name="class"><![CDATA[example-class]]></fragment>
-    <fragment name="align"><![CDATA[example-align]]></fragment>
+    <fragment name="align"><![CDATA[center]]></fragment>
     <fragment name="color"><![CDATA[example-color]]></fragment>
     <fragment name="noshade"><![CDATA[example-noshade]]></fragment>
     <fragment name="size"><![CDATA[example-size]]></fragment>

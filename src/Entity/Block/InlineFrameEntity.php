@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2026-05-21 10:50:05
+ * @generated 2026-05-21 11:39:20
  * @subpackage Html\Entity\Block
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
  */
@@ -13,6 +13,15 @@ namespace Html\Entity\Block;
 use DateTimeInterface;
 use DOM\ORM\Entity\AbstractEntity;
 use DOM\ORM\Mapping as ORM;
+use Html\Enum\AriaAtomicEnum;
+use Html\Enum\AriaBusyEnum;
+use Html\Enum\AriaHiddenEnum;
+use Html\Enum\AriaLiveEnum;
+use Html\Enum\AriaRelevantEnum;
+use Html\Enum\DirectionEnum;
+use Html\Enum\PopoverEnum;
+use Html\Enum\ReferrerpolicyEnum;
+use Html\Enum\RoleEnum;
 
 /**
  * iframe entity — persists as XML via DOM-ORM.
@@ -57,7 +66,7 @@ class InlineFrameEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $name = null,
         #[ORM\Fragment]
-        protected ?string $referrerpolicy = null,
+        protected ?ReferrerpolicyEnum $referrerpolicy = null,
         #[ORM\Fragment]
         protected ?string $sandbox = null,
         #[ORM\Fragment]
@@ -69,7 +78,7 @@ class InlineFrameEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $width = null,
         #[ORM\Fragment]
-        protected ?string $role = null,
+        protected ?RoleEnum $role = null,
         #[ORM\Fragment]
         protected ?string $ariaControls = null,
         #[ORM\Fragment]
@@ -77,9 +86,9 @@ class InlineFrameEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $ariaLabelledby = null,
         #[ORM\Fragment]
-        protected ?string $ariaBusy = null,
+        protected ?AriaBusyEnum $ariaBusy = null,
         #[ORM\Fragment]
-        protected ?string $ariaHidden = null,
+        protected ?AriaHiddenEnum $ariaHidden = null,
         #[ORM\Fragment]
         protected ?string $ariaLabel = null,
         #[ORM\Fragment]
@@ -89,19 +98,19 @@ class InlineFrameEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $ariaRoledescription = null,
         #[ORM\Fragment]
-        protected ?string $ariaLive = null,
+        protected ?AriaLiveEnum $ariaLive = null,
         #[ORM\Fragment]
-        protected ?string $ariaRelevant = null,
+        protected ?AriaRelevantEnum $ariaRelevant = null,
         #[ORM\Fragment]
-        protected ?string $ariaAtomic = null,
+        protected ?AriaAtomicEnum $ariaAtomic = null,
         #[ORM\Fragment]
-        protected ?string $dir = null,
+        protected ?DirectionEnum $dir = null,
         #[ORM\Fragment]
         protected ?string $hidden = null,
         #[ORM\Fragment]
         protected ?string $lang = null,
         #[ORM\Fragment]
-        protected ?string $popover = null,
+        protected ?PopoverEnum $popover = null,
         #[ORM\Fragment]
         protected ?string $slot = null,
         #[ORM\Fragment]
@@ -160,13 +169,13 @@ class InlineFrameEntity extends AbstractEntity
         return $this->name;
     }
 
-    public function setReferrerpolicy(?string $value): static
+    public function setReferrerpolicy(?ReferrerpolicyEnum $value): static
     {
         $this->referrerpolicy = $value;
         return $this;
     }
 
-    public function getReferrerpolicy(): ?string
+    public function getReferrerpolicy(): ?ReferrerpolicyEnum
     {
         return $this->referrerpolicy;
     }
@@ -226,13 +235,13 @@ class InlineFrameEntity extends AbstractEntity
         return $this->width;
     }
 
-    public function setRole(?string $value): static
+    public function setRole(?RoleEnum $value): static
     {
         $this->role = $value;
         return $this;
     }
 
-    public function getRole(): ?string
+    public function getRole(): ?RoleEnum
     {
         return $this->role;
     }
@@ -270,24 +279,24 @@ class InlineFrameEntity extends AbstractEntity
         return $this->ariaLabelledby;
     }
 
-    public function setAriaBusy(?string $value): static
+    public function setAriaBusy(?AriaBusyEnum $value): static
     {
         $this->ariaBusy = $value;
         return $this;
     }
 
-    public function getAriaBusy(): ?string
+    public function getAriaBusy(): ?AriaBusyEnum
     {
         return $this->ariaBusy;
     }
 
-    public function setAriaHidden(?string $value): static
+    public function setAriaHidden(?AriaHiddenEnum $value): static
     {
         $this->ariaHidden = $value;
         return $this;
     }
 
-    public function getAriaHidden(): ?string
+    public function getAriaHidden(): ?AriaHiddenEnum
     {
         return $this->ariaHidden;
     }
@@ -336,46 +345,46 @@ class InlineFrameEntity extends AbstractEntity
         return $this->ariaRoledescription;
     }
 
-    public function setAriaLive(?string $value): static
+    public function setAriaLive(?AriaLiveEnum $value): static
     {
         $this->ariaLive = $value;
         return $this;
     }
 
-    public function getAriaLive(): ?string
+    public function getAriaLive(): ?AriaLiveEnum
     {
         return $this->ariaLive;
     }
 
-    public function setAriaRelevant(?string $value): static
+    public function setAriaRelevant(?AriaRelevantEnum $value): static
     {
         $this->ariaRelevant = $value;
         return $this;
     }
 
-    public function getAriaRelevant(): ?string
+    public function getAriaRelevant(): ?AriaRelevantEnum
     {
         return $this->ariaRelevant;
     }
 
-    public function setAriaAtomic(?string $value): static
+    public function setAriaAtomic(?AriaAtomicEnum $value): static
     {
         $this->ariaAtomic = $value;
         return $this;
     }
 
-    public function getAriaAtomic(): ?string
+    public function getAriaAtomic(): ?AriaAtomicEnum
     {
         return $this->ariaAtomic;
     }
 
-    public function setDir(?string $value): static
+    public function setDir(?DirectionEnum $value): static
     {
         $this->dir = $value;
         return $this;
     }
 
-    public function getDir(): ?string
+    public function getDir(): ?DirectionEnum
     {
         return $this->dir;
     }
@@ -402,13 +411,13 @@ class InlineFrameEntity extends AbstractEntity
         return $this->lang;
     }
 
-    public function setPopover(?string $value): static
+    public function setPopover(?PopoverEnum $value): static
     {
         $this->popover = $value;
         return $this;
     }
 
-    public function getPopover(): ?string
+    public function getPopover(): ?PopoverEnum
     {
         return $this->popover;
     }

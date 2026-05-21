@@ -8,21 +8,21 @@
     <fragment name="class"><![CDATA[example-class]]></fragment>
     <fragment name="acceptCharset"><![CDATA[example-accept-charset]]></fragment>
     <fragment name="action"><![CDATA[example-action]]></fragment>
-    <fragment name="autocomplete"><![CDATA[example-autocomplete]]></fragment>
-    <fragment name="autocorrect"><![CDATA[example-autocorrect]]></fragment>
-    <fragment name="enctype"><![CDATA[example-enctype]]></fragment>
-    <fragment name="method"><![CDATA[example-method]]></fragment>
+    <fragment name="autocomplete"><![CDATA[off]]></fragment>
+    <fragment name="autocorrect"><![CDATA[off]]></fragment>
+    <fragment name="enctype"><![CDATA[application/x-www-form-urlencoded]]></fragment>
+    <fragment name="method"><![CDATA[get]]></fragment>
     <fragment name="name"><![CDATA[example-name]]></fragment>
     <fragment name="novalidate"><![CDATA[example-novalidate]]></fragment>
     <fragment name="target"><![CDATA[example-target]]></fragment>
-    <fragment name="ariaInvalid"><![CDATA[example-aria-invalid]]></fragment>
+    <fragment name="ariaInvalid"><![CDATA[false]]></fragment>
     <fragment name="ariaLabel"><![CDATA[example-aria-label]]></fragment>
     <fragment name="ariaDetails"><![CDATA[example-aria-details]]></fragment>
     <fragment name="ariaKeyshortcuts"><![CDATA[example-aria-keyshortcuts]]></fragment>
     <fragment name="ariaRoledescription"><![CDATA[example-aria-roledescription]]></fragment>
-    <fragment name="ariaLive"><![CDATA[example-aria-live]]></fragment>
-    <fragment name="ariaRelevant"><![CDATA[example-aria-relevant]]></fragment>
-    <fragment name="ariaAtomic"><![CDATA[example-aria-atomic]]></fragment>
+    <fragment name="ariaLive"><![CDATA[off]]></fragment>
+    <fragment name="ariaRelevant"><![CDATA[additions]]></fragment>
+    <fragment name="ariaAtomic"><![CDATA[false]]></fragment>
     <fragment name="accesskey"><![CDATA[example-accesskey]]></fragment>
     <fragment name="dir"><![CDATA[ltr]]></fragment>
     <fragment name="draggable"><![CDATA[example-draggable]]></fragment>
@@ -32,5 +32,5 @@
     <fragment name="style"><![CDATA[color: inherit]]></fragment>
     <fragment name="tabindex"><![CDATA[example-tabindex]]></fragment>
     <fragment name="title"><![CDATA[example-title]]></fragment>
-    <fragment name="translate"><![CDATA[example-translate]]></fragment>
+    <fragment name="translate"><![CDATA[yes]]></fragment>
 </item>

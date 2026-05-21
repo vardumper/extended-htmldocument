@@ -26,7 +26,7 @@
                     <xsl:value-of select="fragment[@name='charset']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='crossorigin']">
+            <xsl:if test="fragment[@name='crossorigin'] and contains('|anonymous|use-credentials|', concat('|', fragment[@name='crossorigin'], '|'))">
                 <xsl:attribute name="crossorigin">
                     <xsl:value-of select="fragment[@name='crossorigin']"/>
                 </xsl:attribute>
@@ -46,7 +46,7 @@
                     <xsl:value-of select="fragment[@name='nonce']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='referrerpolicy']">
+            <xsl:if test="fragment[@name='referrerpolicy'] and contains('|no-referrer|no-referrer-when-downgrade|origin|origin-when-cross-origin|same-origin|strict-origin|strict-origin-when-cross-origin|unsafe-url|', concat('|', fragment[@name='referrerpolicy'], '|'))">
                 <xsl:attribute name="referrerpolicy">
                     <xsl:value-of select="fragment[@name='referrerpolicy']"/>
                 </xsl:attribute>
@@ -56,7 +56,7 @@
                     <xsl:value-of select="fragment[@name='src']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='type']">
+            <xsl:if test="fragment[@name='type'] and contains('|text/javascript|module|', concat('|', fragment[@name='type'], '|'))">
                 <xsl:attribute name="type">
                     <xsl:value-of select="fragment[@name='type']"/>
                 </xsl:attribute>

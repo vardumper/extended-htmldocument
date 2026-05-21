@@ -6,13 +6,13 @@
 -->
 <item type="link" id="example-link">
     <fragment name="class"><![CDATA[example-class]]></fragment>
-    <fragment name="crossorigin"><![CDATA[example-crossorigin]]></fragment>
+    <fragment name="crossorigin"><![CDATA[anonymous]]></fragment>
     <fragment name="href"><![CDATA[https://example.com]]></fragment>
     <fragment name="hreflang"><![CDATA[example-hreflang]]></fragment>
     <fragment name="integrity"><![CDATA[example-integrity]]></fragment>
     <fragment name="media"><![CDATA[example-media]]></fragment>
-    <fragment name="referrerpolicy"><![CDATA[example-referrerpolicy]]></fragment>
-    <fragment name="rel"><![CDATA[example-rel]]></fragment>
+    <fragment name="referrerpolicy"><![CDATA[no-referrer]]></fragment>
+    <fragment name="rel"><![CDATA[alternate]]></fragment>
     <fragment name="sizes"><![CDATA[example-sizes]]></fragment>
     <fragment name="type"><![CDATA[text]]></fragment>
     <fragment name="dir"><![CDATA[ltr]]></fragment>

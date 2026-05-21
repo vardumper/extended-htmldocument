@@ -21,7 +21,7 @@
                     <xsl:value-of select="fragment[@name='span']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='dir']">
+            <xsl:if test="fragment[@name='dir'] and contains('|ltr|rtl|auto|', concat('|', fragment[@name='dir'], '|'))">
                 <xsl:attribute name="dir">
                     <xsl:value-of select="fragment[@name='dir']"/>
                 </xsl:attribute>
@@ -46,7 +46,7 @@
                     <xsl:value-of select="fragment[@name='style']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:apply-templates select="item"/>
+            <xsl:apply-templates select="item[@type='col']"/>
         </xsl:element>
     </xsl:template>
 

@@ -11,6 +11,9 @@ namespace <?= /** @phpstan-ignore variable.undefined */ $namespace; ?>;
 
 use DOM\ORM\Entity\AbstractEntity;
 use DOM\ORM\Mapping as ORM;
+<?php foreach (/** @phpstan-ignore variable.undefined */ $enum_imports as $enumFqcn): ?>
+use <?= $enumFqcn ?>;
+<?php endforeach; ?>
 
 /**
  * <?= /** @phpstan-ignore variable.undefined */ $element_name ?> entity — persists as XML via DOM-ORM.
@@ -41,7 +44,7 @@ class <?= /** @phpstan-ignore variable.undefined */ $entity_class_name ?> extend
     public function __construct(
 <?php foreach (/** @phpstan-ignore variable.undefined */ $properties as $prop): ?>
         #[ORM\Fragment]
-        protected ?string $<?= $prop ?> = null,
+        protected ?<?= $prop['enumShortName'] ?? 'string' ?> $<?= $prop['name'] ?> = null,
 <?php endforeach; ?>
         ?string $entityId = null,
         ?\DateTimeInterface $createdAt = null,
@@ -50,15 +53,15 @@ class <?= /** @phpstan-ignore variable.undefined */ $entity_class_name ?> extend
     }
 
 <?php foreach (/** @phpstan-ignore variable.undefined */ $properties as $prop): ?>
-    public function set<?= ucfirst($prop) ?>(?string $value): static
+    public function set<?= ucfirst($prop['name']) ?>(?<?= $prop['enumShortName'] ?? 'string' ?> $value): static
     {
-        $this-><?= $prop ?> = $value;
+        $this-><?= $prop['name'] ?> = $value;
         return $this;
     }
 
-    public function get<?= ucfirst($prop) ?>(): ?string
+    public function get<?= ucfirst($prop['name']) ?>(): ?<?= $prop['enumShortName'] ?? 'string' ?>
     {
-        return $this-><?= $prop ?>;
+        return $this-><?= $prop['name'] ?>;
     }
 
 <?php endforeach; ?>

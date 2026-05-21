@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2026-05-21 10:50:05
+ * @generated 2026-05-21 11:39:20
  * @subpackage Html\Entity\Block
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
  */
@@ -13,6 +13,15 @@ namespace Html\Entity\Block;
 use DateTimeInterface;
 use DOM\ORM\Entity\AbstractEntity;
 use DOM\ORM\Mapping as ORM;
+use Html\Enum\AriaAtomicEnum;
+use Html\Enum\AriaBusyEnum;
+use Html\Enum\AriaLiveEnum;
+use Html\Enum\AriaRelevantEnum;
+use Html\Enum\CrossoriginEnum;
+use Html\Enum\PopoverEnum;
+use Html\Enum\PreloadEnum;
+use Html\Enum\RoleEnum;
+use Html\Enum\TranslateEnum;
 
 /**
  * audio entity — persists as XML via DOM-ORM.
@@ -52,17 +61,17 @@ class AudioEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $controls = null,
         #[ORM\Fragment]
-        protected ?string $crossorigin = null,
+        protected ?CrossoriginEnum $crossorigin = null,
         #[ORM\Fragment]
         protected ?string $loop = null,
         #[ORM\Fragment]
         protected ?string $muted = null,
         #[ORM\Fragment]
-        protected ?string $preload = null,
+        protected ?PreloadEnum $preload = null,
         #[ORM\Fragment]
         protected ?string $src = null,
         #[ORM\Fragment]
-        protected ?string $role = null,
+        protected ?RoleEnum $role = null,
         #[ORM\Fragment]
         protected ?string $ariaControls = null,
         #[ORM\Fragment]
@@ -70,7 +79,7 @@ class AudioEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $ariaLabelledby = null,
         #[ORM\Fragment]
-        protected ?string $ariaBusy = null,
+        protected ?AriaBusyEnum $ariaBusy = null,
         #[ORM\Fragment]
         protected ?string $ariaDetails = null,
         #[ORM\Fragment]
@@ -78,11 +87,11 @@ class AudioEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $ariaRoledescription = null,
         #[ORM\Fragment]
-        protected ?string $ariaLive = null,
+        protected ?AriaLiveEnum $ariaLive = null,
         #[ORM\Fragment]
-        protected ?string $ariaRelevant = null,
+        protected ?AriaRelevantEnum $ariaRelevant = null,
         #[ORM\Fragment]
-        protected ?string $ariaAtomic = null,
+        protected ?AriaAtomicEnum $ariaAtomic = null,
         #[ORM\Fragment]
         protected ?string $accesskey = null,
         #[ORM\Fragment]
@@ -92,7 +101,7 @@ class AudioEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $lang = null,
         #[ORM\Fragment]
-        protected ?string $popover = null,
+        protected ?PopoverEnum $popover = null,
         #[ORM\Fragment]
         protected ?string $slot = null,
         #[ORM\Fragment]
@@ -102,7 +111,7 @@ class AudioEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $title = null,
         #[ORM\Fragment]
-        protected ?string $translate = null,
+        protected ?TranslateEnum $translate = null,
         ?string $entityId = null,
         ?DateTimeInterface $createdAt = null,
     ) {
@@ -142,13 +151,13 @@ class AudioEntity extends AbstractEntity
         return $this->controls;
     }
 
-    public function setCrossorigin(?string $value): static
+    public function setCrossorigin(?CrossoriginEnum $value): static
     {
         $this->crossorigin = $value;
         return $this;
     }
 
-    public function getCrossorigin(): ?string
+    public function getCrossorigin(): ?CrossoriginEnum
     {
         return $this->crossorigin;
     }
@@ -175,13 +184,13 @@ class AudioEntity extends AbstractEntity
         return $this->muted;
     }
 
-    public function setPreload(?string $value): static
+    public function setPreload(?PreloadEnum $value): static
     {
         $this->preload = $value;
         return $this;
     }
 
-    public function getPreload(): ?string
+    public function getPreload(): ?PreloadEnum
     {
         return $this->preload;
     }
@@ -197,13 +206,13 @@ class AudioEntity extends AbstractEntity
         return $this->src;
     }
 
-    public function setRole(?string $value): static
+    public function setRole(?RoleEnum $value): static
     {
         $this->role = $value;
         return $this;
     }
 
-    public function getRole(): ?string
+    public function getRole(): ?RoleEnum
     {
         return $this->role;
     }
@@ -241,13 +250,13 @@ class AudioEntity extends AbstractEntity
         return $this->ariaLabelledby;
     }
 
-    public function setAriaBusy(?string $value): static
+    public function setAriaBusy(?AriaBusyEnum $value): static
     {
         $this->ariaBusy = $value;
         return $this;
     }
 
-    public function getAriaBusy(): ?string
+    public function getAriaBusy(): ?AriaBusyEnum
     {
         return $this->ariaBusy;
     }
@@ -285,35 +294,35 @@ class AudioEntity extends AbstractEntity
         return $this->ariaRoledescription;
     }
 
-    public function setAriaLive(?string $value): static
+    public function setAriaLive(?AriaLiveEnum $value): static
     {
         $this->ariaLive = $value;
         return $this;
     }
 
-    public function getAriaLive(): ?string
+    public function getAriaLive(): ?AriaLiveEnum
     {
         return $this->ariaLive;
     }
 
-    public function setAriaRelevant(?string $value): static
+    public function setAriaRelevant(?AriaRelevantEnum $value): static
     {
         $this->ariaRelevant = $value;
         return $this;
     }
 
-    public function getAriaRelevant(): ?string
+    public function getAriaRelevant(): ?AriaRelevantEnum
     {
         return $this->ariaRelevant;
     }
 
-    public function setAriaAtomic(?string $value): static
+    public function setAriaAtomic(?AriaAtomicEnum $value): static
     {
         $this->ariaAtomic = $value;
         return $this;
     }
 
-    public function getAriaAtomic(): ?string
+    public function getAriaAtomic(): ?AriaAtomicEnum
     {
         return $this->ariaAtomic;
     }
@@ -362,13 +371,13 @@ class AudioEntity extends AbstractEntity
         return $this->lang;
     }
 
-    public function setPopover(?string $value): static
+    public function setPopover(?PopoverEnum $value): static
     {
         $this->popover = $value;
         return $this;
     }
 
-    public function getPopover(): ?string
+    public function getPopover(): ?PopoverEnum
     {
         return $this->popover;
     }
@@ -417,13 +426,13 @@ class AudioEntity extends AbstractEntity
         return $this->title;
     }
 
-    public function setTranslate(?string $value): static
+    public function setTranslate(?TranslateEnum $value): static
     {
         $this->translate = $value;
         return $this;
     }
 
-    public function getTranslate(): ?string
+    public function getTranslate(): ?TranslateEnum
     {
         return $this->translate;
     }

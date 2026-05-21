@@ -16,7 +16,7 @@
                     <xsl:value-of select="fragment[@name='class']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:apply-templates select="item"/>
+            <xsl:apply-templates select="item[@type='base' or @type='link' or @type='meta' or @type='noscript' or @type='script' or @type='style' or @type='title']"/>
         </xsl:element>
     </xsl:template>
 

@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2026-05-21 10:50:05
+ * @generated 2026-05-21 11:39:20
  * @subpackage Html\Entity\Inline
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button
  */
@@ -13,6 +13,28 @@ namespace Html\Entity\Inline;
 use DateTimeInterface;
 use DOM\ORM\Entity\AbstractEntity;
 use DOM\ORM\Mapping as ORM;
+use Html\Enum\AriaAtomicEnum;
+use Html\Enum\AriaBusyEnum;
+use Html\Enum\AriaCheckedEnum;
+use Html\Enum\AriaCurrentEnum;
+use Html\Enum\AriaDisabledEnum;
+use Html\Enum\AriaExpandedEnum;
+use Html\Enum\AriaHaspopupEnum;
+use Html\Enum\AriaLiveEnum;
+use Html\Enum\AriaPressedEnum;
+use Html\Enum\AriaRelevantEnum;
+use Html\Enum\AutoCapitalizeEnum;
+use Html\Enum\AutocorrectEnum;
+use Html\Enum\ButtonTypeEnum;
+use Html\Enum\ContentEditableEnum;
+use Html\Enum\DirectionEnum;
+use Html\Enum\FormenctypeEnum;
+use Html\Enum\FormmethodEnum;
+use Html\Enum\InputModeEnum;
+use Html\Enum\PopovertargetactionEnum;
+use Html\Enum\RoleEnum;
+use Html\Enum\SpellCheckEnum;
+use Html\Enum\TranslateEnum;
 
 /**
  * button entity — persists as XML via DOM-ORM.
@@ -53,13 +75,13 @@ class ButtonEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $class = null,
         #[ORM\Fragment]
-        protected ?string $autocorrect = null,
+        protected ?AutocorrectEnum $autocorrect = null,
         #[ORM\Fragment]
         protected ?string $disabled = null,
         #[ORM\Fragment]
         protected ?string $name = null,
         #[ORM\Fragment]
-        protected ?string $type = null,
+        protected ?ButtonTypeEnum $type = null,
         #[ORM\Fragment]
         protected ?string $value = null,
         #[ORM\Fragment]
@@ -67,9 +89,9 @@ class ButtonEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $formaction = null,
         #[ORM\Fragment]
-        protected ?string $formenctype = null,
+        protected ?FormenctypeEnum $formenctype = null,
         #[ORM\Fragment]
-        protected ?string $formmethod = null,
+        protected ?FormmethodEnum $formmethod = null,
         #[ORM\Fragment]
         protected ?string $formnovalidate = null,
         #[ORM\Fragment]
@@ -77,13 +99,13 @@ class ButtonEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $popovertarget = null,
         #[ORM\Fragment]
-        protected ?string $popovertargetaction = null,
+        protected ?PopovertargetactionEnum $popovertargetaction = null,
         #[ORM\Fragment]
         protected ?string $command = null,
         #[ORM\Fragment]
         protected ?string $commandfor = null,
         #[ORM\Fragment]
-        protected ?string $role = null,
+        protected ?RoleEnum $role = null,
         #[ORM\Fragment]
         protected ?string $ariaControls = null,
         #[ORM\Fragment]
@@ -91,13 +113,13 @@ class ButtonEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $ariaLabelledby = null,
         #[ORM\Fragment]
-        protected ?string $ariaCurrent = null,
+        protected ?AriaCurrentEnum $ariaCurrent = null,
         #[ORM\Fragment]
-        protected ?string $ariaBusy = null,
+        protected ?AriaBusyEnum $ariaBusy = null,
         #[ORM\Fragment]
         protected ?string $ariaLabel = null,
         #[ORM\Fragment]
-        protected ?string $ariaDisabled = null,
+        protected ?AriaDisabledEnum $ariaDisabled = null,
         #[ORM\Fragment]
         protected ?string $ariaDetails = null,
         #[ORM\Fragment]
@@ -105,41 +127,41 @@ class ButtonEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $ariaRoledescription = null,
         #[ORM\Fragment]
-        protected ?string $ariaLive = null,
+        protected ?AriaLiveEnum $ariaLive = null,
         #[ORM\Fragment]
-        protected ?string $ariaRelevant = null,
+        protected ?AriaRelevantEnum $ariaRelevant = null,
         #[ORM\Fragment]
-        protected ?string $ariaAtomic = null,
+        protected ?AriaAtomicEnum $ariaAtomic = null,
         #[ORM\Fragment]
-        protected ?string $ariaExpanded = null,
+        protected ?AriaExpandedEnum $ariaExpanded = null,
         #[ORM\Fragment]
-        protected ?string $ariaHaspopup = null,
+        protected ?AriaHaspopupEnum $ariaHaspopup = null,
         #[ORM\Fragment]
-        protected ?string $ariaPressed = null,
+        protected ?AriaPressedEnum $ariaPressed = null,
         #[ORM\Fragment]
-        protected ?string $ariaChecked = null,
+        protected ?AriaCheckedEnum $ariaChecked = null,
         #[ORM\Fragment]
         protected ?string $accesskey = null,
         #[ORM\Fragment]
-        protected ?string $autocapitalize = null,
+        protected ?AutoCapitalizeEnum $autocapitalize = null,
         #[ORM\Fragment]
         protected ?string $autofocus = null,
         #[ORM\Fragment]
-        protected ?string $contenteditable = null,
+        protected ?ContentEditableEnum $contenteditable = null,
         #[ORM\Fragment]
-        protected ?string $dir = null,
+        protected ?DirectionEnum $dir = null,
         #[ORM\Fragment]
         protected ?string $draggable = null,
         #[ORM\Fragment]
         protected ?string $hidden = null,
         #[ORM\Fragment]
-        protected ?string $inputmode = null,
+        protected ?InputModeEnum $inputmode = null,
         #[ORM\Fragment]
         protected ?string $lang = null,
         #[ORM\Fragment]
         protected ?string $slot = null,
         #[ORM\Fragment]
-        protected ?string $spellcheck = null,
+        protected ?SpellCheckEnum $spellcheck = null,
         #[ORM\Fragment]
         protected ?string $style = null,
         #[ORM\Fragment]
@@ -147,7 +169,7 @@ class ButtonEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $title = null,
         #[ORM\Fragment]
-        protected ?string $translate = null,
+        protected ?TranslateEnum $translate = null,
         ?string $entityId = null,
         ?DateTimeInterface $createdAt = null,
     ) {
@@ -165,13 +187,13 @@ class ButtonEntity extends AbstractEntity
         return $this->class;
     }
 
-    public function setAutocorrect(?string $value): static
+    public function setAutocorrect(?AutocorrectEnum $value): static
     {
         $this->autocorrect = $value;
         return $this;
     }
 
-    public function getAutocorrect(): ?string
+    public function getAutocorrect(): ?AutocorrectEnum
     {
         return $this->autocorrect;
     }
@@ -198,13 +220,13 @@ class ButtonEntity extends AbstractEntity
         return $this->name;
     }
 
-    public function setType(?string $value): static
+    public function setType(?ButtonTypeEnum $value): static
     {
         $this->type = $value;
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?ButtonTypeEnum
     {
         return $this->type;
     }
@@ -242,24 +264,24 @@ class ButtonEntity extends AbstractEntity
         return $this->formaction;
     }
 
-    public function setFormenctype(?string $value): static
+    public function setFormenctype(?FormenctypeEnum $value): static
     {
         $this->formenctype = $value;
         return $this;
     }
 
-    public function getFormenctype(): ?string
+    public function getFormenctype(): ?FormenctypeEnum
     {
         return $this->formenctype;
     }
 
-    public function setFormmethod(?string $value): static
+    public function setFormmethod(?FormmethodEnum $value): static
     {
         $this->formmethod = $value;
         return $this;
     }
 
-    public function getFormmethod(): ?string
+    public function getFormmethod(): ?FormmethodEnum
     {
         return $this->formmethod;
     }
@@ -297,13 +319,13 @@ class ButtonEntity extends AbstractEntity
         return $this->popovertarget;
     }
 
-    public function setPopovertargetaction(?string $value): static
+    public function setPopovertargetaction(?PopovertargetactionEnum $value): static
     {
         $this->popovertargetaction = $value;
         return $this;
     }
 
-    public function getPopovertargetaction(): ?string
+    public function getPopovertargetaction(): ?PopovertargetactionEnum
     {
         return $this->popovertargetaction;
     }
@@ -330,13 +352,13 @@ class ButtonEntity extends AbstractEntity
         return $this->commandfor;
     }
 
-    public function setRole(?string $value): static
+    public function setRole(?RoleEnum $value): static
     {
         $this->role = $value;
         return $this;
     }
 
-    public function getRole(): ?string
+    public function getRole(): ?RoleEnum
     {
         return $this->role;
     }
@@ -374,24 +396,24 @@ class ButtonEntity extends AbstractEntity
         return $this->ariaLabelledby;
     }
 
-    public function setAriaCurrent(?string $value): static
+    public function setAriaCurrent(?AriaCurrentEnum $value): static
     {
         $this->ariaCurrent = $value;
         return $this;
     }
 
-    public function getAriaCurrent(): ?string
+    public function getAriaCurrent(): ?AriaCurrentEnum
     {
         return $this->ariaCurrent;
     }
 
-    public function setAriaBusy(?string $value): static
+    public function setAriaBusy(?AriaBusyEnum $value): static
     {
         $this->ariaBusy = $value;
         return $this;
     }
 
-    public function getAriaBusy(): ?string
+    public function getAriaBusy(): ?AriaBusyEnum
     {
         return $this->ariaBusy;
     }
@@ -407,13 +429,13 @@ class ButtonEntity extends AbstractEntity
         return $this->ariaLabel;
     }
 
-    public function setAriaDisabled(?string $value): static
+    public function setAriaDisabled(?AriaDisabledEnum $value): static
     {
         $this->ariaDisabled = $value;
         return $this;
     }
 
-    public function getAriaDisabled(): ?string
+    public function getAriaDisabled(): ?AriaDisabledEnum
     {
         return $this->ariaDisabled;
     }
@@ -451,79 +473,79 @@ class ButtonEntity extends AbstractEntity
         return $this->ariaRoledescription;
     }
 
-    public function setAriaLive(?string $value): static
+    public function setAriaLive(?AriaLiveEnum $value): static
     {
         $this->ariaLive = $value;
         return $this;
     }
 
-    public function getAriaLive(): ?string
+    public function getAriaLive(): ?AriaLiveEnum
     {
         return $this->ariaLive;
     }
 
-    public function setAriaRelevant(?string $value): static
+    public function setAriaRelevant(?AriaRelevantEnum $value): static
     {
         $this->ariaRelevant = $value;
         return $this;
     }
 
-    public function getAriaRelevant(): ?string
+    public function getAriaRelevant(): ?AriaRelevantEnum
     {
         return $this->ariaRelevant;
     }
 
-    public function setAriaAtomic(?string $value): static
+    public function setAriaAtomic(?AriaAtomicEnum $value): static
     {
         $this->ariaAtomic = $value;
         return $this;
     }
 
-    public function getAriaAtomic(): ?string
+    public function getAriaAtomic(): ?AriaAtomicEnum
     {
         return $this->ariaAtomic;
     }
 
-    public function setAriaExpanded(?string $value): static
+    public function setAriaExpanded(?AriaExpandedEnum $value): static
     {
         $this->ariaExpanded = $value;
         return $this;
     }
 
-    public function getAriaExpanded(): ?string
+    public function getAriaExpanded(): ?AriaExpandedEnum
     {
         return $this->ariaExpanded;
     }
 
-    public function setAriaHaspopup(?string $value): static
+    public function setAriaHaspopup(?AriaHaspopupEnum $value): static
     {
         $this->ariaHaspopup = $value;
         return $this;
     }
 
-    public function getAriaHaspopup(): ?string
+    public function getAriaHaspopup(): ?AriaHaspopupEnum
     {
         return $this->ariaHaspopup;
     }
 
-    public function setAriaPressed(?string $value): static
+    public function setAriaPressed(?AriaPressedEnum $value): static
     {
         $this->ariaPressed = $value;
         return $this;
     }
 
-    public function getAriaPressed(): ?string
+    public function getAriaPressed(): ?AriaPressedEnum
     {
         return $this->ariaPressed;
     }
 
-    public function setAriaChecked(?string $value): static
+    public function setAriaChecked(?AriaCheckedEnum $value): static
     {
         $this->ariaChecked = $value;
         return $this;
     }
 
-    public function getAriaChecked(): ?string
+    public function getAriaChecked(): ?AriaCheckedEnum
     {
         return $this->ariaChecked;
     }
@@ -539,13 +561,13 @@ class ButtonEntity extends AbstractEntity
         return $this->accesskey;
     }
 
-    public function setAutocapitalize(?string $value): static
+    public function setAutocapitalize(?AutoCapitalizeEnum $value): static
     {
         $this->autocapitalize = $value;
         return $this;
     }
 
-    public function getAutocapitalize(): ?string
+    public function getAutocapitalize(): ?AutoCapitalizeEnum
     {
         return $this->autocapitalize;
     }
@@ -561,24 +583,24 @@ class ButtonEntity extends AbstractEntity
         return $this->autofocus;
     }
 
-    public function setContenteditable(?string $value): static
+    public function setContenteditable(?ContentEditableEnum $value): static
     {
         $this->contenteditable = $value;
         return $this;
     }
 
-    public function getContenteditable(): ?string
+    public function getContenteditable(): ?ContentEditableEnum
     {
         return $this->contenteditable;
     }
 
-    public function setDir(?string $value): static
+    public function setDir(?DirectionEnum $value): static
     {
         $this->dir = $value;
         return $this;
     }
 
-    public function getDir(): ?string
+    public function getDir(): ?DirectionEnum
     {
         return $this->dir;
     }
@@ -605,13 +627,13 @@ class ButtonEntity extends AbstractEntity
         return $this->hidden;
     }
 
-    public function setInputmode(?string $value): static
+    public function setInputmode(?InputModeEnum $value): static
     {
         $this->inputmode = $value;
         return $this;
     }
 
-    public function getInputmode(): ?string
+    public function getInputmode(): ?InputModeEnum
     {
         return $this->inputmode;
     }
@@ -638,13 +660,13 @@ class ButtonEntity extends AbstractEntity
         return $this->slot;
     }
 
-    public function setSpellcheck(?string $value): static
+    public function setSpellcheck(?SpellCheckEnum $value): static
     {
         $this->spellcheck = $value;
         return $this;
     }
 
-    public function getSpellcheck(): ?string
+    public function getSpellcheck(): ?SpellCheckEnum
     {
         return $this->spellcheck;
     }
@@ -682,13 +704,13 @@ class ButtonEntity extends AbstractEntity
         return $this->title;
     }
 
-    public function setTranslate(?string $value): static
+    public function setTranslate(?TranslateEnum $value): static
     {
         $this->translate = $value;
         return $this;
     }
 
-    public function getTranslate(): ?string
+    public function getTranslate(): ?TranslateEnum
     {
         return $this->translate;
     }

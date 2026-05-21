@@ -8,13 +8,13 @@
     <fragment name="class"><![CDATA[example-class]]></fragment>
     <fragment name="async"><![CDATA[example-async]]></fragment>
     <fragment name="charset"><![CDATA[example-charset]]></fragment>
-    <fragment name="crossorigin"><![CDATA[example-crossorigin]]></fragment>
+    <fragment name="crossorigin"><![CDATA[anonymous]]></fragment>
     <fragment name="defer"><![CDATA[example-defer]]></fragment>
     <fragment name="integrity"><![CDATA[example-integrity]]></fragment>
     <fragment name="nonce"><![CDATA[example-nonce]]></fragment>
-    <fragment name="referrerpolicy"><![CDATA[example-referrerpolicy]]></fragment>
+    <fragment name="referrerpolicy"><![CDATA[no-referrer]]></fragment>
     <fragment name="src"><![CDATA[https://example.com/image.jpg]]></fragment>
-    <fragment name="type"><![CDATA[text]]></fragment>
+    <fragment name="type"><![CDATA[text/javascript]]></fragment>
     <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
     <fragment name="lang"><![CDATA[en]]></fragment>
     <fragment name="title"><![CDATA[example-title]]></fragment>

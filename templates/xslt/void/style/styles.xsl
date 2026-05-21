@@ -26,12 +26,12 @@
                     <xsl:value-of select="fragment[@name='nonce']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='type']">
+            <xsl:if test="fragment[@name='type'] and contains('|text/css|', concat('|', fragment[@name='type'], '|'))">
                 <xsl:attribute name="type">
                     <xsl:value-of select="fragment[@name='type']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='dir']">
+            <xsl:if test="fragment[@name='dir'] and contains('|ltr|rtl|auto|', concat('|', fragment[@name='dir'], '|'))">
                 <xsl:attribute name="dir">
                     <xsl:value-of select="fragment[@name='dir']"/>
                 </xsl:attribute>

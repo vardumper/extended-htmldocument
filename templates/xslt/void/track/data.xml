@@ -7,7 +7,7 @@
 <item type="track" id="example-track">
     <fragment name="class"><![CDATA[example-class]]></fragment>
     <fragment name="default"><![CDATA[example-default]]></fragment>
-    <fragment name="kind"><![CDATA[example-kind]]></fragment>
+    <fragment name="kind"><![CDATA[captions]]></fragment>
     <fragment name="label"><![CDATA[example-label]]></fragment>
     <fragment name="src"><![CDATA[https://example.com/image.jpg]]></fragment>
     <fragment name="srclang"><![CDATA[example-srclang]]></fragment>

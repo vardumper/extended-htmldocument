@@ -101,7 +101,7 @@
                     <xsl:value-of select="fragment[@name='accesskey']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='dir']">
+            <xsl:if test="fragment[@name='dir'] and contains('|ltr|rtl|auto|', concat('|', fragment[@name='dir'], '|'))">
                 <xsl:attribute name="dir">
                     <xsl:value-of select="fragment[@name='dir']"/>
                 </xsl:attribute>
@@ -136,12 +136,12 @@
                     <xsl:value-of select="fragment[@name='title']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='translate']">
+            <xsl:if test="fragment[@name='translate'] and contains('|yes|no|', concat('|', fragment[@name='translate'], '|'))">
                 <xsl:attribute name="translate">
                     <xsl:value-of select="fragment[@name='translate']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:apply-templates select="item"/>
+            <xsl:apply-templates select="item[@type='a' or @type='abbr' or @type='address' or @type='area' or @type='article' or @type='aside' or @type='audio' or @type='b' or @type='bdi' or @type='bdo' or @type='blockquote' or @type='br' or @type='button' or @type='canvas' or @type='cite' or @type='code' or @type='data' or @type='datalist' or @type='del' or @type='details' or @type='dfn' or @type='dialog' or @type='div' or @type='dl' or @type='em' or @type='embed' or @type='fieldset' or @type='figure' or @type='footer' or @type='form' or @type='h1' or @type='h2' or @type='h3' or @type='h4' or @type='h5' or @type='h6' or @type='header' or @type='hr' or @type='i' or @type='iframe' or @type='img' or @type='input' or @type='ins' or @type='kbd' or @type='label' or @type='main' or @type='map' or @type='mark' or @type='meter' or @type='nav' or @type='noscript' or @type='object' or @type='ol' or @type='output' or @type='p' or @type='picture' or @type='pre' or @type='progress' or @type='q' or @type='ruby' or @type='s' or @type='samp' or @type='script' or @type='section' or @type='select' or @type='small' or @type='span' or @type='strong' or @type='sub' or @type='sup' or @type='table' or @type='template' or @type='textarea' or @type='time' or @type='u' or @type='ul' or @type='var' or @type='video' or @type='wbr']"/>
         </xsl:element>
     </xsl:template>
 

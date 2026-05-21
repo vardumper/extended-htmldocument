@@ -41,7 +41,7 @@
                     <xsl:value-of select="fragment[@name='accesskey']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='autocapitalize']">
+            <xsl:if test="fragment[@name='autocapitalize'] and contains('|none|sentences|words|characters|', concat('|', fragment[@name='autocapitalize'], '|'))">
                 <xsl:attribute name="autocapitalize">
                     <xsl:value-of select="fragment[@name='autocapitalize']"/>
                 </xsl:attribute>
@@ -51,12 +51,12 @@
                     <xsl:value-of select="fragment[@name='autofocus']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='contenteditable']">
+            <xsl:if test="fragment[@name='contenteditable'] and contains('|true|false|inherit|', concat('|', fragment[@name='contenteditable'], '|'))">
                 <xsl:attribute name="contenteditable">
                     <xsl:value-of select="fragment[@name='contenteditable']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='dir']">
+            <xsl:if test="fragment[@name='dir'] and contains('|ltr|rtl|auto|', concat('|', fragment[@name='dir'], '|'))">
                 <xsl:attribute name="dir">
                     <xsl:value-of select="fragment[@name='dir']"/>
                 </xsl:attribute>
@@ -71,7 +71,7 @@
                     <xsl:value-of select="fragment[@name='hidden']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='inputmode']">
+            <xsl:if test="fragment[@name='inputmode'] and contains('|none|text|decimal|numeric|email|tel|url|search|', concat('|', fragment[@name='inputmode'], '|'))">
                 <xsl:attribute name="inputmode">
                     <xsl:value-of select="fragment[@name='inputmode']"/>
                 </xsl:attribute>
@@ -81,7 +81,7 @@
                     <xsl:value-of select="fragment[@name='lang']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='spellcheck']">
+            <xsl:if test="fragment[@name='spellcheck'] and contains('|true|false|', concat('|', fragment[@name='spellcheck'], '|'))">
                 <xsl:attribute name="spellcheck">
                     <xsl:value-of select="fragment[@name='spellcheck']"/>
                 </xsl:attribute>
@@ -101,7 +101,7 @@
                     <xsl:value-of select="fragment[@name='title']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='translate']">
+            <xsl:if test="fragment[@name='translate'] and contains('|yes|no|', concat('|', fragment[@name='translate'], '|'))">
                 <xsl:attribute name="translate">
                     <xsl:value-of select="fragment[@name='translate']"/>
                 </xsl:attribute>

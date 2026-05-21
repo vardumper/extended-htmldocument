@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2026-05-21 10:50:05
+ * @generated 2026-05-21 11:39:20
  * @subpackage Html\Entity\Void
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/track
  */
@@ -13,6 +13,7 @@ namespace Html\Entity\Void;
 use DateTimeInterface;
 use DOM\ORM\Entity\AbstractEntity;
 use DOM\ORM\Mapping as ORM;
+use Html\Enum\KindEnum;
 
 /**
  * track entity — persists as XML via DOM-ORM.
@@ -38,7 +39,7 @@ class TrackEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $default = null,
         #[ORM\Fragment]
-        protected ?string $kind = null,
+        protected ?KindEnum $kind = null,
         #[ORM\Fragment]
         protected ?string $label = null,
         #[ORM\Fragment]
@@ -79,13 +80,13 @@ class TrackEntity extends AbstractEntity
         return $this->default;
     }
 
-    public function setKind(?string $value): static
+    public function setKind(?KindEnum $value): static
     {
         $this->kind = $value;
         return $this;
     }
 
-    public function getKind(): ?string
+    public function getKind(): ?KindEnum
     {
         return $this->kind;
     }

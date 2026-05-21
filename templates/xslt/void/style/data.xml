@@ -8,7 +8,7 @@
     <fragment name="class"><![CDATA[example-class]]></fragment>
     <fragment name="media"><![CDATA[example-media]]></fragment>
     <fragment name="nonce"><![CDATA[example-nonce]]></fragment>
-    <fragment name="type"><![CDATA[text]]></fragment>
+    <fragment name="type"><![CDATA[text/css]]></fragment>
     <fragment name="dir"><![CDATA[ltr]]></fragment>
     <fragment name="lang"><![CDATA[en]]></fragment>
     <fragment name="title"><![CDATA[example-title]]></fragment>

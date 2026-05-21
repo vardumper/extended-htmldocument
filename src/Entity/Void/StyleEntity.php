@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2026-05-21 10:50:05
+ * @generated 2026-05-21 11:39:20
  * @subpackage Html\Entity\Void
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
  */
@@ -13,6 +13,8 @@ namespace Html\Entity\Void;
 use DateTimeInterface;
 use DOM\ORM\Entity\AbstractEntity;
 use DOM\ORM\Mapping as ORM;
+use Html\Enum\DirectionEnum;
+use Html\Enum\StyleTypeEnum;
 
 /**
  * style entity — persists as XML via DOM-ORM.
@@ -40,9 +42,9 @@ class StyleEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $nonce = null,
         #[ORM\Fragment]
-        protected ?string $type = null,
+        protected ?StyleTypeEnum $type = null,
         #[ORM\Fragment]
-        protected ?string $dir = null,
+        protected ?DirectionEnum $dir = null,
         #[ORM\Fragment]
         protected ?string $lang = null,
         #[ORM\Fragment]
@@ -86,24 +88,24 @@ class StyleEntity extends AbstractEntity
         return $this->nonce;
     }
 
-    public function setType(?string $value): static
+    public function setType(?StyleTypeEnum $value): static
     {
         $this->type = $value;
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?StyleTypeEnum
     {
         return $this->type;
     }
 
-    public function setDir(?string $value): static
+    public function setDir(?DirectionEnum $value): static
     {
         $this->dir = $value;
         return $this;
     }
 
-    public function getDir(): ?string
+    public function getDir(): ?DirectionEnum
     {
         return $this->dir;
     }

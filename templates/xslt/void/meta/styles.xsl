@@ -26,7 +26,7 @@
                     <xsl:value-of select="fragment[@name='content']"/>
                 </xsl:attribute>
             </xsl:if>
-            <xsl:if test="fragment[@name='httpEquiv']">
+            <xsl:if test="fragment[@name='httpEquiv'] and contains('|content-language|content-type|default-style|refresh|', concat('|', fragment[@name='httpEquiv'], '|'))">
                 <xsl:attribute name="http-equiv">
                     <xsl:value-of select="fragment[@name='httpEquiv']"/>
                 </xsl:attribute>

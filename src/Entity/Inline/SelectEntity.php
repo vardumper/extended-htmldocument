@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2026-05-21 10:50:05
+ * @generated 2026-05-21 11:39:20
  * @subpackage Html\Entity\Inline
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
  */
@@ -13,6 +13,29 @@ namespace Html\Entity\Inline;
 use DateTimeInterface;
 use DOM\ORM\Entity\AbstractEntity;
 use DOM\ORM\Mapping as ORM;
+use Html\Enum\AriaAtomicEnum;
+use Html\Enum\AriaAutocompleteEnum;
+use Html\Enum\AriaDisabledEnum;
+use Html\Enum\AriaExpandedEnum;
+use Html\Enum\AriaHaspopupEnum;
+use Html\Enum\AriaInvalidEnum;
+use Html\Enum\AriaLiveEnum;
+use Html\Enum\AriaMultiselectableEnum;
+use Html\Enum\AriaOrientationEnum;
+use Html\Enum\AriaPressedEnum;
+use Html\Enum\AriaReadonlyEnum;
+use Html\Enum\AriaRelevantEnum;
+use Html\Enum\AriaRequiredEnum;
+use Html\Enum\AutoCapitalizeEnum;
+use Html\Enum\AutocompleteEnum;
+use Html\Enum\AutocorrectEnum;
+use Html\Enum\ContentEditableEnum;
+use Html\Enum\DirectionEnum;
+use Html\Enum\InputModeEnum;
+use Html\Enum\PopoverEnum;
+use Html\Enum\RoleEnum;
+use Html\Enum\SpellCheckEnum;
+use Html\Enum\TranslateEnum;
 
 /**
  * select entity — persists as XML via DOM-ORM.
@@ -52,9 +75,9 @@ class SelectEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $class = null,
         #[ORM\Fragment]
-        protected ?string $autocomplete = null,
+        protected ?AutocompleteEnum $autocomplete = null,
         #[ORM\Fragment]
-        protected ?string $autocorrect = null,
+        protected ?AutocorrectEnum $autocorrect = null,
         #[ORM\Fragment]
         protected ?string $disabled = null,
         #[ORM\Fragment]
@@ -68,7 +91,7 @@ class SelectEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $form = null,
         #[ORM\Fragment]
-        protected ?string $role = null,
+        protected ?RoleEnum $role = null,
         #[ORM\Fragment]
         protected ?string $ariaControls = null,
         #[ORM\Fragment]
@@ -76,11 +99,11 @@ class SelectEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $ariaLabelledby = null,
         #[ORM\Fragment]
-        protected ?string $ariaInvalid = null,
+        protected ?AriaInvalidEnum $ariaInvalid = null,
         #[ORM\Fragment]
         protected ?string $ariaLabel = null,
         #[ORM\Fragment]
-        protected ?string $ariaDisabled = null,
+        protected ?AriaDisabledEnum $ariaDisabled = null,
         #[ORM\Fragment]
         protected ?string $ariaDetails = null,
         #[ORM\Fragment]
@@ -88,55 +111,55 @@ class SelectEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $ariaRoledescription = null,
         #[ORM\Fragment]
-        protected ?string $ariaLive = null,
+        protected ?AriaLiveEnum $ariaLive = null,
         #[ORM\Fragment]
-        protected ?string $ariaRelevant = null,
+        protected ?AriaRelevantEnum $ariaRelevant = null,
         #[ORM\Fragment]
-        protected ?string $ariaAtomic = null,
+        protected ?AriaAtomicEnum $ariaAtomic = null,
         #[ORM\Fragment]
-        protected ?string $ariaExpanded = null,
+        protected ?AriaExpandedEnum $ariaExpanded = null,
         #[ORM\Fragment]
-        protected ?string $ariaHaspopup = null,
+        protected ?AriaHaspopupEnum $ariaHaspopup = null,
         #[ORM\Fragment]
-        protected ?string $ariaPressed = null,
+        protected ?AriaPressedEnum $ariaPressed = null,
         #[ORM\Fragment]
-        protected ?string $ariaAutocomplete = null,
+        protected ?AriaAutocompleteEnum $ariaAutocomplete = null,
         #[ORM\Fragment]
         protected ?string $ariaPlaceholder = null,
         #[ORM\Fragment]
-        protected ?string $ariaReadonly = null,
+        protected ?AriaReadonlyEnum $ariaReadonly = null,
         #[ORM\Fragment]
-        protected ?string $ariaRequired = null,
+        protected ?AriaRequiredEnum $ariaRequired = null,
         #[ORM\Fragment]
-        protected ?string $ariaMultiselectable = null,
+        protected ?AriaMultiselectableEnum $ariaMultiselectable = null,
         #[ORM\Fragment]
         protected ?string $ariaActivedescendant = null,
         #[ORM\Fragment]
-        protected ?string $ariaOrientation = null,
+        protected ?AriaOrientationEnum $ariaOrientation = null,
         #[ORM\Fragment]
         protected ?string $accesskey = null,
         #[ORM\Fragment]
-        protected ?string $autocapitalize = null,
+        protected ?AutoCapitalizeEnum $autocapitalize = null,
         #[ORM\Fragment]
         protected ?string $autofocus = null,
         #[ORM\Fragment]
-        protected ?string $contenteditable = null,
+        protected ?ContentEditableEnum $contenteditable = null,
         #[ORM\Fragment]
-        protected ?string $dir = null,
+        protected ?DirectionEnum $dir = null,
         #[ORM\Fragment]
         protected ?string $draggable = null,
         #[ORM\Fragment]
         protected ?string $hidden = null,
         #[ORM\Fragment]
-        protected ?string $inputmode = null,
+        protected ?InputModeEnum $inputmode = null,
         #[ORM\Fragment]
         protected ?string $lang = null,
         #[ORM\Fragment]
-        protected ?string $popover = null,
+        protected ?PopoverEnum $popover = null,
         #[ORM\Fragment]
         protected ?string $slot = null,
         #[ORM\Fragment]
-        protected ?string $spellcheck = null,
+        protected ?SpellCheckEnum $spellcheck = null,
         #[ORM\Fragment]
         protected ?string $style = null,
         #[ORM\Fragment]
@@ -144,7 +167,7 @@ class SelectEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $title = null,
         #[ORM\Fragment]
-        protected ?string $translate = null,
+        protected ?TranslateEnum $translate = null,
         ?string $entityId = null,
         ?DateTimeInterface $createdAt = null,
     ) {
@@ -162,24 +185,24 @@ class SelectEntity extends AbstractEntity
         return $this->class;
     }
 
-    public function setAutocomplete(?string $value): static
+    public function setAutocomplete(?AutocompleteEnum $value): static
     {
         $this->autocomplete = $value;
         return $this;
     }
 
-    public function getAutocomplete(): ?string
+    public function getAutocomplete(): ?AutocompleteEnum
     {
         return $this->autocomplete;
     }
 
-    public function setAutocorrect(?string $value): static
+    public function setAutocorrect(?AutocorrectEnum $value): static
     {
         $this->autocorrect = $value;
         return $this;
     }
 
-    public function getAutocorrect(): ?string
+    public function getAutocorrect(): ?AutocorrectEnum
     {
         return $this->autocorrect;
     }
@@ -250,13 +273,13 @@ class SelectEntity extends AbstractEntity
         return $this->form;
     }
 
-    public function setRole(?string $value): static
+    public function setRole(?RoleEnum $value): static
     {
         $this->role = $value;
         return $this;
     }
 
-    public function getRole(): ?string
+    public function getRole(): ?RoleEnum
     {
         return $this->role;
     }
@@ -294,13 +317,13 @@ class SelectEntity extends AbstractEntity
         return $this->ariaLabelledby;
     }
 
-    public function setAriaInvalid(?string $value): static
+    public function setAriaInvalid(?AriaInvalidEnum $value): static
     {
         $this->ariaInvalid = $value;
         return $this;
     }
 
-    public function getAriaInvalid(): ?string
+    public function getAriaInvalid(): ?AriaInvalidEnum
     {
         return $this->ariaInvalid;
     }
@@ -316,13 +339,13 @@ class SelectEntity extends AbstractEntity
         return $this->ariaLabel;
     }
 
-    public function setAriaDisabled(?string $value): static
+    public function setAriaDisabled(?AriaDisabledEnum $value): static
     {
         $this->ariaDisabled = $value;
         return $this;
     }
 
-    public function getAriaDisabled(): ?string
+    public function getAriaDisabled(): ?AriaDisabledEnum
     {
         return $this->ariaDisabled;
     }
@@ -360,79 +383,79 @@ class SelectEntity extends AbstractEntity
         return $this->ariaRoledescription;
     }
 
-    public function setAriaLive(?string $value): static
+    public function setAriaLive(?AriaLiveEnum $value): static
     {
         $this->ariaLive = $value;
         return $this;
     }
 
-    public function getAriaLive(): ?string
+    public function getAriaLive(): ?AriaLiveEnum
     {
         return $this->ariaLive;
     }
 
-    public function setAriaRelevant(?string $value): static
+    public function setAriaRelevant(?AriaRelevantEnum $value): static
     {
         $this->ariaRelevant = $value;
         return $this;
     }
 
-    public function getAriaRelevant(): ?string
+    public function getAriaRelevant(): ?AriaRelevantEnum
     {
         return $this->ariaRelevant;
     }
 
-    public function setAriaAtomic(?string $value): static
+    public function setAriaAtomic(?AriaAtomicEnum $value): static
     {
         $this->ariaAtomic = $value;
         return $this;
     }
 
-    public function getAriaAtomic(): ?string
+    public function getAriaAtomic(): ?AriaAtomicEnum
     {
         return $this->ariaAtomic;
     }
 
-    public function setAriaExpanded(?string $value): static
+    public function setAriaExpanded(?AriaExpandedEnum $value): static
     {
         $this->ariaExpanded = $value;
         return $this;
     }
 
-    public function getAriaExpanded(): ?string
+    public function getAriaExpanded(): ?AriaExpandedEnum
     {
         return $this->ariaExpanded;
     }
 
-    public function setAriaHaspopup(?string $value): static
+    public function setAriaHaspopup(?AriaHaspopupEnum $value): static
     {
         $this->ariaHaspopup = $value;
         return $this;
     }
 
-    public function getAriaHaspopup(): ?string
+    public function getAriaHaspopup(): ?AriaHaspopupEnum
     {
         return $this->ariaHaspopup;
     }
 
-    public function setAriaPressed(?string $value): static
+    public function setAriaPressed(?AriaPressedEnum $value): static
     {
         $this->ariaPressed = $value;
         return $this;
     }
 
-    public function getAriaPressed(): ?string
+    public function getAriaPressed(): ?AriaPressedEnum
     {
         return $this->ariaPressed;
     }
 
-    public function setAriaAutocomplete(?string $value): static
+    public function setAriaAutocomplete(?AriaAutocompleteEnum $value): static
     {
         $this->ariaAutocomplete = $value;
         return $this;
     }
 
-    public function getAriaAutocomplete(): ?string
+    public function getAriaAutocomplete(): ?AriaAutocompleteEnum
     {
         return $this->ariaAutocomplete;
     }
@@ -448,35 +471,35 @@ class SelectEntity extends AbstractEntity
         return $this->ariaPlaceholder;
     }
 
-    public function setAriaReadonly(?string $value): static
+    public function setAriaReadonly(?AriaReadonlyEnum $value): static
     {
         $this->ariaReadonly = $value;
         return $this;
     }
 
-    public function getAriaReadonly(): ?string
+    public function getAriaReadonly(): ?AriaReadonlyEnum
     {
         return $this->ariaReadonly;
     }
 
-    public function setAriaRequired(?string $value): static
+    public function setAriaRequired(?AriaRequiredEnum $value): static
     {
         $this->ariaRequired = $value;
         return $this;
     }
 
-    public function getAriaRequired(): ?string
+    public function getAriaRequired(): ?AriaRequiredEnum
     {
         return $this->ariaRequired;
     }
 
-    public function setAriaMultiselectable(?string $value): static
+    public function setAriaMultiselectable(?AriaMultiselectableEnum $value): static
     {
         $this->ariaMultiselectable = $value;
         return $this;
     }
 
-    public function getAriaMultiselectable(): ?string
+    public function getAriaMultiselectable(): ?AriaMultiselectableEnum
     {
         return $this->ariaMultiselectable;
     }
@@ -492,13 +515,13 @@ class SelectEntity extends AbstractEntity
         return $this->ariaActivedescendant;
     }
 
-    public function setAriaOrientation(?string $value): static
+    public function setAriaOrientation(?AriaOrientationEnum $value): static
     {
         $this->ariaOrientation = $value;
         return $this;
     }
 
-    public function getAriaOrientation(): ?string
+    public function getAriaOrientation(): ?AriaOrientationEnum
     {
         return $this->ariaOrientation;
     }
@@ -514,13 +537,13 @@ class SelectEntity extends AbstractEntity
         return $this->accesskey;
     }
 
-    public function setAutocapitalize(?string $value): static
+    public function setAutocapitalize(?AutoCapitalizeEnum $value): static
     {
         $this->autocapitalize = $value;
         return $this;
     }
 
-    public function getAutocapitalize(): ?string
+    public function getAutocapitalize(): ?AutoCapitalizeEnum
     {
         return $this->autocapitalize;
     }
@@ -536,24 +559,24 @@ class SelectEntity extends AbstractEntity
         return $this->autofocus;
     }
 
-    public function setContenteditable(?string $value): static
+    public function setContenteditable(?ContentEditableEnum $value): static
     {
         $this->contenteditable = $value;
         return $this;
     }
 
-    public function getContenteditable(): ?string
+    public function getContenteditable(): ?ContentEditableEnum
     {
         return $this->contenteditable;
     }
 
-    public function setDir(?string $value): static
+    public function setDir(?DirectionEnum $value): static
     {
         $this->dir = $value;
         return $this;
     }
 
-    public function getDir(): ?string
+    public function getDir(): ?DirectionEnum
     {
         return $this->dir;
     }
@@ -580,13 +603,13 @@ class SelectEntity extends AbstractEntity
         return $this->hidden;
     }
 
-    public function setInputmode(?string $value): static
+    public function setInputmode(?InputModeEnum $value): static
     {
         $this->inputmode = $value;
         return $this;
     }
 
-    public function getInputmode(): ?string
+    public function getInputmode(): ?InputModeEnum
     {
         return $this->inputmode;
     }
@@ -602,13 +625,13 @@ class SelectEntity extends AbstractEntity
         return $this->lang;
     }
 
-    public function setPopover(?string $value): static
+    public function setPopover(?PopoverEnum $value): static
     {
         $this->popover = $value;
         return $this;
     }
 
-    public function getPopover(): ?string
+    public function getPopover(): ?PopoverEnum
     {
         return $this->popover;
     }
@@ -624,13 +647,13 @@ class SelectEntity extends AbstractEntity
         return $this->slot;
     }
 
-    public function setSpellcheck(?string $value): static
+    public function setSpellcheck(?SpellCheckEnum $value): static
     {
         $this->spellcheck = $value;
         return $this;
     }
 
-    public function getSpellcheck(): ?string
+    public function getSpellcheck(): ?SpellCheckEnum
     {
         return $this->spellcheck;
     }
@@ -668,13 +691,13 @@ class SelectEntity extends AbstractEntity
         return $this->title;
     }
 
-    public function setTranslate(?string $value): static
+    public function setTranslate(?TranslateEnum $value): static
     {
         $this->translate = $value;
         return $this;
     }
 
-    public function getTranslate(): ?string
+    public function getTranslate(): ?TranslateEnum
     {
         return $this->translate;
     }

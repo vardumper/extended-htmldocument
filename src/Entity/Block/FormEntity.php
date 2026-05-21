@@ -3,7 +3,7 @@
 /**
  * This file is auto-generated. Do not edit manually.
  *
- * @generated 2026-05-21 10:50:05
+ * @generated 2026-05-21 11:39:20
  * @subpackage Html\Entity\Block
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
  */
@@ -13,6 +13,16 @@ namespace Html\Entity\Block;
 use DateTimeInterface;
 use DOM\ORM\Entity\AbstractEntity;
 use DOM\ORM\Mapping as ORM;
+use Html\Enum\AriaAtomicEnum;
+use Html\Enum\AriaInvalidEnum;
+use Html\Enum\AriaLiveEnum;
+use Html\Enum\AriaRelevantEnum;
+use Html\Enum\AutocompleteEnum;
+use Html\Enum\AutocorrectEnum;
+use Html\Enum\DirectionEnum;
+use Html\Enum\EnctypeEnum;
+use Html\Enum\MethodEnum;
+use Html\Enum\TranslateEnum;
 
 /**
  * form entity — persists as XML via DOM-ORM.
@@ -75,13 +85,13 @@ class FormEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $action = null,
         #[ORM\Fragment]
-        protected ?string $autocomplete = null,
+        protected ?AutocompleteEnum $autocomplete = null,
         #[ORM\Fragment]
-        protected ?string $autocorrect = null,
+        protected ?AutocorrectEnum $autocorrect = null,
         #[ORM\Fragment]
-        protected ?string $enctype = null,
+        protected ?EnctypeEnum $enctype = null,
         #[ORM\Fragment]
-        protected ?string $method = null,
+        protected ?MethodEnum $method = null,
         #[ORM\Fragment]
         protected ?string $name = null,
         #[ORM\Fragment]
@@ -89,7 +99,7 @@ class FormEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $target = null,
         #[ORM\Fragment]
-        protected ?string $ariaInvalid = null,
+        protected ?AriaInvalidEnum $ariaInvalid = null,
         #[ORM\Fragment]
         protected ?string $ariaLabel = null,
         #[ORM\Fragment]
@@ -99,15 +109,15 @@ class FormEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $ariaRoledescription = null,
         #[ORM\Fragment]
-        protected ?string $ariaLive = null,
+        protected ?AriaLiveEnum $ariaLive = null,
         #[ORM\Fragment]
-        protected ?string $ariaRelevant = null,
+        protected ?AriaRelevantEnum $ariaRelevant = null,
         #[ORM\Fragment]
-        protected ?string $ariaAtomic = null,
+        protected ?AriaAtomicEnum $ariaAtomic = null,
         #[ORM\Fragment]
         protected ?string $accesskey = null,
         #[ORM\Fragment]
-        protected ?string $dir = null,
+        protected ?DirectionEnum $dir = null,
         #[ORM\Fragment]
         protected ?string $draggable = null,
         #[ORM\Fragment]
@@ -123,7 +133,7 @@ class FormEntity extends AbstractEntity
         #[ORM\Fragment]
         protected ?string $title = null,
         #[ORM\Fragment]
-        protected ?string $translate = null,
+        protected ?TranslateEnum $translate = null,
         ?string $entityId = null,
         ?DateTimeInterface $createdAt = null,
     ) {
@@ -163,46 +173,46 @@ class FormEntity extends AbstractEntity
         return $this->action;
     }
 
-    public function setAutocomplete(?string $value): static
+    public function setAutocomplete(?AutocompleteEnum $value): static
     {
         $this->autocomplete = $value;
         return $this;
     }
 
-    public function getAutocomplete(): ?string
+    public function getAutocomplete(): ?AutocompleteEnum
     {
         return $this->autocomplete;
     }
 
-    public function setAutocorrect(?string $value): static
+    public function setAutocorrect(?AutocorrectEnum $value): static
     {
         $this->autocorrect = $value;
         return $this;
     }
 
-    public function getAutocorrect(): ?string
+    public function getAutocorrect(): ?AutocorrectEnum
     {
         return $this->autocorrect;
     }
 
-    public function setEnctype(?string $value): static
+    public function setEnctype(?EnctypeEnum $value): static
     {
         $this->enctype = $value;
         return $this;
     }
 
-    public function getEnctype(): ?string
+    public function getEnctype(): ?EnctypeEnum
     {
         return $this->enctype;
     }
 
-    public function setMethod(?string $value): static
+    public function setMethod(?MethodEnum $value): static
     {
         $this->method = $value;
         return $this;
     }
 
-    public function getMethod(): ?string
+    public function getMethod(): ?MethodEnum
     {
         return $this->method;
     }
@@ -240,13 +250,13 @@ class FormEntity extends AbstractEntity
         return $this->target;
     }
 
-    public function setAriaInvalid(?string $value): static
+    public function setAriaInvalid(?AriaInvalidEnum $value): static
     {
         $this->ariaInvalid = $value;
         return $this;
     }
 
-    public function getAriaInvalid(): ?string
+    public function getAriaInvalid(): ?AriaInvalidEnum
     {
         return $this->ariaInvalid;
     }
@@ -295,35 +305,35 @@ class FormEntity extends AbstractEntity
         return $this->ariaRoledescription;
     }
 
-    public function setAriaLive(?string $value): static
+    public function setAriaLive(?AriaLiveEnum $value): static
     {
         $this->ariaLive = $value;
         return $this;
     }
 
-    public function getAriaLive(): ?string
+    public function getAriaLive(): ?AriaLiveEnum
     {
         return $this->ariaLive;
     }
 
-    public function setAriaRelevant(?string $value): static
+    public function setAriaRelevant(?AriaRelevantEnum $value): static
     {
         $this->ariaRelevant = $value;
         return $this;
     }
 
-    public function getAriaRelevant(): ?string
+    public function getAriaRelevant(): ?AriaRelevantEnum
     {
         return $this->ariaRelevant;
     }
 
-    public function setAriaAtomic(?string $value): static
+    public function setAriaAtomic(?AriaAtomicEnum $value): static
     {
         $this->ariaAtomic = $value;
         return $this;
     }
 
-    public function getAriaAtomic(): ?string
+    public function getAriaAtomic(): ?AriaAtomicEnum
     {
         return $this->ariaAtomic;
     }
@@ -339,13 +349,13 @@ class FormEntity extends AbstractEntity
         return $this->accesskey;
     }
 
-    public function setDir(?string $value): static
+    public function setDir(?DirectionEnum $value): static
     {
         $this->dir = $value;
         return $this;
     }
 
-    public function getDir(): ?string
+    public function getDir(): ?DirectionEnum
     {
         return $this->dir;
     }
@@ -427,13 +437,13 @@ class FormEntity extends AbstractEntity
         return $this->title;
     }
 
-    public function setTranslate(?string $value): static
+    public function setTranslate(?TranslateEnum $value): static
     {
         $this->translate = $value;
         return $this;
     }
 
-    public function getTranslate(): ?string
+    public function getTranslate(): ?TranslateEnum
     {
         return $this->translate;
     }

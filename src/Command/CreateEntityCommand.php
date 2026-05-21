@@ -10,6 +10,7 @@ use Html\Element\InlineElement;
 use Html\Element\VoidElement;
 use Html\Trait\ClassResolverTrait;
 use ReflectionClass;
+use ReflectionNamedType;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -86,6 +87,8 @@ class CreateEntityCommand extends Command
         $childOfTags = $this->resolveTagNames($className::$childOf);
         $parentOfTags = $this->resolveTagNames($className::$parentOf);
 
+        $enumImports = array_values(array_filter(array_unique(array_column($properties, 'enumClass'))));
+
         $params = [
             'generatedAt' => date('Y-m-d H:i:s'),
             'namespace' => $namespace,
@@ -94,6 +97,7 @@ class CreateEntityCommand extends Command
             'child_of_tags' => $childOfTags,
             'parent_of_tags' => $parentOfTags,
             'properties' => $properties,
+            'enum_imports' => $enumImports,
         ];
 
         ob_start();
@@ -111,6 +115,9 @@ class CreateEntityCommand extends Command
         $io->success("Generated: {$file}");
     }
 
+    /**
+     * @return array<array{name: string, enumClass: string|null, enumShortName: string|null}>
+     */
     private function getAttributePropertyNames(ReflectionClass $reflection): array
     {
         $properties = array_filter(
@@ -120,12 +127,51 @@ class CreateEntityCommand extends Command
                 && ! in_array($p->getDeclaringClass()->getName(), self::SKIP_DECLARING_CLASSES, true)
         );
 
-        $names = array_map(fn ($p) => $p->getName(), array_values($properties));
-
         // 'class' is a native PHP DOM property not declared in IdTrait/ClassTrait;
         // add it explicitly. 'id' is omitted — AbstractEntity already owns getId()/setId()
         // and the entity ID maps to the HTML id attribute directly.
-        return array_unique(array_merge(['class'], $names));
+        $result = [[
+            'name' => 'class',
+            'enumClass' => null,
+            'enumShortName' => null,
+        ]];
+
+        foreach ($properties as $property) {
+            $name = $property->getName();
+            if ($name === 'class') {
+                continue;
+            }
+
+            $enumClass = null;
+            $enumShortName = null;
+            $type = $property->getType();
+            if ($type instanceof ReflectionNamedType && ! $type->isBuiltin()) {
+                $typeName = $type->getName();
+                if (enum_exists($typeName)) {
+                    $enumClass = $typeName;
+                    $parts = explode('\\', $typeName);
+                    $enumShortName = end($parts);
+                }
+            }
+
+            $result[] = [
+                'name' => $name,
+                'enumClass' => $enumClass,
+                'enumShortName' => $enumShortName,
+            ];
+        }
+
+        // deduplicate by name
+        $seen = [];
+        $final = [];
+        foreach ($result as $item) {
+            if (! in_array($item['name'], $seen, true)) {
+                $seen[] = $item['name'];
+                $final[] = $item;
+            }
+        }
+
+        return $final;
     }
 
     private function resolveTagNames(array $classes): array
