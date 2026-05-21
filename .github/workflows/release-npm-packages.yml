@@ -72,7 +72,9 @@ jobs:
               continue
             fi
 
-            if [ "${{ inputs.publish_all }}" != "true" ] && git diff --quiet "${{ steps.prev_tag.outputs.tag }}" HEAD -- "$dir"; then
+            if [ "${{ github.event_name }}" != "workflow_dispatch" ] \
+               && [ "${{ inputs.publish_all }}" != "true" ] \
+               && git diff --quiet "${{ steps.prev_tag.outputs.tag }}" HEAD -- "$dir"; then
               continue
             fi
 
