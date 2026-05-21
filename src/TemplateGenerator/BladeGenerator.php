@@ -50,7 +50,7 @@ class BladeGenerator implements TemplateGeneratorInterface
 
     public function getNamePattern(): string
     {
-        return '{component}.{extension}';
+        return 'index.{extension}';
     }
 
     public function canRenderElements(): bool
@@ -370,7 +370,7 @@ class BladeGenerator implements TemplateGeneratorInterface
         }
 
         $level = $this->determineLevel($className);
-        return 'blade.' . $level . '.' . $tagName . '.' . $tagName;
+        return 'blade.' . $level . '.' . $tagName;
     }
 
     private function serializeRawNodeChildren(\DOM\Node $node, int $depth): string

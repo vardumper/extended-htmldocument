@@ -1,7 +1,7 @@
 {{--
   This file is auto-generated.
 
-  Headings Group - Composed Example
+  Hgroup - Composed Example
   The hgroup element represents a multi-level heading for a section of a document. It groups a set of h1–h6 elements.
 
   CONTENT MODEL:

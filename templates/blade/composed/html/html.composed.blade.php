@@ -1,7 +1,7 @@
 {{--
   This file is auto-generated.
 
-  HTML - Composed Example
+  Html - Composed Example
   The root element of an HTML document. It represents the top-level of the HTML structure.
 
   CONTENT MODEL:

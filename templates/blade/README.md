@@ -45,34 +45,71 @@ public function boot(): void
 ## Usage
 
 ```blade
-<x-inline.a.a
+<x-inline.a
     href="https://example.com"
     title="Some info about the link"
     rel="nofollow"
     role="button">
     Click here
-</x-inline.a.a>
+</x-inline.a>
 ```
 
-Or
+Or via `@include` (note: Blade resolves `inline/a/index.blade.php` as `blade.inline.a`):
 ```blade
-@include('inline.a.a', ['content' => 'Click me', 'href' => 'https://example.com'])
-@include('inline.abbr.abbr', ['content' => 'ABBR', 'title' => 'Abbreviation'])
+@include('blade.inline.a', ['content' => 'Click me', 'href' => 'https://example.com'])
+@include('blade.inline.abbr', ['content' => 'ABBR', 'title' => 'Abbreviation'])
 ```
 
 ### With Nested Components
 
 ```blade
-<x-inline.a.a
+<x-inline.a
     href="https://example.com"
     title="Some info about the link"
     rel="nofollow"
     role="button">
-    <x-inline.strong.strong>
+    <x-inline.strong>
         Click here
-    </x-inline.strong.strong>
-</x-inline.a.a>
+    </x-inline.strong>
+</x-inline.a>
 ```
+
+### Blade Component Generator
+
+The `blade-component` generator converts a full HTML document (built from a YAML component definition) into a Blade file using `<x-block.*>`, `<x-inline.*>`, and `<x-void.*>` component tags. Use it with the `watch` command:
+
+```bash
+php vendor/bin/ext-html watch blade-component source/my-component.yaml dest/
+```
+
+Example output for a teaser component:
+
+```blade
+{{--
+  This file is auto-generated.
+
+  @see src/TemplateGenerator/BladeComponentGenerator.php
+--}}
+<x-block.div class="teaser">
+  <x-block.hgroup>
+    <x-block.h3>
+      Headline
+    </x-block.h3>
+    <x-block.h4>
+      Subheadline
+    </x-block.h4>
+  </x-block.hgroup>
+  <x-block.p>
+    Description
+  </x-block.p>
+  <x-inline.img src="https://picsum.photos/340/140" alt="Image description" width="340" height="140" />
+  <x-inline.a role="button" href="#">
+    Read more
+  </x-inline.a>
+</x-block.div>
+```
+
+The component tag prefix (`x-block.*`, `x-inline.*`, `x-void.*`) corresponds to the element's content model and maps to `index.blade.php` inside each element's subdirectory.
 
 ## Benefits & Features
 

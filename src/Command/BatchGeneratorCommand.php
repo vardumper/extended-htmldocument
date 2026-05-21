@@ -93,7 +93,11 @@ class BatchGeneratorCommand extends Command
                     continue;
                 }
                 $elementShortName = (new ReflectionClass($className))->getShortName();
-                $fileName = $elementInstance::getQualifiedName() . '.' . $generatorInstance->getExtension();
+                $fileName = str_replace(
+                    ['{component}', '{extension}'],
+                    [$elementInstance::getQualifiedName(), $generatorInstance->getExtension()],
+                    $generatorInstance->getNamePattern()
+                );
                 $level = $this->determineLevel($className);
 
                 // For twig-component, use bundle structure: src/{Twig|Resources}/{Block|Inline|Void}

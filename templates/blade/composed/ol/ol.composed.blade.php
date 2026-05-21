@@ -1,7 +1,7 @@
 {{--
   This file is auto-generated.
 
-  Ordered List - Composed Example
+  Ol - Composed Example
   The ol element represents an ordered list of items. The order of the list is meaningful.
 
   CONTENT MODEL:

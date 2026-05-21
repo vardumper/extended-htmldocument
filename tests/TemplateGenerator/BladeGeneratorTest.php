@@ -30,7 +30,7 @@ test('get extension', function () {
 
 test('get name pattern', function () {
     expect($this->generator->getNamePattern())
-        ->toBe('{component}.{extension}');
+        ->toBe('index.{extension}');
 });
 
 test('can render elements', function () {
@@ -40,12 +40,12 @@ test('can render elements', function () {
 
 test('can render documents', function () {
     expect($this->generator->canRenderDocuments())
-    ->toBeTrue();
+        ->toBeTrue();
 });
 
 test('is templated', function () {
     expect($this->generator->isTemplated())
-    ->toBeTrue();
+        ->toBeTrue();
 });
 
 test('render element', function () {

@@ -1,7 +1,7 @@
 {{--
   This file is auto-generated.
 
-  Data List - Composed Example
+  Datalist - Composed Example
   The datalist element contains a set of option elements that represent the permissible or recommended options available to users.
 
   CONTENT MODEL:

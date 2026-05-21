@@ -170,7 +170,7 @@ class BladeComponentGenerator implements TemplateGeneratorInterface
             return null;
         }
 
-        return 'x-' . $this->determineLevel($className) . '.' . $tagName . '.' . $tagName;
+        return 'x-' . $this->determineLevel($className) . '.' . $tagName;
     }
 
     private function determineLevel(string $className): string

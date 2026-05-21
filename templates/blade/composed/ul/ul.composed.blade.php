@@ -1,7 +1,7 @@
 {{--
   This file is auto-generated.
 
-  Unordered List - Composed Example
+  Ul - Composed Example
   The ul element represents an unordered list of items, namely a collection of items that do not have a numerical ordering, and their order in the list is meaningless.
 
   CONTENT MODEL:
