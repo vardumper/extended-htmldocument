@@ -12,24 +12,32 @@ Type-safe, auto-generated Blade templates for all HTML5 elements with full WCAG,
 
 ## Installation
 
-### with Composer
+### Standalone Composer package (recommended for Laravel projects)
+
+```bash
+composer require vardumper/html5-blade-templates
+```
+
+Then register the component path in your `AppServiceProvider`:
+
+```php
+use Illuminate\Support\Facades\Blade;
+
+public function boot(): void
+{
+    Blade::componentPath(
+        base_path('vendor/vardumper/html5-blade-templates')
+    );
+}
+```
+
+### Via the extended-htmldocument monorepo
+
 ```bash
 composer require vardumper/extended-htmldocument
 ```
 
-### NPM, Yarn, PNPM, etc
-
-This is a static NPM package, providing just the Blade templates.
-
-```bash
-npm install @typesafe-html5/blade
-yarn add @typesafe-html5/blade
-pnpm add @typesafe-html5/blade
-```
-
-## Setup
-
-Register the components path in your Laravel application's `AppServiceProvider`
+Then register the path:
 
 ```php
 use Illuminate\Support\Facades\Blade;
@@ -40,6 +48,16 @@ public function boot(): void
         base_path('vendor/vardumper/extended-htmldocument/templates/blade')
     );
 }
+```
+
+### NPM, Yarn, PNPM, etc
+
+This is a static NPM package, providing just the Blade templates.
+
+```bash
+npm install @typesafe-html5/blade
+yarn add @typesafe-html5/blade
+pnpm add @typesafe-html5/blade
 ```
 
 ## Usage
