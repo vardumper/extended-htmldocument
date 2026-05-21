@@ -88,9 +88,11 @@ class XSLTGenerator implements TemplateGeneratorInterface
 
         $lines = [];
         $lines[] = '<?xml version="1.0" encoding="UTF-8"?>';
+        $lines[] = '<?xml-stylesheet type="text/xsl" href="styles.xsl"?>';
         $lines[] = '<!--';
         $lines[] = '    This file is auto-generated. Do not edit manually.';
         $lines[] = '    Example XML data for the <' . $elementName . '> element.';
+        $lines[] = '    Open this file in a browser to see the XSLT transform applied.';
         $lines[] = '    @see src/TemplateGenerator/XSLTGenerator.php';
         $lines[] = '-->';
         $lines[] = '<item type="' . $elementName . '" id="example-' . $elementName . '">';
