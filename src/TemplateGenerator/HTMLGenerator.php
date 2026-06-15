@@ -2,6 +2,11 @@
 
 namespace Html\TemplateGenerator;
 
+use Dom\Comment;
+use Dom\Element;
+use Dom\Text;
+use Edent\PrettyPrintHtml\PrettyPrintHtml;
+use Html\Delegator\HTMLDocumentDelegator;
 use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
@@ -58,6 +63,60 @@ class HTMLGenerator implements TemplateGeneratorInterface
     {
         /** @var \DOM\HTMLDocument $doc */
         $doc = $document->delegated;
-        return (string) $doc->saveHTML($document->delegated);
+
+        if ($doc->documentElement === null) {
+            return '';
+        }
+
+        // Watch mode enables formatOutput and expects body fragments without html/head wrappers.
+        if ($document instanceof HTMLDocumentDelegator && isset($document->formatOutput) && $document->formatOutput) {
+            $body = $doc->getElementsByTagName('body')
+                ->item(0);
+            $container = $body ?? $doc->documentElement;
+            $html = '';
+
+            foreach ($container->childNodes as $child) {
+                if ($body === null && $child instanceof Element && strtolower($child->tagName) === 'head') {
+                    continue;
+                }
+
+                $html .= $doc->saveHTML($child);
+            }
+
+            return $this->formatHtml($html);
+        }
+
+        return (string) $doc->saveHTML();
+    }
+
+    private function formatHtml(string $html): string
+    {
+        if ($html === '') {
+            return '';
+        }
+
+        $formatted = $html;
+        $document = HTMLDocumentDelegator::createFromString(
+            '<!doctype html><html><body><div id="__html_generator_fragment__">' . $html . '</div></body></html>'
+        );
+        $wrapper = $document->delegated->getElementById('__html_generator_fragment__');
+
+        if ($wrapper !== null) {
+            $formatter = new PrettyPrintHtml();
+            $fragments = [];
+            foreach ($wrapper->childNodes as $child) {
+                // Only serialize nodes that PrettyPrintHtml accepts
+                if ($child instanceof Element || $child instanceof Text || $child instanceof Comment) {
+                    $fragments[] = rtrim($formatter->serializeHtml($child, 0, false, true, false), "\r\n");
+                }
+            }
+
+            $formatted = implode(
+                "\n",
+                array_filter($fragments, static fn (string $fragment): bool => $fragment !== '')
+            );
+        }
+
+        return $formatted;
     }
 }

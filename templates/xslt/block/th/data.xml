@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <th> element.
+    Open this file in a browser to see the XSLT transform applied.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="th" id="example-th">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="colspan"><![CDATA[example-colspan]]></fragment>
+    <fragment name="headers"><![CDATA[example-headers]]></fragment>
+    <fragment name="rowspan"><![CDATA[example-rowspan]]></fragment>
+    <fragment name="scope"><![CDATA[example-scope]]></fragment>
+    <fragment name="role"><![CDATA[alert]]></fragment>
+    <fragment name="ariaControls"><![CDATA[example-aria-controls]]></fragment>
+    <fragment name="ariaDescribedby"><![CDATA[example-aria-describedby]]></fragment>
+    <fragment name="ariaLabelledby"><![CDATA[example-aria-labelledby]]></fragment>
+    <fragment name="ariaBusy"><![CDATA[true]]></fragment>
+    <fragment name="ariaHidden"><![CDATA[false]]></fragment>
+    <fragment name="ariaDetails"><![CDATA[example-aria-details]]></fragment>
+    <fragment name="ariaKeyshortcuts"><![CDATA[example-aria-keyshortcuts]]></fragment>
+    <fragment name="ariaRoledescription"><![CDATA[example-aria-roledescription]]></fragment>
+    <fragment name="ariaLive"><![CDATA[off]]></fragment>
+    <fragment name="ariaRelevant"><![CDATA[additions]]></fragment>
+    <fragment name="ariaAtomic"><![CDATA[false]]></fragment>
+    <fragment name="ariaColcount"><![CDATA[example-aria-colcount]]></fragment>
+    <fragment name="ariaRowcount"><![CDATA[example-aria-rowcount]]></fragment>
+    <fragment name="ariaSort"><![CDATA[none]]></fragment>
+    <fragment name="ariaColindex"><![CDATA[example-aria-colindex]]></fragment>
+    <fragment name="ariaColspan"><![CDATA[example-aria-colspan]]></fragment>
+    <fragment name="ariaRowindex"><![CDATA[example-aria-rowindex]]></fragment>
+    <fragment name="ariaRowspan"><![CDATA[example-aria-rowspan]]></fragment>
+    <fragment name="accesskey"><![CDATA[example-accesskey]]></fragment>
+    <fragment name="autocapitalize"><![CDATA[none]]></fragment>
+    <fragment name="autofocus"><![CDATA[example-autofocus]]></fragment>
+    <fragment name="contenteditable"><![CDATA[true]]></fragment>
+    <fragment name="dir"><![CDATA[ltr]]></fragment>
+    <fragment name="draggable"><![CDATA[example-draggable]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+    <fragment name="inputmode"><![CDATA[none]]></fragment>
+    <fragment name="lang"><![CDATA[en]]></fragment>
+    <fragment name="popover"><![CDATA[auto]]></fragment>
+    <fragment name="slot"><![CDATA[example-slot]]></fragment>
+    <fragment name="spellcheck"><![CDATA[true]]></fragment>
+    <fragment name="style"><![CDATA[color: inherit]]></fragment>
+    <fragment name="tabindex"><![CDATA[example-tabindex]]></fragment>
+    <fragment name="title"><![CDATA[example-title]]></fragment>
+    <fragment name="translate"><![CDATA[yes]]></fragment>
+</item>

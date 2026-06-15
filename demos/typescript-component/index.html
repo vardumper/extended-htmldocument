@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <title>Teaser Example Demo</title>
+  <script type="importmap">
+    {
+      "imports": {
+        "@typesafe-html5/typescript": "/templates/typescript/dist/index.js"
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2rem;
+      line-height: 1.4;
+    }
+
+    code {
+      background: #f0f0f0;
+      padding: 0.1rem 0.3rem;
+      border-radius: 4px;
+    }
+
+    // teaser styles
+    div.teaser {padding:2rem;}
+    div.teaser img {width: 100%; height: auto; object-fit: cover; margin-bottom: 1rem;}
+  </style>
+</head>
+<body>
+    <div class="container">
+  <h1>teaserExample() Demo</h1>
+
+  <div class="help" id="help">
+This demo imports:
+  ./teaser-example.bundle.js
+
+The bundle is built from:
+  ../examples/template-generator/dest/teaser-example.ts
+
+It imports pre-existing exports from:
+  /templates/typescript/dist/index.js
+
+`npm run demo:serve` builds the bundle first and then starts a local server.
+
+Quick local server:
+  npm run demo:serve
+Then open:
+  http://localhost:4173/demos/teaser-example.html
+  </div>
+
+  <div class="demo-block">
+    <h2>Output</h2>
+    <div id="custom-root" class="grid"></div>
+  </div>
+</div>
+<script type="module">
+    const help = document.getElementById('help');
+
+    async function boot() {
+      try {
+        const mod = await import('./teaser-example.bundle.js');
+
+        const teaserExample = mod.teaserExample;
+
+        if (typeof teaserExample !== 'function') {
+          throw new Error('teaserExample export was not found.');
+        }
+
+        const customRoot = document.getElementById('custom-root');
+        const teaser1 = teaserExample({
+            content1: 'My Demo Title',
+            content2: 'My Demo Subtitle',
+            content3: 'This content is passed as parameter to teaserExample() method.',
+            node6Src: 'https://picsum.photos/340/140',
+            node6Alt: 'Random demo image',
+            content4: 'Open details',
+            node7Href: 'https://example.com'
+        });
+        customRoot.append(teaser1);
+        const teaser2 = teaserExample({
+            content1: 'My Second Title',
+            content2: 'My Demo Subtitle',
+            content3: 'This content is passed as parameter to teaserExample() method.',
+            node6Src: 'https://picsum.photos/340/140?122',
+            node6Alt: 'Random demo image',
+            content4: 'Open details',
+            node7Href: 'https://example.com'
+        });
+        customRoot.append(teaser2);
+        const teaser3 = teaserExample({
+            content1: 'My Third Title',
+            content2: 'My Demo Subtitle',
+            content3: 'This content is passed as parameter to teaserExample() method.',
+            node6Src: 'https://picsum.photos/340/140?123',
+            node6Alt: 'Random demo image',
+            content4: 'Open details',
+            node7Href: 'https://example.com'
+        });
+        customRoot.append(teaser3);
+
+        help.textContent = 'Loaded successfully via bundled TypeScript module. teaserExample() is rendering below.';
+      } catch (err) {
+        help.textContent =
+          'Could not load the bundled demo module.\n\n' +
+          'Run `npm run demo:serve` to rebuild the bundle and serve this page.\n\n' +
+          'Error: ' + (err && err.message ? err.message : String(err));
+      }
+    }
+
+    boot();
+  </script>
+</body>
+</html>

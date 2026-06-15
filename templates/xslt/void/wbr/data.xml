@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <wbr> element.
+    Open this file in a browser to see the XSLT transform applied.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="wbr" id="example-wbr">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="dir"><![CDATA[ltr]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+</item>

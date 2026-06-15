@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/12.0/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         failOnAllIssues="false"
+         failOnDeprecation="false"
+         failOnPhpunitDeprecation="false"
+         displayDetailsOnTestsThatTriggerDeprecations="false"
+>
+    <testsuites>
+        <testsuite name="Test Suite">
+            <directory>tests</directory>
+            <exclude>tests/Benchmark</exclude>
+        </testsuite>
+    </testsuites>
+    <coverage/>
+    <source ignoreIndirectDeprecations="true" ignoreDirectDeprecations="true">
+        <include>
+            <directory>src</directory>
+        </include>
+    </source>
+    <php>
+        <server name="APP_ENV" value="testing"/>
+        <ini name="error_reporting" value="8191"/>
+    </php>
+</phpunit>

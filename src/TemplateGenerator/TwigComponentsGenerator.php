@@ -3,9 +3,11 @@
 namespace Html\TemplateGenerator;
 
 use BackedEnum;
+use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
+use Html\Trait\ClassResolverTrait;
 use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionUnionType;
@@ -35,6 +37,8 @@ use UnitEnum;
 #[TemplateGenerator('twig-component')]
 class TwigComponentsGenerator implements TemplateGeneratorInterface
 {
+    use ClassResolverTrait;
+
     // @phpstan-ignore-next-line - reserved words constant is kept for future use
     private const TWIG_RESERVED_WORDS = [
         'is', 'in', 'for', 'if', 'true', 'false', 'none', 'and', 'or', 'not',
@@ -43,6 +47,8 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         'endautoescape', 'embed', 'endembed', 'use', 'verbatim', 'endverbatim',
         'do', 'flush', 'sandbox', 'endsandbox', 'props',
     ];
+
+    private string $documentRenderMode = 'component';
 
     public function getExtension(): string
     {
@@ -66,21 +72,40 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
 
     public function canRenderDocuments(): bool
     {
-        return false;
+        return true;
     }
 
     public function isTemplated(): bool
     {
-        return false;
+        return true;
     }
 
     public function render($elementOrDocument): ?string
     {
+        if ($elementOrDocument instanceof HTMLDocumentDelegatorInterface && $this->canRenderDocuments()) {
+            return $this->renderDocument($elementOrDocument);
+        }
+
         if ($elementOrDocument instanceof HTMLElementDelegatorInterface && $this->canRenderElements()) {
             return $this->renderElement($elementOrDocument);
         }
 
         return null;
+    }
+
+    public function setDocumentRenderMode(string $mode): void
+    {
+        // Twig components always render documents in strict component mode.
+        $this->documentRenderMode = 'component';
+    }
+
+    public function renderDocument(HTMLDocumentDelegatorInterface $document): string
+    {
+        if ($this->documentRenderMode === 'raw') {
+            return $this->renderDocumentRaw($document);
+        }
+
+        return $this->renderDocumentUsingComponents($document);
     }
 
     /**
@@ -393,6 +418,218 @@ class TwigComponentsGenerator implements TemplateGeneratorInterface
         $name = ucfirst($elementName);
 
         return $this->buildComposedTemplate($elementName, $name, $desc, $parentOf);
+    }
+
+    private function renderDocumentRaw(HTMLDocumentDelegatorInterface $document): string
+    {
+        $twig = "{#\n";
+        $twig .= "  This file is auto-generated.\n\n";
+        $twig .= "  @see src/TemplateGenerator/TwigComponentsGenerator.php\n";
+        $twig .= "#}\n";
+
+        $dom = $document->delegated;
+        if ($dom->body !== null && $dom->body->childNodes->length > 0) {
+            $twig .= $this->serializeRawNodeChildren($dom->body, 0);
+        } elseif ($dom->documentElement !== null) {
+            $twig .= $this->serializeRawNodeChildren($dom->documentElement, 0);
+        } else {
+            $twig .= $this->serializeRawNodeChildren($dom, 0);
+        }
+
+        return $twig;
+    }
+
+    private function renderDocumentUsingComponents(HTMLDocumentDelegatorInterface $document): string
+    {
+        $twig = "{#\n";
+        $twig .= "  This file is auto-generated.\n\n";
+        $twig .= "  Strict mode: component\n\n";
+        $twig .= "  @see src/TemplateGenerator/TwigComponentsGenerator.php\n";
+        $twig .= "#}\n";
+
+        $root = $document->delegated->body ?? $document->delegated;
+        foreach ($root->childNodes as $child) {
+            $twig .= $this->renderComponentNode($child, 0);
+        }
+
+        return $twig;
+    }
+
+    private function serializeRawNodeChildren(\DOM\Node $node, int $depth): string
+    {
+        $output = '';
+        foreach ($node->childNodes as $child) {
+            $output .= $this->serializeRawNode($child, $depth);
+        }
+        return $output;
+    }
+
+    private function serializeRawNode(\DOM\Node $node, int $depth): string
+    {
+        $indent = str_repeat('  ', $depth);
+
+        if ($node instanceof \DOM\Element) {
+            $tag = strtolower($node->tagName);
+            if ($tag === 'html' || $tag === 'head' || $tag === 'body') {
+                return $this->serializeRawNodeChildren($node, $depth);
+            }
+
+            $attrs = '';
+            foreach ($node->attributes as $attr) {
+                $attrs .= ' ' . $attr->name . '="' . $attr->value . '"';
+            }
+
+            $voidElements = [
+                'area',
+                'base',
+                'br',
+                'col',
+                'embed',
+                'hr',
+                'img',
+                'input',
+                'link',
+                'meta',
+                'param',
+                'source',
+                'track',
+                'wbr',
+            ];
+            if (in_array($tag, $voidElements, true)) {
+                return $indent . "<{$tag}{$attrs}>\n";
+            }
+
+            if ($node->childNodes->length === 1 && $node->firstChild instanceof \DOM\Text) {
+                $text = $node->firstChild->nodeValue ?? '';
+                return $indent . "<{$tag}{$attrs}>{$text}</{$tag}>\n";
+            }
+
+            $inner = $this->serializeRawNodeChildren($node, $depth + 1);
+            if ($inner === '') {
+                return $indent . "<{$tag}{$attrs}></{$tag}>\n";
+            }
+
+            return $indent . "<{$tag}{$attrs}>\n" . $inner . $indent . "</{$tag}>\n";
+        }
+
+        if ($node instanceof \DOM\Text) {
+            $text = trim($node->nodeValue ?? '');
+            if ($text === '') {
+                return '';
+            }
+            return $indent . $text . "\n";
+        }
+
+        return '';
+    }
+
+    private function renderComponentNode(\DOM\Node $node, int $depth): string
+    {
+        $indent = str_repeat('  ', $depth);
+
+        if ($node instanceof \DOM\Text) {
+            $text = trim($node->nodeValue ?? '');
+            if ($text === '') {
+                return '';
+            }
+
+            $expression = $this->extractTwigExpression($text);
+            if ($expression !== null) {
+                return $indent . '{{ ' . $expression . " }}\n";
+            }
+
+            return $indent . $text . "\n";
+        }
+
+        if (! ($node instanceof \DOM\Element)) {
+            return '';
+        }
+
+        $tag = strtolower($node->tagName);
+        if ($tag === 'html' || $tag === 'head' || $tag === 'body') {
+            $output = '';
+            foreach ($node->childNodes as $child) {
+                $output .= $this->renderComponentNode($child, $depth);
+            }
+            return $output;
+        }
+
+        $componentName = $this->resolveComponentName($tag);
+        if ($componentName === null) {
+            return $this->serializeRawNode($node, $depth);
+        }
+
+        $attrs = $this->buildComponentAttributeString($node);
+        $opening = $indent . '<twig:' . $componentName . ($attrs === '' ? '' : ' ' . $attrs);
+        $children = $this->renderComponentChildren($node, $depth + 1);
+        $hasChildren = trim($children) !== '';
+
+        if (! $hasChildren && $this->isVoidElementTag($tag)) {
+            return $opening . " />\n";
+        }
+
+        if (! $hasChildren) {
+            return $opening . '></twig:' . $componentName . ">\n";
+        }
+
+        return $opening . ">\n" . $children . $indent . '</twig:' . $componentName . ">\n";
+    }
+
+    private function renderComponentChildren(\DOM\Element $element, int $depth): string
+    {
+        $output = '';
+        foreach ($element->childNodes as $child) {
+            $output .= $this->renderComponentNode($child, $depth);
+        }
+        return $output;
+    }
+
+    private function buildComponentAttributeString(\DOM\Element $element): string
+    {
+        $parts = [];
+        foreach ($element->attributes as $attr) {
+            $expression = $this->extractTwigExpression($attr->value);
+            if ($expression !== null) {
+                $parts[] = $attr->name . '="{{ ' . $expression . ' }}"';
+                continue;
+            }
+
+            $parts[] = $attr->name . '="' . $this->escapeAttributeValue($attr->value) . '"';
+        }
+
+        return implode(' ', $parts);
+    }
+
+    private function resolveComponentName(string $tagName): ?string
+    {
+        $className = $this->getElementByQualifiedName($tagName);
+        if ($className === null) {
+            return null;
+        }
+
+        return $this->getComponentClassName(ucfirst($tagName));
+    }
+
+    private function escapeAttributeValue(string $value): string
+    {
+        return str_replace(['&', '"'], ['&amp;', '&quot;'], $value);
+    }
+
+    private function extractTwigExpression(string $value): ?string
+    {
+        if (preg_match('/^\s*\{\{\s*(.+?)\s*\}\}\s*$/s', $value, $matches) === 1) {
+            return $matches[1];
+        }
+
+        return null;
+    }
+
+    private function isVoidElementTag(string $tagName): bool
+    {
+        return in_array($tagName, [
+            'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link',
+            'meta', 'param', 'source', 'track', 'wbr',
+        ], true);
     }
 
     /**

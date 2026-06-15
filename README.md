@@ -55,8 +55,12 @@ Files are grouped into inline, block and void elements. For elements with a spec
 
 ### Blade
 Blade templates can be found in [`templates/blade`](https://github.com/vardumper/extended-htmldocument/tree/main/templates/blade). The [README](https://github.com/vardumper/extended-htmldocument/blob/main/templates/blade/README.md) has more infos and usage examples. Blade templates can also be installed via `npm` with the [@typesafe-html5/blade](https://www.npmjs.com/package/@typesafe-html5/blade) package.
+
+Each element's template is generated as `index.blade.php` inside a subdirectory named after the element (e.g. `blade/block/div/index.blade.php`), which Blade resolves as `x-block.div`.
+
+The `blade-component` generator converts a full YAML component definition into a Blade document using `<x-block.*>`, `<x-inline.*>` and `<x-void.*>` component tags. Use it via the `watch` command — see the [README](https://github.com/vardumper/extended-htmldocument/blob/main/templates/blade/README.md) for examples.
 ### React & NextJS
-React and NextJS templates can be found in `templates/blade`. See the Blade-specific [README](https://github.com/vardumper/extended-htmldocument/blob/main/templates/blade/README.md) file for details. Blade templates can also be installed via `npm` with the [@typesafe-html5/react](https://www.npmjs.com/package/@typesafe-html5/react) package.
+React and NextJS templates can be found in [`templates/nextjs`](https://github.com/vardumper/extended-htmldocument/tree/main/templates/nextjs). See the [README](https://github.com/vardumper/extended-htmldocument/blob/main/templates/nextjs/README.md) file for details. NextJS templates can also be installed via `npm` with the [@typesafe-html5/react](https://www.npmjs.com/package/@typesafe-html5/react) package.
 ### Storybook 
 Storybook with atoms for all HTML5 elements can be [seen in the Demo](https://vardumper.github.io/extended-htmldocument/storybook-site/). Files can be found in [`templates/storybook`](https://github.com/vardumper/extended-htmldocument/tree/main/templates/storybook). There's also a [README](https://github.com/vardumper/extended-htmldocument/blob/main/templates/storybook/README.md) with more details.
 ### Storybook for Twig

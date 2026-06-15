@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <track> element.
+    Open this file in a browser to see the XSLT transform applied.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="track" id="example-track">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="default"><![CDATA[example-default]]></fragment>
+    <fragment name="kind"><![CDATA[captions]]></fragment>
+    <fragment name="label"><![CDATA[example-label]]></fragment>
+    <fragment name="src"><![CDATA[https://example.com/image.jpg]]></fragment>
+    <fragment name="srclang"><![CDATA[example-srclang]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+    <fragment name="lang"><![CDATA[en]]></fragment>
+    <fragment name="style"><![CDATA[color: inherit]]></fragment>
+</item>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <style> element.
+    Open this file in a browser to see the XSLT transform applied.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="style" id="example-style">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="media"><![CDATA[example-media]]></fragment>
+    <fragment name="nonce"><![CDATA[example-nonce]]></fragment>
+    <fragment name="type"><![CDATA[text/css]]></fragment>
+    <fragment name="dir"><![CDATA[ltr]]></fragment>
+    <fragment name="lang"><![CDATA[en]]></fragment>
+    <fragment name="title"><![CDATA[example-title]]></fragment>
+</item>

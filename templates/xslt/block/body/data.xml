@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <body> element.
+    Open this file in a browser to see the XSLT transform applied.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="body" id="example-body">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="onafterprint"><![CDATA[example-onafterprint]]></fragment>
+    <fragment name="onbeforeprint"><![CDATA[example-onbeforeprint]]></fragment>
+    <fragment name="onbeforeunload"><![CDATA[example-onbeforeunload]]></fragment>
+    <fragment name="onhashchange"><![CDATA[example-onhashchange]]></fragment>
+    <fragment name="onlanguagechange"><![CDATA[example-onlanguagechange]]></fragment>
+    <fragment name="onmessage"><![CDATA[example-onmessage]]></fragment>
+    <fragment name="onmessageerror"><![CDATA[example-onmessageerror]]></fragment>
+    <fragment name="onoffline"><![CDATA[example-onoffline]]></fragment>
+    <fragment name="ononline"><![CDATA[example-ononline]]></fragment>
+    <fragment name="onpagehide"><![CDATA[example-onpagehide]]></fragment>
+    <fragment name="onpageshow"><![CDATA[example-onpageshow]]></fragment>
+    <fragment name="onpopstate"><![CDATA[example-onpopstate]]></fragment>
+    <fragment name="onrejectionhandled"><![CDATA[example-onrejectionhandled]]></fragment>
+    <fragment name="onstorage"><![CDATA[example-onstorage]]></fragment>
+    <fragment name="onunhandledrejection"><![CDATA[example-onunhandledrejection]]></fragment>
+    <fragment name="onunload"><![CDATA[example-onunload]]></fragment>
+    <fragment name="accesskey"><![CDATA[example-accesskey]]></fragment>
+    <fragment name="dir"><![CDATA[ltr]]></fragment>
+    <fragment name="draggable"><![CDATA[example-draggable]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+    <fragment name="lang"><![CDATA[en]]></fragment>
+    <fragment name="style"><![CDATA[color: inherit]]></fragment>
+    <fragment name="tabindex"><![CDATA[example-tabindex]]></fragment>
+    <fragment name="title"><![CDATA[example-title]]></fragment>
+    <fragment name="translate"><![CDATA[yes]]></fragment>
+</item>

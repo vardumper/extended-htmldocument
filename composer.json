@@ -42,9 +42,10 @@
     "require": {
         "php": "^8.4",
         "ext-dom": "*",
-        "revolt/event-loop": "^1.0.8",
-        "mnapoli/silly": "^1.9.1",
-        "symfony/yaml": "^5.4|^7.0|^8.0.8"
+        "mnapoli/silly": "^1.10.0",
+        "revolt/event-loop": "^1.0.9",
+        "symfony/yaml": "^5.4|^7.0|^8.0.12",
+        "vardumper/dom-orm": "^1.4.4"
     },
     "config": {
         "sort-packages": true,
@@ -61,17 +62,17 @@
         }
     },
     "require-dev": {
-        "amphp/file": ">=3.2",
+        "amphp/file": ">=4",
         "brainmaestro/composer-git-hooks": "dev-master",
         "edent/pretty-print-html": "2025-04-18",
-        "friendsofphp/php-cs-fixer": "^3.95.1",
+        "friendsofphp/php-cs-fixer": "^3.95.2",
         "pestphp/pest": "^3.8.6",
         "pestphp/pest-plugin-drift": "^3.0",
         "pestphp/pest-plugin-type-coverage": "^3.6.1",
         "phpmd/phpmd": "^2.15",
-        "phpstan/phpstan": "^2.1.54",
+        "phpstan/phpstan": "^2.1.55",
         "rector/swiss-knife": "^2.3.5",
-        "symfony/http-kernel": "^5.4|^6.0|^7.0|^8.0.8",
+        "symfony/http-kernel": "^5.4|^6.0|^7.0|^8.0.12",
         "symfony/ux-twig-component": "^2.35",
         "symplify/easy-coding-standard": "^12.6.2"
     },

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <link> element.
+    Open this file in a browser to see the XSLT transform applied.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="link" id="example-link">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="crossorigin"><![CDATA[anonymous]]></fragment>
+    <fragment name="href"><![CDATA[https://example.com]]></fragment>
+    <fragment name="hreflang"><![CDATA[example-hreflang]]></fragment>
+    <fragment name="integrity"><![CDATA[example-integrity]]></fragment>
+    <fragment name="media"><![CDATA[example-media]]></fragment>
+    <fragment name="referrerpolicy"><![CDATA[no-referrer]]></fragment>
+    <fragment name="rel"><![CDATA[alternate]]></fragment>
+    <fragment name="sizes"><![CDATA[example-sizes]]></fragment>
+    <fragment name="type"><![CDATA[text]]></fragment>
+    <fragment name="dir"><![CDATA[ltr]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+    <fragment name="lang"><![CDATA[en]]></fragment>
+    <fragment name="style"><![CDATA[color: inherit]]></fragment>
+    <fragment name="title"><![CDATA[example-title]]></fragment>
+</item>

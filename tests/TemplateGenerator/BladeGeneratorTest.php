@@ -30,7 +30,7 @@ test('get extension', function () {
 
 test('get name pattern', function () {
     expect($this->generator->getNamePattern())
-        ->toBe('{component}.{extension}');
+        ->toBe('index.{extension}');
 });
 
 test('can render elements', function () {
@@ -40,12 +40,12 @@ test('can render elements', function () {
 
 test('can render documents', function () {
     expect($this->generator->canRenderDocuments())
-        ->toBeFalse();
+        ->toBeTrue();
 });
 
 test('is templated', function () {
     expect($this->generator->isTemplated())
-        ->toBeFalse();
+        ->toBeTrue();
 });
 
 test('render element', function () {
@@ -60,7 +60,7 @@ test('render element', function () {
     expect($result)
         ->toContain('href');
     expect($result)
-        ->toContain('@section');
+        ->toContain('@php');
 });
 
 test('render document', function () {
@@ -69,7 +69,9 @@ test('render document', function () {
     $document->appendChild($element);
     $result = $this->generator->render($document);
     expect($result)
-        ->toBeNull();
+        ->toBeString();
+    expect($result)
+        ->toContain('This file is auto-generated');
 });
 
 test('render invalid', function () {
@@ -150,7 +152,7 @@ test('render element with self closing tag', function () {
     expect($result)
         ->toContain('/>');
     expect($result)
-        ->toContain('@section');
+        ->toContain('@php');
 });
 
 test('render composed element with empty parentOf', function () {

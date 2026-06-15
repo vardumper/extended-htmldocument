@@ -1,0 +1,324 @@
+<?php
+
+/**
+ * This file is auto-generated. Do not edit manually.
+ *
+ * @generated 2026-05-21 11:39:20
+ * @subpackage Html\Entity\Block
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header
+ */
+
+namespace Html\Entity\Block;
+
+use DateTimeInterface;
+use DOM\ORM\Entity\AbstractEntity;
+use DOM\ORM\Mapping as ORM;
+use Html\Enum\AutoCapitalizeEnum;
+use Html\Enum\ContentEditableEnum;
+use Html\Enum\DirectionEnum;
+use Html\Enum\InputModeEnum;
+use Html\Enum\SpellCheckEnum;
+use Html\Enum\TranslateEnum;
+
+/**
+ * header entity — persists as XML via DOM-ORM.
+ */
+#[ORM\Item(entityType: 'header')]
+class HeaderEntity extends AbstractEntity
+{
+    /**
+     * Allowed parent elements (HTML content model)
+     * @var array<string>
+     */
+    public static array $childOf = ['body', 'p'];
+
+    /**
+     * Allowed child elements (HTML content model)
+     * @var array<string>
+     */
+    public static array $parentOf = [
+        'a',
+        'abbr',
+        'area',
+        'audio',
+        'b',
+        'bdi',
+        'bdo',
+        'br',
+        'cite',
+        'code',
+        'data',
+        'dd',
+        'del',
+        'dfn',
+        'div',
+        'dl',
+        'dt',
+        'em',
+        'embed',
+        'figcaption',
+        'figure',
+        'form',
+        'h1',
+        'h2',
+        'h3',
+        'h4',
+        'h5',
+        'h6',
+        'i',
+        'iframe',
+        'img',
+        'ins',
+        'button',
+        'input',
+        'select',
+        'textarea',
+        'details',
+        'summary',
+        'kbd',
+        'li',
+        'map',
+        'mark',
+        'object',
+        'ol',
+        'p',
+        'param',
+        'picture',
+        'pre',
+        'q',
+        'rp',
+        'rt',
+        'ruby',
+        's',
+        'samp',
+        'small',
+        'source',
+        'span',
+        'strong',
+        'sub',
+        'sup',
+        'table',
+        'time',
+        'track',
+        'u',
+        'ul',
+        'var',
+        'video',
+        'wbr',
+    ];
+
+    public function __construct(
+        #[ORM\Fragment]
+        protected ?string $class = null,
+        #[ORM\Fragment]
+        protected ?string $ariaLabel = null,
+        #[ORM\Fragment]
+        protected ?string $accesskey = null,
+        #[ORM\Fragment]
+        protected ?AutoCapitalizeEnum $autocapitalize = null,
+        #[ORM\Fragment]
+        protected ?string $autofocus = null,
+        #[ORM\Fragment]
+        protected ?ContentEditableEnum $contenteditable = null,
+        #[ORM\Fragment]
+        protected ?DirectionEnum $dir = null,
+        #[ORM\Fragment]
+        protected ?string $draggable = null,
+        #[ORM\Fragment]
+        protected ?string $hidden = null,
+        #[ORM\Fragment]
+        protected ?InputModeEnum $inputmode = null,
+        #[ORM\Fragment]
+        protected ?string $lang = null,
+        #[ORM\Fragment]
+        protected ?SpellCheckEnum $spellcheck = null,
+        #[ORM\Fragment]
+        protected ?string $style = null,
+        #[ORM\Fragment]
+        protected ?string $tabindex = null,
+        #[ORM\Fragment]
+        protected ?string $title = null,
+        #[ORM\Fragment]
+        protected ?TranslateEnum $translate = null,
+        ?string $entityId = null,
+        ?DateTimeInterface $createdAt = null,
+    ) {
+        parent::__construct($entityId, $createdAt);
+    }
+
+    public function setClass(?string $value): static
+    {
+        $this->class = $value;
+        return $this;
+    }
+
+    public function getClass(): ?string
+    {
+        return $this->class;
+    }
+
+    public function setAriaLabel(?string $value): static
+    {
+        $this->ariaLabel = $value;
+        return $this;
+    }
+
+    public function getAriaLabel(): ?string
+    {
+        return $this->ariaLabel;
+    }
+
+    public function setAccesskey(?string $value): static
+    {
+        $this->accesskey = $value;
+        return $this;
+    }
+
+    public function getAccesskey(): ?string
+    {
+        return $this->accesskey;
+    }
+
+    public function setAutocapitalize(?AutoCapitalizeEnum $value): static
+    {
+        $this->autocapitalize = $value;
+        return $this;
+    }
+
+    public function getAutocapitalize(): ?AutoCapitalizeEnum
+    {
+        return $this->autocapitalize;
+    }
+
+    public function setAutofocus(?string $value): static
+    {
+        $this->autofocus = $value;
+        return $this;
+    }
+
+    public function getAutofocus(): ?string
+    {
+        return $this->autofocus;
+    }
+
+    public function setContenteditable(?ContentEditableEnum $value): static
+    {
+        $this->contenteditable = $value;
+        return $this;
+    }
+
+    public function getContenteditable(): ?ContentEditableEnum
+    {
+        return $this->contenteditable;
+    }
+
+    public function setDir(?DirectionEnum $value): static
+    {
+        $this->dir = $value;
+        return $this;
+    }
+
+    public function getDir(): ?DirectionEnum
+    {
+        return $this->dir;
+    }
+
+    public function setDraggable(?string $value): static
+    {
+        $this->draggable = $value;
+        return $this;
+    }
+
+    public function getDraggable(): ?string
+    {
+        return $this->draggable;
+    }
+
+    public function setHidden(?string $value): static
+    {
+        $this->hidden = $value;
+        return $this;
+    }
+
+    public function getHidden(): ?string
+    {
+        return $this->hidden;
+    }
+
+    public function setInputmode(?InputModeEnum $value): static
+    {
+        $this->inputmode = $value;
+        return $this;
+    }
+
+    public function getInputmode(): ?InputModeEnum
+    {
+        return $this->inputmode;
+    }
+
+    public function setLang(?string $value): static
+    {
+        $this->lang = $value;
+        return $this;
+    }
+
+    public function getLang(): ?string
+    {
+        return $this->lang;
+    }
+
+    public function setSpellcheck(?SpellCheckEnum $value): static
+    {
+        $this->spellcheck = $value;
+        return $this;
+    }
+
+    public function getSpellcheck(): ?SpellCheckEnum
+    {
+        return $this->spellcheck;
+    }
+
+    public function setStyle(?string $value): static
+    {
+        $this->style = $value;
+        return $this;
+    }
+
+    public function getStyle(): ?string
+    {
+        return $this->style;
+    }
+
+    public function setTabindex(?string $value): static
+    {
+        $this->tabindex = $value;
+        return $this;
+    }
+
+    public function getTabindex(): ?string
+    {
+        return $this->tabindex;
+    }
+
+    public function setTitle(?string $value): static
+    {
+        $this->title = $value;
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTranslate(?TranslateEnum $value): static
+    {
+        $this->translate = $value;
+        return $this;
+    }
+
+    public function getTranslate(): ?TranslateEnum
+    {
+        return $this->translate;
+    }
+}

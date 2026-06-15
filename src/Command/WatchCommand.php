@@ -9,12 +9,16 @@ declare(strict_types=1);
 
 namespace Html\Command;
 
+use Dom\Comment;
+use Dom\Element;
+use Dom\Text;
 use DOMDocument;
 use Edent\PrettyPrintHtml\PrettyPrintHtml;
 use Html\Delegator\HTMLDocumentDelegator;
 use Html\Helper\EventLoopHelper;
 use Html\Helper\YamlHelper;
 use Html\Interface\ComponentBuilderInterface;
+use Html\TemplateGenerator\HTMLGenerator;
 use Html\Trait\ClassResolverTrait;
 use Html\Trait\GeneratorResolverTrait;
 use Symfony\Component\Console\Command\Command;
@@ -70,9 +74,11 @@ class WatchCommand extends Command
         string $dest,
         InputInterface $input,
         OutputInterface $output,
-        bool $overwriteExisting = false
+        bool $overwriteExisting = false,
+        bool|string $strict = false
     ): void {
         $io = new SymfonyStyle($input, $output);
+        $strictMode = $this->resolveStrictMode($strict);
 
         if (! \str_contains($generator, ',')) {
             $generators = [$generator];
@@ -126,8 +132,8 @@ class WatchCommand extends Command
 
         $io->info(sprintf('Starting to watch: %s', $source));
 
-        $this->loop->repeat(self::INTERVAL, function () use ($generators, $sourceFiles, $dest, $io): void {
-            $this->processFiles($generators, $sourceFiles, $dest, $io);
+        $this->loop->repeat(self::INTERVAL, function () use ($generators, $sourceFiles, $dest, $io, $strictMode): void {
+            $this->processFiles($generators, $sourceFiles, $dest, $io, $strictMode);
         });
 
         $this->loop->onSignal(\SIGINT, function (): void {
@@ -141,8 +147,13 @@ class WatchCommand extends Command
     /**
      * on first iteration, all source files will be processed (since they will be older than our interval
      */
-    private function processFiles(array $generators, array $sourceFiles, string $dest, SymfonyStyle $io): void
-    {
+    private function processFiles(
+        array $generators,
+        array $sourceFiles,
+        string $dest,
+        SymfonyStyle $io,
+        string $strictMode
+    ): void {
         foreach ($sourceFiles as $sourceFile) {
             $lastMod = \filemtime($sourceFile) ?: 0;
 
@@ -152,7 +163,7 @@ class WatchCommand extends Command
                 $lastMod > $this->lastModifiedTimes[$sourceFile]
             ) {
                 $io->info(sprintf('Processing file: %s', $sourceFile));
-                $this->processSingleFile($generators, $sourceFile, $dest, $io);
+                $this->processSingleFile($generators, $sourceFile, $dest, $io, $strictMode);
                 $this->lastModifiedTimes[$sourceFile] = $lastMod;
             }
         }
@@ -163,7 +174,8 @@ class WatchCommand extends Command
         array $generators,
         string $sourceFile,
         string $dest,
-        SymfonyStyle $io
+        SymfonyStyle $io,
+        string $strictMode
     ): void {
         try {
             $data = $this->yaml->parseFile($sourceFile);
@@ -180,6 +192,15 @@ class WatchCommand extends Command
                     $templateGenerator->setComponentHandle($componentHandle);
                 }
 
+                if (method_exists($templateGenerator, 'setDocumentRenderMode')) {
+                    $templateGenerator->setDocumentRenderMode($strictMode);
+                }
+
+                if (! $templateGenerator->canRenderDocuments()) {
+                    $io->warning(sprintf('Generator "%s" does not support rendering documents. Skipping.', $name));
+                    continue;
+                }
+
                 $document = HTMLDocumentDelegator::createEmpty();
                 $document->formatOutput = true;
                 $document->setRenderer($templateGenerator);
@@ -187,8 +208,9 @@ class WatchCommand extends Command
                 $destinationPath = sprintf(
                     '%s/%s',
                     $dest,
-                    str_replace(['{component}', '{extension}'], [
+                    str_replace(['{component}', '{Component}', '{extension}'], [
                         $componentHandle,
+                        ucfirst((string) $componentHandle),
                         $templateGenerator->getExtension(),
                     ], $templateGenerator->getNamePattern())
                 );
@@ -196,8 +218,52 @@ class WatchCommand extends Command
                 $output = (string) $document;
                 // Only pretty-print if not templated (HTML output)
                 if ($document->formatOutput && ! $templateGenerator->isTemplated()) {
-                    $formatter = new PrettyPrintHtml();
-                    $output = $formatter->serializeHtml($document->delegated, rawAttributes: false);
+                    if ($templateGenerator instanceof HTMLGenerator) {
+                        $rendered = $templateGenerator->render($document);
+                        if ($rendered !== null) {
+                            $output = $rendered;
+                        }
+                    } else {
+                        $formatter = new PrettyPrintHtml();
+                        $htmlFragments = [];
+
+                        if ($document->delegated->documentElement !== null) {
+                            $body = $document->delegated->getElementsByTagName('body')
+                                ->item(0);
+                            $container = $body ?? $document->delegated->documentElement;
+
+                            foreach ($container->childNodes as $child) {
+                                if ($child instanceof Element) {
+                                    if ($body === null && strtolower($child->tagName) === 'head') {
+                                        continue;
+                                    }
+
+                                    $htmlFragments[] = rtrim(
+                                        $formatter->serializeHtml($child, 0, false, true, false),
+                                        "\r\n"
+                                    );
+                                    continue;
+                                }
+
+                                if ($child instanceof Text || $child instanceof Comment) {
+                                    $htmlFragments[] = rtrim(
+                                        $formatter->serializeHtml($child, 0, false, true, false),
+                                        "\r\n"
+                                    );
+                                }
+                            }
+                        } else {
+                            $htmlFragments[] = rtrim(
+                                $formatter->serializeHtml($document->delegated, rawAttributes: false),
+                                "\r\n"
+                            );
+                        }
+
+                        $output = implode(
+                            "\n",
+                            array_filter($htmlFragments, static fn (string $fragment): bool => $fragment !== '')
+                        );
+                    }
                 }
 
                 file_put_contents($destinationPath, $output);
@@ -270,5 +336,23 @@ class WatchCommand extends Command
         }
 
         return 'unknown';
+    }
+
+    private function resolveStrictMode(bool|string $strict): string
+    {
+        if ($strict === false || $strict === '' || $strict === '0' || $strict === 'false') {
+            return 'raw';
+        }
+
+        if ($strict === true || $strict === '1' || $strict === 'true') {
+            return 'embed';
+        }
+
+        $mode = strtolower(trim((string) $strict));
+        if (in_array($mode, ['include', 'embed', 'use'], true)) {
+            return $mode;
+        }
+
+        return 'embed';
     }
 }

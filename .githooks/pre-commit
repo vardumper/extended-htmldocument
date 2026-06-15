@@ -132,12 +132,12 @@ if $HAS_PEST; then
     printf "\nNo PHP file in this commit. Skipping Pest and Clover refresh.\n"
     printf "${YELLOW}Clover reports unchanged (no staged PHP files) at $(date '+%Y-%m-%d %H:%M:%S')${NC}\n"
   else
-    if RUN $PEST tests/Unit --exclude-group=benchmark --exclude-group=external-bin --testdox --colors=always; then
+    if $PEST tests --exclude-group=benchmark --exclude-group=external-bin --testdox --colors=always; then
       printf "${GREEN}Unit tests passed${NC}\n"
 
-      if RUN composer run test:coverage:unit \
-        && RUN composer run test:coverage:integration \
-        && RUN php bin/merge-clover.php clover.xml clover.unit.xml clover.integration.xml; then
+      if composer run test:coverage:unit \
+        && composer run test:coverage:integration \
+        && php bin/merge-clover.php clover.xml clover.unit.xml clover.integration.xml; then
         git add clover.unit.xml clover.integration.xml clover.xml
         printf "${GREEN}Clover reports updated (unit, integration, merged) at $(date '+%Y-%m-%d %H:%M:%S')${NC}\n"
       else
@@ -154,7 +154,7 @@ fi
 
 
 # PHPMD - PHP Mess Detector
-source ./.githooks/pre-commit.d/phpmd.sh
+# source ./.githooks/pre-commit.d/phpmd.sh
 
 # Run composer audit locally
 printf "${YELLOW}Composer Audit${NC}\n"

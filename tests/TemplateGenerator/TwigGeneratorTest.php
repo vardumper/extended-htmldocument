@@ -38,12 +38,12 @@ test('can render elements', function () {
 
 test('can render documents', function () {
     expect($this->generator->canRenderDocuments())
-        ->toBeFalse();
+    ->toBeTrue();
 });
 
 test('is templated', function () {
     expect($this->generator->isTemplated())
-        ->toBeFalse();
+    ->toBeTrue();
 });
 
 test('render element', function () {
@@ -121,7 +121,9 @@ test('render document', function () {
     $document->appendChild($element);
     $result = $this->generator->render($document);
     expect($result)
-        ->toBeNull();
+        ->toBeString();
+    expect($result)
+        ->toContain('This file is auto-generated');
 });
 
 test('render invalid', function () {
@@ -261,72 +263,79 @@ test('collect children for composed template', function () {
     }
 });
 
-test('render head', function () {
+test('set document render mode normalizes and validates values', function () {
     $reflection = new ReflectionClass($this->generator);
-    $method = $reflection->getMethod('renderHead');
-    $method->setAccessible(true);
+    $property = $reflection->getProperty('documentRenderMode');
+    $property->setAccessible(true);
 
-    $document = HTMLDocumentDelegator::createEmpty();
-    $result = $method->invoke($this->generator, $document);
+    $this->generator->setDocumentRenderMode(' include ');
+    expect($property->getValue($this->generator))
+        ->toBe('include');
 
-    // Since getDocumentMetadata returns empty array, renderHead should return null
-    expect($result)
-        ->toBeNull();
+    $this->generator->setDocumentRenderMode('unsupported');
+    expect($property->getValue($this->generator))
+        ->toBe('raw');
 });
 
-test('render body', function () {
-    $reflection = new ReflectionClass($this->generator);
-    $method = $reflection->getMethod('renderBody');
-    $method->setAccessible(true);
+test('render document include mode uses include/embed templates', function () {
+    $this->generator->setDocumentRenderMode('include');
 
     $document = HTMLDocumentDelegator::createEmpty();
     $body = Body::create($document);
+    $anchor = Anchor::create($document);
+    $anchor->setHref('https://example.com');
+    $anchor->append('Example');
+    $body->appendChild($anchor);
     $document->appendChild($body);
 
-    $result = $method->invoke($this->generator, $document);
+    $result = $this->generator->render($document);
 
     expect($result)
         ->toBeString();
     expect($result)
-        ->toContain('{% block body %}');
+        ->toContain('Strict mode: include');
+    expect($result)
+        ->toContain("{% embed 'inline/a/a.twig'");
 });
 
-test('get document metadata', function () {
+test('extract twig expression helper', function () {
     $reflection = new ReflectionClass($this->generator);
-    $method = $reflection->getMethod('getDocumentMetadata');
+    $method = $reflection->getMethod('extractTwigExpression');
     $method->setAccessible(true);
 
-    $document = HTMLDocumentDelegator::createEmpty();
-    $result = $method->invoke($this->generator, $document);
-
-    expect($result)
-        ->toBeArray();
-    expect($result)
-        ->toBeEmpty();
-});
-
-test('render twig template', function () {
-    $reflection = new ReflectionClass($this->generator);
-    $method = $reflection->getMethod('renderTwigTemplate');
-    $method->setAccessible(true);
-
-    $result = $method->invoke($this->generator, 'head', [
-        'test' => 'data',
-    ]);
-
-    // Since loadTwigTemplate returns null, renderTwigTemplate should return null
-    expect($result)
+    expect($method->invoke($this->generator, '{{ user.name }}'))
+        ->toBe('user.name');
+    expect($method->invoke($this->generator, 'plain-text'))
         ->toBeNull();
 });
 
-test('load twig template', function () {
+test('build twig map string helper', function () {
     $reflection = new ReflectionClass($this->generator);
-    $method = $reflection->getMethod('loadTwigTemplate');
+    $method = $reflection->getMethod('buildTwigMapString');
     $method->setAccessible(true);
 
-    $result = $method->invoke($this->generator, 'head');
+    $result = $method->invoke($this->generator, [
+        'id' => 'main',
+        'class' => 'hero',
+        'content' => ['__twig_expr' => 'user.name'],
+    ]);
 
     expect($result)
+        ->toContain('id:');
+    expect($result)
+        ->toContain('class:');
+    expect($result)
+        ->toContain('content: user.name');
+});
+
+test('resolve twig template path helper', function () {
+    $reflection = new ReflectionClass($this->generator);
+    $method = $reflection->getMethod('resolveTwigTemplatePath');
+    $method->setAccessible(true);
+
+    expect($method->invoke($this->generator, 'a'))
+        ->toBe('inline/a/a.twig');
+    expect($method->invoke($this->generator, 'not-a-real-tag'))
         ->toBeNull();
 });
 
@@ -344,46 +353,30 @@ test('render document method directly', function () {
     expect($result)
         ->toBeString();
     expect($result)
-        ->toContain('<?xml version="1.0" encoding="UTF-8"?>');
+        ->toContain('This file is auto-generated');
     expect($result)
-        ->toContain('<!DOCTYPE html>');
-    expect($result)
-        ->toContain('<html lang="en">');
-    expect($result)
-        ->toContain('<body>');
-    expect($result)
-        ->toContain('</body>');
-    expect($result)
-        ->toContain('</html>');
+        ->toContain('Component: component');
 });
 
-test('render head with metadata', function () {
-    $reflection = new ReflectionClass($this->generator);
+test('render document use mode falls back to embed strategy', function () {
+    $this->generator->setDocumentRenderMode('use');
 
-    // Mock getDocumentMetadata to return data
-    $metadataMethod = $reflection->getMethod('getDocumentMetadata');
-    $metadataMethod->setAccessible(true);
-
-    // Create a document with a title
     $document = HTMLDocumentDelegator::createEmpty();
-    $title = $document->createElement('title');
-    $title->textContent = 'Test Document';
-    $head = $document->createElement('head');
-    $head->appendChild($title);
-    $document->appendChild($head);
+    $body = Body::create($document);
+    $anchor = Anchor::create($document);
+    $anchor->setHref('https://example.com');
+    $anchor->append('Go');
+    $body->appendChild($anchor);
+    $document->appendChild($body);
 
-    // Test getDocumentMetadata
-    $metadata = $metadataMethod->invoke($this->generator, $document);
-    expect($metadata)
-        ->toBeArray();
+    $result = $this->generator->render($document);
 
-    // Test renderHead - it will still return null since renderTwigTemplate returns null
-    $headMethod = $reflection->getMethod('renderHead');
-    $headMethod->setAccessible(true);
-
-    $result = $headMethod->invoke($this->generator, $document);
     expect($result)
-        ->toBeNull();
+        ->toBeString();
+    expect($result)
+        ->toContain('Strict mode: use');
+    expect($result)
+        ->toContain('{% embed');
 });
 
 test('camel to kebab', function () {

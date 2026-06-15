@@ -1,0 +1,10 @@
+{
+    "scripts": {
+        "demo:build": "esbuild src/teaser-example.ts --bundle --format=esm --outfile=teaser-example.bundle.js",
+        "demo:serve": "npm run demo:build && python3 -m http.server 4173 --directory ."
+    },
+    "devDependencies": {
+        "@typesafe-html5/typescript": "^0.3.2",
+        "esbuild": "^0.28.1"
+    }
+}

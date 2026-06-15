@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <meta> element.
+    Open this file in a browser to see the XSLT transform applied.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="meta" id="example-meta">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="charset"><![CDATA[example-charset]]></fragment>
+    <fragment name="content"><![CDATA[example-content]]></fragment>
+    <fragment name="httpEquiv"><![CDATA[content-language]]></fragment>
+    <fragment name="name"><![CDATA[example-name]]></fragment>
+    <fragment name="scheme"><![CDATA[example-scheme]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+    <fragment name="lang"><![CDATA[en]]></fragment>
+    <fragment name="title"><![CDATA[example-title]]></fragment>
+</item>

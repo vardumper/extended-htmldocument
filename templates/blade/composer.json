@@ -1,0 +1,44 @@
+{
+  "name": "vardumper/html5-blade-templates",
+  "description": "Type-safe, auto-generated Blade templates for all HTML5 elements with full WCAG, ARIA support and validation.",
+  "type": "library",
+  "license": "MIT",
+  "version": "0.2.61",
+  "keywords": [
+    "html5",
+    "blade",
+    "laravel",
+    "components",
+    "templates",
+    "wcag",
+    "aria",
+    "typesafe",
+    "schema-first"
+  ],
+  "authors": [
+    {
+      "name": "vardumper",
+      "email": "info@erikpoehler.com"
+    }
+  ],
+  "support": {
+    "docs": "https://vardumper.github.io/extended-htmldocument/",
+    "source": "https://github.com/vardumper/html5-blade-templates",
+    "issues": "https://github.com/vardumper/extended-htmldocument/issues",
+    "security": "https://github.com/vardumper/extended-htmldocument/security/dependabot"
+  },
+  "suggest": {
+    "laravel/framework": "Required to use Blade components (^10.0|^11.0|^12.0)"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/vardumper"
+    },
+    {
+      "type": "buymeacoffee",
+      "url": "https://www.buymeacoffee.com/vardumper"
+    }
+  ],
+  "minimum-stability": "stable"
+}

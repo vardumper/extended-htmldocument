@@ -1,0 +1,22 @@
+teaser-example:
+  label: Teaser Component
+  description: This is an example component.
+  structure:
+    div:
+      class: teaser
+      children:
+        - hgroup:
+            children:
+              - h3:
+                  text: "{{ title }}"
+              - h4:
+                  text: "{{ subtitle }}"
+        - p:
+            text: "{{ description }}"
+        - img:
+            src: "{{ image_url }}"
+            alt: "{{ image_alt }}"
+        - a:
+            role: button
+            text: "{{ 'Read more'|t }}"
+            href: "{{ url }}"

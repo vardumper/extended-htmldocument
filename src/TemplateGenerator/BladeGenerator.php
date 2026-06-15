@@ -3,9 +3,11 @@
 namespace Html\TemplateGenerator;
 
 use BackedEnum;
+use Html\Interface\HTMLDocumentDelegatorInterface;
 use Html\Interface\HTMLElementDelegatorInterface;
 use Html\Interface\TemplateGeneratorInterface;
 use Html\Mapping\TemplateGenerator;
+use Html\Trait\ClassResolverTrait;
 use ReflectionClass;
 use ReflectionNamedType;
 use ReflectionUnionType;
@@ -33,9 +35,13 @@ use UnitEnum;
 #[TemplateGenerator('blade')]
 class BladeGenerator implements TemplateGeneratorInterface
 {
+    use ClassResolverTrait;
+
     private const BLADE_RESERVED_WORDS = [
         'if', 'else', 'elseif', 'endif', 'foreach', 'endforeach', 'for', 'endfor', 'while', 'endwhile', 'switch', 'endswitch', 'case', 'break', 'default', 'continue', 'extends', 'section', 'endsection', 'yield', 'show', 'include', 'each', 'parent', 'php', 'endphp', 'verbatim', 'endverbatim', 'csrf', 'method', 'error', 'enderror', 'push', 'endpush', 'stack', 'prepend', 'endprepend', 'auth', 'endauth', 'guest', 'endguest', 'hasSection', 'inject', 'json', 'once', 'endonce', 'isset', 'endisset', 'empty', 'endempty', 'env', 'production', 'env', 'endenv',
     ];
+
+    private string $documentRenderMode = 'raw';
 
     public function getExtension(): string
     {
@@ -44,7 +50,7 @@ class BladeGenerator implements TemplateGeneratorInterface
 
     public function getNamePattern(): string
     {
-        return '{component}.{extension}';
+        return 'index.{extension}';
     }
 
     public function canRenderElements(): bool
@@ -54,20 +60,39 @@ class BladeGenerator implements TemplateGeneratorInterface
 
     public function canRenderDocuments(): bool
     {
-        return false;
+        return true;
     }
 
     public function isTemplated(): bool
     {
-        return false;
+        return true;
     }
 
     public function render($elementOrDocument): ?string
     {
+        if ($elementOrDocument instanceof HTMLDocumentDelegatorInterface && $this->canRenderDocuments()) {
+            return $this->renderDocument($elementOrDocument);
+        }
+
         if ($elementOrDocument instanceof HTMLElementDelegatorInterface && $this->canRenderElements()) {
             return $this->renderElement($elementOrDocument);
         }
         return null;
+    }
+
+    public function setDocumentRenderMode(string $mode): void
+    {
+        $normalized = strtolower(trim($mode));
+        $this->documentRenderMode = $normalized === 'raw' ? 'raw' : 'include';
+    }
+
+    public function renderDocument(HTMLDocumentDelegatorInterface $document): string
+    {
+        if ($this->documentRenderMode === 'raw') {
+            return $this->renderDocumentRaw($document);
+        }
+
+        return $this->renderDocumentFromTemplates($document);
     }
 
     public function renderElement(HTMLElementDelegatorInterface $element): string
@@ -127,12 +152,6 @@ class BladeGenerator implements TemplateGeneratorInterface
         }
         $name = ucfirst($elementName);
 
-        $sectionName = in_array(
-            $elementName,
-            self::BLADE_RESERVED_WORDS,
-            true
-        ) ? $elementName . '_section' : $elementName; /* Avoid reserved words for section names */
-
         $blade = "{{--\n  This file is auto-generated.\n\n  {$name} - {$desc}\n\n  @component {$elementName}\n  @author vardumper <info@erikpoehler.com>\n  @package vardumper/extended-htmldocument\n  @see src/TemplateGenerator/BladeGenerator.php\n--}}\n";
 
         $blade .= "@php\n"; /* Emit enum choices as Blade @php associative arrays */
@@ -157,13 +176,11 @@ class BladeGenerator implements TemplateGeneratorInterface
         }
         $blade .= "@endphp\n";
 
-        $blade .= "@section('{$sectionName}')\n";
         if ($isSelfClosing) {
             $blade .= "<{$elementName} {!! implode(' ', \$attrs) !!} />\n";
         } else {
-            $blade .= "<{$elementName} {!! implode(' ', \$attrs) !!}>\n  @yield('content')\n</{$elementName}>\n";
+            $blade .= "<{$elementName} {!! implode(' ', \$attrs) !!}>\n  {!! \$content ?? trim(\$__env->yieldContent('content')) !!}\n</{$elementName}>\n";
         }
-        $blade .= "@endsection\n";
 
         return $blade;
     }
@@ -214,6 +231,215 @@ class BladeGenerator implements TemplateGeneratorInterface
         $name = ucfirst($elementName);
 
         return $this->buildComposedBladeTemplate($elementName, $name, $desc, $ref, $childOf, $parentOf);
+    }
+
+    private function renderDocumentRaw(HTMLDocumentDelegatorInterface $document): string
+    {
+        $blade = "{{--\n";
+        $blade .= "  This file is auto-generated.\n\n";
+        $blade .= "  @see src/TemplateGenerator/BladeGenerator.php\n";
+        $blade .= "--}}\n";
+
+        $dom = $document->delegated;
+        if ($dom->body !== null && $dom->body->childNodes->length > 0) {
+            $blade .= $this->serializeRawNodeChildren($dom->body, 0);
+        } elseif ($dom->documentElement !== null) {
+            $blade .= $this->serializeRawNodeChildren($dom->documentElement, 0);
+        } else {
+            $blade .= $this->serializeRawNodeChildren($dom, 0);
+        }
+
+        return $blade;
+    }
+
+    private function renderDocumentFromTemplates(HTMLDocumentDelegatorInterface $document): string
+    {
+        $blade = "{{--\n";
+        $blade .= "  This file is auto-generated.\n\n";
+        $blade .= "  Strict mode: include\n\n";
+        $blade .= "  @see src/TemplateGenerator/BladeGenerator.php\n";
+        $blade .= "--}}\n";
+
+        $counter = 0;
+        $root = $document->delegated->body ?? $document->delegated;
+        foreach ($root->childNodes as $child) {
+            $blade .= $this->renderTemplateNode($child, 0, $counter);
+        }
+
+        return $blade;
+    }
+
+    private function renderTemplateNode(\DOM\Node $node, int $depth, int &$counter): string
+    {
+        $indent = str_repeat('  ', $depth);
+
+        if ($node instanceof \DOM\Text) {
+            $text = trim($node->nodeValue ?? '');
+            if ($text === '') {
+                return '';
+            }
+
+            return $indent . $text . "\n";
+        }
+
+        if (! ($node instanceof \DOM\Element)) {
+            return '';
+        }
+
+        $tag = strtolower($node->tagName);
+        if ($tag === 'html' || $tag === 'head' || $tag === 'body') {
+            $output = '';
+            foreach ($node->childNodes as $child) {
+                $output .= $this->renderTemplateNode($child, $depth, $counter);
+            }
+            return $output;
+        }
+
+        $templatePath = $this->resolveBladeTemplatePath($tag);
+        if ($templatePath === null) {
+            return $this->serializeRawNode($node, $depth);
+        }
+
+        $params = $this->buildBladeTemplateParams($node);
+        $children = $this->renderTemplateChildren($node, $depth + 1, $counter);
+        if (trim($children) !== '') {
+            $counter++;
+            $contentVar = '$__bladeContent' . $counter;
+            $output = $indent . "@php(ob_start())\n";
+            $output .= $children;
+            $output .= $indent . $contentVar . " = ob_get_clean();\n";
+            $output .= $indent . "@endphp\n";
+            $params['content'] = $contentVar;
+            $output .= $this->buildBladeIncludeLine($templatePath, $params, $depth);
+            return $output;
+        }
+
+        return $this->buildBladeIncludeLine($templatePath, $params, $depth);
+    }
+
+    private function renderTemplateChildren(\DOM\Element $element, int $depth, int &$counter): string
+    {
+        $output = '';
+        foreach ($element->childNodes as $child) {
+            $output .= $this->renderTemplateNode($child, $depth, $counter);
+        }
+        return $output;
+    }
+
+    private function buildBladeTemplateParams(\DOM\Element $element): array
+    {
+        $params = [];
+        foreach ($element->attributes as $attribute) {
+            $params[$attribute->name] = $attribute->value;
+        }
+
+        if ($element->childNodes->length === 1 && $element->firstChild instanceof \DOM\Text) {
+            $text = trim($element->firstChild->nodeValue ?? '');
+            if ($text !== '') {
+                $params['content'] = $text;
+            }
+        }
+
+        return $params;
+    }
+
+    private function buildBladeIncludeLine(string $templatePath, array $params, int $depth): string
+    {
+        $indent = str_repeat('  ', $depth);
+        if ($params === []) {
+            return $indent . "@include('{$templatePath}')\n";
+        }
+
+        $parts = [];
+        foreach ($params as $key => $value) {
+            if (is_string($value) && str_starts_with($value, '$')) {
+                $parts[] = "'{$key}' => {$value}";
+            } else {
+                $parts[] = "'{$key}' => " . var_export($value, true);
+            }
+        }
+
+        return $indent . "@include('{$templatePath}', [" . implode(', ', $parts) . "])\n";
+    }
+
+    private function resolveBladeTemplatePath(string $tagName): ?string
+    {
+        $className = $this->getElementByQualifiedName($tagName);
+        if ($className === null) {
+            return null;
+        }
+
+        $level = $this->determineLevel($className);
+        return 'blade.' . $level . '.' . $tagName;
+    }
+
+    private function serializeRawNodeChildren(\DOM\Node $node, int $depth): string
+    {
+        $output = '';
+        foreach ($node->childNodes as $child) {
+            $output .= $this->serializeRawNode($child, $depth);
+        }
+        return $output;
+    }
+
+    private function serializeRawNode(\DOM\Node $node, int $depth): string
+    {
+        $indent = str_repeat('  ', $depth);
+
+        if ($node instanceof \DOM\Element) {
+            $tag = strtolower($node->tagName);
+            if ($tag === 'html' || $tag === 'head' || $tag === 'body') {
+                return $this->serializeRawNodeChildren($node, $depth);
+            }
+
+            $attrs = '';
+            foreach ($node->attributes as $attr) {
+                $attrs .= ' ' . $attr->name . '="' . $attr->value . '"';
+            }
+
+            $voidElements = [
+                'area',
+                'base',
+                'br',
+                'col',
+                'embed',
+                'hr',
+                'img',
+                'input',
+                'link',
+                'meta',
+                'param',
+                'source',
+                'track',
+                'wbr',
+            ];
+            if (in_array($tag, $voidElements, true)) {
+                return $indent . "<{$tag}{$attrs}>\n";
+            }
+
+            if ($node->childNodes->length === 1 && $node->firstChild instanceof \DOM\Text) {
+                $text = $node->firstChild->nodeValue ?? '';
+                return $indent . "<{$tag}{$attrs}>{$text}</{$tag}>\n";
+            }
+
+            $inner = $this->serializeRawNodeChildren($node, $depth + 1);
+            if ($inner === '') {
+                return $indent . "<{$tag}{$attrs}></{$tag}>\n";
+            }
+
+            return $indent . "<{$tag}{$attrs}>\n" . $inner . $indent . "</{$tag}>\n";
+        }
+
+        if ($node instanceof \DOM\Text) {
+            $text = trim($node->nodeValue ?? '');
+            if ($text === '') {
+                return '';
+            }
+
+            return $indent . $text . "\n";
+        }
+
+        return '';
     }
 
     private function camelToKebab(string $string): string

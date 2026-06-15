@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="styles.xsl"?>
+<!--
+    This file is auto-generated. Do not edit manually.
+    Example XML data for the <embed> element.
+    Open this file in a browser to see the XSLT transform applied.
+    @see src/TemplateGenerator/XSLTGenerator.php
+-->
+<item type="embed" id="example-embed">
+    <fragment name="class"><![CDATA[example-class]]></fragment>
+    <fragment name="height"><![CDATA[example-height]]></fragment>
+    <fragment name="src"><![CDATA[https://example.com/image.jpg]]></fragment>
+    <fragment name="type"><![CDATA[text]]></fragment>
+    <fragment name="width"><![CDATA[example-width]]></fragment>
+    <fragment name="accesskey"><![CDATA[example-accesskey]]></fragment>
+    <fragment name="autocapitalize"><![CDATA[none]]></fragment>
+    <fragment name="autofocus"><![CDATA[example-autofocus]]></fragment>
+    <fragment name="contenteditable"><![CDATA[true]]></fragment>
+    <fragment name="dir"><![CDATA[ltr]]></fragment>
+    <fragment name="draggable"><![CDATA[example-draggable]]></fragment>
+    <fragment name="hidden"><![CDATA[example-hidden]]></fragment>
+    <fragment name="inputmode"><![CDATA[none]]></fragment>
+    <fragment name="lang"><![CDATA[en]]></fragment>
+    <fragment name="spellcheck"><![CDATA[true]]></fragment>
+    <fragment name="style"><![CDATA[color: inherit]]></fragment>
+    <fragment name="tabindex"><![CDATA[example-tabindex]]></fragment>
+    <fragment name="title"><![CDATA[example-title]]></fragment>
+    <fragment name="translate"><![CDATA[yes]]></fragment>
+</item>

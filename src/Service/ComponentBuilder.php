@@ -52,6 +52,10 @@ class ComponentBuilder implements ComponentBuilderInterface
                         $this->buildDOM($doc, $child, $element);
                     }
                 } else {
+                    // Convert numeric values to strings for setAttribute compatibility
+                    if (is_int($value) || is_float($value)) {
+                        $value = (string) $value;
+                    }
                     $element->setAttribute($key, $value);
                 }
             }
