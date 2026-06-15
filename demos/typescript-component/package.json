@@ -5,6 +5,6 @@
     },
     "devDependencies": {
         "@typesafe-html5/typescript": "^0.3.2",
-        "esbuild": "^0.28.0"
+        "esbuild": "^0.28.1"
     }
 }
