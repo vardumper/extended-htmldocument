@@ -21,7 +21,7 @@
     "storybook": "^10.3.6",
     "typescript": "^6.0.2",
     "url": "^0.11.4",
-    "vite": "^8.0.8"
+    "vite": "^8.0.11"
   },
   "scripts": {
     "storybook": "storybook dev -p 6006",
