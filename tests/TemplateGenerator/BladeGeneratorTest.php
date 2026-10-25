@@ -74,6 +74,28 @@ test('render document', function () {
         ->toContain('This file is auto-generated');
 });
 
+test('render document raw mode serializes attributes, void, text and nested children', function () {
+    $document = HTMLDocumentDelegator::createFromString(
+        '<!doctype html><html><head></head><body>'
+        . '<div id="x" class="y">text child</div>'
+        . '<img src="a.jpg" alt="a">'
+        . '<span><b>inner</b></span>'
+        . 'loose text'
+        . '</body></html>'
+    );
+
+    $result = $this->generator->render($document);
+
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('id="x"');
+    expect($result)
+        ->toContain('<img');
+    expect($result)
+        ->toContain('loose text');
+});
+
 test('render invalid', function () {
     expect($this->generator->render('string'))
         ->toBe(null);

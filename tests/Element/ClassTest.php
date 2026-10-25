@@ -109,9 +109,12 @@ test('unordered list can accept list items from the same document', function () 
     $ul->appendChild($li1);
     $ul->appendChild($li2);
 
-    expect($ul->delegated->childNodes->length)->toBe(2);
-    expect(strtolower($ul->delegated->firstChild->nodeName))->toBe('li');
-    expect((string) $ul)->toBe('<ul><li>One</li><li>Two</li></ul>');
+    expect($ul->delegated->childNodes->length)
+        ->toBe(2);
+    expect(strtolower($ul->delegated->firstChild->nodeName))
+        ->toBe('li');
+    expect((string) $ul)
+        ->toBe('<ul><li>One</li><li>Two</li></ul>');
 });
 
 test('setting properties via Setter', function () {

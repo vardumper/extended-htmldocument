@@ -12,6 +12,20 @@ parameters:
     scanFiles:
     earlyTerminatingMethodCalls:
     ignoreErrors:
+        # Pre-existing issues surfaced by the phpstan 2.1 -> 2.3 update; tracked separately.
+        - '#Call to function is_bool\(\) with mixed will always evaluate to false#'
+        - '#Variable \$generatedAt might not be defined#'
+        - '#Variable \$element_name might not be defined#'
+        - '#Method Html\\TemplateGenerator\\TypeScriptGenerator::getGlobalAttributeTraits\(\) is unused#'
+        -
+            message: '#Access to undefined constant Html\\Interface\\HTMLElementDelegatorInterface::(QUALIFIED_NAME|SELF_CLOSING)\.#'
+            identifier: classConstant.notFound
+        -
+            message: '#Access to an undefined static property Html\\Interface\\HTMLElementDelegatorInterface::\$parentOf\.#'
+            identifier: staticProperty.notFound
+        -
+            message: '#Access to an undefined property UnitEnum::\$value\.#'
+            identifier: property.notFound
     reportUnmatchedIgnoredErrors: false
     universalObjectCratesClasses:
         - Html\Delegator\HTMLElementDelegator

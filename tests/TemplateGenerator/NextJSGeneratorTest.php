@@ -298,3 +298,29 @@ test('generate leaf example method', function () {
     expect($result)
         ->toContain('type="text"');
 });
+
+test('generate leaf example covers all self-closing element cases', function () {
+    $reflection = new ReflectionClass($this->generator);
+    $method = $reflection->getMethod('generateLeafExample');
+    $method->setAccessible(true);
+
+    $img = $method->invoke($this->generator, 'img', 'Image', '  ', 0);
+    expect($img)
+        ->toContain('src="image.jpg"');
+
+    $source = $method->invoke($this->generator, 'source', 'Source', '  ', 1);
+    expect($source)
+        ->toContain('srcset="image-1.jpg"');
+
+    $area = $method->invoke($this->generator, 'area', 'Area', '  ', 2);
+    expect($area)
+        ->toContain('shape="rect"');
+
+    $col = $method->invoke($this->generator, 'col', 'Col', '  ', 3);
+    expect($col)
+        ->toContain('span={1}');
+
+    $default = $method->invoke($this->generator, 'br', 'Br', '  ', 4);
+    expect($default)
+        ->toContain('<Br />');
+});
