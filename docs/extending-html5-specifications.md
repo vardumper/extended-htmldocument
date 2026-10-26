@@ -81,7 +81,7 @@ foreach (array_keys($frameworkSpecs) as $pattern) {
             $output[$key]['attributes'] = \array_merge_recursive($output[$key]['attributes'], $frameworkSpecs[$pattern]['attributes']);
         }
 
-        unset($picoSpecs[$pattern]); // Remove regex key from framework specs after processing (so we can deep merge all non-regex keys later)
+        unset($frameworkSpecs[$pattern]); // Remove regex key from framework specs after processing (so we can deep merge all non-regex keys later)
     }
 }
 
@@ -94,11 +94,11 @@ Et voila! You have now extended the HTML5 specifications with your custom CSS fr
 You can now re-generate PHP classes and Enums with your custom specifications.
 
 ```bash
-php vendor/bin/ext-html --specification path/to/my-css-framework-html5-specification.yaml
+php vendor/bin/ext-html make:all --specification path/to/my-css-framework-html5-specification.yaml
 ```
 
 The file Html\Element\Inline\Anchor now has three new attributes: `data-theme` `role` and `class`.
-Also you will fing DataThemeEnum, RoleEnum and ClassEnum now has the new classes `secondary`, `contrast`, `outline`, `secondary outline`, and so on.
+Also you will find that DataThemeEnum, RoleEnum and ClassEnum now have the new classes `secondary`, `contrast`, `outline`, `secondary outline`, and so on.
 
 ## Benefits
 * The real benefit of this can be found in automated code-generation, almost exclusively. For example, when automagically generating stories for Storybook, or when generating Twig templates that know about your design systems' attributes and their possible values. For Storybook, for example, you can now generate atom and molecule stories with the correct arguments and controls and auto-generate stories for each class your CSS framework provides, and so on.

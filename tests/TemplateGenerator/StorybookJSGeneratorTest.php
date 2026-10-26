@@ -61,6 +61,24 @@ test('render element', function () {
         ->toContain('argTypes');
 });
 
+test('render element with enum and alpine attributes', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $element = Anchor::create($document);
+    $element->setHref('https://example.com');
+    $element->setRel('nofollow');
+    $element->setTarget('_blank');
+    $element->setAlpineAttribute('x-data', '{ count: 0 }');
+
+    $result = $this->generator->render($element);
+
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('argTypes');
+    expect($result)
+        ->toContain('alpineAttributes');
+});
+
 test('render document', function () {
     $document = HTMLDocumentDelegator::createEmpty();
     $element = Body::create($document);

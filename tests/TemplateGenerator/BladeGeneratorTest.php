@@ -74,6 +74,48 @@ test('render document', function () {
         ->toContain('This file is auto-generated');
 });
 
+test('render document raw mode serializes attributes, void, text and nested children', function () {
+    $document = HTMLDocumentDelegator::createFromString(
+        '<!doctype html><html><head></head><body>'
+        . '<div id="x" class="y">text child</div>'
+        . '<img src="a.jpg" alt="a">'
+        . '<span><b>inner</b></span>'
+        . 'loose text'
+        . '</body></html>'
+    );
+
+    $result = $this->generator->render($document);
+
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('id="x"');
+    expect($result)
+        ->toContain('<img');
+    expect($result)
+        ->toContain('loose text');
+});
+
+test('render document in include mode with templates, raw nodes and text', function () {
+    $this->generator->setDocumentRenderMode('include');
+    $document = HTMLDocumentDelegator::createFromString(
+        '<!doctype html><html><body>'
+        . '<div class="box">Some text</div>'
+        . '<a href="/x">Link</a>'
+        . '<my-custom attr="1">raw</my-custom>'
+        . '<img src="a.png" alt="img">'
+        . '<br>'
+        . '</body></html>'
+    );
+
+    $result = $this->generator->render($document);
+
+    expect($result)
+        ->toBeString()
+        ->toContain('@include')
+        ->toContain('my-custom');
+});
+
 test('render invalid', function () {
     expect($this->generator->render('string'))
         ->toBe(null);

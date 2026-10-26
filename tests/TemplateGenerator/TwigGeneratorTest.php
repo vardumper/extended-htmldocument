@@ -38,12 +38,12 @@ test('can render elements', function () {
 
 test('can render documents', function () {
     expect($this->generator->canRenderDocuments())
-    ->toBeTrue();
+        ->toBeTrue();
 });
 
 test('is templated', function () {
     expect($this->generator->isTemplated())
-    ->toBeTrue();
+        ->toBeTrue();
 });
 
 test('render element', function () {
@@ -126,6 +126,30 @@ test('render document', function () {
         ->toContain('This file is auto-generated');
 });
 
+test('render document raw mode serializes attributes, void, text and nested children', function () {
+    $document = HTMLDocumentDelegator::createFromString(
+        '<!doctype html><html><head></head><body>'
+        . '<div id="x" class="y">text child</div>'
+        . '<img src="a.jpg" alt="a">'
+        . '<span><b>inner</b></span>'
+        . 'loose text'
+        . '</body></html>'
+    );
+
+    $result = $this->generator->render($document);
+
+    expect($result)
+        ->toBeString();
+    expect($result)
+        ->toContain('id="x"');
+    expect($result)
+        ->toContain('<img');
+    expect($result)
+        ->toContain('loose text');
+    expect($result)
+        ->toContain('<span>');
+});
+
 test('render invalid', function () {
     expect($this->generator->render('string'))
         ->toBe(null);
@@ -184,6 +208,24 @@ test('render composed element excluded', function () {
     $result = $this->generator->renderComposedElement($element);
     expect($result)
         ->toBeNull();
+});
+
+test('render composed element covers self-closing, text-only and content child branches', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $elements = [
+        \Html\Element\Void\Head::create($document),
+        \Html\Element\Inline\Select::create($document),
+        \Html\Element\Block\DefinitionList::create($document),
+        \Html\Element\Block\Table::create($document),
+        \Html\Element\Block\UnorderedList::create($document),
+        \Html\Element\Block\Form::create($document),
+    ];
+
+    foreach ($elements as $element) {
+        $result = $this->generator->renderComposedElement($element);
+        expect($result)
+            ->toBeString();
+    }
 });
 
 test('build composed template', function () {
@@ -317,7 +359,9 @@ test('build twig map string helper', function () {
     $result = $method->invoke($this->generator, [
         'id' => 'main',
         'class' => 'hero',
-        'content' => ['__twig_expr' => 'user.name'],
+        'content' => [
+            '__twig_expr' => 'user.name',
+        ],
     ]);
 
     expect($result)

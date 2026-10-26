@@ -46,7 +46,7 @@ echo (new Anchor())
     ->setRel(RelEnum::NOFOLLOW)
     ->setHref('https://google.com')
     ->setTitle('Google it')
-    ->setContent('Click me');
+    ->setTextContent('Click me');
 // produces: <a class="secondary" href="https://google.com" rel="nofollow" title="Google it">Click me</a>
 ```
 ## Generated Templates
@@ -63,10 +63,6 @@ The `blade-component` generator converts a full YAML component definition into a
 React and NextJS templates can be found in [`templates/nextjs`](https://github.com/vardumper/extended-htmldocument/tree/main/templates/nextjs). See the [README](https://github.com/vardumper/extended-htmldocument/blob/main/templates/nextjs/README.md) file for details. NextJS templates can also be installed via `npm` with the [@typesafe-html5/react](https://www.npmjs.com/package/@typesafe-html5/react) package.
 ### Storybook 
 Storybook with atoms for all HTML5 elements can be [seen in the Demo](https://vardumper.github.io/extended-htmldocument/storybook-site/). Files can be found in [`templates/storybook`](https://github.com/vardumper/extended-htmldocument/tree/main/templates/storybook). There's also a [README](https://github.com/vardumper/extended-htmldocument/blob/main/templates/storybook/README.md) with more details.
-### Storybook for Twig
-TBD
-### Storybook for React/NextJS
-TBD
 ### Twig
 Twig templates for flexible and performant use with `include`, `embed`, and `use` can be found in [`templates/twig`](https://github.com/vardumper/extended-htmldocument/tree/main/templates/twig). See the [README](https://github.com/vardumper/extended-htmldocument/blob/main/templates/twig/README.md) for more details and usage examples. Twig templates can also be installed via `npm` with the [@typesafe-html5/twig](https://www.npmjs.com/package/@typesafe-html5/twig) package.
 ### Twig Components Bundle

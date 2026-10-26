@@ -41,12 +41,12 @@ test('can render elements', function () {
 
 test('can render documents', function () {
     expect($this->generator->canRenderDocuments())
-    ->toBeTrue();
+        ->toBeTrue();
 });
 
 test('is templated', function () {
     expect($this->generator->isTemplated())
-    ->toBeTrue();
+        ->toBeTrue();
 });
 
 test('render element', function () {
@@ -73,6 +73,28 @@ test('render document', function () {
         ->toBeString();
     expect($result)
         ->toContain('Strict mode: component');
+});
+
+test('render document in component mode with registered, raw, void and twig nodes', function () {
+    $document = HTMLDocumentDelegator::createFromString(
+        '<!doctype html><html><body>'
+        . '<div class="box" data-x="{{ value }}">Hello {{ name }}</div>'
+        . '<a href="/link">Link</a>'
+        . '<my-custom attr="1">raw content</my-custom>'
+        . '<br>'
+        . '<img src="x.png" alt="alt text">'
+        . '</body></html>'
+    );
+
+    $result = $this->generator->render($document);
+
+    expect($result)
+        ->toBeString()
+        ->toContain('<twig:Div')
+        ->toContain('<twig:A')
+        ->toContain('my-custom')
+        ->toContain('{{ name }}')
+        ->toContain('data-x="{{ value }}"');
 });
 
 test('render invalid', function () {

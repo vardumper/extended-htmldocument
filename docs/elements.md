@@ -2,96 +2,84 @@
 
 ## Auto-generated PHP classes
 
-This library itself uses code-generation to create the PHP classes. It uses a standardized YAML file (`src/Resources/definitions/html5.yaml`) and passes its data to a template file (eg. `src/Resources/templates/BlockElement.tpl.php`) to generate the PHP classes.
+This library itself uses code-generation to create the PHP classes. It uses a standardized YAML file (`src/Resources/specifications/html5.yaml`) and passes its data to a template file (eg. `src/Resources/templates/BlockElement.tpl.php`) to generate the PHP classes.
 
 ## What does a class look like?
 
-The element classes are straight forward:. Let's take a look at the [Anchor](https://github.com/vardumper/extended-htmldocument/blob/main//src/Element/Inline/Anchor.php) class:
+The element classes are straightforward. Let's take a look at the [Anchor](https://github.com/vardumper/extended-htmldocument/blob/main/src/Element/Inline/Anchor.php) class:
 
 ```php
 namespace Html\Element\Inline;
 
 use Html\Element\InlineElement;
-...
-use Html\Enum\RelEnum;
-use Html\Enum\TargetEnum;
+use Html\Enum\{ARoleEnum, RelEnum, TargetEnum};
+use Html\Mapping\Element;
+use Html\Trait\GlobalAttribute;
 
+#[Element('a')]
 class Anchor extends InlineElement
 {
+    use GlobalAttribute\AccesskeyTrait;
+    use GlobalAttribute\ClassTrait;
+    use GlobalAttribute\DataTrait;
+    use GlobalAttribute\DirTrait;
+    use GlobalAttribute\HiddenTrait;
+    use GlobalAttribute\IdTrait;
+    use GlobalAttribute\LangTrait;
+    use GlobalAttribute\SlotTrait;
+    use GlobalAttribute\StyleTrait;
+    use GlobalAttribute\TabindexTrait;
+    use GlobalAttribute\TitleTrait;
+    use GlobalAttribute\TranslateTrait;
+    // ... further global attribute traits (aria-*, alpine x-*, ...)
+
     /** The HTML element name */
     public const string QUALIFIED_NAME = 'a';
+
+    /** If an element is self closing */
+    public const bool SELF_CLOSING = false;
 
     /** If an element is unique per HTML document */
     public static bool $unique = false;
 
-    /** If an element is allowed once its allowed parents */
+    /** If an element is allowed once in its allowed parents */
     public static bool $uniquePerParent = false;
 
     /** The list of allowed direct parents. Any if empty.
-     * @var array<string> */
+     * @var array<class-string> */
     public static array $childOf = [
-        Address::class,
+        Article::class,
         Aside::class,
         Body::class,
-        DefinitionDescription::class,
-        Dialog::class,
-        Division::class,
-        Footer::class,
-        Header::class,
-        ListItem::class,
-        Main::class,
-        MarkedText::class,
-        Navigation::class,
-        Paragraph::class,
-        Section::class,
-        Slot::class,
+        // ...
         Template::class,
     ];
 
     /** The list of allowed direct children. Any if empty.
-     * @var array<string> */
-    public static array $parentOf = [
-    ];
-
+     * @var array<class-string> */
+    public static array $parentOf = [];
 
     /** Indicates that the linked content should be downloaded rather than displayed. */
-    public ?string $download = null;
+    protected ?string $download = null;
 
     /** Specifies the URL of the linked resource. Special protocols such as mailto: or tel: can be used.
-     * @category HTML attribute */
-    public ?string $href = null;
+     * @required */
+    protected ?string $href = null;
 
     /** Specifies the language of the linked resource. */
-    public ?string $hreflang = null;
+    protected ?string $hreflang = null;
 
     /** Specifies the relationship between the current document and the linked document. */
     protected ?RelEnum $rel = null;
 
     /** Specifies where to open the linked document.
-     * @category HTML attribute
      * @example _self */
-    protected ?TargetEnum $target = null;
+    protected null|string|TargetEnum $target = null;
 
-    /** Specifies additional information about the element, typically displayed as a tooltip. */
-    public ?string $title = null;
-
-    /** Specifies the media type of the linked resource. */
-    public ?string $type = null;
-
-    public function setDownload(string $download): self
-    {
-        $this->download = $download;
-        return $this;
-    }
-
-    public function getDownload(): ?string
-    {
-        return $this->download;
-    }
-
-    public function setHref(string $href): self
+    public function setHref(string $href): static
     {
         $this->href = $href;
+        $this->delegated->setAttribute('href', $href);
         return $this;
     }
 
@@ -100,78 +88,33 @@ class Anchor extends InlineElement
         return $this->href;
     }
 
-    public function setHreflang(string $hreflang): self
+    public function setRel(string|RelEnum $rel): static
     {
-        $this->hreflang = $hreflang;
-        return $this;
-    }
-
-    public function getHreflang(): ?string
-    {
-        return $this->hreflang;
-    }
-
-    public function setRel(RelEnum $rel): self
-    {
+        if (\is_string($rel)) {
+            $rel = RelEnum::tryFrom($rel) ?? throw new InvalidArgumentException('Invalid value for $rel.');
+        }
         $this->rel = $rel;
-        $this->htmlElement->setAttribute('rel', $rel->value);
+        $this->delegated->setAttribute('rel', (string) $rel->value);
+
         return $this;
     }
 
-    public function getRel(): ?RelEnum
-    {
-        return $this->rel;
-    }
-
-    public function setTarget(TargetEnum $target): self
-    {
-        $this->target = $target;
-        $this->htmlElement->setAttribute('target', $target->value);
-        return $this;
-    }
-
-    public function getTarget(): ?TargetEnum
-    {
-        return $this->target;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-        return $this;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
+    // ... getters and setters for the remaining attributes
 }
 ```
 
-As you can see there is no logic or functionality in the class itself. It only provides meta information about the element, such as its name, attributes, and info on direct parent/child relationships.
+The class provides meta information about the element, such as its name, attributes, and info on direct parent/child relationships. Semantic setters are provided by the class itself and by global attribute traits (eg. `ClassTrait`, `DataTrait`); all DOM operations are delegated to the underlying `DOM\HTMLElement` instance.
 
 ## Delegator classes
 
 Since `DOM\HTMLElement` is a final class, we cannot extend it. Instead, we use a delegator pattern to provide the same functionality.
 
-* [DOMNodeDelegator](https://github.com/vardumper/extended-htmldocument/blob/main//src/Delegator/DOMNodeDelegator.php)
-* [DOMNodeListDelegator](https://github.com/vardumper/extended-htmldocument/blob/main//src/Delegator/DOMNodeListDelegator.php)
-* [HTMLDocumentDelegator](https://github.com/vardumper/extended-htmldocument/blob/main//src/Delegator/HTMLDocumentDelegator.php)
-* [HTMLElementDelegator](https://github.com/vardumper/extended-htmldocument/blob/main//src/Delegator/HTMLElementDelegator.php)
+* [NodeDelegator](https://github.com/vardumper/extended-htmldocument/blob/main/src/Delegator/NodeDelegator.php)
+* [NodeListDelegator](https://github.com/vardumper/extended-htmldocument/blob/main/src/Delegator/NodeListDelegator.php)
+* [HTMLDocumentDelegator](https://github.com/vardumper/extended-htmldocument/blob/main/src/Delegator/HTMLDocumentDelegator.php)
+* [HTMLElementDelegator](https://github.com/vardumper/extended-htmldocument/blob/main/src/Delegator/HTMLElementDelegator.php)
 
-These delegator classes are used to provide the same functionality as the `DOM\HTMLElement` class, like appending an instance to a DOM, or to access its parent or appendChildren, etc.
+These delegator classes are used to provide the same functionality as the `DOM\HTMLElement` class, like appending an instance to a DOM, or to access its parent or appendChild, etc.
 At the same time, we are able to add new methods, which is the main goal of this library. For example, the `__toString()` method, which is not available in the `DOM\HTMLElement` class.
 
 ## Real world use cases

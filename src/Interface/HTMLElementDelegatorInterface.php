@@ -16,7 +16,10 @@ use Html\Delegator\HTMLElementDelegator;
  */
 interface HTMLElementDelegatorInterface
 {
-    public function __construct(HTMLElement|\Dom\Element|null $delegated = null, ?TemplateGeneratorInterface $renderer = null);
+    public function __construct(
+        HTMLElement|\Dom\Element|null $delegated = null,
+        ?TemplateGeneratorInterface $renderer = null
+    );
 
     public function __call($name, $arguments);
 

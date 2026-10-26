@@ -38,6 +38,26 @@ test('setPopover "false" does not set enum and leaves property null', function (
         ->toBeFalse();
 });
 
+test('setPopover "true" string sets AUTO', function () {
+    $obj = new TestPopover();
+
+    $obj->setPopover('true');
+
+    expect($obj->getPopover())
+        ->toBe(PopoverEnum::AUTO)
+        ->and($obj->attributes['popover'])->toBe(PopoverEnum::AUTO->value);
+});
+
+test('setPopover "hint" sets HINT', function () {
+    $obj = new TestPopover();
+
+    $obj->setPopover('hint');
+
+    expect($obj->getPopover())
+        ->toBe(PopoverEnum::HINT)
+        ->and($obj->attributes['popover'])->toBe(PopoverEnum::HINT->value);
+});
+
 test('setPopover throws on invalid value', function () {
     $obj = new TestPopover();
 

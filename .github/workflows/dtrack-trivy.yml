@@ -44,7 +44,11 @@ jobs:
           version: v0.69.3
 
       - name: Create CycloneDX SBOM with Trivy
-        run: trivy fs --skip-files vendor/rector/swiss-knife/vendor/composer/installed.json,vendor/symplify/easy-coding-standard/vendor/composer/installed.json --format cyclonedx --include-dev-deps --output sbom.json --severity HIGH,CRITICAL,MEDIUM --scanners vuln,license,secret --debug ./
+        # This is a PHP-only library. The node tooling (vitepress docs, esbuild,
+        # jsdom, typescript, storybook, nextjs) lives in the root package.json /
+        # yarn.lock and in templates/ and demos/, none of which are part of the
+        # shipped library. Skip them so the SBOM only contains composer (PHP) deps.
+        run: trivy fs --skip-dirs node_modules,templates,demos --skip-files vendor/rector/swiss-knife/vendor/composer/installed.json,vendor/symplify/easy-coding-standard/vendor/composer/installed.json,yarn.lock,package.json --format cyclonedx --include-dev-deps --output sbom.json --severity HIGH,CRITICAL,MEDIUM --scanners vuln,license,secret --debug ./
 
       - name: Commit SBOM if changed
         run: |
