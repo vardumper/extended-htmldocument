@@ -115,7 +115,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -139,7 +139,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -235,7 +235,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -259,7 +259,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -307,7 +307,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -330,8 +330,8 @@
           "value": "amphp/sync@v2.3.0"
         },
         {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "name": "aquasecurity:trivy:Type",
+          "value": "yarn"
         }
       ]
     },
@@ -355,7 +355,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -379,7 +379,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -535,7 +535,7 @@
       "licenses": [
         {
           "license": {
-            "id": "MIT"
+            "id": "BSD-3-Clause"
           }
         }
       ],
@@ -571,15 +571,15 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
     {
       "bom-ref": "pkg:composer/doctrine/deprecations@1.1.6",
       "type": "library",
-      "name": "doctrine/deprecations",
-      "version": "1.1.6",
+      "name": "symfony/property-access",
+      "version": "v8.0.8",
       "licenses": [
         {
           "license": {
@@ -587,11 +587,11 @@
           }
         }
       ],
-      "purl": "pkg:composer/doctrine/deprecations@1.1.6",
+      "purl": "pkg:composer/symfony/property-access@v8.0.8",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "doctrine/deprecations@1.1.6"
+          "value": "symfony/property-access@v8.0.8"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -619,7 +619,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -667,7 +667,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -715,7 +715,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -750,9 +750,12 @@
       "version": "v3.95.27",
       "licenses": [
         {
-          "license": {
-            "id": "MIT"
-          }
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "postcss@8.5.14"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
         }
       ],
       "purl": "pkg:composer/friendsofphp/php-cs-fixer@v3.95.27",
@@ -763,7 +766,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -774,9 +777,12 @@
       "version": "2.1.1",
       "licenses": [
         {
-          "license": {
-            "id": "MIT"
-          }
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "@esbuild/linux-x64@0.28.1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
         }
       ],
       "purl": "pkg:composer/jean85/pretty-package-versions@2.1.1",
@@ -787,7 +793,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -943,7 +949,7 @@
       "licenses": [
         {
           "license": {
-            "id": "MIT"
+            "id": "BSD-3-Clause"
           }
         }
       ],
@@ -1037,7 +1043,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -1071,7 +1077,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -1095,7 +1101,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -1119,7 +1125,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -1131,7 +1137,7 @@
       "licenses": [
         {
           "license": {
-            "id": "MIT"
+            "id": "BSD-3-Clause"
           }
         }
       ],
@@ -1179,7 +1185,7 @@
       "licenses": [
         {
           "license": {
-            "id": "MIT"
+            "id": "BSD-3-Clause"
           }
         }
       ],
@@ -1203,7 +1209,7 @@
       "licenses": [
         {
           "license": {
-            "id": "MIT"
+            "id": "Apache-2.0"
           }
         }
       ],
@@ -1215,7 +1221,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -1342,20 +1348,38 @@
     {
       "bom-ref": "pkg:composer/phar-io/version@3.2.1",
       "type": "library",
-      "name": "phar-io/version",
-      "version": "3.2.1",
-      "licenses": [
-        {
-          "license": {
-            "id": "BSD-3-Clause"
-          }
-        }
-      ],
-      "purl": "pkg:composer/phar-io/version@3.2.1",
+      "group": "@esbuild",
+      "name": "linux-mips64el",
+      "version": "0.28.1",
+      "purl": "pkg:npm/%40esbuild/linux-mips64el@0.28.1",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "phar-io/version@3.2.1"
+          "value": "@esbuild/linux-mips64el@0.28.1"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "yarn"
+        }
+      ]
+    },
+    {
+      "bom-ref": "76079ebd-a00f-46a5-a4e8-2519e628f4a9",
+      "type": "library",
+      "name": "phpdocumentor/type-resolver",
+      "version": "2.0.0",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "purl": "pkg:composer/phpdocumentor/type-resolver@2.0.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "phpdocumentor/type-resolver@2.0.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
@@ -1407,7 +1431,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -1431,7 +1455,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -1443,7 +1467,7 @@
       "licenses": [
         {
           "license": {
-            "id": "MIT"
+            "id": "BSD-3-Clause"
           }
         }
       ],
@@ -1575,7 +1599,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -1623,7 +1647,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -1647,7 +1671,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -1702,24 +1726,17 @@
     {
       "bom-ref": "pkg:composer/psr/event-dispatcher@1.0.0",
       "type": "library",
-      "name": "psr/event-dispatcher",
-      "version": "1.0.0",
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
-      "purl": "pkg:composer/psr/event-dispatcher@1.0.0",
+      "name": "smart-buffer",
+      "version": "4.2.0",
+      "purl": "pkg:npm/smart-buffer@4.2.0",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "psr/event-dispatcher@1.0.0"
+          "value": "smart-buffer@4.2.0"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -1839,7 +1856,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
+          "value": "yarn"
         }
       ]
     },
@@ -1875,7 +1892,7 @@
       "licenses": [
         {
           "license": {
-            "id": "MIT"
+            "id": "BSD-3-Clause"
           }
         }
       ],
@@ -1894,30 +1911,6 @@
     {
       "bom-ref": "pkg:composer/react/child-process@v0.6.7",
       "type": "library",
-      "name": "react/child-process",
-      "version": "v0.6.7",
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ],
-      "purl": "pkg:composer/react/child-process@v0.6.7",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "react/child-process@v0.6.7"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "composer"
-        }
-      ]
-    },
-    {
-      "bom-ref": "pkg:composer/react/dns@v1.14.0",
-      "type": "library",
       "name": "react/dns",
       "version": "v1.14.0",
       "licenses": [
@@ -1928,6 +1921,24 @@
         }
       ],
       "purl": "pkg:composer/react/dns@v1.14.0",
+      "properties": [
+        {
+          "name": "aquasecurity:trivy:PkgID",
+          "value": "react/dns@v1.14.0"
+        },
+        {
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "composer"
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:composer/react/dns@v1.14.0",
+      "type": "library",
+      "group": "@esbuild",
+      "name": "win32-arm64",
+      "version": "0.28.1",
+      "purl": "pkg:npm/%40esbuild/win32-arm64@0.28.1",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
@@ -1966,8 +1977,8 @@
     {
       "bom-ref": "pkg:composer/react/promise@v3.3.0",
       "type": "library",
-      "name": "react/promise",
-      "version": "v3.3.0",
+      "name": "composer/semver",
+      "version": "3.4.4",
       "licenses": [
         {
           "license": {
@@ -1975,11 +1986,11 @@
           }
         }
       ],
-      "purl": "pkg:composer/react/promise@v3.3.0",
+      "purl": "pkg:composer/composer/semver@3.4.4",
       "properties": [
         {
           "name": "aquasecurity:trivy:PkgID",
-          "value": "react/promise@v3.3.0"
+          "value": "composer/semver@3.4.4"
         },
         {
           "name": "aquasecurity:trivy:PkgType",
