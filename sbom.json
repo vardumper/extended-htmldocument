@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:79297122-babf-4712-8569-b2fc00d72668",
+  "serialNumber": "urn:uuid:ddbae1f2-1176-4097-912f-160ecb2f8c77",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-26T00:40:26+00:00",
+    "timestamp": "2026-10-26T11:16:26+00:00",
     "tools": {
       "components": [
         {
@@ -20,7 +20,7 @@
       ]
     },
     "component": {
-      "bom-ref": "87105a6b-be48-4ec6-8b70-ee53e629ddc0",
+      "bom-ref": "635410fc-4dcd-4955-a843-998ff973920a",
       "type": "application",
       "name": ".",
       "properties": [
@@ -33,7 +33,7 @@
   },
   "components": [
     {
-      "bom-ref": "0f523970-ec13-43cf-ac86-4b89327b4cc1",
+      "bom-ref": "0c43b248-48bf-4f50-afb0-5f22cd372792",
       "type": "application",
       "name": "composer.lock",
       "properties": [
@@ -3406,7 +3406,7 @@
   ],
   "dependencies": [
     {
-      "ref": "0f523970-ec13-43cf-ac86-4b89327b4cc1",
+      "ref": "0c43b248-48bf-4f50-afb0-5f22cd372792",
       "dependsOn": [
         "pkg:composer/amphp/file@v4.0.0",
         "pkg:composer/brainmaestro/composer-git-hooks@dev-master",
@@ -3428,9 +3428,9 @@
       ]
     },
     {
-      "ref": "87105a6b-be48-4ec6-8b70-ee53e629ddc0",
+      "ref": "635410fc-4dcd-4955-a843-998ff973920a",
       "dependsOn": [
-        "0f523970-ec13-43cf-ac86-4b89327b4cc1"
+        "0c43b248-48bf-4f50-afb0-5f22cd372792"
       ]
     },
     {
