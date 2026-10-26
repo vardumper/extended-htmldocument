@@ -16,5 +16,7 @@
 
 # Yarn Berry per-package install state cache (machine-specific, regenerated on install)
 **/.yarn/install-state.gz
+**/.yarn/cache
+**/.yarn/global-cache
 
 /picocss-html5-specification.yaml
