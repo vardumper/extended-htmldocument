@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:79297122-babf-4712-8569-b2fc00d72668",
+  "serialNumber": "urn:uuid:ddbae1f2-1176-4097-912f-160ecb2f8c77",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-26T00:40:26+00:00",
+    "timestamp": "2026-10-26T11:16:26+00:00",
     "tools": {
       "components": [
         {
@@ -20,7 +20,7 @@
       ]
     },
     "component": {
-      "bom-ref": "87105a6b-be48-4ec6-8b70-ee53e629ddc0",
+      "bom-ref": "635410fc-4dcd-4955-a843-998ff973920a",
       "type": "application",
       "name": ".",
       "properties": [
@@ -33,7 +33,7 @@
   },
   "components": [
     {
-      "bom-ref": "0f523970-ec13-43cf-ac86-4b89327b4cc1",
+      "bom-ref": "0c43b248-48bf-4f50-afb0-5f22cd372792",
       "type": "application",
       "name": "composer.lock",
       "properties": [
@@ -67,7 +67,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -115,7 +115,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -403,7 +403,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -547,7 +547,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -679,7 +679,7 @@
       "licenses": [
         {
           "license": {
-            "id": "BSD-3-Clause"
+            "id": "MIT"
           }
         }
       ],
@@ -907,7 +907,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -955,7 +955,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -966,12 +966,9 @@
       "version": "1.10.1",
       "licenses": [
         {
-          "name": "aquasecurity:trivy:PkgID",
-          "value": "@esbuild/darwin-x64@0.28.1"
-        },
-        {
-          "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "license": {
+            "id": "MIT"
+          }
         }
       ],
       "purl": "pkg:composer/mnapoli/silly@1.10.1",
@@ -982,7 +979,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -1086,7 +1083,7 @@
       "licenses": [
         {
           "license": {
-            "id": "MIT"
+            "id": "BSD-3-Clause"
           }
         }
       ],
@@ -1122,7 +1119,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -1170,7 +1167,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -1182,7 +1179,7 @@
       "licenses": [
         {
           "license": {
-            "id": "BSD-3-Clause"
+            "id": "MIT"
           }
         }
       ],
@@ -1362,7 +1359,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -1602,7 +1599,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -1697,8 +1694,8 @@
           "value": "psr/container@2.0.2"
         },
         {
-          "name": "aquasecurity:trivy:Type",
-          "value": "yarn"
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "composer"
         }
       ]
     },
@@ -1746,7 +1743,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -1794,7 +1791,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -1938,7 +1935,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -1962,7 +1959,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -2034,22 +2031,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
-        }
-      ]
-    },
-    {
-      "bom-ref": "4dfa2dd3-9af0-47ec-a66b-2c4b928d002b",
-      "type": "application",
-      "name": "yarn.lock",
-      "properties": [
-        {
-          "name": "aquasecurity:trivy:Class",
-          "value": "lang-pkgs"
-        },
-        {
-          "name": "aquasecurity:trivy:Type",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -2091,7 +2073,7 @@
       ],
       "purl": "pkg:composer/revolt/event-loop@v1.0.9",
       "properties": [
-    {
+        {
           "name": "aquasecurity:trivy:PkgID",
           "value": "revolt/event-loop@v1.0.9"
         },
@@ -2121,7 +2103,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -2193,7 +2175,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -2241,7 +2223,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -2433,7 +2415,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -2528,8 +2510,8 @@
           "value": "symfony/console@v7.4.21"
         },
         {
-          "name": "aquasecurity:trivy:Type",
-          "value": "yarn"
+          "name": "aquasecurity:trivy:PkgType",
+          "value": "composer"
         }
       ]
     },
@@ -2661,7 +2643,7 @@
       "licenses": [
         {
           "license": {
-            "id": "Apache-2.0"
+            "id": "MIT"
           }
         }
       ],
@@ -2673,7 +2655,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -2853,7 +2835,7 @@
       "licenses": [
         {
           "license": {
-            "id": "BSD-3-Clause"
+            "id": "MIT"
           }
         }
       ],
@@ -2937,7 +2919,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -2961,7 +2943,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -3297,7 +3279,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -3369,7 +3351,7 @@
         },
         {
           "name": "aquasecurity:trivy:PkgType",
-          "value": "yarn"
+          "value": "composer"
         }
       ]
     },
@@ -3424,7 +3406,7 @@
   ],
   "dependencies": [
     {
-      "ref": "0f523970-ec13-43cf-ac86-4b89327b4cc1",
+      "ref": "0c43b248-48bf-4f50-afb0-5f22cd372792",
       "dependsOn": [
         "pkg:composer/amphp/file@v4.0.0",
         "pkg:composer/brainmaestro/composer-git-hooks@dev-master",
@@ -3446,9 +3428,9 @@
       ]
     },
     {
-      "ref": "87105a6b-be48-4ec6-8b70-ee53e629ddc0",
+      "ref": "635410fc-4dcd-4955-a843-998ff973920a",
       "dependsOn": [
-        "0f523970-ec13-43cf-ac86-4b89327b4cc1"
+        "0c43b248-48bf-4f50-afb0-5f22cd372792"
       ]
     },
     {
