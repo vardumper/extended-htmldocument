@@ -12,18 +12,18 @@ While you can create HTML with DOM\HTMLDocument or DOMDocument, this library is 
 The PHP classes in this library are auto-generated from the HTML5 specification. In order to automatically generate templates, we want to factor in these specifications into our PHP classes.
 There are two ways to do this:
 - You duplicate the `html5.yaml` file, modify it to your needs and then [recompile the PHP classes](/code-generation) for HTML elements.
-- The more elegant way to do this is to create specification mixin files. This library comes with an exemplary
+- The more elegant way to do this is to create specification mixin files. This library comes with exemplary specification files, such as `html5-with-aria.yaml` and `html5-with-aria-and-alpine.yaml` in `src/Resources/specifications/`.
 
-## Template Generators
+## Template Generators <Badge type="tip" text="Blade & TypeScript since 0.3.0" /> <Badge type="tip" text="XSLT since 0.3.4" />
 The library is designed to be flexible. That's why template generators are interchangeable and chainable (if you need multiple formats). You can create your own generators or swap out the renderer for the
 HTMLDocumentDelegator and HTMLElementDelegator classes, which are responsible for rendering the HTML elements, once you cast them to a string, or echo them.
 
-By default, the library uses the `HtmlGenerator` which simply returns standards-conform HTML5.
-You can swap them out for a more sophisticated renderer, such as a TwigRenderer, ReactRenderer, or VueRenderer.
+By default, the library uses the `HTMLGenerator` which simply returns standards-conform HTML5.
+You can swap them out for a more sophisticated generator, such as a `TwigGenerator`, `BladeGenerator`, `NextJSGenerator`, `StorybookJSGenerator`, `TypeScriptGenerator`, `TwigComponentsGenerator`, or `XSLTGenerator`.
 
 ## Versatile Usage
-To render HTML into different formats (such as .twig, .jsx, .vue, .svelte, .html, .md) you can use one of:
-- **CLI** Provide YAML describing your components and generate HTML, Twig, React, Vue, Svelte, or Markdown files from the command line.
+To render HTML into different formats (such as .twig, .blade.php, .tsx, .js, .xsl, .html) you can use one of:
+- **CLI** Provide YAML describing your components and generate HTML, Twig, Blade, React/Next.js, Storybook, TypeScript, or XSLT files from the command line.
 - **CLI Watcher** The Watcher observes a file or path with your YAML component definition(s) and updates the generated templates as you make changes.
 - **PHP** You can also create components programmatically.
 - **PHP** You can also have PHP parse pre-made YAML files and generate multiple output formats at once. This is useful if you use Storybook with React, Vue or Twig, or if you want to generate Twig templates for a Symfony project.
@@ -40,20 +40,20 @@ Each HTML element instance has semantic helper methods, such as
 
 These give context, more info on an element and can be used to validate if a certain HTML element can be used in a specific context.
 
-## **Immutable Enum Attributes**
-Static HTML Attributes are represented as BackedEnum classes, for example `RelEnum`, `TargetEnum`, and many more. This ensures that only valid values can be set for an attribute. In order to
+## **Immutable Enum Attributes** <Badge type="info" text="Attribute & child validation since 0.3.4" />
+Static HTML Attributes are represented as BackedEnum classes, for example `RelEnum`, `TargetEnum`, and `ARoleEnum`. This ensures that only valid values can be set for an attribute:
 ```php
-(new Anchor('Click here'))
+(new Anchor())
   ->setRel(RelEnum::NOFOLLOW)
-  ->setRole(RoleEnum::BUTTON);
+  ->setRole(ARoleEnum::BUTTON)
   ->setTarget(TargetEnum::BLANK);
 ```
 
 
-## **Fluent Setters**
+## **Fluent Setters** <Badge type="info" text="int/float attribute values since 0.3.0" />
 Each HTML element class instance has setters and getters based on the HTML5 specification. The setters can be chained together like this:
 ```php
-$anchor = (new Anchor('Click here'))
+$anchor = (new Anchor())
   ->setHref('https://example.com')
   ->setTitle('Some info about the link')
   ->setRel('nofollow')
@@ -62,14 +62,14 @@ $anchor = (new Anchor('Click here'))
 These are also available for all global HTML attributes and for properties of the underlying DOM objects.
 ```php
 $anchor->setHidden(true); // global attribute
-$anchor->setInnerHTML('This is <em>links<em> content'); // DOM\Element
+$anchor->setInnerHTML('This is <em>link</em> content'); // DOM\Element
 ```
 
 ## **New Convenience Methods**
 Each HTML element class instance inherits convenience methods, such as
 - `setAttributes()` - set multiple attributes at once
-- `setData()` - set multiple data attributes at once
-- `set*()` - set global attributes such as id, class, style, lang, dir, tabindex, accesskey, hidden, slot, draggabke, spellcheck, translate, and more.
+- `setDataAttribute()` - set multiple data attributes at once
+- `set*()` - set global attributes such as id, class, style, lang, dir, tabindex, accesskey, hidden, slot, draggable, spellcheck, translate, and more.
 
 All of the setters are designed to work the way you want. All of these examples are valid and work:
 ```php
@@ -92,12 +92,6 @@ $input->setAttribute('inputmode', 'numeric');
 
 // via single attribute with enum
 $input->setAttribute('inputmode', InputModeEnum::NUMERIC);
-
-// passing global attributes as 'globals' named parameter
-$input = new Input(globals: ['inputmode' => 'numeric']);
-
-// or as enum
-$input = new Input(globals: ['inputmode' => InputModeEnum::NUMERIC]);
 
 // via property access
 $input->inputmode = InputModeEnum::NUMERIC;

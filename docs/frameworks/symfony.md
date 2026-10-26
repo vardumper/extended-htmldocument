@@ -4,8 +4,6 @@ There are several different ways one can use this library in Symfony. One can:
  - Using the HTML5 Element and Enum classes in PHP
  - Installing the HTML5 Elements as Twig Components via a custom Bundle
 
-## Using only the pre-made Twig Templates
-
 ## Using the HTML5 Element PHP classes and Enums
 
 This library adds the HTML5 specification to PHP and is fully compatible with `DOM\HTMLDocument`. You can now instantiate an `Anchor` without passing a document.
@@ -19,7 +17,7 @@ echo (new Anchor())
     ->setRel(RelEnum::NOFOLLOW)
     ->setHref('https://google.com')
     ->setTitle('Google it')
-    ->setContent('Ask a question');
+    ->setTextContent('Ask a question');
 // produces: <a class="secondary" href="https://google.com" rel="nofollow" title="Google it">Ask a question</a>
 ```
 

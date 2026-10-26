@@ -1,11 +1,11 @@
 # The HTML5 Specification as YAML
 
-The heart of this library is the HTML5 specification [`Resources/definitions/html5.yaml`](https://github.com/vardumper/extended-htmldocument/blob/main/src/Resources/definitions/html5.yaml). It is used to generate the PHP classes that represent each HTML element.
+The heart of this library is the HTML5 specification [`Resources/specifications/html5.yaml`](https://github.com/vardumper/extended-htmldocument/blob/main/src/Resources/specifications/html5.yaml). It is used to generate the PHP classes that represent each HTML element.
 
 The generated PHP classes can be found here:
 - [`HTML\Element\Block`](https://github.com/vardumper/extended-htmldocument/tree/main/src/Element/Block) block level elements (h1, h2, table, div, etc.)
 - [`HTML\Element\Inline`](https://github.com/vardumper/extended-htmldocument/tree/main/src/Element/Inline) inline elements (a, span, strong, etc.)
-- [`HTML\Element\Void`](https://github.com/vardumper/extended-htmldocument/tree/main/src/Element/Void) void elements that are invisible or not styleable (head, meta, etc).
+- [`HTML\Element\Void`](https://github.com/vardumper/extended-htmldocument/tree/main/src/Element/Void) non-styleable elements (head, meta, title, etc.)
 
 Read more about these PHP classes in the [Element Classes](./elements) section.
 
@@ -32,7 +32,7 @@ blockquote:
 Straight forward. It tells us what the element called, what it's used for, if its a block, inline or void element, what attributes it can have, on which other elements a specific attribute can be used and what children the element can have. Unlike the `<body>` or the `<main>` element it doesn't have to be unique, you can add as many blockquotes to a HTML page as you like...
 
 ### Anchor
-An elemet with slightly more attributes, but still easy to understand.
+An element with slightly more attributes, but still easy to understand.
 ```yaml
 a:
   name: Anchor

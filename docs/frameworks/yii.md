@@ -16,7 +16,7 @@ echo (new Anchor())
     ->setRel(RelEnum::NOFOLLOW)
     ->setHref('https://google.com')
     ->setTitle('Google it')
-    ->setContent('Click me');
+    ->setTextContent('Click me');
 // produces: <a class="secondary" href="https://google.com" rel="nofollow" title="Google it">Click me</a>
 ```
 
@@ -98,10 +98,10 @@ Now that Twig finds the new templates, you can use them in your `.twig` files.
 ## Notes
 
 Content can be passed in two ways: via the `content` parameter, or via a block override when using `embed` or `use`. Using block overrides allows you to nest other templates inside elements.
-While these examples seem a bit longer than writing a simple `<a>` tag, what they provide is consistency and validation. You cannot produce invalid HTML with them.
+While these examples seem a bit longer than writing a simple `<a>` tag, what they provide is consistency and basic validation of enum attributes.
 
-### Data data-* and Alpine x-*: attributes 
-You can pass arbitrary `data-*` attributes via the `data-attributes` mapping. For example:
+### data-* and Alpine x-* attributes
+You can pass arbitrary `data-*` attributes via the `data-attributes` mapping, and Alpine.js `x-*` directives via the `alpine-attributes` mapping. For example:
 
 ```twig
 {% include '@html/block/article/article.twig' with {
@@ -109,6 +109,10 @@ You can pass arbitrary `data-*` attributes via the `data-attributes` mapping. Fo
   'data-attributes': {
     'test': 'value',
     'role': 'article'
+  },
+  'alpine-attributes': {
+    'x-data': "{ count: 0 }",
+    'x-on:click': 'count++'
   }
 } %}
 ```

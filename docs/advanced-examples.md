@@ -1,7 +1,4 @@
 # Advanced Usage Examples
-::: warning
-This page isn't finished yet. Please check back later.
-:::
 
 ## Working with Design Systems
 
@@ -36,17 +33,36 @@ Anyways, the description of teaser and teaser container is sufficient to have th
 
 ```php
 use Html\Delegator\HTMLDocumentDelegator;
-use Html\Element\Block\Division;
-use Html\Element\Block\Heading3;
-use Html\Element\Block\Paragraph;
-use Html\Element\Inline\Anchor;
-use Html\Element\Inline\Image;
+use Symfony\Component\Yaml\Yaml;
 
-$data = yaml_parse_file('path/to/your/design-system.yaml');
+$data = Yaml::parseFile('path/to/your/design-system.yaml');
 $dom = HTMLDocumentDelegator::createEmpty();
 
-forach($data['molecules'] as $id => $molecule) {
+foreach ($data['molecules'] as $id => $molecule) {
     $teaser = $dom->createElement('div');
-    $teaser->setAttributes(['class' => 'teaser
+    $teaser->setAttributes(['class' => $molecule['division']['class'] ?? null]);
+
+    $headline = $dom->createElement('h3');
+    $headline->setTextContent($molecule['division']['heading3']);
+    $teaser->appendChild($headline);
+
+    $image = $dom->createElement('img');
+    $image->setAttributes([
+        'src' => $molecule['division']['image']['src'],
+        'alt' => $molecule['division']['image']['alt'],
+    ]);
+    $teaser->appendChild($image);
+
+    $paragraph = $dom->createElement('p');
+    $paragraph->setTextContent($molecule['division']['paragraph']);
+    $teaser->appendChild($paragraph);
+
+    $anchor = $dom->createElement('a');
+    $anchor->setAttributes([
+        'href' => $molecule['division']['anchor']['href'],
+        'role' => $molecule['division']['anchor']['role'],
+        'class' => $molecule['division']['anchor']['class'],
+    ]);
+    $teaser->appendChild($anchor);
 }
 ```
