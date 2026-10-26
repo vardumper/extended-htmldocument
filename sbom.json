@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:31389ab3-4398-441f-92f2-b378b138e384",
+  "serialNumber": "urn:uuid:e06073ec-a392-4bd7-86a1-b6da48346abd",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-25T23:05:24+00:00",
+    "timestamp": "2026-10-25T23:28:25+00:00",
     "tools": {
       "components": [
         {
@@ -20,7 +20,7 @@
       ]
     },
     "component": {
-      "bom-ref": "f0d353a3-f5d2-426d-ac6f-bc94ec249b00",
+      "bom-ref": "7d796b5e-741e-4c77-ae8b-0364c2c9142f",
       "type": "application",
       "name": ".",
       "properties": [
@@ -33,7 +33,7 @@
   },
   "components": [
     {
-      "bom-ref": "2edeb064-b337-4025-ab4c-6c35d69d1a11",
+      "bom-ref": "beb56261-d6d0-413c-aced-6339aaf3fcd6",
       "type": "application",
       "name": "composer.lock",
       "properties": [
@@ -3406,7 +3406,13 @@
   ],
   "dependencies": [
     {
-      "ref": "2edeb064-b337-4025-ab4c-6c35d69d1a11",
+      "ref": "7d796b5e-741e-4c77-ae8b-0364c2c9142f",
+      "dependsOn": [
+        "beb56261-d6d0-413c-aced-6339aaf3fcd6"
+      ]
+    },
+    {
+      "ref": "beb56261-d6d0-413c-aced-6339aaf3fcd6",
       "dependsOn": [
         "pkg:composer/amphp/file@v4.0.0",
         "pkg:composer/brainmaestro/composer-git-hooks@dev-master",
@@ -3425,12 +3431,6 @@
         "pkg:composer/symfony/yaml@v7.4.21",
         "pkg:composer/symplify/easy-coding-standard@12.6.2",
         "pkg:composer/vardumper/dom-orm@v1.5.3"
-      ]
-    },
-    {
-      "ref": "f0d353a3-f5d2-426d-ac6f-bc94ec249b00",
-      "dependsOn": [
-        "2edeb064-b337-4025-ab4c-6c35d69d1a11"
       ]
     },
     {
