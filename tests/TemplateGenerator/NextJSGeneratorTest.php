@@ -110,6 +110,25 @@ test('render document uses component handle names', function () {
         ->toContain('export const TeaserExample: React.FC<TeaserExampleParams> = (params) => {');
 });
 
+test('render document from templates with attributes, data attributes and void elements', function () {
+    $document = HTMLDocumentDelegator::createFromString(
+        '<!doctype html><html><body>'
+        . '<div class="box" data-foo="bar" aria-label="hello" disabled>Some text</div>'
+        . '<a href="/x" title="t">Link</a>'
+        . '<img src="a.png" alt="img">'
+        . '<br>'
+        . '</body></html>'
+    );
+
+    $result = $this->generator->render($document);
+
+    expect($result)
+        ->toBeString()
+        ->toContain('React.FC')
+        ->toContain('className')
+        ->toContain('dataSet');
+});
+
 test('render invalid', function () {
     expect($this->generator->render('string'))
         ->toBe(null);
@@ -297,4 +316,30 @@ test('generate leaf example method', function () {
         ->toContain('<Input');
     expect($result)
         ->toContain('type="text"');
+});
+
+test('generate leaf example covers all self-closing element cases', function () {
+    $reflection = new ReflectionClass($this->generator);
+    $method = $reflection->getMethod('generateLeafExample');
+    $method->setAccessible(true);
+
+    $img = $method->invoke($this->generator, 'img', 'Image', '  ', 0);
+    expect($img)
+        ->toContain('src="image.jpg"');
+
+    $source = $method->invoke($this->generator, 'source', 'Source', '  ', 1);
+    expect($source)
+        ->toContain('srcset="image-1.jpg"');
+
+    $area = $method->invoke($this->generator, 'area', 'Area', '  ', 2);
+    expect($area)
+        ->toContain('shape="rect"');
+
+    $col = $method->invoke($this->generator, 'col', 'Col', '  ', 3);
+    expect($col)
+        ->toContain('span={1}');
+
+    $default = $method->invoke($this->generator, 'br', 'Br', '  ', 4);
+    expect($default)
+        ->toContain('<Br />');
 });

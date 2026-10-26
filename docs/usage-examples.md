@@ -5,12 +5,7 @@
 When working with this library, you get your IDEs autocompletion feature for all HTML elements. This will give you a quick insight into the available elements their attributes.
 This is especially useful when you are working in a DOM\HTMLDocument and you don't know all the HTML elements or attributes there are.
 
-tbd add a gif
-
 ## Instantiation
-::: warning
-This part is currently work in progress. The information below might be outdated, incomplete or incorrect.
-:::
 
 ### Creation via constructor
 
@@ -19,8 +14,8 @@ $anchor = new Html\Element\Inline\Anchor();
 $anchor->textContent = 'This is a test link.';
 $anchor->setAttributes([
     'href' => 'https://www.example.com',
-    'rel' => Html\Enum\RelEnum::NOOPENER,
-    'target' => Html\Enum\TargetEnum::_BLANK
+    'rel' => Html\Enum\RelEnum::NOREFERRER,
+    'target' => Html\Enum\TargetEnum::BLANK
 ]);
 echo $anchor;
 // or: $anchor->__toString();
@@ -30,7 +25,7 @@ In the example above, we instantiate the element directly and make use of `setAt
 
 The output will be this:
 ```html{4}
-<a href="https://www.example.com" rel="noopener" target="_blank">
+<a href="https://www.example.com" rel="noreferrer" target="_blank">
     This is a test link.
 </a>
 ```

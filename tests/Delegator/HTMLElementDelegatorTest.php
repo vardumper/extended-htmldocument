@@ -23,12 +23,16 @@ test('constructor', function () {
 test('can be instantiated without providing a document', function () {
     $anchor = new Anchor();
 
-    expect($anchor)->toBeInstanceOf(Anchor::class);
-    expect(strtolower($anchor->delegated->tagName))->toBe('a');
-    expect($anchor->getOwnerDocument())->toBeInstanceOf(HTMLDocumentDelegator::class);
+    expect($anchor)
+        ->toBeInstanceOf(Anchor::class);
+    expect(strtolower($anchor->delegated->tagName))
+        ->toBe('a');
+    expect($anchor->getOwnerDocument())
+        ->toBeInstanceOf(HTMLDocumentDelegator::class);
 
     $anchor->setHref('https://example.com');
-    expect($anchor->getHref())->toBe('https://example.com');
+    expect($anchor->getHref())
+        ->toBe('https://example.com');
 });
 
 test('call get global attribute', function () {
@@ -391,10 +395,12 @@ test('removeChild can remove TextDelegator', function () {
     $text = $this->document->createTextNode('hello');
 
     $this->delegator->appendChild($text);
-    expect($this->delegator->delegated->textContent)->toBe('hello');
+    expect($this->delegator->delegated->textContent)
+        ->toBe('hello');
 
     $this->delegator->removeChild($text);
-    expect($this->delegator->delegated->textContent)->toBe('');
+    expect($this->delegator->delegated->textContent)
+        ->toBe('');
 });
 
 test('removeChild can remove native DOM\\Text', function () {
@@ -402,10 +408,12 @@ test('removeChild can remove native DOM\\Text', function () {
     $nativeText = $textDelegator->delegated;
 
     $this->delegator->delegated->appendChild($nativeText);
-    expect($this->delegator->delegated->textContent)->toBe('raw');
+    expect($this->delegator->delegated->textContent)
+        ->toBe('raw');
 
     $this->delegator->removeChild($nativeText);
-    expect($this->delegator->delegated->textContent)->toBe('');
+    expect($this->delegator->delegated->textContent)
+        ->toBe('');
 });
 
 test('replace child', function () {

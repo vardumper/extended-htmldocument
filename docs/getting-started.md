@@ -47,12 +47,12 @@ The library also includes Template Generators to automatically generate template
 When generating component templates from YAML files with the watch command, you can enable strict composition mode so the output references the pre-generated element templates (for example `block/div/div.twig`) instead of emitting plain HTML-like Twig markup.
 
 ```bash
-php bin/ext-html watch twig examples/template-generator/source/teaser-twig.yaml examples/template-generator/dest --strict=embed
+php bin/ext-html watch twig examples/template-generator/source/teaser-example.yaml examples/template-generator/dest --strict=embed
 ```
 
 Supported strict modes are `include`, `embed`, and `use` (currently falls back to `embed` behavior for nested composition).
 
-While the include and embed snippets below aren't shorter than just writing HTML directly, they do provide for better consistency and reusability when building larger templates or design systems. Furthermore, they do some basic validation of attributes or leave out attrributes if a default value is given. Yet, its an opinionated approach and you can adjust the Generator and template used to generate them `src/Resources/templates/twig.tpl.twig`.
+While the include and embed snippets below aren't shorter than just writing HTML directly, they do provide for better consistency and reusability when building larger templates or design systems. Furthermore, they do some basic validation of attributes or leave out attributes if a default value is given. Yet, it's an opinionated approach and you can adjust the `TwigGenerator` (`src/TemplateGenerator/TwigGenerator.php`) and the generated templates in `templates/twig` to change how they look.
 
 ### Twig examples
 ::: code-group

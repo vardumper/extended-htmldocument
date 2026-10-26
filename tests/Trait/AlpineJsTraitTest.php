@@ -65,6 +65,20 @@ test('setAlpineAttribute with x-for on non-template throws exception', function 
         );
 });
 
+test('setAlpineAttribute with .modifier shorthand becomes x-model', function () {
+    $div = Division::create($this->document);
+    $div->setAlpineAttribute('.lazy', 'true');
+    expect($div->getAttribute('x-model.lazy'))
+        ->toBe('true');
+});
+
+test('setAlpineAttribute with a custom name becomes x-prefixed', function () {
+    $div = Division::create($this->document);
+    $div->setAlpineAttribute('foo', 'bar');
+    expect($div->getAttribute('x-foo'))
+        ->toBe('bar');
+});
+
 test('getAlpineAttribute', function () {
     $div = Division::create($this->document);
     $div->setAlpineAttribute('x-data', '{ count: 0 }');

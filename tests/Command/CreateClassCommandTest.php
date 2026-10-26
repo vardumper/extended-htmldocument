@@ -97,5 +97,6 @@ test('CreateEnumCommand generates ClassEnum from the fixture specification', fun
         ->toContain("case OUTLINE = 'outline';");
     expect($generated)
         ->toContain("case SECONDARY_OUTLINE = 'secondary outline';");
-    expect($generated)->toContain("case CONTRAST_OUTLINE = 'contrast outline';");
+    expect($generated)
+        ->toContain("case CONTRAST_OUTLINE = 'contrast outline';");
 });
