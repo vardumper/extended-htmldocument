@@ -110,6 +110,25 @@ test('render document uses component handle names', function () {
         ->toContain('export const TeaserExample: React.FC<TeaserExampleParams> = (params) => {');
 });
 
+test('render document from templates with attributes, data attributes and void elements', function () {
+    $document = HTMLDocumentDelegator::createFromString(
+        '<!doctype html><html><body>'
+        . '<div class="box" data-foo="bar" aria-label="hello" disabled>Some text</div>'
+        . '<a href="/x" title="t">Link</a>'
+        . '<img src="a.png" alt="img">'
+        . '<br>'
+        . '</body></html>'
+    );
+
+    $result = $this->generator->render($document);
+
+    expect($result)
+        ->toBeString()
+        ->toContain('React.FC')
+        ->toContain('className')
+        ->toContain('dataSet');
+});
+
 test('render invalid', function () {
     expect($this->generator->render('string'))
         ->toBe(null);

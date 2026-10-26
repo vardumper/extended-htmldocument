@@ -137,3 +137,24 @@ test('item returns NodeDelegator for text node', function () {
     expect($item)
         ->toBeInstanceOf(NodeDelegator::class);
 });
+
+test('count is proxied through __call', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $element = $document->createElement('div');
+    $document->appendChild($element);
+    $delegator = new NodeListDelegator($document->documentElement->childNodes);
+    expect($delegator->count())
+        ->toEqual(1);
+});
+
+test('namedItem is proxied to the delegated HTMLCollection through __call', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $element = $document->createElement('div');
+    $element->setAttribute('id', 'target');
+    $document->appendChild($element);
+    $collection = $document->documentElement->getElementsByTagName('div');
+    $delegator = new NodeListDelegator($collection);
+    $named = $delegator->namedItem('target');
+    expect($named)
+        ->not->toBeNull();
+});

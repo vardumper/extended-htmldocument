@@ -4,6 +4,7 @@ parameters:
         - %currentWorkingDirectory%
     excludePaths:
         - vendor
+        - templates/*/vendor
         - tests
         - src/Resources/templates/VoidElement.tpl.php
         - src/Resources/templates/BlockElement.tpl.php

@@ -113,6 +113,23 @@ test('render document uses component handle names', function () {
         ->toContain('export function teaserExample(');
 });
 
+test('render document from templates with attributes and nested children', function () {
+    $document = HTMLDocumentDelegator::createFromString(
+        '<!doctype html><html><body>'
+        . '<div class="box" id="a">Text</div>'
+        . '<ul><li>One</li><li>Two</li></ul>'
+        . '<a href="/x" title="t">Link</a>'
+        . '</body></html>'
+    );
+
+    $result = $this->generator->render($document);
+
+    expect($result)
+        ->toBeString()
+        ->toContain('setAttribute')
+        ->toContain('.append(');
+});
+
 test('render invalid', function () {
     expect($this->generator->render('string'))
         ->toBe(null);

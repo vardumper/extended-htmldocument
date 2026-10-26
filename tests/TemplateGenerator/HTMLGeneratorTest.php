@@ -91,3 +91,23 @@ test('render invalid', function () {
     expect($this->generator->render('string'))
         ->toBe(null);
 });
+
+test('render document in formatOutput mode skips head when there is no body', function () {
+    $document = HTMLDocumentDelegator::createFromString(
+        '<!doctype html><html><head><title>t</title></head></html>'
+    );
+    $document->formatOutput = true;
+
+    $html = $this->generator->render($document);
+    expect($html)
+        ->not->toContain('<head>')
+        ->not->toContain('<title>');
+});
+
+test('render document in formatOutput mode with an empty body returns empty string', function () {
+    $document = HTMLDocumentDelegator::createFromString('<!doctype html><html><body></body></html>');
+    $document->formatOutput = true;
+
+    expect($this->generator->render($document))
+        ->toBe('');
+});

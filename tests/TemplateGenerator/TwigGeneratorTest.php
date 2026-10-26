@@ -210,6 +210,24 @@ test('render composed element excluded', function () {
         ->toBeNull();
 });
 
+test('render composed element covers self-closing, text-only and content child branches', function () {
+    $document = HTMLDocumentDelegator::createEmpty();
+    $elements = [
+        \Html\Element\Void\Head::create($document),
+        \Html\Element\Inline\Select::create($document),
+        \Html\Element\Block\DefinitionList::create($document),
+        \Html\Element\Block\Table::create($document),
+        \Html\Element\Block\UnorderedList::create($document),
+        \Html\Element\Block\Form::create($document),
+    ];
+
+    foreach ($elements as $element) {
+        $result = $this->generator->renderComposedElement($element);
+        expect($result)
+            ->toBeString();
+    }
+});
+
 test('build composed template', function () {
     $reflection = new ReflectionClass($this->generator);
     $method = $reflection->getMethod('buildComposedTemplate');
